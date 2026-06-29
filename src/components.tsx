@@ -104,8 +104,13 @@ function isSiteUrl(value: string, domain: string) {
 
 export function PracticeControls({ song }: { song: Song }) {
   const { get, patch } = usePractice(); const entry = get(song.id)
-  return <section className="panel practice-controls"><div className="section-heading"><div><span className="eyebrow">Your local data</span><h2>Practice notes</h2></div><StatusSelect songId={song.id} /></div>
-    <label>Priority<select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label>
-    <label>Quick notes<textarea value={entry.notes} onChange={(e) => patch(song.id, { notes: e.target.value })} placeholder="Fingering, tone, rehearsal changes…" /></label>
+  return <section className="panel practice-controls">
+    <span className="eyebrow">Your local data</span>
+    <h2>Practice notes</h2>
+    <div className="practice-fields">
+      <label><span>Status</span><StatusSelect songId={song.id} /></label>
+      <label><span>Priority</span><select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label>
+      <label className="practice-notes"><span>Quick notes</span><textarea value={entry.notes} onChange={(e) => patch(song.id, { notes: e.target.value })} placeholder="Fingering, tone, rehearsal changes…" /></label>
+    </div>
   </section>
 }
