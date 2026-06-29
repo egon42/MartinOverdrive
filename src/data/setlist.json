@@ -12,7 +12,7 @@
       "title": "Welcome Home",
       "artist": "Coheed and Cambria",
       "difficulty": 5,
-      "tuning": "Eb standard likely",
+      "tuning": "Standard",
       "role": "Specific riffs + heavy rhythm",
       "practiceStyle": "Learn actual part first",
       "backingTrackUrl": "https://www.youtube.com/watch?v=ZxHaqw43YJA",
@@ -38,7 +38,8 @@
         "Must Know": "Iconic intro/main riff and heavy rhythmic hits.",
         "Fallback": "Simplified down-tuned power chords; skip fast lead detail.",
         "Rehearsal Question": "Are we tuned down a half-step, and am I covering the intro riff or rhythm support?"
-      }
+      },
+      "recordingNote": "Eb standard likely"
     },
     {
       "id": "02-all-the-small-things",
@@ -46,7 +47,7 @@
       "title": "All The Small Things",
       "artist": "blink-182",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Power-chord rhythm",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/watch?v=z4Q1fMfq51E",
@@ -72,7 +73,8 @@
         "Must Know": "Downstroke/power-chord stamina and stops.",
         "Fallback": "Root-fifth power chords with locked eighth notes.",
         "Rehearsal Question": "Do we play it like the record or shorten any repeats?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "03-a-little-less-conversation",
@@ -80,7 +82,7 @@
       "title": "A Little Less Conversation",
       "artist": "Elvis Presley",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + vocal support",
       "practiceStyle": "Some improv, but learn key hooks",
       "backingTrackUrl": "https://www.youtube.com/watch?v=K0VUJeKofUM",
@@ -106,7 +108,8 @@
         "Must Know": "Groove, vocal entrances, and clean chord rhythm.",
         "Fallback": "Dry clean/edge-of-breakup rhythm only.",
         "Rehearsal Question": "Am I singing it, playing it, or both?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "04-i-believe-in-a-thing-called-love",
@@ -114,7 +117,7 @@
       "title": "I Believe in a Thing Called Love",
       "artist": "The Darkness",
       "difficulty": 4,
-      "tuning": "Standard or Eb depending band/tab",
+      "tuning": "Standard",
       "role": "Riffs + hooks + possible lead",
       "practiceStyle": "Learn actual part first",
       "backingTrackUrl": "https://www.youtube.com/watch?v=b7ok352bQ-M",
@@ -140,7 +143,8 @@
         "Must Know": "Intro/rhythm riffs and big chorus changes.",
         "Fallback": "Chugging rhythm chords; leave lead gymnastics to others.",
         "Rehearsal Question": "Which guitar part do they need: rhythm, harmonized leads, or just texture?"
-      }
+      },
+      "recordingNote": "Standard or Eb depending band/tab"
     },
     {
       "id": "05-thunderstruck",
@@ -148,7 +152,7 @@
       "title": "Thunderstruck",
       "artist": "AC/DC",
       "difficulty": 4,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Specific intro riff + hard-rock rhythm",
       "practiceStyle": "Learn actual part first",
       "backingTrackUrl": "https://www.youtube.com/watch?v=XjXEXb_g3UE",
@@ -174,7 +178,8 @@
         "Must Know": "Intro riff timing; no sloppy faking.",
         "Fallback": "Malcolm-style rhythm on the chorus sections.",
         "Rehearsal Question": "Who owns the intro? Can I just reinforce rhythm?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "06-don-t-stop-believin",
@@ -182,7 +187,7 @@
       "title": "Don't Stop Believin'",
       "artist": "Journey",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + selective lead",
       "practiceStyle": "Some improv, but learn key hooks",
       "backingTrackUrl": "https://www.youtube.com/watch?v=1DiBZLVb0_A",
@@ -208,7 +213,8 @@
         "Must Know": "Section entrances and chorus dynamics.",
         "Fallback": "Clean rhythm/chord support; skip Neal Schon lead details.",
         "Rehearsal Question": "Are keys covering most of it? Where do they want guitar big?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "07-tribute",
@@ -216,7 +222,7 @@
       "title": "Tribute",
       "artist": "Tenacious D",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Acoustic/rhythm riffing",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/watch?v=JgMtz6vYn9I",
@@ -242,7 +248,8 @@
         "Must Know": "Acoustic pattern and dynamic story beats.",
         "Fallback": "Strum chord skeleton and follow vocals.",
         "Rehearsal Question": "Do they want the album arrangement or a loose acoustic version?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "08-while-my-guitar-gently-weeps",
@@ -250,7 +257,7 @@
       "title": "While My Guitar Gently Weeps",
       "artist": "The Beatles",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + expressive lead fills",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=xbucYUfcrEQ",
@@ -276,7 +283,8 @@
         "Must Know": "Chord form and tasteful lead phrasing.",
         "Fallback": "Chord support plus 2–3 recurring melodic licks.",
         "Rehearsal Question": "Am I taking any solo space, or just filling behind vocals?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "09-pride-and-joy",
@@ -284,7 +292,7 @@
       "title": "Pride and Joy",
       "artist": "Stevie Ray Vaughan",
       "difficulty": 4,
-      "tuning": "Eb original; standard backing versions exist",
+      "tuning": "Standard",
       "role": "Blues shuffle rhythm + fills",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=jjaX7VDFToE",
@@ -310,7 +318,8 @@
         "Must Know": "Texas shuffle feel before flashy licks.",
         "Fallback": "Simplified shuffle, sparse fills.",
         "Rehearsal Question": "Are we doing SRV Eb or standard? Who carries the shuffle?"
-      }
+      },
+      "recordingNote": "Eb original; standard backing versions exist"
     },
     {
       "id": "10-zombie",
@@ -318,7 +327,7 @@
       "title": "Zombie",
       "artist": "The Cranberries",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + dynamics",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/watch?v=5nXP9D_Aoto",
@@ -344,7 +353,8 @@
         "Must Know": "Em-C-G-D progression and clean/dirt dynamic lift.",
         "Fallback": "Simple open chords or power chords.",
         "Rehearsal Question": "Clean intro then distortion chorus, or one tone throughout?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "11-hunger-strike",
@@ -352,7 +362,7 @@
       "title": "Hunger Strike",
       "artist": "Temple Of The Dog",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + rock texture",
       "practiceStyle": "Some improv, but learn key hooks",
       "backingTrackUrl": "https://www.youtube.com/watch?v=h00vfosCahc",
@@ -378,7 +388,8 @@
         "Must Know": "Form and vocal-section dynamics.",
         "Fallback": "Chord texture and big chorus support.",
         "Rehearsal Question": "Which vocalist cues the changes? Are guitar fills wanted?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "12-s-o-b",
@@ -386,7 +397,7 @@
       "title": "S.O.B.",
       "artist": "Nathaniel Rateliff & The Night Sweats",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Groove/chords",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/results?search_query=Nathaniel+Rateliff+S.O.B.+guitar+backing+track",
@@ -412,7 +423,8 @@
         "Must Know": "Stomp/clap pocket and repeated ending.",
         "Fallback": "Muted/percussive chord hits.",
         "Rehearsal Question": "Do they need guitar at all, or mostly vocals/percussion?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "13-save-a-horse-ride-a-cowboy",
@@ -420,7 +432,7 @@
       "title": "Save a Horse (Ride a Cowboy)",
       "artist": "Big & Rich",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Country-rock rhythm",
       "practiceStyle": "Some improv, but learn key hooks",
       "backingTrackUrl": "https://www.youtube.com/watch?v=youiJEGeZAw",
@@ -446,7 +458,8 @@
         "Must Know": "Groove and party-song form.",
         "Fallback": "Simple chord chucks on strong beats.",
         "Rehearsal Question": "Are we doing a full country version or rock-band simplified version?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "14-sweet-home-alabama",
@@ -454,7 +467,7 @@
       "title": "Sweet Home Alabama",
       "artist": "Lynyrd Skynyrd",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Signature riff + rhythm + fills",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=UyPzl0kR7G0",
@@ -480,7 +493,8 @@
         "Must Know": "D-C-G riff and turnaround.",
         "Fallback": "Strum D-C-G and add simple fills between vocals.",
         "Rehearsal Question": "Am I playing the signature riff, fills, or just rhythm?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "15-dani-california",
@@ -488,7 +502,7 @@
       "title": "Dani California",
       "artist": "Red Hot Chili Peppers",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Riff + rhythm + solo vocabulary",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=LZ0xVHkJWN4",
@@ -514,7 +528,8 @@
         "Must Know": "Main riff and chorus rhythm.",
         "Fallback": "Play riff in verses, simple power/chord support in chorus.",
         "Rehearsal Question": "Is anyone covering the solo, or can it be loose?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "16-teenage-dirtbag",
@@ -522,7 +537,7 @@
       "title": "Teenage Dirtbag",
       "artist": "Wheatus",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords/rhythm",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/watch?v=F5aWv1HDQ1c",
@@ -548,7 +563,8 @@
         "Must Know": "Dynamics from quiet verse to big chorus.",
         "Fallback": "Simple chord strums and power chords.",
         "Rehearsal Question": "Are vocals doing the energy lift, or should guitar get bigger?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "17-the-pretender",
@@ -556,7 +572,7 @@
       "title": "The Pretender",
       "artist": "Foo Fighters",
       "difficulty": 4,
-      "tuning": "Drop D likely",
+      "tuning": "Drop D",
       "role": "Specific riff + heavy rhythm",
       "practiceStyle": "Learn actual part first",
       "backingTrackUrl": "https://www.youtube.com/watch?v=6RNtJf3Fb6M",
@@ -582,7 +598,8 @@
         "Must Know": "Quiet intro to explosive heavy entrance.",
         "Fallback": "Drop-D root power-chord rhythm.",
         "Rehearsal Question": "Are we definitely using Drop D?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "18-here-it-goes-again",
@@ -590,7 +607,7 @@
       "title": "Here It Goes Again",
       "artist": "OK Go",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Pop-rock rhythm/chords",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/watch?v=mwHIGMRhwRI",
@@ -616,7 +633,8 @@
         "Must Know": "Tight pop-rock rhythm and stops.",
         "Fallback": "Chord chart + steady eighths.",
         "Rehearsal Question": "Is this close to the record or changed for live band?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "19-purple-rain",
@@ -624,7 +642,7 @@
       "title": "Purple Rain",
       "artist": "Prince",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + melodic lead",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=H7ZukXu1Yvs",
@@ -650,7 +668,8 @@
         "Must Know": "Slow emotional bends; less is more.",
         "Fallback": "Big clean chords and 3–4 melodic licks.",
         "Rehearsal Question": "What key are they singing it in?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "20-when-i-come-around",
@@ -658,7 +677,7 @@
       "title": "When I Come Around",
       "artist": "Green Day",
       "difficulty": 2,
-      "tuning": "Eb original often; standard versions common",
+      "tuning": "Standard",
       "role": "Power-chord rhythm",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/watch?v=8BZklQX6qYU",
@@ -684,7 +703,8 @@
         "Must Know": "Lazy-but-steady groove and palm muting.",
         "Fallback": "Power chords only.",
         "Rehearsal Question": "Are we in Eb like Green Day or standard?"
-      }
+      },
+      "recordingNote": "Eb original often; standard versions common"
     },
     {
       "id": "21-the-middle",
@@ -692,7 +712,7 @@
       "title": "The Middle",
       "artist": "Jimmy Eat World",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Power-chord rhythm",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/watch?v=HI6E5RRVPZo",
@@ -718,7 +738,8 @@
         "Must Know": "Tight eighth-note strumming and chorus lift.",
         "Fallback": "Power chords; skip fills.",
         "Rehearsal Question": "Do they need exact guitar fills, or just rhythm?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "22-dream-on",
@@ -726,7 +747,7 @@
       "title": "Dream On",
       "artist": "Aerosmith",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords/arpeggios + melodic fills",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=1L3CieTDdd8",
@@ -752,7 +773,8 @@
         "Must Know": "Clean arpeggio feel and big build.",
         "Fallback": "Chord/arpeggio support; save lead for outro only.",
         "Rehearsal Question": "Are keys covering the intro texture?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "23-lola-montez",
@@ -760,7 +782,7 @@
       "title": "Lola Montez",
       "artist": "Volbeat",
       "difficulty": 3,
-      "tuning": "D standard likely",
+      "tuning": "Standard",
       "role": "Heavy rhythm + hooks",
       "practiceStyle": "Learn actual part first",
       "backingTrackUrl": "https://www.youtube.com/watch?v=_cKTTDyfOXU",
@@ -786,7 +808,8 @@
         "Must Know": "Main groove/riff and chorus hook.",
         "Fallback": "Down-tuned power chords with steady rhythm.",
         "Rehearsal Question": "Are we actually tuning to D standard?"
-      }
+      },
+      "recordingNote": "D standard likely"
     },
     {
       "id": "24-mary-jane-s-last-dance",
@@ -794,7 +817,7 @@
       "title": "Mary Jane's Last Dance",
       "artist": "Tom Petty and the Heartbreakers",
       "difficulty": 2,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + roots-rock fills",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=XheihN8Iny4",
@@ -820,7 +843,8 @@
         "Must Know": "Chord loop and relaxed fill placement.",
         "Fallback": "Open chords with small A minor pentatonic fills.",
         "Rehearsal Question": "Am I expected to play harmonica-ish fills on guitar?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "25-valerie",
@@ -828,7 +852,7 @@
       "title": "Valerie",
       "artist": "The Zutons",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords/groove + fills",
       "practiceStyle": "Some improv, but learn key hooks",
       "backingTrackUrl": "https://www.youtube.com/watch?v=V4rIWEgSXW8",
@@ -854,7 +878,8 @@
         "Must Know": "Rhythm pocket and version-specific feel.",
         "Fallback": "Clean chord stabs and simple fills.",
         "Rehearsal Question": "Zutons version or Amy Winehouse-style arrangement?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "26-voodoo-child-slight-return",
@@ -862,7 +887,7 @@
       "title": "Voodoo Child (Slight Return)",
       "artist": "Stevie Ray Vaughan",
       "difficulty": 5,
-      "tuning": "Eb likely",
+      "tuning": "Standard",
       "role": "Lead/riff blues-rock",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=R4w2HKOg71k",
@@ -888,7 +913,8 @@
         "Must Know": "Main wah/riff attitude; control noise.",
         "Fallback": "Simple E/Eb blues riffing; don’t chase full SRV.",
         "Rehearsal Question": "Is this actually in the set, and who is expected to solo?"
-      }
+      },
+      "recordingNote": "Eb likely"
     },
     {
       "id": "27-fat-bottomed-girls",
@@ -896,7 +922,7 @@
       "title": "Fat Bottomed Girls",
       "artist": "Queen",
       "difficulty": 3,
-      "tuning": "Drop D often, verify",
+      "tuning": "Verify drop D",
       "role": "Big rock chords/riffs",
       "practiceStyle": "Some improv, but learn key hooks",
       "backingTrackUrl": "https://www.youtube.com/watch?v=SSZzIwWOZY8",
@@ -922,7 +948,8 @@
         "Must Know": "Drop-D style big chords and stops.",
         "Fallback": "Simplified power chords.",
         "Rehearsal Question": "Drop D or standard? Which Queen guitar layer should I cover?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "28-mama-i-m-coming-home",
@@ -930,7 +957,7 @@
       "title": "Mama, I'm Coming Home",
       "artist": "Ozzy Osbourne",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + melodic lead",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/watch?v=M99Cy_8msbg",
@@ -956,7 +983,8 @@
         "Must Know": "Chord support and lyrical bends.",
         "Fallback": "Clean/edge rhythm with sparse fills.",
         "Rehearsal Question": "Do they want the acoustic intro part covered?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "29-ain-t-goin-down-til-the-sun-comes-up",
@@ -964,7 +992,7 @@
       "title": "Ain't Goin' Down ('Til the Sun Comes Up)",
       "artist": "Garth Brooks Tribute",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Fast country rhythm",
       "practiceStyle": "Mostly chords/riffs/arrangement",
       "backingTrackUrl": "https://www.youtube.com/watch?v=6yMiXwKZs9A",
@@ -990,7 +1018,8 @@
         "Must Know": "Fast strumming/changes and not falling behind.",
         "Fallback": "Simplified boom-chuck rhythm; skip quick fills.",
         "Rehearsal Question": "Are we doing the full-speed version?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "30-pink-pony-club",
@@ -998,7 +1027,7 @@
       "title": "Pink Pony Club",
       "artist": "Chappell Roan",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + recognizable solo/texture",
       "practiceStyle": "Some improv, but learn key hooks",
       "backingTrackUrl": "https://www.youtube.com/watch?v=8ZolNvIKLHc",
@@ -1024,7 +1053,8 @@
         "Must Know": "Chorus lift and solo outline.",
         "Fallback": "Clean pop chords, bigger chorus strums.",
         "Rehearsal Question": "Are they expecting the solo, or just rhythm support?"
-      }
+      },
+      "recordingNote": ""
     },
     {
       "id": "31-banditos",
@@ -1032,7 +1062,7 @@
       "title": "Banditos",
       "artist": "The Refreshments",
       "difficulty": 3,
-      "tuning": "Standard likely",
+      "tuning": "Standard",
       "role": "Chords + roots-rock fills",
       "practiceStyle": "Great for pentatonic/blues improv",
       "backingTrackUrl": "https://www.youtube.com/results?search_query=The+Refreshments+Banditos+guitar+backing+track",
@@ -1058,7 +1088,8 @@
         "Must Know": "Bar-band groove and simple lead fills.",
         "Fallback": "Open chords + twangy pentatonic fills.",
         "Rehearsal Question": "Do they want the solo/fills or just rhythm?"
-      }
+      },
+      "recordingNote": ""
     }
   ],
   "references": [

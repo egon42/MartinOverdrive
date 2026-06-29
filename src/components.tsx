@@ -23,7 +23,7 @@ export function SongCard({ song, compact = false }: { song: Song, compact?: bool
     <Link className="song-card-main" to={`/song/${song.id}`}>
       <span className="eyebrow">{String(song.order).padStart(2, '0')} · {entry.status}</span>
       <h3>{song.title}</h3><p>{song.artist}</p>
-      {!compact && <><div className="tag-row"><span className="tag">{unknown(song.tuning)}</span><span className="tag">{unknown(song.practiceStyle)}</span></div><Difficulty value={song.difficulty} /></>}
+      {!compact && <><div className="tag-row">{song.tuning !== 'Standard' && <span className="tag">{song.tuning}</span>}<span className="tag">{unknown(song.practiceStyle)}</span></div><Difficulty value={song.difficulty} /></>}
     </Link>
     {!compact && <StatusSelect songId={song.id} />}
   </article>

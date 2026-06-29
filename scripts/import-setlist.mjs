@@ -21,13 +21,39 @@ const text = (value) => value == null ? '' : String(value).trim()
 const slug = (value) => text(value).toLowerCase().normalize('NFKD')
   .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
+const bandTuningValues = ['Standard', 'Drop D', 'Verify drop D']
+
+function normalizeBandTuning(raw) {
+  const value = text(raw).toLowerCase()
+  if (!value) return 'Standard'
+  if (value.includes('drop d')) return /verify|confirm|check|often, verify/.test(value) ? 'Verify drop D' : 'Drop D'
+  return 'Standard'
+}
+
+function bandTuningFromRow(row) {
+  const explicit = text(row['Band Tuning'])
+  if (bandTuningValues.includes(explicit)) return explicit
+  return normalizeBandTuning(row.Tuning)
+}
+
+function recordingNoteFromRow(row) {
+  const raw = text(row.Tuning)
+  const band = bandTuningFromRow(row)
+  if (!raw || raw === band) return ''
+  if (/^standard likely$/i.test(raw)) return ''
+  if (/^drop d likely$/i.test(raw) && band === 'Drop D') return ''
+  if (/^drop d often, verify$/i.test(raw) && band === 'Verify drop D') return ''
+  return raw
+}
+
 const songs = rows.filter((row) => text(row.Track)).map((row, index) => ({
   id: `${String(index + 1).padStart(2, '0')}-${slug(row.Track)}`,
   order: index + 1,
   title: text(row.Track),
   artist: text(row.Artist),
   difficulty: Number(row.Difficulty) || null,
-  tuning: text(row.Tuning),
+  tuning: bandTuningFromRow(row),
+  recordingNote: recordingNoteFromRow(row),
   role: text(row.Role),
   practiceStyle: text(row['Practice Bucket']),
   backingTrackUrl: text(row['Backing Track URL']),

@@ -8,6 +8,7 @@ export interface Song {
   artist: string
   difficulty: number | null
   tuning: string
+  recordingNote: string
   role: string
   practiceStyle: string
   backingTrackUrl: string
