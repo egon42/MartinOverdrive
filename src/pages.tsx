@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { importMeta, songs } from './data'
+import { songs } from './data'
 import { Difficulty, Field, PracticeControls, ScalePattern, SongCard, SongLinks, StatusSelect, unknown } from './components'
 import { usePractice } from './storage'
 import { statuses } from './types'
@@ -16,7 +16,7 @@ export function Dashboard() {
   const restore = async (event: ChangeEvent<HTMLInputElement>) => { const file = event.target.files?.[0]; if (!file) return; try { await importBackup(file); alert('Practice backup restored.') } catch (error) { alert(error instanceof Error ? error.message : 'Could not restore backup.') } event.target.value = '' }
   return <><section className="dashboard-summary"><div className="stats"><div><strong>{showReady}</strong><span>show ready</span></div><div><strong>{practiced}</strong><span>practiced</span></div><div><strong>{songs.length - showReady}</strong><span>need work</span></div></div><div className="actions"><Link className="button" to="/practice">Start practice</Link><Link className="button secondary" to="/show">Show mode</Link></div></section>
     <section><div className="section-heading"><div><span className="eyebrow">Today’s practice</span><h2>Good places to start</h2></div><button className="text-button" onClick={() => navigate(`/song/${songs[Math.floor(Math.random() * songs.length)].id}`)}>Random song ↗</button></div><div className="card-grid">{focus.map((song) => <SongCard song={song} key={song.id} />)}</div></section>
-    <section className="panel backup"><div><span className="eyebrow">Portable local data</span><h2>Backup & restore</h2><p>Your status and notes stay in this browser unless you export them.</p></div><div className="actions"><button onClick={exportBackup}>Export backup</button><button className="secondary" onClick={() => fileRef.current?.click()}>Restore backup</button><input ref={fileRef} hidden type="file" accept="application/json" onChange={restore} /></div></section><p className="import-note">Setlist imported from {importMeta.sourceFile}. Practice data is stored only on this device.</p></>
+    <section className="panel backup"><div><span className="eyebrow">Portable local data</span><h2>Backup & restore</h2><p>Your status and notes stay in this browser unless you export them.</p></div><div className="actions"><button onClick={exportBackup}>Export backup</button><button className="secondary" onClick={() => fileRef.current?.click()}>Restore backup</button><input ref={fileRef} hidden type="file" accept="application/json" onChange={restore} /></div></section></>
 }
 
 function SongFilters({ query, setQuery, difficulty, setDifficulty, style, setStyle, status, setStatus }: any) {
