@@ -77,7 +77,7 @@ function TabServiceControl({ label, domain, savedUrl, openUrl, searchUrl, alignR
   const destination = openUrl || searchUrl
   return <div className={`tab-split ${openUrl ? 'has-saved' : ''} ${alignRight ? 'align-right' : ''}`}>
     <a className="button secondary" href={destination} target="_blank" rel="noreferrer"><span className="button-text">{openUrl ? `${label} ✓` : `Search ${label}`}</span><span className="button-arrow" aria-hidden="true">↗</span></a>
-    <details className="tab-manage"><summary aria-label={`Manage ${label} shortcut`}>⌄</summary><div className="tab-control-menu">
+    <details className="tab-manage"><summary aria-label={`Manage ${label} shortcut`}><span className="tab-manage-mobile">Save {label} shortcut</span><span className="tab-manage-desktop" aria-hidden="true">⌄</span></summary><div className="tab-control-menu">
       <strong>{label} shortcut</strong><p>Choose a version in search, copy its address, and paste it here.</p>
       <label><span>Exact version URL</span><input type="url" value={savedUrl} aria-invalid={!valid} onChange={(event) => onChange(event.target.value.trim())} placeholder={`https://${domain}/…`} /></label>
       {!valid && <small>Paste a {domain} URL.</small>}
