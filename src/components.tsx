@@ -66,7 +66,7 @@ export function SongLinks({ song }: { song: Song }) {
   const savedSongsterr = isSiteUrl(entry.savedSongsterrUrl, 'songsterr.com') ? entry.savedSongsterrUrl : ''
   const savedUltimateGuitar = isSiteUrl(entry.savedUltimateGuitarUrl, 'ultimate-guitar.com') ? entry.savedUltimateGuitarUrl : ''
   return <div className="actions song-links">
-    {song.backingTrackUrl && <a className="button" href={song.backingTrackUrl} target="_blank" rel="noreferrer">Open backing track ↗</a>}
+    {song.backingTrackUrl && <a className="button" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
     <TabServiceControl label="Songsterr" domain="songsterr.com" savedUrl={entry.savedSongsterrUrl} openUrl={savedSongsterr || song.songsterrUrl} searchUrl={searches.songsterr} onChange={(value) => patch(song.id, { savedSongsterrUrl: value })}/>
     <TabServiceControl label="Ultimate Guitar" domain="ultimate-guitar.com" savedUrl={entry.savedUltimateGuitarUrl} openUrl={savedUltimateGuitar} searchUrl={searches.ultimateGuitar} alignRight onChange={(value) => patch(song.id, { savedUltimateGuitarUrl: value })}/>
   </div>
@@ -76,7 +76,7 @@ function TabServiceControl({ label, domain, savedUrl, openUrl, searchUrl, alignR
   const valid = !savedUrl || isSiteUrl(savedUrl, domain)
   const destination = openUrl || searchUrl
   return <div className={`tab-split ${openUrl ? 'has-saved' : ''} ${alignRight ? 'align-right' : ''}`}>
-    <a className="button secondary" href={destination} target="_blank" rel="noreferrer">{openUrl ? `${label} ✓` : `Search ${label}`} ↗</a>
+    <a className="button secondary" href={destination} target="_blank" rel="noreferrer"><span className="button-text">{openUrl ? `${label} ✓` : `Search ${label}`}</span><span className="button-arrow" aria-hidden="true">↗</span></a>
     <details className="tab-manage"><summary aria-label={`Manage ${label} shortcut`}>⌄</summary><div className="tab-control-menu">
       <strong>{label} shortcut</strong><p>Choose a version in search, copy its address, and paste it here.</p>
       <label><span>Exact version URL</span><input type="url" value={savedUrl} aria-invalid={!valid} onChange={(event) => onChange(event.target.value.trim())} placeholder={`https://${domain}/…`} /></label>
