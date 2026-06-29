@@ -8,7 +8,6 @@ interface Store {
   state: PracticeState
   get: (id: string) => PracticeEntry
   patch: (id: string, update: Partial<PracticeEntry>) => void
-  logSession: (id: string, seconds?: number) => void
   exportBackup: () => void
   importBackup: (file: File) => Promise<void>
 }
@@ -22,10 +21,6 @@ export function PracticeProvider({ children }: { children: ReactNode }) {
   useEffect(() => { localStorage.setItem(KEY, JSON.stringify(state)) }, [state])
   const get = (id: string) => ({ ...emptyEntry, ...state[id] })
   const patch = (id: string, update: Partial<PracticeEntry>) => setState((old) => ({ ...old, [id]: { ...emptyEntry, ...old[id], ...update } }))
-  const logSession = (id: string, seconds = 0) => setState((old) => {
-    const current = { ...emptyEntry, ...old[id] }
-    return { ...old, [id]: { ...current, sessions: current.sessions + 1, lastPracticed: new Date().toISOString().slice(0, 10), secondsPracticed: current.secondsPracticed + seconds } }
-  })
   const exportBackup = () => {
     const blob = new Blob([JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), practice: state }, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob); const a = document.createElement('a')
@@ -36,7 +31,7 @@ export function PracticeProvider({ children }: { children: ReactNode }) {
     if (!parsed || parsed.version !== 1 || typeof parsed.practice !== 'object') throw new Error('That is not an Overdrive practice backup.')
     setState(parsed.practice)
   }
-  const value = useMemo(() => ({ state, get, patch, logSession, exportBackup, importBackup }), [state])
+  const value = useMemo(() => ({ state, get, patch, exportBackup, importBackup }), [state])
   return <PracticeContext.Provider value={value}>{children}</PracticeContext.Provider>
 }
 

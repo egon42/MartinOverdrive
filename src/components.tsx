@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState, type CSSProperties } from 'react'
+import { type CSSProperties } from 'react'
 import type { Song } from './types'
 import { statuses } from './types'
 import { isStatus, usePractice } from './storage'
@@ -103,13 +103,9 @@ function isSiteUrl(value: string, domain: string) {
 }
 
 export function PracticeControls({ song }: { song: Song }) {
-  const { get, patch, logSession } = usePractice(); const entry = get(song.id)
-  const [seconds, setSeconds] = useState(0); const [running, setRunning] = useState(false)
-  useEffect(() => { if (!running) return; const timer = window.setInterval(() => setSeconds((s) => s + 1), 1000); return () => clearInterval(timer) }, [running])
-  const finish = () => { logSession(song.id, seconds); setRunning(false); setSeconds(0) }
-  return <section className="panel practice-controls"><div className="section-heading"><div><span className="eyebrow">Your local data</span><h2>Practice log</h2></div><StatusSelect songId={song.id} /></div>
-    <div className="control-grid"><label>Priority<select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label><div><span className="label">Sessions</span><strong>{entry.sessions}</strong></div><div><span className="label">Last practiced</span><strong>{entry.lastPracticed || 'Never'}</strong></div></div>
+  const { get, patch } = usePractice(); const entry = get(song.id)
+  return <section className="panel practice-controls"><div className="section-heading"><div><span className="eyebrow">Your local data</span><h2>Practice notes</h2></div><StatusSelect songId={song.id} /></div>
+    <label>Priority<select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label>
     <label>Quick notes<textarea value={entry.notes} onChange={(e) => patch(song.id, { notes: e.target.value })} placeholder="Fingering, tone, rehearsal changes…" /></label>
-    <div className="timer"><strong>{String(Math.floor(seconds / 60)).padStart(2, '0')}:{String(seconds % 60).padStart(2, '0')}</strong>{!running ? <button onClick={() => setRunning(true)}>{seconds ? 'Resume timer' : 'Start timer'}</button> : <button onClick={() => setRunning(false)}>Pause</button>}<button className="secondary" onClick={finish}>{seconds ? 'Finish + log' : 'Log session'}</button></div>
   </section>
 }

@@ -11,7 +11,7 @@ const priorityLabel = ['None', 'Low', 'Medium', 'High']
 export function Dashboard() {
   const { get, exportBackup, importBackup } = usePractice(); const navigate = useNavigate(); const fileRef = useRef<HTMLInputElement>(null)
   const showReady = songs.filter((s) => get(s.id).status === 'Show Ready').length
-  const practiced = songs.filter((s) => get(s.id).sessions > 0).length
+  const practiced = songs.filter((s) => get(s.id).status !== 'Not Started').length
   const focus = [...songs].filter((s) => get(s.id).status !== 'Show Ready').sort((a, b) => get(b.id).priority - get(a.id).priority || (b.difficulty || 0) - (a.difficulty || 0)).slice(0, 4)
   const restore = async (event: ChangeEvent<HTMLInputElement>) => { const file = event.target.files?.[0]; if (!file) return; try { await importBackup(file); alert('Practice backup restored.') } catch (error) { alert(error instanceof Error ? error.message : 'Could not restore backup.') } event.target.value = '' }
   return <><section className="dashboard-summary"><div className="stats"><div><strong>{showReady}</strong><span>show ready</span></div><div><strong>{practiced}</strong><span>practiced</span></div><div><strong>{songs.length - showReady}</strong><span>need work</span></div></div><div className="actions"><Link className="button" to="/practice">Start practice</Link><Link className="button secondary" to="/show">Show mode</Link></div></section>
@@ -36,12 +36,10 @@ export function Practice() {
   const ordered = [...filtered].sort((a, b) => {
     const comparison = sort === 'difficulty'
       ? (a.difficulty || 0) - (b.difficulty || 0)
-      : sort === 'recent'
-        ? (get(a.id).lastPracticed || '').localeCompare(get(b.id).lastPracticed || '')
-        : get(a.id).priority - get(b.id).priority
+      : get(a.id).priority - get(b.id).priority
     return comparison === 0 ? a.order - b.order : direction === 'asc' ? comparison : -comparison
   })
-  return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => setSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option><option value="recent">Last practiced</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <article className="practice-row" key={song.id}><Link to={`/song/${song.id}`}><span className="eyebrow">{priorityLabel[entry.priority]} priority · {entry.sessions} sessions</span><h3>{song.title}</h3><p>{song.artist} · Difficulty {song.difficulty ?? '?'}</p>{entry.notes && <blockquote>{entry.notes}</blockquote>}</Link><details className="practice-pattern"><summary>Fretboard</summary><ScalePattern value={song.pentatonicBox}/></details><StatusSelect songId={song.id}/></article>})}</div></>
+  return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => setSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <article className="practice-row" key={song.id}><Link to={`/song/${song.id}`}><span className="eyebrow">{priorityLabel[entry.priority]} priority · {entry.status}</span><h3>{song.title}</h3><p>{song.artist} · Difficulty {song.difficulty ?? '?'}</p>{entry.notes && <blockquote>{entry.notes}</blockquote>}</Link><details className="practice-pattern"><summary>Fretboard</summary><ScalePattern value={song.pentatonicBox}/></details><StatusSelect songId={song.id}/></article>})}</div></>
 }
 
 export function SongDetail() {
