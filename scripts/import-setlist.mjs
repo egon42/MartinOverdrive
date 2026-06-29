@@ -21,12 +21,12 @@ const text = (value) => value == null ? '' : String(value).trim()
 const slug = (value) => text(value).toLowerCase().normalize('NFKD')
   .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
-const bandTuningValues = ['Standard', 'Drop D', 'Verify drop D']
+const bandTuningValues = ['Standard', 'Drop D']
 
 function normalizeBandTuning(raw) {
   const value = text(raw).toLowerCase()
   if (!value) return 'Standard'
-  if (value.includes('drop d')) return /verify|confirm|check|often, verify/.test(value) ? 'Verify drop D' : 'Drop D'
+  if (value.includes('drop d')) return 'Drop D'
   return 'Standard'
 }
 
@@ -42,7 +42,7 @@ function recordingNoteFromRow(row) {
   if (!raw || raw === band) return ''
   if (/^standard likely$/i.test(raw)) return ''
   if (/^drop d likely$/i.test(raw) && band === 'Drop D') return ''
-  if (/^drop d often, verify$/i.test(raw) && band === 'Verify drop D') return ''
+  if (/^drop d often,?\s*verify$/i.test(raw) && band === 'Drop D') return ''
   return raw
 }
 
@@ -58,6 +58,7 @@ const songs = rows.filter((row) => text(row.Track)).map((row, index) => ({
   practiceStyle: text(row['Practice Bucket']),
   backingTrackUrl: text(row['Backing Track URL']),
   songsterrUrl: '',
+  ultimateGuitarUrl: '',
   linkQuality: text(row['Link Quality']),
   scaleHint: text(row['Scale Hint']),
   pentatonicBox: text(row['Pentatonic Box']),

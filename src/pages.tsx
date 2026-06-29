@@ -6,7 +6,7 @@ import { usePractice } from './storage'
 import { statuses } from './types'
 
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
-const tunings = ['Standard', 'Drop D', 'Verify drop D']
+const tunings = ['Standard', 'Drop D']
 const priorityLabel = ['None', 'Low', 'Medium', 'High']
 
 export function Dashboard() {

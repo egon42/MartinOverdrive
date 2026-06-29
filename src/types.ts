@@ -13,6 +13,7 @@ export interface Song {
   practiceStyle: string
   backingTrackUrl: string
   songsterrUrl: string
+  ultimateGuitarUrl: string
   linkQuality: string
   scaleHint: string
   pentatonicBox: string
