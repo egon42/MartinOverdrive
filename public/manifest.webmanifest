@@ -1,0 +1,11 @@
+{
+  "name": "Overdrive Setlist Companion",
+  "short_name": "Overdrive",
+  "description": "Local-first guitar practice and show-night setlist.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#64d66f",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
