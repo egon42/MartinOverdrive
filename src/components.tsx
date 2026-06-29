@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { type CSSProperties } from 'react'
+import { useState, type CSSProperties } from 'react'
 import type { Song } from './types'
 import { statuses } from './types'
+import { fretboardForVersion, resolveFretboards, type FretboardVersion } from './fretboard'
 import { isStatus, usePractice } from './storage'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
@@ -58,6 +59,18 @@ export function ScalePattern({ value }: { value: string }) {
       {frets.map((fret) => <span className="fret-cell" key={fret}>{notes.includes(fret) && <b className={rootAt(stringIndex, fret) ? 'root' : ''}>{rootAt(stringIndex, fret) ? 'R' : fret}</b>}</span>)}
     </div>)}
   </figure>
+}
+
+export function FretboardPanel({ song }: { song: Song }) {
+  const { hasToggle } = resolveFretboards(song)
+  const [version, setVersion] = useState<FretboardVersion>('standard')
+  return <>
+    {hasToggle && <div className="fretboard-toggle" role="tablist" aria-label="Fretboard tuning reference">
+      <button type="button" role="tab" aria-selected={version === 'standard'} className={version === 'standard' ? 'active' : ''} onClick={() => setVersion('standard')}>Standard tuning</button>
+      <button type="button" role="tab" aria-selected={version === 'original'} className={version === 'original' ? 'active' : ''} onClick={() => setVersion('original')}>Original / recording</button>
+    </div>}
+    <ScalePattern value={fretboardForVersion(song, version)} />
+  </>
 }
 
 export function SongLinks({ song }: { song: Song }) {

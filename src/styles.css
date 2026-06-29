@@ -42,3 +42,5 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 
 .practice-row{display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;color:inherit;transition:.2s}.practice-row:hover{transform:translateY(-1px);border-color:#4a574b;box-shadow:0 8px 24px #64d66f12}.practice-row-main{flex:1;min-width:0}.practice-row h3{margin:.12em 0 .08em}.practice-row p{margin:0}
 @media(max-width:760px){.practice-row{align-items:flex-start;flex-direction:column;gap:10px}.practice-row .difficulty{font-size:.75rem}}
+
+.fretboard-toggle{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}.fretboard-toggle button{border:1px solid var(--line);background:transparent;color:inherit;border-radius:999px;padding:.45rem .85rem;font-size:.72rem;font-weight:750;cursor:pointer}.fretboard-toggle button.active{background:var(--acid);border-color:var(--acid);color:#061008}

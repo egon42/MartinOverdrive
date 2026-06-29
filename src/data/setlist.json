@@ -39,7 +39,8 @@
         "Fallback": "Simplified down-tuned power chords; skip fast lead detail.",
         "Rehearsal Question": "Are we tuned down a half-step, and am I covering the intro riff or rhythm support?"
       },
-      "recordingNote": "Eb standard likely"
+      "recordingNote": "Eb standard likely",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "02-all-the-small-things",
@@ -74,7 +75,8 @@
         "Fallback": "Root-fifth power chords with locked eighth notes.",
         "Rehearsal Question": "Do we play it like the record or shorten any repeats?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "03-a-little-less-conversation",
@@ -109,7 +111,8 @@
         "Fallback": "Dry clean/edge-of-breakup rhythm only.",
         "Rehearsal Question": "Am I singing it, playing it, or both?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "04-i-believe-in-a-thing-called-love",
@@ -144,7 +147,8 @@
         "Fallback": "Chugging rhythm chords; leave lead gymnastics to others.",
         "Rehearsal Question": "Which guitar part do they need: rhythm, harmonized leads, or just texture?"
       },
-      "recordingNote": "Standard or Eb depending band/tab"
+      "recordingNote": "Standard or Eb depending band/tab",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "05-thunderstruck",
@@ -179,7 +183,8 @@
         "Fallback": "Malcolm-style rhythm on the chorus sections.",
         "Rehearsal Question": "Who owns the intro? Can I just reinforce rhythm?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "06-don-t-stop-believin",
@@ -214,7 +219,8 @@
         "Fallback": "Clean rhythm/chord support; skip Neal Schon lead details.",
         "Rehearsal Question": "Are keys covering most of it? Where do they want guitar big?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "07-tribute",
@@ -249,7 +255,8 @@
         "Fallback": "Strum chord skeleton and follow vocals.",
         "Rehearsal Question": "Do they want the album arrangement or a loose acoustic version?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "08-while-my-guitar-gently-weeps",
@@ -284,7 +291,8 @@
         "Fallback": "Chord support plus 2–3 recurring melodic licks.",
         "Rehearsal Question": "Am I taking any solo space, or just filling behind vocals?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "09-pride-and-joy",
@@ -319,7 +327,8 @@
         "Fallback": "Simplified shuffle, sparse fills.",
         "Rehearsal Question": "Are we doing SRV Eb or standard? Who carries the shuffle?"
       },
-      "recordingNote": "Eb original; standard backing versions exist"
+      "recordingNote": "Eb original; standard backing versions exist",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "10-zombie",
@@ -354,7 +363,8 @@
         "Fallback": "Simple open chords or power chords.",
         "Rehearsal Question": "Clean intro then distortion chorus, or one tone throughout?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "11-hunger-strike",
@@ -389,7 +399,8 @@
         "Fallback": "Chord texture and big chorus support.",
         "Rehearsal Question": "Which vocalist cues the changes? Are guitar fills wanted?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "12-s-o-b",
@@ -424,7 +435,8 @@
         "Fallback": "Muted/percussive chord hits.",
         "Rehearsal Question": "Do they need guitar at all, or mostly vocals/percussion?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "13-save-a-horse-ride-a-cowboy",
@@ -459,7 +471,8 @@
         "Fallback": "Simple chord chucks on strong beats.",
         "Rehearsal Question": "Are we doing a full country version or rock-band simplified version?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "14-sweet-home-alabama",
@@ -494,7 +507,8 @@
         "Fallback": "Strum D-C-G and add simple fills between vocals.",
         "Rehearsal Question": "Am I playing the signature riff, fills, or just rhythm?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "15-dani-california",
@@ -529,7 +543,8 @@
         "Fallback": "Play riff in verses, simple power/chord support in chorus.",
         "Rehearsal Question": "Is anyone covering the solo, or can it be loose?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "16-teenage-dirtbag",
@@ -564,7 +579,8 @@
         "Fallback": "Simple chord strums and power chords.",
         "Rehearsal Question": "Are vocals doing the energy lift, or should guitar get bigger?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "17-the-pretender",
@@ -599,7 +615,8 @@
         "Fallback": "Drop-D root power-chord rhythm.",
         "Rehearsal Question": "Are we definitely using Drop D?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "18-here-it-goes-again",
@@ -634,7 +651,8 @@
         "Fallback": "Chord chart + steady eighths.",
         "Rehearsal Question": "Is this close to the record or changed for live band?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "19-purple-rain",
@@ -669,7 +687,8 @@
         "Fallback": "Big clean chords and 3–4 melodic licks.",
         "Rehearsal Question": "What key are they singing it in?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "20-when-i-come-around",
@@ -704,7 +723,8 @@
         "Fallback": "Power chords only.",
         "Rehearsal Question": "Are we in Eb like Green Day or standard?"
       },
-      "recordingNote": "Eb original often; standard versions common"
+      "recordingNote": "Eb original often; standard versions common",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "21-the-middle",
@@ -739,7 +759,8 @@
         "Fallback": "Power chords; skip fills.",
         "Rehearsal Question": "Do they need exact guitar fills, or just rhythm?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "22-dream-on",
@@ -774,7 +795,8 @@
         "Fallback": "Chord/arpeggio support; save lead for outro only.",
         "Rehearsal Question": "Are keys covering the intro texture?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "23-lola-montez",
@@ -809,7 +831,8 @@
         "Fallback": "Down-tuned power chords with steady rhythm.",
         "Rehearsal Question": "Are we actually tuning to D standard?"
       },
-      "recordingNote": "D standard likely"
+      "recordingNote": "D standard likely",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "24-mary-jane-s-last-dance",
@@ -844,7 +867,8 @@
         "Fallback": "Open chords with small A minor pentatonic fills.",
         "Rehearsal Question": "Am I expected to play harmonica-ish fills on guitar?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "25-valerie",
@@ -879,7 +903,8 @@
         "Fallback": "Clean chord stabs and simple fills.",
         "Rehearsal Question": "Zutons version or Amy Winehouse-style arrangement?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "26-voodoo-child-slight-return",
@@ -914,7 +939,8 @@
         "Fallback": "Simple E/Eb blues riffing; don’t chase full SRV.",
         "Rehearsal Question": "Is this actually in the set, and who is expected to solo?"
       },
-      "recordingNote": "Eb likely"
+      "recordingNote": "Eb likely",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "27-fat-bottomed-girls",
@@ -949,7 +975,8 @@
         "Fallback": "Simplified power chords.",
         "Rehearsal Question": "Drop D or standard? Which Queen guitar layer should I cover?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "28-mama-i-m-coming-home",
@@ -984,7 +1011,8 @@
         "Fallback": "Clean/edge rhythm with sparse fills.",
         "Rehearsal Question": "Do they want the acoustic intro part covered?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "29-ain-t-goin-down-til-the-sun-comes-up",
@@ -1019,7 +1047,8 @@
         "Fallback": "Simplified boom-chuck rhythm; skip quick fills.",
         "Rehearsal Question": "Are we doing the full-speed version?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "30-pink-pony-club",
@@ -1054,7 +1083,8 @@
         "Fallback": "Clean pop chords, bigger chorus strums.",
         "Rehearsal Question": "Are they expecting the solo, or just rhythm support?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     },
     {
       "id": "31-banditos",
@@ -1089,7 +1119,8 @@
         "Fallback": "Open chords + twangy pentatonic fills.",
         "Rehearsal Question": "Do they want the solo/fills or just rhythm?"
       },
-      "recordingNote": ""
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
     }
   ],
   "references": [

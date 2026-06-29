@@ -61,6 +61,7 @@ const songs = rows.filter((row) => text(row.Track)).map((row, index) => ({
   linkQuality: text(row['Link Quality']),
   scaleHint: text(row['Scale Hint']),
   pentatonicBox: text(row['Pentatonic Box']),
+  pentatonicBoxStandard: text(row['Pentatonic Box Standard']),
   mustKnow: text(row['Must Know']),
   fallback: text(row.Fallback),
   firstCue: '',

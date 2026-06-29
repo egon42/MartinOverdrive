@@ -16,6 +16,7 @@ export interface Song {
   linkQuality: string
   scaleHint: string
   pentatonicBox: string
+  pentatonicBoxStandard: string
   mustKnow: string
   fallback: string
   firstCue: string
