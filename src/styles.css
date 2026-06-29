@@ -39,3 +39,6 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 
 .practice-controls .eyebrow{display:block;margin-bottom:6px}.practice-controls h2{margin:0 0 18px;font-size:1.35rem}.practice-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.practice-fields label{display:flex;flex-direction:column;gap:7px}.practice-fields label>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}.practice-fields .practice-notes{grid-column:1/-1}.practice-fields select,.practice-fields textarea{width:100%}.practice-fields textarea{min-height:110px;margin-top:0}
 @media(max-width:760px){.practice-fields{grid-template-columns:1fr}}
+
+.practice-row{display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;color:inherit;transition:.2s}.practice-row:hover{transform:translateY(-1px);border-color:#4a574b;box-shadow:0 8px 24px #64d66f12}.practice-row-main{flex:1;min-width:0}.practice-row h3{margin:.12em 0 .08em}.practice-row p{margin:0}
+@media(max-width:760px){.practice-row{align-items:flex-start;flex-direction:column;gap:10px}.practice-row .difficulty{font-size:.75rem}}

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
-import { Difficulty, Field, PracticeControls, ScalePattern, SongCard, SongLinks, StatusSelect, unknown } from './components'
+import { Difficulty, Field, PracticeControls, ScalePattern, SongCard, SongLinks, unknown } from './components'
 import { usePractice } from './storage'
 import { statuses } from './types'
 
@@ -15,7 +15,7 @@ export function Dashboard() {
   const focus = [...songs].filter((s) => get(s.id).status !== 'Show Ready').sort((a, b) => get(b.id).priority - get(a.id).priority || (b.difficulty || 0) - (a.difficulty || 0)).slice(0, 4)
   const restore = async (event: ChangeEvent<HTMLInputElement>) => { const file = event.target.files?.[0]; if (!file) return; try { await importBackup(file); alert('Practice backup restored.') } catch (error) { alert(error instanceof Error ? error.message : 'Could not restore backup.') } event.target.value = '' }
   return <><section className="dashboard-summary"><div className="stats"><div><strong>{showReady}</strong><span>show ready</span></div><div><strong>{practiced}</strong><span>practiced</span></div><div><strong>{songs.length - showReady}</strong><span>need work</span></div></div><div className="actions"><Link className="button" to="/practice">Start practice</Link><Link className="button secondary" to="/show">Show mode</Link></div></section>
-    <section><div className="section-heading"><div><span className="eyebrow">Today’s practice</span><h2>Good places to start</h2></div><button className="text-button" onClick={() => navigate(`/song/${songs[Math.floor(Math.random() * songs.length)].id}`)}>Random song ↗</button></div><div className="card-grid">{focus.map((song) => <SongCard song={song} key={song.id} />)}</div></section>
+    <section><div className="section-heading"><div><span className="eyebrow">Today’s practice</span><h2>Good places to start</h2></div><button className="text-button" onClick={() => navigate(`/song/${songs[Math.floor(Math.random() * songs.length)].id}`)}>Random song ↗</button></div><div className="card-grid">{focus.map((song) => <SongCard song={song} key={song.id} compact />)}</div></section>
     <section className="panel backup"><div><span className="eyebrow">Portable local data</span><h2>Backup & restore</h2><p>Your status and notes stay in this browser unless you export them.</p></div><div className="actions"><button onClick={exportBackup}>Export backup</button><button className="secondary" onClick={() => fileRef.current?.click()}>Restore backup</button><input ref={fileRef} hidden type="file" accept="application/json" onChange={restore} /></div></section></>
 }
 
@@ -29,8 +29,6 @@ function useFilteredSongs() {
   return { filtered, props: { query, setQuery, difficulty, setDifficulty, style, setStyle, status, setStatus } }
 }
 
-export function Songs() { const { filtered, props } = useFilteredSongs(); return <><PageTitle title="Songs" compact/><SongFilters {...props}/><div className="result-count">{filtered.length} song{filtered.length === 1 ? '' : 's'}</div><div className="card-grid">{filtered.map((song) => <SongCard song={song} key={song.id}/>)}</div></> }
-
 export function Practice() {
   const { filtered, props } = useFilteredSongs(); const { get } = usePractice(); const [sort, setSort] = useState('priority'); const [direction, setDirection] = useState<'asc' | 'desc'>('desc')
   const ordered = [...filtered].sort((a, b) => {
@@ -39,13 +37,13 @@ export function Practice() {
       : get(a.id).priority - get(b.id).priority
     return comparison === 0 ? a.order - b.order : direction === 'asc' ? comparison : -comparison
   })
-  return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => setSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <article className="practice-row" key={song.id}><Link to={`/song/${song.id}`}><span className="eyebrow">{priorityLabel[entry.priority]} priority · {entry.status}</span><h3>{song.title}</h3><p>{song.artist} · Difficulty {song.difficulty ?? '?'}</p>{entry.notes && <blockquote>{entry.notes}</blockquote>}</Link><details className="practice-pattern"><summary>Fretboard</summary><ScalePattern value={song.pentatonicBox}/></details><StatusSelect songId={song.id}/></article>})}</div></>
+  return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => setSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <Link className="practice-row" to={`/song/${song.id}`} key={song.id}><div className="practice-row-main"><span className="eyebrow">{String(song.order).padStart(2, '0')} · {entry.status} · {priorityLabel[entry.priority]} priority</span><h3>{song.title}</h3><p>{song.artist}</p></div><Difficulty value={song.difficulty} /></Link>})}</div></>
 }
 
 export function SongDetail() {
   const { id } = useParams(); const song = songs.find((item) => item.id === id)
   if (!song) return <PageTitle eyebrow="Not found" title="That song isn’t in this set" copy="Return to the full song list and try another." />
-  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/songs">← All songs</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div></section><SongLinks song={song}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><Field label="Tuning" value={song.tuning}/><Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><ScalePattern value={song.pentatonicBox}/><dl><Field label="Scale hint" value={song.scaleHint}/><Field label="Source pattern" value={song.pentatonicBox}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/></dl></div></section><PracticeControls song={song}/></div>
+  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div></section><SongLinks song={song}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><Field label="Tuning" value={song.tuning}/><Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><ScalePattern value={song.pentatonicBox}/><dl><Field label="Scale hint" value={song.scaleHint}/><Field label="Source pattern" value={song.pentatonicBox}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/></dl></div></section><PracticeControls song={song}/></div>
 }
 
 export function Jam() {
