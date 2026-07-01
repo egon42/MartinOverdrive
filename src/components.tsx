@@ -54,10 +54,14 @@ export function ScalePattern({ value }: { value: string }) {
   return <figure className="scale-pattern" aria-label={`${name} fretboard pattern`}>
     <figcaption><strong>{name}</strong><span><i className="root-key">R</i> named minor root</span></figcaption>
     <div className="fret-numbers" style={gridStyle}><span>String</span>{frets.map((fret) => <span key={fret}>{fret}</span>)}</div>
-    {strings.map((notes, stringIndex) => <div className="fret-string" style={gridStyle} key={stringIndex}>
-      <span className="string-name">{6 - stringIndex}{stringIndex === 0 ? ' low' : stringIndex === 5 ? ' high' : ''}</span>
-      {frets.map((fret) => <span className="fret-cell" key={fret}>{notes.includes(fret) && <b className={rootAt(stringIndex, fret) ? 'root' : ''}>{rootAt(stringIndex, fret) ? 'R' : fret}</b>}</span>)}
-    </div>)}
+    {strings.map((_, displayIndex) => {
+      const stringIndex = strings.length - 1 - displayIndex
+      const notes = strings[stringIndex]
+      return <div className="fret-string" style={gridStyle} key={stringIndex}>
+        <span className="string-name">{6 - stringIndex}{stringIndex === 0 ? ' low' : stringIndex === 5 ? ' high' : ''}</span>
+        {frets.map((fret) => <span className="fret-cell" key={fret}>{notes.includes(fret) && <b className={rootAt(stringIndex, fret) ? 'root' : ''}>{rootAt(stringIndex, fret) ? 'R' : fret}</b>}</span>)}
+      </div>
+    })}
   </figure>
 }
 
