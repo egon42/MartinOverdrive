@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Preset amplifier="Mustang I/II" ProductId="1">
+ <Amplifier>
+  <Module ID="83" POS="0" BypassState="1">
+   <Param ControlIndex="0">42662</Param>
+   <Param ControlIndex="1">19532</Param>
+   <Param ControlIndex="2">0</Param>
+   <Param ControlIndex="3">42662</Param>
+   <Param ControlIndex="4">39321</Param>
+   <Param ControlIndex="5">32896</Param>
+   <Param ControlIndex="6">32896</Param>
+   <Param ControlIndex="7">32896</Param>
+   <Param ControlIndex="8">0</Param>
+   <Param ControlIndex="9">32896</Param>
+   <Param ControlIndex="10">32896</Param>
+   <Param ControlIndex="11">0</Param>
+   <Param ControlIndex="12">3</Param>
+   <Param ControlIndex="13">3</Param>
+   <Param ControlIndex="14">3</Param>
+   <Param ControlIndex="15">0</Param>
+   <Param ControlIndex="16">0</Param>
+   <Param ControlIndex="17">3</Param>
+   <Param ControlIndex="18">3</Param>
+   <Param ControlIndex="19">1</Param>
+   <Param ControlIndex="20">0</Param>
+   <Param ControlIndex="21">1</Param>
+   <Param ControlIndex="22">27242</Param>
+  </Module>
+ </Amplifier>
+ <FX>
+  <Stompbox ID="1">
+   <Module ID="0" POS="0" BypassState="1"></Module>
+  </Stompbox>
+  <Modulation ID="2">
+   <Module ID="0" POS="0" BypassState="1"></Module>
+  </Modulation>
+  <Delay ID="3">
+   <Module ID="0" POS="0" BypassState="1"></Module>
+  </Delay>
+  <Reverb ID="4">
+   <Module ID="11" POS="5" BypassState="1">
+    <Param ControlIndex="0">9766</Param>
+    <Param ControlIndex="1">19532</Param>
+    <Param ControlIndex="2">19532</Param>
+    <Param ControlIndex="3">32896</Param>
+    <Param ControlIndex="4">32896</Param>
+   </Module>
+  </Reverb>
+ </FX>
+ <FUSE>
+  <Info name="19 MUTED VERSE" author="MartinOverdrive" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+ </FUSE>
+ <UsbGain>0</UsbGain>
+</Preset>

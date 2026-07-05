@@ -1,0 +1,269 @@
+<title>Martin Overdrive — Set List Cheat Sheet</title>
+<style>
+  :root {
+    --paper: #FDFBF7;
+    --ink: #1A1712;
+    --muted: #7A7264;
+    --hair: #E4DED2;
+    --hair-strong: #CFC7B7;
+    --amber: #B0701A;
+    --green: #3F7A38;
+    --red: #B23A2E;
+    --chip-text: #FFFFFF;
+    --panel: #F5F1E8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #17140F;
+      --ink: #F1EBDD;
+      --muted: #9A9182;
+      --hair: #2E2A22;
+      --hair-strong: #423C31;
+      --amber: #D08A2E;
+      --green: #5FA255;
+      --red: #D45848;
+      --chip-text: #17140F;
+      --panel: #201C15;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17140F;
+    --ink: #F1EBDD;
+    --muted: #9A9182;
+    --hair: #2E2A22;
+    --hair-strong: #423C31;
+    --amber: #D08A2E;
+    --green: #5FA255;
+    --red: #D45848;
+    --chip-text: #17140F;
+    --panel: #201C15;
+  }
+  :root[data-theme="light"] {
+    --paper: #FDFBF7;
+    --ink: #1A1712;
+    --muted: #7A7264;
+    --hair: #E4DED2;
+    --hair-strong: #CFC7B7;
+    --amber: #B0701A;
+    --green: #3F7A38;
+    --red: #B23A2E;
+    --chip-text: #FFFFFF;
+    --panel: #F5F1E8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.3;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 28px 32px 40px;
+  }
+
+  /* ---- Header ---- */
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px 24px;
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 12px;
+  }
+  .title-block h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+  .title-block .sub {
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .count {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .count b { color: var(--ink); font-size: 1.05rem; }
+
+  /* ---- Legend ---- */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+    margin: 14px 0 18px;
+    padding: 10px 14px;
+    background: var(--panel);
+    border: 1px solid var(--hair-strong);
+    border-radius: 6px;
+    font-size: 0.82rem;
+  }
+  .legend .lg { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+  .legend .dot {
+    width: 15px; height: 15px; border-radius: 4px; display: inline-block;
+  }
+  .legend .amber { background: var(--amber); }
+  .legend .green { background: var(--green); }
+  .legend .red   { background: var(--red); }
+  .legend .swtxt { color: var(--muted); font-weight: 500; }
+  .legend .arrow { font-weight: 800; color: var(--ink); }
+
+  /* ---- Song list (two columns, set order down then across) ---- */
+  .list {
+    columns: 2;
+    column-gap: 34px;
+  }
+  .song {
+    break-inside: avoid;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 4px 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .setno {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 1.4em;
+    text-align: right;
+  }
+  .name {
+    font-weight: 700;
+    font-size: 0.98rem;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  .presets { display: inline-flex; align-items: center; gap: 4px; justify-self: end; }
+  .note {
+    grid-column: 2 / -1;
+    font-size: 0.76rem;
+    color: var(--muted);
+    line-height: 1.2;
+  }
+
+  /* ---- Preset chips ---- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.7em;
+    height: 1.7em;
+    padding: 0 0.35em;
+    border-radius: 5px;
+    color: var(--chip-text);
+    font-weight: 800;
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .chip.amber { background: var(--amber); }
+  .chip.green { background: var(--green); }
+  .chip.red   { background: var(--red); }
+  .sep { font-weight: 800; color: var(--muted); font-size: 0.9rem; padding: 0 1px; }
+
+  footer {
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hair-strong);
+    font-size: 0.76rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  footer b { color: var(--ink); }
+
+  /* ---- Print: ink on paper, fit to one page ---- */
+  @media print {
+    :root, :root[data-theme="dark"] {
+      --paper: #FFFFFF; --ink: #000000; --muted: #555; --hair: #DDD;
+      --hair-strong: #BBB; --panel: #F2EFE8;
+      --amber: #9A5E12; --green: #2F6A2A; --red: #A22F24; --chip-text: #FFF;
+    }
+    @page { margin: 0.45in; }
+    body { background: #FFF; }
+    .sheet { max-width: none; padding: 0; }
+    .list { column-gap: 28px; }
+    .song { padding: 4px 0; }
+    .name { font-size: 0.92rem; }
+    .chip { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .legend, .chip, .dot { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+</style>
+
+<div class="sheet">
+  <header>
+    <div class="title-block">
+      <h1>Martin Overdrive</h1>
+      <p class="sub">Set List → Amp Preset · Mustang I V2</p>
+    </div>
+    <div class="count"><b>31</b> songs · <b>24</b> presets</div>
+  </header>
+
+  <div class="legend">
+    <span class="lg"><span class="dot amber"></span>Amber 1–8 <span class="swtxt">cleans</span></span>
+    <span class="lg"><span class="dot green"></span>Green 9–16 <span class="swtxt">dirt</span></span>
+    <span class="lg"><span class="dot red"></span>Red 17–24 <span class="swtxt">pairs</span></span>
+    <span class="lg"><span class="arrow">↔</span><span class="swtxt">one PRESET-knob click apart</span></span>
+  </div>
+
+  <div class="list">
+    <div class="song"><span class="setno">1</span><span class="name">Welcome Home</span><span class="presets"><span class="chip green">13</span></span><span class="note">Heavy from bar 1</span></div>
+    <div class="song"><span class="setno">2</span><span class="name">All The Small Things</span><span class="presets"><span class="chip green">11</span></span></div>
+    <div class="song"><span class="setno">3</span><span class="name">A Little Less Conversation</span><span class="presets"><span class="chip amber">3</span></span><span class="note">Muted funk 16ths</span></div>
+    <div class="song"><span class="setno">4</span><span class="name">I Believe in a Thing Called Love</span><span class="presets"><span class="chip green">16</span></span><span class="note">Solo: jump to 14 if you take it</span></div>
+    <div class="song"><span class="setno">5</span><span class="name">Thunderstruck</span><span class="presets"><span class="chip green">9</span></span></div>
+    <div class="song"><span class="setno">6</span><span class="name">Don't Stop Believin'</span><span class="presets"><span class="chip amber">1</span></span></div>
+    <div class="song"><span class="setno">7</span><span class="name">Tribute</span><span class="presets"><span class="chip amber">4</span><span class="sep">→</span><span class="chip amber">5</span></span><span class="note">One click up for the rock payoff</span></div>
+    <div class="song"><span class="setno">8</span><span class="name">While My Guitar Gently Weeps</span><span class="presets"><span class="chip red">23</span><span class="sep">↔</span><span class="chip red">24</span></span><span class="note">Rhythm 23, fills/solo 24</span></div>
+    <div class="song"><span class="setno">9</span><span class="name">Pride and Joy</span><span class="presets"><span class="chip amber">7</span></span></div>
+    <div class="song"><span class="setno">10</span><span class="name">Zombie</span><span class="presets"><span class="chip red">17</span><span class="sep">↔</span><span class="chip red">18</span></span><span class="note">Verse 17, chorus 18</span></div>
+    <div class="song"><span class="setno">11</span><span class="name">Hunger Strike</span><span class="presets"><span class="chip red">17</span><span class="sep">↔</span><span class="chip red">18</span></span><span class="note">Same pair</span></div>
+    <div class="song"><span class="setno">12</span><span class="name">S.O.B.</span><span class="presets"><span class="chip amber">3</span></span><span class="note">Muted stabs; barely play the intro</span></div>
+    <div class="song"><span class="setno">13</span><span class="name">Save a Horse (Ride a Cowboy)</span><span class="presets"><span class="chip amber">6</span></span></div>
+    <div class="song"><span class="setno">14</span><span class="name">Sweet Home Alabama</span><span class="presets"><span class="chip amber">5</span></span></div>
+    <div class="song"><span class="setno">15</span><span class="name">Dani California</span><span class="presets"><span class="chip green">10</span></span><span class="note">Verse: roll guitar volume down</span></div>
+    <div class="song"><span class="setno">16</span><span class="name">Teenage Dirtbag</span><span class="presets"><span class="chip red">19</span><span class="sep">↔</span><span class="chip red">20</span></span><span class="note">Verse 19, chorus 20</span></div>
+    <div class="song"><span class="setno">17</span><span class="name">The Pretender</span><span class="presets"><span class="chip red">21</span><span class="sep">↔</span><span class="chip red">22</span></span><span class="note">Nail the entrance click with the drum hit</span></div>
+    <div class="song"><span class="setno">18</span><span class="name">Here It Goes Again</span><span class="presets"><span class="chip green">11</span></span><span class="note">Verses: roll guitar volume</span></div>
+    <div class="song"><span class="setno">19</span><span class="name">Purple Rain</span><span class="presets"><span class="chip amber">8</span></span><span class="note">Solo: stay on 8, dig in</span></div>
+    <div class="song"><span class="setno">20</span><span class="name">When I Come Around</span><span class="presets"><span class="chip green">11</span></span></div>
+    <div class="song"><span class="setno">21</span><span class="name">The Middle</span><span class="presets"><span class="chip green">11</span></span><span class="note">Solo: 14 if wanted</span></div>
+    <div class="song"><span class="setno">22</span><span class="name">Dream On</span><span class="presets"><span class="chip red">23</span><span class="sep">↔</span><span class="chip red">24</span></span><span class="note">Arpeggios 23, outro screamer 24</span></div>
+    <div class="song"><span class="setno">23</span><span class="name">Lola Montez</span><span class="presets"><span class="chip green">13</span></span></div>
+    <div class="song"><span class="setno">24</span><span class="name">Mary Jane's Last Dance</span><span class="presets"><span class="chip amber">5</span></span></div>
+    <div class="song"><span class="setno">25</span><span class="name">Valerie</span><span class="presets"><span class="chip amber">3</span></span></div>
+    <div class="song"><span class="setno">26</span><span class="name">Voodoo Child (Slight Return)</span><span class="presets"><span class="chip green">15</span></span><span class="note">Touch wah responds to pick attack</span></div>
+    <div class="song"><span class="setno">27</span><span class="name">Fat Bottomed Girls</span><span class="presets"><span class="chip green">10</span></span><span class="note">Intro: guitar volume down</span></div>
+    <div class="song"><span class="setno">28</span><span class="name">Mama, I'm Coming Home</span><span class="presets"><span class="chip red">23</span><span class="sep">↔</span><span class="chip red">24</span></span><span class="note">Verses 23, chorus/solo 24</span></div>
+    <div class="song"><span class="setno">29</span><span class="name">Ain't Goin' Down ('Til the Sun Comes Up)</span><span class="presets"><span class="chip amber">6</span></span><span class="note">Don't fall behind</span></div>
+    <div class="song"><span class="setno">30</span><span class="name">Pink Pony Club</span><span class="presets"><span class="chip red">19</span><span class="sep">↔</span><span class="chip red">20</span></span><span class="note">Verse 19, chorus 20</span></div>
+    <div class="song"><span class="setno">31</span><span class="name">Banditos</span><span class="presets"><span class="chip amber">5</span></span><span class="note">Or 6 for more twang</span></div>
+  </div>
+
+  <footer>
+    <b>Chip color = knob bank.</b> Turn PRESET to the matching color, then to the number.
+    Turning the knob steps one preset at a time, so every <b>↔</b> pair switches with a single click
+    (8→9 crosses Amber→Green, 16→17 crosses Green→Red). <b>MASTER</b> stays your room-volume control — it isn't stored per preset.
+  </footer>
+</div>
