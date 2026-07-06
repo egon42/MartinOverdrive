@@ -1,0 +1,228 @@
+{
+  "01-welcome-home": {
+    "presets": [
+      13
+    ],
+    "joiner": "",
+    "notes": "Heavy from bar 1"
+  },
+  "02-all-the-small-things": {
+    "presets": [
+      11
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "03-a-little-less-conversation": {
+    "presets": [
+      3
+    ],
+    "joiner": "",
+    "notes": "Muted funk 16ths"
+  },
+  "04-i-believe-in-a-thing-called-love": {
+    "presets": [
+      16
+    ],
+    "joiner": "",
+    "notes": "Solo: jump 6Green if you take it"
+  },
+  "05-thunderstruck": {
+    "presets": [
+      9
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "06-don-t-stop-believin": {
+    "presets": [
+      1
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "07-tribute": {
+    "presets": [
+      4,
+      5
+    ],
+    "joiner": "→",
+    "notes": "One click up for the rock payoff"
+  },
+  "08-while-my-guitar-gently-weeps": {
+    "presets": [
+      23,
+      24
+    ],
+    "joiner": "↔",
+    "notes": "Rhythm on 7Red, fills/solo on 8Red"
+  },
+  "09-pride-and-joy": {
+    "presets": [
+      7
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "10-zombie": {
+    "presets": [
+      17,
+      18
+    ],
+    "joiner": "↔",
+    "notes": "Verse 1Red, chorus 2Red"
+  },
+  "11-hunger-strike": {
+    "presets": [
+      17,
+      18
+    ],
+    "joiner": "↔",
+    "notes": "Same pair"
+  },
+  "12-s-o-b": {
+    "presets": [
+      3
+    ],
+    "joiner": "",
+    "notes": "Muted stabs; barely play the intro"
+  },
+  "13-save-a-horse-ride-a-cowboy": {
+    "presets": [
+      6
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "14-sweet-home-alabama": {
+    "presets": [
+      5
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "15-dani-california": {
+    "presets": [
+      10
+    ],
+    "joiner": "",
+    "notes": "Verse: roll guitar volume down"
+  },
+  "16-teenage-dirtbag": {
+    "presets": [
+      19,
+      20
+    ],
+    "joiner": "↔",
+    "notes": "Verse 3Red, chorus 4Red"
+  },
+  "17-the-pretender": {
+    "presets": [
+      21,
+      22
+    ],
+    "joiner": "↔",
+    "notes": "Nail the entrance click with the drum hit"
+  },
+  "18-here-it-goes-again": {
+    "presets": [
+      11
+    ],
+    "joiner": "",
+    "notes": "Verses: roll guitar volume"
+  },
+  "19-purple-rain": {
+    "presets": [
+      8
+    ],
+    "joiner": "",
+    "notes": "Solo: stay on 8Amber, dig in (it's a clean-ish solo)"
+  },
+  "20-when-i-come-around": {
+    "presets": [
+      11
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "21-the-middle": {
+    "presets": [
+      11
+    ],
+    "joiner": "",
+    "notes": "Solo: 6Green if wanted"
+  },
+  "22-dream-on": {
+    "presets": [
+      23,
+      24
+    ],
+    "joiner": "↔",
+    "notes": "Arpeggios 7Red, outro screamer 8Red"
+  },
+  "23-lola-montez": {
+    "presets": [
+      13
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "24-mary-jane-s-last-dance": {
+    "presets": [
+      5
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "25-valerie": {
+    "presets": [
+      3
+    ],
+    "joiner": "",
+    "notes": ""
+  },
+  "26-voodoo-child-slight-return": {
+    "presets": [
+      15
+    ],
+    "joiner": "",
+    "notes": "Touch wah responds to pick attack"
+  },
+  "27-fat-bottomed-girls": {
+    "presets": [
+      10
+    ],
+    "joiner": "",
+    "notes": "Intro: guitar volume down (or 4Amber then jump)"
+  },
+  "28-mama-i-m-coming-home": {
+    "presets": [
+      23,
+      24
+    ],
+    "joiner": "↔",
+    "notes": "Verses 7Red, chorus/solo 8Red"
+  },
+  "29-ain-t-goin-down-til-the-sun-comes-up": {
+    "presets": [
+      6
+    ],
+    "joiner": "",
+    "notes": "Don't fall behind"
+  },
+  "30-pink-pony-club": {
+    "presets": [
+      19,
+      20
+    ],
+    "joiner": "↔",
+    "notes": "Verse 3Red, chorus 4Red"
+  },
+  "31-banditos": {
+    "presets": [
+      5
+    ],
+    "joiner": "",
+    "notes": "Or 6Amber for more twang"
+  }
+}

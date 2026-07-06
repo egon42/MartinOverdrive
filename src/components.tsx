@@ -4,6 +4,7 @@ import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, resolveFretboards, type FretboardVersion } from './fretboard'
 import { isStatus, usePractice } from './storage'
+import { ampPresets, presetBank, presetLabel, presetPosition } from './presets'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
@@ -24,7 +25,7 @@ export function SongCard({ song, compact = false }: { song: Song, compact?: bool
     <Link className="song-card-main" to={`/song/${song.id}`}>
       <span className="eyebrow">{String(song.order).padStart(2, '0')} · {entry.status}</span>
       <h3>{song.title}</h3><p>{song.artist}</p>
-      {!compact && <><div className="tag-row">{song.tuning !== 'Standard' && <span className="tag">{song.tuning}</span>}<span className="tag">{unknown(song.practiceStyle)}</span></div><Difficulty value={song.difficulty} /></>}
+      {!compact && <><div className="tag-row">{song.tuning !== 'Standard' && <span className="tag">{song.tuning}</span>}<span className="tag">{unknown(song.practiceStyle)}</span><PresetBadges songId={song.id} /></div><Difficulty value={song.difficulty} /></>}
     </Link>
     {!compact && <StatusSelect songId={song.id} />}
   </article>
@@ -32,6 +33,23 @@ export function SongCard({ song, compact = false }: { song: Song, compact?: bool
 
 export function Field({ label, value }: { label: string, value: string | number | null }) {
   return <div className="field"><dt>{label}</dt><dd>{unknown(value)}</dd></div>
+}
+
+export function PresetBadges({ songId, showNotes = false }: { songId: string, showNotes?: boolean }) {
+  const assignment = ampPresets[songId]
+  if (!assignment) return null
+  return <span className="preset-badges" aria-label="Amp preset">
+    {assignment.presets.map((slot, index) => <span className="preset-badge-group" key={slot}>
+      {index > 0 && <span className="preset-joiner" aria-hidden="true">{assignment.joiner}</span>}
+      <b className={`preset-chip bank-${presetBank(slot).toLowerCase()}`} title={`${presetBank(slot)} bank, PRESET knob position ${presetPosition(slot)} (slot ${slot} of 24)`}>{presetLabel(slot)}</b>
+    </span>)}
+    {showNotes && assignment.notes && <span className="preset-notes">{assignment.notes}</span>}
+  </span>
+}
+
+export function AmpPresetField({ songId, showNotes = true }: { songId: string, showNotes?: boolean }) {
+  if (!ampPresets[songId]) return null
+  return <div className="field"><dt>Amp preset</dt><dd><PresetBadges songId={songId} showNotes={showNotes} /></dd></div>
 }
 
 export function ScalePattern({ value }: { value: string }) {
@@ -77,13 +95,13 @@ export function FretboardPanel({ song }: { song: Song }) {
   </>
 }
 
-export function SongLinks({ song }: { song: Song }) {
+export function SongLinks({ song, showBackingTrack = true }: { song: Song, showBackingTrack?: boolean }) {
   const { get, patch } = usePractice(); const entry = get(song.id)
   const searches = tabSearchUrls(song)
   const savedSongsterr = isSiteUrl(entry.savedSongsterrUrl, 'songsterr.com') ? entry.savedSongsterrUrl : ''
   const savedUltimateGuitar = isSiteUrl(entry.savedUltimateGuitarUrl, 'ultimate-guitar.com') ? entry.savedUltimateGuitarUrl : ''
   return <div className="actions song-links">
-    {song.backingTrackUrl && <a className="button" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
+    {showBackingTrack && song.backingTrackUrl && <a className="button" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
     <TabServiceControl label="Songsterr" domain="songsterr.com" savedUrl={entry.savedSongsterrUrl} openUrl={savedSongsterr || song.songsterrUrl} isSaved={!!savedSongsterr} searchUrl={searches.songsterr} onChange={(value) => patch(song.id, { savedSongsterrUrl: value })}/>
     <TabServiceControl label="Ultimate Guitar" domain="ultimate-guitar.com" savedUrl={entry.savedUltimateGuitarUrl} openUrl={savedUltimateGuitar || song.ultimateGuitarUrl} isSaved={!!savedUltimateGuitar} searchUrl={searches.ultimateGuitar} alignRight onChange={(value) => patch(song.id, { savedUltimateGuitarUrl: value })}/>
   </div>
@@ -101,6 +119,58 @@ function TabServiceControl({ label, domain, savedUrl, openUrl, searchUrl, isSave
       <div className="tab-control-actions"><a href={searchUrl} target="_blank" rel="noreferrer">{openUrl ? 'Search another version' : `Search ${label}`} ↗</a>{savedUrl && <button className="text-button" onClick={() => onChange('')}>Clear saved URL</button>}</div>
     </div></details>
   </div>
+}
+
+// One-click practice: opens the remembered tab/chord source in a new tab and starts
+// the backing track embedded here, replacing the old juggle of three browser tabs.
+// (Songsterr and Ultimate Guitar both forbid iframing, so the source opens externally.)
+export function PracticeLauncher({ song }: { song: Song }) {
+  const { get, patch } = usePractice(); const entry = get(song.id)
+  const [playing, setPlaying] = useState(false)
+  const videoId = youtubeId(song.backingTrackUrl)
+  const searches = tabSearchUrls(song)
+  const savedSongsterr = isSiteUrl(entry.savedSongsterrUrl, 'songsterr.com') ? entry.savedSongsterrUrl : ''
+  const savedUltimateGuitar = isSiteUrl(entry.savedUltimateGuitarUrl, 'ultimate-guitar.com') ? entry.savedUltimateGuitarUrl : ''
+  const sourceUrls = {
+    songsterr: savedSongsterr || song.songsterrUrl || searches.songsterr,
+    ultimateGuitar: savedUltimateGuitar || song.ultimateGuitarUrl || searches.ultimateGuitar,
+  }
+  const source = entry.preferredSource || (savedSongsterr || song.songsterrUrl ? 'songsterr' : 'ultimateGuitar')
+  const start = () => {
+    window.open(sourceUrls[source], '_blank', 'noopener')
+    if (videoId) setPlaying(true)
+    patch(song.id, { lastPracticed: new Date().toISOString().slice(0, 10), sessions: entry.sessions + 1 })
+  }
+  return <section className="panel practice-launcher">
+    <div className="launcher-row">
+      <button onClick={start}>▶ Start practice</button>
+      <label><span>Tabs / chords source</span>
+        <select value={source} onChange={(e) => patch(song.id, { preferredSource: e.target.value as 'songsterr' | 'ultimateGuitar' })}>
+          <option value="songsterr">Songsterr (tabs)</option>
+          <option value="ultimateGuitar">Ultimate Guitar (chords)</option>
+        </select>
+      </label>
+      {videoId
+        ? <button className="secondary" onClick={() => setPlaying(!playing)}>{playing ? 'Stop backing track' : 'Play backing track'}</button>
+        : song.backingTrackUrl && <a className="button secondary" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
+    </div>
+    <p className="launcher-hint">Start practice opens your remembered source in a new tab and plays the backing track here — switch back once the tab loads.</p>
+    {playing && videoId && <div className="backing-player"><iframe src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&playsinline=1`} title={`Backing track for ${song.title}`} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen /></div>}
+  </section>
+}
+
+function youtubeId(url: string) {
+  if (!url) return ''
+  try {
+    const parsed = new URL(url)
+    if (/(^|\.)youtu\.be$/.test(parsed.hostname)) return parsed.pathname.slice(1).split('/')[0]
+    if (/(^|\.)youtube(-nocookie)?\.com$/.test(parsed.hostname)) {
+      if (parsed.pathname === '/watch') return parsed.searchParams.get('v') || ''
+      const match = parsed.pathname.match(/^\/(?:embed|shorts|live)\/([\w-]+)/)
+      if (match) return match[1]
+    }
+  } catch { /* not a URL */ }
+  return ''
 }
 
 function tabSearchUrls(song: Song) {

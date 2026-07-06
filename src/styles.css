@@ -44,3 +44,15 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 @media(max-width:760px){.practice-row{align-items:flex-start;flex-direction:column;gap:10px}.practice-row .difficulty{font-size:.75rem}}
 
 .fretboard-toggle{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}.fretboard-toggle button{border:1px solid var(--line);background:transparent;color:inherit;border-radius:999px;padding:.45rem .85rem;font-size:.72rem;font-weight:750;cursor:pointer}.fretboard-toggle button.active{background:var(--acid);border-color:var(--acid);color:#061008}
+
+/* Amp preset chips (position + color bank), dev badge, practice launcher, sync panel */
+.preset-badges{display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;vertical-align:middle}.preset-badge-group{display:inline-flex;align-items:center;gap:7px}.preset-chip{display:inline-grid;place-items:center;font-style:normal;font-size:.68rem;font-weight:850;letter-spacing:.03em;border-radius:999px;padding:3px 9px;color:#0a0c09;white-space:nowrap}.bank-amber{background:#e8a13c}.bank-green{background:#64d66f}.bank-red{background:#ef4d4d;color:#fff}.preset-joiner{color:var(--muted);font-size:.85rem}.preset-notes{font-size:.78rem;color:var(--muted)}
+.tag-row .preset-chip{font-size:.66rem}
+.practice-row-main .preset-badges{margin-left:8px}
+.dev-badge{background:var(--orange);color:#fff;font-size:.58rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;border-radius:6px;padding:3px 7px;margin-left:10px;align-self:flex-start}
+.practice-launcher{margin-bottom:14px;padding:20px}.launcher-row{display:flex;gap:12px;align-items:end;flex-wrap:wrap}.launcher-row label{display:flex;flex-direction:column;gap:5px}.launcher-row label>span{font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:750}.launcher-hint{color:var(--muted);font-size:.8rem;margin:10px 0 0}
+.backing-player{margin-top:16px;aspect-ratio:16/9;max-width:560px}.backing-player iframe{width:100%;height:100%;border:0;border-radius:12px;display:block}
+.show-preset{display:flex;align-items:center;gap:14px;margin:2px 0 20px;flex-wrap:wrap}.show-preset .preset-chip{font-size:1.05rem;padding:8px 16px}.show-preset .preset-joiner{font-size:1.35rem;color:#8f9a90}.show-preset .preset-notes{font-size:1rem;color:#c5cec9}
+.sync-panel{margin-top:14px}.sync-panel h2{margin-bottom:6px}.sync-panel p{color:var(--muted);max-width:760px}.sync-panel label{display:flex;flex-direction:column;gap:5px;margin:10px 0}.sync-panel label>span{font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:750}.sync-panel input{max-width:460px}.sync-panel code{background:#080a08;border:1px solid var(--line);border-radius:8px;padding:3px 8px;user-select:all}.sync-panel .actions{margin-top:14px}.sync-status{font-size:.85rem;color:var(--muted)}.sync-status.error{color:#ef4d4d}
+@media(max-width:760px){.launcher-row>button:first-child{width:100%}.practice-row-main .preset-badges{margin-left:0;display:flex;margin-top:4px}}
+.sync-error{color:#ef4d4d;font-size:.85rem}

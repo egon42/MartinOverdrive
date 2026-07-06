@@ -34,6 +34,8 @@ export interface PracticeEntry {
   secondsPracticed: number
   savedSongsterrUrl: string
   savedUltimateGuitarUrl: string
+  preferredSource: '' | 'songsterr' | 'ultimateGuitar'
+  updatedAt: string
 }
 
 export type PracticeState = Record<string, PracticeEntry>
