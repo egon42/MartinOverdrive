@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useState, type CSSProperties } from 'react'
+import { useMemo, useState, type CSSProperties } from 'react'
+import { compactSheet, parseChordSheet } from './chords'
 import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, resolveFretboards, type FretboardVersion } from './fretboard'
@@ -121,6 +122,43 @@ function TabServiceControl({ label, domain, savedUrl, openUrl, searchUrl, isSave
   </div>
 }
 
+export function ChordSheetView({ text, compact = false }: { text: string, compact?: boolean }) {
+  const sheet = useMemo(() => parseChordSheet(text), [text])
+  if (compact) {
+    return <div className="sheet-compact">{compactSheet(sheet).map((line, index) => line.kind === 'section'
+      ? <div className="sheet-section" key={index}>{line.cue}</div>
+      : line.kind === 'tab'
+        ? <pre className="sheet-tab" key={index}>{line.cue}</pre>
+        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <b className="chord-chip" key={i}>{chord}</b>)}</span><span className="compact-cue">{line.cue}</span></div>)}</div>
+  }
+  return <div className="sheet-full">
+    {sheet.meta.map((line, index) => <p className="sheet-meta" key={index}>{line}</p>)}
+    {sheet.lines.map((line, index) => line.kind === 'section'
+      ? <h4 className="sheet-section" key={index}>{line.raw}</h4>
+      : line.kind === 'tab'
+        ? <pre className="sheet-tab" key={index}>{line.raw}</pre>
+        : <p className="sheet-line" key={index}>{line.parts.map((part, i) => part.chord ? <b className="chord-chip" key={i}>{part.chord}</b> : <span key={i}>{part.text}</span>)}</p>)}
+  </div>
+}
+
+// Per-song pasted tabs/chords, stored in practice state (so it syncs across devices).
+export function ChordSheetPanel({ song }: { song: Song }) {
+  const { get, patch } = usePractice(); const entry = get(song.id)
+  const [draft, setDraft] = useState<string | null>(null)
+  const editing = draft !== null
+  const save = () => { patch(song.id, { chordSheet: (draft || '').trim() ? draft! : '' }); setDraft(null) }
+  return <section className="panel chord-panel" id="chord-sheet">
+    <div className="section-heading"><div><span className="eyebrow">In-app practice source</span><h2>Tabs & chords</h2></div>
+      <button className="text-button" onClick={() => setDraft(editing ? null : entry.chordSheet)}>{editing ? 'Cancel' : entry.chordSheet ? 'Edit / replace' : 'Paste sheet'}</button></div>
+    {editing
+      ? <><textarea value={draft ?? ''} onChange={(e) => setDraft(e.target.value)} placeholder="Paste chord or tab text here — an Ultimate Guitar copy/paste works as-is." spellCheck={false}/>
+        <div className="actions"><button onClick={save}>Save sheet</button>{entry.chordSheet && <button className="secondary" onClick={() => { patch(song.id, { chordSheet: '' }); setDraft(null) }}>Remove sheet</button>}</div></>
+      : entry.chordSheet
+        ? <ChordSheetView text={entry.chordSheet}/>
+        : <p className="launcher-hint">No sheet saved yet. Paste the exact chords/tab text you practice from: it renders here in full, syncs to your other devices, and show mode gets a compact chords-plus-cues view of it. Inline-chord pastes (Ultimate Guitar mobile copy) keep exact chord positions; chord-above-lyric pastes still work but chords land at the start of their line.</p>}
+  </section>
+}
+
 // One-click practice: opens the remembered tab/chord source in a new tab and starts
 // the backing track embedded here, replacing the old juggle of three browser tabs.
 // (Songsterr and Ultimate Guitar both forbid iframing, so the source opens externally.)
@@ -135,9 +173,14 @@ export function PracticeLauncher({ song }: { song: Song }) {
     songsterr: savedSongsterr || song.songsterrUrl || searches.songsterr,
     ultimateGuitar: savedUltimateGuitar || song.ultimateGuitarUrl || searches.ultimateGuitar,
   }
-  const source = entry.preferredSource || (savedSongsterr || song.songsterrUrl ? 'songsterr' : 'ultimateGuitar')
+  const hasSheet = !!entry.chordSheet
+  const fallback = hasSheet ? 'sheet' : savedSongsterr || song.songsterrUrl ? 'songsterr' : 'ultimateGuitar'
+  const source = entry.preferredSource === 'sheet' && !hasSheet ? fallback : entry.preferredSource || fallback
   const start = () => {
-    window.open(sourceUrls[source], '_blank', 'noopener')
+    // rAF so the scroll runs after the backing player mounts above the sheet — a
+    // synchronous scroll would land ~330px short of the target after the layout shift.
+    if (source === 'sheet') requestAnimationFrame(() => document.getElementById('chord-sheet')?.scrollIntoView({ behavior: 'smooth' }))
+    else window.open(sourceUrls[source], '_blank', 'noopener')
     if (videoId) setPlaying(true)
     patch(song.id, { lastPracticed: new Date().toISOString().slice(0, 10), sessions: entry.sessions + 1 })
   }
@@ -145,7 +188,8 @@ export function PracticeLauncher({ song }: { song: Song }) {
     <div className="launcher-row">
       <button onClick={start}>▶ Start practice</button>
       <label><span>Tabs / chords source</span>
-        <select value={source} onChange={(e) => patch(song.id, { preferredSource: e.target.value as 'songsterr' | 'ultimateGuitar' })}>
+        <select value={source} onChange={(e) => patch(song.id, { preferredSource: e.target.value as 'songsterr' | 'ultimateGuitar' | 'sheet' })}>
+          {hasSheet && <option value="sheet">In-app sheet</option>}
           <option value="songsterr">Songsterr (tabs)</option>
           <option value="ultimateGuitar">Ultimate Guitar (chords)</option>
         </select>
