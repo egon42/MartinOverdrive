@@ -19,8 +19,12 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
 
 ## Deploy — GitHub Pages via Actions
 
-- Pushing to `main` triggers `.github/workflows/deploy-pages.yml` (build with
-  `--base /MartinOverdrive/`, then deploy to Pages). There is no other deploy path.
+- Pushing to `main` **or `dev`** triggers `.github/workflows/deploy-pages.yml`. It builds
+  both branches into one Pages artifact: `main` at `/MartinOverdrive/` (production) and
+  `dev` at `/MartinOverdrive/dev/` (development). There is no other deploy path.
+- **New features are developed on the `dev` branch** and used live at the /dev/ URL;
+  porting a feature to production = merging `dev` → `main`. Keep the workflow file
+  identical on both branches (push events use the pushed branch's copy).
 - **To verify a deploy actually went live:** check the workflow run
   (`gh run list --limit 3` / `gh run watch`), not just the push. A green push ≠ deployed.
 - The service worker uses **network-first caching for app updates** (fixed in `8904e94`

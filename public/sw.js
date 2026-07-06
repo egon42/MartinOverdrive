@@ -1,5 +1,7 @@
-const CACHE = 'overdrive-v3'
 const BASE = new URL('.', self.location).pathname
+// Cache is namespaced by base path so the / and /dev/ deployments (same origin)
+// never delete each other's entries on activate.
+const CACHE = `overdrive-v4:${BASE}`
 const shellPath = (path = '') => `${BASE}${path.replace(/^\//, '')}`
 
 const SHELL = [
@@ -21,7 +23,9 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
+      .then((keys) => Promise.all(keys
+        .filter((key) => key !== CACHE && (key.endsWith(`:${BASE}`) || !key.includes(':')))
+        .map((key) => caches.delete(key))))
       .then(() => self.clients.claim()),
   )
 })

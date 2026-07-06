@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   workflow_dispatch:
 
 permissions:
@@ -14,11 +14,20 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# One Pages site, two builds: main is deployed at the site root, dev under /dev/.
+# Pushing to either branch rebuilds and redeploys both.
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+          path: dev
       - uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -26,13 +35,30 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm exec tsc -b
-      - name: Build for GitHub Pages
-        run: pnpm exec vite build --base "/${{ github.event.repository.name }}/"
+          cache-dependency-path: |
+            main/pnpm-lock.yaml
+            dev/pnpm-lock.yaml
+      - name: Build production (main)
+        working-directory: main
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm exec tsc -b
+          pnpm exec vite build --base "/${{ github.event.repository.name }}/"
+      - name: Build development (dev)
+        working-directory: dev
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm exec tsc -b
+          pnpm exec vite build --base "/${{ github.event.repository.name }}/dev/"
+      - name: Assemble combined site
+        run: |
+          mkdir site
+          cp -r main/dist/. site/
+          mkdir -p site/dev
+          cp -r dev/dist/. site/dev/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
 
   deploy:
     needs: build
