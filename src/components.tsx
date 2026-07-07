@@ -6,6 +6,7 @@ import { statuses } from './types'
 import { fretboardForVersion, resolveFretboards, type FretboardVersion } from './fretboard'
 import { isStatus, usePractice } from './storage'
 import { ampPresets, presetBank, presetLabel, presetPosition } from './presets'
+import { sheetsFor } from './sheets'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
@@ -141,46 +142,56 @@ export function ChordSheetView({ text, compact = false }: { text: string, compac
   </div>
 }
 
-// Per-song pasted tabs/chords, stored in practice state (so it syncs across devices).
-export function ChordSheetPanel({ song }: { song: Song }) {
-  const { get, patch } = usePractice(); const entry = get(song.id)
-  const [draft, setDraft] = useState<string | null>(null)
-  const editing = draft !== null
-  const save = () => { patch(song.id, { chordSheet: (draft || '').trim() ? draft! : '' }); setDraft(null) }
-  return <section className="panel chord-panel" id="chord-sheet">
+export function TabText({ text }: { text: string }) {
+  return <pre className="tab-text">{text}</pre>
+}
+
+export type SheetKind = 'chords' | 'tabs'
+
+// Curated tabs/chords built into the app (src/data/sheets + public/sheets).
+// `view` is lifted so the practice launcher can flip the panel to the source it opens.
+export function SheetPanel({ song, view, onViewChange }: { song: Song, view: SheetKind | null, onViewChange: (kind: SheetKind) => void }) {
+  const { get } = usePractice(); const entry = get(song.id)
+  const sheets = sheetsFor(song.id)
+  const available: SheetKind[] = ([['chords', sheets.chords], ['tabs', sheets.tabs]] as const).filter(([, data]) => data).map(([kind]) => kind)
+  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><span className="eyebrow">In-app practice source</span><h2>Tabs & chords</h2><p className="launcher-hint">Nothing built in for this song yet — hand Claude the chord/tab text (or drop source material in TabsAndChords\) and it gets added to src/data/sheets/.</p></section>
+  const preferred = entry.preferredSource === 'tabs' || entry.preferredSource === 'chords' ? entry.preferredSource : available[0]
+  const active = view && available.includes(view) ? view : available.includes(preferred) ? preferred : available[0]
+  return <section className="panel chord-panel" id="song-sheet">
     <div className="section-heading"><div><span className="eyebrow">In-app practice source</span><h2>Tabs & chords</h2></div>
-      <button className="text-button" onClick={() => setDraft(editing ? null : entry.chordSheet)}>{editing ? 'Cancel' : entry.chordSheet ? 'Edit / replace' : 'Paste sheet'}</button></div>
-    {editing
-      ? <><textarea value={draft ?? ''} onChange={(e) => setDraft(e.target.value)} placeholder="Paste chord or tab text here — an Ultimate Guitar copy/paste works as-is." spellCheck={false}/>
-        <div className="actions"><button onClick={save}>Save sheet</button>{entry.chordSheet && <button className="secondary" onClick={() => { patch(song.id, { chordSheet: '' }); setDraft(null) }}>Remove sheet</button>}</div></>
-      : entry.chordSheet
-        ? <ChordSheetView text={entry.chordSheet}/>
-        : <p className="launcher-hint">No sheet saved yet. Paste the exact chords/tab text you practice from: it renders here in full, syncs to your other devices, and show mode gets a compact chords-plus-cues view of it. Inline-chord pastes (Ultimate Guitar mobile copy) keep exact chord positions; chord-above-lyric pastes still work but chords land at the start of their line.</p>}
+      {available.length > 1 && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type"><button type="button" role="tab" aria-selected={active === 'chords'} className={active === 'chords' ? 'active' : ''} onClick={() => onViewChange('chords')}>Chords</button><button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button></div>}</div>
+    {active === 'chords' ? <ChordSheetView text={sheets.chords!}/> : <TabText text={sheets.tabs!}/>}
   </section>
 }
 
 // One-click practice: opens the remembered tab/chord source in a new tab and starts
 // the backing track embedded here, replacing the old juggle of three browser tabs.
-// (Songsterr and Ultimate Guitar both forbid iframing, so the source opens externally.)
-export function PracticeLauncher({ song }: { song: Song }) {
+// (Songsterr and Ultimate Guitar both forbid iframing, so those open externally;
+// curated in-app sheets don't need a second tab at all.)
+export function PracticeLauncher({ song, onOpenSheet }: { song: Song, onOpenSheet?: (kind: SheetKind) => void }) {
   const { get, patch } = usePractice(); const entry = get(song.id)
   const [playing, setPlaying] = useState(false)
   const videoId = youtubeId(song.backingTrackUrl)
   const searches = tabSearchUrls(song)
+  const sheets = sheetsFor(song.id)
   const savedSongsterr = isSiteUrl(entry.savedSongsterrUrl, 'songsterr.com') ? entry.savedSongsterrUrl : ''
   const savedUltimateGuitar = isSiteUrl(entry.savedUltimateGuitarUrl, 'ultimate-guitar.com') ? entry.savedUltimateGuitarUrl : ''
   const sourceUrls = {
     songsterr: savedSongsterr || song.songsterrUrl || searches.songsterr,
     ultimateGuitar: savedUltimateGuitar || song.ultimateGuitarUrl || searches.ultimateGuitar,
   }
-  const hasSheet = !!entry.chordSheet
-  const fallback = hasSheet ? 'sheet' : savedSongsterr || song.songsterrUrl ? 'songsterr' : 'ultimateGuitar'
-  const source = entry.preferredSource === 'sheet' && !hasSheet ? fallback : entry.preferredSource || fallback
+  // 'sheet' was the pre-curation value for the in-app source; treat it as chords.
+  const stored = (entry.preferredSource as string) === 'sheet' ? 'chords' : entry.preferredSource
+  const valid = (value: string) => value === 'songsterr' || value === 'ultimateGuitar' || (value === 'chords' && sheets.chords) || (value === 'tabs' && sheets.tabs)
+  const fallback = sheets.chords ? 'chords' : sheets.tabs ? 'tabs' : savedSongsterr || song.songsterrUrl ? 'songsterr' : 'ultimateGuitar'
+  const source = (stored && valid(stored) ? stored : fallback) as 'songsterr' | 'ultimateGuitar' | SheetKind
   const start = () => {
-    // rAF so the scroll runs after the backing player mounts above the sheet — a
-    // synchronous scroll would land ~330px short of the target after the layout shift.
-    if (source === 'sheet') requestAnimationFrame(() => document.getElementById('chord-sheet')?.scrollIntoView({ behavior: 'smooth' }))
-    else window.open(sourceUrls[source], '_blank', 'noopener')
+    if (source === 'chords' || source === 'tabs') {
+      onOpenSheet?.(source)
+      // rAF so the scroll runs after the backing player mounts above the sheet — a
+      // synchronous scroll would land ~330px short of the target after the layout shift.
+      requestAnimationFrame(() => document.getElementById('song-sheet')?.scrollIntoView({ behavior: 'smooth' }))
+    } else window.open(sourceUrls[source], '_blank', 'noopener')
     if (videoId) setPlaying(true)
     patch(song.id, { lastPracticed: new Date().toISOString().slice(0, 10), sessions: entry.sessions + 1 })
   }
@@ -188,8 +199,9 @@ export function PracticeLauncher({ song }: { song: Song }) {
     <div className="launcher-row">
       <button onClick={start}>▶ Start practice</button>
       <label><span>Tabs / chords source</span>
-        <select value={source} onChange={(e) => patch(song.id, { preferredSource: e.target.value as 'songsterr' | 'ultimateGuitar' | 'sheet' })}>
-          {hasSheet && <option value="sheet">In-app sheet</option>}
+        <select value={source} onChange={(e) => patch(song.id, { preferredSource: e.target.value as 'songsterr' | 'ultimateGuitar' | SheetKind })}>
+          {sheets.chords && <option value="chords">In-app chords</option>}
+          {sheets.tabs && <option value="tabs">In-app tabs</option>}
           <option value="songsterr">Songsterr (tabs)</option>
           <option value="ultimateGuitar">Ultimate Guitar (chords)</option>
         </select>

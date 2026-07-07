@@ -34,8 +34,7 @@ export interface PracticeEntry {
   secondsPracticed: number
   savedSongsterrUrl: string
   savedUltimateGuitarUrl: string
-  preferredSource: '' | 'songsterr' | 'ultimateGuitar' | 'sheet'
-  chordSheet: string
+  preferredSource: '' | 'songsterr' | 'ultimateGuitar' | 'chords' | 'tabs'
   updatedAt: string
 }
 

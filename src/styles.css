@@ -74,3 +74,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .show-sheet{flex:1;min-height:0;overflow:auto}
 @media(max-width:760px){.show-song.sheet-view h1{font-size:clamp(1.6rem,7vw,2.6rem)}.show-song.sheet-view .show-preset{margin-bottom:10px}.show-song.sheet-view .show-preset .preset-chip{font-size:.85rem;padding:5px 11px}}
 .sheet-compact .chord-chip{font-size:.72rem}
+
+/* Verbatim ASCII tab text (practice panel and show mode) */
+.tab-text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82rem;line-height:1.5;margin:0;overflow-x:auto;color:inherit}
+.show-tabs .tab-text{font-size:calc(var(--sheet-fit,1)*.9rem);line-height:1.45}
+.chord-panel .fretboard-toggle{margin:0}
+.show-tabs .tab-text{overflow-x:visible;width:max-content;min-width:100%}

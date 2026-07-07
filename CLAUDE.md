@@ -59,6 +59,20 @@ passthrough** loading procedure, preset backup steps, and the firmware/brick-ris
 `generate_presets.py` (`TONES` dict) — edit that and regenerate rather than hand-editing
 `.fuse` files, so the files stay the source of truth.
 
+## Per-song tabs & chords (dev-branch feature)
+
+- Curated **text** files, glob-loaded by `src/sheets.ts`:
+  `src/data/sheets/<songId>.chords.txt` (UG-style chord/lyric text, parsed by
+  `src/chords.ts`) and `src/data/sheets/<songId>.tabs.txt` (ASCII tab, rendered
+  verbatim in monospace). Song ids match `src/data/setlist.json` (`01-welcome-home`).
+- The user hands over source material (text, exports, screenshots); convert it to
+  those text files — **no paste UI, no images in the app** (deliberate: text is
+  editable and diff-able). `TabsAndChords/` (gitignored) is the raw-material drop
+  folder. Note: XPS/OXPS print exports are usually rasterized page images with no
+  extractable text — ask for a text source instead of transcribing pictures.
+- Both practice (song page panel) and show mode offer a Chords/Tabs switch; show
+  mode auto-shrinks (chords fit by height, tabs by width).
+
 ## Layout notes
 
 - `src/data/setlist.json` is generated — change the importer or the XLSX, not the JSON.
