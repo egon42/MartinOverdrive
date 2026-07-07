@@ -103,7 +103,16 @@ const blocks = part.measures.map(renderMeasure)
 const lines = []
 lines.push(`${meta.title} — ${meta.artist}`)
 lines.push(`Track: ${part.name ?? track.name} (Songsterr s${songId}t${partId}, rev ${meta.revisionId})`)
-lines.push(`Tuning (high→low): ${tuning.map((m) => NOTE_NAMES[m % 12]).join(' ')}${part.measures[0]?.signature ? ` — ${part.measures[0].signature.join('/')}` : ''}`)
+// Header shows the signature governing the most measures (a 1/4 or 1/8 pickup
+// measure would otherwise masquerade as the song's time signature).
+const signatureSpans = new Map()
+let currentSignature = null
+for (const measure of part.measures) {
+  if (measure.signature) currentSignature = measure.signature.join('/')
+  if (currentSignature) signatureSpans.set(currentSignature, (signatureSpans.get(currentSignature) ?? 0) + 1)
+}
+const mainSignature = [...signatureSpans.entries()].sort((a, b) => b[1] - a[1])[0]?.[0]
+lines.push(`Tuning (high→low): ${tuning.map((m) => NOTE_NAMES[m % 12]).join(' ')}${mainSignature ? ` — ${mainSignature}` : ''}`)
 lines.push(`Legend: x dead note · (n) tie · <n> harmonic · nb bend · n/ slide · nh hammer/pull · n~ vibrato · . palm mute`)
 lines.push('')
 
