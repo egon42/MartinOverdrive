@@ -8,8 +8,35 @@ export interface ResolvedFretboards {
   hasToggle: boolean
 }
 
-function shiftFrets(pattern: string, amount: number) {
+export function shiftFrets(pattern: string, amount: number) {
   return pattern.replace(/\d+/g, (match) => String(Number(match) + amount))
+}
+
+// Shared with ScalePattern (components.tsx): a fretboard value string is
+// "<name>: <fret pattern>[, or <alt pattern>]" — this is just the name half.
+export function scaleName(value: string) {
+  const colon = value.indexOf(':')
+  return colon < 0 ? value.trim() : value.slice(0, colon).trim()
+}
+
+// A movable minor-pentatonic "box 1" shape repeats identically 12 frets higher
+// (e.g. "box 1 at 5th" also works as "box 1 at 17th"). Only offered for box-1 shapes,
+// and only when every shifted fret stays within reach of a typical 22-fret neck.
+export function octaveUpVariant(value: string): { fret: number, value: string } | null {
+  const colon = value.indexOf(':')
+  if (colon < 0) return null
+  const name = value.slice(0, colon).trim()
+  if (!/minor box 1/i.test(name)) return null
+  const rest = value.slice(colon + 1)
+  const firstPattern = rest.split(/,\s*or\s+/i)[0]
+  const frets = [...firstPattern.matchAll(/\d+/g)].map((match) => Number(match[0]))
+  if (!frets.length) return null
+  const minFret = Math.min(...frets)
+  const maxFret = Math.max(...frets)
+  if (maxFret + 12 > 22) return null
+  const fret = minFret + 12
+  const baseName = name.match(/^(.*box 1)\b/i)?.[1] || name
+  return { fret, value: `${baseName} at ${fret}th: ${shiftFrets(firstPattern, 12)}` }
 }
 
 export function ebMinor11ToEMinorOpen(value: string) {
