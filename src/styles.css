@@ -76,7 +76,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-compact .sheet-section{margin:.5em 0 .2em}.sheet-compact .sheet-tab{font-size:.72em}
 .show-view-toggle{margin:0 0 12px}
 .show-song.sheet-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
-.show-sheet{flex:1;min-height:0;overflow:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+.show-sheet{flex:1;min-height:0;overflow:auto}
 @media(max-width:760px){.show-song.sheet-view .show-preset{margin-bottom:10px}.show-song.sheet-view .show-preset .preset-chip{font-size:.85rem}}
 .sheet-compact .chord-chip{font-size:.72rem}
 

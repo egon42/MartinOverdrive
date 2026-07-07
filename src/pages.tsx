@@ -79,65 +79,6 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
   return ref
 }
 
-// Drags an already-fitted sheet element (from useFitScale) directly via pointer events,
-// then lets it coast on release at a damped fraction of the drag velocity — noticeably
-// slower than native momentum, so it stays controllable while hands are mostly on the
-// guitar. Move/up/cancel listen on window (not the element) once a drag starts, so the
-// drag keeps tracking even if the finger wanders outside the element's bounds mid-drag —
-// relying on setPointerCapture alone isn't robust enough across real touch browsers.
-function useDragScroll<T extends HTMLElement>(ref: { current: T | null }, deps: unknown[]) {
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    let dragging = false
-    let dragPointerId = -1
-    let lastX = 0, lastY = 0, lastT = 0
-    let vx = 0, vy = 0
-    let raf = 0
-    const stopMomentum = () => { if (raf) { cancelAnimationFrame(raf); raf = 0 } }
-    const onMove = (e: PointerEvent) => {
-      if (!dragging || e.pointerId !== dragPointerId) return
-      e.preventDefault()
-      const now = performance.now()
-      const dx = e.clientX - lastX, dy = e.clientY - lastY, dt = Math.max(1, now - lastT)
-      el.scrollLeft -= dx; el.scrollTop -= dy
-      vx = vx * 0.7 + (dx / dt) * 0.3; vy = vy * 0.7 + (dy / dt) * 0.3
-      lastX = e.clientX; lastY = e.clientY; lastT = now
-    }
-    const endDrag = (e: PointerEvent) => {
-      if (!dragging || e.pointerId !== dragPointerId) return
-      dragging = false
-      window.removeEventListener('pointermove', onMove)
-      window.removeEventListener('pointerup', endDrag)
-      window.removeEventListener('pointercancel', endDrag)
-      let vlx = vx * 0.2, vly = vy * 0.2
-      const step = () => {
-        el.scrollLeft -= vlx * 16; el.scrollTop -= vly * 16
-        vlx *= 0.95; vly *= 0.95
-        if (Math.abs(vlx) < 0.01 && Math.abs(vly) < 0.01) { raf = 0; return }
-        raf = requestAnimationFrame(step)
-      }
-      if (Math.abs(vlx) > 0.01 || Math.abs(vly) > 0.01) raf = requestAnimationFrame(step)
-    }
-    const onDown = (e: PointerEvent) => {
-      if (dragging) return // ignore a second finger while one is already dragging
-      stopMomentum(); dragging = true; dragPointerId = e.pointerId; lastX = e.clientX; lastY = e.clientY; lastT = performance.now(); vx = 0; vy = 0
-      window.addEventListener('pointermove', onMove)
-      window.addEventListener('pointerup', endDrag)
-      window.addEventListener('pointercancel', endDrag)
-    }
-    el.addEventListener('pointerdown', onDown)
-    return () => {
-      stopMomentum()
-      el.removeEventListener('pointerdown', onDown)
-      window.removeEventListener('pointermove', onMove)
-      window.removeEventListener('pointerup', endDrag)
-      window.removeEventListener('pointercancel', endDrag)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
-}
-
 export function Show() {
   const [index, setIndex] = useState(() => Number(sessionStorage.getItem('overdrive-show-index') || 0)); const wakeLock = useRef<any>(null); const song = songs[Math.min(index, songs.length - 1)]
   const sheets = sheetsFor(song.id)
@@ -146,10 +87,7 @@ export function Show() {
   const effective = view === 'chords' && sheets.chords ? 'chords' : view === 'tabs' && sheets.tabs ? 'tabs' : 'scale'
   const views = ['scale', ...(sheets.chords ? ['chords'] : []), ...(sheets.tabs ? ['tabs'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
-  const chordsRef = useFitScale([song.id, sheets.chords, effective], 'height')
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
-  useDragScroll(chordsRef, [song.id, sheets.chords, effective])
-  useDragScroll(tabsRef, [song.id, sheets.tabs, effective])
   useEffect(() => { sessionStorage.setItem('overdrive-show-index', String(index)) }, [index])
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
@@ -200,7 +138,7 @@ export function Show() {
     <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ''}`}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1><div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>
     {(sheets.chords || sheets.tabs) && <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Scale & notes</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div>}
     {effective === 'chords'
-      ? <div className="show-sheet" ref={chordsRef}><ChordSheetView text={sheets.chords!} compact/></div>
+      ? <div className="show-sheet"><ChordSheetView text={sheets.chords!}/></div>
       : effective === 'tabs'
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
         : <div className="show-content"><div className="show-scale"><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="show-fields"><Field label="Band tuning" value={song.tuning}/>{song.recordingNote && <Field label="Tab note" value={song.recordingNote}/>}<Field label="Role" value={song.role}/><Field label="Must know" value={song.mustKnow}/><Field label="Fallback" value={song.fallback}/></div></div>}</article></div>
