@@ -17,12 +17,62 @@ Song ids match `src/data/setlist.json` (e.g. `01-welcome-home`). Both practice (
 page) and show mode pick the files up automatically — no registration step. Never add
 a paste UI or images; text only (deliberate: editable + diff-able).
 
-## Chords (user provides text)
+## Chords from Songsterr (preferred when available)
+
+```bash
+node scripts/import-songsterr-chords.mjs "<songsterr chords-page URL, e.g. …-chords-sNNNNN>" <songId>
+```
+
+Songsterr's chords page embeds the full chord data as JSON in the HTML (no auth, no
+CDN lookup needed — just the page fetch). The script converts Songsterr's inline
+chord positions into this app's own-line format (see below) automatically. If a song
+has no chords page data, the script errors clearly instead of writing a bad file —
+fall back to pasted text, or leave chords out for that song (see "Fallback" below).
+
+## Chords from pasted text (fallback / no Songsterr chords)
 
 Save the text verbatim as `src/data/sheets/<songId>.chords.txt`. Trailing spaces
 mid-line are meaningful ("But ␣" before a chord line) — do not strip or reflow.
 Sanity-check the parse if unsure: the format's rules live in `src/chords.ts`
-(chord-token lines, `[Section]` headers, tab-ish lines, tuning/capo meta).
+(chord-token lines, `[Section]` headers, tab-ish lines, tuning/capo meta). The format
+is **chord name on its own line, splitting the lyric it lands on** (not inline `[D]`
+brackets):
+
+```
+Em
+   You could've b
+C
+een all I wanted
+```
+
+## Fallback when no chords exist at all
+
+If neither a Songsterr chords page nor pasted chord text is available, don't invent
+chords from tab data — the tab's fret/string data carries no chord-name info, and
+deriving names from frets is fragile. Leave `.chords.txt` absent for that song; the
+app's chords/tabs switch (practice panel and show mode) simply shows whichever sheet
+exists, so users fall back to the tabs view.
+
+## Mid-song amp-setting changes
+
+To mark an amp preset switch partway through a song (e.g. clean verse → overdriven
+chorus), add a section-style marker matching the amp preset label shown elsewhere in
+the app (position + bank, e.g. `7Red`, `2Green`):
+
+```
+[Amp: 7Red]
+```
+
+In chords, this is just a section line (`^\[.+\]$`, same rule `src/chords.ts` already
+parses) whose text starts with `Amp:` — the app renders it as the same colored preset
+chip used on the song/practice pages, not plain text. Multiple presets in one marker
+are space-separated: `[Amp: 7Red 2Green]`.
+
+In tabs, put the marker on its **own header/marker line** (the same line the
+Songsterr importer already puts `[Section]` text on, above the six string rows) —
+e.g. `m12  [Chorus] [Amp: 7Red]`. The chip isn't monospace-width, so a marker written
+mid-string, with more fret numbers after it on the same line, will shift everything
+after it out of column alignment with the other five strings.
 
 ## Tabs from Songsterr (preferred — exact data, no OCR)
 
