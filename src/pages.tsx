@@ -82,8 +82,9 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
 // Drags an already-fitted sheet element (from useFitScale) directly via pointer events,
 // then lets it coast on release at a damped fraction of the drag velocity — noticeably
 // slower than native momentum, so it stays controllable while hands are mostly on the
-// guitar. stopPropagation on every stage keeps this from also triggering the show-mode
-// swipe-gesture handlers on the outer chrome (see the pointer handlers in Show()).
+// guitar. Move/up/cancel listen on window (not the element) once a drag starts, so the
+// drag keeps tracking even if the finger wanders outside the element's bounds mid-drag —
+// relying on setPointerCapture alone isn't robust enough across real touch browsers.
 function useDragScroll<T extends HTMLElement>(ref: { current: T | null }, deps: unknown[]) {
   useEffect(() => {
     const el = ref.current
@@ -94,14 +95,7 @@ function useDragScroll<T extends HTMLElement>(ref: { current: T | null }, deps: 
     let vx = 0, vy = 0
     let raf = 0
     const stopMomentum = () => { if (raf) { cancelAnimationFrame(raf); raf = 0 } }
-    const onDown = (e: PointerEvent) => {
-      e.stopPropagation() // every pointer on this element is ours, even a second finger — never let it bubble to the outer swipe handler
-      if (dragging) return // ignore a second finger while one is already dragging
-      stopMomentum(); dragging = true; dragPointerId = e.pointerId; lastX = e.clientX; lastY = e.clientY; lastT = performance.now(); vx = 0; vy = 0
-      try { el.setPointerCapture(e.pointerId) } catch { /* not supported */ }
-    }
     const onMove = (e: PointerEvent) => {
-      e.stopPropagation()
       if (!dragging || e.pointerId !== dragPointerId) return
       e.preventDefault()
       const now = performance.now()
@@ -110,11 +104,12 @@ function useDragScroll<T extends HTMLElement>(ref: { current: T | null }, deps: 
       vx = vx * 0.7 + (dx / dt) * 0.3; vy = vy * 0.7 + (dy / dt) * 0.3
       lastX = e.clientX; lastY = e.clientY; lastT = now
     }
-    const onUp = (e: PointerEvent) => {
-      e.stopPropagation()
+    const endDrag = (e: PointerEvent) => {
       if (!dragging || e.pointerId !== dragPointerId) return
       dragging = false
-      try { el.releasePointerCapture(e.pointerId) } catch { /* not supported */ }
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', endDrag)
+      window.removeEventListener('pointercancel', endDrag)
       let vlx = vx * 0.2, vly = vy * 0.2
       const step = () => {
         el.scrollLeft -= vlx * 16; el.scrollTop -= vly * 16
@@ -124,16 +119,20 @@ function useDragScroll<T extends HTMLElement>(ref: { current: T | null }, deps: 
       }
       if (Math.abs(vlx) > 0.01 || Math.abs(vly) > 0.01) raf = requestAnimationFrame(step)
     }
+    const onDown = (e: PointerEvent) => {
+      if (dragging) return // ignore a second finger while one is already dragging
+      stopMomentum(); dragging = true; dragPointerId = e.pointerId; lastX = e.clientX; lastY = e.clientY; lastT = performance.now(); vx = 0; vy = 0
+      window.addEventListener('pointermove', onMove)
+      window.addEventListener('pointerup', endDrag)
+      window.addEventListener('pointercancel', endDrag)
+    }
     el.addEventListener('pointerdown', onDown)
-    el.addEventListener('pointermove', onMove)
-    el.addEventListener('pointerup', onUp)
-    el.addEventListener('pointercancel', onUp)
     return () => {
       stopMomentum()
       el.removeEventListener('pointerdown', onDown)
-      el.removeEventListener('pointermove', onMove)
-      el.removeEventListener('pointerup', onUp)
-      el.removeEventListener('pointercancel', onUp)
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', endDrag)
+      window.removeEventListener('pointercancel', endDrag)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
@@ -190,25 +189,14 @@ export function Show() {
       if (wakeLock.current) { wakeLock.current.release(); wakeLock.current = null }
     }
   }, [])
-  // Swipe gestures on the outer chrome only: the sheet's own drag-scroll (useDragScroll
-  // above) stopPropagation()s its pointer events, so a drag that starts inside
-  // .show-sheet never reaches these handlers — only genuine swipes over the title/
-  // progress/margins do.
-  const swipeStart = useRef<{ x: number, y: number, pointerId: number } | null>(null)
-  const SWIPE_THRESHOLD = 70
-  return <div className="show-mode"
-    onPointerDown={(e) => { swipeStart.current = { x: e.clientX, y: e.clientY, pointerId: e.pointerId } }}
-    onPointerUp={(e) => {
-      const start = swipeStart.current; swipeStart.current = null
-      if (!start || start.pointerId !== e.pointerId) return
-      const dx = e.clientX - start.x, dy = e.clientY - start.y
-      if (Math.max(Math.abs(dx), Math.abs(dy)) < SWIPE_THRESHOLD) return
-      if (Math.abs(dx) > Math.abs(dy)) cycleView(dx < 0 ? 1 : -1)
-      else setIndex((i) => dy < 0 ? Math.min(songs.length - 1, i + 1) : Math.max(0, i - 1))
-    }}
-    onPointerCancel={(e) => { if (swipeStart.current?.pointerId === e.pointerId) swipeStart.current = null }}>
+  return <div className="show-mode">
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
-    <div className="show-progress"><span>{index + 1} / {songs.length}</span><div><i style={{ width: `${((index + 1) / songs.length) * 100}%` }}/></div></div>
+    <div className="show-progress">
+      <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => setIndex((i) => Math.max(0, i - 1))} aria-label="Previous song">‹</button>
+      <span>{index + 1} / {songs.length}</span>
+      <div><i style={{ width: `${((index + 1) / songs.length) * 100}%` }}/></div>
+      <button type="button" className="show-nav-btn" disabled={index === songs.length - 1} onClick={() => setIndex((i) => Math.min(songs.length - 1, i + 1))} aria-label="Next song">›</button>
+    </div>
     <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ''}`}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1><div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>
     {(sheets.chords || sheets.tabs) && <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Scale & notes</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div>}
     {effective === 'chords'
