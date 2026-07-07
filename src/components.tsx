@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useMemo, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
 import { compactSheet, parseChordSheet } from './chords'
 import type { Song } from './types'
 import { statuses } from './types'
-import { fretboardForVersion, resolveFretboards, type FretboardVersion } from './fretboard'
+import { fretboardForVersion, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
 import { isStatus, usePractice } from './storage'
-import { ampPresets, presetBank, presetLabel, presetPosition } from './presets'
+import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
@@ -54,11 +54,27 @@ export function AmpPresetField({ songId, showNotes = true }: { songId: string, s
   return <div className="field"><dt>Amp preset</dt><dd><PresetBadges songId={songId} showNotes={showNotes} /></dd></div>
 }
 
+// Mid-song amp-change marker authored in a sheet's text as "[Amp: 7Red]" — renders the
+// same colored circular chip as the at-a-glance preset badges above.
+export function AmpChip({ label }: { label: string }) {
+  const slot = parsePresetLabel(label)
+  if (slot == null) return <>{label}</>
+  return <b className={`preset-chip bank-${presetBank(slot).toLowerCase()}`} title={`${presetBank(slot)} bank, PRESET knob position ${presetPosition(slot)} (slot ${slot} of 24)`}>{presetPosition(slot)}</b>
+}
+
+// Splits the captured group of an "Amp: 7Red 2Green" (or "Amp: 7Red → 2Green") marker
+// into individual preset-label tokens for AmpChip. Returns null if raw isn't an amp marker.
+function ampMarkerTokens(raw: string): string[] | null {
+  const match = /^Amp:\s*(.+)$/i.exec(raw.trim())
+  if (!match) return null
+  return match[1].split(/\s+|→/).map((token) => token.trim()).filter(Boolean)
+}
+
 export function ScalePattern({ value }: { value: string }) {
   const colon = value.indexOf(':')
   if (colon < 0) return <div className="scale-pattern"><p>{unknown(value)}</p></div>
 
-  const name = value.slice(0, colon).trim()
+  const name = scaleName(value)
   const firstPattern = value.slice(colon + 1).split(/,\s*or\s+/i)[0]
   const strings = firstPattern.split('/').slice(0, 6).map((part) => [...part.matchAll(/\d+/g)].map((match) => Number(match[0])))
   if (strings.length !== 6 || strings.some((frets) => frets.length < 2)) return <div className="scale-pattern"><strong>{name}</strong><p>{value.slice(colon + 1).trim()}</p></div>
@@ -88,12 +104,21 @@ export function ScalePattern({ value }: { value: string }) {
 export function FretboardPanel({ song }: { song: Song }) {
   const { hasToggle } = resolveFretboards(song)
   const [version, setVersion] = useState<FretboardVersion>('standard')
+  const value = fretboardForVersion(song, version)
+  const alt = useMemo(() => octaveUpVariant(value), [value])
   return <>
-    {hasToggle && <div className="fretboard-toggle" role="tablist" aria-label="Fretboard tuning reference">
-      <button type="button" role="tab" aria-selected={version === 'standard'} className={version === 'standard' ? 'active' : ''} onClick={() => setVersion('standard')}>Standard tuning</button>
-      <button type="button" role="tab" aria-selected={version === 'original'} className={version === 'original' ? 'active' : ''} onClick={() => setVersion('original')}>Original / recording</button>
-    </div>}
-    <ScalePattern value={fretboardForVersion(song, version)} />
+    <details className="fretboard-disclosure">
+      <summary>{scaleName(value)}</summary>
+      {hasToggle && <div className="fretboard-toggle" role="tablist" aria-label="Fretboard tuning reference">
+        <button type="button" role="tab" aria-selected={version === 'standard'} className={version === 'standard' ? 'active' : ''} onClick={() => setVersion('standard')}>Standard tuning</button>
+        <button type="button" role="tab" aria-selected={version === 'original'} className={version === 'original' ? 'active' : ''} onClick={() => setVersion('original')}>Original / recording</button>
+      </div>}
+      <ScalePattern value={value} />
+    </details>
+    {alt && <details className="fretboard-disclosure">
+      <summary>Also playable: box 1 at {alt.fret}th</summary>
+      <ScalePattern value={alt.value} />
+    </details>}
   </>
 }
 
@@ -123,27 +148,55 @@ function TabServiceControl({ label, domain, savedUrl, openUrl, searchUrl, isSave
   </div>
 }
 
+function AmpMarkerSection({ tokens }: { tokens: string[] }) {
+  return <div className="sheet-section amp-marker">{tokens.map((token, i) => <AmpChip label={token} key={i} />)}</div>
+}
+
 export function ChordSheetView({ text, compact = false }: { text: string, compact?: boolean }) {
   const sheet = useMemo(() => parseChordSheet(text), [text])
   if (compact) {
-    return <div className="sheet-compact">{compactSheet(sheet).map((line, index) => line.kind === 'section'
-      ? <div className="sheet-section" key={index}>{line.cue}</div>
-      : line.kind === 'tab'
+    return <div className="sheet-compact">{compactSheet(sheet).map((line, index) => {
+      if (line.kind === 'section') {
+        const tokens = ampMarkerTokens(line.cue)
+        return tokens ? <AmpMarkerSection tokens={tokens} key={index} /> : <div className="sheet-section" key={index}>{line.cue}</div>
+      }
+      return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.cue}</pre>
-        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <b className="chord-chip" key={i}>{chord}</b>)}</span><span className="compact-cue">{line.cue}</span></div>)}</div>
+        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <b className="chord-chip" key={i}>{chord}</b>)}</span><span className="compact-cue">{line.cue}</span></div>
+    })}</div>
   }
   return <div className="sheet-full">
     {sheet.meta.map((line, index) => <p className="sheet-meta" key={index}>{line}</p>)}
-    {sheet.lines.map((line, index) => line.kind === 'section'
-      ? <h4 className="sheet-section" key={index}>{line.raw}</h4>
-      : line.kind === 'tab'
+    {sheet.lines.map((line, index) => {
+      if (line.kind === 'section') {
+        const tokens = ampMarkerTokens(line.raw)
+        return tokens ? <AmpMarkerSection tokens={tokens} key={index} /> : <h4 className="sheet-section" key={index}>{line.raw}</h4>
+      }
+      return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.raw}</pre>
-        : <p className="sheet-line" key={index}>{line.parts.map((part, i) => part.chord ? <b className="chord-chip" key={i}>{part.chord}</b> : <span key={i}>{part.text}</span>)}</p>)}
+        : <p className="sheet-line" key={index}>{line.parts.map((part, i) => part.chord ? <b className="chord-chip" key={i}>{part.chord}</b> : <span key={i}>{part.text}</span>)}</p>
+    })}
   </div>
 }
 
+// [^\]\n] (not just [^\]]) caps a typo'd unclosed marker to one line instead of
+// swallowing everything up to the next ']' in the file (tabs already use '[...]'
+// for section headers, e.g. "[[A] Intro]").
+const AMP_INLINE_MARKER_RE = /\[Amp:\s*([^\]\n]+)\]/gi
+
 export function TabText({ text }: { text: string }) {
-  return <pre className="tab-text">{text}</pre>
+  const nodes: ReactNode[] = []
+  const re = new RegExp(AMP_INLINE_MARKER_RE)
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+  while ((match = re.exec(text))) {
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index))
+    const tokens = match[1].split(/\s+|→/).map((token) => token.trim()).filter(Boolean)
+    tokens.forEach((token, i) => nodes.push(<AmpChip label={token} key={`${match!.index}-${i}`} />))
+    lastIndex = match.index + match[0].length
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex))
+  return <pre className="tab-text">{nodes}</pre>
 }
 
 export type SheetKind = 'chords' | 'tabs'
@@ -164,13 +217,28 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   </section>
 }
 
+// Inline YouTube backing-track player with a play/pause toggle — self-contained so
+// it can drop into both the practice launcher and jam-page cards. `autoPlaySignal`
+// lets a caller (PracticeLauncher's "Start practice" button) trigger playback from
+// outside without lifting the playing state itself: bump the number to start it.
+export function BackingTrack({ song, autoPlaySignal }: { song: Song, autoPlaySignal?: number }) {
+  const [playing, setPlaying] = useState(false)
+  const videoId = youtubeId(song.backingTrackUrl)
+  useEffect(() => { if (autoPlaySignal) setPlaying(true) }, [autoPlaySignal])
+  if (!videoId) return null
+  return <>
+    <button className="secondary" onClick={() => setPlaying((value) => !value)}>{playing ? 'Stop backing track' : 'Play backing track'}</button>
+    {playing && <div className="backing-player"><iframe src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&playsinline=1`} title={`Backing track for ${song.title}`} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen /></div>}
+  </>
+}
+
 // One-click practice: opens the remembered tab/chord source in a new tab and starts
 // the backing track embedded here, replacing the old juggle of three browser tabs.
 // (Songsterr and Ultimate Guitar both forbid iframing, so those open externally;
 // curated in-app sheets don't need a second tab at all.)
 export function PracticeLauncher({ song, onOpenSheet }: { song: Song, onOpenSheet?: (kind: SheetKind) => void }) {
   const { get, patch } = usePractice(); const entry = get(song.id)
-  const [playing, setPlaying] = useState(false)
+  const [autoPlaySignal, setAutoPlaySignal] = useState(0)
   const videoId = youtubeId(song.backingTrackUrl)
   const searches = tabSearchUrls(song)
   const sheets = sheetsFor(song.id)
@@ -192,7 +260,7 @@ export function PracticeLauncher({ song, onOpenSheet }: { song: Song, onOpenShee
       // synchronous scroll would land ~330px short of the target after the layout shift.
       requestAnimationFrame(() => document.getElementById('song-sheet')?.scrollIntoView({ behavior: 'smooth' }))
     } else window.open(sourceUrls[source], '_blank', 'noopener')
-    if (videoId) setPlaying(true)
+    if (videoId) setAutoPlaySignal((n) => n + 1)
     patch(song.id, { lastPracticed: new Date().toISOString().slice(0, 10), sessions: entry.sessions + 1 })
   }
   return <section className="panel practice-launcher">
@@ -206,12 +274,10 @@ export function PracticeLauncher({ song, onOpenSheet }: { song: Song, onOpenShee
           <option value="ultimateGuitar">Ultimate Guitar (chords)</option>
         </select>
       </label>
-      {videoId
-        ? <button className="secondary" onClick={() => setPlaying(!playing)}>{playing ? 'Stop backing track' : 'Play backing track'}</button>
-        : song.backingTrackUrl && <a className="button secondary" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
+      {!videoId && song.backingTrackUrl && <a className="button secondary" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
     </div>
     <p className="launcher-hint">Start practice opens your remembered source in a new tab and plays the backing track here — switch back once the tab loads.</p>
-    {playing && videoId && <div className="backing-player"><iframe src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&playsinline=1`} title={`Backing track for ${song.title}`} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen /></div>}
+    <BackingTrack song={song} autoPlaySignal={autoPlaySignal} />
   </section>
 }
 

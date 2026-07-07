@@ -13,4 +13,17 @@ const banks: PresetBank[] = ['Amber', 'Green', 'Red']
 
 export const presetBank = (slot: number): PresetBank => banks[Math.min(2, Math.max(0, Math.floor((slot - 1) / 8)))]
 export const presetPosition = (slot: number) => ((slot - 1) % 8) + 1
-export const presetLabel = (slot: number) => `${presetPosition(slot)}${presetBank(slot)}`
+export const presetLabel = (slot: number) => String(presetPosition(slot))
+
+// Reverse of the old "<position><bank>" label (e.g. "7Red", "2Green") back into a
+// slot number 1-24 — used to parse mid-song amp markers like [Amp: 7Red] authored
+// in a song's chords/tabs sheet text.
+export function parsePresetLabel(label: string): number | null {
+  const match = label.trim().match(/^(\d+)\s*([A-Za-z]+)$/)
+  if (!match) return null
+  const position = Number(match[1])
+  if (position < 1 || position > 8) return null
+  const bankIndex = banks.findIndex((bank) => bank.toLowerCase() === match[2].toLowerCase())
+  if (bankIndex < 0) return null
+  return bankIndex * 8 + position
+}
