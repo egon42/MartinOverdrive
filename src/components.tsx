@@ -207,7 +207,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   const { get } = usePractice(); const entry = get(song.id)
   const sheets = sheetsFor(song.id)
   const available: SheetKind[] = ([['chords', sheets.chords], ['tabs', sheets.tabs]] as const).filter(([, data]) => data).map(([kind]) => kind)
-  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><span className="eyebrow">In-app practice source</span><h2>Tabs & chords</h2><p className="launcher-hint">Nothing built in for this song yet — hand Claude the chord/tab text (or drop source material in TabsAndChords\) and it gets added to src/data/sheets/.</p></section>
+  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><span className="eyebrow">In-app practice source</span><h2>Tabs & chords</h2><p className="launcher-hint">Nothing built in for this song yet. Hand Claude the chord/tab text (or drop source material in TabsAndChords\) and it gets added to src/data/sheets/.</p></section>
   const preferred = entry.preferredSource === 'tabs' || entry.preferredSource === 'chords' ? entry.preferredSource : available[0]
   const active = view && available.includes(view) ? view : available.includes(preferred) ? preferred : available[0]
   return <section className="panel chord-panel" id="song-sheet">
@@ -276,7 +276,7 @@ export function PracticeLauncher({ song, onOpenSheet }: { song: Song, onOpenShee
       </label>
       {!videoId && song.backingTrackUrl && <a className="button secondary" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
     </div>
-    <p className="launcher-hint">Start practice opens your remembered source in a new tab and plays the backing track here — switch back once the tab loads.</p>
+    <p className="launcher-hint">Start practice opens your remembered source in a new tab and plays the backing track here. Switch back once the tab loads.</p>
     <BackingTrack song={song} autoPlaySignal={autoPlaySignal} />
   </section>
 }

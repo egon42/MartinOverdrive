@@ -54,7 +54,7 @@ function authHeaders(token: string, withContentType = false): HeadersInit {
 }
 
 async function httpError(res: Response): Promise<Error> {
-  if (res.status === 401) return new Error('Token was rejected — check it has the gist scope.')
+  if (res.status === 401) return new Error('Token was rejected. Check it has the gist scope.')
   try { const body = await res.json() as { message?: string }; return new Error(`GitHub API error ${res.status}${body?.message ? `: ${body.message}` : ''}`) }
   catch { return new Error(`GitHub API error ${res.status}`) }
 }
@@ -320,7 +320,7 @@ export function SyncPanel() {
     return <section className="panel sync-panel">
       <span className="eyebrow">Cross-device sync</span>
       <h2>Sync practice data across devices</h2>
-      <p>Stores your practice status and notes in a private GitHub Gist. Create a <strong>classic</strong> personal access token with only the <code>gist</code> scope — fine-grained tokens cannot access the Gist API — and paste that same token on every device. On a second device, also paste the Gist ID shown on the first device so both point at the same gist.</p>
+      <p>Stores your practice status and notes in a private GitHub Gist. Create a <strong>classic</strong> personal access token with only the <code>gist</code> scope (fine-grained tokens can't access the Gist API) and paste that same token on every device. On a second device, also paste the Gist ID shown on the first device so both point at the same gist.</p>
       <label><span>Personal access token</span><input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="ghp_…" autoComplete="off" /></label>
       <label><span>Existing Gist ID (optional)</span><input value={gistId} onChange={(e) => setGistId(e.target.value)} placeholder="Leave blank to create a new one" /></label>
       {(localError || status.phase === 'error') && <p className="sync-error">{localError || status.detail}</p>}
