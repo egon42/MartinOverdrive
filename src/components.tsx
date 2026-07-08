@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
-import { compactSheet, parseChordSheet } from './chords'
+import { compactSheet, parseChordSheet, sectionLabels } from './chords'
 import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
@@ -320,6 +320,41 @@ export function PracticeControls({ song }: { song: Song }) {
       <label><span>Status</span><StatusSelect songId={song.id} /></label>
       <label><span>Priority</span><select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label>
       <label className="practice-notes"><span>Quick notes</span><textarea value={entry.notes} onChange={(e) => patch(song.id, { notes: e.target.value })} placeholder="Fingering, tone, rehearsal changes…" /></label>
+    </div>
+  </section>
+}
+
+// Per-section learning checklist, derived from the [Section] markers in the song's
+// curated chord/tab sheet. Tap a section to cycle unset → learned → shaky; state
+// persists to localStorage (and rides the Gist sync) via patch(). Hidden when the
+// sheet has fewer than two sections, since a single chip carries no signal.
+export function SectionConfidence({ song }: { song: Song }) {
+  const { get, patch } = usePractice(); const entry = get(song.id)
+  const sheets = sheetsFor(song.id)
+  const labels = useMemo(() => {
+    const fromChords = sheets.chords ? sectionLabels(sheets.chords) : []
+    const fromTabs = sheets.tabs ? sectionLabels(sheets.tabs) : []
+    return fromChords.length >= fromTabs.length ? fromChords : fromTabs
+  }, [sheets.chords, sheets.tabs])
+  if (labels.length < 2) return null
+  const cycle = (label: string) => {
+    const current = entry.sections[label]
+    const next = current === undefined ? 'learned' : current === 'learned' ? 'shaky' : undefined
+    const sections = { ...entry.sections }
+    if (next) sections[label] = next; else delete sections[label]
+    patch(song.id, { sections })
+  }
+  const done = labels.filter((label) => entry.sections[label] === 'learned').length
+  return <section className="panel section-confidence">
+    <div className="section-heading"><div><span className="eyebrow">Learning progress</span><h2>Sections</h2></div><span className="section-count">{done}/{labels.length} learned</span></div>
+    <p className="launcher-hint">Tap a section to mark it — unset → learned → shaky.</p>
+    <div className="section-chips">
+      {labels.map((label) => {
+        const state = entry.sections[label]
+        return <button type="button" key={label} className={`section-chip ${state || ''}`} aria-pressed={!!state} onClick={() => cycle(label)}>
+          <span className="section-chip-dot" aria-hidden="true" />{label}{state === 'learned' ? ' ✓' : state === 'shaky' ? ' ~' : ''}
+        </button>
+      })}
     </div>
   </section>
 }

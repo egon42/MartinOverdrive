@@ -1,11 +1,12 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type RefObject } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
-import { AmpPresetField, BackingTrack, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
+import { AmpPresetField, BackingTrack, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SectionConfidence, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
+import { chordProgression } from './chords'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
-import { statuses } from './types'
+import { statuses, type Song } from './types'
 
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
 const tunings = ['Standard', 'Drop D']
@@ -50,7 +51,7 @@ export function SongDetail() {
   const { id } = useParams(); const song = songs.find((item) => item.id === id)
   const [sheetView, setSheetView] = useState<SheetKind | null>(null)
   if (!song) return <PageTitle eyebrow="Not found" title="That song isn’t in this set" copy="Return to the full song list and try another." />
-  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div></section><PracticeLauncher song={song} onOpenSheet={setSheetView}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/></dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
+  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div></section><PracticeLauncher song={song} onOpenSheet={setSheetView}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/></dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><SectionConfidence song={song}/><PracticeControls song={song}/></div>
 }
 
 export function Jam() {
@@ -79,6 +80,35 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
   return ref
 }
 
+// The live cheat card — the default show-mode view. Everything needed to play the song
+// on one screen: tuning strip, compact chord progression (derived from the chord sheet),
+// role / must-know / fallback, and the collapsed fretboard + scale hint. `innerRef` is the
+// height auto-fit ref from Show(), so a dense song shrinks to fit instead of scrolling.
+function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDivElement | null> }) {
+  const sheets = sheetsFor(song.id)
+  const progression = useMemo(() => (sheets.chords ? chordProgression(sheets.chords) : null), [sheets.chords])
+  return <div className="cheat-card" ref={innerRef}>
+    <div className="cheat-strip">
+      <span className="cheat-chip cheat-tuning">{song.tuning}</span>
+      {song.recordingNote && <span className="cheat-chip">{song.recordingNote}</span>}
+    </div>
+    {progression && <div className="cheat-progression">
+      {progression.map((row, i) => <div className="cheat-prog-row" key={i}>
+        <span className="cheat-prog-label">{row.label}</span>
+        <span className="cheat-prog-chords">{row.chords.map((chord, j) => <b className="chord-chip" key={j}>{chord}</b>)}</span>
+      </div>)}
+    </div>}
+    <div className="show-content">
+      <div className="show-scale"><FretboardPanel song={song} /><dl><Field label="Scale hint" value={song.scaleHint} /></dl></div>
+      <div className="show-fields">
+        <Field label="Role" value={song.role} />
+        <Field label="Must know" value={song.mustKnow} />
+        <Field label="Fallback" value={song.fallback} />
+      </div>
+    </div>
+  </div>
+}
+
 export function Show() {
   const [index, setIndex] = useState(() => Number(sessionStorage.getItem('overdrive-show-index') || 0)); const wakeLock = useRef<any>(null); const song = songs[Math.min(index, songs.length - 1)]
   const sheets = sheetsFor(song.id)
@@ -88,6 +118,7 @@ export function Show() {
   const views = ['scale', ...(sheets.chords ? ['chords'] : []), ...(sheets.tabs ? ['tabs'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
+  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective], 'height', 0.7)
   useEffect(() => { sessionStorage.setItem('overdrive-show-index', String(index)) }, [index])
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
@@ -135,13 +166,13 @@ export function Show() {
       <div><i style={{ width: `${((index + 1) / songs.length) * 100}%` }}/></div>
       <button type="button" className="show-nav-btn" disabled={index === songs.length - 1} onClick={() => setIndex((i) => Math.min(songs.length - 1, i + 1))} aria-label="Next song">›</button>
     </div>
-    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ''}`}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1><div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>
-    {(sheets.chords || sheets.tabs) && <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Scale & notes</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div>}
+    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1><div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>
+    {(sheets.chords || sheets.tabs) && <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Cheat</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div>}
     {effective === 'chords'
       ? <div className="show-sheet"><ChordSheetView text={sheets.chords!}/></div>
       : effective === 'tabs'
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
-        : <div className="show-content"><div className="show-scale"><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="show-fields"><Field label="Band tuning" value={song.tuning}/>{song.recordingNote && <Field label="Tab note" value={song.recordingNote}/>}<Field label="Role" value={song.role}/><Field label="Must know" value={song.mustKnow}/><Field label="Fallback" value={song.fallback}/></div></div>}</article></div>
+        : <CheatCard song={song} innerRef={cheatRef}/>}</article></div>
 }
 
 function PageTitle({ eyebrow, title, copy, compact = false }: { eyebrow?: string, title: string, copy?: string, compact?: boolean }) { return <header className={`page-title ${compact ? 'compact' : ''}`}>{eyebrow && <span className="eyebrow">{eyebrow}</span>}<h1>{title}</h1>{copy && <p>{copy}</p>}</header> }
