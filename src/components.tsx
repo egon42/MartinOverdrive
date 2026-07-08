@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
+import { useMemo, useState, type CSSProperties, type ReactNode } from 'react'
 import { compactSheet, parseChordSheet } from './chords'
 import type { Song } from './types'
 import { statuses } from './types'
@@ -201,30 +201,27 @@ export function TabText({ text }: { text: string }) {
 
 export type SheetKind = 'chords' | 'tabs'
 
-// Curated tabs/chords built into the app (src/data/sheets + public/sheets).
-// `view` is lifted so the practice launcher can flip the panel to the source it opens.
+// Curated tabs/chords built into the app (src/data/sheets). `view`/`onViewChange` keep
+// the Chords/Tabs selection so the toggle can switch it.
 export function SheetPanel({ song, view, onViewChange }: { song: Song, view: SheetKind | null, onViewChange: (kind: SheetKind) => void }) {
   const { get } = usePractice(); const entry = get(song.id)
   const sheets = sheetsFor(song.id)
   const available: SheetKind[] = ([['chords', sheets.chords], ['tabs', sheets.tabs]] as const).filter(([, data]) => data).map(([kind]) => kind)
-  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><span className="eyebrow">In-app practice source</span><h2>Tabs & chords</h2><p className="launcher-hint">Nothing built in for this song yet. Hand Claude the chord/tab text (or drop source material in TabsAndChords\) and it gets added to src/data/sheets/.</p></section>
+  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><h2>Tabs & chords</h2><p className="launcher-hint">Nothing built in for this song yet.</p></section>
   const preferred = entry.preferredSource === 'tabs' || entry.preferredSource === 'chords' ? entry.preferredSource : available[0]
   const active = view && available.includes(view) ? view : available.includes(preferred) ? preferred : available[0]
   return <section className="panel chord-panel" id="song-sheet">
-    <div className="section-heading"><div><span className="eyebrow">In-app practice source</span><h2>Tabs & chords</h2></div>
+    <div className="section-heading"><div><h2>Tabs & chords</h2></div>
       {available.length > 1 && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type"><button type="button" role="tab" aria-selected={active === 'chords'} className={active === 'chords' ? 'active' : ''} onClick={() => onViewChange('chords')}>Chords</button><button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button></div>}</div>
     {active === 'chords' ? <ChordSheetView text={sheets.chords!}/> : <TabText text={sheets.tabs!}/>}
   </section>
 }
 
 // Inline YouTube backing-track player with a play/pause toggle — self-contained so
-// it can drop into both the practice launcher and jam-page cards. `autoPlaySignal`
-// lets a caller (PracticeLauncher's "Start practice" button) trigger playback from
-// outside without lifting the playing state itself: bump the number to start it.
-export function BackingTrack({ song, autoPlaySignal }: { song: Song, autoPlaySignal?: number }) {
+// it can drop into the song page and jam-page cards.
+export function BackingTrack({ song }: { song: Song }) {
   const [playing, setPlaying] = useState(false)
   const videoId = youtubeId(song.backingTrackUrl)
-  useEffect(() => { if (autoPlaySignal) setPlaying(true) }, [autoPlaySignal])
   if (!videoId) return null
   return <>
     <button className="secondary" onClick={() => setPlaying((value) => !value)}>{playing ? 'Stop backing track' : 'Play backing track'}</button>
@@ -232,42 +229,15 @@ export function BackingTrack({ song, autoPlaySignal }: { song: Song, autoPlaySig
   </>
 }
 
-// One-click practice: opens the remembered tab/chord source in a new tab and starts
-// the backing track embedded here, replacing the old juggle of three browser tabs.
-// (Songsterr and Ultimate Guitar both forbid iframing, so those open externally;
-// curated in-app sheets don't need a second tab at all.)
-export function PracticeLauncher({ song, onOpenSheet }: { song: Song, onOpenSheet?: (kind: SheetKind) => void }) {
-  const { get, patch } = usePractice(); const entry = get(song.id)
-  const [autoPlaySignal, setAutoPlaySignal] = useState(0)
+// Backing-track panel for the song page: play the track here and scroll to whatever
+// you want to see below. (No embed possible for a few songs — fall back to a link.)
+export function PracticeLauncher({ song }: { song: Song }) {
   const videoId = youtubeId(song.backingTrackUrl)
-  const searches = tabSearchUrls(song)
-  const sheets = sheetsFor(song.id)
-  const savedSongsterr = isSiteUrl(entry.savedSongsterrUrl, 'songsterr.com') ? entry.savedSongsterrUrl : ''
-  const savedUltimateGuitar = isSiteUrl(entry.savedUltimateGuitarUrl, 'ultimate-guitar.com') ? entry.savedUltimateGuitarUrl : ''
-  const sourceUrls = {
-    songsterr: savedSongsterr || song.songsterrUrl || searches.songsterr,
-    ultimateGuitar: savedUltimateGuitar || song.ultimateGuitarUrl || searches.ultimateGuitar,
-  }
-  // Start practice always opens the in-app chords when they exist (then in-app tabs, then
-  // an external chart) — there's no source picker to fiddle with mid-practice.
-  const source = (sheets.chords ? 'chords' : sheets.tabs ? 'tabs' : savedSongsterr || song.songsterrUrl ? 'songsterr' : 'ultimateGuitar') as 'songsterr' | 'ultimateGuitar' | SheetKind
-  const start = () => {
-    if (source === 'chords' || source === 'tabs') {
-      onOpenSheet?.(source)
-      // rAF so the scroll runs after the backing player mounts above the sheet — a
-      // synchronous scroll would land ~330px short of the target after the layout shift.
-      requestAnimationFrame(() => document.getElementById('song-sheet')?.scrollIntoView({ behavior: 'smooth' }))
-    } else window.open(sourceUrls[source], '_blank', 'noopener')
-    if (videoId) setAutoPlaySignal((n) => n + 1)
-    patch(song.id, { lastPracticed: new Date().toISOString().slice(0, 10), sessions: entry.sessions + 1 })
-  }
+  if (!song.backingTrackUrl) return null
   return <section className="panel practice-launcher">
-    <div className="launcher-row">
-      <button onClick={start}>▶ Start practice</button>
-      {!videoId && song.backingTrackUrl && <a className="button secondary" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
-    </div>
-    <p className="launcher-hint">{source === 'chords' || source === 'tabs' ? 'Start practice jumps to the in-app chords below and plays the backing track here.' : 'Start practice opens a chart in a new tab and plays the backing track here.'}</p>
-    <BackingTrack song={song} autoPlaySignal={autoPlaySignal} />
+    {videoId
+      ? <BackingTrack song={song} />
+      : <a className="button secondary" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
   </section>
 }
 
