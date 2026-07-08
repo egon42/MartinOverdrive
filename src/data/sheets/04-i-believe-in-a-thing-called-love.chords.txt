@@ -1,0 +1,19 @@
+Standard
+
+[Intro]
+F# A B E B A
+
+[Verse]
+F# A B A E B A
+
+[Bridge]
+E F#m A A# B
+
+[Chorus]
+E A F# B E A F# B C#m D
+
+[Solo]
+E A F# B E A F# B C#m D
+
+[Outro]
+F# A B E B A

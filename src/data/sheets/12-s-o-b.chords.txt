@@ -1,0 +1,15 @@
+Standard
+
+[Intro]
+
+(stomp-clap, vocals only)
+
+[Verse]
+E A B
+
+[Chorus]
+E A E B E A B A E
+
+[Outro]
+
+(stomp-clap, vocals only)
