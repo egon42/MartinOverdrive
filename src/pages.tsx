@@ -96,9 +96,8 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
     : derived
   return <div className="cheat-card" ref={innerRef}>
     <div className="cheat-strip">
-      <span className="cheat-chip cheat-tuning">{song.tuning}</span>
+      {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
       {custom?.capo && <span className="cheat-chip cheat-capo">{custom.capo}</span>}
-      {song.recordingNote && <span className="cheat-chip">{song.recordingNote}</span>}
       <PresetBadges songId={song.id} showNotes />
     </div>
     {rows && <div className="cheat-progression">
