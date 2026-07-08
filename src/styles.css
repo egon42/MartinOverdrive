@@ -93,6 +93,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .cheat-chip{border:1px solid #36423e;border-radius:999px;padding:.28em .7em;font-size:.8em;font-weight:750;color:#c5cec9}
 .cheat-chip.cheat-tuning{background:var(--acid);color:#061008;border-color:var(--acid)}
+.cheat-chip.cheat-capo{background:var(--orange);color:#fff;border-color:var(--orange)}
 .cheat-progression{display:flex;flex-direction:column;gap:8px;border-top:1px solid #36423e;border-bottom:1px solid #36423e;padding:12px 0}
 .cheat-prog-row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
 .cheat-prog-label{flex:0 0 auto;min-width:5em;font-size:.6em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
@@ -102,16 +103,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-card .field dt{font-size:.6em}
 .cheat-card .show-fields .field dd{font-size:1.05em}
 .cheat-card .show-scale .field dd{font-size:.82em}
-
-/* Per-section learning checklist on the song page */
-.section-confidence .section-count{font-size:.8rem;color:var(--muted);font-weight:750;white-space:nowrap}
-.section-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.section-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:.5rem .85rem;font-size:.82rem;font-weight:700;cursor:pointer}
-.section-chip-dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:#4a5752}
-.section-chip.learned{border-color:var(--acid);color:var(--acid)}
-.section-chip.learned .section-chip-dot{background:var(--acid)}
-.section-chip.shaky{border-color:var(--orange);color:var(--orange)}
-.section-chip.shaky .section-chip-dot{background:var(--orange)}
+/* Amp preset chips sit inline in the strip (no dedicated row) to reclaim vertical space */
+.cheat-strip .preset-badges{gap:6px}
+.cheat-strip .preset-notes{font-size:.72em;color:#c5cec9}
 
 /* Show mode: landscape reclaims height for the scrollable sheet + tighter chrome */
 @media(orientation:landscape){

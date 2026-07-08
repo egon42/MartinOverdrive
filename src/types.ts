@@ -25,8 +25,6 @@ export interface Song {
   source: Record<string, string>
 }
 
-export type SectionConfidence = 'learned' | 'shaky'
-
 export interface PracticeEntry {
   status: PracticeStatus
   notes: string
@@ -37,9 +35,6 @@ export interface PracticeEntry {
   savedSongsterrUrl: string
   savedUltimateGuitarUrl: string
   preferredSource: '' | 'songsterr' | 'ultimateGuitar' | 'chords' | 'tabs'
-  // Per-section learning progress, keyed by section label ("Verse", "Chorus"). A
-  // missing key means unset; only learned/shaky sections are stored.
-  sections: Record<string, SectionConfidence>
   updatedAt: string
 }
 

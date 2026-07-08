@@ -1,0 +1,135 @@
+{
+  "01-welcome-home": { "sections": [
+    { "section": "Verse", "chords": "Em C D" },
+    { "section": "Chorus", "chords": "F Am C F Am G" },
+    { "section": "Bridge", "chords": "F Am G F" }
+  ] },
+  "02-all-the-small-things": { "sections": [
+    { "section": "Intro", "chords": "G F C F" },
+    { "section": "Verse / Chorus", "chords": "C G F" }
+  ] },
+  "03-a-little-less-conversation": { "sections": [
+    { "section": "Verse", "chords": "E A" },
+    { "section": "Chorus", "chords": "E A E G A D E B" },
+    { "section": "Bridge", "chords": "E G A B" }
+  ] },
+  "04-i-believe-in-a-thing-called-love": { "sections": [
+    { "section": "Verse", "chords": "F# A B A E B A" },
+    { "section": "Chorus", "chords": "E A F# B C#m D" },
+    { "section": "Bridge", "chords": "E F#m A A# B" }
+  ] },
+  "05-thunderstruck": { "sections": [
+    { "section": "Riff", "chords": "B5 E5" },
+    { "section": "Verse", "chords": "B5 E5 B5 A5 E5" },
+    { "section": "Chorus", "chords": "B5 A5 E5 A5 E5" },
+    { "section": "Solo", "chords": "E5 B5 A5" }
+  ] },
+  "06-don-t-stop-believin": { "sections": [
+    { "section": "Verse", "chords": "E B C#m A E B G#m A" },
+    { "section": "Chorus", "chords": "A E B E A B E" }
+  ] },
+  "07-tribute": { "sections": [
+    { "section": "Verse", "chords": "Am G F" },
+    { "section": "Rock part", "chords": "D F C G F" },
+    { "section": "Outro", "chords": "E F" }
+  ] },
+  "08-while-my-guitar-gently-weeps": { "sections": [
+    { "section": "Verse", "chords": "Am Am/G Am/F# Am/F Am G D/F# E" },
+    { "section": "Bridge", "chords": "A C#m F#m C#m Bm E" }
+  ] },
+  "09-pride-and-joy": { "sections": [
+    { "section": "12-bar blues", "chords": "E A B7 (shuffle in E)" }
+  ] },
+  "10-zombie": { "sections": [
+    { "section": "Whole song", "chords": "Em C G D" }
+  ] },
+  "11-hunger-strike": { "sections": [
+    { "section": "Verse / Chorus", "chords": "G A7sus4 G Cadd9" },
+    { "section": "Bridge", "chords": "D5 E5 D5 E5 Emadd9" }
+  ] },
+  "12-s-o-b": { "sections": [
+    { "section": "Verse", "chords": "E A B" },
+    { "section": "Chorus", "chords": "E A E B E A B A E" }
+  ] },
+  "13-save-a-horse-ride-a-cowboy": { "sections": [
+    { "section": "Verse", "chords": "E A" },
+    { "section": "Chorus", "chords": "E A D E G A" }
+  ] },
+  "14-sweet-home-alabama": { "sections": [
+    { "section": "Whole song", "chords": "D C G" }
+  ] },
+  "15-dani-california": { "sections": [
+    { "section": "Verse", "chords": "Am G Dm" },
+    { "section": "Chorus", "chords": "F C Dm G" },
+    { "section": "Bridge", "chords": "Bm G F#" }
+  ] },
+  "16-teenage-dirtbag": { "sections": [
+    { "section": "Verse / Chorus", "chords": "E B E A" }
+  ] },
+  "17-the-pretender": { "sections": [
+    { "section": "Verse", "chords": "Am F#5 F G5" },
+    { "section": "Chorus", "chords": "Am D/F# F" },
+    { "section": "Bridge", "chords": "A5" }
+  ] },
+  "18-here-it-goes-again": { "sections": [
+    { "section": "Verse", "chords": "C G Bb F" },
+    { "section": "Pre-Chorus", "chords": "E A" },
+    { "section": "Chorus", "chords": "C G Bb F A G C" },
+    { "section": "Solo", "chords": "Eb Bb" }
+  ] },
+  "19-purple-rain": { "sections": [
+    { "section": "Verse", "chords": "G Em7 D C" },
+    { "section": "Chorus", "chords": "C G Em7 D G" }
+  ] },
+  "20-when-i-come-around": { "sections": [
+    { "section": "Verse", "chords": "G5 D5 Em C5" },
+    { "section": "Chorus", "chords": "A5 C5 A5 C5 G5 D5 Em C5" }
+  ] },
+  "21-the-middle": { "sections": [
+    { "section": "Whole song", "chords": "D A G" }
+  ] },
+  "22-dream-on": { "sections": [
+    { "section": "Verse", "chords": "Em Em7 Em6 Am6" },
+    { "section": "Chorus", "chords": "Em D C D Em" },
+    { "section": "Climax", "chords": "A B C D Em" }
+  ] },
+  "23-lola-montez": { "sections": [
+    { "section": "Verse", "chords": "D G A D" },
+    { "section": "Chorus", "chords": "G A D Bm A D" }
+  ] },
+  "24-mary-jane-s-last-dance": { "sections": [
+    { "section": "Verse", "chords": "Am G D Am" },
+    { "section": "Chorus", "chords": "Em A Em A G" }
+  ] },
+  "25-valerie": { "capo": "Capo 1", "sections": [
+    { "section": "Verse / Chorus", "chords": "D Em" },
+    { "section": "Pre-Chorus", "chords": "G F#m A" }
+  ] },
+  "26-voodoo-child-slight-return": { "sections": [
+    { "section": "Verse", "chords": "E G A" },
+    { "section": "Chorus", "chords": "C7 D7 E G A" }
+  ] },
+  "27-fat-bottomed-girls": { "sections": [
+    { "section": "Verse", "chords": "D A D G D A D" },
+    { "section": "Chorus", "chords": "D C G D C A D" },
+    { "section": "Interlude", "chords": "G D A" }
+  ] },
+  "28-mama-i-m-coming-home": { "sections": [
+    { "section": "Verse", "chords": "E A E" },
+    { "section": "Pre-Chorus", "chords": "C#m A E C#m A B" },
+    { "section": "Chorus", "chords": "A E A B E A B C D E" },
+    { "section": "Bridge", "chords": "G A E B" }
+  ] },
+  "29-ain-t-goin-down-til-the-sun-comes-up": { "sections": [
+    { "section": "Verse", "chords": "C F C G7 C" },
+    { "section": "Chorus", "chords": "F C F C G7 C" }
+  ] },
+  "30-pink-pony-club": { "capo": "Capo 4", "sections": [
+    { "section": "Verse / Chorus", "chords": "D Em Bm G" },
+    { "section": "Bridge", "chords": "G A Em Bm" }
+  ] },
+  "31-banditos": { "sections": [
+    { "section": "Verse", "chords": "E D A E" },
+    { "section": "Chorus", "chords": "E A B C#m A B E" }
+  ] }
+}

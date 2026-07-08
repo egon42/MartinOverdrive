@@ -129,28 +129,6 @@ export function chordProgression(text: string): ProgressionRow[] | null {
   return groups.map((group) => ({ label: group.labels.join(' / ') || 'Section', chords: display(group.chords).chords }))
 }
 
-// Canonical section names, matched by prefix. Longer/qualified forms (Pre-Chorus,
-// Post-Chorus) come before the bare form so they win. A bracket label is kept only if it
-// starts with one of these — that drops incidental asides ("[x2]", "[play 6 times]") and
-// Songsterr rehearsal letters ("[A]".."[P]"), and collapses variants ("Chorus 2",
-// "Chorus A3 (Clean)", "solo") to the canonical chip so the checklist stays clean.
-const SECTIONS = ['Intro', 'Verse', 'Pre-Chorus', 'Post-Chorus', 'Chorus', 'Bridge', 'Solo', 'Interlude', 'Instrumental', 'Breakdown', 'Break', 'Refrain', 'Hook', 'Outro', 'Ending', 'Coda', 'Riff', 'Tag', 'Vamp', 'Build', 'Drop', 'Chant', 'Theme', 'Head', 'Turnaround', 'Part', 'Section']
-const unify = (value: string) => value.toLowerCase().replace(/[\s-]+/g, ' ')
-
-// Ordered, de-duplicated canonical section labels for the learning checklist. Works on a
-// chord sheet or verbatim tab text (both use "[Intro]" / "[Chorus 1]" markers, and tab
-// exports sometimes nest a rehearsal mark as "[[A] Chorus 1]").
-export function sectionLabels(text: string): string[] {
-  const normalized = text.replace(/\[\s*\[[^\]\n]*\]\s*/g, '[') // "[[A] Chorus 1]" -> "[Chorus 1]"
-  const out: string[] = []
-  for (const match of normalized.matchAll(/\[([^\][\n]+)\]/g)) {
-    const key = unify(match[1])
-    const canon = SECTIONS.find((section) => key.startsWith(unify(section)))
-    if (canon && !out.includes(canon)) out.push(canon)
-  }
-  return out
-}
-
 // Compact form for show mode: chord sequence + a short lyric cue per line.
 export interface CompactLine { kind: 'lyric' | 'tab' | 'section'; chords: string[]; cue: string }
 

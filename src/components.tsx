@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
-import { compactSheet, parseChordSheet, sectionLabels } from './chords'
+import { compactSheet, parseChordSheet } from './chords'
 import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
@@ -248,11 +248,9 @@ export function PracticeLauncher({ song, onOpenSheet }: { song: Song, onOpenShee
     songsterr: savedSongsterr || song.songsterrUrl || searches.songsterr,
     ultimateGuitar: savedUltimateGuitar || song.ultimateGuitarUrl || searches.ultimateGuitar,
   }
-  // 'sheet' was the pre-curation value for the in-app source; treat it as chords.
-  const stored = (entry.preferredSource as string) === 'sheet' ? 'chords' : entry.preferredSource
-  const valid = (value: string) => value === 'songsterr' || value === 'ultimateGuitar' || (value === 'chords' && sheets.chords) || (value === 'tabs' && sheets.tabs)
-  const fallback = sheets.chords ? 'chords' : sheets.tabs ? 'tabs' : savedSongsterr || song.songsterrUrl ? 'songsterr' : 'ultimateGuitar'
-  const source = (stored && valid(stored) ? stored : fallback) as 'songsterr' | 'ultimateGuitar' | SheetKind
+  // Start practice always opens the in-app chords when they exist (then in-app tabs, then
+  // an external chart) — there's no source picker to fiddle with mid-practice.
+  const source = (sheets.chords ? 'chords' : sheets.tabs ? 'tabs' : savedSongsterr || song.songsterrUrl ? 'songsterr' : 'ultimateGuitar') as 'songsterr' | 'ultimateGuitar' | SheetKind
   const start = () => {
     if (source === 'chords' || source === 'tabs') {
       onOpenSheet?.(source)
@@ -266,17 +264,9 @@ export function PracticeLauncher({ song, onOpenSheet }: { song: Song, onOpenShee
   return <section className="panel practice-launcher">
     <div className="launcher-row">
       <button onClick={start}>▶ Start practice</button>
-      <label><span>Tabs / chords source</span>
-        <select value={source} onChange={(e) => patch(song.id, { preferredSource: e.target.value as 'songsterr' | 'ultimateGuitar' | SheetKind })}>
-          {sheets.chords && <option value="chords">In-app chords</option>}
-          {sheets.tabs && <option value="tabs">In-app tabs</option>}
-          <option value="songsterr">Songsterr (tabs)</option>
-          <option value="ultimateGuitar">Ultimate Guitar (chords)</option>
-        </select>
-      </label>
       {!videoId && song.backingTrackUrl && <a className="button secondary" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
     </div>
-    <p className="launcher-hint">Start practice opens your remembered source in a new tab and plays the backing track here. Switch back once the tab loads.</p>
+    <p className="launcher-hint">{source === 'chords' || source === 'tabs' ? 'Start practice jumps to the in-app chords below and plays the backing track here.' : 'Start practice opens a chart in a new tab and plays the backing track here.'}</p>
     <BackingTrack song={song} autoPlaySignal={autoPlaySignal} />
   </section>
 }
@@ -320,41 +310,6 @@ export function PracticeControls({ song }: { song: Song }) {
       <label><span>Status</span><StatusSelect songId={song.id} /></label>
       <label><span>Priority</span><select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label>
       <label className="practice-notes"><span>Quick notes</span><textarea value={entry.notes} onChange={(e) => patch(song.id, { notes: e.target.value })} placeholder="Fingering, tone, rehearsal changes…" /></label>
-    </div>
-  </section>
-}
-
-// Per-section learning checklist, derived from the [Section] markers in the song's
-// curated chord/tab sheet. Tap a section to cycle unset → learned → shaky; state
-// persists to localStorage (and rides the Gist sync) via patch(). Hidden when the
-// sheet has fewer than two sections, since a single chip carries no signal.
-export function SectionConfidence({ song }: { song: Song }) {
-  const { get, patch } = usePractice(); const entry = get(song.id)
-  const sheets = sheetsFor(song.id)
-  const labels = useMemo(() => {
-    const fromChords = sheets.chords ? sectionLabels(sheets.chords) : []
-    const fromTabs = sheets.tabs ? sectionLabels(sheets.tabs) : []
-    return fromChords.length >= fromTabs.length ? fromChords : fromTabs
-  }, [sheets.chords, sheets.tabs])
-  if (labels.length < 2) return null
-  const cycle = (label: string) => {
-    const current = entry.sections[label]
-    const next = current === undefined ? 'learned' : current === 'learned' ? 'shaky' : undefined
-    const sections = { ...entry.sections }
-    if (next) sections[label] = next; else delete sections[label]
-    patch(song.id, { sections })
-  }
-  const done = labels.filter((label) => entry.sections[label] === 'learned').length
-  return <section className="panel section-confidence">
-    <div className="section-heading"><div><span className="eyebrow">Learning progress</span><h2>Sections</h2></div><span className="section-count">{done}/{labels.length} learned</span></div>
-    <p className="launcher-hint">Tap a section to mark it — unset → learned → shaky.</p>
-    <div className="section-chips">
-      {labels.map((label) => {
-        const state = entry.sections[label]
-        return <button type="button" key={label} className={`section-chip ${state || ''}`} aria-pressed={!!state} onClick={() => cycle(label)}>
-          <span className="section-chip-dot" aria-hidden="true" />{label}{state === 'learned' ? ' ✓' : state === 'shaky' ? ' ~' : ''}
-        </button>
-      })}
     </div>
   </section>
 }
