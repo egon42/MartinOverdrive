@@ -86,7 +86,7 @@
     { "section": "Chorus", "chords": "A5 C5 A5 C5 G5 D5 Em C5", "shapes": "-022-- -355-- -022-- -355-- 355--- -577-- -799-- -355--" }
   ] },
   "21-the-middle": { "sections": [
-    { "section": "Whole song", "chords": "D A G" }
+    { "section": "Whole song", "chords": "D A G", "shapes": "000--- 777--- 555---" }
   ] },
   "22-dream-on": { "sections": [
     { "section": "Verse", "chords": "Em Em7 Em6 Am6" },
