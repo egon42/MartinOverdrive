@@ -76,6 +76,15 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .compact-cue{color:#aab5b0;font-size:.85em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .sheet-compact .sheet-section{margin:.5em 0 .2em}.sheet-compact .sheet-tab{font-size:.72em}
 .show-view-toggle{margin:0 0 12px}
+/* Show-mode autoscroll bar (teleprompter): play/pause + −/+ speed steppers, big tap targets */
+.show-autoscroll{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.show-autoscroll button{border:1px solid var(--line);background:transparent;color:inherit;border-radius:999px;cursor:pointer;font-weight:800;line-height:1;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+.show-autoscroll button:disabled{opacity:.4;cursor:default}
+.autoscroll-play{min-width:2.6rem;height:2.6rem;font-size:1.05rem}
+.autoscroll-play[aria-pressed=true]{background:var(--acid);border-color:var(--acid);color:#061008}
+.autoscroll-step{width:2.4rem;height:2.4rem;font-size:1.3rem}
+.autoscroll-speed{min-width:3.4em;text-align:center;color:var(--muted);font-size:.85rem;font-weight:750;font-variant-numeric:tabular-nums}
+.autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase}
 .show-song.sheet-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .show-sheet{flex:1;min-height:0;overflow:auto}
 @media(max-width:760px){.show-song.sheet-view .show-preset{margin-bottom:10px}.show-song.sheet-view .show-preset .preset-chip{font-size:.85rem}}

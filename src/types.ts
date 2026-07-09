@@ -35,6 +35,7 @@ export interface PracticeEntry {
   savedSongsterrUrl: string
   savedUltimateGuitarUrl: string
   preferredSource: '' | 'songsterr' | 'ultimateGuitar' | 'chords' | 'tabs'
+  scrollSpeed: number // show-mode autoscroll px/second; 0 = use the default
   updatedAt: string
 }
 

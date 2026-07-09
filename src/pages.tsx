@@ -13,6 +13,8 @@ import { statuses, type Song } from './types'
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
 const tunings = ['Standard', 'Drop D']
 const priorityLabel = ['None', 'Low', 'Medium', 'High']
+// Show-mode autoscroll speed, px/second (per-song, stored as PracticeEntry.scrollSpeed).
+const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED = 120, SCROLL_SPEED_STEP = 4
 
 export function Dashboard() {
   const { get, exportBackup, importBackup } = usePractice(); const navigate = useNavigate(); const fileRef = useRef<HTMLInputElement>(null)
@@ -87,6 +89,47 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
   return ref
 }
 
+// Teleprompter autoscroll: while `playing`, creep `ref`'s scroll container down at
+// `speed` px/second. rAF timestamps make it frame-rate independent, and each frame
+// reads+writes the live scrollTop so a native swipe repositions the sheet and the
+// crawl simply resumes from wherever the finger left it. A finger on the sheet pauses
+// the creep (holding); up/cancel listen on window so a drag that drifts off the
+// element still un-pauses (the lesson from 43f64da). Stops and calls onReachEnd at the
+// bottom. No-op when ref is null (the cheat view has no autoscroll).
+function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: number, playing: boolean, onReachEnd: () => void) {
+  const onReachEndRef = useRef(onReachEnd)
+  onReachEndRef.current = onReachEnd
+  useEffect(() => {
+    const el = ref?.current
+    if (!el || !playing || speed <= 0) return
+    let raf = 0
+    let last = 0
+    let holding = false
+    const step = (now: number) => {
+      if (!last) last = now
+      const dt = Math.min((now - last) / 1000, 0.1) // clamp so a backgrounded tab doesn't jump on resume
+      last = now
+      if (!holding && dt > 0) {
+        el.scrollTop += speed * dt
+        if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) { onReachEndRef.current(); return }
+      }
+      raf = requestAnimationFrame(step)
+    }
+    const onDown = () => { holding = true }
+    const onUp = () => { holding = false; last = 0 } // reset clock so the paused gap isn't one big jump
+    el.addEventListener('pointerdown', onDown)
+    window.addEventListener('pointerup', onUp)
+    window.addEventListener('pointercancel', onUp)
+    raf = requestAnimationFrame(step)
+    return () => {
+      cancelAnimationFrame(raf)
+      el.removeEventListener('pointerdown', onDown)
+      window.removeEventListener('pointerup', onUp)
+      window.removeEventListener('pointercancel', onUp)
+    }
+  }, [ref, speed, playing])
+}
+
 // The live cheat card — the default show-mode view. Everything needed to play the song
 // on one screen: tuning strip, compact chord progression (derived from the chord sheet),
 // role / must-know / fallback, and the collapsed fretboard + scale hint. `innerRef` is the
@@ -137,6 +180,33 @@ export function Show() {
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
   const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective], 'height', 0.7)
+  const chordsRef = useRef<HTMLDivElement>(null)
+  // Autoscroll: only the chords/tabs sheets scroll (the cheat card auto-fits one screen).
+  const { get, patch } = usePractice()
+  const speed = get(song.id).scrollSpeed || DEFAULT_SCROLL_SPEED
+  const [playing, setPlaying] = useState(false)
+  const [scrollable, setScrollable] = useState(false)
+  const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'chords' ? chordsRef : null
+  useAutoScroll(scrollTarget, speed, playing, () => setPlaying(false))
+  // New song or view: start paused at the top, and re-measure whether the sheet overflows.
+  // Resize (e.g. phone rotation) only re-measures — it must not yank scroll back to the top.
+  useLayoutEffect(() => {
+    setPlaying(false)
+    const el = scrollTarget?.current
+    if (el) el.scrollTop = 0
+    const measure = () => setScrollable(!!el && el.scrollHeight > el.clientHeight + 1)
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index, effective, sheets.chords, sheets.tabs])
+  const bumpSpeed = (delta: number) => patch(song.id, { scrollSpeed: Math.max(MIN_SCROLL_SPEED, Math.min(MAX_SCROLL_SPEED, speed + delta)) })
+  // Toggle play; if we're starting from the very bottom (a finished crawl), rewind to the top first.
+  const togglePlay = () => setPlaying((p) => {
+    const el = scrollTarget?.current
+    if (!p && el && el.scrollTop + el.clientHeight >= el.scrollHeight - 1) el.scrollTop = 0
+    return !p
+  })
   useEffect(() => { sessionStorage.setItem('overdrive-show-index', String(index)) }, [index])
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
@@ -144,11 +214,14 @@ export function Show() {
       if (e.key === 'ArrowLeft') setIndex((i) => Math.max(0, i - 1))
       if (e.key === 'ArrowDown') cycleView(1)
       if (e.key === 'ArrowUp') cycleView(-1)
+      // Space toggles autoscroll — but only as a global shortcut; if a control is focused,
+      // let it handle its own Space (avoids a double-toggle with the button's native activation).
+      if (e.key === ' ' && scrollable && !(e.target as HTMLElement)?.closest('button,a,input,textarea,select')) { e.preventDefault(); togglePlay() }
     }
     window.addEventListener('keydown', key)
     return () => window.removeEventListener('keydown', key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effective, sheets.chords, sheets.tabs])
+  }, [effective, sheets.chords, sheets.tabs, scrollable])
   // Auto wake lock: request on mount, release on unmount, and silently re-acquire on
   // visibilitychange (the browser drops the lock whenever the tab/screen goes
   // background and never restores it automatically).
@@ -186,8 +259,14 @@ export function Show() {
     </div>
     <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>}
     {(sheets.chords || sheets.tabs) && <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Cheat</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div>}
+    {effective !== 'scale' && scrollable && <div className="show-autoscroll">
+      <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
+      <button type="button" className="autoscroll-step" aria-label="Slower" disabled={speed <= MIN_SCROLL_SPEED} onClick={() => bumpSpeed(-SCROLL_SPEED_STEP)}>−</button>
+      <span className="autoscroll-speed" aria-label={`Scroll speed ${speed} pixels per second`}>{speed}<i>px/s</i></span>
+      <button type="button" className="autoscroll-step" aria-label="Faster" disabled={speed >= MAX_SCROLL_SPEED} onClick={() => bumpSpeed(SCROLL_SPEED_STEP)}>+</button>
+    </div>}
     {effective === 'chords'
-      ? <div className="show-sheet"><ChordSheetView text={sheets.chords!}/></div>
+      ? <div className="show-sheet" ref={chordsRef}><ChordSheetView text={sheets.chords!}/></div>
       : effective === 'tabs'
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
         : <CheatCard song={song} innerRef={cheatRef}/>}</article></div>
