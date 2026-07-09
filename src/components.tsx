@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useMemo, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { compactSheet, parseChordSheet } from './chords'
+import { chordShape, type ChordShape } from './chordShapes'
 import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
@@ -9,6 +10,61 @@ import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition }
 import { sheetsFor } from './sheets'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
+
+// A small SVG fingering diagram for one chord. Strings run left→right as low-E (6th)
+// to high-e (1st), the standard chord-chart layout; a labelled row underneath removes
+// any ambiguity. Frets 5+ shift into a window with a "Nfr" position label.
+function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
+  const played = shape.filter((f): f is number => typeof f === 'number' && f > 0)
+  const maxFret = played.length ? Math.max(...played) : 0
+  const minFret = played.length ? Math.min(...played) : 1
+  const baseFret = maxFret > 4 ? minFret : 1
+  const fretCount = Math.max(4, maxFret - baseFret + 1)
+  const GAP = 15, FRET = 19, X0 = 16, Y0 = 20
+  const x = (s: number) => X0 + s * GAP
+  const width = X0 * 2 + GAP * 5
+  const height = Y0 + FRET * fretCount + 18
+  const labels = ['E', 'A', 'D', 'G', 'B', 'e']
+  return <svg className="chord-diagram" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${name} chord diagram`}>
+    <text className="cd-name" x={width / 2} y={11} textAnchor="middle">{name}</text>
+    {/* nut (thick) when at the top of the neck, otherwise a position label */}
+    {baseFret === 1
+      ? <rect className="cd-nut" x={x(0)} y={Y0 - 2} width={GAP * 5} height={3} />
+      : <text className="cd-basefret" x={x(0) - 6} y={Y0 + FRET * 0.7} textAnchor="end">{baseFret}fr</text>}
+    {Array.from({ length: fretCount + 1 }, (_, i) => <line key={`f${i}`} className="cd-fret" x1={x(0)} y1={Y0 + i * FRET} x2={x(5)} y2={Y0 + i * FRET} />)}
+    {Array.from({ length: 6 }, (_, s) => <line key={`s${s}`} className="cd-string" x1={x(s)} y1={Y0} x2={x(s)} y2={Y0 + FRET * fretCount} />)}
+    {shape.map((fret, s) => {
+      if (fret === 'x') return <text key={s} className="cd-mark" x={x(s)} y={Y0 - 6} textAnchor="middle">✕</text>
+      if (fret === 0) return <circle key={s} className="cd-open" cx={x(s)} cy={Y0 - 9} r={3} />
+      const cy = Y0 + (fret - baseFret + 0.5) * FRET
+      return <circle key={s} className="cd-dot" cx={x(s)} cy={cy} r={5} />
+    })}
+    {labels.map((label, s) => <text key={`l${s}`} className="cd-label" x={x(s)} y={height - 4} textAnchor="middle">{label}</text>)}
+  </svg>
+}
+
+// A chord name rendered as a chip that, when tapped, pops open its fingering diagram.
+// Used everywhere chords appear (sheets, compact show-mode lines, the cheat card).
+export function ChordChip({ name }: { name: string }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLSpanElement>(null)
+  const shape = useMemo(() => chordShape(name), [name])
+  useEffect(() => {
+    if (!open) return
+    const onDown = (event: PointerEvent) => { if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false) }
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') setOpen(false) }
+    document.addEventListener('pointerdown', onDown); document.addEventListener('keydown', onKey)
+    return () => { document.removeEventListener('pointerdown', onDown); document.removeEventListener('keydown', onKey) }
+  }, [open])
+  return <span className="chord-chip-wrap" ref={ref}>
+    <b className="chord-chip" role="button" tabIndex={0} aria-expanded={open}
+      onClick={() => setOpen((value) => !value)}
+      onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) } }}>{name}</b>
+    {open && <span className="chord-pop" role="dialog" aria-label={`${name} chord`}>
+      {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
+    </span>}
+  </span>
+}
 
 export function Difficulty({ value }: { value: number | null }) {
   return <span className="difficulty" aria-label={`Difficulty ${value ?? 'unknown'} out of 5`}>{value ? '◆'.repeat(value) + '◇'.repeat(5 - value) : 'Unknown'}</span>
@@ -162,7 +218,7 @@ export function ChordSheetView({ text, compact = false }: { text: string, compac
       }
       return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.cue}</pre>
-        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <b className="chord-chip" key={i}>{chord}</b>)}</span><span className="compact-cue">{line.cue}</span></div>
+        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <ChordChip name={chord} key={i} />)}</span><span className="compact-cue">{line.cue}</span></div>
     })}</div>
   }
   return <div className="sheet-full">
@@ -174,7 +230,7 @@ export function ChordSheetView({ text, compact = false }: { text: string, compac
       }
       return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.raw}</pre>
-        : <p className="sheet-line" key={index}>{line.parts.map((part, i) => part.chord ? <b className="chord-chip" key={i}>{part.chord}</b> : <span key={i}>{part.text}</span>)}</p>
+        : <p className="sheet-line" key={index}>{line.parts.map((part, i) => part.chord ? <ChordChip name={part.chord} key={i} /> : <span key={i}>{part.text}</span>)}</p>
     })}
   </div>
 }

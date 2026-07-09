@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type RefObject } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
-import { AmpPresetField, BackingTrack, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
+import { AmpPresetField, BackingTrack, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
 import { progressionFor } from './progressions'
@@ -107,7 +107,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
     {rows && <div className="cheat-progression">
       {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
         <span className="cheat-prog-label">{row.label}</span>
-        <span className="cheat-prog-chords">{row.chords.map((chord, j) => <b className="chord-chip" key={j}>{chord}</b>)}</span>
+        <span className="cheat-prog-chords">{row.chords.map((chord, j) => <ChordChip name={chord} key={j} />)}</span>
       </div>)}
     </div>}
     <div className="show-content">
