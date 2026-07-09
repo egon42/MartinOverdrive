@@ -10,6 +10,7 @@ per-song presets for the 31-song Martin Overdrive set list.
 | `AMP-SETUP.md` | This document |
 | `fuse/*.fuse` (24 files) | Premade presets, one per amp memory slot, ready to load |
 | `generate_presets.py` | Regenerates the `.fuse` files if you tweak the tone table |
+| `load_presets.py` | Native Windows USB loader (Path A) — bulk-writes presets to the amp |
 
 ---
 
@@ -163,12 +164,12 @@ and any FUSE-modified effect lists). You can always get back to stock.
 
 ### 4.1 Back up your existing presets (do this before any writing)
 
-- **With Plug (Path A):** for each of the 24 slots — **File → Load from
+- **With Plug (Path B):** for each of the 24 slots — **File → Load from
   amplifier**, pick the slot, then **File → Save to file** into a
   `amp-presets/backup/` folder (name them `slot-01.fuse` … `slot-24.fuse`).
   Tedious but complete; ~10 minutes. Your current amp state is then fully
   restorable file-by-file the same way you load anything else.
-- **With FUSE (Path B):** Utilities → **Backup** snapshots all 24 presets in
+- **With FUSE (Path C):** Utilities → **Backup** snapshots all 24 presets in
   one click, and **Restore** puts them back wholesale. (Fender's own manual
   warns that Restore overwrites the target presets — back up before restoring
   anything.)
@@ -179,11 +180,55 @@ and any FUSE-modified effect lists). You can always get back to stock.
 **Background on the software:** Fender's official editor (**Fender FUSE**) was
 discontinued in March 2020 and is a dead Silverlight app that won't run on
 Windows 11. The `.fuse` files here use the genuine FUSE XML format (verified
-against the open-source editor's source code), and there are four working ways
-to get the tones onto the amp. **Path A is recommended; Path D involves no
-computer at all.**
+against the open-source editor's source code), and there are five working ways
+to get the tones onto the amp. **Path A (our own native-Windows loader) is
+recommended; Path E involves no computer at all.**
 
-### Path A (recommended): Plug via WSL2
+### Path A (recommended): native Windows loader — `load_presets.py`
+
+`load_presets.py` (in this folder) writes all 24 presets straight to the amp
+over USB with **no WSL2, no usbipd, no Plug**. The Mustang enumerates as a
+USB-HID device, so it talks to it through **hidapi** using Windows' built-in
+HID driver — driverless, no Zadig. The wire protocol is ported byte-for-byte
+from [offa/plug](https://github.com/offa/plug) (`Packet.cpp`,
+`PacketSerializer.cpp`, `Mustang.cpp`); it reads the same 24 presets defined in
+`generate_presets.py`, so it can never drift from the `.fuse` files.
+
+**One-time setup:**
+
+```powershell
+pip install hidapi        # bundles hidapi.dll on Windows
+```
+
+**Verify before touching the amp** (neither command needs the amp connected):
+
+```powershell
+python amp-presets\load_presets.py --self-test   # rebuilds every packet and
+                                                 # diffs it vs the .fuse files
+python amp-presets\load_presets.py --dry-run --only 2   # hex-dump a preset's packets
+```
+
+`--self-test` must report **0 mismatches** before you proceed.
+
+**Load the presets** — amp powered ON, USB plugged in, no other app (FUSE/Plug)
+holding the device, then:
+
+```powershell
+python amp-presets\load_presets.py --list        # confirm the amp is detected
+python amp-presets\load_presets.py               # write ALL 24 presets (~1 min)
+python amp-presets\load_presets.py --only 9-16    # or just a subset (1-based #s)
+```
+
+Then spin the PRESET knob and check the names march in order. If a write errors
+out, see the flags: `--init1-type 03` (alternate init byte for some V2 units)
+and `--ack-timeout`. Because writing only touches preset memory (never
+firmware — see §4.0), a bad write is at worst a garbled slot you re-flash.
+
+> **Note:** this is the one path authored specifically for this project and it
+> can't be hardware-tested from the repo, only packet-verified. If it misbehaves
+> on your unit, Path B (Plug) is the proven cross-platform fallback.
+
+### Path B: Plug via WSL2 (cross-platform fallback)
 
 [Plug](https://github.com/offa/plug) is the actively maintained open-source
 FUSE replacement (latest release Dec 2025). It supports the Mustang I V2
@@ -236,7 +281,7 @@ via WSLg).
 3. Repeat for the remaining 23 files. Then spin the PRESET knob and check the
    names march in order ("01 BIG CLEAN", "02 CHORUS CLEAN", …).
 
-### Path B: original Fender FUSE in an offline Windows 10 VM
+### Path C: original Fender FUSE in an offline Windows 10 VM
 
 If you'd rather use Fender's own software: FUSE 2.7.1 installers are preserved
 ([archive.org](https://archive.org/details/fender-fuse-full-2.7.1), plus a
@@ -254,14 +299,14 @@ Pass the amp's USB into the VM, then:
 3. Media Library → Computer tab → right-click each preset → **Save Preset to
    Amp** → pick the slot per the numbering above.
 
-### Path C: Remuda (Android) — zero-install-on-PC option
+### Path D: Remuda (Android) — zero-install-on-PC option
 
 If you have an Android phone/tablet and a USB-OTG adapter: the **Remuda** app
 (Triton Interactive, Play Store) edits Mustang V2 amps and uses the same
 `.fuse` files — copy them to the device's `REMUDA > Music > Presets` folder and
 save them to the amp from the app.
 
-### Path D: front-panel programming — no computer, zero software risk
+### Path E: front-panel programming — no computer, zero software risk
 
 This is the **safest possible path** (nothing ever touches USB), and it's a
 complete plan on its own — but it trades away fidelity. Know the hardware
@@ -371,7 +416,7 @@ After edits:
 python amp-presets\generate_presets.py
 ```
 
-then reload the changed file(s) via Path A/B/C.
+then reload the changed file(s) via any loading path (Path A–D).
 
 ---
 
