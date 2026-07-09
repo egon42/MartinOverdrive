@@ -72,10 +72,10 @@
     { "section": "Bridge", "chords": "A5" }
   ] },
   "18-here-it-goes-again": { "sections": [
-    { "section": "Verse", "chords": "C G Bb F" },
+    { "section": "Verse", "chords": "C G Bb F", "shapes": "-355-- 355--- -133-- 133---" },
     { "section": "Pre-Chorus", "chords": "E A" },
-    { "section": "Chorus", "chords": "C G Bb F A G C" },
-    { "section": "Solo", "chords": "Eb Bb" }
+    { "section": "Chorus", "chords": "C G Bb F A G C", "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355--" },
+    { "section": "Solo", "chords": "Eb Bb", "shapes": "-688-- -133--" }
   ] },
   "19-purple-rain": { "sections": [
     { "section": "Verse", "chords": "G Em7 D C" },
