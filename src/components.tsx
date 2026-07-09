@@ -224,7 +224,7 @@ export function BackingTrack({ song }: { song: Song }) {
   const videoId = youtubeId(song.backingTrackUrl)
   if (!videoId) return null
   return <>
-    <button className="secondary" onClick={() => setPlaying((value) => !value)}>{playing ? 'Stop backing track' : 'Play backing track'}</button>
+    <button className="backing-play" onClick={() => setPlaying((value) => !value)}>{playing ? 'Stop backing track' : 'Play backing track'}</button>
     {playing && <div className="backing-player"><iframe src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&playsinline=1`} title={`Backing track for ${song.title}`} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen /></div>}
   </>
 }
@@ -234,10 +234,10 @@ export function BackingTrack({ song }: { song: Song }) {
 export function PracticeLauncher({ song }: { song: Song }) {
   const videoId = youtubeId(song.backingTrackUrl)
   if (!song.backingTrackUrl) return null
-  return <section className="panel practice-launcher">
+  return <section className="practice-launcher">
     {videoId
       ? <BackingTrack song={song} />
-      : <a className="button secondary" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
+      : <a className="button backing-play" href={song.backingTrackUrl} target="_blank" rel="noreferrer"><span className="button-text">Open backing track</span><span className="button-arrow" aria-hidden="true">↗</span></a>}
   </section>
 }
 

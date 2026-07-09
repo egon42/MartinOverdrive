@@ -35,7 +35,11 @@ function useFilteredSongs() {
 }
 
 export function Practice() {
-  const { filtered, props } = useFilteredSongs(); const { get } = usePractice(); const [sort, setSort] = useState('priority'); const [direction, setDirection] = useState<'asc' | 'desc'>('desc')
+  const { filtered, props } = useFilteredSongs(); const { get } = usePractice()
+  const [sort, setSort] = useState(() => localStorage.getItem('overdrive-practice-sort') || 'priority')
+  const [direction, setDirection] = useState<'asc' | 'desc'>(() => (localStorage.getItem('overdrive-practice-sort-dir') as 'asc' | 'desc') || 'desc')
+  useEffect(() => { localStorage.setItem('overdrive-practice-sort', sort) }, [sort])
+  useEffect(() => { localStorage.setItem('overdrive-practice-sort-dir', direction) }, [direction])
   const ordered = [...filtered].sort((a, b) => {
     const comparison = sort === 'difficulty'
       ? (a.difficulty || 0) - (b.difficulty || 0)
