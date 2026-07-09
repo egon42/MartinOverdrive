@@ -11,6 +11,7 @@ per-song presets for the 31-song Martin Overdrive set list.
 | `fuse/*.fuse` (24 files) | Premade presets, one per amp memory slot, ready to load |
 | `generate_presets.py` | Regenerates the `.fuse` files if you tweak the tone table |
 | `load_presets.py` | Native Windows USB loader (Path A) — bulk-writes presets to the amp |
+| `load_presets_gui.py` + `mustang-loader.bat` | Dead-simple click-to-run window for the loader |
 
 ---
 
@@ -193,6 +194,12 @@ HID driver — driverless, no Zadig. The wire protocol is ported byte-for-byte
 from [offa/plug](https://github.com/offa/plug) (`Packet.cpp`,
 `PacketSerializer.cpp`, `Mustang.cpp`); it reads the same 24 presets defined in
 `generate_presets.py`, so it can never drift from the `.fuse` files.
+
+**Prefer clicking to typing?** After the one-time `pip install hidapi`,
+double-click **`mustang-loader.bat`** (or run `python load_presets_gui.py`) for
+a small window with Detect / Self-test / Write-all / Write-subset buttons and a
+live log. It calls the exact same verified loader below. The rest of this
+section is the command-line equivalent.
 
 **One-time setup:**
 
