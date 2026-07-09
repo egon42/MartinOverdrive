@@ -2,21 +2,21 @@ Standard (EADGBE)
 
 "The Pretender"  -  Foo Fighters (*
 Am
-  Bass: 
+ — Bass: 
 A
-  
+ – 
 B
-  
+ – 
 C
-  
+ – 
 A
           **
 Am
-  Bass: 
+ — Bass: 
 F#
-  
+ – 
 G
-  
+ – 
 F#
 )
 
@@ -24,22 +24,22 @@ F#
 
  
 Am
- 
+ –
 
  
 Amadd9
-  *
+ – *
 
  
 Am
-  **
+ – **
 
  
 Am
 
  
 F#
- 
+ –
 
  
 Am
@@ -69,7 +69,7 @@ Am
 
   
 Amadd9
-  *
+ – *
 
   
 Am
@@ -243,7 +243,7 @@ Am6
 
          
 Am
-
+…
 
 I'm the voice inside your head...  You refuse to hear.
 
