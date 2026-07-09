@@ -5,8 +5,8 @@
     { "section": "Bridge", "chords": "F Am G F" }
   ] },
   "02-all-the-small-things": { "sections": [
-    { "section": "Intro", "chords": "G F C F" },
-    { "section": "Verse / Chorus", "chords": "C G F" }
+    { "section": "Intro", "chords": "G F C F", "shapes": "355--- 133--- -355-- 133---" },
+    { "section": "Verse / Chorus", "chords": "C G F", "shapes": "-355-- 355--- 133---" }
   ] },
   "03-a-little-less-conversation": { "sections": [
     { "section": "Verse", "chords": "E A" },
@@ -19,10 +19,10 @@
     { "section": "Bridge", "chords": "E F#m A A# B" }
   ] },
   "05-thunderstruck": { "sections": [
-    { "section": "Riff", "chords": "B5 E5" },
-    { "section": "Verse", "chords": "B5 E5 B5 A5 E5" },
-    { "section": "Chorus", "chords": "B5 A5 E5 A5 E5" },
-    { "section": "Solo", "chords": "E5 B5 A5" }
+    { "section": "Riff", "chords": "B5 E5", "shapes": "-244-- 022---" },
+    { "section": "Verse", "chords": "B5 E5 B5 A5 E5", "shapes": "-244-- 022--- -244-- -022-- 022---" },
+    { "section": "Chorus", "chords": "B5 A5 E5 A5 E5", "shapes": "-244-- -022-- 022--- -022-- 022---" },
+    { "section": "Solo", "chords": "E5 B5 A5", "shapes": "022--- -244-- -022--" }
   ] },
   "06-don-t-stop-believin": { "sections": [
     { "section": "Verse", "chords": "E B C#m A E B G#m A" },
@@ -64,7 +64,7 @@
     { "section": "Bridge", "chords": "Bm G F#" }
   ] },
   "16-teenage-dirtbag": { "sections": [
-    { "section": "Verse / Chorus", "chords": "E B E A" }
+    { "section": "Verse / Chorus", "chords": "E B E A", "shapes": "022--- -244-- 022--- -022--" }
   ] },
   "17-the-pretender": { "sections": [
     { "section": "Verse", "chords": "Am F#5 F G5" },
@@ -110,9 +110,9 @@
     { "section": "Chorus", "chords": "C7 D7 E G A" }
   ] },
   "27-fat-bottomed-girls": { "sections": [
-    { "section": "Verse", "chords": "D A D G D A D" },
-    { "section": "Chorus", "chords": "D C G D C A D" },
-    { "section": "Interlude", "chords": "G D A" }
+    { "section": "Verse", "chords": "D A D G D A D", "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---" },
+    { "section": "Chorus", "chords": "D C G D C A D", "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000---" },
+    { "section": "Interlude", "chords": "G D A", "shapes": "555--- 000--- -022--" }
   ] },
   "28-mama-i-m-coming-home": { "sections": [
     { "section": "Verse", "chords": "E A E" },
