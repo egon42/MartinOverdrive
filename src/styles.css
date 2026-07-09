@@ -127,9 +127,8 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-chip[role=button]:focus-visible{outline:2px solid var(--acid);outline-offset:2px}
 .chord-chip-wrap{position:relative;display:inline-block}
 .compact-chords .chord-chip-wrap,.cheat-prog-chords .chord-chip-wrap{display:inline-flex}
-.chord-pop{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);z-index:130;background:#1b1d18;border:1px solid #3a3f37;border-radius:12px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.5);white-space:nowrap;font-style:normal}
-.chord-pop::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#1b1d18}
-.chord-pop--below{bottom:auto;top:calc(100% + 8px)}
+.chord-pop{position:fixed;z-index:130;background:#1b1d18;border:1px solid #3a3f37;border-radius:12px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.5);white-space:nowrap;font-style:normal}
+.chord-pop::after{content:"";position:absolute;top:100%;left:calc(50% + var(--arrow-x,0px));transform:translateX(-50%);border:6px solid transparent;border-top-color:#1b1d18}
 .chord-pop--below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:#1b1d18}
 .chord-pop-empty{display:block;color:#c5cec9;font-size:.75rem;font-weight:600;padding:2px 6px}
 .chord-diagram{display:block;width:104px;height:auto}

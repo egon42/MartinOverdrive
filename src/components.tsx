@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { compactSheet, parseChordSheet } from './chords'
 import { chordShape, type ChordShape } from './chordShapes'
 import type { Song } from './types'
@@ -47,27 +47,49 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 // Used everywhere chords appear (sheets, compact show-mode lines, the cheat card).
 export function ChordChip({ name }: { name: string }) {
   const [open, setOpen] = useState(false)
-  const [below, setBelow] = useState(false)
+  const [box, setBox] = useState<{ left: number; top: number; below: boolean; arrow: number } | null>(null)
   const ref = useRef<HTMLSpanElement>(null)
+  const popRef = useRef<HTMLSpanElement>(null)
   const shape = useMemo(() => chordShape(name), [name])
   useEffect(() => {
     if (!open) return
-    const onDown = (event: PointerEvent) => { if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false) }
+    const close = () => setOpen(false)
+    const onDown = (event: PointerEvent) => {
+      const node = event.target as Node
+      if (!ref.current?.contains(node) && !popRef.current?.contains(node)) setOpen(false)
+    }
     const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') setOpen(false) }
     document.addEventListener('pointerdown', onDown); document.addEventListener('keydown', onKey)
-    return () => { document.removeEventListener('pointerdown', onDown); document.removeEventListener('keydown', onKey) }
+    window.addEventListener('scroll', close, true) // a fixed popover would drift on scroll — just close it
+    return () => { document.removeEventListener('pointerdown', onDown); document.removeEventListener('keydown', onKey); window.removeEventListener('scroll', close, true) }
   }, [open])
-  // The popover opens upward by default, but a chip high on the screen (e.g. the cheat
-  // card's progression) would push it behind the fixed header — flip it downward there.
-  const toggle = () => {
-    if (!open && ref.current) setBelow(ref.current.getBoundingClientRect().top < window.innerHeight * 0.45)
-    setOpen((value) => !value)
-  }
+  // Position the popover as a fixed overlay computed from the chip's rect: this can't spill
+  // off-screen or expand the page. Clamp it into the viewport horizontally, flip it above or
+  // below depending on where the chip sits, and slide its arrow to keep pointing at the chip.
+  useLayoutEffect(() => {
+    if (!open || !popRef.current || !ref.current) { setBox(null); return }
+    const chip = ref.current.getBoundingClientRect()
+    const pop = popRef.current.getBoundingClientRect()
+    const margin = 8
+    const viewport = document.documentElement.clientWidth
+    const center = chip.left + chip.width / 2
+    const left = Math.max(margin, Math.min(center - pop.width / 2, viewport - pop.width - margin))
+    const below = chip.top < window.innerHeight * 0.45 // high on screen → open downward, clear of the header
+    const top = below ? chip.bottom + 8 : chip.top - 8 - pop.height
+    const limit = Math.max(0, pop.width / 2 - 12) // keep the arrow within the popover
+    const arrow = Math.max(-limit, Math.min(limit, center - (left + pop.width / 2)))
+    setBox({ left, top, below, arrow })
+  }, [open])
+  // First render (box null) lays the popover out hidden so it can be measured; the effect
+  // then pins it to the computed spot.
+  const style: CSSProperties = box
+    ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
+    : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
   return <span className="chord-chip-wrap" ref={ref}>
     <b className="chord-chip" role="button" tabIndex={0} aria-expanded={open}
-      onClick={toggle}
-      onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggle() } }}>{name}</b>
-    {open && <span className={below ? 'chord-pop chord-pop--below' : 'chord-pop'} role="dialog" aria-label={`${name} chord`}>
+      onClick={() => setOpen((value) => !value)}
+      onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) } }}>{name}</b>
+    {open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`}>
       {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
     </span>}
   </span>
