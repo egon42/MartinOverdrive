@@ -95,6 +95,8 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-chip{border:1px solid #36423e;border-radius:999px;padding:.28em .7em;font-size:.8em;font-weight:750;color:#c5cec9}
 .cheat-chip.cheat-tuning{background:var(--acid);color:#061008;border-color:var(--acid)}
 .cheat-chip.cheat-capo{background:var(--orange);color:#fff;border-color:var(--orange)}
+.cheat-chip.cheat-transpose{background:#3a6ea5;color:#fff;border-color:#3a6ea5}
+.tag.tag-transpose{background:#3a6ea5;border-color:#3a6ea5;color:#fff}
 .cheat-progression{display:flex;flex-direction:column;gap:8px;border-top:1px solid #36423e;border-bottom:1px solid #36423e;padding:12px 0}
 .cheat-prog-row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
 .cheat-prog-label{flex:0 0 auto;min-width:5em;font-size:.6em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
