@@ -82,8 +82,8 @@
     { "section": "Chorus", "chords": "C G Em7 D G" }
   ] },
   "20-when-i-come-around": { "sections": [
-    { "section": "Verse", "chords": "G5 D5 Em C5" },
-    { "section": "Chorus", "chords": "A5 C5 A5 C5 G5 D5 Em C5" }
+    { "section": "Verse", "chords": "G5 D5 Em C5", "shapes": "355--- -577-- -799-- -355--" },
+    { "section": "Chorus", "chords": "A5 C5 A5 C5 G5 D5 Em C5", "shapes": "-022-- -355-- -022-- -355-- 355--- -577-- -799-- -355--" }
   ] },
   "21-the-middle": { "sections": [
     { "section": "Whole song", "chords": "D A G" }
@@ -125,8 +125,8 @@
     { "section": "Chorus", "chords": "F C F C G7 C" }
   ] },
   "30-pink-pony-club": { "sections": [
-    { "section": "Verse / Chorus", "chords": "F# G#m D#m B" },
-    { "section": "Bridge", "chords": "B C# G#m D#m" }
+    { "section": "Verse / Chorus", "chords": "F# G#m D#m B", "shapes": "244--- 466--- -11--- -24---" },
+    { "section": "Bridge", "chords": "B C# G#m D#m", "shapes": "-24--- -46--- 466--- -11---" }
   ] },
   "31-banditos": { "sections": [
     { "section": "Verse", "chords": "E D A E" },

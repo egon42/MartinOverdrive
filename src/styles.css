@@ -100,7 +100,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-progression{display:flex;flex-direction:column;gap:8px;border-top:1px solid #36423e;border-bottom:1px solid #36423e;padding:12px 0}
 .cheat-prog-row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
 .cheat-prog-label{flex:0 0 auto;min-width:5em;font-size:.6em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
-.cheat-prog-chords{display:flex;gap:6px;flex-wrap:wrap}
+.cheat-prog-chords{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-start}
+.cheat-prog-chord{display:inline-flex;flex-direction:column;align-items:center;gap:2px}
+.cheat-prog-shape{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.62em;letter-spacing:.06em;color:var(--muted);white-space:pre}
 .cheat-prog-chords .chord-chip{font-size:.95em}
 .cheat-card .show-content{gap:22px}
 .cheat-card .field dt{font-size:.6em}
