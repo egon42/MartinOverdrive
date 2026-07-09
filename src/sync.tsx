@@ -1,14 +1,16 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { PracticeState } from './types'
 import { usePractice } from './storage'
+import { SUPABASE_URL, isBackendConfigured, sbHeaders } from './syncBackend'
 
-const CONFIG_KEY = 'overdrive-sync-v1'
-const GIST_FILENAME = 'overdrive-practice.json'
-const API = 'https://api.github.com'
+// The /dev/ deployment shares this origin with production but keeps a separate practice
+// store (see storage.tsx). Give sync its own per-deployment key so a code connected on /dev/
+// and one on prod point at different rows instead of cross-contaminating.
+const CONFIG_KEY = import.meta.env.BASE_URL.includes('/dev/') ? 'overdrive-sync-dev-v2' : 'overdrive-sync-v2'
 const PUSH_DEBOUNCE_MS = 4000
 const REPULL_INTERVAL_MS = 30000
 
-export interface SyncConfig { token: string; gistId: string }
+export interface SyncConfig { code: string }
 
 type SyncPhase = 'off' | 'idle' | 'syncing' | 'error'
 export interface SyncStatus { phase: SyncPhase; detail: string; lastSyncedAt: string }
@@ -16,13 +18,10 @@ export interface SyncStatus { phase: SyncPhase; detail: string; lastSyncedAt: st
 interface SyncContextValue {
   status: SyncStatus
   config: SyncConfig | null
-  connect: (token: string, gistId?: string) => Promise<void>
+  connect: (code?: string) => Promise<void>
   disconnect: () => void
   syncNow: () => Promise<void>
 }
-
-interface GistFile { content?: string; truncated?: boolean; raw_url?: string }
-interface GistResponse { id: string; files: Record<string, GistFile | undefined> }
 
 // ---- merge -----------------------------------------------------------
 
@@ -41,77 +40,78 @@ export function mergePractice(local: PracticeState, remote: PracticeState): Prac
   return merged
 }
 
-// ---- gist API ----------------------------------------------------------
+// ---- sync codes --------------------------------------------------------
 
-function authHeaders(token: string, withContentType = false): HeadersInit {
-  const headers: Record<string, string> = {
-    Authorization: `Bearer ${token}`,
-    Accept: 'application/vnd.github+json',
-    'X-GitHub-Api-Version': '2022-11-28',
+// Crockford base32 (no I, L, O, U — reduces transcription ambiguity).
+const BASE32 = '0123456789ABCDEFGHJKMNPQRSTVWXYZ'
+
+/** Strip formatting and uppercase, so 'k7f2-9xqz' / 'K7F29XQZ' hit the same row. Must match
+ * the server-side normalization in upsert_practice/hash_code (SYNC-SETUP.md). */
+export function normalizeCode(code: string): string {
+  return code.replace(/[^A-Za-z0-9]/g, '').toUpperCase()
+}
+
+/** 128 bits of randomness → 26 base32 chars, grouped in fours for readability. */
+function generateSyncCode(): string {
+  const bytes = new Uint8Array(16)
+  crypto.getRandomValues(bytes)
+  let bits = 0, value = 0, out = ''
+  for (const byte of bytes) {
+    value = (value << 8) | byte; bits += 8
+    while (bits >= 5) { out += BASE32[(value >>> (bits - 5)) & 31]; bits -= 5 }
   }
-  if (withContentType) headers['Content-Type'] = 'application/json'
-  return headers
+  if (bits > 0) out += BASE32[(value << (5 - bits)) & 31]
+  return (out.match(/.{1,4}/g) ?? [out]).join('-')
+}
+
+// ---- supabase API ------------------------------------------------------
+
+function buildEnvelope(practice: PracticeState) {
+  return { version: 1, updatedAt: new Date().toISOString(), practice }
 }
 
 async function httpError(res: Response): Promise<Error> {
-  if (res.status === 401) return new Error('Token was rejected. Check it has the gist scope.')
-  try { const body = await res.json() as { message?: string }; return new Error(`GitHub API error ${res.status}${body?.message ? `: ${body.message}` : ''}`) }
-  catch { return new Error(`GitHub API error ${res.status}`) }
+  if (res.status === 401) return new Error('Sync backend rejected the app key — see SYNC-SETUP.md.')
+  try { const body = await res.json() as { message?: string; msg?: string }; const msg = body?.message || body?.msg; return new Error(`Sync error ${res.status}${msg ? `: ${msg}` : ''}`) }
+  catch { return new Error(`Sync error ${res.status}`) }
 }
 
-function buildFileContent(practice: PracticeState): string {
-  return JSON.stringify({ version: 1, updatedAt: new Date().toISOString(), practice }, null, 2)
-}
-
-async function createGist(token: string, practice: PracticeState): Promise<string> {
-  const res = await fetch(`${API}/gists`, {
-    method: 'POST',
-    headers: authHeaders(token, true),
-    body: JSON.stringify({ description: 'Overdrive Setlist practice sync', public: false, files: { [GIST_FILENAME]: { content: buildFileContent(practice) } } }),
+async function readRemote(code: string): Promise<PracticeState> {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_practice`, {
+    method: 'POST', headers: sbHeaders(), body: JSON.stringify({ p_code: normalizeCode(code) }),
   })
   if (!res.ok) throw await httpError(res)
-  const data = await res.json() as GistResponse
-  return data.id
+  // get_practice returns the stored envelope, or JSON `null` for a code with no row yet.
+  const body = await res.json() as { practice?: unknown } | null
+  return body && typeof body.practice === 'object' && body.practice ? body.practice as PracticeState : {}
 }
 
-async function readGist(token: string, gistId: string): Promise<PracticeState> {
-  const res = await fetch(`${API}/gists/${gistId}`, { headers: authHeaders(token) })
-  if (!res.ok) throw await httpError(res)
-  const data = await res.json() as GistResponse
-  const file = data.files[GIST_FILENAME]
-  if (!file) return {}
-  let text = file.content
-  if (file.truncated && file.raw_url) {
-    const rawRes = await fetch(file.raw_url, { headers: { Authorization: `Bearer ${token}` } })
-    if (!rawRes.ok) throw await httpError(rawRes)
-    text = await rawRes.text()
-  }
-  if (!text) return {}
-  try {
-    const parsed = JSON.parse(text) as { practice?: unknown }
-    return parsed && typeof parsed.practice === 'object' && parsed.practice ? parsed.practice as PracticeState : {}
-  } catch { return {} }
-}
-
-async function updateGist(token: string, gistId: string, practice: PracticeState): Promise<void> {
-  const res = await fetch(`${API}/gists/${gistId}`, {
-    method: 'PATCH',
-    headers: authHeaders(token, true),
-    body: JSON.stringify({ files: { [GIST_FILENAME]: { content: buildFileContent(practice) } } }),
+async function writeRemote(code: string, practice: PracticeState): Promise<void> {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/upsert_practice`, {
+    method: 'POST', headers: sbHeaders(), body: JSON.stringify({ p_code: normalizeCode(code), p_data: buildEnvelope(practice) }),
   })
   if (!res.ok) throw await httpError(res)
+}
+
+/** Mint a fresh code and seed it with the current practice state. Upsert IS create, so
+ * there's no separate create call — we just pick the code client-side. */
+async function createRemote(practice: PracticeState): Promise<string> {
+  const code = generateSyncCode()
+  await writeRemote(code, practice)
+  return code
 }
 
 // ---- config persistence ------------------------------------------------
 
+// Reads the v2 { code } config. An old v1 { token, gistId } gist config lives under a
+// different key and is simply ignored — the user reconnects once with a fresh code, and
+// their untouched local practice state pushes up on that first connect.
 function loadConfig(): SyncConfig | null {
   try {
     const raw = localStorage.getItem(CONFIG_KEY)
     if (!raw) return null
     const parsed = JSON.parse(raw) as Partial<SyncConfig>
-    return parsed && typeof parsed.token === 'string' && parsed.token && typeof parsed.gistId === 'string' && parsed.gistId
-      ? { token: parsed.token, gistId: parsed.gistId }
-      : null
+    return parsed && typeof parsed.code === 'string' && parsed.code ? { code: parsed.code } : null
   } catch { return null }
 }
 
@@ -142,11 +142,11 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   const pushTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   // Generation counter bumped by disconnect/connect to invalidate in-flight sync
   // operations. Each async routine snapshots it at start and re-checks after every
-  // await; on mismatch it abandons its results instead of writing to a gist (or
+  // await; on mismatch it abandons its results instead of writing to the remote (or
   // local state) the user just walked away from.
   const epochRef = useRef(0)
 
-  // Pull the gist, merge with local, replace local if the merge changed it, and
+  // Pull the remote, merge with local, replace local if the merge changed it, and
   // push the merge back if it differs from what's remote. Guarded so only one
   // sync routine ever runs at a time.
   const pullMergeMaybePush = useCallback(async (cfg: SyncConfig): Promise<void> => {
@@ -155,13 +155,13 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     syncingRef.current = true
     setStatus((old) => ({ ...old, phase: 'syncing', detail: 'Pulling…' }))
     try {
-      const remote = await readGist(cfg.token, cfg.gistId)
+      const remote = await readRemote(cfg.code)
       if (epochRef.current !== epoch) return
       const local = stateRef.current
       const merged = mergePractice(local, remote)
       const mergedJson = JSON.stringify(merged)
       if (mergedJson !== JSON.stringify(local)) replaceStateRef.current(merged)
-      if (mergedJson !== JSON.stringify(remote)) await updateGist(cfg.token, cfg.gistId, merged)
+      if (mergedJson !== JSON.stringify(remote)) await writeRemote(cfg.code, merged)
       if (epochRef.current !== epoch) return
       lastSyncedSerializationRef.current = mergedJson
       lastSyncTimeRef.current = Date.now()
@@ -186,7 +186,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
 
   // Debounced push: 4s of quiet after a local state change, skipped while
   // unconfigured, mid-initial-pull, or already in sync with what we last pushed/pulled.
-  // The debounced path runs the full pull→merge→push routine (not a blind PATCH) so a
+  // The debounced path runs the full pull→merge→push routine (not a blind overwrite) so a
   // concurrently-edited device gets merged instead of transiently overwritten, and it
   // reschedules instead of dropping when another sync is already in flight.
   useEffect(() => {
@@ -224,30 +224,33 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }, [pullMergeMaybePush])
 
-  const connect = useCallback(async (token: string, gistId?: string): Promise<void> => {
+  // No code → mint a fresh one and seed it with local state. A pasted code → pull it, merge
+  // with local, and reconcile both sides. Either way we end connected to a { code }.
+  const connect = useCallback(async (code?: string): Promise<void> => {
     if (syncingRef.current) return
+    if (!isBackendConfigured()) { setStatus({ phase: 'error', detail: "Sync isn't set up yet — see SYNC-SETUP.md.", lastSyncedAt: '' }); throw new Error('Sync backend not configured') }
     epochRef.current += 1 // invalidate any lingering operation from a previous config
     const epoch = epochRef.current
     syncingRef.current = true
-    const trimmedId = gistId?.trim() || ''
-    setStatus({ phase: 'syncing', detail: trimmedId ? 'Connecting…' : 'Creating gist…', lastSyncedAt: '' })
+    const existing = code?.trim() || ''
+    setStatus({ phase: 'syncing', detail: existing ? 'Connecting…' : 'Creating sync code…', lastSyncedAt: '' })
     try {
-      let id = trimmedId
+      let activeCode = existing
       let merged: PracticeState
-      if (!id) {
+      if (!activeCode) {
         merged = stateRef.current
-        id = await createGist(token, merged)
+        activeCode = await createRemote(merged)
         if (epochRef.current !== epoch) return
       } else {
-        const remote = await readGist(token, id)
+        const remote = await readRemote(activeCode)
         if (epochRef.current !== epoch) return
         merged = mergePractice(stateRef.current, remote)
         const mergedJson = JSON.stringify(merged)
         if (mergedJson !== JSON.stringify(stateRef.current)) replaceStateRef.current(merged)
-        if (mergedJson !== JSON.stringify(remote)) await updateGist(token, id, merged)
+        if (mergedJson !== JSON.stringify(remote)) await writeRemote(activeCode, merged)
         if (epochRef.current !== epoch) return
       }
-      const nextConfig: SyncConfig = { token, gistId: id }
+      const nextConfig: SyncConfig = { code: activeCode }
       saveConfig(nextConfig)
       lastSyncedSerializationRef.current = JSON.stringify(merged)
       lastSyncTimeRef.current = Date.now()
@@ -302,37 +305,44 @@ function formatStatusLine(status: SyncStatus): string {
 
 export function SyncPanel() {
   const { status, config, connect, disconnect, syncNow } = useSync()
-  const [token, setToken] = useState('')
-  const [gistId, setGistId] = useState('')
+  const [code, setCode] = useState('')
   const [localError, setLocalError] = useState('')
   const busy = status.phase === 'syncing'
+  const configured = isBackendConfigured()
 
-  const handleConnect = async () => {
-    if (!token.trim()) { setLocalError('Paste a token first.'); return }
+  const handleStart = async () => {
     setLocalError('')
-    try { await connect(token.trim(), gistId.trim() || undefined); setToken(''); setGistId('') }
+    try { await connect() } catch { /* surfaced via status.detail */ }
+  }
+
+  const handleJoin = async () => {
+    if (!code.trim()) { setLocalError('Paste a code first.'); return }
+    setLocalError('')
+    try { await connect(code.trim()); setCode('') }
     catch { /* surfaced via status.detail */ }
   }
 
-  const copyGistId = () => { navigator.clipboard?.writeText(config?.gistId ?? '').catch(() => {}) }
+  const copyCode = () => { navigator.clipboard?.writeText(config?.code ?? '').catch(() => {}) }
 
   if (!config) {
     return <section className="panel sync-panel">
       <span className="eyebrow">Cross-device sync</span>
       <h2>Sync practice data across devices</h2>
-      <p>Stores your practice status and notes in a private GitHub Gist. Create a <strong>classic</strong> personal access token with only the <code>gist</code> scope (fine-grained tokens can't access the Gist API) and paste that same token on every device. On a second device, also paste the Gist ID shown on the first device so both point at the same gist.</p>
-      <label><span>Personal access token</span><input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="ghp_…" autoComplete="off" /></label>
-      <label><span>Existing Gist ID (optional)</span><input value={gistId} onChange={(e) => setGistId(e.target.value)} placeholder="Leave blank to create a new one" /></label>
+      <p>Keep your practice status, notes and timers in step across your phone and computer. No account and no sign-in — the app makes a private sync code and stores your data behind it.</p>
+      {!configured && <p className="sync-error">Sync isn't set up on this build yet — see SYNC-SETUP.md.</p>}
+      <div className="actions"><button disabled={busy || !configured} onClick={handleStart}>{busy ? 'Working…' : 'Turn on sync'}</button></div>
+      <label><span>Have a code from another device?</span><input value={code} onChange={(e) => setCode(e.target.value)} placeholder="k7f2-9xqz-…" autoComplete="off" /></label>
       {(localError || status.phase === 'error') && <p className="sync-error">{localError || status.detail}</p>}
-      <div className="actions"><button disabled={busy} onClick={handleConnect}>{busy ? 'Connecting…' : 'Connect & sync'}</button></div>
+      <div className="actions"><button className="secondary" disabled={busy || !configured} onClick={handleJoin}>Connect with a code</button></div>
     </section>
   }
 
   return <section className="panel sync-panel">
     <span className="eyebrow">Cross-device sync</span>
-    <h2>Synced via GitHub Gist</h2>
+    <h2>Sync is on</h2>
     <p className="sync-status">{formatStatusLine(status)}</p>
-    <p>Gist ID: <code onClick={copyGistId} title="Click to copy" style={{ cursor: 'pointer' }}>{config.gistId}</code></p>
+    <p>Your sync code: <code onClick={copyCode} title="Click to copy" style={{ cursor: 'pointer' }}>{config.code}</code></p>
+    <p>Enter this code on another device to see the same practice data there. <strong>It's the only key to your data — save it somewhere. Anyone who has it can read your progress.</strong></p>
     <div className="actions">
       <button disabled={busy} onClick={() => syncNow()}>Sync now</button>
       <button className="secondary" disabled={busy} onClick={disconnect}>Disconnect</button>

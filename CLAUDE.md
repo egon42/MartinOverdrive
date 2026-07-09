@@ -73,6 +73,21 @@ passthrough** loading procedure, preset backup steps, and the firmware/brick-ris
 - Both practice (song page panel) and show mode offer a Chords/Tabs switch; show
   mode auto-shrinks (chords fit by height, tabs by width).
 
+## Cross-device sync (dev-branch feature)
+
+- `src/sync.tsx` syncs the practice blob across devices via a **Supabase** table, keyed by a
+  client-generated **sync code** (no accounts, no GitHub PAT). The merge engine
+  (`mergePractice`, debounced push, focus re-pull, epoch guards) is backend-agnostic — only
+  the storage adapter (`readRemote`/`writeRemote`/`createRemote`) and `SyncConfig` (`{ code }`)
+  are Supabase-specific.
+- The committed `SUPABASE_URL` + anon key in `src/syncBackend.ts` are **public by design**
+  (RLS + secret code do the gating). Never put the `service_role` key there.
+- **`SYNC-SETUP.md`** is the one-time backend runbook (create project, run the SQL, paste
+  URL + anon key). Enumeration safety = RLS-on + no-policy + two `security definer` RPCs;
+  codes are hashed at rest. Free-tier projects auto-pause after ~7 days idle.
+- `/dev/` and prod deliberately use **separate** sync keys (`overdrive-sync-dev-v2` vs
+  `overdrive-sync-v2`), matching the practice-store split.
+
 ## Layout notes
 
 - `src/data/setlist.json` is generated — change the importer or the XLSX, not the JSON.
