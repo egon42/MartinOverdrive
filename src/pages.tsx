@@ -90,12 +90,15 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
 }
 
 // Teleprompter autoscroll: while `playing`, creep `ref`'s scroll container down at
-// `speed` px/second. rAF timestamps make it frame-rate independent, and each frame
-// reads+writes the live scrollTop so a native swipe repositions the sheet and the
-// crawl simply resumes from wherever the finger left it. A finger on the sheet pauses
-// the creep (holding); up/cancel listen on window so a drag that drifts off the
-// element still un-pauses (the lesson from 43f64da). Stops and calls onReachEnd at the
-// bottom. No-op when ref is null (the cheat view has no autoscroll).
+// `speed` px/second. rAF timestamps make it frame-rate independent. `scrollTop` is
+// pixel-quantized, so we can't just add `speed*dt` each frame — a sub-pixel delta gets
+// rounded away, which stalls slow speeds and pins fast ones near 1px/frame. Instead we
+// keep a private float accumulator and only push WHOLE pixels into scrollTop; the
+// fraction carries to the next frame. Adding a whole-pixel delta to the live scrollTop
+// still lets a native swipe reposition the sheet mid-crawl (it resumes from wherever the
+// finger left it). A finger on the sheet pauses the creep (holding); up/cancel listen on
+// window so a drag that drifts off the element still un-pauses (the lesson from 43f64da).
+// Stops and calls onReachEnd at the bottom. No-op when ref is null (cheat view).
 function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: number, playing: boolean, onReachEnd: () => void) {
   const onReachEndRef = useRef(onReachEnd)
   onReachEndRef.current = onReachEnd
@@ -104,14 +107,20 @@ function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: numb
     if (!el || !playing || speed <= 0) return
     let raf = 0
     let last = 0
+    let acc = 0 // sub-pixel remainder carried between frames
     let holding = false
     const step = (now: number) => {
       if (!last) last = now
       const dt = Math.min((now - last) / 1000, 0.1) // clamp so a backgrounded tab doesn't jump on resume
       last = now
       if (!holding && dt > 0) {
-        el.scrollTop += speed * dt
-        if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) { onReachEndRef.current(); return }
+        acc += speed * dt
+        const whole = Math.trunc(acc)
+        if (whole >= 1) {
+          acc -= whole
+          el.scrollTop += whole
+          if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) { onReachEndRef.current(); return }
+        }
       }
       raf = requestAnimationFrame(step)
     }
