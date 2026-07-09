@@ -47,6 +47,7 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 // Used everywhere chords appear (sheets, compact show-mode lines, the cheat card).
 export function ChordChip({ name }: { name: string }) {
   const [open, setOpen] = useState(false)
+  const [below, setBelow] = useState(false)
   const ref = useRef<HTMLSpanElement>(null)
   const shape = useMemo(() => chordShape(name), [name])
   useEffect(() => {
@@ -56,11 +57,17 @@ export function ChordChip({ name }: { name: string }) {
     document.addEventListener('pointerdown', onDown); document.addEventListener('keydown', onKey)
     return () => { document.removeEventListener('pointerdown', onDown); document.removeEventListener('keydown', onKey) }
   }, [open])
+  // The popover opens upward by default, but a chip high on the screen (e.g. the cheat
+  // card's progression) would push it behind the fixed header — flip it downward there.
+  const toggle = () => {
+    if (!open && ref.current) setBelow(ref.current.getBoundingClientRect().top < window.innerHeight * 0.45)
+    setOpen((value) => !value)
+  }
   return <span className="chord-chip-wrap" ref={ref}>
     <b className="chord-chip" role="button" tabIndex={0} aria-expanded={open}
-      onClick={() => setOpen((value) => !value)}
-      onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) } }}>{name}</b>
-    {open && <span className="chord-pop" role="dialog" aria-label={`${name} chord`}>
+      onClick={toggle}
+      onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggle() } }}>{name}</b>
+    {open && <span className={below ? 'chord-pop chord-pop--below' : 'chord-pop'} role="dialog" aria-label={`${name} chord`}>
       {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
     </span>}
   </span>
