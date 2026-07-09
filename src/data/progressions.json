@@ -14,9 +14,9 @@
     { "section": "Bridge", "chords": "E G A B" }
   ] },
   "04-i-believe-in-a-thing-called-love": { "sections": [
-    { "section": "Verse", "chords": "F# A B A E B A" },
-    { "section": "Chorus", "chords": "E A F# B C#m D" },
-    { "section": "Bridge", "chords": "E F#m A A# B" }
+    { "section": "Verse", "chords": "F# A B A E B A", "shapes": "244--- -022-- -244-- -022-- 022--- -244-- -022--" },
+    { "section": "Chorus", "chords": "E A F# B C#m D", "shapes": "022--- -022-- 244--- -244-- -466-- -577--" },
+    { "section": "Bridge", "chords": "E F#m A A# B", "shapes": "022--- 244--- -022-- 688--- -244--" }
   ] },
   "05-thunderstruck": { "sections": [
     { "section": "Riff", "chords": "B5 E5", "shapes": "-244-- 022---" },
@@ -25,8 +25,8 @@
     { "section": "Solo", "chords": "E5 B5 A5", "shapes": "022--- -244-- -022--" }
   ] },
   "06-don-t-stop-believin": { "sections": [
-    { "section": "Verse", "chords": "E B C#m A E B G#m A" },
-    { "section": "Chorus", "chords": "A E B E A B E" }
+    { "section": "Verse", "chords": "E B C#m A E B G#m A", "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--" },
+    { "section": "Chorus", "chords": "A E B E A B E", "shapes": "-022-- 022--- -244-- 022--- -022-- -244-- 022---" }
   ] },
   "07-tribute": { "sections": [
     { "section": "Verse", "chords": "Am G F" },
@@ -75,7 +75,7 @@
     { "section": "Verse", "chords": "C G Bb F", "shapes": "-355-- 355--- -133-- 133---" },
     { "section": "Pre-Chorus", "chords": "E A" },
     { "section": "Chorus", "chords": "C G Bb F A G C", "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355--" },
-    { "section": "Solo", "chords": "Eb Bb", "shapes": "-688-- -133--" }
+    { "section": "Bridge", "chords": "Ab5 Bb5 Eb5 C5 G5", "shapes": "466--- 688--- -688-- -355-- 355---" }
   ] },
   "19-purple-rain": { "sections": [
     { "section": "Verse", "chords": "G Em7 D C" },
@@ -94,8 +94,8 @@
     { "section": "Climax", "chords": "A B C D Em" }
   ] },
   "23-lola-montez": { "sections": [
-    { "section": "Verse", "chords": "D G A D" },
-    { "section": "Chorus", "chords": "G A D Bm A D" }
+    { "section": "Verse", "chords": "D G A D", "shapes": "-577-- 355--- 577--- -577--" },
+    { "section": "Chorus", "chords": "G A D Bm A D", "shapes": "355--- 577--- -577-- -244-- 577--- -577--" }
   ] },
   "24-mary-jane-s-last-dance": { "sections": [
     { "section": "Verse", "chords": "Am G D Am" },
@@ -121,15 +121,15 @@
     { "section": "Bridge", "chords": "G A E B" }
   ] },
   "29-ain-t-goin-down-til-the-sun-comes-up": { "sections": [
-    { "section": "Verse", "chords": "C F C G7 C" },
-    { "section": "Chorus", "chords": "F C F C G7 C" }
+    { "section": "Verse", "chords": "C F C G7 C", "shapes": "-355-- 133--- -355-- 355--- -355--" },
+    { "section": "Chorus", "chords": "F C F C G7 C", "shapes": "133--- -355-- 133--- -355-- 355--- -355--" }
   ] },
   "30-pink-pony-club": { "sections": [
     { "section": "Verse / Chorus", "chords": "F# G#m D#m B", "shapes": "244--- 466--- -11--- -24---" },
     { "section": "Bridge", "chords": "B C# G#m D#m", "shapes": "-24--- -46--- 466--- -11---" }
   ] },
   "31-banditos": { "sections": [
-    { "section": "Verse", "chords": "E D A E" },
-    { "section": "Chorus", "chords": "E A B C#m A B E" }
+    { "section": "Verse", "chords": "E D A E", "shapes": "022--- -577-- 577--- 022---" },
+    { "section": "Chorus", "chords": "E A B C#m A B E", "shapes": "022--- 577--- 799--- -466-- 577--- 799--- 022---" }
   ] }
 }
