@@ -124,9 +124,9 @@
     { "section": "Verse", "chords": "C F C G7 C" },
     { "section": "Chorus", "chords": "F C F C G7 C" }
   ] },
-  "30-pink-pony-club": { "capo": "Capo 4", "sections": [
-    { "section": "Verse / Chorus", "chords": "D Em Bm G" },
-    { "section": "Bridge", "chords": "G A Em Bm" }
+  "30-pink-pony-club": { "sections": [
+    { "section": "Verse / Chorus", "chords": "F# G#m D#m B" },
+    { "section": "Bridge", "chords": "B C# G#m D#m" }
   ] },
   "31-banditos": { "sections": [
     { "section": "Verse", "chords": "E D A E" },

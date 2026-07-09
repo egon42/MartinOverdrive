@@ -1,13 +1,13 @@
-Capo 4
+Drop D
 
 [Verse]
-D Em Bm G
+F# G#m D#m B
 
 [Pre-Chorus]
-D Em Bm G
+F# G#m D#m B
 
 [Chorus]
-D Em Bm G
+F# G#m D#m B
 
 [Bridge]
-G A Em Bm
+B C# G#m D#m
