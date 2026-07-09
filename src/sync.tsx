@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import QRCode from 'qrcode'
 import type { PracticeState } from './types'
 import { usePractice } from './storage'
 import { SUPABASE_URL, isBackendConfigured, sbHeaders } from './syncBackend'
@@ -176,11 +177,29 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-  // Initial pull, once, on mount — only if a config was already persisted.
+  // Initial pull, once, on mount — only if a config was already persisted. Skipped when a
+  // ?sync=CODE deep link is present; the effect below handles that case by connecting.
   useEffect(() => {
+    if (new URLSearchParams(window.location.search).has('sync')) return
     const cfg = configRef.current
     if (!cfg) { initialPullDoneRef.current = true; return }
     pullMergeMaybePush(cfg)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Deep link from a scanned QR code: ?sync=CODE connects this device to that code, then
+  // strips the param so the code doesn't linger in the address bar or browser history.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const code = params.get('sync')
+    if (!code) return
+    // If this device was already syncing, mark the initial pull done up front so a failed
+    // connect to the scanned code doesn't strand its existing config's debounced pushes.
+    if (configRef.current) initialPullDoneRef.current = true
+    params.delete('sync')
+    const qs = params.toString()
+    window.history.replaceState(null, '', window.location.pathname + (qs ? `?${qs}` : '') + window.location.hash)
+    connect(code).catch(() => { /* surfaced via status */ })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -307,8 +326,19 @@ export function SyncPanel() {
   const { status, config, connect, disconnect, syncNow } = useSync()
   const [code, setCode] = useState('')
   const [localError, setLocalError] = useState('')
+  const [qrDataUrl, setQrDataUrl] = useState('')
   const busy = status.phase === 'syncing'
   const configured = isBackendConfigured()
+
+  // A deep link that carries the code, so scanning it on a phone opens the app already
+  // connecting to this code (handled by the ?sync= effect in SyncProvider).
+  const syncUrl = config ? `${window.location.origin}${import.meta.env.BASE_URL}?sync=${encodeURIComponent(config.code)}` : ''
+  useEffect(() => {
+    if (!syncUrl) { setQrDataUrl(''); return }
+    let alive = true
+    QRCode.toDataURL(syncUrl, { margin: 1, width: 220 }).then((d) => { if (alive) setQrDataUrl(d) }).catch(() => { if (alive) setQrDataUrl('') })
+    return () => { alive = false }
+  }, [syncUrl])
 
   const handleStart = async () => {
     setLocalError('')
@@ -328,7 +358,6 @@ export function SyncPanel() {
     return <section className="panel sync-panel">
       <span className="eyebrow">Cross-device sync</span>
       <h2>Sync practice data across devices</h2>
-      <p>Keep your practice status, notes and timers in step across your phone and computer. No account and no sign-in — the app makes a private sync code and stores your data behind it.</p>
       {!configured && <p className="sync-error">Sync isn't set up on this build yet — see SYNC-SETUP.md.</p>}
       <div className="actions"><button disabled={busy || !configured} onClick={handleStart}>{busy ? 'Working…' : 'Turn on sync'}</button></div>
       <label><span>Have a code from another device?</span><input value={code} onChange={(e) => setCode(e.target.value)} placeholder="k7f2-9xqz-…" autoComplete="off" /></label>
@@ -342,7 +371,11 @@ export function SyncPanel() {
     <h2>Sync is on</h2>
     <p className="sync-status">{formatStatusLine(status)}</p>
     <p>Your sync code: <code onClick={copyCode} title="Click to copy" style={{ cursor: 'pointer' }}>{config.code}</code></p>
-    <p>Enter this code on another device to see the same practice data there. <strong>It's the only key to your data — save it somewhere. Anyone who has it can read your progress.</strong></p>
+    {qrDataUrl && <div className="sync-qr">
+      <img src={qrDataUrl} alt="QR code that connects a phone to this sync code" width={220} height={220} />
+      <p>Point your phone's camera at this to open the app and pick up your practice data. On another computer, type the code in instead.</p>
+    </div>}
+    <p><strong>This code is the only key to your data. Save it somewhere. Anyone who has it can read your practice progress.</strong></p>
     <div className="actions">
       <button disabled={busy} onClick={() => syncNow()}>Sync now</button>
       <button className="secondary" disabled={busy} onClick={disconnect}>Disconnect</button>
