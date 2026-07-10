@@ -1,17 +1,20 @@
 {
   "01-welcome-home": { "sections": [
     { "section": "Verse", "chords": "Em C D" },
-    { "section": "Chorus", "chords": "F Am C F Am G" },
+    { "section": "Chorus", "chords": "F Am C F Am C" },
     { "section": "Bridge", "chords": "F Am G F" }
   ] },
   "02-all-the-small-things": { "sections": [
-    { "section": "Intro", "chords": "G F C F", "shapes": "355--- 133--- -355-- 133---" },
-    { "section": "Verse / Chorus", "chords": "C G F", "shapes": "-355-- 355--- 133---" }
+    { "section": "Intro", "chords": "C F G", "shapes": "-355-- 133--- 355---" },
+    { "section": "Verse", "chords": "C G F G", "shapes": "-355-- 355--- 133--- 355---" },
+    { "section": "Pre-Chorus", "chords": "C G F C", "shapes": "-355-- 355--- 133--- -355--" },
+    { "section": "Chorus", "chords": "C G F", "shapes": "-355-- 355--- 133---" },
+    { "section": "Interlude", "chords": "C F G", "shapes": "-355-- 133--- 355---" }
   ] },
   "03-a-little-less-conversation": { "sections": [
-    { "section": "Verse", "chords": "E A" },
-    { "section": "Chorus", "chords": "E A E G A D E B" },
-    { "section": "Bridge", "chords": "E G A B" }
+    { "section": "Verse", "chords": "A D" },
+    { "section": "Chorus", "chords": "A C A D G A E A D" },
+    { "section": "Bridge", "chords": "A C D E" }
   ] },
   "04-i-believe-in-a-thing-called-love": { "sections": [
     { "section": "Verse", "chords": "F# A B A E B A", "shapes": "244--- -022-- -244-- -022-- 022--- -244-- -022--" },
@@ -26,7 +29,8 @@
   ] },
   "06-don-t-stop-believin": { "sections": [
     { "section": "Verse", "chords": "E B C#m A E B G#m A", "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--" },
-    { "section": "Chorus", "chords": "A E B E A B E", "shapes": "-022-- 022--- -244-- 022--- -022-- -244-- 022---" }
+    { "section": "Pre-Chorus", "chords": "A E B" },
+    { "section": "Chorus", "chords": "E B C#m A", "shapes": "022--- -244-- -466-- -022--" }
   ] },
   "07-tribute": { "sections": [
     { "section": "Verse", "chords": "Am G F" },
@@ -38,7 +42,7 @@
     { "section": "Bridge", "chords": "A C#m F#m C#m Bm E" }
   ] },
   "09-pride-and-joy": { "sections": [
-    { "section": "12-bar blues", "chords": "E A B7 (shuffle in E)" }
+    { "section": "12-bar shuffle in E", "chords": "E A B7" }
   ] },
   "10-zombie": { "sections": [
     { "section": "Whole song", "chords": "Em C G D" }
@@ -60,22 +64,24 @@
   ] },
   "15-dani-california": { "sections": [
     { "section": "Verse", "chords": "Am G Dm" },
-    { "section": "Chorus", "chords": "F C Dm G" },
+    { "section": "Chorus", "chords": "F C Dm" },
     { "section": "Bridge", "chords": "Bm G F#" }
   ] },
   "16-teenage-dirtbag": { "sections": [
-    { "section": "Verse / Chorus", "chords": "E B E A", "shapes": "022--- -244-- 022--- -022--" }
+    { "section": "Verse", "chords": "E B E A", "shapes": "022--- -244-- 022--- -022--" },
+    { "section": "Chorus", "chords": "E A B C#m", "shapes": "022--- -022-- -244-- -466--" }
   ] },
   "17-the-pretender": { "sections": [
-    { "section": "Verse", "chords": "Am F#5 F G5" },
-    { "section": "Chorus", "chords": "Am D/F# F" },
-    { "section": "Bridge", "chords": "A5" }
+    { "section": "Verse", "chords": "Am F#" },
+    { "section": "Pre-Chorus", "chords": "A5 F#5 F5 D5 E5 F#5 G5" },
+    { "section": "Chorus", "chords": "A5 F#5 F5", "shapes": "577--- 244--- 133---" },
+    { "section": "Interlude", "chords": "Am Am6 Am7 Am6" }
   ] },
   "18-here-it-goes-again": { "sections": [
     { "section": "Verse", "chords": "C G Bb F", "shapes": "-355-- 355--- -133-- 133---" },
-    { "section": "Pre-Chorus", "chords": "E A" },
+    { "section": "Pre-Chorus", "chords": "E A G", "shapes": "022--- -022-- 355---" },
     { "section": "Chorus", "chords": "C G Bb F A G C", "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355--" },
-    { "section": "Bridge", "chords": "Ab5 Bb5 Eb5 C5 G5", "shapes": "466--- 688--- -688-- -355-- 355---" }
+    { "section": "Bridge", "chords": "Eb Bb C G Ab", "shapes": "-688-- 688--- -355-- 355--- 466---" }
   ] },
   "19-purple-rain": { "sections": [
     { "section": "Verse", "chords": "G Em7 D C" },
@@ -91,7 +97,7 @@
   "22-dream-on": { "sections": [
     { "section": "Verse", "chords": "Em Em7 Em6 Am6" },
     { "section": "Chorus", "chords": "Em D C D Em" },
-    { "section": "Climax", "chords": "A B C D Em" }
+    { "section": "Climax", "chords": "Am B5 C E Em" }
   ] },
   "23-lola-montez": { "sections": [
     { "section": "Verse", "chords": "D G A D", "shapes": "-577-- 355--- 577--- -577--" },
@@ -117,8 +123,8 @@
   "28-mama-i-m-coming-home": { "sections": [
     { "section": "Verse", "chords": "E A E" },
     { "section": "Pre-Chorus", "chords": "C#m A E C#m A B" },
-    { "section": "Chorus", "chords": "A E A B E A B C D E" },
-    { "section": "Bridge", "chords": "G A E B" }
+    { "section": "Chorus", "chords": "A E" },
+    { "section": "Bridge", "chords": "C# A E F# Bb" }
   ] },
   "29-ain-t-goin-down-til-the-sun-comes-up": { "sections": [
     { "section": "Verse", "chords": "C F C G7 C", "shapes": "-355-- 133--- -355-- 355--- -355--" },

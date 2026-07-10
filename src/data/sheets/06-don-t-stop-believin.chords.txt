@@ -7,10 +7,10 @@ E B C#m A
 E B C#m A E B G#m A
 
 [Pre-Chorus]
-E B C#m A E B G#m A
+A E B
 
 [Chorus]
-A E B E A B E
+E B C#m A
 
 [Solo]
 E B C#m A
