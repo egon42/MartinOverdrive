@@ -30,6 +30,12 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
 - The service worker uses **network-first caching for app updates** (fixed in `8904e94`
   after stale-UI reports). If the live site still looks old after a green deploy, it's
   browser/SW cache — hard-refresh — not a failed deploy. Don't "fix" the caching again.
+- Since the gig-hardening pass (2026-07): navigations give the network **2.5s** before
+  falling back to the cached shell (still network-first — updates land on healthy
+  networks); hashed `/assets/` are cache-first (content hashes make staleness
+  impossible); fonts are precached; activate migrates same-namespace runtime cache
+  entries across version bumps. Council-reviewed twice — read `public/sw.js` comments
+  before changing any of this.
 
 ## Git
 
@@ -72,6 +78,28 @@ passthrough** loading procedure, preset backup steps, and the firmware/brick-ris
   extractable text — ask for a text source instead of transcribing pictures.
 - Both practice (song page panel) and show mode offer a Chords/Tabs switch; show
   mode auto-shrinks (chords fit by height, tabs by width).
+
+## Show mode & practice tools (dev-branch features, added 2026-07)
+
+- **Tonight's set** (`/set` page, `src/setlist.tsx`): per-song `skipTonight` +
+  `setPosition` live in practice state so soundcheck edits sync. Show mode walks
+  `tonightsSongs(get)` (full-set fallback when everything's skipped). Reorder = swap of
+  effective positions; concurrent-sync position collisions are resolved by a fractional
+  nudge in `move()` — don't "simplify" that guard away.
+- **Show mode persistence**: current song id + view in localStorage
+  (`overdrive-show-index[-dev]`), so a mid-set browser kill resumes in place; if the
+  saved song was skipped at soundcheck it resumes at the next active song.
+- **Show mode controls**: swipe (cheat view only), PageUp/PageDown (page-turner pedals),
+  tap the n/N counter for the jump-to-song overlay, "Up next" footer shows the
+  changeover info (next title/tuning/amp preset). A render crash inside the song view is
+  caught by `ShowSongBoundary` — nav stays alive.
+- **Metronome** (`src/metronome.tsx`, in the song page's practice panel): Web Audio
+  lookahead scheduler; per-song tempo in practice state; defaults seeded from
+  `src/data/bpm.json` (web-researched original-recording tempos — edit that file to
+  correct one, keep the half/double-time notes).
+- **Practice logging**: "Log practice session" writes `lastPracticed`/`sessions`;
+  Practice page sorts by recency ("Last practiced", stalest first); Jam page groups
+  songs by standard-tuning pentatonic key via `resolveFretboards`.
 
 ## Cross-device sync (dev-branch feature)
 
