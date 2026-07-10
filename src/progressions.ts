@@ -7,8 +7,10 @@ import data from './data/progressions.json'
 // `shapes`, when present, is a space-separated list aligned 1:1 with `chords` — each a
 // 6-char guitar fingering (low-E → high-e; digit = fret, '-' = string not played) curated
 // to match the song's tab, so a power-chord riff shows its shapes (355--- -577-- …) under
-// the chord names on the cheat card.
-export interface ProgSection { section: string; chords: string; shapes?: string }
+// the chord names on the cheat card. `hint`, when present, is a one-line how-to-play cue
+// (signature riff, strum feel, voicing trick) rendered under the section's chord row —
+// for riff-driven songs where a bare chord list isn't enough to play along cold.
+export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string }
 export interface SongProgression { sections: ProgSection[]; capo?: string }
 
 const progressions = data as Record<string, SongProgression>

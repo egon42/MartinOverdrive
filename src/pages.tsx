@@ -151,8 +151,8 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   const transpose = transposeFor(song.id)
   const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
   const rows = custom
-    ? custom.sections.map((s) => ({ label: s.section, chords: s.chords.split(/\s+/).filter(Boolean), shapes: s.shapes ? s.shapes.split(/\s+/).filter(Boolean) : [] }))
-    : derived?.map((row) => ({ ...row, shapes: [] as string[] }))
+    ? custom.sections.map((s) => ({ label: s.section, chords: s.chords.split(/\s+/).filter(Boolean), shapes: s.shapes ? s.shapes.split(/\s+/).filter(Boolean) : [], hint: s.hint }))
+    : derived?.map((row) => ({ ...row, shapes: [] as string[], hint: undefined as string | undefined }))
   return <div className="cheat-card" ref={innerRef}>
     <div className="cheat-strip">
       {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
@@ -166,6 +166,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
         <span className="cheat-prog-chords">{row.chords.map((chord, j) => row.shapes[j]
           ? <span className="cheat-prog-chord" key={j}><ChordChip name={chord} /><span className="cheat-prog-shape">{row.shapes[j]}</span></span>
           : <ChordChip name={chord} key={j} />)}</span>
+        {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
       </div>)}
     </div>}
     <div className="show-content">

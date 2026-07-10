@@ -22,8 +22,8 @@
     { "section": "Bridge", "chords": "E F#m A A# B", "shapes": "022--- 244--- 577--- 688--- 799---" }
   ] },
   "05-thunderstruck": { "sections": [
-    { "section": "Riff", "chords": "B5", "shapes": "-244--" },
-    { "section": "Verse", "chords": "B5", "shapes": "-244--" },
+    { "section": "Riff", "chords": "B5", "shapes": "-244--", "hint": "Lead plays the one-string riff on B: 4-0-7-0 then 5-0-8-0 vs open B, walking down 12-10-9-7-5-4 (rhythm rests until the chug)" },
+    { "section": "Verse", "chords": "B5", "shapes": "-244--", "hint": "Palm-muted B5 chug under the vocal" },
     { "section": "Pre-Chorus", "chords": "B5 E5 B5 A5 E5", "shapes": "-244-- 022--- -244-- -022-- 022---" },
     { "section": "Chorus", "chords": "B5 A5 E5 A5 E5", "shapes": "-244-- -022-- 022--- -022-- 022---" },
     { "section": "Solo", "chords": "E5 B5 A5", "shapes": "022--- -244-- -022--" }
@@ -46,15 +46,15 @@
     { "section": "Bridge", "chords": "A C#m F#m C#m Bm E" }
   ] },
   "09-pride-and-joy": { "sections": [
-    { "section": "12-bar shuffle in E", "chords": "E7 A7 B7" }
+    { "section": "12-bar shuffle in E", "chords": "E7 A7 B7", "hint": "Swung open-position boogie: alternate 5th/6th (E: A-str 2-4, A: D-str 2-4, B7 barre); b3-to-3 hammer turnaround" }
   ] },
   "10-zombie": { "sections": [
-    { "section": "Whole song", "chords": "Em C G D" }
+    { "section": "Whole song", "chords": "Em C G D", "hint": "Verses: quiet clean arpeggio over the same loop; chorus: big open strums (let the top strings ring)" }
   ] },
   "11-hunger-strike": { "sections": [
     { "section": "Verse / Chorus", "chords": "G A7sus4 G Cadd9" },
     { "section": "Interlude", "chords": "G Am Bm Cadd9" },
-    { "section": "Bridge", "chords": "D5 E5 D5 E5 Emadd9" }
+    { "section": "Bridge", "chords": "D5 E5 D5 E5 Emadd9", "hint": "Record riffs this low in Drop D; in Standard grab D5 x577xx and E5 022xxx" }
   ] },
   "12-s-o-b": { "sections": [
     { "section": "Verse", "chords": "E A B" },
@@ -65,10 +65,10 @@
     { "section": "Chorus", "chords": "E A D E G A" }
   ] },
   "14-sweet-home-alabama": { "sections": [
-    { "section": "Whole song", "chords": "D C G" }
+    { "section": "Whole song", "chords": "D C G", "hint": "Picked turnaround: D, Cadd9 with A-str 0h2 hammer, G with G-str 2p0 pull; chorus stabs: D-str double-stops 7-9-7 and 5-7-5" }
   ] },
   "15-dani-california": { "sections": [
-    { "section": "Verse", "chords": "Am G Dm" },
+    { "section": "Verse", "chords": "Am G Dm", "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr) — mute between hits" },
     { "section": "Chorus", "chords": "F C Dm" },
     { "section": "Bridge", "chords": "Bm G F#" }
   ] },
@@ -79,7 +79,7 @@
     { "section": "Bridge", "chords": "E Asus2 C#m G#m A B" }
   ] },
   "17-the-pretender": { "sections": [
-    { "section": "Verse", "chords": "Am D/F#" },
+    { "section": "Verse", "chords": "Am D/F#", "hint": "Quiet intro/verse: picked Am arpeggio, bass walking A-B-C-A then F#-G-F# underneath" },
     { "section": "Pre-Chorus", "chords": "A5 F#5 F5 D5 E5 F#5 G5" },
     { "section": "Chorus", "chords": "A5 F#5 F5", "shapes": "577--- 244--- 133---" },
     { "section": "Interlude", "chords": "Am Am6 Am7 Am6" },
@@ -97,7 +97,7 @@
   ] },
   "20-when-i-come-around": { "sections": [
     { "section": "Verse", "chords": "G5 D5 Em C5", "shapes": "355--- -577-- -799-- -355--" },
-    { "section": "Chorus", "chords": "Am C5 Am C5 G5 D5 Em C5", "shapes": "-022-- -355-- -022-- -355-- 355--- -577-- -799-- -355--" }
+    { "section": "Chorus", "chords": "Am C5 Am C5 G5 D5 Em C5", "shapes": "-022-- -355-- -022-- -355-- 355--- -577-- -799-- -355--", "hint": "Walk the roots up A-B-C (A-str 0-2-3) into each chorus line (passing B5 is in the tab)" }
   ] },
   "21-the-middle": { "sections": [
     { "section": "Whole song", "chords": "D A G", "shapes": "000--- 777--- 555---" }
@@ -113,7 +113,7 @@
     { "section": "Chorus", "chords": "G A D Bm A D", "shapes": "355--- 577--- -577-- -244-- 577--- -577--" }
   ] },
   "24-mary-jane-s-last-dance": { "sections": [
-    { "section": "Verse", "chords": "Am G D Am" },
+    { "section": "Verse", "chords": "Am G D Am", "hint": "Signature riff: Am with index-finger hammer-on into x02210, kept sparse (tab m1-8)" },
     { "section": "Chorus", "chords": "Em7 A Em7 A G" }
   ] },
   "25-valerie": { "sections": [
@@ -121,11 +121,11 @@
     { "section": "Pre-Chorus", "chords": "A G#m B", "shapes": "5fr 4fr 7fr" }
   ] },
   "26-voodoo-child-slight-return": { "sections": [
-    { "section": "Verse", "chords": "E7#9 G A" },
+    { "section": "Verse", "chords": "E7#9 G A", "hint": "It's all the E7#9 riff: open low E, 3fr bend, D-str 0h2, G-to-A moves filling every line" },
     { "section": "Chorus", "chords": "C7 D7 E G A" }
   ] },
   "27-fat-bottomed-girls": { "sections": [
-    { "section": "Verse", "chords": "D A D G D A D", "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---" },
+    { "section": "Verse", "chords": "D A D G D A D", "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---", "hint": "Intro/interlude riff: low-string Drop D runs 5-3-0 into the open D chord" },
     { "section": "Chorus", "chords": "D C G D C A D G D A D", "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---" },
     { "section": "Interlude", "chords": "G D A", "shapes": "555--- 000--- -022--" }
   ] },
@@ -144,7 +144,7 @@
     { "section": "Bridge", "chords": "B C# D#m G#m", "shapes": "-24--- -46--- -11--- 466---" }
   ] },
   "31-banditos": { "sections": [
-    { "section": "Verse", "chords": "E D A E", "shapes": "022--- -577-- 577--- 022---" },
+    { "section": "Verse", "chords": "E D A E", "shapes": "022--- -577-- 577--- 022---", "hint": "Palm-muted E5 chug; A-str open to D-str 2 fill between lines (tab m26-31)" },
     { "section": "Chorus", "chords": "E A E B A B E C#m A B E", "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022---" }
   ] }
 }

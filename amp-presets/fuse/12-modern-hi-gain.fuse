@@ -2,10 +2,10 @@
 <Preset amplifier="Mustang I/II" ProductId="1">
  <Amplifier>
   <Module ID="109" POS="0" BypassState="1">
-   <Param ControlIndex="0">32896</Param>
+   <Param ControlIndex="0">22873</Param>
    <Param ControlIndex="1">42662</Param>
    <Param ControlIndex="2">0</Param>
-   <Param ControlIndex="3">32896</Param>
+   <Param ControlIndex="3">22873</Param>
    <Param ControlIndex="4">39321</Param>
    <Param ControlIndex="5">32896</Param>
    <Param ControlIndex="6">39321</Param>

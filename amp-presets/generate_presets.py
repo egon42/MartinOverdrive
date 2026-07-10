@@ -202,16 +202,18 @@ def preset_xml(spec):
 # fx knobs likewise 0-10 (SIMPLE_COMP knob1 is a raw type enum 0-3).
 # ---------------------------------------------------------------------------
 
+# Volumes: first-pass level-match from phone SPL (dB-A Slow) + ear check.
+# Target ~72–73 dB rhythm; leads a hair above by ear. Dirt down, cleans up.
 TONES = {
     "BIG_CLEAN": {
         "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
-        "knobs": {"volume": 7.5, "gain": 3, "treble": 6, "middle": 5.5,
+        "knobs": {"volume": 9.5, "gain": 3, "treble": 6, "middle": 5.5,
                   "bass": 6, "presence": 5.5},
         "fx": [{"type": "LARGE_HALL", "knobs": [4, 5, 4, 6, 5]}],
     },
     "CHORUS_CLEAN": {
         "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
-        "knobs": {"volume": 7.5, "gain": 2.8, "treble": 5.5, "middle": 5,
+        "knobs": {"volume": 9.5, "gain": 2.8, "treble": 5.5, "middle": 5,
                   "bass": 5.5},
         "fx": [{"type": "SINE_CHORUS", "knobs": [5, 3, 5, 4, 5]},
                {"type": "SMALL_HALL", "knobs": [3.5, 4.5, 4, 6, 5]}],
@@ -224,20 +226,20 @@ TONES = {
     },
     "ACOUSTIC_SIM": {
         "amp": "STUDIO_PREAMP", "cabinet": "OFF",
-        "knobs": {"volume": 7, "gain": 4, "treble": 6.5, "middle": 5,
+        "knobs": {"volume": 8.5, "gain": 4, "treble": 6.5, "middle": 5,
                   "bass": 5.5},
         "fx": [{"type": "COMPRESSOR", "knobs": [5, 5, 4, 5, 5]},
                {"type": "SMALL_HALL", "knobs": [3.5, 5, 4, 6, 6]}],
     },
     "EDGE_BREAKUP": {
         "amp": "57_DELUXE", "cabinet": "57DLX",
-        "knobs": {"volume": 6.5, "gain": 5, "treble": 5.5, "middle": 6,
+        "knobs": {"volume": 7.5, "gain": 5, "treble": 5.5, "middle": 6,
                   "bass": 5},
         "fx": [{"type": "65_SPRING", "knobs": [2.5, 4, 4, 5, 5]}],
     },
     "COUNTRY_SNAP": {
         "amp": "59_BASSMAN", "cabinet": "BSSMN", "bright": True,
-        "knobs": {"volume": 7, "gain": 4, "treble": 6.5, "middle": 5.5,
+        "knobs": {"volume": 6.5, "gain": 4, "treble": 6.5, "middle": 5.5,
                   "bass": 4.5},
         "fx": [{"type": "COMPRESSOR", "knobs": [5, 4.5, 4, 6, 5]},
                {"type": "65_SPRING", "knobs": [2, 3.5, 4, 5, 5.5]}],
@@ -250,7 +252,7 @@ TONES = {
     },
     "PURPLE_RAIN": {
         "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
-        "knobs": {"volume": 7.5, "gain": 3, "treble": 5.5, "middle": 5,
+        "knobs": {"volume": 8.5, "gain": 3, "treble": 5.5, "middle": 5,
                   "bass": 6},
         "fx": [{"type": "COMPRESSOR", "knobs": [4.5, 4, 3.5, 5, 5]},
                {"type": "SINE_CHORUS", "knobs": [6, 2.5, 7, 4.5, 5]},
@@ -276,13 +278,13 @@ TONES = {
     },
     "GRUNGE_BIG": {
         "amp": "AMERICAN_90S", "cabinet": "4x12V", "noise_gate": 1,
-        "knobs": {"volume": 5, "gain": 6, "treble": 5.5, "middle": 4.5,
+        "knobs": {"volume": 3.5, "gain": 6, "treble": 5.5, "middle": 4.5,
                   "bass": 6.5},
         "fx": [],
     },
     "MODERN_HI_GAIN": {
         "amp": "METAL_2000", "cabinet": "4x12M", "noise_gate": 2,
-        "knobs": {"volume": 5, "gain": 6.5, "treble": 6, "middle": 5,
+        "knobs": {"volume": 3.5, "gain": 6.5, "treble": 6, "middle": 5,
                   "bass": 6, "presence": 6},
         "fx": [],
     },
@@ -295,14 +297,14 @@ TONES = {
     },
     "VOODOO_WAH": {
         "amp": "59_BASSMAN", "cabinet": "BSSMN",
-        "knobs": {"volume": 5.5, "gain": 7, "treble": 6, "middle": 6,
+        "knobs": {"volume": 7, "gain": 7, "treble": 6, "middle": 6,
                   "bass": 5.5},
         "fx": [{"type": "TOUCH_WAH", "knobs": [8, 6, 3, 7, 4]},
                {"type": "63_SPRING", "knobs": [3, 4, 4.5, 5, 5]}],
     },
     "GLAM_ROCK": {
         "amp": "BRITISH_80S", "cabinet": "4x12M",
-        "knobs": {"volume": 5.5, "gain": 6, "treble": 6.5, "middle": 6,
+        "knobs": {"volume": 4.5, "gain": 6, "treble": 6.5, "middle": 6,
                   "bass": 5, "presence": 6.5},
         "fx": [{"type": "SMALL_ROOM", "knobs": [2, 4, 4, 5, 5]}],
     },
@@ -349,11 +351,11 @@ PRESETS = [
     tone("CHORUS_CLEAN",    "17 QUIET VERSE",     "pair-quiet-verse"),  # slot 16
     tone("GRUNGE_BIG",      "18 BIG CHORUS",      "pair-big-chorus"),   # slot 17
     tone("MUTED_DRY_CLEAN", "19 MUTED VERSE",     "pair-muted-verse"),  # slot 18
-    tone("POP_PUNK",        "20 PUNK CHORUS",     "pair-punk-chorus"),  # slot 19
+    tone("POP_PUNK",        "20 PUNK CHORUS",     "pair-punk-chorus", vol=4.5),  # slot 19
     tone("CHORUS_CLEAN",    "21 PRETNDR INTRO",   "pair-pretender-intro"),  # slot 20
-    tone("MODERN_HI_GAIN",  "22 PRETNDR SLAM",    "pair-pretender-slam", vol=5.5),  # slot 21
+    tone("MODERN_HI_GAIN",  "22 PRETNDR SLAM",    "pair-pretender-slam"),  # slot 21
     tone("BIG_CLEAN",       "23 BALLAD CLEAN",    "pair-ballad-clean"),     # slot 22
-    tone("LEAD_SOLO",       "24 LEAD BOOST",      "pair-lead-boost"),       # slot 23
+    tone("LEAD_SOLO",       "24 LEAD BOOST",      "pair-lead-boost", vol=5.5),  # slot 23
 ]
 
 
