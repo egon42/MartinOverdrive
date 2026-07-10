@@ -1,13 +1,15 @@
 import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode, type RefObject } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
-import { AmpPresetField, BackingTrack, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
+import { AmpPresetField, BackingTrack, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, practicedAgo, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
 import { progressionFor } from './progressions'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
+import { resolveFretboards, scaleName } from './fretboard'
 import { SyncPanel } from './sync'
+import { setOrdered, tonightsSongs } from './setlist'
 import { statuses, type Song } from './types'
 
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
@@ -25,7 +27,11 @@ const SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
 export function Dashboard() {
   const { get, exportBackup, importBackup } = usePractice(); const navigate = useNavigate(); const fileRef = useRef<HTMLInputElement>(null)
   const statusCounts = statuses.map((status) => ({ status, count: songs.filter((s) => get(s.id).status === status).length }))
-  const focus = [...songs].filter((s) => get(s.id).status !== 'Show Ready').sort((a, b) => get(b.id).priority - get(a.id).priority || (b.difficulty || 0) - (a.difficulty || 0)).slice(0, 4)
+  // Priority first, then stalest practice first ('' = never), then hardest.
+  const focus = [...songs].filter((s) => get(s.id).status !== 'Show Ready').sort((a, b) => {
+    const la = get(a.id).lastPracticed, lb = get(b.id).lastPracticed
+    return get(b.id).priority - get(a.id).priority || (la === lb ? 0 : la < lb ? -1 : 1) || (b.difficulty || 0) - (a.difficulty || 0)
+  }).slice(0, 4)
   const restore = async (event: ChangeEvent<HTMLInputElement>) => { const file = event.target.files?.[0]; if (!file) return; try { await importBackup(file); alert('Practice backup restored.') } catch (error) { alert(error instanceof Error ? error.message : 'Could not restore backup.') } event.target.value = '' }
   return <><section className="dashboard-summary"><div className="stats stats-status">{statusCounts.map(({ status, count }) => <div key={status}><strong>{count}</strong><span>{status.toLowerCase()}</span></div>)}</div><div className="actions"><Link className="button" to="/practice">Start practice</Link><Link className="button secondary" to="/show">Show mode</Link></div></section>
     <section><div className="section-heading"><div><span className="eyebrow">Today’s practice</span><h2>Prioritized suggestions</h2></div><button className="text-button" onClick={() => navigate(`/song/${songs[Math.floor(Math.random() * songs.length)].id}`)}>Random song ↗</button></div><div className="card-grid">{focus.map((song) => <SongCard song={song} key={song.id} />)}</div></section>
@@ -50,15 +56,19 @@ export function Practice() {
   useEffect(() => { localStorage.setItem('overdrive-practice-sort', sort) }, [sort])
   useEffect(() => { localStorage.setItem('overdrive-practice-sort-dir', direction) }, [direction])
   const ordered = [...filtered].sort((a, b) => {
+    const la = get(a.id).lastPracticed, lb = get(b.id).lastPracticed
     const comparison = sort === 'difficulty'
       ? (a.difficulty || 0) - (b.difficulty || 0)
       : sort === 'set'
         ? a.order - b.order
-        : get(a.id).priority - get(b.id).priority
+        : sort === 'recency'
+          ? (la === lb ? 0 : la < lb ? -1 : 1) // '' (never practiced) sorts oldest
+          : get(a.id).priority - get(b.id).priority
     return comparison === 0 ? a.order - b.order : direction === 'asc' ? comparison : -comparison
   })
-  const changeSort = (value: string) => { setSort(value); if (value === 'set') setDirection('asc') }
-  return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => changeSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option><option value="set">Set order</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <Link className="practice-row" to={`/song/${song.id}`} key={song.id}><div className="practice-row-main"><span className="eyebrow">{String(song.order).padStart(2, '0')} · {entry.status} · {priorityLabel[entry.priority]} priority</span> <PresetBadges songId={song.id} /><h3>{song.title}</h3><p>{song.artist}</p></div><Difficulty value={song.difficulty} /></Link>})}</div></>
+  // 'set' reads naturally ascending; 'recency' defaults to stalest-first (ascending).
+  const changeSort = (value: string) => { setSort(value); if (value === 'set' || value === 'recency') setDirection('asc') }
+  return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => changeSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option><option value="set">Set order</option><option value="recency">Last practiced</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <Link className="practice-row" to={`/song/${song.id}`} key={song.id}><div className="practice-row-main"><span className="eyebrow">{String(song.order).padStart(2, '0')} · {entry.status} · {priorityLabel[entry.priority]} priority{entry.lastPracticed ? ` · practiced ${practicedAgo(entry.lastPracticed)}` : ''}</span> <PresetBadges songId={song.id} /><h3>{song.title}</h3><p>{song.artist}</p></div><Difficulty value={song.difficulty} /></Link>})}</div></>
 }
 
 export function SongDetail() {
@@ -69,9 +79,29 @@ export function SongDetail() {
   return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/></dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
 }
 
-export function Jam() {
+// Jam songs grouped by the key of their standard-tuning pentatonic box, so one key can
+// be practiced across all its songs in a session ("key of the week"). Groups are ordered
+// biggest first — the biggest shared box is the highest-leverage vocabulary to drill.
+function jamGroups() {
   const jamSongs = songs.filter((song) => /pentatonic|blues improv/i.test(song.practiceStyle))
-  return <><PageTitle title="Jam" compact/><div className="jam-list">{jamSongs.map((song) => <article className="panel jam-card" key={song.id}><div><span className="eyebrow">{song.artist}</span><h2><Link to={`/song/${song.id}`}>{song.title}</Link></h2></div><dl><AmpPresetField songId={song.id}/><Field label="Suggested scale" value={song.scaleHint}/><Field label="Focus" value={song.mustKnow}/></dl><SongLinks song={song}/><div className="jam-backing"><BackingTrack song={song}/></div><div className="jam-pattern"><FretboardPanel song={song}/></div></article>)}</div></>
+  const map = new Map<string, { label: string, boxName: string, songs: Song[] }>()
+  for (const song of jamSongs) {
+    const boxName = scaleName(resolveFretboards(song).standard)
+    const label = boxName.match(/^[A-G][b#]?\s?(?:minor|major)/i)?.[0].trim() ?? boxName
+    const bucket = map.get(label.toLowerCase())
+    if (bucket) bucket.songs.push(song)
+    else map.set(label.toLowerCase(), { label, boxName, songs: [song] })
+  }
+  return [...map.values()].sort((a, b) => b.songs.length - a.songs.length || a.songs[0].order - b.songs[0].order)
+}
+
+export function Jam() {
+  const groups = useMemo(jamGroups, [])
+  return <><PageTitle title="Jam" compact/>
+    {groups.map((group) => <section className="jam-group" key={group.label}>
+      <div className="section-heading"><div><span className="eyebrow">{group.songs.length === 1 ? '1 song' : `${group.songs.length} songs`} · same box</span><h2>{group.label} pentatonic <small className="jam-group-box">{group.boxName}</small></h2></div></div>
+      <div className="jam-list">{group.songs.map((song) => <article className="panel jam-card" key={song.id}><div><span className="eyebrow">{song.artist}</span><h2><Link to={`/song/${song.id}`}>{song.title}</Link></h2></div><dl><AmpPresetField songId={song.id}/><Field label="Suggested scale" value={song.scaleHint}/><Field label="Focus" value={song.mustKnow}/></dl><SongLinks song={song}/><div className="jam-backing"><BackingTrack song={song}/></div><div className="jam-pattern"><FretboardPanel song={song}/></div></article>)}</div>
+    </section>)}</>
 }
 
 // Shrinks the sheet's font until it fits the container (height for compact chords,
@@ -208,7 +238,39 @@ class ShowSongBoundary extends Component<{ song: Song, onCheatView?: () => void,
 }
 
 export function Show() {
-  const [index, setIndex] = useState(() => { const saved = Number(localStorage.getItem(SHOW_INDEX_KEY) || 0); return Number.isFinite(saved) ? Math.max(0, Math.min(songs.length - 1, saved)) : 0 }); const wakeLock = useRef<any>(null); const song = songs[Math.min(index, songs.length - 1)]
+  const { get, patch } = usePractice()
+  // Tonight's set (skips + order from the Set page) — falls back to the full setlist
+  // when nothing is configured. `get` is stable per practice-state change.
+  const setSongs = useMemo(() => tonightsSongs(get), [get])
+  // The saved position is the song id (survives set reorders/skips between sessions);
+  // a legacy numeric index from earlier builds still restores as a clamped index.
+  const [index, setIndex] = useState(() => {
+    const saved = localStorage.getItem(SHOW_INDEX_KEY) || ''
+    const byId = setSongs.findIndex((item) => item.id === saved)
+    if (byId >= 0) return byId
+    // Saved song got skipped at soundcheck: resume at the next active song after its
+    // slot (or the last one), not back at song 1 — the whole point of persisting.
+    const full = setOrdered(get)
+    const at = full.findIndex((item) => item.id === saved)
+    if (at >= 0) {
+      for (let i = at + 1; i < full.length; i++) {
+        const idx = setSongs.findIndex((item) => item.id === full[i].id)
+        if (idx >= 0) return idx
+      }
+      return setSongs.length - 1
+    }
+    const numeric = Number(saved)
+    return Number.isFinite(numeric) ? Math.max(0, Math.min(setSongs.length - 1, numeric)) : 0
+  })
+  const wakeLock = useRef<any>(null); const song = setSongs[Math.min(index, setSongs.length - 1)]
+  // If tonight's set changes under us (a sync pull after a soundcheck edit on another
+  // device), keep following the song that was on screen — or clamp if it was removed.
+  // Without this, index can point past the end forever: "12 / 5" and dead nav buttons.
+  const shownIdRef = useRef(song.id)
+  useEffect(() => {
+    const at = setSongs.findIndex((item) => item.id === shownIdRef.current)
+    setIndex((i) => at >= 0 ? at : Math.max(0, Math.min(setSongs.length - 1, i)))
+  }, [setSongs])
   const sheets = sheetsFor(song.id)
   const [view, setView] = useState(() => localStorage.getItem(SHOW_VIEW_KEY) || 'scale')
   useEffect(() => { localStorage.setItem(SHOW_VIEW_KEY, view) }, [view])
@@ -219,7 +281,6 @@ export function Show() {
   const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective], 'height', 0.7)
   const chordsRef = useRef<HTMLDivElement>(null)
   // Autoscroll: only the chords/tabs sheets scroll (the cheat card auto-fits one screen).
-  const { get, patch } = usePractice()
   const speed = get(song.id).scrollSpeed || DEFAULT_SCROLL_SPEED
   const [playing, setPlaying] = useState(false)
   const [scrollable, setScrollable] = useState(false)
@@ -244,12 +305,12 @@ export function Show() {
     if (!p && el && el.scrollTop + el.clientHeight >= el.scrollHeight - 1) el.scrollTop = 0
     return !p
   })
-  useEffect(() => { localStorage.setItem(SHOW_INDEX_KEY, String(index)) }, [index])
+  useEffect(() => { shownIdRef.current = song.id; localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       // PageDown/PageUp: Bluetooth page-turner pedals (AirTurn etc.) send these —
       // prevent default so they turn the song instead of scrolling the sheet.
-      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); setIndex((i) => Math.min(songs.length - 1, i + 1)) }
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); setIndex((i) => Math.min(setSongs.length - 1, i + 1)) }
       if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); setIndex((i) => Math.max(0, i - 1)) }
       if (e.key === 'ArrowDown') cycleView(1)
       if (e.key === 'ArrowUp') cycleView(-1)
@@ -260,7 +321,7 @@ export function Show() {
     window.addEventListener('keydown', key)
     return () => window.removeEventListener('keydown', key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effective, sheets.chords, sheets.tabs, scrollable])
+  }, [effective, sheets.chords, sheets.tabs, scrollable, setSongs])
   // Swipe navigation, cheat view only (it never scrolls horizontally, so a horizontal
   // drag is unambiguous there; sheet views keep swipes for scrolling). Mostly-horizontal
   // moves past the threshold turn the song; pointercancel means the browser claimed the
@@ -274,7 +335,7 @@ export function Show() {
     if (!start) return
     const dx = e.clientX - start.x, dy = e.clientY - start.y
     if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 2) return
-    setIndex((i) => dx < 0 ? Math.min(songs.length - 1, i + 1) : Math.max(0, i - 1))
+    setIndex((i) => dx < 0 ? Math.min(setSongs.length - 1, i + 1) : Math.max(0, i - 1))
   }
   const swipeProps = effective === 'scale' ? { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: () => { swipeStart.current = null } } : {}
   // Auto wake lock: request on mount, release on unmount, and silently re-acquire on
@@ -308,9 +369,9 @@ export function Show() {
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => setIndex((i) => Math.max(0, i - 1))} aria-label="Previous song">‹</button>
-      <span>{index + 1} / {songs.length}</span>
-      <div><i style={{ width: `${((index + 1) / songs.length) * 100}%` }}/></div>
-      <button type="button" className="show-nav-btn" disabled={index === songs.length - 1} onClick={() => setIndex((i) => Math.min(songs.length - 1, i + 1))} aria-label="Next song">›</button>
+      <span>{index + 1} / {setSongs.length}</span>
+      <div><i style={{ width: `${((index + 1) / setSongs.length) * 100}%` }}/></div>
+      <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label="Next song">›</button>
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
     <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>}

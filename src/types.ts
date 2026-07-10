@@ -36,6 +36,9 @@ export interface PracticeEntry {
   savedUltimateGuitarUrl: string
   preferredSource: '' | 'songsterr' | 'ultimateGuitar' | 'chords' | 'tabs'
   scrollSpeed: number // show-mode autoscroll px/second; 0 = use the default
+  skipTonight: boolean // tonight's set: true = song sits out of show mode
+  setPosition: number // tonight's set order override; 0 = use song.order
+  bpm: number // practice metronome tempo; 0 = not set yet (default applies)
   updatedAt: string
 }
 

@@ -165,3 +165,46 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    vertical scrolling native); compact landscape shrinks the big nav buttons a notch */
 .show-song.cheat-view{touch-action:pan-y}
 @media(orientation:landscape) and (max-height:480px){.show-nav-btn{width:44px;height:44px;font-size:1.3rem}}
+
+/* Tonight's set page: ordered rows with in/out toggle and up/down reorder */
+.setlist-rows{display:grid;gap:8px}
+.setlist-row{display:flex;align-items:center;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.setlist-row.skipped{opacity:.5}
+.setlist-row.skipped .setlist-main h3{text-decoration:line-through}
+.setlist-seat{font-variant-numeric:tabular-nums;font-weight:800;color:var(--muted);min-width:2em}
+.setlist-main{flex:1;min-width:0}
+.setlist-main h3{margin:0;font-size:1.05rem}
+.setlist-main p{margin:0;color:var(--muted);font-size:.85rem}
+.setlist-play{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:750;cursor:pointer}
+.setlist-play input{width:22px;height:22px;accent-color:var(--acid);margin:0}
+.setlist-move{display:flex;gap:6px}
+.setlist-move button{width:44px;height:44px;padding:0;border-radius:10px;display:grid;place-items:center;background:transparent;border:1px solid var(--line);color:inherit;font-size:1.1rem}
+.setlist-move button:disabled{opacity:.25}
+@media(max-width:520px){.setlist-row{gap:10px;padding:10px 12px}.setlist-main h3{font-size:.95rem}.setlist-move button{width:40px;height:40px}}
+
+/* Practice metronome (song page) */
+.metronome{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:12px}
+.metro-toggle{min-width:6.2em}
+.metro-toggle.active{background:var(--acid);border-color:var(--acid);color:#061008}
+.metro-tempo{display:flex;align-items:center;gap:8px}
+.metro-tempo button{width:44px;height:44px;padding:0;border-radius:999px;background:transparent;border:1px solid var(--line);color:inherit;font-size:1.25rem}
+.metro-tempo button:disabled{opacity:.3}
+.metro-bpm{min-width:3.6em;text-align:center;font-variant-numeric:tabular-nums}
+.metro-bpm strong{font-size:1.35rem}
+.metro-bpm i{display:block;font-style:normal;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.metro-tap{background:transparent;border:1px solid var(--line);color:inherit}
+.metro-beats{display:flex;align-items:center;gap:8px}
+.metro-beats span{font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:750}
+.metro-dots{display:flex;gap:7px}
+.metro-dots i{width:12px;height:12px;border-radius:50%;background:var(--line);transition:background .05s}
+.metro-dots i.on{background:var(--ink)}
+.metro-dots i.on.accent{background:var(--acid)}
+
+/* Jam page key groups */
+.jam-group{margin-bottom:38px}
+.jam-group-box{display:block;font-size:.68rem;font-weight:650;color:var(--muted);letter-spacing:0;margin-top:4px}
+
+/* Practice session logging + metronome note */
+.practice-log{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.practice-log-info{color:var(--muted);font-size:.85rem}
+.metro-note{flex-basis:100%;margin:0;color:var(--muted);font-size:.78rem;font-style:italic}
