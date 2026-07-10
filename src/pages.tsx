@@ -387,7 +387,9 @@ export function Show() {
       : effective === 'tabs'
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
         : <CheatCard song={song} innerRef={cheatRef}/>}</article>
-    </ShowSongBoundary></div>
+    </ShowSongBoundary>
+    {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <p className="show-upnext"><span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/></p> })()}
+    </div>
 }
 
 function PageTitle({ eyebrow, title, copy, compact = false }: { eyebrow?: string, title: string, copy?: string, compact?: boolean }) { return <header className={`page-title ${compact ? 'compact' : ''}`}>{eyebrow && <span className="eyebrow">{eyebrow}</span>}<h1>{title}</h1>{copy && <p>{copy}</p>}</header> }
