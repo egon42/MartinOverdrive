@@ -1,5 +1,6 @@
-Standard (EADGBE)
+Drop D (DADGBE)
 
+[Chorus]
 D
 Are you gonna t
 C
@@ -26,6 +27,7 @@ ockin' world go ro
 D
 und
 
+[Verse 1]
 Hey I was j
 D
 ust a skinny lad, Never knew no good from bad
@@ -72,6 +74,7 @@ ladies every ti
 D
 me
 
+[Chorus]
 D
 Oh won't you ta
 C
@@ -108,6 +111,7 @@ und
 
 Hey listen here
 
+[Verse 2]
 D
 Now your mortgages and homes, I got stiffness in the bones
 
@@ -133,6 +137,7 @@ me
 
 Now get this
 
+[Chorus]
 D
 Oh won't you ta
 C
@@ -167,4 +172,5 @@ ockin' world go ro
 D
 und
 
+[Outro]
 GET ON YOUR BIKES AND RIDE!

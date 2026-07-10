@@ -2,6 +2,7 @@ S.O.B. — Nathaniel Rateliff and The Night Sweats
 Track:  (Songsterr s1531135t0, rev 2036223)
 Tuning (high→low): E B G D A E — 4/4
 Legend: x dead note · (n) tie · <n> harmonic · nb bend · n/ slide · nh hammer/pull · n~ vibrato · . palm mute
+Note: tab is in F# (the record key); the chord sheet plays the same shapes-progression in E — they do not match pitch-for-pitch.
 
 m1  (110 bpm)
 E-|--|--|--|--|--|--|--|--|------------|------|------------|------|--|--|--|--|--|--|--|--|--|--|--|--|

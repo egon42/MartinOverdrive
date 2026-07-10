@@ -74,7 +74,7 @@ B
 rtbag, 
 C#m
 baby.  
-Abm
+G#m
 
 Yeah 
 E
@@ -85,7 +85,7 @@ B
 rtbag, 
 C#m
 baby.   
-Abm
+G#m
 
 E
 Listen to 
@@ -95,7 +95,7 @@ B
 den, 
 C#m
 Baby, 
-Abm
+G#m
 with m
 E
 e. 
@@ -105,7 +105,7 @@ B
            
 C#m
                
-Abm
+G#m
                    
 A
                      
@@ -154,7 +154,7 @@ Asus2
 No, 
 C#m
 She doesn
-Abm
+G#m
 't know 
 A
 what she's m
@@ -176,7 +176,7 @@ Asus2
 No, 
 C#m
 She doesn
-Abm
+G#m
 't know 
 A
 what she's m
@@ -232,7 +232,7 @@ Asus2
 No, 
 C#m
 She doesn
-Abm
+G#m
 't know 
 A
 what she's m
@@ -254,7 +254,7 @@ Asus2
 No, 
 C#m
 She doesn
-Abm
+G#m
 't know 
 A
 what she'
@@ -275,7 +275,7 @@ E
     
 A
   
-Abm
+G#m
    
 F#m
   

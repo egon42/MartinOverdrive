@@ -1,4 +1,4 @@
-Standard (EADGBE)
+Drop D (DADGBE)
 
 It just t
 D
@@ -72,18 +72,4 @@ say.
 
 END on D
 
-I recommend you use these power chords, not the secondary chords.
-
-D
- – x577xxx (or 
-Dadd9
- – xx0230) 
-A
- – 5776xx (or 
-Aadd9
- –
-
-G
- – 3554xx (or 3200xx)
-
-For the D2 and A2, mute the low E sting with your index finger.
+Power chords in Drop D: D5 = 000xxx, A5 = 777xxx, G5 = 555xxx (barre one finger flat across the low three strings).

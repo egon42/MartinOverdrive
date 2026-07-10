@@ -1,27 +1,17 @@
 Standard (EADGBE)
 
-Am
- 
-Am
- 
-Am
- 
-Fmaj7
+[Intro]
+Am   Am/G   D/F#   Fmaj7
 
-Am
- 
-Am
- 
-E7sus4
- 
-E7
+Am   G   D   E
 
+[Verse 1]
 I 
 Am
 look at you 
-Am
+Am/G
 all see the 
-Am
+D/F#
 love there that's 
 Fmaj7
 sleeping
@@ -32,14 +22,14 @@ G
 tar gently 
 D
 weeps 
-E7
+E
 
 I 
 Am
 look at the 
-Am
+Am/G
 floor and I 
-Am
+D/F#
 see it needs 
 Fmaj7
 sweeping
@@ -50,8 +40,9 @@ G
 tar gently 
 C
 weeps 
-E7
+E
 
+[Bridge]
 A
 I don't know 
 C#m
@@ -82,26 +73,106 @@ E7sus4
 you 
 E7
 
-I look at the world and I notice it's turning
+[Verse 2]
+I 
+Am
+look at the world 
+Am/G
+and I notice 
+D/F#
+it's 
+Fmaj7
+turning
 
-While my guitar gently weeps
+Am
+While my gui
+G
+tar gently 
+D
+weeps 
+E
 
-With every mistake we must surely be learning
+With 
+Am
+every mistake 
+Am/G
+we must surely 
+D/F#
+be 
+Fmaj7
+learning
 
-Still my guitar gently weeps.
+Am
+Still my gui
+G
+tar gently 
+C
+weeps 
+E
 
-I don't know how you were diverted
+[Bridge 2]
+A
+I don't know how 
+C#m
+you 
+F#m
+were di
+C#m
+verted
 
-You were perverted too
+Bm
+You were perverted 
+E7sus4
+too 
+E7
 
-I don't know how you were inverted
+A
+I don't know how 
+C#m
+you 
+F#m
+were in
+C#m
+verted
 
-No one alerted you.
+Bm
+No one alerted 
+E7sus4
+you 
+E7
 
-I look at you all see the love there that's sleeping
+[Verse 3]
+I 
+Am
+look at you 
+Am/G
+all see the 
+D/F#
+love there that's 
+Fmaj7
+sleeping
 
-While my guitar gently weeps
+Am
+While my gui
+G
+tar gently 
+D
+weeps 
+E
 
-Look at you all...
+Am
+Look at 
+Am/G
+you 
+D/F#
+all
+Fmaj7
+...
 
-Still my guitar gently weeps.
+Am
+Still my gui
+G
+tar gently 
+C
+weeps 
+E

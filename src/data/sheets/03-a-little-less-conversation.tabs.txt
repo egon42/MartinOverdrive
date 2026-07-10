@@ -2,6 +2,7 @@ A Little Less Conversation — Elvis Presley
 Track: guita (Songsterr s15225t0, rev 761006)
 Tuning (high→low): E B G D A E — 4/4
 Legend: x dead note · (n) tie · <n> harmonic · nb bend · n/ slide · nh hammer/pull · n~ vibrato · . palm mute
+Note: verse matches the band chart in A, but the chorus/bridge bars are the original-key transcription (a 4th below the chord sheet) — follow the chord sheet for those sections.
 
 m1  (118 bpm)
 E-|--|--|--|--|--|------3-(0)-(0)---------|------3-(0)-(0)---------|--------------------|

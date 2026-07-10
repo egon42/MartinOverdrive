@@ -38,10 +38,10 @@ Am
 Am
 
  
-F#
+D/F#
  –
 
- 
+
 Am
 
  <verse 1="">
@@ -59,7 +59,7 @@ Am
 Am
 
 Ke
-F#
+D/F#
 ep   you  
 Am
  in      the   dark,   you know they all,        pretend.
@@ -78,7 +78,7 @@ Am
 Am
 
 Ke
-F#
+D/F#
 ep   you   in        t
 Am
 he dark,   and so it all,                   began...
@@ -353,7 +353,7 @@ Am
 Am
 
 Keep  you
-F#
+D/F#
   in             the 
 Am
  dark,  you know they all...        pretend.
