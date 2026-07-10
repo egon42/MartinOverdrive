@@ -40,11 +40,18 @@ self.addEventListener('activate', (event) => {
     // already holds (the just-precached shell) wins over the old copy.
     const fresh = await caches.open(CACHE)
     for (const key of stale) {
+      // Only migrate from this deployment's own namespace. Legacy un-namespaced caches
+      // hold the OTHER deployment's URLs too — importing those would let a stale prod
+      // shell shadow prod's cache from inside the dev cache forever (caches.match
+      // searches caches in creation order). Legacy caches are deleted, not migrated.
+      if (!key.endsWith(`:${BASE}`)) continue
       const old = await caches.open(key)
       for (const request of await old.keys()) {
         if (await fresh.match(request)) continue
         const response = await old.match(request)
-        if (response) await fresh.put(request, response)
+        // ok-filter: v4 cached 404s/opaqueredirects unconditionally; don't carry
+        // junk into a cache whose read path is cache-first-forever.
+        if (response && response.ok) await fresh.put(request, response)
       }
     }
     await Promise.all(stale.map((key) => caches.delete(key)))
