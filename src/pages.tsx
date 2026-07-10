@@ -285,6 +285,7 @@ export function Show() {
   const [playing, setPlaying] = useState(false)
   const [scrollable, setScrollable] = useState(false)
   const [picker, setPicker] = useState(false) // jump-to-song overlay (audible calls)
+  const pickerCenteredRef = useRef(false) // center the current song once per open, not on every re-render
   const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'chords' ? chordsRef : null
   useAutoScroll(scrollTarget, speed, playing, () => setPlaying(false))
   // New song or view: start paused at the top, and re-measure whether the sheet overflows.
@@ -371,7 +372,7 @@ export function Show() {
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => setIndex((i) => Math.max(0, i - 1))} aria-label="Previous song">‹</button>
-      <button type="button" className="show-counter" onClick={() => setPicker(true)} aria-label="Jump to a song">{index + 1} / {setSongs.length}</button>
+      <button type="button" className="show-counter" onClick={() => { pickerCenteredRef.current = false; setPicker(true) }} aria-label="Jump to a song">{index + 1} / {setSongs.length}</button>
       <div><i style={{ width: `${((index + 1) / setSongs.length) * 100}%` }}/></div>
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label="Next song">›</button>
     </div>
@@ -394,7 +395,7 @@ export function Show() {
     {picker && <div className="show-picker" onClick={() => setPicker(false)}>
       <div className="show-picker-list" role="dialog" aria-label="Jump to song" onClick={(e) => e.stopPropagation()}>
         {setSongs.map((item, i) => <button type="button" key={item.id} className={i === index ? 'current' : ''}
-          ref={i === index ? (el) => { el?.scrollIntoView({ block: 'center' }) } : undefined}
+          ref={i === index ? (el) => { if (el && !pickerCenteredRef.current) { pickerCenteredRef.current = true; el.scrollIntoView({ block: 'center' }) } } : undefined}
           onClick={() => { setIndex(i); setPicker(false) }}>
           <span className="show-picker-num">{String(i + 1).padStart(2, '0')}</span>
           <span className="show-picker-title">{item.title}</span>
