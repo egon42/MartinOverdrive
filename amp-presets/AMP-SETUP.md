@@ -231,9 +231,10 @@ out, see the flags: `--init1-type 03` (alternate init byte for some V2 units)
 and `--ack-timeout`. Because writing only touches preset memory (never
 firmware — see §4.0), a bad write is at worst a garbled slot you re-flash.
 
-> **Note:** this is the one path authored specifically for this project and it
-> can't be hardware-tested from the repo, only packet-verified. If it misbehaves
-> on your unit, Path B (Plug) is the proven cross-platform fallback.
+> **Status:** confirmed working end-to-end on the band's Mustang I V2 — all 24
+> slots written over hidapi on Windows 11 with the default init byte (`0xc1`),
+> no driver install. If it ever misbehaves on another unit, try
+> `--init1-type 03` first; Path B (Plug) remains the cross-platform fallback.
 
 ### Path B: Plug via WSL2 (cross-platform fallback)
 
