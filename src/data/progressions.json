@@ -108,8 +108,8 @@
     { "section": "Chorus", "chords": "Em A Em A G" }
   ] },
   "25-valerie": { "sections": [
-    { "section": "Verse / Chorus", "chords": "Eb Fm", "shapes": "11fr 13fr" },
-    { "section": "Pre-Chorus", "chords": "Ab Gm Bb", "shapes": "4fr 3fr 6fr" }
+    { "section": "Verse / Chorus", "chords": "E F#m", "shapes": "12fr 14fr" },
+    { "section": "Pre-Chorus", "chords": "A G#m B", "shapes": "5fr 4fr 7fr" }
   ] },
   "26-voodoo-child-slight-return": { "sections": [
     { "section": "Verse", "chords": "E G A" },
