@@ -284,6 +284,7 @@ export function Show() {
   const speed = get(song.id).scrollSpeed || DEFAULT_SCROLL_SPEED
   const [playing, setPlaying] = useState(false)
   const [scrollable, setScrollable] = useState(false)
+  const [picker, setPicker] = useState(false) // jump-to-song overlay (audible calls)
   const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'chords' ? chordsRef : null
   useAutoScroll(scrollTarget, speed, playing, () => setPlaying(false))
   // New song or view: start paused at the top, and re-measure whether the sheet overflows.
@@ -308,6 +309,7 @@ export function Show() {
   useEffect(() => { shownIdRef.current = song.id; localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
+      if (picker) { if (e.key === 'Escape') setPicker(false); return }
       // PageDown/PageUp: Bluetooth page-turner pedals (AirTurn etc.) send these —
       // prevent default so they turn the song instead of scrolling the sheet.
       if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); setIndex((i) => Math.min(setSongs.length - 1, i + 1)) }
@@ -321,7 +323,7 @@ export function Show() {
     window.addEventListener('keydown', key)
     return () => window.removeEventListener('keydown', key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effective, sheets.chords, sheets.tabs, scrollable, setSongs])
+  }, [effective, sheets.chords, sheets.tabs, scrollable, setSongs, picker])
   // Swipe navigation, cheat view only (it never scrolls horizontally, so a horizontal
   // drag is unambiguous there; sheet views keep swipes for scrolling). Mostly-horizontal
   // moves past the threshold turn the song; pointercancel means the browser claimed the
@@ -369,7 +371,7 @@ export function Show() {
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => setIndex((i) => Math.max(0, i - 1))} aria-label="Previous song">‹</button>
-      <span>{index + 1} / {setSongs.length}</span>
+      <button type="button" className="show-counter" onClick={() => setPicker(true)} aria-label="Jump to a song">{index + 1} / {setSongs.length}</button>
       <div><i style={{ width: `${((index + 1) / setSongs.length) * 100}%` }}/></div>
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label="Next song">›</button>
     </div>
@@ -389,6 +391,17 @@ export function Show() {
         : <CheatCard song={song} innerRef={cheatRef}/>}</article>
     </ShowSongBoundary>
     {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <p className="show-upnext"><span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/></p> })()}
+    {picker && <div className="show-picker" onClick={() => setPicker(false)}>
+      <div className="show-picker-list" role="dialog" aria-label="Jump to song" onClick={(e) => e.stopPropagation()}>
+        {setSongs.map((item, i) => <button type="button" key={item.id} className={i === index ? 'current' : ''}
+          ref={i === index ? (el) => { el?.scrollIntoView({ block: 'center' }) } : undefined}
+          onClick={() => { setIndex(i); setPicker(false) }}>
+          <span className="show-picker-num">{String(i + 1).padStart(2, '0')}</span>
+          <span className="show-picker-title">{item.title}</span>
+          {item.tuning !== 'Standard' && <i className="show-picker-tuning">{item.tuning}</i>}
+        </button>)}
+      </div>
+    </div>}
     </div>
 }
 
