@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type RefObject } from 'react'
+import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode, type RefObject } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
 import { AmpPresetField, BackingTrack, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
@@ -15,6 +15,12 @@ const tunings = ['Standard', 'Drop D']
 const priorityLabel = ['None', 'Low', 'Medium', 'High']
 // Show-mode autoscroll speed, px/second (per-song, stored as PracticeEntry.scrollSpeed).
 const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED = 120, SCROLL_SPEED_STEP = 4
+// localStorage (not sessionStorage): mobile OSes kill backgrounded tabs under memory
+// pressure, and mid-set that must not reset the show to song 1. Keyed per deployment
+// like the practice store, so /dev/ and prod don't share a show position.
+const SHOW_KEY_SUFFIX = import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''
+const SHOW_INDEX_KEY = `overdrive-show-index${SHOW_KEY_SUFFIX}`
+const SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
 
 export function Dashboard() {
   const { get, exportBackup, importBackup } = usePractice(); const navigate = useNavigate(); const fileRef = useRef<HTMLInputElement>(null)
@@ -180,11 +186,32 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   </div>
 }
 
+// Last line of defense on stage: if anything in the song view throws mid-set (e.g. a
+// sheet edited the night before breaks the parser), show the song's name instead of a
+// white screen — the prev/next controls live outside the boundary and keep working.
+// Keyed by song+view in Show() so navigating away retries rendering fresh.
+class ShowSongBoundary extends Component<{ song: Song, onCheatView?: () => void, children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  render() {
+    if (!this.state.failed) return this.props.children
+    const { song, onCheatView } = this.props
+    return <article className="show-song cheat-view"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>
+      <p className="show-error">This song’s view hit an error — use ‹ › to keep the show moving.</p>
+      {onCheatView && <p><button type="button" className="secondary" onClick={onCheatView}>Open the cheat card instead</button></p>}
+      <div className="show-content"><div className="show-fields">
+        <Field label="Role" value={song.role} />
+        <Field label="Must know" value={song.mustKnow} />
+        <Field label="Fallback" value={song.fallback} />
+      </div></div></article>
+  }
+}
+
 export function Show() {
-  const [index, setIndex] = useState(() => Number(sessionStorage.getItem('overdrive-show-index') || 0)); const wakeLock = useRef<any>(null); const song = songs[Math.min(index, songs.length - 1)]
+  const [index, setIndex] = useState(() => { const saved = Number(localStorage.getItem(SHOW_INDEX_KEY) || 0); return Number.isFinite(saved) ? Math.max(0, Math.min(songs.length - 1, saved)) : 0 }); const wakeLock = useRef<any>(null); const song = songs[Math.min(index, songs.length - 1)]
   const sheets = sheetsFor(song.id)
-  const [view, setView] = useState(() => sessionStorage.getItem('overdrive-show-view') || 'scale')
-  useEffect(() => { sessionStorage.setItem('overdrive-show-view', view) }, [view])
+  const [view, setView] = useState(() => localStorage.getItem(SHOW_VIEW_KEY) || 'scale')
+  useEffect(() => { localStorage.setItem(SHOW_VIEW_KEY, view) }, [view])
   const effective = view === 'chords' && sheets.chords ? 'chords' : view === 'tabs' && sheets.tabs ? 'tabs' : 'scale'
   const views = ['scale', ...(sheets.chords ? ['chords'] : []), ...(sheets.tabs ? ['tabs'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
@@ -217,11 +244,13 @@ export function Show() {
     if (!p && el && el.scrollTop + el.clientHeight >= el.scrollHeight - 1) el.scrollTop = 0
     return !p
   })
-  useEffect(() => { sessionStorage.setItem('overdrive-show-index', String(index)) }, [index])
+  useEffect(() => { localStorage.setItem(SHOW_INDEX_KEY, String(index)) }, [index])
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') setIndex((i) => Math.min(songs.length - 1, i + 1))
-      if (e.key === 'ArrowLeft') setIndex((i) => Math.max(0, i - 1))
+      // PageDown/PageUp: Bluetooth page-turner pedals (AirTurn etc.) send these —
+      // prevent default so they turn the song instead of scrolling the sheet.
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); setIndex((i) => Math.min(songs.length - 1, i + 1)) }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); setIndex((i) => Math.max(0, i - 1)) }
       if (e.key === 'ArrowDown') cycleView(1)
       if (e.key === 'ArrowUp') cycleView(-1)
       // Space toggles autoscroll — but only as a global shortcut; if a control is focused,
@@ -232,6 +261,22 @@ export function Show() {
     return () => window.removeEventListener('keydown', key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [effective, sheets.chords, sheets.tabs, scrollable])
+  // Swipe navigation, cheat view only (it never scrolls horizontally, so a horizontal
+  // drag is unambiguous there; sheet views keep swipes for scrolling). Mostly-horizontal
+  // moves past the threshold turn the song; pointercancel means the browser claimed the
+  // gesture as a scroll, so it's dropped.
+  const swipeStart = useRef<{ x: number, y: number } | null>(null)
+  const onSwipeDown = (e: React.PointerEvent) => { if (e.pointerType !== 'mouse' && e.isPrimary) swipeStart.current = { x: e.clientX, y: e.clientY } }
+  const onSwipeUp = (e: React.PointerEvent) => {
+    if (!e.isPrimary) return // a second finger lifting must not read the first finger's start point
+    const start = swipeStart.current
+    swipeStart.current = null
+    if (!start) return
+    const dx = e.clientX - start.x, dy = e.clientY - start.y
+    if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 2) return
+    setIndex((i) => dx < 0 ? Math.min(songs.length - 1, i + 1) : Math.max(0, i - 1))
+  }
+  const swipeProps = effective === 'scale' ? { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: () => { swipeStart.current = null } } : {}
   // Auto wake lock: request on mount, release on unmount, and silently re-acquire on
   // visibilitychange (the browser drops the lock whenever the tab/screen goes
   // background and never restores it automatically).
@@ -267,7 +312,8 @@ export function Show() {
       <div><i style={{ width: `${((index + 1) / songs.length) * 100}%` }}/></div>
       <button type="button" className="show-nav-btn" disabled={index === songs.length - 1} onClick={() => setIndex((i) => Math.min(songs.length - 1, i + 1))} aria-label="Next song">›</button>
     </div>
-    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>}
+    <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
+    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>}
     {(sheets.chords || sheets.tabs) && <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Cheat</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div>}
     {effective !== 'scale' && scrollable && <div className="show-autoscroll">
       <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
@@ -279,7 +325,8 @@ export function Show() {
       ? <div className="show-sheet" ref={chordsRef}><ChordSheetView text={sheets.chords!}/></div>
       : effective === 'tabs'
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
-        : <CheatCard song={song} innerRef={cheatRef}/>}</article></div>
+        : <CheatCard song={song} innerRef={cheatRef}/>}</article>
+    </ShowSongBoundary></div>
 }
 
 function PageTitle({ eyebrow, title, copy, compact = false }: { eyebrow?: string, title: string, copy?: string, compact?: boolean }) { return <header className={`page-title ${compact ? 'compact' : ''}`}>{eyebrow && <span className="eyebrow">{eyebrow}</span>}<h1>{title}</h1>{copy && <p>{copy}</p>}</header> }
