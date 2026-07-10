@@ -6,11 +6,20 @@ import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
 import { isStatus, usePractice } from './storage'
+import { Metronome } from './metronome'
 import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
+
+// "today" / "3d ago" / "" — compact recency label for a practice timestamp.
+export function practicedAgo(iso: string): string {
+  if (!iso) return ''
+  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000)
+  if (!Number.isFinite(days) || days < 0) return ''
+  return days === 0 ? 'today' : `${days}d ago`
+}
 
 // A small SVG fingering diagram for one chord. Strings run left→right as low-E (6th)
 // to high-e (1st), the standard chord-chart layout; a labelled row underneath removes
@@ -359,13 +368,19 @@ function isSiteUrl(value: string, domain: string) {
 
 export function PracticeControls({ song }: { song: Song }) {
   const { get, patch } = usePractice(); const entry = get(song.id)
+  const logSession = () => patch(song.id, { lastPracticed: new Date().toISOString(), sessions: entry.sessions + 1 })
   return <section className="panel practice-controls">
     <span className="eyebrow">Your local data</span>
     <h2>Practice notes</h2>
+    <div className="practice-log">
+      <button type="button" onClick={logSession}>Log practice session</button>
+      <span className="practice-log-info">{entry.sessions > 0 ? `${entry.sessions} session${entry.sessions === 1 ? '' : 's'}${entry.lastPracticed ? ` · last ${practicedAgo(entry.lastPracticed)}` : ''}` : 'No sessions logged yet'}</span>
+    </div>
     <div className="practice-fields">
       <label><span>Status</span><StatusSelect songId={song.id} /></label>
       <label><span>Priority</span><select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label>
       <label className="practice-notes"><span>Quick notes</span><textarea value={entry.notes} onChange={(e) => patch(song.id, { notes: e.target.value })} placeholder="Fingering, tone, rehearsal changes…" /></label>
     </div>
+    <Metronome songId={song.id} />
   </section>
 }
