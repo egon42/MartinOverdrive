@@ -37,6 +37,11 @@ don't silently transpose.** A common trap: the chords/tab are in the record key 
 cheat card is in an old band-arrangement key (or vice-versa). The user's answer ("I switched
 to these chords so it matches the recording") tells you the target key.
 
+**If the surfaces already agree on the key,** there's no transpose to do — the job is just
+to refresh the chords sheet from the new source and rebuild the cheat card to match it
+(Step 2). Still do it: a stale cheat card can carry chords the real song doesn't (e.g. a
+phantom chorus `D` that a bare-stub cheat had but the actual chart doesn't).
+
 ## Step 2 — The cheat card (`progressions.json`)
 
 Structure, keyed by songId (see `src/progressions.ts` for the full contract):
@@ -54,9 +59,10 @@ Structure, keyed by songId (see `src/progressions.ts` for the full contract):
 - `capo` (optional, on the song object) — capo note.
 
 Derive each section's progression from `chords.txt` (its `[Section]` markers), collapsing
-the section to its distinct chord cycle. `src/chords.ts` `chordProgression()` auto-derives
-a rough version from a sheet, but `progressions.json` is **curated** — cleaner cycles plus
-shapes/hints the raw sheet can't give.
+the section to its distinct chord cycle — **rebuild from the current sheet, don't trust the
+old cheat entry**, which may be a stub with wrong or phantom chords. `src/chords.ts`
+`chordProgression()` auto-derives a rough version from a sheet, but `progressions.json` is
+**curated** — cleaner cycles plus shapes/hints the raw sheet can't give.
 
 **Open-chord shape reference** (low-E → high-e; `-` = unplayed):
 ```
@@ -68,8 +74,9 @@ pattern) at fret n cover the rest.
 
 ## Step 3 — Transposing a song to a new key
 
-- **Chords sheet** — re-import in the target key (UG paste / Songsterr) or transpose the
-  chord names. See the **import-song-sheet** skill for the file format.
+- **Chords sheet** — re-import in the target key (Songsterr, or a UG paste run through
+  `scripts/ug-chords-to-sheet.mjs`) or transpose the chord names. See the
+  **import-song-sheet** skill for the file format and the UG-paste converter.
 - **Tab** — `scripts/import-songsterr-tab.mjs` has **no transpose flag**. If the current
   tab carries the "transposed … from the Songsterr source" note, it was hand-transposed —
   just **re-import** it. Songsterr's source is the native key, so re-running the importer
@@ -85,11 +92,12 @@ note when a song's key was a deliberate, non-obvious choice (so a future session
 
 ## Step 4 — Verify + ship
 
-Validate the cheat card entry — `shapes` count must equal `chords` count and each shape is
-6 chars:
+Validate the cheat card entry — every section prints `True`. `shapes` are **optional**; a
+section with none is fine. When present, `shapes` count must equal `chords` count and each
+shape is 6 chars:
 ```bash
 python -c "import json; e=json.load(open('src/data/progressions.json'))['<songId>']; \
-[print(s['section'], len(s['chords'].split())==len(s.get('shapes','').split()) and all(len(x)==6 for x in s.get('shapes','').split())) for s in e['sections']]"
+[print(s['section'], (not s.get('shapes')) or (len(s['chords'].split())==len(s['shapes'].split()) and all(len(x)==6 for x in s['shapes'].split()))) for s in e['sections']]"
 ```
 Also confirm the JSON still parses (the same load succeeds). If `chords.txt` changed, spot-
 check the parse per the import-song-sheet skill. Then `npm run build`, commit on `dev`,

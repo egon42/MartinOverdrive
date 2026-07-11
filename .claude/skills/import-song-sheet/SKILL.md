@@ -31,12 +31,8 @@ fall back to pasted text, or leave chords out for that song (see "Fallback" belo
 
 ## Chords from pasted text (fallback / no Songsterr chords)
 
-Save the text verbatim as `src/data/sheets/<songId>.chords.txt`. Trailing spaces
-mid-line are meaningful ("But ␣" before a chord line) — do not strip or reflow.
-Sanity-check the parse if unsure: the format's rules live in `src/chords.ts`
-(chord-token lines, `[Section]` headers, tab-ish lines, tuning/capo meta). The format
-is **chord name on its own line, splitting the lyric it lands on** (not inline `[D]`
-brackets):
+The app's on-disk format is **chord name on its own line, splitting the lyric it lands
+on** (not inline `[D]` brackets), with blank lines delimiting logical lines:
 
 ```
 Em
@@ -44,6 +40,30 @@ Em
 C
 een all I wanted
 ```
+
+Most UG pastes are the **other** shape — a chord row positioned above a lyric row:
+
+```
+Em                 C
+You could've been all I wanted
+```
+
+**Do NOT save that verbatim.** `src/chords.ts` ignores the column spacing — it treats a
+chord-only line as chords bunched at the *start* of the next lyric, so `C … Bb` over
+"…sun comes up" collapses both chords to the front and loses the Bb's position. Convert
+positioned pastes with the importer instead:
+
+```bash
+node scripts/ug-chords-to-sheet.mjs <input.txt> <songId> [--tuning "Drop D"]
+```
+
+It reads each chord's real column, rebuilds the lyric split there, inserts the blank-line
+delimiters the parser needs, and trims UG page chrome (nav/footer). Paste the whole UG
+copy into a temp file (chrome and all) and run it. **Always spot-check the output** (parse
+it, or eyeball the sheet): `N.C.`, unusual section labels, and odd spacing pass through
+as-is. Only save a paste verbatim when it's *already* in the own-line format above.
+Trailing spaces mid-line are meaningful ("But ␣" before a chord) — the importer preserves
+them; if hand-editing, don't strip or reflow.
 
 ## Fallback when no chords exist at all
 
