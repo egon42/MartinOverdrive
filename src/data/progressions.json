@@ -136,8 +136,8 @@
     { "section": "Bridge", "chords": "G A E B" }
   ] },
   "29-ain-t-goin-down-til-the-sun-comes-up": { "sections": [
-    { "section": "Verse", "chords": "C F C G7 C", "shapes": "-355-- 133--- -355-- 355--- -355--" },
-    { "section": "Chorus", "chords": "F C F C G7 C", "shapes": "133--- -355-- 133--- -355-- 355--- -355--" }
+    { "section": "Verse", "chords": "G C G D G", "shapes": "320003 -32010 320003 --0232 320003" },
+    { "section": "Chorus", "chords": "C Bb G Bb C G", "shapes": "-32010 -13331 320003 -13331 -32010 320003" }
   ] },
   "30-pink-pony-club": { "sections": [
     { "section": "Verse / Chorus", "chords": "F# G#m D#m B", "shapes": "244--- 466--- -11--- -24---" },
