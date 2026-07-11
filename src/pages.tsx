@@ -23,6 +23,13 @@ const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED = 120, S
 const SHOW_KEY_SUFFIX = import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''
 const SHOW_INDEX_KEY = `overdrive-show-index${SHOW_KEY_SUFFIX}`
 const SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
+// Per-song pinned default view (songId -> 'scale' | 'chords' | 'tabs'). Deliberately in
+// localStorage, NOT the synced practice store: pins are a per-device rehearsal preference,
+// not band data. Keyed per deployment like the other show keys.
+const SHOW_PINS_KEY = `overdrive-show-pins${SHOW_KEY_SUFFIX}`
+const readPins = (): Record<string, string> => {
+  try { const p = JSON.parse(localStorage.getItem(SHOW_PINS_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
+}
 
 export function Dashboard() {
   const { get, exportBackup, importBackup } = usePractice(); const navigate = useNavigate(); const fileRef = useRef<HTMLInputElement>(null)
@@ -270,9 +277,29 @@ export function Show() {
     setIndex((i) => at >= 0 ? at : Math.max(0, Math.min(setSongs.length - 1, i)))
   }, [setSongs])
   const sheets = sheetsFor(song.id)
-  const [view, setView] = useState(() => localStorage.getItem(SHOW_VIEW_KEY) || 'scale')
+  const [pins, setPins] = useState<Record<string, string>>(readPins)
+  useEffect(() => { localStorage.setItem(SHOW_PINS_KEY, JSON.stringify(pins)) }, [pins])
+  // Open each song on its pinned default view when present; otherwise fall back to the
+  // last view used (carried over across songs) or the cheat card.
+  const [view, setView] = useState(() => pins[song.id] || localStorage.getItem(SHOW_VIEW_KEY) || 'scale')
   useEffect(() => { localStorage.setItem(SHOW_VIEW_KEY, view) }, [view])
   const effective = view === 'chords' && sheets.chords ? 'chords' : view === 'tabs' && sheets.tabs ? 'tabs' : 'scale'
+  // On song change, snap to that song's pinned view (a manual mid-song switch is transient
+  // — the pin is the default we return to). Done in render, not an effect: an effect paints
+  // the carried-over view first and corrects it after, flashing the wrong sheet and
+  // remounting the song boundary (its key includes `effective`) twice per turn. Keyed on
+  // song.id only, so pinning the current song (a setPins) never fights a fresh manual switch.
+  const [lastSongId, setLastSongId] = useState(song.id)
+  if (song.id !== lastSongId) {
+    setLastSongId(song.id)
+    const p = pins[song.id]
+    if (p) setView(p)
+  }
+  const togglePin = () => setPins((prev) => {
+    const next = { ...prev }
+    if (next[song.id] === effective) delete next[song.id]; else next[song.id] = effective
+    return next
+  })
   const views = ['scale', ...(sheets.chords ? ['chords'] : []), ...(sheets.tabs ? ['tabs'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
@@ -376,7 +403,7 @@ export function Show() {
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
     <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>}
-    {(sheets.chords || sheets.tabs) && <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Cheat</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div>}
+    {(sheets.chords || sheets.tabs) && <div className="show-view-bar"><div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Cheat</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div><button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song — tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>📌</button></div>}
     {effective !== 'scale' && scrollable && <div className="show-autoscroll">
       <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
       <button type="button" className="autoscroll-step" aria-label="Slower" disabled={speed <= MIN_SCROLL_SPEED} onClick={() => bumpSpeed(-SCROLL_SPEED_STEP)}>−</button>
