@@ -9,7 +9,8 @@
     "build:pages": "tsc -b && vite build --base /MartinOverdrive/",
     "preview": "vite preview",
     "preview:pages": "vite preview --base /MartinOverdrive/",
-    "import-setlist": "node scripts/import-setlist.mjs"
+    "import-setlist": "node scripts/import-setlist.mjs",
+    "validate": "node scripts/validate-song-data.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",

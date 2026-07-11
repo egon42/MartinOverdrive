@@ -44,6 +44,11 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
   The user has standing approval to commit and push directly to `main` on this project.
 - Don't try to add a `git push` allow rule to settings — permission self-modification is
   also blocked. Bare `git push` is the whole fix.
+- **Promoting dev → main is a fast-forward, never a merge commit** (history is linear —
+  zero merge commits in the repo; keep it that way):
+  `git checkout main && git merge --ff-only dev && git push && git checkout dev`.
+  If `--ff-only` refuses, main has diverged — stop and ask rather than creating a
+  merge commit.
 
 ## Domain conventions (settled — don't re-litigate)
 
@@ -65,6 +70,12 @@ passthrough** loading procedure, preset backup steps, and the firmware/brick-ris
 `generate_presets.py` (`TONES` dict) — edit that and regenerate rather than hand-editing
 `.fuse` files, so the files stay the source of truth.
 
+Hardware save gotcha (near-miss 2026-07): the amp's front-panel **amber** (edited/unsaved)
+state **cannot be saved from the front panel** — the amber→green indicator is easy to
+misread and risks silently saving to the wrong preset slot. Bulk-write presets with the
+tools built for this (`load_presets.py` / `load_presets_gui.py` / `mustang-loader.bat`,
+see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
+
 ## Per-song tabs & chords (dev-branch feature)
 
 - Curated **text** files, glob-loaded by `src/sheets.ts`:
@@ -78,6 +89,20 @@ passthrough** loading procedure, preset backup steps, and the firmware/brick-ris
   extractable text — ask for a text source instead of transcribing pictures.
 - Both practice (song page panel) and show mode offer a Chords/Tabs switch; show
   mode auto-shrinks (chords fit by height, tabs by width).
+- `scripts/ug-chords-to-sheet.mjs` carries a **duplicated copy of `CHORD_RE`** from
+  `src/chords.ts` ("keep in sync" comment) — if you edit the regex in either file,
+  update both. `npm run validate` checks this drift plus cheat-card/sheet/setlist
+  consistency — run it after any song-data change.
+
+## Subagent gotchas (learned 2026-07, both cost real sessions)
+
+- **Content filtering kills lyric-heavy subagents**: a subagent that reproduces a full
+  song's lyrics verbatim can die with `400 Output blocked by content filtering policy`
+  (happened ≥4 times). Chunk per-song work and keep lyric excerpts minimal; chord/
+  section structure without full lyric lines passes fine.
+- **Cap generation fan-outs at ~5 concurrent subagents**: a 30-song batch fan-out hit
+  the monthly spend limit five agents in a row and stuck in a retry loop. Stage wide
+  batches in waves with a checkpoint between waves.
 
 ## Show mode & practice tools (dev-branch features, added 2026-07)
 
@@ -118,5 +143,8 @@ passthrough** loading procedure, preset backup steps, and the firmware/brick-ris
 ## Layout notes
 
 - `src/data/setlist.json` is generated — change the importer or the XLSX, not the JSON.
-- `overdrive-performance-notes.json` (repo root) holds performance/gig notes data.
+- `overdrive-performance-notes.json` (repo root) is **orphaned** — nothing in the app or
+  scripts reads it (verified 2026-07-11). It's hand-written per-song prep notes, likely
+  raw material from before the practice-log removal. Editing it has zero effect on the
+  app; ask the user before wiring it in or deleting it.
 - `dist/`, `*.tsbuildinfo`, `work/` are gitignored build artifacts.
