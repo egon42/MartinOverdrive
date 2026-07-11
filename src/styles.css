@@ -203,3 +203,23 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .show-picker-num{font-variant-numeric:tabular-nums;color:inherit;opacity:.6;font-size:.78rem;font-weight:800}
 .show-picker-title{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .show-picker-tuning{font-style:normal;font-size:.66rem;font-weight:800;background:#3a6ea5;color:#fff;border-radius:999px;padding:2px 8px}
+
+/* Printable tonight's set: big type for a floor/monitor tape-up. Dark theme prints
+   pale-on-white without the color override. Skipped songs don't print. */
+@media print{
+  /* body carries its own color:var(--ink), so overriding :root alone is not enough -
+     override body and the vars or the page title prints white-on-white */
+  :root{color:#111!important;background:white!important;--ink:#111;--muted:#555;--acid:#5a6e12}
+  body{color:#111!important;background:white!important}
+  .setlist-rows{gap:0}
+  .setlist-row{background:white;border:0;border-bottom:1px solid #bbb;border-radius:0;padding:8px 0;color:#111;opacity:1}
+  .setlist-row.skipped{display:none}
+  .setlist-move,.setlist-play{display:none!important}
+  .setlist-seat{font-size:15pt;color:#555}
+  .setlist-main h3{font-size:17pt;color:#111}
+  .setlist-main p{font-size:10pt;color:#555}
+  .setlist-main a{text-decoration:none}
+}
+
+.song-show-link{align-self:flex-end;flex:0 0 auto;white-space:nowrap}
+@media(max-width:760px){.song-show-link{align-self:flex-start}}

@@ -48,6 +48,7 @@ export function SetlistPage() {
     <header className="page-title compact"><span className="eyebrow">Soundcheck edits sync to your other devices</span><h1>Tonight’s set</h1></header>
     <div className="sort-row"><span>{active.length ? `${active.length} of ${songs.length} songs in the set` : 'Every song is skipped — show mode will fall back to the full set'}</span><div className="actions">
       {customized && <button className="secondary" onClick={reset}>Reset to full set order</button>}
+      <button className="secondary" onClick={() => window.print()}>Print set list</button>
       <Link className="button" to="/show">Show mode</Link>
     </div></div>
     <div className="setlist-rows">
