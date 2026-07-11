@@ -182,32 +182,11 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .setlist-move button:disabled{opacity:.25}
 @media(max-width:520px){.setlist-row{gap:10px;padding:10px 12px}.setlist-main h3{font-size:.95rem}.setlist-move button{width:40px;height:40px}}
 
-/* Practice metronome (song page) */
-.metronome{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:12px}
-.metro-toggle{min-width:6.2em}
-.metro-toggle.active{background:var(--acid);border-color:var(--acid);color:#061008}
-.metro-tempo{display:flex;align-items:center;gap:8px}
-.metro-tempo button{width:44px;height:44px;padding:0;border-radius:999px;background:transparent;border:1px solid var(--line);color:inherit;font-size:1.25rem}
-.metro-tempo button:disabled{opacity:.3}
-.metro-bpm{min-width:3.6em;text-align:center;font-variant-numeric:tabular-nums}
-.metro-bpm strong{font-size:1.35rem}
-.metro-bpm i{display:block;font-style:normal;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.metro-tap{background:transparent;border:1px solid var(--line);color:inherit}
-.metro-beats{display:flex;align-items:center;gap:8px}
-.metro-beats span{font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:750}
-.metro-dots{display:flex;gap:7px}
-.metro-dots i{width:12px;height:12px;border-radius:50%;background:var(--line);transition:background .05s}
-.metro-dots i.on{background:var(--ink)}
-.metro-dots i.on.accent{background:var(--acid)}
 
 /* Jam page key groups */
 .jam-group{margin-bottom:38px}
 .jam-group-box{display:block;font-size:.68rem;font-weight:650;color:var(--muted);letter-spacing:0;margin-top:4px}
 
-/* Practice session logging + metronome note */
-.practice-log{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
-.practice-log-info{color:var(--muted);font-size:.85rem}
-.metro-note{flex-basis:100%;margin:0;color:var(--muted);font-size:.78rem;font-style:italic}
 
 /* Show mode: next-song footer (title + tuning + amp preset, for the changeover) */
 .show-upnext{margin:10px auto 0;padding-top:10px;border-top:1px solid #1f2622;color:#9aa59f;font-size:.8rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap;max-width:1000px;width:100%}

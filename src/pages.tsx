@@ -1,7 +1,7 @@
 import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode, type RefObject } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
-import { AmpPresetField, BackingTrack, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, practicedAgo, unknown, type SheetKind } from './components'
+import { AmpPresetField, BackingTrack, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
 import { progressionFor } from './progressions'
@@ -27,11 +27,7 @@ const SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
 export function Dashboard() {
   const { get, exportBackup, importBackup } = usePractice(); const navigate = useNavigate(); const fileRef = useRef<HTMLInputElement>(null)
   const statusCounts = statuses.map((status) => ({ status, count: songs.filter((s) => get(s.id).status === status).length }))
-  // Priority first, then stalest practice first ('' = never), then hardest.
-  const focus = [...songs].filter((s) => get(s.id).status !== 'Show Ready').sort((a, b) => {
-    const la = get(a.id).lastPracticed, lb = get(b.id).lastPracticed
-    return get(b.id).priority - get(a.id).priority || (la === lb ? 0 : la < lb ? -1 : 1) || (b.difficulty || 0) - (a.difficulty || 0)
-  }).slice(0, 4)
+  const focus = [...songs].filter((s) => get(s.id).status !== 'Show Ready').sort((a, b) => get(b.id).priority - get(a.id).priority || (b.difficulty || 0) - (a.difficulty || 0)).slice(0, 4)
   const restore = async (event: ChangeEvent<HTMLInputElement>) => { const file = event.target.files?.[0]; if (!file) return; try { await importBackup(file); alert('Practice backup restored.') } catch (error) { alert(error instanceof Error ? error.message : 'Could not restore backup.') } event.target.value = '' }
   return <><section className="dashboard-summary"><div className="stats stats-status">{statusCounts.map(({ status, count }) => <div key={status}><strong>{count}</strong><span>{status.toLowerCase()}</span></div>)}</div><div className="actions"><Link className="button" to="/practice">Start practice</Link><Link className="button secondary" to="/show">Show mode</Link></div></section>
     <section><div className="section-heading"><div><span className="eyebrow">Today’s practice</span><h2>Prioritized suggestions</h2></div><button className="text-button" onClick={() => navigate(`/song/${songs[Math.floor(Math.random() * songs.length)].id}`)}>Random song ↗</button></div><div className="card-grid">{focus.map((song) => <SongCard song={song} key={song.id} />)}</div></section>
@@ -56,19 +52,15 @@ export function Practice() {
   useEffect(() => { localStorage.setItem('overdrive-practice-sort', sort) }, [sort])
   useEffect(() => { localStorage.setItem('overdrive-practice-sort-dir', direction) }, [direction])
   const ordered = [...filtered].sort((a, b) => {
-    const la = get(a.id).lastPracticed, lb = get(b.id).lastPracticed
     const comparison = sort === 'difficulty'
       ? (a.difficulty || 0) - (b.difficulty || 0)
       : sort === 'set'
         ? a.order - b.order
-        : sort === 'recency'
-          ? (la === lb ? 0 : la < lb ? -1 : 1) // '' (never practiced) sorts oldest
-          : get(a.id).priority - get(b.id).priority
+        : get(a.id).priority - get(b.id).priority
     return comparison === 0 ? a.order - b.order : direction === 'asc' ? comparison : -comparison
   })
-  // 'set' reads naturally ascending; 'recency' defaults to stalest-first (ascending).
-  const changeSort = (value: string) => { setSort(value); if (value === 'set' || value === 'recency') setDirection('asc') }
-  return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => changeSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option><option value="set">Set order</option><option value="recency">Last practiced</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <Link className="practice-row" to={`/song/${song.id}`} key={song.id}><div className="practice-row-main"><span className="eyebrow">{String(song.order).padStart(2, '0')} · {entry.status} · {priorityLabel[entry.priority]} priority{entry.lastPracticed ? ` · practiced ${practicedAgo(entry.lastPracticed)}` : ''}</span> <PresetBadges songId={song.id} /><h3>{song.title}</h3><p>{song.artist}</p></div><Difficulty value={song.difficulty} /></Link>})}</div></>
+  const changeSort = (value: string) => { setSort(value); if (value === 'set') setDirection('asc') }
+  return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => changeSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option><option value="set">Set order</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <Link className="practice-row" to={`/song/${song.id}`} key={song.id}><div className="practice-row-main"><span className="eyebrow">{String(song.order).padStart(2, '0')} · {entry.status} · {priorityLabel[entry.priority]} priority</span> <PresetBadges songId={song.id} /><h3>{song.title}</h3><p>{song.artist}</p></div><Difficulty value={song.difficulty} /></Link>})}</div></>
 }
 
 export function SongDetail() {

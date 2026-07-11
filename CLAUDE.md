@@ -93,13 +93,12 @@ passthrough** loading procedure, preset backup steps, and the firmware/brick-ris
   tap the n/N counter for the jump-to-song overlay, "Up next" footer shows the
   changeover info (next title/tuning/amp preset). A render crash inside the song view is
   caught by `ShowSongBoundary` — nav stays alive.
-- **Metronome** (`src/metronome.tsx`, in the song page's practice panel): Web Audio
-  lookahead scheduler; per-song tempo in practice state; defaults seeded from
-  `src/data/bpm.json` (web-researched original-recording tempos — edit that file to
-  correct one, keep the half/double-time notes).
-- **Practice logging**: "Log practice session" writes `lastPracticed`/`sessions`;
-  Practice page sorts by recency ("Last practiced", stalest first); Jam page groups
-  songs by standard-tuning pentatonic key via `resolveFretboards`.
+- **No metronome, no practice-session logging** — both were built and then removed at
+  the user's request (2026-07): practice happens against the actual recordings, and
+  status/priority/notes are the only per-song practice data the user wants to maintain.
+  `lastPracticed`/`sessions`/`secondsPracticed` are deliberately dead fields; don't
+  resurrect any of this without being asked.
+- **Jam page** groups songs by standard-tuning pentatonic key via `resolveFretboards`.
 
 ## Cross-device sync (dev-branch feature)
 

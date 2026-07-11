@@ -5,7 +5,7 @@ import type { PracticeEntry, PracticeState, PracticeStatus } from './types'
 // storage key (seeded from production data on first visit).
 const PROD_KEY = 'overdrive-practice-v1'
 const KEY = import.meta.env.BASE_URL.includes('/dev/') ? 'overdrive-practice-dev-v1' : PROD_KEY
-const emptyEntry: PracticeEntry = { status: 'Not Started', notes: '', lastPracticed: '', sessions: 0, priority: 0, secondsPracticed: 0, savedSongsterrUrl: '', savedUltimateGuitarUrl: '', preferredSource: '', scrollSpeed: 0, skipTonight: false, setPosition: 0, bpm: 0, updatedAt: '' }
+const emptyEntry: PracticeEntry = { status: 'Not Started', notes: '', lastPracticed: '', sessions: 0, priority: 0, secondsPracticed: 0, savedSongsterrUrl: '', savedUltimateGuitarUrl: '', preferredSource: '', scrollSpeed: 0, skipTonight: false, setPosition: 0, updatedAt: '' }
 
 interface Store {
   state: PracticeState
