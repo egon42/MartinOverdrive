@@ -9,6 +9,7 @@ import { isStatus, usePractice } from './storage'
 import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
+import { formatFingering, resolveFingering, useSettings } from './settings'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
@@ -46,7 +47,10 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 
 // A chord name rendered as a chip that, when tapped, pops open its fingering diagram.
 // Used everywhere chords appear (sheets, compact show-mode lines, the cheat card).
-export function ChordChip({ name }: { name: string }) {
+// Optional `curatedShape` (cheat-card progressions) overrides the generated tab fingering.
+export function ChordChip({ name, curatedShape }: { name: string; curatedShape?: string }) {
+  const { settings } = useSettings()
+  const fingering = resolveFingering(name, curatedShape, settings.fingeringScope)
   const [open, setOpen] = useState(false)
   const [box, setBox] = useState<{ left: number; top: number; below: boolean; arrow: number } | null>(null)
   const ref = useRef<HTMLSpanElement>(null)
@@ -86,13 +90,19 @@ export function ChordChip({ name }: { name: string }) {
   const style: CSSProperties = box
     ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
     : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
-  return <span className="chord-chip-wrap" ref={ref}>
+  const chip = <>
     <b className="chord-chip" role="button" tabIndex={0} aria-expanded={open}
       onClick={() => setOpen((value) => !value)}
       onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) } }}>{name}</b>
     {open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`}>
       {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
     </span>}
+  </>
+  // Ref stays on the chip-only wrap so the popover aims at the name, not the fingering.
+  if (!fingering) return <span className="chord-chip-wrap" ref={ref}>{chip}</span>
+  return <span className={`chord-with-fingering chord-with-fingering--${settings.fingeringPosition}`}>
+    <span className="chord-chip-wrap" ref={ref}>{chip}</span>
+    <span className="chord-fingering">{formatFingering(fingering, settings.fingeringPosition)}</span>
   </span>
 }
 

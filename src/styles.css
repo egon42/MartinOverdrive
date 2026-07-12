@@ -63,8 +63,8 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sync-qr{margin:14px 0}.sync-qr img{display:block;width:220px;height:auto;border-radius:10px;background:#fff;padding:8px}.sync-qr p{margin-top:8px;font-size:.85rem}
 
 /* Settings page */
-.settings-panel h2{margin:0 0 8px;font-size:1.35rem}.settings-panel>p{color:var(--muted);max-width:720px;margin:0 0 18px}.settings-panel code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;background:#080a08;border:1px solid var(--line);border-radius:6px;padding:1px 6px}
-.settings-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:640px}.settings-fields label{display:flex;flex-direction:column;gap:7px}.settings-fields label>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}.settings-fields select{width:100%}.settings-hint{margin:16px 0 0;font-size:.85rem;color:var(--muted);max-width:720px;line-height:1.45}
+.settings-panel h2{margin:0 0 18px;font-size:1.35rem}
+.settings-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:640px}.settings-fields label{display:flex;flex-direction:column;gap:7px}.settings-fields label>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}.settings-fields select{width:100%}
 @media(max-width:760px){.settings-fields{grid-template-columns:1fr}}
 
 /* Pasted tabs/chords: full sheet on the song page, compact chords+cues in show mode */
@@ -121,12 +121,15 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-prog-row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
 .cheat-prog-label{flex:0 0 auto;min-width:5em;font-size:.6em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
 .cheat-prog-chords{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-start}
-.cheat-prog-chord{display:inline-flex;flex-direction:column;align-items:center;gap:2px}
-.cheat-prog-chord--over{flex-direction:column-reverse}
-.cheat-prog-chord--left{flex-direction:row-reverse;align-items:center;gap:4px}
-.cheat-prog-chord--right{flex-direction:row;align-items:center;gap:4px}
-.cheat-prog-shape{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.62em;letter-spacing:.06em;color:var(--muted);white-space:pre;line-height:1.15;text-align:center}
-.cheat-prog-chord--left .cheat-prog-shape,.cheat-prog-chord--right .cheat-prog-shape{letter-spacing:0;font-size:.55em;line-height:1.05}
+/* Tab-style fingering beside any ChordChip (cheat card, sheets, compact show view) */
+.chord-with-fingering{display:inline-flex;flex-direction:column;align-items:center;gap:2px;vertical-align:baseline}
+.chord-with-fingering--over{flex-direction:column-reverse}
+.chord-with-fingering--left{flex-direction:row-reverse;align-items:center;gap:4px}
+.chord-with-fingering--right{flex-direction:row;align-items:center;gap:4px}
+.chord-fingering{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.62em;letter-spacing:.06em;color:var(--muted);white-space:pre;line-height:1.15;text-align:center}
+.chord-with-fingering--left .chord-fingering,.chord-with-fingering--right .chord-fingering{letter-spacing:0;font-size:.55em;line-height:1.05}
+.sheet-line .chord-with-fingering{margin:0 2px;vertical-align:middle}
+.compact-chords .chord-with-fingering{vertical-align:top}
 /* One-line riff/feel cue under a section's chord row; wraps to its own full-width line */
 .cheat-prog-hint{flex:1 1 100%;font-size:.68em;color:var(--muted);font-style:italic;line-height:1.35}
 .cheat-prog-chords .chord-chip{font-size:.95em}

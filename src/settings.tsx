@@ -64,11 +64,16 @@ function shapeToTab(shape: ChordShape): string {
 
 const TAB_SHAPE_RE = /^[0-9A-FxX-]{6}$/
 
+/** Power-chord token (C5, F#5, Bb5) — slash bass ignored. */
+export function isPowerChord(name: string): boolean {
+  return /^[A-G][#b]?5$/i.test(name.trim().split('/')[0])
+}
+
 /** Resolve the fingering string to show next to a chord chip, or null to hide it. */
 export function resolveFingering(chord: string, curated: string | undefined, scope: FingeringScope): string | null {
   if (scope === 'none') return null
   if (curated) return curated
-  if (scope === 'power') return null
+  if (scope === 'power' && !isPowerChord(chord)) return null
   const shape = chordShape(chord)
   return shape ? shapeToTab(shape) : null
 }
@@ -89,9 +94,8 @@ export function SettingsPage() {
       <h1>Settings</h1>
     </header>
     <section className="panel settings-panel">
-      <span className="eyebrow">Cheat card</span>
+      <span className="eyebrow">Chord chips</span>
       <h2>Chord fingerings</h2>
-      <p>Controls the tab-style fingering next to chord chips on the show-mode cheat card (e.g. <code>355---</code>). The tap-to-open chord diagram is unchanged.</p>
       <div className="settings-fields">
         <label>
           <span>Show fingerings for</span>
@@ -120,16 +124,6 @@ export function SettingsPage() {
           </select>
         </label>
       </div>
-      <p className="settings-hint">
-        {settings.fingeringScope === 'power' && 'Shows curated tab fingerings when a song has them (power-chord riffs and similar).'}
-        {settings.fingeringScope === 'all' && 'Shows curated fingerings when available, otherwise a generated voicing for every chord.'}
-        {settings.fingeringScope === 'none' && 'Hides all tab fingerings beside chord chips.'}
-        {' '}
-        {settings.fingeringScope !== 'none' && settings.fingeringPosition === 'under' && 'Fingerings sit under the chord name.'}
-        {settings.fingeringScope !== 'none' && settings.fingeringPosition === 'over' && 'Fingerings sit above the chord name.'}
-        {settings.fingeringScope !== 'none' && settings.fingeringPosition === 'left' && 'Six-string fingerings stack vertically to the left of the chord.'}
-        {settings.fingeringScope !== 'none' && settings.fingeringPosition === 'right' && 'Six-string fingerings stack vertically to the right of the chord.'}
-      </p>
     </section>
   </>
 }
