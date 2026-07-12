@@ -1,13 +1,12 @@
 import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode, type RefObject } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
-import { AmpPresetField, BackingTrack, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
+import { AmpPresetField, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
 import { progressionFor } from './progressions'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
-import { resolveFretboards, scaleName } from './fretboard'
 import { SyncPanel } from './sync'
 import { setOrdered, tonightsSongs } from './setlist'
 import { statuses, type Song } from './types'
@@ -82,31 +81,6 @@ export function SongDetail() {
   return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div><Link className="button secondary song-show-link" to="/show" onClick={openInShow}>Stage view ↗</Link></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/>{song.rehearsalNotes && <Field label="Ask the band" value={song.rehearsalNotes}/>}</dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
 }
 
-// Jam songs grouped by the key of their standard-tuning pentatonic box, so one key can
-// be practiced across all its songs in a session ("key of the week"). Groups are ordered
-// biggest first — the biggest shared box is the highest-leverage vocabulary to drill.
-function jamGroups() {
-  const jamSongs = songs.filter((song) => /pentatonic|blues improv/i.test(song.practiceStyle))
-  const map = new Map<string, { label: string, boxName: string, songs: Song[] }>()
-  for (const song of jamSongs) {
-    const boxName = scaleName(resolveFretboards(song).standard)
-    const label = boxName.match(/^[A-G][b#]?\s?(?:minor|major)/i)?.[0].trim() ?? boxName
-    const bucket = map.get(label.toLowerCase())
-    if (bucket) bucket.songs.push(song)
-    else map.set(label.toLowerCase(), { label, boxName, songs: [song] })
-  }
-  return [...map.values()].sort((a, b) => b.songs.length - a.songs.length || a.songs[0].order - b.songs[0].order)
-}
-
-export function Jam() {
-  const groups = useMemo(jamGroups, [])
-  return <><PageTitle title="Jam" compact/>
-    {groups.map((group) => <section className="jam-group" key={group.label}>
-      <div className="section-heading"><div><span className="eyebrow">{group.songs.length === 1 ? '1 song' : `${group.songs.length} songs`} · same box</span><h2>{group.label} pentatonic <small className="jam-group-box">{group.boxName}</small></h2></div></div>
-      <div className="jam-list">{group.songs.map((song) => <article className="panel jam-card" key={song.id}><div><span className="eyebrow">{song.artist}</span><h2><Link to={`/song/${song.id}`}>{song.title}</Link></h2></div><dl><AmpPresetField songId={song.id}/><Field label="Suggested scale" value={song.scaleHint}/><Field label="Focus" value={song.mustKnow}/></dl><SongLinks song={song}/><div className="jam-backing"><BackingTrack song={song}/></div><div className="jam-pattern"><FretboardPanel song={song}/></div></article>)}</div>
-    </section>)}</>
-}
-
 // Shrinks the sheet's font until it fits the container (height for compact chords,
 // width for monospace tab lines), so a phone in show mode sees as much of the song
 // as possible without scrolling. Floored — extreme songs scroll a little instead.
@@ -129,15 +103,26 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
 }
 
 // Teleprompter autoscroll: while `playing`, creep `ref`'s scroll container down at
-// `speed` px/second. rAF timestamps make it frame-rate independent. `scrollTop` is
-// pixel-quantized, so we can't just add `speed*dt` each frame — a sub-pixel delta gets
-// rounded away, which stalls slow speeds and pins fast ones near 1px/frame. Instead we
-// keep a private float accumulator and only push WHOLE pixels into scrollTop; the
-// fraction carries to the next frame. Adding a whole-pixel delta to the live scrollTop
-// still lets a native swipe reposition the sheet mid-crawl (it resumes from wherever the
-// finger left it). A finger on the sheet pauses the creep (holding); up/cancel listen on
-// window so a drag that drifts off the element still un-pauses (the lesson from 43f64da).
-// Stops and calls onReachEnd at the bottom. No-op when ref is null (cheat view).
+// `speed` px/second. Full spec + the history of why it's written exactly this way:
+// docs/autoscroll-spec.md — read that before touching this hook.
+//
+// Core rule: NEVER route the crawl's math through the live scrollTop. Engines quantize
+// scroll positions (writes snap to whole CSS or device pixels; some engines round reads
+// too), so a read-modify-write of scrollTop re-quantizes every frame — sub-pixel deltas
+// round away entirely (slow speeds stall) and everything faster pins near 1px/frame
+// (all high speeds look identical): the "one speed above ~30px/s, nothing below" bug.
+// Instead the hook owns a float `pos`, advances it by speed*dt per rAF tick (frame-rate
+// independent on 60Hz and 120Hz alike), and only ever WRITES Math.floor(pos); the
+// fraction stays in `pos`, so quantization can't feed back into the math.
+//
+// Manual scrolling coexists by adoption, not fighting: any frame where scrollTop isn't
+// where our last write left it (native swipe, momentum fling, mouse wheel), we adopt
+// that position into `pos` and skip the write — iOS kills a fling the moment a script
+// writes scrollTop, so yielding until the sheet settles keeps swipes native, and the
+// crawl resumes from wherever the finger/fling left it. A finger resting on the sheet
+// pauses the creep (holding); up/cancel listen on window so a drag that drifts off the
+// element still un-pauses (the lesson from 43f64da). Stops and calls onReachEnd at the
+// bottom. No-op when ref is null (the cheat view auto-fits one screen).
 function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: number, playing: boolean, onReachEnd: () => void) {
   const onReachEndRef = useRef(onReachEnd)
   onReachEndRef.current = onReachEnd
@@ -145,26 +130,29 @@ function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: numb
     const el = ref?.current
     if (!el || !playing || speed <= 0) return
     let raf = 0
-    let last = 0
-    let acc = 0 // sub-pixel remainder carried between frames
+    let last = 0 // rAF clock; 0 = no previous tick yet
+    let pos = Math.max(0, el.scrollTop) // float position this hook owns — the DOM only ever sees Math.floor(pos)
+    let written = Math.floor(pos) // last whole px we wrote/adopted; how we recognize our own motion next frame
     let holding = false
     const step = (now: number) => {
-      if (!last) last = now
-      const dt = Math.min((now - last) / 1000, 0.1) // clamp so a backgrounded tab doesn't jump on resume
-      last = now
-      if (!holding && dt > 0) {
-        acc += speed * dt
-        const whole = Math.trunc(acc)
-        if (whole >= 1) {
-          acc -= whole
-          el.scrollTop += whole
-          if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) { onReachEndRef.current(); return }
-        }
-      }
       raf = requestAnimationFrame(step)
+      const dt = last ? Math.min((now - last) / 1000, 0.1) : 0 // clamp so a backgrounded tab doesn't jump on resume
+      last = now
+      if (holding || dt <= 0) return
+      const actual = el.scrollTop
+      if (Math.abs(actual - written) > 1) { // >1 tolerates engines snapping our write to device pixels
+        pos = Math.max(0, actual) // the sheet moved without us — adopt the new position, yield this frame
+        written = Math.floor(pos)
+        return
+      }
+      const max = el.scrollHeight - el.clientHeight
+      pos = Math.min(pos + speed * dt, max)
+      const target = Math.floor(pos)
+      if (target > written) { el.scrollTop = target; written = target }
+      if (pos >= max - 1) { cancelAnimationFrame(raf); onReachEndRef.current() }
     }
     const onDown = () => { holding = true }
-    const onUp = () => { holding = false; last = 0 } // reset clock so the paused gap isn't one big jump
+    const onUp = () => { holding = false } // the clock keeps ticking through a hold, so resuming carries no dt jump
     el.addEventListener('pointerdown', onDown)
     window.addEventListener('pointerup', onUp)
     window.addEventListener('pointercancel', onUp)
@@ -403,7 +391,7 @@ export function Show() {
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
     <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>}
-    {(sheets.chords || sheets.tabs) && <div className="show-view-bar"><div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Cheat</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div><button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song — tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>📌</button></div>}
+    {(sheets.chords || sheets.tabs) && <div className="show-view-bar"><div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Cheat</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div><button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song — tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button></div>}
     {effective !== 'scale' && scrollable && <div className="show-autoscroll">
       <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
       <button type="button" className="autoscroll-step" aria-label="Slower" disabled={speed <= MIN_SCROLL_SPEED} onClick={() => bumpSpeed(-SCROLL_SPEED_STEP)}>−</button>

@@ -123,7 +123,8 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   status/priority/notes are the only per-song practice data the user wants to maintain.
   `lastPracticed`/`sessions`/`secondsPracticed` are deliberately dead fields; don't
   resurrect any of this without being asked.
-- **Jam page** groups songs by standard-tuning pentatonic key via `resolveFretboards`.
+- **Jam page removed** (2026-07, user request) — it grouped songs by pentatonic key.
+  Like the metronome, don't re-propose it.
 
 ## Cross-device sync (dev-branch feature)
 

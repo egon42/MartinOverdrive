@@ -304,7 +304,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
 }
 
 // Inline YouTube backing-track player with a play/pause toggle — self-contained so
-// it can drop into the song page and jam-page cards.
+// it can drop anywhere a song card needs it.
 export function BackingTrack({ song }: { song: Song }) {
   const [playing, setPlaying] = useState(false)
   const videoId = youtubeId(song.backingTrackUrl)
