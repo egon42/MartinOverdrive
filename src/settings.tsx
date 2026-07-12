@@ -8,32 +8,55 @@ const SETTINGS_KEY = `overdrive-settings${KEY_SUFFIX}`
 
 export type FingeringScope = 'power' | 'all' | 'none'
 export type FingeringPosition = 'under' | 'over' | 'left' | 'right'
+export type FingeringSurface = 'cheat' | 'chords'
 
-export interface AppSettings {
-  fingeringScope: FingeringScope
-  fingeringPosition: FingeringPosition
+export interface FingeringPrefs {
+  scope: FingeringScope
+  position: FingeringPosition
 }
 
-const DEFAULTS: AppSettings = { fingeringScope: 'power', fingeringPosition: 'under' }
+export interface AppSettings {
+  cheat: FingeringPrefs
+  chords: FingeringPrefs
+}
+
+const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
+const DEFAULTS: AppSettings = { cheat: { ...DEFAULT_PREFS }, chords: { ...DEFAULT_PREFS } }
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
 const isPosition = (v: unknown): v is FingeringPosition => v === 'under' || v === 'over' || v === 'left' || v === 'right'
 
+function readPrefs(raw: unknown, fallback: FingeringPrefs): FingeringPrefs {
+  if (!raw || typeof raw !== 'object') return { ...fallback }
+  const o = raw as Record<string, unknown>
+  return {
+    scope: isScope(o.scope) ? o.scope : fallback.scope,
+    position: isPosition(o.position) ? o.position : fallback.position,
+  }
+}
+
 function readSettings(): AppSettings {
   try {
-    const raw = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}')
+    const raw = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') as Record<string, unknown>
+    // Migrate the original flat keys onto both surfaces so existing prefs aren't lost.
+    const hasSurfaces = raw.cheat != null || raw.chords != null
+    const legacy: FingeringPrefs = {
+      scope: isScope(raw.fingeringScope) ? raw.fingeringScope : DEFAULT_PREFS.scope,
+      position: isPosition(raw.fingeringPosition) ? raw.fingeringPosition : DEFAULT_PREFS.position,
+    }
+    const fallback = hasSurfaces ? DEFAULT_PREFS : legacy
     return {
-      fingeringScope: isScope(raw.fingeringScope) ? raw.fingeringScope : DEFAULTS.fingeringScope,
-      fingeringPosition: isPosition(raw.fingeringPosition) ? raw.fingeringPosition : DEFAULTS.fingeringPosition,
+      cheat: readPrefs(raw.cheat, fallback),
+      chords: readPrefs(raw.chords, fallback),
     }
   } catch {
-    return { ...DEFAULTS }
+    return { cheat: { ...DEFAULT_PREFS }, chords: { ...DEFAULT_PREFS } }
   }
 }
 
 interface SettingsStore {
   settings: AppSettings
-  patch: (update: Partial<AppSettings>) => void
+  patchFingering: (surface: FingeringSurface, update: Partial<FingeringPrefs>) => void
 }
 
 const SettingsContext = createContext<SettingsStore | null>(null)
@@ -41,8 +64,9 @@ const SettingsContext = createContext<SettingsStore | null>(null)
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(readSettings)
   useEffect(() => { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)) }, [settings])
-  const patch = (update: Partial<AppSettings>) => setSettings((old) => ({ ...old, ...update }))
-  const value = useMemo(() => ({ settings, patch }), [settings])
+  const patchFingering = (surface: FingeringSurface, update: Partial<FingeringPrefs>) =>
+    setSettings((old) => ({ ...old, [surface]: { ...old[surface], ...update } }))
+  const value = useMemo(() => ({ settings, patchFingering }), [settings])
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
 }
 
@@ -87,8 +111,43 @@ export function formatFingering(shape: string, position: FingeringPosition): str
   return shape
 }
 
+function FingeringFields({ surface, label }: { surface: FingeringSurface; label: string }) {
+  const { settings, patchFingering } = useSettings()
+  const prefs = settings[surface]
+  return <div className="settings-surface">
+    <h3>{label}</h3>
+    <div className="settings-fields">
+      <label>
+        <span>Show fingerings for</span>
+        <select
+          aria-label={`${label}: show fingerings for`}
+          value={prefs.scope}
+          onChange={(e) => isScope(e.target.value) && patchFingering(surface, { scope: e.target.value })}
+        >
+          <option value="power">Power chords only</option>
+          <option value="all">All</option>
+          <option value="none">None</option>
+        </select>
+      </label>
+      <label>
+        <span>Fingering position</span>
+        <select
+          aria-label={`${label}: fingering position`}
+          value={prefs.position}
+          onChange={(e) => isPosition(e.target.value) && patchFingering(surface, { position: e.target.value })}
+          disabled={prefs.scope === 'none'}
+        >
+          <option value="under">Under</option>
+          <option value="over">Over</option>
+          <option value="left">Left</option>
+          <option value="right">Right</option>
+        </select>
+      </label>
+    </div>
+  </div>
+}
+
 export function SettingsPage() {
-  const { settings, patch } = useSettings()
   return <>
     <header className="page-title compact">
       <span className="eyebrow">Display preferences stay on this device</span>
@@ -97,34 +156,8 @@ export function SettingsPage() {
     <section className="panel settings-panel">
       <span className="eyebrow">Chord chips</span>
       <h2>Chord fingerings</h2>
-      <div className="settings-fields">
-        <label>
-          <span>Show fingerings for</span>
-          <select
-            aria-label="Show fingerings for"
-            value={settings.fingeringScope}
-            onChange={(e) => isScope(e.target.value) && patch({ fingeringScope: e.target.value })}
-          >
-            <option value="power">Power chords only</option>
-            <option value="all">All</option>
-            <option value="none">None</option>
-          </select>
-        </label>
-        <label>
-          <span>Fingering position</span>
-          <select
-            aria-label="Fingering position"
-            value={settings.fingeringPosition}
-            onChange={(e) => isPosition(e.target.value) && patch({ fingeringPosition: e.target.value })}
-            disabled={settings.fingeringScope === 'none'}
-          >
-            <option value="under">Under</option>
-            <option value="over">Over</option>
-            <option value="left">Left</option>
-            <option value="right">Right</option>
-          </select>
-        </label>
-      </div>
+      <FingeringFields surface="cheat" label="Cheat" />
+      <FingeringFields surface="chords" label="Chords" />
     </section>
   </>
 }

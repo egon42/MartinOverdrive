@@ -201,7 +201,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
       {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
         <span className="cheat-prog-label">{row.label}</span>
         <span className="cheat-prog-chords">{row.chords.map((chord, j) =>
-          <ChordChip name={chord} curatedShape={row.shapes[j]} key={j} />)}</span>
+          <ChordChip name={chord} curatedShape={row.shapes[j]} surface="cheat" key={j} />)}</span>
         {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
       </div>)}
     </div>}
