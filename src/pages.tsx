@@ -126,9 +126,18 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
 function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: number, playing: boolean, onReachEnd: () => void) {
   const onReachEndRef = useRef(onReachEnd)
   onReachEndRef.current = onReachEnd
+  // Speed is read live through a ref, NOT an effect dep: a speed change (a +/- tap, or a
+  // sync pull patching scrollSpeed mid-song) must adjust the crawl in place, not tear the
+  // effect down — a restart resets `holding` to false while a finger may still be resting
+  // on the sheet, letting the crawl creep under it (council finding, 2026-07-11). Don't
+  // "fix" that with a holding ref that persists across ALL restarts: a finger lifting
+  // while playing=false (listeners detached) would strand holding=true and make the next
+  // ▶ appear dead. Scoping the fix to speed is deliberate.
+  const speedRef = useRef(speed)
+  speedRef.current = speed
   useEffect(() => {
     const el = ref?.current
-    if (!el || !playing || speed <= 0) return
+    if (!el || !playing) return
     let raf = 0
     let last = 0 // rAF clock; 0 = no previous tick yet
     let pos = Math.max(0, el.scrollTop) // float position this hook owns — the DOM only ever sees Math.floor(pos)
@@ -138,7 +147,7 @@ function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: numb
       raf = requestAnimationFrame(step)
       const dt = last ? Math.min((now - last) / 1000, 0.1) : 0 // clamp so a backgrounded tab doesn't jump on resume
       last = now
-      if (holding || dt <= 0) return
+      if (holding || dt <= 0 || speedRef.current <= 0) return
       const actual = el.scrollTop
       if (Math.abs(actual - written) > 1) { // >1 tolerates engines snapping our write to device pixels
         pos = Math.max(0, actual) // the sheet moved without us — adopt the new position, yield this frame
@@ -146,7 +155,7 @@ function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: numb
         return
       }
       const max = el.scrollHeight - el.clientHeight
-      pos = Math.min(pos + speed * dt, max)
+      pos = Math.min(pos + speedRef.current * dt, max)
       const target = Math.floor(pos)
       if (target > written) { el.scrollTop = target; written = target }
       if (pos >= max - 1) { cancelAnimationFrame(raf); onReachEndRef.current() }
@@ -163,7 +172,7 @@ function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: numb
       window.removeEventListener('pointerup', onUp)
       window.removeEventListener('pointercancel', onUp)
     }
-  }, [ref, speed, playing])
+  }, [ref, playing])
 }
 
 // The live cheat card — the default show-mode view. Everything needed to play the song
