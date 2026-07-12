@@ -78,10 +78,11 @@ export function resolveFingering(chord: string, curated: string | undefined, sco
   return shape ? shapeToTab(shape) : null
 }
 
-/** Format a fingering for display: left/right stack 6-char tabs vertically. */
+/** Format a fingering for display: left/right stack 6-char tabs vertically
+ *  (high-e on top → low-E on bottom, matching standard tablature). */
 export function formatFingering(shape: string, position: FingeringPosition): string {
   if ((position === 'left' || position === 'right') && TAB_SHAPE_RE.test(shape)) {
-    return shape.split('').join('\n')
+    return shape.split('').reverse().join('\n')
   }
   return shape
 }
