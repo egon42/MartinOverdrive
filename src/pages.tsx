@@ -9,6 +9,7 @@ import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
 import { setOrdered, tonightsSongs } from './setlist'
+import { formatFingering, resolveFingering, useSettings } from './settings'
 import { statuses, type Song } from './types'
 
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
@@ -182,6 +183,7 @@ function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: numb
 function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDivElement | null> }) {
   const sheets = sheetsFor(song.id)
   const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
+  const { settings } = useSettings()
   // Prefer the curated per-section progression; fall back to one derived from the chord
   // sheet (a single loop, or the distinct chords used) when a song isn't researched yet.
   const custom = progressionFor(song.id)
@@ -200,9 +202,14 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
     {rows && <div className="cheat-progression">
       {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
         <span className="cheat-prog-label">{row.label}</span>
-        <span className="cheat-prog-chords">{row.chords.map((chord, j) => row.shapes[j]
-          ? <span className="cheat-prog-chord" key={j}><ChordChip name={chord} /><span className="cheat-prog-shape">{row.shapes[j]}</span></span>
-          : <ChordChip name={chord} key={j} />)}</span>
+        <span className="cheat-prog-chords">{row.chords.map((chord, j) => {
+          const shape = resolveFingering(chord, row.shapes[j], settings.fingeringScope)
+          if (!shape) return <ChordChip name={chord} key={j} />
+          return <span className={`cheat-prog-chord cheat-prog-chord--${settings.fingeringPosition}`} key={j}>
+            <ChordChip name={chord} />
+            <span className="cheat-prog-shape">{formatFingering(shape, settings.fingeringPosition)}</span>
+          </span>
+        })}</span>
         {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
       </div>)}
     </div>}

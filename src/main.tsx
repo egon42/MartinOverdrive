@@ -4,10 +4,11 @@ import { HashRouter } from 'react-router-dom'
 import App from './App'
 import { assetUrl, baseUrl } from './base'
 import { PracticeProvider } from './storage'
+import { SettingsProvider } from './settings'
 import { SyncProvider } from './sync'
 import './styles.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><HashRouter><PracticeProvider><SyncProvider><App /></SyncProvider></PracticeProvider></HashRouter></React.StrictMode>)
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><HashRouter><PracticeProvider><SettingsProvider><SyncProvider><App /></SyncProvider></SettingsProvider></PracticeProvider></HashRouter></React.StrictMode>)
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => navigator.serviceWorker.register(assetUrl('sw.js'), { scope: baseUrl }))
