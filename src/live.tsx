@@ -202,7 +202,7 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
     <div className="live-panel" role="dialog" aria-label="Live show sync" onClick={(e) => e.stopPropagation()}>
       {!config && <>
         <div><span className="eyebrow">Live show sync</span><h2>Play in sync</h2></div>
-        <p>One phone leads; the rest follow. When the leader turns to the next song, every connected device turns with it — with its own views, pins and settings.</p>
+        <p>One phone leads; the rest follow. When the leader turns to the next song, every connected device turns with it. Everyone keeps their own views, pins, and settings.</p>
         {!configured && <p className="live-status">Sync isn’t set up on this build yet — see SYNC-SETUP.md.</p>}
         <div className="live-actions"><button disabled={!configured} onClick={lead}>Lead tonight’s show</button></div>
         <div className="live-divider" />
