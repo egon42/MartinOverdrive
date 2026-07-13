@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
 import { compactSheet, parseChordSheet } from './chords'
 import { chordShape, type ChordShape } from './chordShapes'
 import type { Song } from './types'
@@ -9,7 +9,7 @@ import { isStatus, usePractice } from './storage'
 import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
-import { formatFingering, resolveFingering, useSettings, type FingeringSurface } from './settings'
+import { formatFingering, formatVerticalFingering, resolveFingering, useSettings, type FingeringSurface } from './settings'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
@@ -49,9 +49,11 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 // Used everywhere chords appear (sheets, compact show-mode lines, the cheat card).
 // Optional `curatedShape` (cheat-card progressions) overrides the generated tab fingering.
 // `surface` picks which Settings prefs apply (Cheat vs Chords are independent).
-export function ChordChip({ name, curatedShape, surface = 'chords' }: { name: string; curatedShape?: string; surface?: FingeringSurface }) {
-  const { settings } = useSettings()
+// `songId` enables the per-song "Shapes" toggle (fingering-only chips).
+export function ChordChip({ name, curatedShape, surface = 'chords', songId }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string }) {
+  const { settings, isFingeringOnly } = useSettings()
   const prefs = settings[surface]
+  const fingeringOnly = !!songId && isFingeringOnly(songId, surface)
   const fingering = resolveFingering(name, curatedShape, prefs.scope)
   const [open, setOpen] = useState(false)
   const [box, setBox] = useState<{ left: number; top: number; below: boolean; arrow: number } | null>(null)
@@ -92,13 +94,26 @@ export function ChordChip({ name, curatedShape, surface = 'chords' }: { name: st
   const style: CSSProperties = box
     ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
     : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
+  const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`}>
+    {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
+  </span>
+  const openHandlers = {
+    onClick: () => setOpen((value) => !value),
+    onKeyDown: (event: ReactKeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) }
+    },
+  }
+  // Per-song Shapes toggle: replace the chord name with a vertical tab chip (still tappable).
+  if (fingering && fingeringOnly) {
+    return <span className="chord-chip-wrap" ref={ref}>
+      <b className="chord-chip chord-chip--fingering" role="button" tabIndex={0} aria-expanded={open}
+        aria-label={name} {...openHandlers}>{formatVerticalFingering(fingering)}</b>
+      {pop}
+    </span>
+  }
   const chip = <>
-    <b className="chord-chip" role="button" tabIndex={0} aria-expanded={open}
-      onClick={() => setOpen((value) => !value)}
-      onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) } }}>{name}</b>
-    {open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`}>
-      {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
-    </span>}
+    <b className="chord-chip" role="button" tabIndex={0} aria-expanded={open} {...openHandlers}>{name}</b>
+    {pop}
   </>
   // Ref stays on the chip-only wrap so the popover aims at the name, not the fingering.
   if (!fingering) return <span className="chord-chip-wrap" ref={ref}>{chip}</span>
@@ -250,7 +265,7 @@ function AmpMarkerSection({ tokens }: { tokens: string[] }) {
   return <div className="sheet-section amp-marker">{tokens.map((token, i) => <AmpChip label={token} key={i} />)}</div>
 }
 
-export function ChordSheetView({ text, compact = false }: { text: string, compact?: boolean }) {
+export function ChordSheetView({ text, songId, compact = false }: { text: string, songId?: string, compact?: boolean }) {
   const sheet = useMemo(() => parseChordSheet(text), [text])
   if (compact) {
     return <div className="sheet-compact">{compactSheet(sheet).map((line, index) => {
@@ -260,7 +275,7 @@ export function ChordSheetView({ text, compact = false }: { text: string, compac
       }
       return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.cue}</pre>
-        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <ChordChip name={chord} key={i} />)}</span><span className="compact-cue">{line.cue}</span></div>
+        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <ChordChip name={chord} songId={songId} key={i} />)}</span><span className="compact-cue">{line.cue}</span></div>
     })}</div>
   }
   return <div className="sheet-full">
@@ -272,7 +287,7 @@ export function ChordSheetView({ text, compact = false }: { text: string, compac
       }
       return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.raw}</pre>
-        : <p className={line.parts.every((part) => part.chord) ? 'sheet-line sheet-line--chords' : 'sheet-line'} key={index}>{line.parts.map((part, i) => part.chord ? <ChordChip name={part.chord} key={i} /> : <span key={i}>{part.text}</span>)}</p>
+        : <p className={line.parts.every((part) => part.chord) ? 'sheet-line sheet-line--chords' : 'sheet-line'} key={index}>{line.parts.map((part, i) => part.chord ? <ChordChip name={part.chord} songId={songId} key={i} /> : <span key={i}>{part.text}</span>)}</p>
     })}
   </div>
 }
@@ -303,15 +318,29 @@ export type SheetKind = 'chords' | 'tabs'
 // the Chords/Tabs selection so the toggle can switch it.
 export function SheetPanel({ song, view, onViewChange }: { song: Song, view: SheetKind | null, onViewChange: (kind: SheetKind) => void }) {
   const { get } = usePractice(); const entry = get(song.id)
+  const { settings, isFingeringOnly, toggleFingeringOnly } = useSettings()
   const sheets = sheetsFor(song.id)
   const available: SheetKind[] = ([['chords', sheets.chords], ['tabs', sheets.tabs]] as const).filter(([, data]) => data).map(([kind]) => kind)
   if (!available.length) return <section className="panel chord-panel" id="song-sheet"><h2>Tabs & chords</h2><p className="launcher-hint">Nothing built in for this song yet.</p></section>
   const preferred = entry.preferredSource === 'tabs' || entry.preferredSource === 'chords' ? entry.preferredSource : available[0]
   const active = view && available.includes(view) ? view : available.includes(preferred) ? preferred : available[0]
+  const chordsShapes = isFingeringOnly(song.id, 'chords')
+  const selectChords = () => {
+    if (active === 'chords') {
+      if (settings.chords.scope !== 'none') toggleFingeringOnly(song.id, 'chords')
+    } else onViewChange('chords')
+  }
   return <section className="panel chord-panel" id="song-sheet">
     <div className="section-heading"><div><h2>Tabs & chords</h2></div>
-      {available.length > 1 && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type"><button type="button" role="tab" aria-selected={active === 'chords'} className={active === 'chords' ? 'active' : ''} onClick={() => onViewChange('chords')}>Chords</button><button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button></div>}</div>
-    {active === 'chords' ? <ChordSheetView text={sheets.chords!}/> : <TabText text={sheets.tabs!}/>}
+      {(available.length > 1 || available[0] === 'chords') && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
+        {available.includes('chords') && <button type="button" role="tab" aria-selected={active === 'chords'} aria-pressed={active === 'chords' ? chordsShapes : undefined}
+          className={`${active === 'chords' ? 'active' : ''}${chordsShapes ? ' shapes' : ''}`}
+          title={active === 'chords' ? (chordsShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          onClick={selectChords}>Chords</button>}
+        {available.includes('tabs') && <button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button>}
+      </div>}
+    </div>
+    {active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/> : <TabText text={sheets.tabs!}/>}
   </section>
 }
 

@@ -9,6 +9,7 @@ import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
 import { setOrdered, tonightsSongs } from './setlist'
+import { useSettings } from './settings'
 import { statuses, type Song } from './types'
 
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
@@ -201,7 +202,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
       {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
         <span className="cheat-prog-label">{row.label}</span>
         <span className="cheat-prog-chords">{row.chords.map((chord, j) =>
-          <ChordChip name={chord} curatedShape={row.shapes[j]} surface="cheat" key={j} />)}</span>
+          <ChordChip name={chord} curatedShape={row.shapes[j]} surface="cheat" songId={song.id} key={j} />)}</span>
         {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
       </div>)}
     </div>}
@@ -273,6 +274,9 @@ export function Show() {
     setIndex((i) => at >= 0 ? at : Math.max(0, Math.min(setSongs.length - 1, i)))
   }, [setSongs])
   const sheets = sheetsFor(song.id)
+  const { settings, isFingeringOnly, toggleFingeringOnly } = useSettings()
+  const cheatShapes = isFingeringOnly(song.id, 'cheat')
+  const chordsShapes = isFingeringOnly(song.id, 'chords')
   const [pins, setPins] = useState<Record<string, string>>(readPins)
   useEffect(() => { localStorage.setItem(SHOW_PINS_KEY, JSON.stringify(pins)) }, [pins])
   // Open each song on its pinned default view when present; otherwise fall back to the
@@ -298,8 +302,18 @@ export function Show() {
   })
   const views = ['scale', ...(sheets.chords ? ['chords'] : []), ...(sheets.tabs ? ['tabs'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
+  const selectCheat = () => {
+    if (effective === 'scale') {
+      if (settings.cheat.scope !== 'none') toggleFingeringOnly(song.id, 'cheat')
+    } else setView('scale')
+  }
+  const selectChords = () => {
+    if (effective === 'chords') {
+      if (settings.chords.scope !== 'none') toggleFingeringOnly(song.id, 'chords')
+    } else setView('chords')
+  }
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
-  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes], 'height', 0.7)
+  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cheatShapes], 'height', 0.7)
   const chordsRef = useRef<HTMLDivElement>(null)
   // Autoscroll: only the chords/tabs sheets scroll (the cheat card auto-fits one screen).
   const speed = get(song.id).scrollSpeed || DEFAULT_SCROLL_SPEED
@@ -399,7 +413,20 @@ export function Show() {
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
     <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>}
-    {(sheets.chords || sheets.tabs) && <div className="show-view-bar"><div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view"><button type="button" role="tab" aria-selected={effective === 'scale'} className={effective === 'scale' ? 'active' : ''} onClick={() => setView('scale')}>Cheat</button>{sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} className={effective === 'chords' ? 'active' : ''} onClick={() => setView('chords')}>Chords</button>}{sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}</div><button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song — tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button></div>}
+    <div className="show-view-bar">
+      <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
+        <button type="button" role="tab" aria-selected={effective === 'scale'} aria-pressed={effective === 'scale' ? cheatShapes : undefined}
+          className={`${effective === 'scale' ? 'active' : ''}${cheatShapes ? ' shapes' : ''}`}
+          title={effective === 'scale' ? (cheatShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          onClick={selectCheat}>Cheat</button>
+        {sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} aria-pressed={effective === 'chords' ? chordsShapes : undefined}
+          className={`${effective === 'chords' ? 'active' : ''}${chordsShapes ? ' shapes' : ''}`}
+          title={effective === 'chords' ? (chordsShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          onClick={selectChords}>Chords</button>}
+        {sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}
+      </div>
+      {(sheets.chords || sheets.tabs) && <button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song - tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button>}
+    </div>
     {effective !== 'scale' && scrollable && <div className="show-autoscroll">
       <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
       <button type="button" className="autoscroll-step" aria-label="Slower" disabled={speed <= MIN_SCROLL_SPEED} onClick={() => bumpSpeed(-SCROLL_SPEED_STEP)}>−</button>
@@ -407,7 +434,7 @@ export function Show() {
       <button type="button" className="autoscroll-step" aria-label="Faster" disabled={speed >= MAX_SCROLL_SPEED} onClick={() => bumpSpeed(SCROLL_SPEED_STEP)}>+</button>
     </div>}
     {effective === 'chords'
-      ? <div className="show-sheet" ref={chordsRef}><ChordSheetView text={sheets.chords!}/></div>
+      ? <div className="show-sheet" ref={chordsRef}><ChordSheetView text={sheets.chords!} songId={song.id}/></div>
       : effective === 'tabs'
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
         : <CheatCard song={song} innerRef={cheatRef}/>}</article>

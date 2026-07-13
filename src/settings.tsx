@@ -5,6 +5,7 @@ import { chordShape, type ChordShape } from './chordShapes'
 // show-mode pins so /dev/ and prod don't share a setting flip mid-rehearsal.
 const KEY_SUFFIX = import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''
 const SETTINGS_KEY = `overdrive-settings${KEY_SUFFIX}`
+const FINGERING_ONLY_KEY = `overdrive-fingering-only${KEY_SUFFIX}`
 
 export type FingeringScope = 'power' | 'all' | 'none'
 export type FingeringPosition = 'under' | 'over' | 'left' | 'right'
@@ -20,17 +21,21 @@ export interface AppSettings {
   chords: FingeringPrefs
 }
 
+/** Per-song, per-surface: when true, chord chips are replaced by vertical fingering chips. */
+export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, boolean>>>
+
 const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
-const DEFAULTS: AppSettings = { cheat: { ...DEFAULT_PREFS }, chords: { ...DEFAULT_PREFS } }
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
-const isPosition = (v: unknown): v is FingeringPosition => v === 'under' || v === 'over' || v === 'left' || v === 'right'
+const isPosition = (v: unknown): v is FingeringPosition =>
+  v === 'under' || v === 'over' || v === 'left' || v === 'right'
 
 function readPrefs(raw: unknown, fallback: FingeringPrefs): FingeringPrefs {
   if (!raw || typeof raw !== 'object') return { ...fallback }
   const o = raw as Record<string, unknown>
   return {
     scope: isScope(o.scope) ? o.scope : fallback.scope,
+    // Drop a briefly-shipped "only" position if still stored; that mode is now a per-song toggle.
     position: isPosition(o.position) ? o.position : fallback.position,
   }
 }
@@ -54,19 +59,45 @@ function readSettings(): AppSettings {
   }
 }
 
+function readFingeringOnly(): FingeringOnlyMap {
+  try {
+    const raw = JSON.parse(localStorage.getItem(FINGERING_ONLY_KEY) || '{}')
+    return raw && typeof raw === 'object' ? raw as FingeringOnlyMap : {}
+  } catch {
+    return {}
+  }
+}
+
 interface SettingsStore {
   settings: AppSettings
   patchFingering: (surface: FingeringSurface, update: Partial<FingeringPrefs>) => void
+  isFingeringOnly: (songId: string, surface: FingeringSurface) => boolean
+  toggleFingeringOnly: (songId: string, surface: FingeringSurface) => void
 }
 
 const SettingsContext = createContext<SettingsStore | null>(null)
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(readSettings)
+  const [fingeringOnly, setFingeringOnly] = useState<FingeringOnlyMap>(readFingeringOnly)
   useEffect(() => { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)) }, [settings])
+  useEffect(() => { localStorage.setItem(FINGERING_ONLY_KEY, JSON.stringify(fingeringOnly)) }, [fingeringOnly])
   const patchFingering = (surface: FingeringSurface, update: Partial<FingeringPrefs>) =>
     setSettings((old) => ({ ...old, [surface]: { ...old[surface], ...update } }))
-  const value = useMemo(() => ({ settings, patchFingering }), [settings])
+  const isFingeringOnly = (songId: string, surface: FingeringSurface) => !!fingeringOnly[songId]?.[surface]
+  const toggleFingeringOnly = (songId: string, surface: FingeringSurface) => setFingeringOnly((old) => {
+    const next = { ...old }
+    const entry = { ...next[songId] }
+    if (entry[surface]) delete entry[surface]
+    else entry[surface] = true
+    if (!entry.cheat && !entry.chords) delete next[songId]
+    else next[songId] = entry
+    return next
+  })
+  const value = useMemo(
+    () => ({ settings, patchFingering, isFingeringOnly, toggleFingeringOnly }),
+    [settings, fingeringOnly],
+  )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
 }
 
@@ -108,6 +139,12 @@ export function formatFingering(shape: string, position: FingeringPosition): str
   if ((position === 'left' || position === 'right') && TAB_SHAPE_RE.test(shape)) {
     return shape.split('').reverse().join('\n')
   }
+  return shape
+}
+
+/** Vertical high-e→low-E stack for the fingering-only chip mode. */
+export function formatVerticalFingering(shape: string): string {
+  if (TAB_SHAPE_RE.test(shape)) return shape.split('').reverse().join('\n')
   return shape
 }
 
