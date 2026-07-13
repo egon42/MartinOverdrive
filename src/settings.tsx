@@ -6,6 +6,9 @@ import { chordShape, type ChordShape } from './chordShapes'
 const KEY_SUFFIX = import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''
 const SETTINGS_KEY = `overdrive-settings${KEY_SUFFIX}`
 const FINGERING_ONLY_KEY = `overdrive-fingering-only${KEY_SUFFIX}`
+// A briefly-deployed build (2026-07-13, reverted same day) migrated settings to this key
+// with scope forced to 'all'. Clear it so a future key bump can't resurrect stale values.
+try { localStorage.removeItem(`overdrive-settings2${KEY_SUFFIX}`) } catch { /* storage unavailable */ }
 
 export type FingeringScope = 'power' | 'all' | 'none'
 export type FingeringPosition = 'under' | 'over' | 'left' | 'right'

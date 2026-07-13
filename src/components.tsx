@@ -54,7 +54,11 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId }: { 
   const { settings, isFingeringOnly } = useSettings()
   const prefs = settings[surface]
   const fingeringOnly = !!songId && isFingeringOnly(songId, surface)
-  const fingering = resolveFingering(name, curatedShape, prefs.scope)
+  // The per-song Shapes retap is an explicit "show me fingerings" request, so it resolves
+  // as if scope were 'all' — under the default power-only scope the mode would otherwise
+  // be a silent no-op on every non-power chord ("retap doesn't do anything"). Scope 'none'
+  // still wins: it disables the retap toggle, so a stored flag for it is stale.
+  const fingering = resolveFingering(name, curatedShape, fingeringOnly && prefs.scope === 'power' ? 'all' : prefs.scope)
   const [open, setOpen] = useState(false)
   const [box, setBox] = useState<{ left: number; top: number; below: boolean; arrow: number } | null>(null)
   const ref = useRef<HTMLSpanElement>(null)
