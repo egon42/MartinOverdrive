@@ -113,3 +113,18 @@ Why it's built this way:
 - **What syncs:** only the practice blob (status, notes, priority, timers, sessions,
   per-song source prefs). Song content (setlist, tabs, chords) ships in the build and is
   already identical on every device.
+
+## Live show sync (leader/follower) — no extra setup
+
+Show mode's **Live** button (in the progress bar) lets one phone lead a show: the leader
+gets a short 5-char code + QR; bandmates follow via the code or by scanning the QR, and
+their show mode turns songs whenever the leader does (each device keeps its own views,
+pins, and settings).
+
+This rides on the **same Supabase project over Realtime broadcast channels** — no tables,
+no SQL, nothing stored server-side, so there is nothing to set up beyond the steps above.
+The only way it can break server-side is if the project's Realtime settings are changed to
+require **private channels** (Dashboard → Realtime → Settings) — leave public channels
+allowed, which is the default. The free tier allows 200 concurrent connections and 2M
+messages/month; a 3-hour show with a 10s leader heartbeat and a 5-piece band uses a few
+thousand.

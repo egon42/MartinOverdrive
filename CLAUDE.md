@@ -141,6 +141,22 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
 - `/dev/` and prod deliberately use **separate** sync keys (`overdrive-sync-dev-v2` vs
   `overdrive-sync-v2`), matching the practice-store split.
 
+## Live show sync (dev-branch feature, experimental 2026-07)
+
+- `src/live.tsx`: one phone **leads** a show; followers join with a 5-char code or QR and
+  their show mode turns songs with the leader (each device keeps its own views/pins/
+  settings). Transport is **Supabase Realtime broadcast + presence** on the same project —
+  no tables, no SQL, ephemeral only; needs public (non-private) channels, the default.
+- Protocol: leader broadcasts `{ songId }` on every song change, re-announces on a 10s
+  heartbeat and on presence joins (late-join/reconnect catch-up). Followers snap only when
+  the *received* songId changes (`LeaderSong.seq`), so a follower can page away to peek and
+  isn't yanked back by heartbeats.
+- While following, show mode walks `setOrdered(get)` (full set, skips ignored) instead of
+  `tonightsSongs(get)` — the leader's song must always be findable locally.
+- Session `{ role, code, at }` persists in `overdrive-live[-dev]` with a 20h expiry so a
+  mid-set reload resumes but last week's session doesn't. `live.tsx` mirrors
+  `SHOW_INDEX_KEY` from `pages.tsx` (import would be circular) — keep them in sync.
+
 ## Layout notes
 
 - `src/data/setlist.json` is generated — change the importer or the XLSX, not the JSON.

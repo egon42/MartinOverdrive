@@ -13,6 +13,7 @@
     "validate": "node scripts/validate-song-data.mjs"
   },
   "dependencies": {
+    "@supabase/realtime-js": "^2.110.2",
     "@vitejs/plugin-react": "latest",
     "qrcode": "^1.5.4",
     "react": "latest",
