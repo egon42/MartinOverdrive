@@ -4,7 +4,12 @@ import { chordShape, type ChordShape } from './chordShapes'
 // Per-device display prefs (not synced practice data). Keyed per deployment like the
 // show-mode pins so /dev/ and prod don't share a setting flip mid-rehearsal.
 const KEY_SUFFIX = import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''
-const SETTINGS_KEY = `overdrive-settings${KEY_SUFFIX}`
+// v2 store: the default fingering scope changed 'power' → 'all' (2026-07-13). The old
+// 'power' default read as "fingerings stopped showing" on every device that never found
+// the Settings knob. First v2 load migrates the v1 key: customized prefs carry over,
+// untouched-default prefs upgrade to the new default.
+const SETTINGS_KEY = `overdrive-settings2${KEY_SUFFIX}`
+const LEGACY_SETTINGS_KEY = `overdrive-settings${KEY_SUFFIX}`
 const FINGERING_ONLY_KEY = `overdrive-fingering-only${KEY_SUFFIX}`
 
 export type FingeringScope = 'power' | 'all' | 'none'
@@ -24,7 +29,10 @@ export interface AppSettings {
 /** Per-song, per-surface: when true, chord chips are replaced by vertical fingering chips. */
 export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, boolean>>>
 
-const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
+const DEFAULT_PREFS: FingeringPrefs = { scope: 'all', position: 'under' }
+// What the v1 store wrote for an untouched device — used to tell "user chose power"
+// apart from "user never opened Settings" (identical bytes; we side with never-opened).
+const V1_DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
 const isPosition = (v: unknown): v is FingeringPosition =>
@@ -42,17 +50,30 @@ function readPrefs(raw: unknown, fallback: FingeringPrefs): FingeringPrefs {
 
 function readSettings(): AppSettings {
   try {
-    const raw = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') as Record<string, unknown>
-    // Migrate the original flat keys onto both surfaces so existing prefs aren't lost.
-    const hasSurfaces = raw.cheat != null || raw.chords != null
-    const legacy: FingeringPrefs = {
-      scope: isScope(raw.fingeringScope) ? raw.fingeringScope : DEFAULT_PREFS.scope,
-      position: isPosition(raw.fingeringPosition) ? raw.fingeringPosition : DEFAULT_PREFS.position,
+    const rawV2 = localStorage.getItem(SETTINGS_KEY)
+    if (rawV2) {
+      const raw = JSON.parse(rawV2) as Record<string, unknown>
+      return {
+        cheat: readPrefs(raw.cheat, DEFAULT_PREFS),
+        chords: readPrefs(raw.chords, DEFAULT_PREFS),
+      }
     }
-    const fallback = hasSurfaces ? DEFAULT_PREFS : legacy
+    // First run on v2: migrate the v1 key. Resolve the v1 value exactly as the old code
+    // did (including the even-older flat fingeringScope/Position keys), then upgrade any
+    // surface still on the v1 default — that device never chose anything, and the whole
+    // point of v2 is that its default is 'all'. A customized surface carries over as-is.
+    const raw = JSON.parse(localStorage.getItem(LEGACY_SETTINGS_KEY) || '{}') as Record<string, unknown>
+    const hasSurfaces = raw.cheat != null || raw.chords != null
+    const legacyFlat: FingeringPrefs = {
+      scope: isScope(raw.fingeringScope) ? raw.fingeringScope : V1_DEFAULT_PREFS.scope,
+      position: isPosition(raw.fingeringPosition) ? raw.fingeringPosition : V1_DEFAULT_PREFS.position,
+    }
+    const v1Fallback = hasSurfaces ? V1_DEFAULT_PREFS : legacyFlat
+    const upgrade = (p: FingeringPrefs) =>
+      p.scope === V1_DEFAULT_PREFS.scope && p.position === V1_DEFAULT_PREFS.position ? { ...DEFAULT_PREFS } : p
     return {
-      cheat: readPrefs(raw.cheat, fallback),
-      chords: readPrefs(raw.chords, fallback),
+      cheat: upgrade(readPrefs(raw.cheat, v1Fallback)),
+      chords: upgrade(readPrefs(raw.chords, v1Fallback)),
     }
   } catch {
     return { cheat: { ...DEFAULT_PREFS }, chords: { ...DEFAULT_PREFS } }
