@@ -44,10 +44,11 @@ gh run list --workflow deploy-pages.yml --limit 3
   deploy — hard-refresh the phone (or DevTools → Application → Service Workers →
   Update on reload). The SW is network-first for the app shell; do NOT touch
   `public/sw.js`.
-- **Offline behavior is a feature, not a bug:** navigations wait 2.5s for the network
-  (`NAV_TIMEOUT_MS`, `public/sw.js`) then serve the cached shell. On dead venue Wi-Fi
-  the app opens from cache after ~2.5s — as long as the phone loaded the current build
-  once beforehand, which is exactly what check 7 guarantees.
+- **Offline behavior is a feature, not a bug:** navigations give the network at most
+  2.5s (`NAV_TIMEOUT_MS`, `public/sw.js`) before the cached shell is served; an
+  outright-dead connection fails fast and serves cache immediately. So on bad venue
+  Wi-Fi the app still opens — as long as the phone loaded the current build once
+  beforehand, which is exactly what check 7 guarantees.
 
 ## 2. Sync health — or a deliberate offline call
 
@@ -145,8 +146,8 @@ Have the user open the deployment URL from check 0 and run down this list in `/s
    must not dim (wake lock re-acquires automatically when the app returns to the
    foreground).
 7. **Offline resilience:** airplane mode → kill the browser → reopen the app →
-   `/show` comes back from cache (~2.5s pause is normal) at the song it was on.
-   Airplane mode off afterwards.
+   `/show` comes back from cache (instantly, or after at most ~2.5s if the network
+   hangs rather than fails) at the song it was on. Airplane mode off afterwards.
 
 Finish by jumping back to song 1 (re-run check 5) if the smoke test moved the
 position.
