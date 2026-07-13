@@ -121,10 +121,20 @@ for (const el of chordpro.current ?? []) {
   }
 }
 
+// A Songsterr "line" that is only chords (instrumental) shouldn't get a blank
+// separator before the next chord-only line — that used to render as one chip
+// per row. Blank lines still delimit real lyric lines.
+function isChordOnlyBlock(block) {
+  return block.length > 0 && block.every((line) => {
+    const tokens = line.trim().split(/\s+/).filter(Boolean)
+    return tokens.length > 0 && tokens.every((token) => /^[A-G][#b]?(?:maj|min|dim|aug|sus|add|m|M|\+|°)?\d*(?:(?:maj|min|sus|add|b|#)\d+)*(?:\/[A-G][#b]?)?$/.test(token))
+  })
+}
+
 const lines = []
 if (tuningText) { lines.push(tuningText); lines.push('') }
 blocks.forEach((block, i) => {
-  if (i > 0) lines.push('')
+  if (i > 0 && !(isChordOnlyBlock(blocks[i - 1]) && isChordOnlyBlock(block))) lines.push('')
   lines.push(...block)
 })
 

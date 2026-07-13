@@ -56,7 +56,27 @@ export function parseChordSheet(text: string): ParsedSheet {
     current.push({ text: current.length === 0 ? rawLine.replace(/^\s+/, '') : rawLine })
   }
   flush()
-  return { meta, lines }
+  // Instrumental runs often arrive as one chord per blank-separated "line"
+  // (Songsterr imports, UG pastes). Merge consecutive chord-only lyric lines so
+  // chips sit on one row instead of wasting a full row per chord.
+  return { meta, lines: mergeChordOnlyRuns(lines) }
+}
+
+function isChordOnlyLine(line: SheetLine) {
+  return line.kind === 'lyric' && line.parts.length > 0 && line.parts.every((part) => part.chord)
+}
+
+function mergeChordOnlyRuns(lines: SheetLine[]): SheetLine[] {
+  const out: SheetLine[] = []
+  for (const line of lines) {
+    const prev = out[out.length - 1]
+    if (isChordOnlyLine(line) && prev && isChordOnlyLine(prev)) {
+      prev.parts.push(...line.parts)
+      continue
+    }
+    out.push(line)
+  }
+  return out
 }
 
 // --- Show-mode cheat sheet helpers -----------------------------------------

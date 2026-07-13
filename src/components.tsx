@@ -272,7 +272,7 @@ export function ChordSheetView({ text, compact = false }: { text: string, compac
       }
       return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.raw}</pre>
-        : <p className="sheet-line" key={index}>{line.parts.map((part, i) => part.chord ? <ChordChip name={part.chord} key={i} /> : <span key={i}>{part.text}</span>)}</p>
+        : <p className={line.parts.every((part) => part.chord) ? 'sheet-line sheet-line--chords' : 'sheet-line'} key={index}>{line.parts.map((part, i) => part.chord ? <ChordChip name={part.chord} key={i} /> : <span key={i}>{part.text}</span>)}</p>
     })}
   </div>
 }
