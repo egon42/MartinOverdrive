@@ -9,7 +9,7 @@ import { isStatus, usePractice } from './storage'
 import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
-import { formatFingering, formatVerticalFingering, resolveFingering, useSettings, type FingeringSurface } from './settings'
+import { formatFingering, formatVerticalFingering, resolveFingering, shapesTabClass, useSettings, type FingeringSurface } from './settings'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
@@ -334,8 +334,8 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
     <div className="section-heading"><div><h2>Tabs & chords</h2></div>
       {(available.length > 1 || available[0] === 'chords') && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
         {available.includes('chords') && <button type="button" role="tab" aria-selected={active === 'chords'} aria-pressed={active === 'chords' ? chordsShapes : undefined}
-          className={`${active === 'chords' ? 'active' : ''}${chordsShapes ? ' shapes' : ''}`}
-          title={active === 'chords' ? (chordsShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          className={shapesTabClass(active === 'chords', chordsShapes, settings.chords.scope !== 'none')}
+          title={active === 'chords' && settings.chords.scope !== 'none' ? (chordsShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
           onClick={selectChords}>Chords</button>}
         {available.includes('tabs') && <button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button>}
       </div>}

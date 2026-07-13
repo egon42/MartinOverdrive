@@ -148,6 +148,14 @@ export function formatVerticalFingering(shape: string): string {
   return shape
 }
 
+/** Class for Cheat/Chords tabs: `shapes-hint` when retap is available, `shapes` when on. */
+export function shapesTabClass(active: boolean, shapesOn: boolean, canToggle: boolean): string {
+  const parts = [active ? 'active' : '']
+  if (shapesOn) parts.push('shapes')
+  else if (active && canToggle) parts.push('shapes-hint')
+  return parts.filter(Boolean).join(' ')
+}
+
 function FingeringFields({ surface, label }: { surface: FingeringSurface; label: string }) {
   const { settings, patchFingering } = useSettings()
   const prefs = settings[surface]

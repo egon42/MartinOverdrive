@@ -9,7 +9,7 @@ import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
 import { setOrdered, tonightsSongs } from './setlist'
-import { useSettings } from './settings'
+import { shapesTabClass, useSettings } from './settings'
 import { statuses, type Song } from './types'
 
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
@@ -416,12 +416,12 @@ export function Show() {
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
         <button type="button" role="tab" aria-selected={effective === 'scale'} aria-pressed={effective === 'scale' ? cheatShapes : undefined}
-          className={`${effective === 'scale' ? 'active' : ''}${cheatShapes ? ' shapes' : ''}`}
-          title={effective === 'scale' ? (cheatShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          className={shapesTabClass(effective === 'scale', cheatShapes, settings.cheat.scope !== 'none')}
+          title={effective === 'scale' && settings.cheat.scope !== 'none' ? (cheatShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
           onClick={selectCheat}>Cheat</button>
         {sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} aria-pressed={effective === 'chords' ? chordsShapes : undefined}
-          className={`${effective === 'chords' ? 'active' : ''}${chordsShapes ? ' shapes' : ''}`}
-          title={effective === 'chords' ? (chordsShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          className={shapesTabClass(effective === 'chords', chordsShapes, settings.chords.scope !== 'none')}
+          title={effective === 'chords' && settings.chords.scope !== 'none' ? (chordsShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
           onClick={selectChords}>Chords</button>}
         {sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}
       </div>

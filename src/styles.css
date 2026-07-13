@@ -88,8 +88,10 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-compact .sheet-section{margin:.5em 0 .2em}.sheet-compact .sheet-tab{font-size:.72em}
 .show-view-bar{display:flex;align-items:center;gap:10px;margin:0 0 12px;flex-wrap:wrap}
 .show-view-toggle{margin:0}
-/* Retap Cheat/Chords toggles fingering-only chips; a thin vertical mark signals that mode. */
-.fretboard-toggle button.shapes::after{content:"";display:inline-block;width:2px;height:.72em;margin-left:.38em;background:currentColor;opacity:.9;vertical-align:-.06em;border-radius:1px}
+/* Retap Cheat/Chords toggles fingering chips. Hollow mark = tap again available; solid = on. */
+.fretboard-toggle button.shapes-hint::after,.fretboard-toggle button.shapes::after{content:"";display:inline-block;box-sizing:border-box;width:.34em;height:.72em;margin-left:.38em;vertical-align:-.06em;border-radius:1px}
+.fretboard-toggle button.shapes-hint::after{border:1.5px solid currentColor;background:transparent;opacity:.55}
+.fretboard-toggle button.shapes::after{background:currentColor;opacity:.95}
 /* "Pin" pill: pins the current view as this song's default. Styled like the view-toggle
    pills; green (acid) when the current view is the pinned one, dimmed/outlined otherwise.
    Per-device rehearsal preference. */
