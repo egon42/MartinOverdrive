@@ -51,12 +51,13 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 
 /* Amp preset chips (position + color bank), dev badge, practice launcher, sync panel */
 .preset-badges{display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;vertical-align:middle}.preset-badge-group{display:inline-flex;align-items:center;gap:7px}.preset-chip{display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:.78rem;font-weight:850;letter-spacing:.03em;border-radius:999px;width:1.9em;height:1.9em;padding:0;flex:0 0 auto;color:#0a0c09;white-space:nowrap}.bank-amber{background:#e8a13c}.bank-green{background:#64d66f}.bank-red{background:#ef4d4d;color:#fff}.preset-joiner{color:var(--muted);font-size:.85rem}.preset-notes{font-size:.78rem;color:var(--muted)}
+.home-frets{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;vertical-align:middle;margin-left:4px}.home-fret-chip{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:1.9em;height:1.9em;padding:0 .35em;font-style:normal;font-size:.78rem;font-weight:850;letter-spacing:.02em;border:1.5px solid #c5cec9;border-radius:3px;background:transparent;color:#c5cec9;flex:0 0 auto;white-space:nowrap}
 .tag-row .preset-chip{font-size:.66rem}
 .practice-row-main .preset-badges{margin-left:8px}
 .dev-badge{background:var(--orange);color:#fff;font-size:.58rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;border-radius:6px;padding:3px 7px;margin-left:10px;align-self:flex-start}
 .practice-launcher{margin-bottom:14px}.backing-play{background:#2f9e44!important;border-color:#2f9e44!important;color:#fff!important}.backing-play:hover{background:#268a3a!important;border-color:#268a3a!important}.launcher-row{display:flex;gap:12px;align-items:end;flex-wrap:wrap}.launcher-row label{display:flex;flex-direction:column;gap:5px}.launcher-row label>span{font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:750}.launcher-hint{color:var(--muted);font-size:.8rem;margin:10px 0 0}
 .backing-player{margin-top:16px;aspect-ratio:16/9;max-width:560px}.backing-player iframe{width:100%;height:100%;border:0;border-radius:12px;display:block}
-.show-preset{display:flex;align-items:center;gap:14px;margin:2px 0 20px;flex-wrap:wrap}.show-preset .preset-chip{font-size:1.05rem}.show-preset .preset-joiner{font-size:1.35rem;color:#8f9a90}.show-preset .preset-notes{font-size:1rem;color:#c5cec9}
+.show-preset{display:flex;align-items:center;gap:14px;margin:2px 0 20px;flex-wrap:wrap}.show-preset .preset-chip{font-size:1.05rem}.show-preset .preset-joiner{font-size:1.35rem;color:#8f9a90}.show-preset .preset-notes{font-size:1rem;color:#c5cec9}.show-preset .home-fret-chip{font-size:1.05rem;min-width:2em;height:2em;border-width:2px}
 .sync-panel{margin-top:14px}.sync-panel h2{margin-bottom:6px}.sync-panel p{color:var(--muted);max-width:760px}.sync-panel label{display:flex;flex-direction:column;gap:5px;margin:10px 0}.sync-panel label>span{font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:750}.sync-panel input{max-width:460px}.sync-panel code{background:#080a08;border:1px solid var(--line);border-radius:8px;padding:3px 8px;user-select:all}.sync-panel .actions{margin-top:14px}.sync-status{font-size:.85rem;color:var(--muted)}.sync-status.error{color:#ef4d4d}
 @media(max-width:760px){.launcher-row>button:first-child{width:100%}.practice-row-main .preset-badges{margin-left:0;display:flex;margin-top:4px}}
 .sync-error{color:#ef4d4d;font-size:.85rem}
@@ -108,7 +109,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase}
 .show-song.sheet-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .show-sheet{flex:1;min-height:0;overflow:auto}
-@media(max-width:760px){.show-song.sheet-view .show-preset{margin-bottom:10px}.show-song.sheet-view .show-preset .preset-chip{font-size:.85rem}}
+@media(max-width:760px){.show-song.sheet-view .show-preset{margin-bottom:10px}.show-song.sheet-view .show-preset .preset-chip{font-size:.85rem}.show-song.sheet-view .show-preset .home-fret-chip{font-size:.85rem;min-width:1.7em;height:1.7em}}
 .sheet-compact .chord-chip{font-size:.72rem}
 
 /* Verbatim ASCII tab text (practice panel and show mode) */
@@ -142,6 +143,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .compact-chords .chord-with-fingering{vertical-align:top}
 /* One-line riff/feel cue under a section's chord row; wraps to its own full-width line */
 .cheat-prog-hint{flex:1 1 100%;font-size:.68em;color:var(--muted);font-style:italic;line-height:1.35}
+.cheat-prog-tab{flex:1 1 100%;margin:2px 0 0;padding:0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.58em;line-height:1.2;letter-spacing:0;white-space:pre;overflow-x:auto;color:#c5cec9;font-style:normal;background:transparent;border:0}
 .cheat-prog-chords .chord-chip{font-size:.95em}
 .cheat-card .show-content{gap:22px}
 .cheat-card .field dt{font-size:.6em}
@@ -150,6 +152,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 /* Amp preset chips sit inline in the strip (no dedicated row) to reclaim vertical space */
 .cheat-strip .preset-badges{gap:6px}
 .cheat-strip .preset-notes{font-size:.72em;color:#c5cec9}
+.cheat-strip .home-fret-chip{font-size:.72em;min-width:1.7em;height:1.7em}
 
 /* Show mode: landscape reclaims height for the scrollable sheet + tighter chrome */
 @media(orientation:landscape){

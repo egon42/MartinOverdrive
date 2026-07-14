@@ -84,3 +84,27 @@ export function fretboardForVersion(song: Pick<Song, 'pentatonicBox' | 'pentaton
   const resolved = resolveFretboards(song)
   return version === 'original' ? resolved.original : resolved.standard
 }
+
+// Stage "home row" frets for box-1 scales — the fret where the shape starts (and its
+// +12 twin when it fits on the neck). Used as hollow chips next to the amp presets.
+// When the scale name already lists multiple homes ("open/12th", "1st/13th", "or … at 5th"),
+// those win; otherwise it's primary pattern fret + optional octave-up.
+export function homeFretsFor(song: Pick<Song, 'pentatonicBox' | 'pentatonicBoxStandard' | 'recordingNote'>): number[] {
+  const value = fretboardForVersion(song, 'standard')
+  if (!value?.trim()) return []
+  const name = scaleName(value)
+  const named = new Set<number>()
+  if (/\bopen\b/i.test(name)) named.add(0)
+  for (const match of name.matchAll(/\b(\d+)(?:st|nd|rd|th)\b/gi)) named.add(Number(match[1]))
+
+  if (named.size >= 2) return [...named].sort((a, b) => a - b)
+
+  const colon = value.indexOf(':')
+  const pattern = (colon < 0 ? value : value.slice(colon + 1)).split(/,\s*or\s+/i)[0]
+  const patternFrets = [...pattern.matchAll(/\d+/g)].map((match) => Number(match[0]))
+  const frets = new Set<number>(named)
+  if (patternFrets.length) frets.add(Math.min(...patternFrets))
+  const up = octaveUpVariant(value)
+  if (up) frets.add(up.fret)
+  return [...frets].sort((a, b) => a - b)
+}

@@ -1,7 +1,7 @@
 import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode, type RefObject } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
-import { AmpPresetField, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
+import { AmpPresetField, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, HomeFretBadges, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
 import { progressionFor } from './progressions'
@@ -190,14 +190,15 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   const transpose = transposeFor(song.id)
   const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
   const rows = custom
-    ? custom.sections.map((s) => ({ label: s.section, chords: s.chords.split(/\s+/).filter(Boolean), shapes: s.shapes ? s.shapes.split(/\s+/).filter(Boolean) : [], hint: s.hint }))
-    : derived?.map((row) => ({ ...row, shapes: [] as string[], hint: undefined as string | undefined }))
+    ? custom.sections.map((s) => ({ label: s.section, chords: s.chords.split(/\s+/).filter(Boolean), shapes: s.shapes ? s.shapes.split(/\s+/).filter(Boolean) : [], hint: s.hint, tab: s.tab }))
+    : derived?.map((row) => ({ ...row, shapes: [] as string[], hint: undefined as string | undefined, tab: undefined as string | undefined }))
   return <div className="cheat-card" ref={innerRef}>
     <div className="cheat-strip">
       {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
       {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>Transpose {transposeLabel(transpose.semitones)}</span>}
       {custom?.capo && <span className="cheat-chip cheat-capo">{custom.capo}</span>}
       <PresetBadges songId={song.id} showNotes />
+      <HomeFretBadges song={song} />
     </div>
     {rows && <div className="cheat-progression">
       {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
@@ -205,6 +206,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
         <span className="cheat-prog-chords">{row.chords.map((chord, j) =>
           <ChordChip name={chord} curatedShape={row.shapes[j]} surface="cheat" songId={song.id} key={j} />)}</span>
         {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
+        {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
       </div>)}
     </div>}
     <div className="show-content">
@@ -458,7 +460,7 @@ export function Show() {
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label="Next song">›</button>
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
-    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/></div>}
+    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/><HomeFretBadges song={song}/></div>}
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
         <button type="button" role="tab" aria-selected={effective === 'scale'} aria-pressed={effective === 'scale' ? cheatShapes : undefined}

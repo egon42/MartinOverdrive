@@ -56,6 +56,9 @@ Structure, keyed by songId (see `src/progressions.ts` for the full contract):
   `chords`. Order **low-E → high-e**; digit = fret, `-` = string not played.
 - `hint` (optional) — one-line how-to-play cue (signature riff, strum feel), for
   riff-driven songs where a bare chord list isn't enough to play cold.
+- `tab` (optional) — compact ASCII tablature block (high-e on top, same convention as
+  `.tabs.txt`), rendered monospace on the cheat card. Used for **Fills** sections so
+  the stage view shows what to play. Empty `chords` is fine when the section is tab-only.
 - `capo` (optional, on the song object) — capo note.
 
 Derive each section's progression from `chords.txt` (its `[Section]` markers), collapsing

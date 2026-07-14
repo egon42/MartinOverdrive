@@ -4,7 +4,7 @@ import { compactSheet, parseChordSheet } from './chords'
 import { chordShape, type ChordShape } from './chordShapes'
 import type { Song } from './types'
 import { statuses } from './types'
-import { fretboardForVersion, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
+import { fretboardForVersion, homeFretsFor, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
 import { isStatus, usePractice } from './storage'
 import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
@@ -163,6 +163,16 @@ export function PresetBadges({ songId, showNotes = false }: { songId: string, sh
       <b className={`preset-chip bank-${presetBank(slot).toLowerCase()}`} title={`${presetBank(slot)} bank, PRESET knob position ${presetPosition(slot)} (slot ${slot} of 24)`}>{presetLabel(slot)}</b>
     </span>)}
     {showNotes && assignment.notes && <span className="preset-notes">{assignment.notes}</span>}
+  </span>
+}
+
+// Hollow square chips for the scale's home-row frets (e.g. S.O.B. → [3][15]), shown to
+// the right of the amp presets on Cheat / Chords / Tabs.
+export function HomeFretBadges({ song }: { song: Song }) {
+  const frets = homeFretsFor(song)
+  if (!frets.length) return null
+  return <span className="home-frets" aria-label="Scale home frets">
+    {frets.map((fret) => <b className="home-fret-chip" key={fret} title={`Scale box home at fret ${fret}`}>{fret}</b>)}
   </span>
 }
 

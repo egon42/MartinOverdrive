@@ -882,8 +882,8 @@
       "backingTrackUrl": "https://www.youtube.com/watch?v=V4rIWEgSXW8",
       "songsterrUrl": "",
       "linkQuality": "Good direct guitar backing track",
-      "scaleHint": "Eb major/C minor pentatonic neighborhood for Zutons key; verify if they do Winehouse-style version.",
-      "pentatonicBox": "C minor box 1 at 8th: 8-11 / 8-10 / 8-10 / 8-10 / 8-11 / 8-11",
+      "scaleHint": "E major / C# minor pentatonic (band arrangement in E). Winehouse original is Eb — Transpose +1 on that recording.",
+      "pentatonicBox": "C# minor box 1 at 9th: 9-12 / 9-11 / 9-11 / 9-11 / 9-12 / 9-12",
       "mustKnow": "Rhythm pocket and version-specific feel.",
       "fallback": "Clean chord stabs and simple fills.",
       "firstCue": "",
@@ -897,13 +897,13 @@
         "Practice Bucket": "Some improv, but learn key hooks",
         "Backing Track URL": "https://www.youtube.com/watch?v=V4rIWEgSXW8",
         "Link Quality": "Good direct guitar backing track",
-        "Scale Hint": "Eb major/C minor pentatonic neighborhood for Zutons key; verify if they do Winehouse-style version.",
-        "Pentatonic Box": "C minor box 1 at 8th: 8-11 / 8-10 / 8-10 / 8-10 / 8-11 / 8-11",
+        "Scale Hint": "E major / C# minor pentatonic (band arrangement in E). Winehouse original is Eb — Transpose +1 on that recording.",
+        "Pentatonic Box": "C# minor box 1 at 9th: 9-12 / 9-11 / 9-11 / 9-11 / 9-12 / 9-12",
         "Must Know": "Rhythm pocket and version-specific feel.",
         "Fallback": "Clean chord stabs and simple fills.",
         "Rehearsal Question": "Zutons version or Amy Winehouse-style arrangement?"
       },
-      "recordingNote": "",
+      "recordingNote": "Winehouse recording is Eb — Transpose +1 to match band E",
       "pentatonicBoxStandard": ""
     },
     {

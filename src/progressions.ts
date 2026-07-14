@@ -10,7 +10,11 @@ import data from './data/progressions.json'
 // the chord names on the cheat card. `hint`, when present, is a one-line how-to-play cue
 // (signature riff, strum feel, voicing trick) rendered under the section's chord row —
 // for riff-driven songs where a bare chord list isn't enough to play along cold.
-export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string }
+// `tab`, when present, is a compact ASCII tablature block (high-e on top, same as the
+// .tabs.txt sheets) rendered in monospace under the row — used for Fills sections so the
+// cheat card shows what to play, not a prose paraphrase. Empty `chords` is fine when a
+// section is tab-only (no ChordChips).
+export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string; tab?: string }
 export interface SongProgression { sections: ProgSection[]; capo?: string }
 
 const progressions = data as Record<string, SongProgression>
