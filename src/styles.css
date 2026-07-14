@@ -144,6 +144,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 /* One-line riff/feel cue under a section's chord row; wraps to its own full-width line */
 .cheat-prog-hint{flex:1 1 100%;font-size:.68em;color:var(--muted);font-style:italic;line-height:1.35}
 .cheat-prog-tab{flex:1 1 100%;margin:2px 0 0;padding:0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.58em;line-height:1.2;letter-spacing:0;white-space:pre;overflow-x:auto;color:#c5cec9;font-style:normal;background:transparent;border:0}
+.cheat-prog-more{flex:1 1 100%;margin:4px 0 0}.cheat-prog-more>summary{cursor:pointer;font-size:.62em;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);list-style:none}.cheat-prog-more>summary::-webkit-details-marker{display:none}.cheat-prog-more>summary::before{content:"+ ";color:var(--acid)}.cheat-prog-more[open]>summary::before{content:"− "}.cheat-prog-more .cheat-prog-tab{margin-top:4px}
 .cheat-prog-chords .chord-chip{font-size:.95em}
 .cheat-card .show-content{gap:22px}
 .cheat-card .field dt{font-size:.6em}

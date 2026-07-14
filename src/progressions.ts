@@ -12,9 +12,10 @@ import data from './data/progressions.json'
 // for riff-driven songs where a bare chord list isn't enough to play along cold.
 // `tab`, when present, is a compact ASCII tablature block (high-e on top, same as the
 // .tabs.txt sheets) rendered in monospace under the row — used for Fills sections so the
-// cheat card shows what to play, not a prose paraphrase. Empty `chords` is fine when a
-// section is tab-only (no ChordChips).
-export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string; tab?: string }
+// cheat card shows what to play, not a prose paraphrase. `tabMore`, when present, holds
+// extra fills behind a collapsed "More fills" disclosure so the primary tabs stay
+// stage-readable. Empty `chords` is fine when a section is tab-only (no ChordChips).
+export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string; tab?: string; tabMore?: string }
 export interface SongProgression { sections: ProgSection[]; capo?: string }
 
 const progressions = data as Record<string, SongProgression>

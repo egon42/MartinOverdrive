@@ -146,8 +146,10 @@ if (progressions && typeof progressions === 'object') {
       const chords = typeof section.chords === 'string' ? section.chords.trim() : ''
       if (!sectionName) fail(songId, `${label}: empty "section".`)
       const hasTab = typeof section.tab === 'string' && section.tab.trim().length > 0
+      const hasTabMore = typeof section.tabMore === 'string' && section.tabMore.trim().length > 0
       // Tab-only rows (usually "Fills") may omit chords — the ASCII tab is the content.
-      if (!chords && !hasTab) fail(songId, `${label}: empty "chords".`)
+      if (!chords && !hasTab && !hasTabMore) fail(songId, `${label}: empty "chords".`)
+      if (hasTabMore && !hasTab) fail(songId, `${label}: "tabMore" without primary "tab".`)
       if (section.shapes != null) {
         const chordTokens = chords.split(/\s+/).filter(Boolean)
         const shapeTokens = String(section.shapes).trim().split(/\s+/).filter(Boolean)

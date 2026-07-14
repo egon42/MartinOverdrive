@@ -59,6 +59,8 @@ Structure, keyed by songId (see `src/progressions.ts` for the full contract):
 - `tab` (optional) — compact ASCII tablature block (high-e on top, same convention as
   `.tabs.txt`), rendered monospace on the cheat card. Used for **Fills** sections so
   the stage view shows what to play. Empty `chords` is fine when the section is tab-only.
+- `tabMore` (optional) — extra ASCII fills behind a collapsed "More fills" disclosure;
+  requires a primary `tab`. Opening it re-fits the cheat card height.
 - `capo` (optional, on the song object) — capo note.
 
 Derive each section's progression from `chords.txt` (its `[Section]` markers), collapsing

@@ -190,8 +190,19 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   const transpose = transposeFor(song.id)
   const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
   const rows = custom
-    ? custom.sections.map((s) => ({ label: s.section, chords: s.chords.split(/\s+/).filter(Boolean), shapes: s.shapes ? s.shapes.split(/\s+/).filter(Boolean) : [], hint: s.hint, tab: s.tab }))
-    : derived?.map((row) => ({ ...row, shapes: [] as string[], hint: undefined as string | undefined, tab: undefined as string | undefined }))
+    ? custom.sections.map((s) => ({ label: s.section, chords: s.chords.split(/\s+/).filter(Boolean), shapes: s.shapes ? s.shapes.split(/\s+/).filter(Boolean) : [], hint: s.hint, tab: s.tab, tabMore: s.tabMore }))
+    : derived?.map((row) => ({ ...row, shapes: [] as string[], hint: undefined as string | undefined, tab: undefined as string | undefined, tabMore: undefined as string | undefined }))
+  // Re-run the parent's height auto-fit after More fills opens/closes — otherwise the
+  // newly revealed tabs overflow (or leave empty space) until the next resize.
+  const refitCheat = () => {
+    const el = innerRef.current
+    if (!el) return
+    requestAnimationFrame(() => {
+      el.style.setProperty('--sheet-fit', '1')
+      const ratio = el.clientHeight / el.scrollHeight
+      el.style.setProperty('--sheet-fit', String(ratio < 1 ? Math.max(0.7, ratio * 0.97) : 1))
+    })
+  }
   return <div className="cheat-card" ref={innerRef}>
     <div className="cheat-strip">
       {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
@@ -207,6 +218,10 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
           <ChordChip name={chord} curatedShape={row.shapes[j]} surface="cheat" songId={song.id} key={j} />)}</span>
         {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
         {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
+        {row.tabMore && <details className="cheat-prog-more" onToggle={refitCheat}>
+          <summary>More fills</summary>
+          <pre className="cheat-prog-tab">{row.tabMore}</pre>
+        </details>}
       </div>)}
     </div>}
     <div className="show-content">
