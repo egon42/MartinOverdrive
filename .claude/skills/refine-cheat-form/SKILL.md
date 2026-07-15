@@ -23,9 +23,9 @@ Authority order when they conflict:
 
 Do **not** batch-edit the whole setlist. For each song:
 
-1. Load context → propose deltas → wait for confirm (unless they already stated the fix)
-2. Apply → `npm run validate` → commit + bare `git push` to `dev`
-3. Mark progress → offer the **next** unchecked song
+1. Load context → propose deltas → wait for confirm on the **form content** (unless they already stated the fix)
+2. Apply → `npm run validate` → **commit + bare `git push` to `dev`** (never ask — shipping to `/dev/` for on-device review is the default)
+3. Mark progress → point them at the live `/MartinOverdrive/dev/` cheat card → offer the **next** unchecked song
 
 Resume from [progress.md](progress.md). Setlist order = `src/data/setlist.json` ids.
 
@@ -37,6 +37,7 @@ Resume from [progress.md](progress.md). Setlist order = `src/data/setlist.json` 
 | "next" / "next song" | Next unchecked after the last done |
 | Song title / id | That song only |
 | Specific fix ("Bridge ×2 then Outro") | Apply immediately; still validate + push |
+| "push to dev" / "for review" / "ship it" / "ok" / "lgtm" | Treat as accept of the pending proposal → apply + validate + commit + push (do not re-ask) |
 
 ## Step 1 — Load
 
@@ -96,9 +97,9 @@ npm run validate
 
 If validate fails (orphan form step, shape count, bad `(…) ×N` syntax), fix before committing.
 
-## Step 5 — Ship + progress
+## Step 5 — Ship to `dev` for review + progress
 
-Default for this skill (form-pass workflow): **commit and bare `git push` to `dev`** after each song the user accepts. One song per commit when practical.
+**Standing rule:** after each song is applied, **always** commit and bare `git push` to `dev`. Do **not** ask “commit?” / “push?” — live review on the `/dev/` deploy *is* the confirm loop for feel/×N. One song per commit when practical.
 
 ```text
 Refine <Song title> cheat form.
@@ -108,7 +109,11 @@ Refine <Song title> cheat form.
 
 Update [progress.md](progress.md): mark the song done, one-line note of what changed.
 
-Then print the **after** roadmap and ask: next song, or stop?
+Then print the **after** roadmap, remind them to check the cheat card on
+`https://egonelbrechtsen.github.io/MartinOverdrive/dev/` (hard-refresh if SW is sticky),
+and ask: next song, tweak this one, or stop?
+
+If they come back with a tweak (“Pre ends on B”, “Chorus ×3”), apply → validate → commit → push again — still no ask.
 
 ## Out of scope
 

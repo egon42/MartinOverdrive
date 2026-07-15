@@ -257,12 +257,13 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "A E B"
+        "chords": "(A E) ×4",
+        "shapes": "-022-- 022---"
       },
       {
         "section": "Chorus",
-        "chords": "E B C#m A",
-        "shapes": "022--- -244-- -466-- -022--"
+        "chords": "(E B C#m A) (E B G#m)",
+        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466---"
       },
       {
         "section": "Intro",
@@ -272,27 +273,20 @@
       },
       {
         "section": "Solo",
-        "chords": "E B C#m A",
-        "shapes": "022--- -244-- -466-- -022--",
+        "chords": "(E B C#m A) (E B G#m)",
+        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466---",
         "hint": "Chorus changes under the solo"
-      },
-      {
-        "section": "Outro",
-        "chords": "E B C#m A",
-        "shapes": "022--- -244-- -466-- -022--"
       }
     ],
     "form": [
       "Intro",
+      "Verse ×3",
+      "Pre-Chorus",
       "Verse ×2",
       "Pre-Chorus",
-      "Chorus",
-      "Verse",
-      "Pre-Chorus",
-      "Chorus",
+      "Chorus ×2",
       "Solo",
-      "Chorus",
-      "Outro"
+      "Chorus ×2"
     ]
   },
   "07-tribute": {
