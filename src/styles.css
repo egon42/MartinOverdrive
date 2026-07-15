@@ -163,17 +163,30 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-more .show-fields .field dd{font-size:1.05rem}
 .cheat-more .show-scale .field dd{font-size:.82rem}
 /* Amp preset chips sit inline in the strip (no dedicated row) to reclaim vertical space */
-.cheat-strip .preset-badges{gap:6px}
-.cheat-strip .preset-notes{font-size:.72em;color:#c5cec9}
-.cheat-strip .home-fret-chip{font-size:.72em;min-width:1.7em;height:1.7em}
+.cheat-strip{gap:5px;row-gap:2px}
+.cheat-strip .preset-badges{gap:5px}
+.cheat-strip .preset-chip{font-size:.68em;width:1.65em;height:1.65em}
+.cheat-strip .preset-joiner{font-size:.75em}
+.cheat-strip .preset-notes{font-size:.62em;line-height:1.2;color:#c5cec9}
+.cheat-strip .home-fret-chip{font-size:.62em;min-width:1.5em;height:1.5em;border-width:1px}
+.cheat-fit{gap:6px}
 
-/* Cheat view: tighter portrait chrome so chips get the height */
-.show-song.cheat-view .eyebrow{margin:0;line-height:1.2}
-.show-song.cheat-view h1{margin:.05em 0 .25em}
-.show-song.cheat-view .show-view-bar{margin:0 0 8px}
+/* Cheat view: stage-compact chrome — artist+title one line, smaller nav/tabs */
+.show-song-head{display:block}
+.show-song.cheat-view .show-song-head{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;margin:0 0 2px;min-width:0}
+.show-song.cheat-view .show-song-head .eyebrow{margin:0;font-size:.52rem;line-height:1.1;flex:0 0 auto}
+.show-song.cheat-view .show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0}
+.show-song.cheat-view .show-view-bar{margin:0 0 4px;gap:6px}
+.show-song.cheat-view .fretboard-toggle{gap:4px}
+.show-song.cheat-view .fretboard-toggle button,.show-song.cheat-view .show-pin{padding:.28rem .58rem;font-size:.62rem}
+.show-mode--cheat{padding-top:max(12px,env(safe-area-inset-top));padding-bottom:max(12px,env(safe-area-inset-bottom))}
+.show-mode--cheat .show-progress{margin:4px 0 6px}
+.show-mode--cheat .show-nav-btn{width:40px;height:40px;font-size:1.25rem}
+.show-mode--cheat .show-counter{padding:.35rem .7rem;font-size:.7rem}
+.show-mode--cheat .show-upnext{margin-top:6px;font-size:.72rem}
 @media(max-width:760px){
-  .show-song.cheat-view h1{font-size:clamp(.9rem,3.2vw,1.15rem);margin:.05em 0 .2em}
-  .show-song.cheat-view .show-view-bar{margin:0 0 6px}
+  .show-song.cheat-view .show-song-head h1{font-size:.88rem}
+  .show-song.cheat-view .show-view-bar{margin:0 0 3px}
 }
 
 /* Show mode: landscape reclaims height for the scrollable sheet + tighter chrome */

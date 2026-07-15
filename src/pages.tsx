@@ -480,7 +480,7 @@ export function Show() {
       if (wakeLock.current) { wakeLock.current.release(); wakeLock.current = null }
     }
   }, [])
-  return <div className="show-mode">
+  return <div className={`show-mode${effective === 'scale' ? ' show-mode--cheat' : ''}`}>
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => setIndex((i) => Math.max(0, i - 1))} aria-label="Previous song">‹</button>
@@ -495,7 +495,7 @@ export function Show() {
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label="Next song">›</button>
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
-    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/><HomeFretBadges song={song}/></div>}
+    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/><HomeFretBadges song={song}/></div>}
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
         <button type="button" role="tab" aria-selected={effective === 'scale'} aria-pressed={effective === 'scale' ? cheatShapes : undefined}
