@@ -21,7 +21,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 13-save-a-horse-ride-a-cowboy
 - [x] 14-sweet-home-alabama
 - [x] 15-dani-california
-- [x] 16-teenage-dirtbag
+- [ ] 16-teenage-dirtbag
 - [ ] 17-the-pretender
 - [ ] 18-here-it-goes-again
 - [ ] 19-purple-rain
