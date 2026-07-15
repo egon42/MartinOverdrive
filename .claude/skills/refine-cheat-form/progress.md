@@ -19,7 +19,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 11-hunger-strike
 - [x] 12-s-o-b
 - [x] 13-save-a-horse-ride-a-cowboy
-- [ ] 14-sweet-home-alabama
+- [x] 14-sweet-home-alabama
 - [ ] 15-dani-california
 - [ ] 16-teenage-dirtbag
 - [ ] 17-the-pretender
@@ -53,3 +53,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **11-hunger-strike** — Intro×2 → V/C×8 → Bridge×4 → Interlude×2 → V/C×2 → Bridge×4 → V/C×4 → Bridge; Interlude only after first Bridge
 - **12-s-o-b** — **skipped:** E hang + chorus phrases fine for now
 - **13-save-a-horse-ride-a-cowboy** — kept E–A form; dropped ×N math hints; Outro `E G A` + N.C. after final Chorus
+- **14-sweet-home-alabama** — **skipped:** whole-song D C G + fills card is enough for now
