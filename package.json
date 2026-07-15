@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:pages": "tsc -b && vite build --base /MartinOverdrive/",
+    "build:pages": "tsc -b && vite build --base /MartinOverdrive/app/",
     "preview": "vite preview",
-    "preview:pages": "vite preview --base /MartinOverdrive/",
+    "preview:pages": "vite preview --base /MartinOverdrive/app/",
     "import-setlist": "node scripts/import-setlist.mjs",
     "validate": "node scripts/validate-song-data.mjs"
   },

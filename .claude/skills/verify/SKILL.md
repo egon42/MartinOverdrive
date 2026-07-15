@@ -47,7 +47,8 @@ New work lives on the `dev` branch and deploys to the `/dev/` URL. Chain:
    `.github/workflows/deploy-pages.yml` is the only deploy path. A successful
    push with no green run = not deployed.
 3. Check the live page: `https://egon42.github.io/MartinOverdrive/dev/`
-   (production is `/MartinOverdrive/` off `main`). The service worker is
+   (production is `/MartinOverdrive/app/` off `main`; root `/MartinOverdrive/`
+   redirects there). The service worker is
    **network-first** — if the page looks stale after a green run, hard-refresh
    (or kill/reopen the installed PWA); do not touch the caching logic.
 

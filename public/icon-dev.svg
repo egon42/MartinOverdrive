@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="92" fill="#000"/>
+  <g fill="#ef4d4d" stroke="#050605" stroke-width="10">
+    <path d="M82 365V170l74 43v152Z"/><path d="M165 365V230l79-28v163Z"/>
+    <path d="M253 365V178l82-22v209Z"/><path d="M344 365V92l86-18v291Z"/>
+  </g>
+  <g fill="#64d66f"><path d="m85 151 71 41v20l-71-41Z"/><path d="m256 158 79-21v21l-79 21Z"/><path d="m347 71 83-18v21l-83 18Z"/></g>
+  <rect x="300" y="360" width="160" height="72" rx="16" fill="#ef4d4d"/>
+  <text x="380" y="412" text-anchor="middle" font-family="system-ui,sans-serif" font-size="48" font-weight="800" fill="#000">DEV</text>
+</svg>

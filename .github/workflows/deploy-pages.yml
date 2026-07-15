@@ -14,8 +14,10 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-# One Pages site, two builds: main is deployed at the site root, dev under /dev/.
-# Pushing to either branch rebuilds and redeploys both.
+# One Pages site, two sibling installs: main → /app/ (production), dev → /dev/
+# (development). They must not nest — a PWA scoped to /MartinOverdrive/ would own
+# /dev/ and block installing both on one phone. Root / redirects to /app/ and
+# retires the old root-scoped service worker.
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,7 +45,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           pnpm exec tsc -b
-          pnpm exec vite build --base "/${{ github.event.repository.name }}/"
+          pnpm exec vite build --base "/${{ github.event.repository.name }}/app/"
       - name: Build development (dev)
         working-directory: dev
         run: |
@@ -53,8 +55,13 @@ jobs:
       - name: Assemble combined site
         run: |
           mkdir site
-          cp -r main/dist/. site/
-          mkdir -p site/dev
+          # Root redirect + old-SW retirement. Prefer the triggering branch's copy when
+          # both checkouts have pages-root (dev overwrites main so a mid-migration push
+          # to either branch still ships the sibling layout).
+          if [ -d main/pages-root ]; then cp -r main/pages-root/. site/; fi
+          if [ -d dev/pages-root ]; then cp -r dev/pages-root/. site/; fi
+          mkdir -p site/app site/dev
+          cp -r main/dist/. site/app/
           cp -r dev/dist/. site/dev/
       - uses: actions/upload-pages-artifact@v3
         with:

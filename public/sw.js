@@ -15,6 +15,7 @@ const SHELL = [
   shellPath('index.html'),
   shellPath('manifest.webmanifest'),
   shellPath('icon.svg'),
+  shellPath('icon-dev.svg'),
   shellPath('martin-drive-logo.jpg'),
   shellPath('raleway-400.ttf'),
   shellPath('raleway-600.ttf'),

@@ -14,7 +14,8 @@ the deliberate resets in check 5 — **do not modify anything under `amp-presets
 
 Ask if unknown. Show mode, Tonight's set, and sync are dev-branch features, so the band
 normally performs from **`https://egon42.github.io/MartinOverdrive/dev/`** (production
-is `https://egon42.github.io/MartinOverdrive/`). This matters because every store is
+is `https://egon42.github.io/MartinOverdrive/app/`; bare `/MartinOverdrive/` redirects
+there). This matters because every store is
 keyed per deployment — a green prod check proves nothing about /dev/:
 
 | Data | prod key | /dev/ key |
