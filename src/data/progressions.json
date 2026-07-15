@@ -3,11 +3,11 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "Em C D"
+        "chords": "(Em C D) ×2"
       },
       {
         "section": "Chorus",
-        "chords": "F Am C F Am C"
+        "chords": "(F Am C) ×2"
       },
       {
         "section": "Bridge",
@@ -15,9 +15,9 @@
       }
     ],
     "form": [
-      "Verse ×2",
+      "Verse",
       "Chorus",
-      "Verse ×2",
+      "Verse",
       "Chorus",
       "Bridge",
       "Chorus ×2"
@@ -159,8 +159,8 @@
       },
       {
         "section": "Chorus",
-        "chords": "B5 A5 E5 A5 E5",
-        "shapes": "-244-- -022-- 022--- -022-- 022---"
+        "chords": "B5 (A5 E5) ×2",
+        "shapes": "-244-- -022-- 022---"
       },
       {
         "section": "Solo",
@@ -185,7 +185,7 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "E B C#m A E B G#m A",
+        "chords": "(E B C#m A) (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--"
       },
       {
@@ -266,7 +266,7 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "Am Am/G D/F# Fmaj7 Am G D E"
+        "chords": "(Am Am/G D/F# Fmaj7) (Am G D E)"
       },
       {
         "section": "Verse (2nd ending)",
@@ -317,7 +317,7 @@
       },
       {
         "section": "Bridge",
-        "chords": "D5 E5 D5 E5 Emadd9",
+        "chords": "(D5 E5) ×2 Emadd9",
         "hint": "Record riffs this low in Drop D; in Standard grab D5 x577xx and E5 022xxx"
       }
     ],
@@ -347,11 +347,11 @@
       },
       {
         "section": "Chorus",
-        "chords": "E A B A B E A B A E"
+        "chords": "(E A B A B) (E A B A E)"
       },
       {
         "section": "Outro",
-        "chords": "E A B A B E A B A E"
+        "chords": "(E A B A B) (E A B A E)"
       }
     ],
     "form": [
@@ -603,8 +603,8 @@
       },
       {
         "section": "Chorus",
-        "chords": "Am C5 Am C5 G5 D5 Em C5",
-        "shapes": "-022-- -355-- -022-- -355-- 355--- -577-- -799-- -355--",
+        "chords": "(Am C5) ×2 G5 D5 Em C5",
+        "shapes": "-022-- -355-- 355--- -577-- -799-- -355--",
         "hint": "Walk the roots up A-B-C (A-str 0-2-3) into each chorus line (passing B5 is in the tab)"
       }
     ],
@@ -669,8 +669,8 @@
       },
       {
         "section": "Verse",
-        "chords": "D5 G5 A5 D5 G5 A5 D5",
-        "shapes": "-577-- 355--- 577--- -577-- 355--- 577--- -577--",
+        "chords": "(D5 G5 A5) ×2 D5",
+        "shapes": "-577-- 355--- 577--- -577--",
         "hint": "Power-chord verse; longer verses keep walking the same D5–G5–A5 loop"
       },
       {
@@ -680,13 +680,13 @@
       },
       {
         "section": "Chorus",
-        "chords": "G A D Bm G A D A Bm A G A D Bm G A D",
+        "chords": "(G A D Bm G A D) (A Bm A) (G A D Bm G A D)",
         "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--"
       },
       {
         "section": "Bridge",
-        "chords": "A D G A D G A G A",
-        "shapes": "577--- -577-- 355--- 577--- -577-- 355--- 577--- 355--- 577---"
+        "chords": "(A D G) ×2 A G A",
+        "shapes": "577--- -577-- 355--- 577--- 355--- 577---"
       },
       {
         "section": "Outro",
@@ -716,7 +716,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "Em7 A Em7 A G"
+        "chords": "(Em7 A) ×2 G"
       },
       {
         "section": "Fills",
@@ -759,7 +759,7 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "E7#9 G A",
+        "chords": "(E7#9 G A) ×4",
         "hint": "It's all the E7#9 riff: open low E, 3fr bend, D-str 0h2, G-to-A moves filling every line"
       },
       {
@@ -768,9 +768,9 @@
       }
     ],
     "form": [
-      "Verse ×4",
+      "Verse",
       "Chorus",
-      "Verse ×4",
+      "Verse",
       "Chorus"
     ]
   },
@@ -778,13 +778,13 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "D A D G D A D",
+        "chords": "(D A D) G (D A D)",
         "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---",
         "hint": "Big open Drop-D chords; leave space for the low-string runs"
       },
       {
         "section": "Chorus",
-        "chords": "D C G D C A D G D A D",
+        "chords": "(D C G D C A D) (G D A D)",
         "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---"
       },
       {
@@ -817,7 +817,7 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "C#m A E C#m A B"
+        "chords": "(C#m A) E (C#m A) B"
       },
       {
         "section": "Chorus",
@@ -881,7 +881,7 @@
     "sections": [
       {
         "section": "Verse / Chorus",
-        "chords": "F# G#m D#m B",
+        "chords": "(F# G#m D#m B) ×2",
         "shapes": "244--- 466--- -11--- -24---"
       },
       {
@@ -891,9 +891,9 @@
       }
     ],
     "form": [
-      "Verse / Chorus ×2",
+      "Verse / Chorus",
       "Bridge",
-      "Verse / Chorus ×2"
+      "Verse / Chorus"
     ]
   },
   "31-banditos": {
@@ -906,7 +906,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "E A E B A B E C#m A B E",
+        "chords": "(E A E B A B) (E C#m A B E)",
         "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022---"
       },
       {
