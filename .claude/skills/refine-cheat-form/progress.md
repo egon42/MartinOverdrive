@@ -12,7 +12,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 04-i-believe-in-a-thing-called-love
 - [ ] 05-thunderstruck
 - [ ] 06-don-t-stop-believin
-    40|- [ ] 07-tribute
+- [ ] 07-tribute
 - [x] 08-while-my-guitar-gently-weeps
 - [x] 09-pride-and-joy
 - [x] 10-zombie
@@ -26,9 +26,9 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [ ] 18-here-it-goes-again
 - [ ] 19-purple-rain
 - [ ] 20-when-i-come-around
-- [ ] 21-the-middle
+- [x] 21-the-middle
 - [ ] 22-dream-on
-- [ ] 23-lola-montez
+- [x] 23-lola-montez
 - [ ] 24-mary-jane-s-last-dance
 - [ ] 25-valerie
 - [ ] 26-voodoo-child-slight-return
@@ -58,3 +58,16 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **16-teenage-dirtbag** — **deferred:** form on `dev` (`81f287e`) — Intro×2 → (Verse×3 Pre×2 Chorus×3)×2 → Bridge×2 → Verse×3 → Chorus×3 → Bridge×2 → Outro walk-down; confirm ×N / soft chorus / bridge live
 - **17-the-pretender** — Intro×2 → Verse×2 → Heavy → Pre×2 → Chorus×3 → Interlude → Pre → Interlude×4 → Outro×4 → Verse×2 → Chorus×3 → Outro×4; Heavy `A5 F#5 F5`
 - **18-here-it-goes-again** — **deferred:** form on `dev` (`9af2ad9`) — Intro C; Verse×3; Pre `(E Am)×2 G`; Chorus Ab tag; Bridge×2 → Verse×3 (no Pre) → Chorus → Outro; confirm ×N / Ab tags / outro live
+- **19-purple-rain** — **deferred (sheet first pass):** Intro + V/C×3 → Solo → Outro (no post-solo Chorus); confirm live
+- **20-when-i-come-around** — **deferred (sheet first pass):** Intro → V → C → V → C → Solo → Chorus×2; confirm live
+- **21-the-middle** — **skipped:** whole-song `D A G` is fine for now (user)
+- **22-dream-on** — **deferred (sheet first pass):** Intro; Interlude `Em B7 Em`; 3rd Chorus before Climax; post-Climax Pre → Chorus → Am6 Outro; confirm live
+- **23-lola-montez** — **skipped:** already sheet-aligned (Intro/V/Interlude/C/Bridge/Outro)
+- **24-mary-jane-s-last-dance** — **deferred (sheet first pass):** Intro + Breakdown; form ends Breakdown → V → C; confirm live
+- **25-valerie** — **deferred (sheet first pass):** Pre `(A G#m)×2 (A G#m B)`; V/C×2 → Pre → V/C → V/C×4 → Pre → V/C×2; confirm ×N live
+- **26-voodoo-child-slight-return** — **deferred (sheet first pass):** Intro; Pre-Chorus; Solo; Outro; Verse×2 then V2 once; confirm live
+- **27-fat-bottomed-girls** — **deferred (sheet first pass):** opens Chorus; drop Interlude; Outro = chorus hook; confirm live
+- **28-mama-i-m-coming-home** — **deferred (sheet first pass):** Intro; Bridge section kept but not in form (tab goes Chorus→Solo); confirm live
+- **29-ain-t-goin-down-til-the-sun-comes-up** — **deferred (sheet first pass):** Intro + three Solos on verse cycle per sheet markers; confirm live
+- **30-pink-pony-club** — **deferred (sheet first pass):** split Verse/Refrain/Pre/Chorus (same loop); Intro C#; Bridge; Solo×4 at end; confirm ×N live
+- **31-banditos** — **deferred (sheet first pass):** Verse×3 → C → Verse×2 → C → Solo → C; confirm ×N live
