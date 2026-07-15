@@ -131,7 +131,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-progression{display:flex;flex-direction:column;gap:8px;border-top:1px solid #36423e;border-bottom:1px solid #36423e;padding:12px 0}
 .cheat-prog-row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
 .cheat-prog-label{flex:0 0 auto;min-width:6.5em;font-size:.6em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
-.cheat-prog-chords{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-start}
+.cheat-prog-chords{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start}
+.cheat-prog-span{display:inline-flex;gap:6px;align-items:flex-start;flex-wrap:wrap}
+.cheat-prog-times{font-size:.72em;font-weight:800;letter-spacing:.04em;color:var(--acid);align-self:center;padding:0 2px}
 /* Tab-style fingering beside any ChordChip (cheat card, sheets, compact show view) */
 .chord-with-fingering{display:inline-flex;flex-direction:column;align-items:center;gap:2px;vertical-align:baseline}
 .chord-with-fingering--over{flex-direction:column-reverse}

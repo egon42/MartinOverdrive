@@ -193,7 +193,13 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   // unique `sections` order. Fills always append last.
   const rows = custom
     ? cheatRowsFor(custom)
-    : derived?.map((row) => ({ label: row.label, chords: row.chords, shapes: [] as string[], hint: undefined as string | undefined, tab: undefined as string | undefined, tabMore: undefined as string | undefined }))
+    : derived?.map((row) => ({
+        label: row.label,
+        spans: row.chords.map((chord) => ({ chords: [chord], shapes: [] as string[], times: 1 })),
+        hint: undefined as string | undefined,
+        tab: undefined as string | undefined,
+        tabMore: undefined as string | undefined,
+      }))
   // Re-run the parent's height auto-fit after More fills opens/closes — otherwise the
   // newly revealed tabs overflow (or leave empty space) until the next resize.
   const refitCheat = () => {
@@ -216,8 +222,12 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
     {rows && <div className="cheat-progression">
       {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
         <span className="cheat-prog-label">{row.label}</span>
-        <span className="cheat-prog-chords">{row.chords.map((chord, j) =>
-          <ChordChip name={chord} curatedShape={row.shapes[j]} surface="cheat" songId={song.id} key={j} />)}</span>
+        <span className="cheat-prog-chords">{row.spans.map((span, s) =>
+          <span className="cheat-prog-span" key={s}>
+            {span.chords.map((chord, j) =>
+              <ChordChip name={chord} curatedShape={span.shapes[j]} surface="cheat" songId={song.id} key={j} />)}
+            {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
+          </span>)}</span>
         {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
         {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
         {row.tabMore && <details className="cheat-prog-more" onToggle={refitCheat}>

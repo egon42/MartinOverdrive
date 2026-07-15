@@ -57,12 +57,13 @@ Structure, keyed by songId (see `src/progressions.ts` for the full contract):
 - `form` (optional) — linear song roadmap with repeats (`×N` or `xN`). The cheat card
   renders rows in this order; each label's base name looks up chords in `sections`.
   Prefer `form` whenever section order is easy to lose on stage.
-- `chords` — space-separated progression for **one pass** of that section (what you
-  strum before the form's ×N repeats it). Prefer stage length over the minimal tile:
-  verse that is four E–A pairs → `"E A E A"` with form `"Verse ×2"`, not collapsed `"E A"`.
-  A truncated cycle reads as half a section on stage.
-- `shapes` (optional) — space-separated 6-char guitar fingerings, **aligned 1:1** with
-  `chords`. Order **low-E → high-e**; digit = fret, `-` = string not played.
+- `chords` — progression for **one pass** of that section (before form ×N). Plain
+  space-separated names (`"Em C G D"`) or grouped repeats:
+  `"(E A) ×3 (E G A) ×2"` — parentheses required around the repeated unit; `×N`/`xN`
+  must follow a group (N≥2). Prefer groups for tiled cycles over writing tiles out.
+- `shapes` (optional) — space-separated 6-char guitar fingerings, **aligned 1:1 with
+  chord names as written** (one pass of each group, not the expanded play-through).
+  Order **low-E → high-e**; digit = fret, `-` = string not played.
 - `hint` (optional) — one-line how-to-play cue (signature riff, strum feel), for
   riff-driven songs where a bare chord list isn't enough to play cold.
 - `tab` (optional) — compact ASCII tablature block (high-e on top, same convention as

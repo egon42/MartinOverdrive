@@ -369,24 +369,24 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "E A E A"
+        "chords": "(E A) ×2"
       },
       {
         "section": "Verse",
-        "chords": "E A E A",
-        "hint": "One verse = this cycle ×2 (four E–A pairs)"
+        "chords": "(E A) ×2",
+        "hint": "Form ×2 on this row = four E–A pairs (one full verse)"
       },
       {
         "section": "Chorus",
-        "chords": "E A E A E A E G A E G A"
+        "chords": "(E A) ×3 (E G A) ×2"
       },
       {
         "section": "Solo",
-        "chords": "E A E A"
+        "chords": "(E A) ×2"
       },
       {
         "section": "Bridge",
-        "chords": "E A E A",
+        "chords": "(E A) ×2",
         "hint": "Same E–A groove; form ×4 covers the full bridge"
       }
     ],
@@ -711,8 +711,8 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "Am G D Am Am G D Am",
-        "hint": "Keep it sparse — the Am hammer riff is the song; full verse is two Am–G–D–Am passes"
+        "chords": "(Am G D Am) ×2",
+        "hint": "Keep it sparse — the Am hammer riff is the song"
       },
       {
         "section": "Chorus",

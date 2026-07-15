@@ -40,6 +40,41 @@ function readJson(file) {
   catch (error) { blockers.push(`Cannot parse ${file}: ${error.message}`); return null }
 }
 
+/** Count chord names as written (group contents once). Keep in sync with parseChordSpans in src/progressions.ts. */
+function parseCheatChordWrittenCount(chords) {
+  const src = String(chords).trim()
+  if (!src) return 0
+  const re = /\(([^)]*)\)|[×xX]\s*(\d+)|([^\s×xX()]+)/gu
+  let match
+  let lastWasGroup = false
+  let cursor = 0
+  let count = 0
+  while ((match = re.exec(src)) !== null) {
+    const gap = src.slice(cursor, match.index).trim()
+    if (gap) throw new Error(`unexpected "${gap}"`)
+    cursor = match.index + match[0].length
+    if (match[1] !== undefined) {
+      const groupChords = match[1].trim().split(/\s+/).filter(Boolean)
+      if (!groupChords.length) throw new Error('empty chord group')
+      count += groupChords.length
+      lastWasGroup = true
+      continue
+    }
+    if (match[2] !== undefined) {
+      const times = Number(match[2])
+      if (!Number.isFinite(times) || times < 2) throw new Error(`repeat must be ≥2`)
+      if (!lastWasGroup) throw new Error(`×${times} must follow a (…) group`)
+      lastWasGroup = false
+      continue
+    }
+    count += 1
+    lastWasGroup = false
+  }
+  const trailing = src.slice(cursor).trim()
+  if (trailing) throw new Error(`unexpected "${trailing}"`)
+  return count
+}
+
 // --- Regex sourcing -------------------------------------------------------------
 // A .mjs script can't import types/consts from a .ts module without a loader, so we
 // PORT the regexes by extracting their literals from src/chords.ts as text and
@@ -150,11 +185,20 @@ if (progressions && typeof progressions === 'object') {
       // Tab-only rows (usually "Fills") may omit chords — the ASCII tab is the content.
       if (!chords && !hasTab && !hasTabMore) fail(songId, `${label}: empty "chords".`)
       if (hasTabMore && !hasTab) fail(songId, `${label}: "tabMore" without primary "tab".`)
+      // Chord notation may use grouped repeats: "(E A) ×3 (E G A) ×2". Shapes align
+      // 1:1 with chord names as written (one pass per group), not the expanded count.
+      let writtenChordCount = 0
+      if (chords) {
+        try {
+          writtenChordCount = parseCheatChordWrittenCount(chords)
+        } catch (err) {
+          fail(songId, `${label}: bad chords notation — ${err instanceof Error ? err.message : err}`)
+        }
+      }
       if (section.shapes != null) {
-        const chordTokens = chords.split(/\s+/).filter(Boolean)
         const shapeTokens = String(section.shapes).trim().split(/\s+/).filter(Boolean)
-        if (shapeTokens.length !== chordTokens.length) {
-          fail(songId, `${label}: ${shapeTokens.length} shapes for ${chordTokens.length} chords — must be 1:1.`)
+        if (shapeTokens.length !== writtenChordCount) {
+          fail(songId, `${label}: ${shapeTokens.length} shapes for ${writtenChordCount} written chords — must be 1:1 with names as written (group contents once).`)
         }
         const badShapes = shapeTokens.filter((shape) => shape.length !== 6)
         if (badShapes.length) {
