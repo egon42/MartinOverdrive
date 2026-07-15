@@ -6,19 +6,20 @@ Contract details also live in `src/progressions.ts` (parseChordSpans / form / ch
 
 | Situation | Put ×N on | Example |
 |---|---|---|
-| Whole section is N repeats of one cycle | **Form label** | `"Verse ×4"` + `"Em C D"` → shows **Verse ×4** then chips Em C D |
+| Whole section is N repeats of one cycle | **Form label** | `"Chorus ×2"` + `"F Am C"` → shows **Chorus ×2** then chips F Am C |
 | One section contains different repeated tiles | **Chord string** | `"(E A) ×3 (E G A) ×2"` → chips E A **×3** · E G A **×2** |
 | Same section appears ×2 early and ×1 later | **Form only** | Don't put ×2 on shared section chords |
+| Forced line break between phrase groups | **`\|` in chords** | `"(…) \| (…)"` — parentheses alone do not stack lines |
 
-Do **not** move a uniform form `Verse ×2` into chords `(Em C D) ×2` just to "use the feature" — stage reading prefers the label.
+Do **not** write a uniform cycle as chip `(Em C D) ×2` when the whole section is that cycle — put ×N on the form label instead.
 
 ## Chord string grammar
 
 - Plain: `Em C D`
-- Group + repeat: `(E A) ×3` (parens required; `×`/`x`/`X`; N≥2)
+- Group + repeat (mixed tiles only): `(E A) ×3` (parens required; `×`/`x`/`X`; N≥2)
 - Phrase groups without repeat (times 1): `(E A B A B) (E A B A E)` — same row; wrap only if narrow
 - Forced line break: `(C G Bb F Am G C) | (C G Bb F Am G Ab)` — `|` starts the next span on a new row
-- Mixed: `Am (E A) ×2 G`
+- Mixed: `Am (E A) ×2 G` or `(E Am) ×2 G`
 - Ghost (show for beat, don't play): `~A` — e.g. `F# ~A B E B A`
 
 Shapes: one token per **written** chord name (group contents once; include ghosts), not the expanded play-through.
@@ -32,16 +33,16 @@ Recording-driven pass produced:
   "sections": [
     { "section": "Intro", "chords": "Em" },
     { "section": "Verse", "chords": "Em C D" },
-    { "section": "Chorus", "chords": "(F Am C) ×2" },
+    { "section": "Chorus", "chords": "F Am C" },
     { "section": "Bridge", "chords": "F Am G F" },
     { "section": "Outro", "chords": "Em C D", "hint": "Verse pattern under the solo / oh’s" }
   ],
   "form": [
     "Intro",
     "Verse ×4",
-    "Chorus",
+    "Chorus ×2",
     "Verse ×4",
-    "Chorus",
+    "Chorus ×2",
     "Bridge ×2",
     "Outro"
   ]
@@ -51,18 +52,18 @@ Recording-driven pass produced:
 Lessons:
 
 - First verse is **four** Em–C–D cycles → `Verse ×4`, not chord-chip ×2
+- Chorus is two F–Am–C cycles → `Chorus ×2` + chords `F Am C` (not chip `(F Am C) ×2`)
 - Ending is Bridge twice, then verse-pattern outro — **not** back to Chorus
 - Intro is a held Em before the verse cycles
-- Chorus keeps chip-level `(F Am C) ×2` because that is the internal shape of one chorus
 
 ## Save A Horse (mixed tiles)
 
 ```text
-Chorus chords: "(E A) ×3 (E G A) ×2"
-Form: Intro ×2 → Verse ×2 → Chorus → … → Bridge ×4 → Chorus
+Chorus chords: "(E A) ×3 (E G A) ×2"   ← chip ×N stays (two different tiles)
+Intro/Verse/Solo/Bridge: "E A" with form Intro ×4, Verse ×4, …
 ```
 
-Verse unit is `(E A) ×2` with form `Verse ×2` for a full verse (four E–A pairs). Form and chord ×N **multiply** here on purpose.
+Uniform E–A sections put the cycle count on the form. Chorus keeps chip ×N because the tiles differ.
 
 ## Checklist when stuck
 

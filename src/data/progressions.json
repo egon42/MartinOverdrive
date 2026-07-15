@@ -11,7 +11,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "(F Am C) ×2"
+        "chords": "F Am C"
       },
       {
         "section": "Bridge",
@@ -26,9 +26,9 @@
     "form": [
       "Intro",
       "Verse ×4",
-      "Chorus",
+      "Chorus ×2",
       "Verse ×4",
-      "Chorus",
+      "Chorus ×2",
       "Bridge ×2",
       "Outro"
     ]
@@ -53,7 +53,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "(C G F) ×2",
+        "chords": "C G F",
         "shapes": "-355-- 355--- 133---"
       },
       {
@@ -78,10 +78,10 @@
       "Intro ×2",
       "Verse ×4",
       "Pre-Chorus",
-      "Chorus",
+      "Chorus ×2",
       "Verse ×2",
       "Pre-Chorus",
-      "Chorus",
+      "Chorus ×2",
       "Interlude ×2",
       "Pre-Chorus",
       "Bridge",
@@ -257,7 +257,7 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "(A E) ×4",
+        "chords": "A E",
         "shapes": "-022-- 022---"
       },
       {
@@ -287,10 +287,10 @@
     "form": [
       "Intro ×2",
       "Verse ×4",
-      "Pre-Chorus",
+      "Pre-Chorus ×4",
       "Interlude",
       "Verse ×2",
-      "Pre-Chorus",
+      "Pre-Chorus ×4",
       "Interlude",
       "Solo",
       "Chorus ×4"
@@ -446,11 +446,11 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "(E A) ×2"
+        "chords": "E A"
       },
       {
         "section": "Verse",
-        "chords": "(E A) ×2"
+        "chords": "E A"
       },
       {
         "section": "Chorus",
@@ -458,11 +458,11 @@
       },
       {
         "section": "Solo",
-        "chords": "(E A) ×2"
+        "chords": "E A"
       },
       {
         "section": "Bridge",
-        "chords": "(E A) ×2"
+        "chords": "E A"
       },
       {
         "section": "Outro",
@@ -471,13 +471,13 @@
       }
     ],
     "form": [
-      "Intro ×2",
-      "Verse ×2",
+      "Intro ×4",
+      "Verse ×4",
       "Chorus",
-      "Verse ×2",
+      "Verse ×4",
       "Chorus",
-      "Solo ×2",
-      "Bridge ×4",
+      "Solo ×4",
+      "Bridge ×8",
       "Chorus",
       "Outro"
     ]
@@ -665,7 +665,7 @@
       },
       {
         "section": "Outro",
-        "chords": "(C G Bb F Am G) ×3",
+        "chords": "C G Bb F Am G",
         "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
         "hint": "Ab → C to close"
       }
@@ -681,7 +681,7 @@
       "Bridge ×2",
       "Verse ×3",
       "Chorus",
-      "Outro"
+      "Outro ×3"
     ]
   },
   "19-purple-rain": {
@@ -879,12 +879,12 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "(Am G D Am) ×2",
+        "chords": "Am G D Am",
         "hint": "Am hammer riff"
       },
       {
         "section": "Verse",
-        "chords": "(Am G D Am) ×2",
+        "chords": "Am G D Am",
         "hint": "Keep it sparse — the Am hammer riff is the song"
       },
       {
@@ -893,7 +893,7 @@
       },
       {
         "section": "Breakdown",
-        "chords": "(Am G D Am) ×2",
+        "chords": "Am G D Am",
         "hint": "Sparse — same cycle as Verse"
       },
       {
@@ -904,13 +904,13 @@
       }
     ],
     "form": [
-      "Intro",
+      "Intro ×2",
+      "Verse ×4",
+      "Chorus",
       "Verse ×2",
       "Chorus",
-      "Verse",
-      "Chorus",
-      "Breakdown",
-      "Verse",
+      "Breakdown ×2",
+      "Verse ×2",
       "Chorus"
     ]
   },

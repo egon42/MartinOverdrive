@@ -40,30 +40,30 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 
 ## Done notes
 
-- **01-welcome-home** — Intro Em; Verse ×4; Bridge ×2 → Outro (verse pattern); Chorus `(F Am C)×2`
-- **02-all-the-small-things** — **blocked (guitar):** Intro `C G F G` ×2; Verse ×4/×2; Pre-Chorus ringing C; Chorus `(C G F)×2`; after Interlude → Pre-Chorus/Bridge/Outro (no Nana); more form fixes deferred pending guitar
+- **01-welcome-home** — Intro Em; Verse ×4; Chorus ×2 (`F Am C`); Bridge ×2 → Outro (verse pattern)
+- **02-all-the-small-things** — **blocked (guitar):** Intro `C G F G` ×2; Verse ×4/×2; Pre-Chorus ringing C; Chorus ×2 (`C G F`); after Interlude → Pre-Chorus/Bridge/Outro (no Nana); more form fixes deferred pending guitar
 - **03-a-little-less-conversation** — Intro ×3 A D; Verse ×4; Chorus phrase groups; Bridge `(A)×3 C D E`; Verse ×2 after Bridge then Chorus; other ×N still provisional
 - **04-i-believe-in-a-thing-called-love** — Intro ×2; Verse (in) `F# ~A B…` + Bridge−B `…~B`; Solo ×4; Clap with C#m D; Outro `(E A F# B)×4 E`; ghost `~` chips for skipped beats
 - **05-thunderstruck** — **blocked (guitar):** sheet proposal on `dev` (`5084c40`) — Riff ~B5; Chug×2 → Verse×4 → Build×2 → Verse×4 → Pre → Chorus → Solo → Chorus×2 → Solo → Outro; needs live pass to confirm ×N / Build / Solo placement
-- **06-don-t-stop-believin** — **deferred (interlude):** Intro×2 → Verse×4 → Pre → Interlude (fill+intro) → Verse×2 → Pre → Interlude → Solo → Chorus×4; Pre `(A E)×4`; Chorus `(E B C#m A)(E B G#m)` — form on `dev`; confirm fill/interlude against recording before closing
+- **06-don-t-stop-believin** — **deferred (interlude):** Intro×2 → Verse×4 → Pre×4 → Interlude (fill+intro) → Verse×2 → Pre×4 → Interlude → Solo → Chorus×4; Pre `A E`; Chorus `(E B C#m A)(E B G#m)` — form on `dev`; confirm fill/interlude against recording before closing
 - **07-tribute** — **deferred:** sheet proposal not applied — drop late Verse/Rock; Intro Am?; Rock ×2 + ROCK!; Refrain/Chorus ×N need live counts
 - **08-while-my-guitar-gently-weeps** — Intro + full 2nd-ending half; Bridge `Bm E7sus4 E7`; form ends Verse → 2nd ending
 - **09-pride-and-joy** — **skipped:** single 12-bar shuffle card is enough for now
 - **10-zombie** — **skipped:** whole-song Em C G D loop is enough for now
 - **11-hunger-strike** — Intro×2 → V/C×8 → Bridge×4 → Interlude×2 → V/C×2 → Bridge×4 → V/C×4 → Bridge; Interlude only after first Bridge
 - **12-s-o-b** — **skipped:** E hang + chorus phrases fine for now
-- **13-save-a-horse-ride-a-cowboy** — kept E–A form; dropped ×N math hints; Outro `E G A` + N.C. after final Chorus
+- **13-save-a-horse-ride-a-cowboy** — Intro/Verse/Solo `E A` with form ×4; Bridge ×8; Chorus keeps `(E A)×3 (E G A)×2`; Outro `E G A` + N.C. after final Chorus
 - **14-sweet-home-alabama** — **skipped:** whole-song D C G + fills card is enough for now
 - **15-dani-california** — Intro×2 → Verse×8 → Chorus×4 → Interlude×2 → Verse×4 → Chorus×4 → Bridge×4 → Verse×4 → Chorus×8 → Solo/Outro; Intro/Interlude/Solo = verse pattern; Chorus unit `F C Dm`
 - **16-teenage-dirtbag** — **deferred:** form on `dev` (`81f287e`) — Intro×2 → (Verse×3 Pre×2 Chorus×3)×2 → Bridge×2 → Verse×3 → Chorus×3 → Bridge×2 → Outro walk-down; confirm ×N / soft chorus / bridge live
 - **17-the-pretender** — Intro×2 → Verse×2 → Heavy → Pre×2 → Chorus×3 → Interlude → Pre → Interlude×4 → Outro×4 → Verse×2 → Chorus×3 → Outro×4; Heavy `A5 F#5 F5`
-- **18-here-it-goes-again** — **deferred:** form on `dev` — Intro C; Verse×3; Pre `(E Am)×2 G`; Chorus `(C G Bb F Am G C) | (C G Bb F Am G Ab)`; Bridge×2 → Verse×3 (no Pre) → Chorus → Outro; confirm ×N / outro live
+- **18-here-it-goes-again** — **deferred:** form on `dev` — Intro C; Verse×3; Pre `(E Am)×2 G`; Chorus `(C G Bb F Am G C) | (C G Bb F Am G Ab)`; Bridge×2 → Verse×3 (no Pre) → Chorus → Outro×3; confirm ×N / outro live
 - **19-purple-rain** — **deferred (sheet first pass):** Intro + V/C×3 → Solo → Outro (no post-solo Chorus); confirm live
 - **20-when-i-come-around** — **deferred (sheet first pass):** Intro → V → C → V → C → Solo → Chorus×2; confirm live
 - **21-the-middle** — **skipped:** whole-song `D A G` is fine for now (user)
 - **22-dream-on** — **deferred (sheet first pass):** Intro; Interlude `Em B7 Em`; 3rd Chorus before Climax; post-Climax Pre → Chorus → Am6 Outro; confirm live
 - **23-lola-montez** — **skipped:** already sheet-aligned (Intro/V/Interlude/C/Bridge/Outro)
-- **24-mary-jane-s-last-dance** — **deferred (sheet first pass):** Intro + Breakdown; form ends Breakdown → V → C; confirm live
+- **24-mary-jane-s-last-dance** — **deferred (sheet first pass):** Intro×2; Verse×4/×2; Breakdown×2; Chorus keeps `(Em7 A)×2 G`; confirm live
 - **25-valerie** — **deferred (sheet first pass):** Pre `(A G#m)×2 (A G#m B)`; V/C×2 → Pre → V/C → V/C×4 → Pre → V/C×2; confirm ×N live
 - **26-voodoo-child-slight-return** — **deferred (sheet first pass):** Intro; Pre-Chorus; Solo; Outro; Verse×2 then V2 once; confirm live
 - **27-fat-bottomed-girls** — **deferred (sheet first pass):** opens Chorus; drop Interlude; Outro = chorus hook; confirm live
