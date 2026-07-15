@@ -201,9 +201,9 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
   return <div className="show-picker live-overlay" onClick={onClose}>
     <div className="live-panel" role="dialog" aria-label="Live show sync" onClick={(e) => e.stopPropagation()}>
       {!config && <>
-        <div><span className="eyebrow">Live show sync</span><h2>Play in sync</h2></div>
-        <p>One phone leads; the rest follow. When the leader turns to the next song, every connected device turns with it. Everyone keeps their own views, pins, and settings.</p>
-        {!configured && <p className="live-status">Sync isn’t set up on this build yet — see SYNC-SETUP.md.</p>}
+        <div><span className="eyebrow">Live show sync</span><h2>Follow along</h2></div>
+        <p>One phone leads; the rest follow. When the leader turns to the next song, every connected device turns with it. Everyone keeps their own views and settings.</p>
+        {!configured && <p className="live-status">Sync isn’t set up on this build yet. See SYNC-SETUP.md.</p>}
         <div className="live-actions"><button disabled={!configured} onClick={lead}>Lead tonight’s show</button></div>
         <div className="live-divider" />
         <label><span className="eyebrow">Got a code from the leader?</span>
@@ -223,8 +223,8 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
       </>}
       {config?.role === 'follow' && <>
         <div><span className="eyebrow">Live show sync</span><h2>Following {config.code}</h2></div>
-        <p className="live-status">{!connected ? 'Connecting…' : !leaderPresent ? 'Connected — waiting for the leader to come online.' : leaderSong ? <>Leader is on <b>{leaderSong.title}</b></> : 'Leader is live — waiting for their first song.'}</p>
-        <p>Song changes follow the leader automatically. You can still page around to peek ahead — the next leader change snaps you back.</p>
+        <p className="live-status">{!connected ? 'Connecting…' : !leaderPresent ? 'Connected. Waiting for the leader.' : leaderSong ? <>Leader is on <b>{leaderSong.title}</b></> : 'Leader is live. Waiting for their first song.'}</p>
+        <p>Song changes follow the leader. You can still page ahead; the next leader change snaps you back.</p>
         <div className="live-actions">
           {leaderSong && <button onClick={() => { onJump(leaderSong.id); onClose() }}>Go to leader’s song</button>}
           <button className="secondary" onClick={stop}>Stop following</button>

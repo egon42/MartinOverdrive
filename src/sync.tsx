@@ -72,7 +72,7 @@ function buildEnvelope(practice: PracticeState) {
 }
 
 async function httpError(res: Response): Promise<Error> {
-  if (res.status === 401) return new Error('Sync backend rejected the app key — see SYNC-SETUP.md.')
+  if (res.status === 401) return new Error('Sync backend rejected the app key. See SYNC-SETUP.md.')
   try { const body = await res.json() as { message?: string; msg?: string }; const msg = body?.message || body?.msg; return new Error(`Sync error ${res.status}${msg ? `: ${msg}` : ''}`) }
   catch { return new Error(`Sync error ${res.status}`) }
 }
@@ -247,7 +247,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   // with local, and reconcile both sides. Either way we end connected to a { code }.
   const connect = useCallback(async (code?: string): Promise<void> => {
     if (syncingRef.current) return
-    if (!isBackendConfigured()) { setStatus({ phase: 'error', detail: "Sync isn't set up yet — see SYNC-SETUP.md.", lastSyncedAt: '' }); throw new Error('Sync backend not configured') }
+    if (!isBackendConfigured()) { setStatus({ phase: 'error', detail: "Sync isn't set up yet. See SYNC-SETUP.md.", lastSyncedAt: '' }); throw new Error('Sync backend not configured') }
     epochRef.current += 1 // invalidate any lingering operation from a previous config
     const epoch = epochRef.current
     syncingRef.current = true
@@ -357,8 +357,8 @@ export function SyncPanel() {
   if (!config) {
     return <section className="panel sync-panel">
       <span className="eyebrow">Cross-device sync</span>
-      <h2>Sync practice data across devices</h2>
-      {!configured && <p className="sync-error">Sync isn't set up on this build yet — see SYNC-SETUP.md.</p>}
+      <h2>Sync practice data</h2>
+      {!configured && <p className="sync-error">Sync isn't set up on this build yet. See SYNC-SETUP.md.</p>}
       <div className="actions"><button disabled={busy || !configured} onClick={handleStart}>{busy ? 'Working…' : 'Turn on sync'}</button></div>
       <label><span>Have a code from another device?</span><input value={code} onChange={(e) => setCode(e.target.value)} placeholder="k7f2-9xqz-…" autoComplete="off" /></label>
       {(localError || status.phase === 'error') && <p className="sync-error">{localError || status.detail}</p>}
@@ -373,7 +373,7 @@ export function SyncPanel() {
     <p>Your sync code: <code onClick={copyCode} title="Click to copy" style={{ cursor: 'pointer' }}>{config.code}</code></p>
     {qrDataUrl && <div className="sync-qr">
       <img src={qrDataUrl} alt="QR code that connects a phone to this sync code" width={220} height={220} />
-      <p>Point your phone's camera at this to open the app and pick up your practice data. On another computer, type the code in instead.</p>
+      <p>Scan with your phone to join this sync code. On another computer, type the code.</p>
     </div>}
     <p><strong>This code is the only key to your data. Save it somewhere. Anyone who has it can read your practice progress.</strong></p>
     <div className="actions">

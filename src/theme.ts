@@ -28,15 +28,15 @@ export const THEME_COLOR_META: { key: ThemeColorKey; label: string; hint: string
   { key: 'bg', label: 'Page background', hint: 'Main app backdrop' },
   { key: 'ink', label: 'Text', hint: 'Headings and body copy' },
   { key: 'muted', label: 'Muted text', hint: 'Secondary labels and hints' },
-  { key: 'paper', label: 'Cards & panels', hint: 'Song cards, filters, panels' },
+  { key: 'paper', label: 'Cards & panels', hint: 'Cards and panels' },
   { key: 'line', label: 'Borders', hint: 'Dividers and outlines' },
-  { key: 'acid', label: 'Accent', hint: 'Buttons, active nav, chord chips' },
+  { key: 'acid', label: 'Accent', hint: 'Buttons and active nav' },
   { key: 'onAcid', label: 'On accent', hint: 'Text on accent buttons' },
-  { key: 'orange', label: 'Alert accent', hint: 'Capo chips, errors, dev badge' },
+  { key: 'orange', label: 'Alert accent', hint: 'Warnings and alerts' },
   { key: 'blue', label: 'Info accent', hint: 'Transpose tags, follow live' },
   { key: 'topbar', label: 'Top bar', hint: 'Sticky navigation bar' },
   { key: 'showBg', label: 'Show mode', hint: 'Full-screen stage backdrop' },
-  { key: 'input', label: 'Inputs', hint: 'Text fields and selects' },
+  { key: 'input', label: 'Inputs', hint: 'Form fields' },
 ]
 
 /** Current Martin Drive site look — default. */

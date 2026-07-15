@@ -26,10 +26,10 @@ export function transposeLabel(semitones: number): string {
   return `${semitones > 0 ? '+' : ''}${semitones}`
 }
 
-// Human sentence for tooltips: "Original in Eb standard — pitch the video up 1 semitone."
+// Human sentence for tooltips: "Original in Eb standard. Pitch the video up 1 semitone."
 export function transposeHint({ semitones, recordingTuning }: SongTranspose): string {
   const dir = semitones > 0 ? 'up' : 'down'
   const n = Math.abs(semitones)
   const step = n === 1 ? 'semitone' : 'semitones'
-  return `Original in ${recordingTuning} — pitch the video ${dir} ${n} ${step} (Transpose ${transposeLabel(semitones)}) to match standard E.`
+  return `Original in ${recordingTuning}. Pitch the video ${dir} ${n} ${step} (Transpose ${transposeLabel(semitones)}) to match standard E.`
 }

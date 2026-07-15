@@ -277,7 +277,7 @@ function ThemeFields() {
         </button>
       })}
     </div>
-    {theme.preset === 'custom' && <p className="theme-custom-note">Custom — tweaked from a preset</p>}
+    {theme.preset === 'custom' && <p className="theme-custom-note">Custom (edited from a preset)</p>}
     <div className="theme-colors">
       {THEME_COLOR_META.map(({ key, label, hint }) => (
         <label key={key} className="theme-color">
@@ -310,7 +310,7 @@ export function SettingsPage() {
     : THEME_PRESETS[settings.theme.preset].label
   return <>
     <header className="page-title compact">
-      <span className="eyebrow">Display preferences stay on this device</span>
+      <span className="eyebrow">On this device only</span>
       <h1>Settings</h1>
     </header>
     <section className="panel settings-panel">
@@ -326,7 +326,7 @@ export function SettingsPage() {
         <span className="settings-colors-current">{presetLabel}</span>
       </summary>
       <div className="settings-colors-body">
-        <p className="settings-lead">Pick a preset or customize each surface. Amp bank chips (amber / green / red) stay fixed — they match the hardware.</p>
+        <p className="settings-lead">Pick a preset or customize each surface. Amp bank chips stay fixed so they match the hardware.</p>
         <ThemeFields />
       </div>
     </details>

@@ -46,7 +46,7 @@ export function SetlistPage() {
   let liveIndex = 0
   return <>
     <header className="page-title compact"><h1>Tonight’s set</h1></header>
-    <div className="sort-row"><span>{active.length ? `${active.length} of ${songs.length} songs in the set` : 'Every song is skipped — show mode will fall back to the full set'}</span><div className="actions">
+    <div className="sort-row"><span>{active.length ? `${active.length} of ${songs.length} songs in the set` : 'Every song is skipped. Show mode will use the full set.'}</span><div className="actions">
       {customized && <button className="secondary" onClick={reset}>Reset to full set order</button>}
       <button className="secondary" onClick={() => window.print()}>Print set list</button>
       <Link className="button" to="/show">Show mode</Link>

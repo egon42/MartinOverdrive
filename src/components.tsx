@@ -121,13 +121,13 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   if (fingering && fingeringOnly) {
     return <span className="chord-chip-wrap" ref={ref}>
       <b className={`${chipClass} chord-chip--fingering`} role="button" tabIndex={0} aria-expanded={open}
-        aria-label={label} title={ghost ? "Don't play — keep the beat" : undefined} {...openHandlers}>{formatVerticalFingering(fingering)}</b>
+        aria-label={label} title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}>{formatVerticalFingering(fingering)}</b>
       {pop}
     </span>
   }
   const chip = <>
     <b className={chipClass} role="button" tabIndex={0} aria-expanded={open} aria-label={label}
-      title={ghost ? "Don't play — keep the beat" : undefined} {...openHandlers}>{name}</b>
+      title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}>{name}</b>
     {pop}
   </>
   // Ref stays on the chip-only wrap so the popover aims at the name, not the fingering.
@@ -360,7 +360,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
       {(available.length > 1 || available[0] === 'chords') && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
         {available.includes('chords') && <button type="button" role="tab" aria-selected={active === 'chords'} aria-pressed={active === 'chords' ? chordsShapes : undefined}
           className={shapesTabClass(active === 'chords', chordsShapes, settings.chords.scope !== 'none')}
-          title={active === 'chords' && settings.chords.scope !== 'none' ? (chordsShapes ? 'Showing fingering chips — tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          title={active === 'chords' && settings.chords.scope !== 'none' ? (chordsShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
           onClick={selectChords}>Chords</button>}
         {available.includes('tabs') && <button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button>}
       </div>}
