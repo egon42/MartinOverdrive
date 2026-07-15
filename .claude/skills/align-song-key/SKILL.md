@@ -57,7 +57,10 @@ Structure, keyed by songId (see `src/progressions.ts` for the full contract):
 - `form` (optional) — linear song roadmap with repeats (`×N` or `xN`). The cheat card
   renders rows in this order; each label's base name looks up chords in `sections`.
   Prefer `form` whenever section order is easy to lose on stage.
-- `chords` — space-separated **one-cycle** progression for the section (collapse repeats).
+- `chords` — space-separated progression for **one pass** of that section (what you
+  strum before the form's ×N repeats it). Prefer stage length over the minimal tile:
+  verse that is four E–A pairs → `"E A E A"` with form `"Verse ×2"`, not collapsed `"E A"`.
+  A truncated cycle reads as half a section on stage.
 - `shapes` (optional) — space-separated 6-char guitar fingerings, **aligned 1:1** with
   `chords`. Order **low-E → high-e**; digit = fret, `-` = string not played.
 - `hint` (optional) — one-line how-to-play cue (signature riff, strum feel), for

@@ -336,37 +336,69 @@
   "12-s-o-b": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "E",
+        "hint": "Stomp-clap; vocals over open E"
+      },
+      {
         "section": "Verse",
-        "chords": "E A B"
+        "chords": "E",
+        "hint": "Stay on E — don't walk A/B until the chorus"
       },
       {
         "section": "Chorus",
-        "chords": "E A E B E A B A E"
+        "chords": "E A B A B E A B A E"
+      },
+      {
+        "section": "Outro",
+        "chords": "E A B A B E A B A E"
       }
     ],
     "form": [
-      "Verse ×2",
+      "Intro",
+      "Verse",
       "Chorus",
       "Verse",
-      "Chorus ×2"
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Outro"
     ]
   },
   "13-save-a-horse-ride-a-cowboy": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "E A E A"
+      },
+      {
         "section": "Verse",
-        "chords": "E A"
+        "chords": "E A E A",
+        "hint": "One verse = this cycle ×2 (four E–A pairs)"
       },
       {
         "section": "Chorus",
-        "chords": "E A E G A"
+        "chords": "E A E A E A E G A E G A"
+      },
+      {
+        "section": "Solo",
+        "chords": "E A E A"
+      },
+      {
+        "section": "Bridge",
+        "chords": "E A E A",
+        "hint": "Same E–A groove; form ×4 covers the full bridge"
       }
     ],
     "form": [
+      "Intro ×2",
       "Verse ×2",
       "Chorus",
-      "Verse",
-      "Chorus ×2"
+      "Verse ×2",
+      "Chorus",
+      "Solo ×2",
+      "Bridge ×4",
+      "Chorus"
     ]
   },
   "14-sweet-home-alabama": {
@@ -631,29 +663,56 @@
   "23-lola-montez": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "D5 G5 A5 D5",
+        "shapes": "-577-- 355--- 577--- -577--"
+      },
+      {
         "section": "Verse",
+        "chords": "D5 G5 A5 D5 G5 A5 D5",
+        "shapes": "-577-- 355--- 577--- -577-- 355--- 577--- -577--",
+        "hint": "Power-chord verse; longer verses keep walking the same D5–G5–A5 loop"
+      },
+      {
+        "section": "Interlude",
         "chords": "D G A D",
         "shapes": "-577-- 355--- 577--- -577--"
       },
       {
         "section": "Chorus",
-        "chords": "G A D Bm A D",
-        "shapes": "355--- 577--- -577-- -244-- 577--- -577--"
+        "chords": "G A D Bm G A D A Bm A G A D Bm G A D",
+        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--"
+      },
+      {
+        "section": "Bridge",
+        "chords": "A D G A D G A G A",
+        "shapes": "577--- -577-- 355--- 577--- -577-- 355--- 577--- 355--- 577---"
+      },
+      {
+        "section": "Outro",
+        "chords": "D G A D",
+        "shapes": "-577-- 355--- 577--- -577--"
       }
     ],
     "form": [
-      "Verse ×2",
-      "Chorus",
+      "Intro",
       "Verse",
-      "Chorus ×2"
+      "Interlude",
+      "Verse",
+      "Chorus",
+      "Interlude",
+      "Verse",
+      "Chorus",
+      "Bridge",
+      "Outro"
     ]
   },
   "24-mary-jane-s-last-dance": {
     "sections": [
       {
         "section": "Verse",
-        "chords": "Am G D Am",
-        "hint": "Keep it sparse — the Am hammer riff is the song"
+        "chords": "Am G D Am Am G D Am",
+        "hint": "Keep it sparse — the Am hammer riff is the song; full verse is two Am–G–D–Am passes"
       },
       {
         "section": "Chorus",

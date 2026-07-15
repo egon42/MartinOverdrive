@@ -20,6 +20,10 @@ import data from './data/progressions.json'
 // ["Intro", "Verse ×4", "Chorus", "Verse ×2", "Outro"]. The cheat card renders rows in
 // that order; each label's base name (strip " ×N" / " xN") looks up chords in `sections`.
 // Fills stay at the end. Without `form`, `sections` order is used as before.
+//
+// Stage-length cycles: `chords` should be what you strum through once for that section
+// (or once per ×1 of a form step), not the minimal tile. Prefer "E A E A" with form
+// "Verse ×2" over collapsing to "E A" — over-collapsed cycles read as half a verse.
 export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string; tab?: string; tabMore?: string }
 export interface SongProgression { sections: ProgSection[]; form?: string[]; capo?: string }
 
