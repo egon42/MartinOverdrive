@@ -500,6 +500,10 @@
   "15-dani-california": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "Am G Dm Am"
+      },
+      {
         "section": "Verse",
         "chords": "Am G Dm Am",
         "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr) — mute between hits"
@@ -514,6 +518,7 @@
       }
     ],
     "form": [
+      "Intro ×2",
       "Verse ×8",
       "Chorus",
       "Verse ×4",
