@@ -37,8 +37,8 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "C F G",
-        "shapes": "-355-- 133--- 355---"
+        "chords": "C G F G",
+        "shapes": "-355-- 355--- 133--- 355---"
       },
       {
         "section": "Verse",
@@ -47,8 +47,9 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "C G F C",
-        "shapes": "-355-- 355--- 133--- -355--"
+        "chords": "C",
+        "shapes": "-355--",
+        "hint": "Ringing C"
       },
       {
         "section": "Chorus",
