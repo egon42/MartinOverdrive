@@ -258,10 +258,14 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 
 
 /* Show mode: next-song footer (title + tuning + amp preset, for the changeover) */
-.show-upnext{margin:6px auto 0;padding-top:6px;border-top:1px solid #1f2622;color:#9aa59f;font-size:.72rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1000px;width:100%}
+.show-upnext{margin:6px auto 0;padding:6px 0 0;border:0;border-top:1px solid #1f2622;background:transparent;color:#9aa59f;font:inherit;font-size:.72rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1000px;width:100%;text-align:left;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.show-upnext:active{color:#c5cec9}
 .show-upnext-label{text-transform:uppercase;letter-spacing:.12em;font-size:.58rem;font-weight:800;color:var(--acid)}
 .show-upnext b{color:#c5cec9}
 .show-upnext .cheat-chip{font-size:.62rem;padding:.2em .55em}
+/* Amp chips: keep amber/green numerals black — .show-upnext b otherwise paints them light. */
+.show-upnext .preset-chip.bank-amber,.show-upnext .preset-chip.bank-green{color:#0a0c09}
+.show-upnext .preset-chip.bank-red{color:#fff}
 
 /* Jump-to-song overlay: tap the show-mode counter, tap a song (audible calls) */
 .show-counter{border:0;background:#ffffff14;color:#c7cfc9;border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:.8rem;font-weight:750;font-variant-numeric:tabular-nums;touch-action:manipulation}

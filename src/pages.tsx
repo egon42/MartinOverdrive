@@ -593,7 +593,9 @@ export function Show() {
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
         : <CheatCard song={song} innerRef={cheatRef}/>}</article>
     </ShowSongBoundary>
-    {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <p className="show-upnext"><span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/></p> })()}
+    {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className="show-upnext" onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label={`Next song: ${next.title}`}>
+      <span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/>
+    </button> })()}
     {liveOpen && <LiveOverlay onClose={() => setLiveOpen(false)} onJump={(songId) => { const at = setSongs.findIndex((item) => item.id === songId); if (at >= 0) setIndex(at) }} />}
     {picker && <div className="show-picker" onClick={() => setPicker(false)}>
       <div className="show-picker-list" role="dialog" aria-label="Jump to song" onClick={(e) => e.stopPropagation()}>
