@@ -190,15 +190,26 @@
     "sections": [
       {
         "section": "Riff",
+        "chords": "~B5",
+        "shapes": "-244--",
+        "hint": "Rest — lead has the one-string riff"
+      },
+      {
+        "section": "Chug",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "Lead plays the one-string riff on B: 4-0-7-0 then 5-0-8-0 vs open B, walking down 12-10-9-7-5-4 (rhythm rests until the chug)"
+        "hint": "Palm-mute enter"
       },
       {
         "section": "Verse",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "Palm-muted B5 chug under the vocal"
+        "hint": "Palm-mute under vocal"
+      },
+      {
+        "section": "Build",
+        "chords": "B5",
+        "shapes": "-244--"
       },
       {
         "section": "Pre-Chorus",
@@ -213,20 +224,28 @@
       {
         "section": "Solo",
         "chords": "E5 B5 A5",
-        "shapes": "022--- -244-- -022--"
+        "shapes": "022--- -244-- -022--",
+        "hint": "Under the lead"
+      },
+      {
+        "section": "Outro",
+        "chords": "B5 (A5 E5) ×2",
+        "shapes": "-244-- -022-- 022---",
+        "hint": "Ritard"
       }
     ],
     "form": [
       "Riff",
-      "Verse ×2",
+      "Chug ×2",
+      "Verse ×4",
+      "Build ×2",
+      "Verse ×4",
       "Pre-Chorus",
       "Chorus",
       "Solo",
-      "Verse",
-      "Pre-Chorus",
       "Chorus ×2",
       "Solo",
-      "Chorus"
+      "Outro"
     ]
   },
   "06-don-t-stop-believin": {
