@@ -11,7 +11,7 @@ import { SyncPanel } from './sync'
 import { LiveOverlay, useLive } from './live'
 import { setOrdered, tonightsSongs } from './setlist'
 import { shapesTabClass, useSettings } from './settings'
-import { statuses, type Song } from './types'
+import { statuses, type PracticeEntry, type Song } from './types'
 
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
 const tunings = ['Standard', 'Drop D']
@@ -34,6 +34,27 @@ const SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
 const SHOW_PINS_KEY = `overdrive-show-pins${SHOW_KEY_SUFFIX}`
 const readPins = (): Record<string, string> => {
   try { const p = JSON.parse(localStorage.getItem(SHOW_PINS_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
+}
+
+
+/** Resolve a saved show position (song id, or legacy numeric index) to an index in the
+ * walk list. Skipped songs resume at the next active slot after their set position. */
+function resolveShowIndex(saved: string, setSongs: Song[], get: (id: string) => PracticeEntry): number {
+  const byId = setSongs.findIndex((item) => item.id === saved)
+  if (byId >= 0) return byId
+  // Saved song got skipped at soundcheck: resume at the next active song after its
+  // slot (or the last one), not back at song 1 — the whole point of persisting.
+  const full = setOrdered(get)
+  const at = full.findIndex((item) => item.id === saved)
+  if (at >= 0) {
+    for (let i = at + 1; i < full.length; i++) {
+      const idx = setSongs.findIndex((item) => item.id === full[i].id)
+      if (idx >= 0) return idx
+    }
+    return Math.max(0, setSongs.length - 1)
+  }
+  const numeric = Number(saved)
+  return Number.isFinite(numeric) ? Math.max(0, Math.min(setSongs.length - 1, numeric)) : 0
 }
 
 export function Dashboard() {
@@ -80,11 +101,7 @@ export function SongDetail() {
   const [sheetView, setSheetView] = useState<SheetKind | null>(null)
   if (!song) return <PageTitle eyebrow="Not found" title="That song isn’t in this set" copy="Return to the full song list and try another." />
   const transpose = transposeFor(song.id)
-  // Jump straight to this song's stage view: seed the persisted show position, then
-  // enter show mode (Show()'s initializer picks the id up; skipped songs resolve to
-  // the nearest active one).
-  const openInShow = () => localStorage.setItem(SHOW_INDEX_KEY, song.id)
-  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div><Link className="button secondary song-show-link" to="/show" onClick={openInShow}>Stage view ↗</Link></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/>{song.rehearsalNotes && <Field label="Ask the band" value={song.rehearsalNotes}/>}</dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
+  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div><Link className="button secondary song-show-link" to={`/show/${song.id}`}>Stage view ↗</Link></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/>{song.rehearsalNotes && <Field label="Ask the band" value={song.rehearsalNotes}/>}</dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
 }
 
 // Shrinks the sheet's font until it fits the container (height for compact chords,
@@ -324,6 +341,8 @@ class ShowSongBoundary extends Component<{ song: Song, onCheatView?: () => void,
 }
 
 export function Show() {
+  const { songId: urlSongId } = useParams()
+  const navigate = useNavigate()
   const { get, patch } = usePractice()
   const live = useLive()
   const following = live.config?.role === 'follow'
@@ -333,50 +352,26 @@ export function Show() {
   // navigation belongs to the leader, whose song must stay findable here even if
   // this device skipped it at soundcheck.
   const setSongs = useMemo(() => following ? setOrdered(get) : tonightsSongs(get), [get, following])
-  // The saved position is the song id (survives set reorders/skips between sessions);
-  // a legacy numeric index from earlier builds still restores as a clamped index.
-  const [index, setIndex] = useState(() => {
-    const saved = localStorage.getItem(SHOW_INDEX_KEY) || ''
-    const byId = setSongs.findIndex((item) => item.id === saved)
-    if (byId >= 0) return byId
-    // Saved song got skipped at soundcheck: resume at the next active song after its
-    // slot (or the last one), not back at song 1 — the whole point of persisting.
-    const full = setOrdered(get)
-    const at = full.findIndex((item) => item.id === saved)
-    if (at >= 0) {
-      for (let i = at + 1; i < full.length; i++) {
-        const idx = setSongs.findIndex((item) => item.id === full[i].id)
-        if (idx >= 0) return idx
-      }
-      return setSongs.length - 1
-    }
-    const numeric = Number(saved)
-    return Number.isFinite(numeric) ? Math.max(0, Math.min(setSongs.length - 1, numeric)) : 0
-  })
+  // Song id lives in the URL (`/show/:songId`) so the browser back/forward buttons
+  // step through songs instead of leaving show mode. Bare `/show` (nav links) falls
+  // back to the persisted id; skipped/missing ids resume at the next active slot.
+  const index = resolveShowIndex(urlSongId || localStorage.getItem(SHOW_INDEX_KEY) || '', setSongs, get)
   const wakeLock = useRef<any>(null); const song = setSongs[Math.min(index, setSongs.length - 1)]
-  // If tonight's set changes under us (a sync pull after a soundcheck edit on another
-  // device), keep following the song that was on screen — or clamp if it was removed.
-  // Without this, index can point past the end forever: "12 / 5" and dead nav buttons.
-  const shownIdRef = useRef(song.id)
+  // Canonicalize the URL onto the resolved song (bare `/show`, skipped id, set-list
+  // edits that drop the current song). replace — don't invent a history entry for a
+  // redirect the user didn't navigate.
   useEffect(() => {
-    const at = setSongs.findIndex((item) => item.id === shownIdRef.current)
-    if (at >= 0) { setIndex(at); return }
-    // The shown song fell out of the walk list — e.g. it was skipped mid-set on another
-    // device, or the user stopped following the live leader while peeking at a skipped
-    // song. Resume at the next song after its slot in full set order (the same walk the
-    // index initializer does), not at a blindly clamped index.
-    const full = setOrdered(get)
-    const from = full.findIndex((item) => item.id === shownIdRef.current)
-    if (from >= 0) {
-      for (let i = from + 1; i < full.length; i++) {
-        const idx = setSongs.findIndex((item) => item.id === full[i].id)
-        if (idx >= 0) { setIndex(idx); return }
-      }
-      setIndex(setSongs.length - 1)
-      return
-    }
-    setIndex((i) => Math.max(0, Math.min(setSongs.length - 1, i)))
-  }, [setSongs, get])
+    if (!song) return
+    if (urlSongId !== song.id) navigate(`/show/${song.id}`, { replace: true })
+  }, [song?.id, urlSongId, navigate])
+  // Push (or replace) a history entry when turning the set. Every in-show next/prev
+  // goes through here so Back returns to the previous song.
+  const goTo = (i: number, replace = false) => {
+    const clamped = Math.max(0, Math.min(setSongs.length - 1, i))
+    const id = setSongs[clamped]?.id
+    if (!id || (id === urlSongId && !replace)) return
+    navigate(`/show/${id}`, { replace })
+  }
   const sheets = sheetsFor(song.id)
   const { settings, isFingeringOnly, toggleFingeringOnly } = useSettings()
   const cheatShapes = isFingeringOnly(song.id, 'cheat')
@@ -478,7 +473,7 @@ export function Show() {
     }
     setPlaying(true)
   }
-  useEffect(() => { shownIdRef.current = song.id; localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
+  useEffect(() => { localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   // Live show sync: report every displayed song (only a leading device broadcasts it),
   // and snap to the leader's song when following. `live.leader` changes identity only
   // when the leader really changes songs, so a local peek at another song survives the
@@ -490,21 +485,23 @@ export function Show() {
   // Identity guard: `setSongs` gets a new identity on every practice-state change (any
   // patch or sync pull), and without the ref that would re-run the snap and yank a
   // peeking follower back even though the leader never moved. Snap only when the
-  // leader update object itself is new.
+  // leader update object itself is new. replace: leader-driven turns shouldn't stack
+  // history the follower would have to back through.
   const appliedLeaderRef = useRef<typeof leaderUpdate>(null)
   useEffect(() => {
     if (!leaderUpdate || leaderUpdate === appliedLeaderRef.current) return
     appliedLeaderRef.current = leaderUpdate
     const at = setSongs.findIndex((item) => item.id === leaderUpdate.songId)
-    if (at >= 0) setIndex(at)
+    if (at >= 0) goTo(at, true)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [leaderUpdate, setSongs])
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       if (picker || liveOpen) { if (e.key === 'Escape') { setPicker(false); setLiveOpen(false) } return }
       // PageDown/PageUp: Bluetooth page-turner pedals (AirTurn etc.) send these —
       // prevent default so they turn the song instead of scrolling the sheet.
-      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); setIndex((i) => Math.min(setSongs.length - 1, i + 1)) }
-      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); setIndex((i) => Math.max(0, i - 1)) }
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goTo(index + 1) }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goTo(index - 1) }
       if (e.key === 'ArrowDown') cycleView(1)
       if (e.key === 'ArrowUp') cycleView(-1)
       // Space toggles autoscroll — but only as a global shortcut; if a control is focused,
@@ -514,7 +511,7 @@ export function Show() {
     window.addEventListener('keydown', key)
     return () => window.removeEventListener('keydown', key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effective, sheets.chords, sheets.tabs, scrollable, setSongs, picker, liveOpen])
+  }, [effective, sheets.chords, sheets.tabs, scrollable, setSongs, picker, liveOpen, index, urlSongId])
   // Swipe navigation, cheat view only (it never scrolls horizontally, so a horizontal
   // drag is unambiguous there; sheet views keep swipes for scrolling). Mostly-horizontal
   // moves past the threshold turn the song; pointercancel means the browser claimed the
@@ -528,7 +525,7 @@ export function Show() {
     if (!start) return
     const dx = e.clientX - start.x, dy = e.clientY - start.y
     if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 2) return
-    setIndex((i) => dx < 0 ? Math.min(setSongs.length - 1, i + 1) : Math.max(0, i - 1))
+    goTo(dx < 0 ? index + 1 : index - 1)
   }
   const swipeProps = effective === 'scale' ? { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: () => { swipeStart.current = null } } : {}
   // Auto wake lock: request on mount, release on unmount, and silently re-acquire on
@@ -561,7 +558,7 @@ export function Show() {
   return <div className="show-mode">
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
-      <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => setIndex((i) => Math.max(0, i - 1))} aria-label="Previous song">‹</button>
+      <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => goTo(index - 1)} aria-label="Previous song">‹</button>
       <button type="button" className="show-counter" onClick={() => { pickerCenteredRef.current = false; setPicker(true) }} aria-label="Jump to a song">{index + 1} / {setSongs.length}</button>
       <button type="button"
         className={`show-live${live.config ? (live.config.role === 'lead' ? ' leading' : ' following') : ''}${live.config && !live.connected ? ' pending' : ''}`}
@@ -570,7 +567,7 @@ export function Show() {
         {live.config?.role === 'lead' ? `Live · ${live.followers}` : live.config?.role === 'follow' ? 'Following' : 'Live'}
       </button>
       <div><i style={{ width: `${((index + 1) / setSongs.length) * 100}%` }}/></div>
-      <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label="Next song">›</button>
+      <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => goTo(index + 1)} aria-label="Next song">›</button>
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
     <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
@@ -602,15 +599,15 @@ export function Show() {
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
         : <CheatCard song={song} innerRef={cheatRef}/>}</article>
     </ShowSongBoundary>
-    {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className="show-upnext" onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label={`Next song: ${next.title}`}>
+    {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className="show-upnext" onClick={() => goTo(index + 1)} aria-label={`Next song: ${next.title}`}>
       <span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/>
     </button> })()}
-    {liveOpen && <LiveOverlay onClose={() => setLiveOpen(false)} onJump={(songId) => { const at = setSongs.findIndex((item) => item.id === songId); if (at >= 0) setIndex(at) }} />}
+    {liveOpen && <LiveOverlay onClose={() => setLiveOpen(false)} onJump={(songId) => { const at = setSongs.findIndex((item) => item.id === songId); if (at >= 0) goTo(at) }} />}
     {picker && <div className="show-picker" onClick={() => setPicker(false)}>
       <div className="show-picker-list" role="dialog" aria-label="Jump to song" onClick={(e) => e.stopPropagation()}>
         {setSongs.map((item, i) => <button type="button" key={item.id} className={i === index ? 'current' : ''}
           ref={i === index ? (el) => { if (el && !pickerCenteredRef.current) { pickerCenteredRef.current = true; el.scrollIntoView({ block: 'center' }) } } : undefined}
-          onClick={() => { setIndex(i); setPicker(false) }}>
+          onClick={() => { goTo(i); setPicker(false) }}>
           <span className="show-picker-num">{String(i + 1).padStart(2, '0')}</span>
           <span className="show-picker-title">{item.title}</span>
           {item.tuning !== 'Standard' && <i className="show-picker-tuning">{item.tuning}</i>}
