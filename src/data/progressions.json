@@ -655,9 +655,8 @@
       },
       {
         "section": "Chorus",
-        "chords": "(C G Bb F) (Am G C) (C G Bb F Am) (G Ab)",
-        "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355-- -355-- 355--- -133-- 133--- 577--- 355--- 466---",
-        "hint": "Ab tag, then G into next"
+        "chords": "(C G Bb F Am G C) (C G Bb F Am G Ab)",
+        "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355-- -355-- 355--- -133-- 133--- 577--- 355--- 466---"
       },
       {
         "section": "Bridge",
