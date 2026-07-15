@@ -1,5 +1,17 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { chordShape, type ChordShape } from './chordShapes'
+import {
+  applyTheme,
+  MARTIN_DRIVE,
+  THEME_COLOR_META,
+  THEME_PRESETS,
+  isThemePresetId,
+  matchPreset,
+  normalizeColors,
+  type ThemeColorKey,
+  type ThemeColors,
+  type ThemePresetId,
+} from './theme'
 
 // Per-device display prefs (not synced practice data). Keyed per deployment like the
 // show-mode pins so /dev/ and prod don't share a setting flip mid-rehearsal.
@@ -19,15 +31,23 @@ export interface FingeringPrefs {
   position: FingeringPosition
 }
 
+export interface ThemePrefs {
+  /** Named preset, or `'custom'` when any swatch has been edited. */
+  preset: ThemePresetId | 'custom'
+  colors: ThemeColors
+}
+
 export interface AppSettings {
   cheat: FingeringPrefs
   chords: FingeringPrefs
+  theme: ThemePrefs
 }
 
 /** Per-song, per-surface: when true, chord chips are replaced by vertical fingering chips. */
 export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, boolean>>>
 
 const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
+const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE } }
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
 const isPosition = (v: unknown): v is FingeringPosition =>
@@ -43,6 +63,19 @@ function readPrefs(raw: unknown, fallback: FingeringPrefs): FingeringPrefs {
   }
 }
 
+function readTheme(raw: unknown): ThemePrefs {
+  if (!raw || typeof raw !== 'object') return { ...DEFAULT_THEME, colors: { ...MARTIN_DRIVE } }
+  const o = raw as Record<string, unknown>
+  const colors = normalizeColors(o.colors, MARTIN_DRIVE)
+  if (isThemePresetId(o.preset)) {
+    // Prefer the live preset palette so shipping a palette tweak updates saved presets.
+    return { preset: o.preset, colors: { ...THEME_PRESETS[o.preset].colors } }
+  }
+  if (o.preset === 'custom') return { preset: 'custom', colors }
+  // Older saves without a preset id — match if possible.
+  return { preset: matchPreset(colors), colors }
+}
+
 function readSettings(): AppSettings {
   try {
     const raw = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}') as Record<string, unknown>
@@ -56,9 +89,14 @@ function readSettings(): AppSettings {
     return {
       cheat: readPrefs(raw.cheat, fallback),
       chords: readPrefs(raw.chords, fallback),
+      theme: readTheme(raw.theme),
     }
   } catch {
-    return { cheat: { ...DEFAULT_PREFS }, chords: { ...DEFAULT_PREFS } }
+    return {
+      cheat: { ...DEFAULT_PREFS },
+      chords: { ...DEFAULT_PREFS },
+      theme: { ...DEFAULT_THEME, colors: { ...MARTIN_DRIVE } },
+    }
   }
 }
 
@@ -74,6 +112,9 @@ function readFingeringOnly(): FingeringOnlyMap {
 interface SettingsStore {
   settings: AppSettings
   patchFingering: (surface: FingeringSurface, update: Partial<FingeringPrefs>) => void
+  setThemePreset: (preset: ThemePresetId) => void
+  patchThemeColor: (key: ThemeColorKey, value: string) => void
+  resetTheme: () => void
   isFingeringOnly: (songId: string, surface: FingeringSurface) => boolean
   toggleFingeringOnly: (songId: string, surface: FingeringSurface) => void
 }
@@ -85,8 +126,24 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const [fingeringOnly, setFingeringOnly] = useState<FingeringOnlyMap>(readFingeringOnly)
   useEffect(() => { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)) }, [settings])
   useEffect(() => { localStorage.setItem(FINGERING_ONLY_KEY, JSON.stringify(fingeringOnly)) }, [fingeringOnly])
+  useEffect(() => { applyTheme(settings.theme.colors) }, [settings.theme.colors])
   const patchFingering = (surface: FingeringSurface, update: Partial<FingeringPrefs>) =>
     setSettings((old) => ({ ...old, [surface]: { ...old[surface], ...update } }))
+  const setThemePreset = (preset: ThemePresetId) =>
+    setSettings((old) => ({
+      ...old,
+      theme: { preset, colors: { ...THEME_PRESETS[preset].colors } },
+    }))
+  const patchThemeColor = (key: ThemeColorKey, value: string) =>
+    setSettings((old) => {
+      const colors = { ...old.theme.colors, [key]: value }
+      return { ...old, theme: { preset: matchPreset(colors), colors } }
+    })
+  const resetTheme = () =>
+    setSettings((old) => ({
+      ...old,
+      theme: { preset: 'martin-drive', colors: { ...MARTIN_DRIVE } },
+    }))
   const isFingeringOnly = (songId: string, surface: FingeringSurface) => !!fingeringOnly[songId]?.[surface]
   const toggleFingeringOnly = (songId: string, surface: FingeringSurface) => setFingeringOnly((old) => {
     const next = { ...old }
@@ -98,7 +155,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return next
   })
   const value = useMemo(
-    () => ({ settings, patchFingering, isFingeringOnly, toggleFingeringOnly }),
+    () => ({ settings, patchFingering, setThemePreset, patchThemeColor, resetTheme, isFingeringOnly, toggleFingeringOnly }),
     [settings, fingeringOnly],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
@@ -195,12 +252,69 @@ function FingeringFields({ surface, label }: { surface: FingeringSurface; label:
   </div>
 }
 
+function ThemeFields() {
+  const { settings, setThemePreset, patchThemeColor, resetTheme } = useSettings()
+  const { theme } = settings
+  return <div className="settings-theme">
+    <div className="theme-presets" role="group" aria-label="Color presets">
+      {(Object.keys(THEME_PRESETS) as ThemePresetId[]).map((id) => {
+        const preset = THEME_PRESETS[id]
+        const active = theme.preset === id
+        return <button
+          key={id}
+          type="button"
+          className={active ? 'theme-preset active' : 'theme-preset'}
+          aria-pressed={active}
+          onClick={() => setThemePreset(id)}
+        >
+          <span className="theme-swatches" aria-hidden="true">
+            <i style={{ background: preset.colors.bg }} />
+            <i style={{ background: preset.colors.paper }} />
+            <i style={{ background: preset.colors.acid }} />
+            <i style={{ background: preset.colors.orange }} />
+          </span>
+          <span>{preset.label}</span>
+        </button>
+      })}
+    </div>
+    {theme.preset === 'custom' && <p className="theme-custom-note">Custom — tweaked from a preset</p>}
+    <div className="theme-colors">
+      {THEME_COLOR_META.map(({ key, label, hint }) => (
+        <label key={key} className="theme-color">
+          <span className="theme-color-swatch" style={{ background: theme.colors[key] }}>
+            <input
+              type="color"
+              aria-label={label}
+              value={theme.colors[key]}
+              onChange={(e) => patchThemeColor(key, e.target.value)}
+            />
+          </span>
+          <span className="theme-color-meta">
+            <strong>{label}</strong>
+            <small>{hint}</small>
+            <code>{theme.colors[key]}</code>
+          </span>
+        </label>
+      ))}
+    </div>
+    <div className="theme-actions">
+      <button type="button" className="button secondary" onClick={resetTheme}>Reset to Martin Drive</button>
+    </div>
+  </div>
+}
+
 export function SettingsPage() {
   return <>
     <header className="page-title compact">
       <span className="eyebrow">Display preferences stay on this device</span>
       <h1>Settings</h1>
     </header>
+    <section className="panel settings-panel">
+      <span className="eyebrow">Look</span>
+      <h2>Colors</h2>
+      <p className="settings-lead">Pick a preset or customize each surface. Amp bank chips (amber / green / red) stay fixed — they match the hardware.</p>
+      <ThemeFields />
+    </section>
     <section className="panel settings-panel">
       <span className="eyebrow">Chord chips</span>
       <h2>Chord fingerings</h2>

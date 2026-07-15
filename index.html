@@ -8,6 +8,25 @@
     <link rel="manifest" href="%BASE_URL%manifest.webmanifest" />
     <link rel="icon" href="%BASE_URL%icon.svg" type="image/svg+xml" />
     <title>Overdrive Setlist</title>
+    <script>
+      // Apply saved theme before paint so a custom palette doesn't flash the default.
+      (function () {
+        try {
+          var suffix = '%BASE_URL%'.indexOf('/dev/') >= 0 ? '-dev' : ''
+          var raw = JSON.parse(localStorage.getItem('overdrive-settings' + suffix) || '{}')
+          var c = raw.theme && raw.theme.colors
+          if (!c) return
+          var map = { bg: '--bg', ink: '--ink', muted: '--muted', paper: '--paper', line: '--line', acid: '--acid', onAcid: '--on-acid', orange: '--orange', blue: '--blue', topbar: '--topbar', showBg: '--show-bg', input: '--input' }
+          var root = document.documentElement
+          for (var key in map) {
+            var val = c[key]
+            if (typeof val === 'string' && /^#[0-9a-fA-F]{6}$/.test(val)) root.style.setProperty(map[key], val)
+          }
+          if (typeof c.ink === 'string') root.style.color = c.ink
+          if (typeof c.bg === 'string') root.style.background = c.bg
+        } catch (e) { /* ignore corrupt settings */ }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>
