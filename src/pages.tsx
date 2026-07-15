@@ -200,8 +200,9 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
         tab: undefined as string | undefined,
         tabMore: undefined as string | undefined,
       }))
-  // Re-run the parent's height auto-fit after More fills opens/closes — otherwise the
-  // newly revealed tabs overflow (or leave empty space) until the next resize.
+  // Re-run height auto-fit after More fills opens/closes — otherwise the newly
+  // revealed tabs overflow (or leave empty space) until the next resize. The
+  // secondary "More" details (fretboard/fields) does NOT refit — chips keep size.
   const refitCheat = () => {
     const el = innerRef.current
     if (!el) return
@@ -211,42 +212,47 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
       el.style.setProperty('--sheet-fit', String(ratio < 1 ? Math.max(0.7, ratio * 0.97) : 1))
     })
   }
-  return <div className="cheat-card" ref={innerRef}>
-    <div className="cheat-strip">
-      {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
-      {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>Transpose {transposeLabel(transpose.semitones)}</span>}
-      {custom?.capo && <span className="cheat-chip cheat-capo">{custom.capo}</span>}
-      <PresetBadges songId={song.id} showNotes />
-      <HomeFretBadges song={song} />
-    </div>
-    {rows && <div className="cheat-progression">
-      {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
-        <span className="cheat-prog-label">{row.label}</span>
-        <div className="cheat-prog-body">
-          <span className="cheat-prog-chords">{row.spans.map((span, s) =>
-            <span className="cheat-prog-span" key={s}>
-              {span.chords.map((chord, j) =>
-                <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
-              {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
-            </span>)}</span>
-          {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
-          {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
-          {row.tabMore && <details className="cheat-prog-more" onToggle={refitCheat}>
-            <summary>More fills</summary>
-            <pre className="cheat-prog-tab">{row.tabMore}</pre>
-          </details>}
-        </div>
-      </div>)}
-    </div>}
-    <div className="show-content">
-      <div className="show-scale"><FretboardPanel song={song} /><dl><Field label="Scale hint" value={song.scaleHint} /></dl></div>
-      <div className="show-fields">
-        <Field label="Role" value={song.role} />
-        <Field label="Must know" value={song.mustKnow} />
-        <Field label="Fallback" value={song.fallback} />
-        {ownNotes && <Field label="My notes" value={ownNotes} />}
+  return <div className="cheat-card">
+    <div className="cheat-fit" ref={innerRef}>
+      <div className="cheat-strip">
+        {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
+        {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>Transpose {transposeLabel(transpose.semitones)}</span>}
+        {custom?.capo && <span className="cheat-chip cheat-capo">{custom.capo}</span>}
+        <PresetBadges songId={song.id} showNotes />
+        <HomeFretBadges song={song} />
       </div>
+      {rows && <div className="cheat-progression">
+        {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
+          <span className="cheat-prog-label">{row.label}</span>
+          <div className="cheat-prog-body">
+            <span className="cheat-prog-chords">{row.spans.map((span, s) =>
+              <span className="cheat-prog-span" key={s}>
+                {span.chords.map((chord, j) =>
+                  <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
+                {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
+              </span>)}</span>
+            {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
+            {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
+            {row.tabMore && <details className="cheat-prog-more" onToggle={refitCheat}>
+              <summary>More fills</summary>
+              <pre className="cheat-prog-tab">{row.tabMore}</pre>
+            </details>}
+          </div>
+        </div>)}
+      </div>}
     </div>
+    <details className="cheat-more">
+      <summary>More</summary>
+      <div className="show-content">
+        <div className="show-scale"><FretboardPanel song={song} /><dl><Field label="Scale hint" value={song.scaleHint} /></dl></div>
+        <div className="show-fields">
+          <Field label="Role" value={song.role} />
+          <Field label="Must know" value={song.mustKnow} />
+          <Field label="Fallback" value={song.fallback} />
+          {ownNotes && <Field label="My notes" value={ownNotes} />}
+        </div>
+      </div>
+    </details>
   </div>
 }
 
