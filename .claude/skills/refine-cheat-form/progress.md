@@ -10,7 +10,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 02-all-the-small-things
 - [x] 03-a-little-less-conversation
 - [x] 04-i-believe-in-a-thing-called-love
-- [x] 05-thunderstruck
+- [ ] 05-thunderstruck
 - [ ] 06-don-t-stop-believin
 - [ ] 07-tribute
 - [ ] 08-while-my-guitar-gently-weeps
@@ -44,4 +44,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **02-all-the-small-things** — Intro `C G F G` ×2; Verse ×4/×2; Pre-Chorus ringing C; Chorus `(C G F)×2`; after Interlude → Pre-Chorus/Bridge/Outro (no Nana); more fixes deferred pending guitar
 - **03-a-little-less-conversation** — Intro ×3 A D; Verse ×4; Chorus phrase groups; Bridge `(A)×3 C D E`; Verse ×2 after Bridge then Chorus; other ×N still provisional
 - **04-i-believe-in-a-thing-called-love** — Intro ×2; Verse (in) `F# ~A B…` + Bridge−B `…~B`; Solo ×4; Clap with C#m D; Outro `(E A F# B)×4 E`; ghost `~` chips for skipped beats
-- **05-thunderstruck** — Riff ~B5; Chug×2 → Verse×4 → Build×2 → Verse×4 → Pre → Chorus → Solo → Chorus×2 → Solo → Outro; ×N provisional from Songsterr rhythm map
+- **05-thunderstruck** — **blocked (guitar):** sheet proposal on `dev` (`5084c40`) — Riff ~B5; Chug×2 → Verse×4 → Build×2 → Verse×4 → Pre → Chorus → Solo → Chorus×2 → Solo → Outro; needs live pass to confirm ×N / Build / Solo placement
