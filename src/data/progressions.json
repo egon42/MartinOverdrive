@@ -52,25 +52,40 @@
       },
       {
         "section": "Chorus",
-        "chords": "C G F",
+        "chords": "(C G F) ×2",
         "shapes": "-355-- 355--- 133---"
       },
       {
         "section": "Interlude",
         "chords": "C F G",
-        "shapes": "-355-- 133--- 355---"
+        "shapes": "-355-- 133--- 355---",
+        "hint": "Single strums, then muted"
+      },
+      {
+        "section": "Bridge",
+        "chords": "C G F C",
+        "shapes": "-355-- 355--- 133--- -355--"
+      },
+      {
+        "section": "Outro",
+        "chords": "C G F C",
+        "shapes": "-355-- 355--- 133--- -355--",
+        "hint": "Hang F — night will go on"
       }
     ],
     "form": [
-      "Intro",
-      "Verse",
+      "Intro ×2",
+      "Verse ×4",
       "Pre-Chorus",
       "Chorus",
-      "Verse",
+      "Verse ×2",
       "Pre-Chorus",
       "Chorus",
-      "Interlude",
-      "Chorus"
+      "Interlude ×2",
+      "Pre-Chorus",
+      "Bridge",
+      "Pre-Chorus",
+      "Outro"
     ]
   },
   "03-a-little-less-conversation": {

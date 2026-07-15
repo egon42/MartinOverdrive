@@ -7,7 +7,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 ## Queue (setlist order)
 
 - [x] 01-welcome-home
-- [ ] 02-all-the-small-things
+- [x] 02-all-the-small-things
 - [ ] 03-a-little-less-conversation
 - [ ] 04-i-believe-in-a-thing-called-love
 - [ ] 05-thunderstruck
@@ -41,3 +41,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 ## Done notes
 
 - **01-welcome-home** — Intro Em; Verse ×4; Bridge ×2 → Outro (verse pattern); Chorus `(F Am C)×2`
+- **02-all-the-small-things** — Intro ×2; Verse ×4/×2; Chorus `(C G F)×2`; after Interlude → Pre-Chorus/Bridge/Outro (no Nana)
