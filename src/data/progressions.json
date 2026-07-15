@@ -12,6 +12,11 @@
       {
         "section": "Bridge",
         "chords": "F Am G F"
+      },
+      {
+        "section": "Outro",
+        "chords": "Em C D",
+        "hint": "Verse pattern under the solo / oh’s — not back to chorus"
       }
     ],
     "form": [
@@ -19,8 +24,8 @@
       "Chorus",
       "Verse ×4",
       "Chorus",
-      "Bridge",
-      "Chorus ×2"
+      "Bridge ×2",
+      "Outro"
     ]
   },
   "02-all-the-small-things": {
