@@ -110,7 +110,7 @@ Refine <Song title> cheat form.
 Update [progress.md](progress.md): mark the song done, one-line note of what changed.
 
 Then print the **after** roadmap, remind them to check the cheat card on
-`https://egonelbrechtsen.github.io/MartinOverdrive/dev/` (hard-refresh if SW is sticky),
+`https://egon42.github.io/MartinOverdrive/dev/` (hard-refresh if SW is sticky),
 and ask: next song, tweak this one, or stop?
 
 If they come back with a tweak (“Pre ends on B”, “Chorus ×3”), apply → validate → commit → push again — still no ask.
