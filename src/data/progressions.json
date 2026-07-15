@@ -589,9 +589,18 @@
   "17-the-pretender": {
     "sections": [
       {
-        "section": "Verse",
+        "section": "Intro",
         "chords": "Am D/F#",
-        "hint": "Quiet intro/verse: picked Am arpeggio, bass walking A-B-C-A then F#-G-F# underneath"
+        "hint": "Quiet: picked Am arpeggio, bass walking A-B-C-A then F#-G-F# underneath"
+      },
+      {
+        "section": "Verse",
+        "chords": "Am D/F#"
+      },
+      {
+        "section": "Heavy",
+        "chords": "A5 F#5 F5",
+        "shapes": "577--- 244--- 133---"
       },
       {
         "section": "Pre-Chorus",
@@ -612,15 +621,18 @@
       }
     ],
     "form": [
-      "Verse",
-      "Pre-Chorus",
-      "Chorus",
-      "Verse",
-      "Pre-Chorus",
-      "Chorus",
+      "Intro ×2",
+      "Verse ×2",
+      "Heavy",
+      "Pre-Chorus ×2",
+      "Chorus ×3",
       "Interlude",
-      "Chorus",
-      "Outro (who are you?)"
+      "Pre-Chorus",
+      "Interlude ×4",
+      "Outro (who are you?) ×4",
+      "Verse ×2",
+      "Chorus ×3",
+      "Outro (who are you?) ×4"
     ]
   },
   "18-here-it-goes-again": {
