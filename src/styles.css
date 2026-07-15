@@ -129,9 +129,10 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-chip.cheat-capo{background:var(--orange);color:#fff;border-color:var(--orange)}
 .cheat-chip.cheat-transpose{background:#3a6ea5;color:#fff;border-color:#3a6ea5}
 .tag.tag-transpose{background:#3a6ea5;border-color:#3a6ea5;color:#fff}
-.cheat-progression{display:flex;flex-direction:column;gap:8px;border-top:1px solid #36423e;border-bottom:1px solid #36423e;padding:12px 0}
-.cheat-prog-row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
-.cheat-prog-label{flex:0 0 auto;min-width:6.5em;font-size:.6em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
+.cheat-progression{display:flex;flex-direction:column;gap:12px;border-top:1px solid #36423e;border-bottom:1px solid #36423e;padding:12px 0}
+.cheat-prog-row{display:flex;gap:14px;align-items:flex-start}
+.cheat-prog-label{flex:0 0 auto;min-width:6.5em;padding-top:.2em;font-size:.6em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
+.cheat-prog-body{display:flex;flex-direction:column;gap:2px;flex:1 1 auto;min-width:0}
 .cheat-prog-chords{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start}
 .cheat-prog-span{display:inline-flex;gap:6px;align-items:flex-start;flex-wrap:wrap}
 .cheat-prog-times{font-size:.72em;font-weight:800;letter-spacing:.04em;color:var(--acid);align-self:center;padding:0 2px}
@@ -144,11 +145,10 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-with-fingering--left .chord-fingering,.chord-with-fingering--right .chord-fingering{letter-spacing:0;font-size:.55em;line-height:1.05}
 .sheet-line .chord-with-fingering{margin:0 2px;vertical-align:middle}
 .compact-chords .chord-with-fingering{vertical-align:top}
-/* Stage cue after that section's chips (middot); wraps with the chord cluster, not between rows */
-.cheat-prog-hint{flex:0 1 auto;max-width:100%;font-size:.68em;color:var(--muted);font-style:italic;line-height:1.35}
-.cheat-prog-hint::before{content:"· ";font-style:normal;opacity:.7}
-.cheat-prog-tab{flex:1 1 100%;margin:2px 0 0;padding:0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.58em;line-height:1.2;letter-spacing:0;white-space:pre;overflow-x:auto;color:#c5cec9;font-style:normal;background:transparent;border:0}
-.cheat-prog-more{flex:1 1 100%;margin:4px 0 0}.cheat-prog-more>summary{cursor:pointer;font-size:.62em;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);list-style:none}.cheat-prog-more>summary::-webkit-details-marker{display:none}.cheat-prog-more>summary::before{content:"+ ";color:var(--acid)}.cheat-prog-more[open]>summary::before{content:"− "}.cheat-prog-more .cheat-prog-tab{margin-top:4px}
+/* Stage cue tucked under that section's chips (same column); row gap separates sections */
+.cheat-prog-hint{font-size:.68em;color:var(--muted);font-style:italic;line-height:1.25}
+.cheat-prog-tab{margin:2px 0 0;padding:0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.58em;line-height:1.2;letter-spacing:0;white-space:pre;overflow-x:auto;color:#c5cec9;font-style:normal;background:transparent;border:0}
+.cheat-prog-more{margin:4px 0 0}.cheat-prog-more>summary{cursor:pointer;font-size:.62em;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);list-style:none}.cheat-prog-more>summary::-webkit-details-marker{display:none}.cheat-prog-more>summary::before{content:"+ ";color:var(--acid)}.cheat-prog-more[open]>summary::before{content:"− "}.cheat-prog-more .cheat-prog-tab{margin-top:4px}
 .cheat-prog-chords .chord-chip{font-size:.95em}
 .cheat-card .show-content{gap:22px}
 .cheat-card .field dt{font-size:.6em}

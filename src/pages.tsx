@@ -222,18 +222,20 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
     {rows && <div className="cheat-progression">
       {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
         <span className="cheat-prog-label">{row.label}</span>
-        <span className="cheat-prog-chords">{row.spans.map((span, s) =>
-          <span className="cheat-prog-span" key={s}>
-            {span.chords.map((chord, j) =>
-              <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
-            {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
-          </span>)}</span>
-        {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
-        {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
-        {row.tabMore && <details className="cheat-prog-more" onToggle={refitCheat}>
-          <summary>More fills</summary>
-          <pre className="cheat-prog-tab">{row.tabMore}</pre>
-        </details>}
+        <div className="cheat-prog-body">
+          <span className="cheat-prog-chords">{row.spans.map((span, s) =>
+            <span className="cheat-prog-span" key={s}>
+              {span.chords.map((chord, j) =>
+                <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
+              {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
+            </span>)}</span>
+          {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
+          {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
+          {row.tabMore && <details className="cheat-prog-more" onToggle={refitCheat}>
+            <summary>More fills</summary>
+            <pre className="cheat-prog-tab">{row.tabMore}</pre>
+          </details>}
+        </div>
       </div>)}
     </div>}
     <div className="show-content">
