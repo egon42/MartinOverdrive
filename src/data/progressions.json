@@ -133,14 +133,32 @@
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--"
       },
       {
+        "section": "Verse (in)",
+        "chords": "F# B E B A",
+        "shapes": "244--- -244-- 022--- -244-- -022--",
+        "hint": "Hit F#; skip A; enter mid first B; then rest"
+      },
+      {
         "section": "Bridge",
         "chords": "(E F#m) ×3 G A A# B",
         "shapes": "022--- 244--- 355--- 577--- 688--- 799---"
       },
       {
+        "section": "Bridge−B",
+        "chords": "(E F#m) ×3 G A A#",
+        "shapes": "022--- 244--- 355--- 577--- 688---",
+        "hint": "Omit final B"
+      },
+      {
         "section": "Chorus",
         "chords": "(E A F# B) ×3 C#m D",
         "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
+      },
+      {
+        "section": "Clap",
+        "chords": "(E A F# B) ×3",
+        "shapes": "022--- -022-- 244--- -244--",
+        "hint": "Clapping"
       },
       {
         "section": "Solo",
@@ -149,29 +167,24 @@
         "hint": "Verse riff under the lead"
       },
       {
-        "section": "Lead",
-        "chords": "E A F# B",
-        "shapes": "022--- -022-- 244--- -244--"
-      },
-      {
         "section": "Outro",
-        "chords": "E A F# B E",
+        "chords": "(E A F# B) ×4 E",
         "shapes": "022--- -022-- 244--- -244-- 022---"
       }
     ],
     "form": [
-      "Intro",
+      "Intro ×2",
       "Verse ×2",
       "Bridge",
       "Chorus",
       "Solo",
-      "Verse ×2",
-      "Bridge",
+      "Verse (in)",
+      "Verse",
+      "Bridge−B",
       "Chorus",
-      "Solo",
+      "Solo ×4",
       "Bridge",
-      "Chorus",
-      "Lead",
+      "Clap",
       "Outro"
     ]
   },
