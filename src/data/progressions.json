@@ -92,22 +92,27 @@
   "03-a-little-less-conversation": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "A D"
+      },
+      {
         "section": "Verse",
         "chords": "A D"
       },
       {
         "section": "Chorus",
-        "chords": "A C D G A E A D"
+        "chords": "(A C) (A D G) (A E A D) (A D)"
       },
       {
         "section": "Bridge",
-        "chords": "A C D E"
+        "chords": "(A) ×3 C D E"
       }
     ],
     "form": [
-      "Verse ×2",
+      "Intro ×3",
+      "Verse ×4",
       "Chorus",
-      "Verse",
+      "Verse ×4",
       "Chorus",
       "Bridge",
       "Chorus"
