@@ -2,6 +2,10 @@
   "01-welcome-home": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "Em"
+      },
+      {
         "section": "Verse",
         "chords": "Em C D"
       },
@@ -20,6 +24,7 @@
       }
     ],
     "form": [
+      "Intro",
       "Verse ×4",
       "Chorus",
       "Verse ×4",
