@@ -14,10 +14,10 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [ ] 06-don-t-stop-believin
     40|- [ ] 07-tribute
 - [x] 08-while-my-guitar-gently-weeps
-- [ ] 09-pride-and-joy
-- [ ] 10-zombie
+- [x] 09-pride-and-joy
+- [x] 10-zombie
 - [x] 11-hunger-strike
-- [ ] 12-s-o-b
+- [x] 12-s-o-b
 - [x] 13-save-a-horse-ride-a-cowboy
 - [ ] 14-sweet-home-alabama
 - [ ] 15-dani-california
@@ -48,5 +48,8 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **06-don-t-stop-believin** — **deferred (interlude):** Intro×2 → Verse×4 → Pre → Interlude (fill+intro) → Verse×2 → Pre → Interlude → Solo → Chorus×4; Pre `(A E)×4`; Chorus `(E B C#m A)(E B G#m)` — form on `dev`; confirm fill/interlude against recording before closing
 - **07-tribute** — **deferred:** sheet proposal not applied — drop late Verse/Rock; Intro Am?; Rock ×2 + ROCK!; Refrain/Chorus ×N need live counts
 - **08-while-my-guitar-gently-weeps** — Intro + full 2nd-ending half; Bridge `Bm E7sus4 E7`; form ends Verse → 2nd ending
+- **09-pride-and-joy** — **skipped:** single 12-bar shuffle card is enough for now
+- **10-zombie** — **skipped:** whole-song Em C G D loop is enough for now
 - **11-hunger-strike** — Intro×2 → V/C×8 → Bridge×4 → Interlude×2 → V/C×2 → Bridge×4 → V/C×4 → Bridge; Interlude only after first Bridge
+- **12-s-o-b** — **skipped:** E hang + chorus phrases fine for now
 - **13-save-a-horse-ride-a-cowboy** — kept E–A form; dropped ×N math hints; Outro `E G A` + N.C. after final Chorus
