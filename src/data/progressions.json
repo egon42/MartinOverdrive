@@ -3,7 +3,7 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "(Em C D) ×2"
+        "chords": "Em C D"
       },
       {
         "section": "Chorus",
@@ -15,9 +15,9 @@
       }
     ],
     "form": [
-      "Verse",
+      "Verse ×4",
       "Chorus",
-      "Verse",
+      "Verse ×4",
       "Chorus",
       "Bridge",
       "Chorus ×2"
@@ -759,7 +759,7 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "(E7#9 G A) ×4",
+        "chords": "E7#9 G A",
         "hint": "It's all the E7#9 riff: open low E, 3fr bend, D-str 0h2, G-to-A moves filling every line"
       },
       {
@@ -768,9 +768,9 @@
       }
     ],
     "form": [
-      "Verse",
+      "Verse ×4",
       "Chorus",
-      "Verse",
+      "Verse ×4",
       "Chorus"
     ]
   },
@@ -881,7 +881,7 @@
     "sections": [
       {
         "section": "Verse / Chorus",
-        "chords": "(F# G#m D#m B) ×2",
+        "chords": "F# G#m D#m B",
         "shapes": "244--- 466--- -11--- -24---"
       },
       {
@@ -891,9 +891,9 @@
       }
     ],
     "form": [
-      "Verse / Chorus",
+      "Verse / Chorus ×2",
       "Bridge",
-      "Verse / Chorus"
+      "Verse / Chorus ×2"
     ]
   },
   "31-banditos": {

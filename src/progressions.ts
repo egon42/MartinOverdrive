@@ -16,9 +16,9 @@ import data from './data/progressions.json'
 // that order; each label's base name (strip " ×N" / " xN") looks up chords in `sections`.
 // Fills stay at the end. Without `form`, `sections` order is used as before.
 //
-// Prefer grouped repeats for tiled cycles ("(E A) ×3 …") over writing the tile out.
-// Form ×N is the roadmap (how many times that section appears); group ×N is inside the
-// section's chord row.
+// Prefer grouped repeats for mixed tiles inside one section ("(E A) ×3 (E G A) ×2").
+// When the whole section is N plays of one cycle, put ×N on the form label instead
+// ("Verse ×4" + chords "Em C D") — that reads clearer on stage than chord-chip ×N.
 export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string; tab?: string; tabMore?: string }
 export interface SongProgression { sections: ProgSection[]; form?: string[]; capo?: string }
 
