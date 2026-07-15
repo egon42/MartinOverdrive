@@ -510,7 +510,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "(F C Dm) ×4"
+        "chords": "F C Dm"
       },
       {
         "section": "Interlude",
@@ -528,13 +528,13 @@
     "form": [
       "Intro ×2",
       "Verse ×8",
-      "Chorus",
+      "Chorus ×4",
       "Interlude ×2",
       "Verse ×4",
-      "Chorus",
+      "Chorus ×4",
       "Bridge ×4",
       "Verse ×4",
-      "Chorus ×2",
+      "Chorus ×8",
       "Solo / Outro"
     ]
   },

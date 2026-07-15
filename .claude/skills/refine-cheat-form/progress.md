@@ -54,7 +54,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **12-s-o-b** — **skipped:** E hang + chorus phrases fine for now
 - **13-save-a-horse-ride-a-cowboy** — kept E–A form; dropped ×N math hints; Outro `E G A` + N.C. after final Chorus
 - **14-sweet-home-alabama** — **skipped:** whole-song D C G + fills card is enough for now
-- **15-dani-california** — Intro×2 → Verse×8 → Chorus → Interlude×2 → Verse×4 → Chorus → Bridge×4 → Verse×4 → Chorus×2 → Solo/Outro; Intro/Interlude/Solo = verse pattern; Chorus `(F C Dm)×4`
+- **15-dani-california** — Intro×2 → Verse×8 → Chorus×4 → Interlude×2 → Verse×4 → Chorus×4 → Bridge×4 → Verse×4 → Chorus×8 → Solo/Outro; Intro/Interlude/Solo = verse pattern; Chorus unit `F C Dm`
 - **16-teenage-dirtbag** — **deferred:** form on `dev` (`81f287e`) — Intro×2 → (Verse×3 Pre×2 Chorus×3)×2 → Bridge×2 → Verse×3 → Chorus×3 → Bridge×2 → Outro walk-down; confirm ×N / soft chorus / bridge live
 - **17-the-pretender** — Intro×2 → Verse×2 → Heavy → Pre×2 → Chorus×3 → Interlude → Pre → Interlude×4 → Outro×4 → Verse×2 → Chorus×3 → Outro×4; Heavy `A5 F#5 F5`
 - **18-here-it-goes-again** — **deferred:** form on `dev` — Intro C; Verse×3; Pre `(E Am)×2 G`; Chorus `(C G Bb F Am G C) | (C G Bb F Am G Ab)`; Bridge×2 → Verse×3 (no Pre) → Chorus → Outro; confirm ×N / outro live
