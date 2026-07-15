@@ -9,7 +9,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 01-welcome-home
 - [x] 02-all-the-small-things
 - [x] 03-a-little-less-conversation
-- [ ] 04-i-believe-in-a-thing-called-love
+- [x] 04-i-believe-in-a-thing-called-love
 - [ ] 05-thunderstruck
 - [ ] 06-don-t-stop-believin
 - [ ] 07-tribute
@@ -43,3 +43,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **01-welcome-home** — Intro Em; Verse ×4; Bridge ×2 → Outro (verse pattern); Chorus `(F Am C)×2`
 - **02-all-the-small-things** — Intro `C G F G` ×2; Verse ×4/×2; Pre-Chorus ringing C; Chorus `(C G F)×2`; after Interlude → Pre-Chorus/Bridge/Outro (no Nana); more fixes deferred pending guitar
 - **03-a-little-less-conversation** — Intro ×3 A D; Verse ×4; Chorus phrase groups; Bridge `(A)×3 C D E`; Verse ×2 after Bridge then Chorus; other ×N still provisional
+- **04-i-believe-in-a-thing-called-love** — Riff `F# A B E B A`; Verse ×2; Bridge `(E F#m)×3 G A A# B`; Chorus `(E A F# B)×3 C#m D`; Solo=verse riff; Lead→Outro at end

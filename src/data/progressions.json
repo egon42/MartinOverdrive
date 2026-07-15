@@ -122,51 +122,56 @@
   "04-i-believe-in-a-thing-called-love": {
     "sections": [
       {
-        "section": "Verse",
-        "chords": "F# A B A E B A",
-        "shapes": "244--- -022-- -244-- -022-- 022--- -244-- -022--"
+        "section": "Intro",
+        "chords": "F# A B E B A",
+        "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+        "hint": "Same as verse — count in carefully"
       },
       {
-        "section": "Chorus",
-        "chords": "E A F# B C#m D",
-        "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
+        "section": "Verse",
+        "chords": "F# A B E B A",
+        "shapes": "244--- -022-- -244-- 022--- -244-- -022--"
       },
       {
         "section": "Bridge",
-        "chords": "E F#m A A# B",
-        "shapes": "022--- 244--- 577--- 688--- 799---"
+        "chords": "(E F#m) ×3 G A A# B",
+        "shapes": "022--- 244--- 355--- 577--- 688--- 799---"
       },
       {
-        "section": "Intro",
-        "chords": "F# A B A E B A",
-        "shapes": "244--- -022-- -244-- -022-- 022--- -244-- -022--",
-        "hint": "Same shapes as verse — count in carefully"
+        "section": "Chorus",
+        "chords": "(E A F# B) ×3 C#m D",
+        "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
       },
       {
         "section": "Solo",
-        "chords": "E A F# B C#m D",
-        "shapes": "022--- -022-- 244--- -244-- -466-- -577--",
-        "hint": "Hold chorus changes under the solo"
+        "chords": "F# A B E B A",
+        "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+        "hint": "Verse riff under the lead"
+      },
+      {
+        "section": "Lead",
+        "chords": "E A F# B",
+        "shapes": "022--- -022-- 244--- -244--"
       },
       {
         "section": "Outro",
-        "chords": "E A F# B C#m D",
-        "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
+        "chords": "E A F# B E",
+        "shapes": "022--- -022-- 244--- -244-- 022---"
       }
     ],
     "form": [
       "Intro",
-      "Verse",
+      "Verse ×2",
       "Bridge",
       "Chorus",
       "Solo",
-      "Verse",
+      "Verse ×2",
       "Bridge",
       "Chorus",
       "Solo",
       "Bridge",
       "Chorus",
-      "Solo",
+      "Lead",
       "Outro"
     ]
   },
