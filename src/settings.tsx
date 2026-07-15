@@ -49,7 +49,7 @@ export interface AppSettings {
 export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, boolean>>>
 
 const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
-const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: false }
+const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: true }
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
 const isPosition = (v: unknown): v is FingeringPosition =>
@@ -69,7 +69,7 @@ function readTheme(raw: unknown): ThemePrefs {
   if (!raw || typeof raw !== 'object') return { ...DEFAULT_THEME, colors: { ...MARTIN_DRIVE } }
   const o = raw as Record<string, unknown>
   const colors = normalizeColors(o.colors, MARTIN_DRIVE)
-  const rowStripe = o.rowStripe === true
+  const rowStripe = o.rowStripe !== false
   if (isThemePresetId(o.preset)) {
     // Prefer the live preset palette so shipping a palette tweak updates saved presets.
     return { preset: o.preset, colors: { ...THEME_PRESETS[o.preset].colors }, rowStripe }
