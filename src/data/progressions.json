@@ -519,6 +519,10 @@
       {
         "section": "Bridge",
         "chords": "Bm G F#"
+      },
+      {
+        "section": "Solo / Outro",
+        "chords": "Am G Dm Am"
       }
     ],
     "form": [
@@ -530,7 +534,8 @@
       "Chorus",
       "Bridge ×4",
       "Verse ×4",
-      "Chorus ×2"
+      "Chorus ×2",
+      "Solo / Outro"
     ]
   },
   "16-teenage-dirtbag": {
