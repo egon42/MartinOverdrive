@@ -16,7 +16,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 08-while-my-guitar-gently-weeps
 - [ ] 09-pride-and-joy
 - [ ] 10-zombie
-- [ ] 11-hunger-strike
+- [x] 11-hunger-strike
 - [ ] 12-s-o-b
 - [ ] 13-save-a-horse-ride-a-cowboy
 - [ ] 14-sweet-home-alabama
@@ -48,3 +48,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **06-don-t-stop-believin** — **deferred (interlude):** Intro×2 → Verse×4 → Pre → Interlude (fill+intro) → Verse×2 → Pre → Interlude → Solo → Chorus×4; Pre `(A E)×4`; Chorus `(E B C#m A)(E B G#m)` — form on `dev`; confirm fill/interlude against recording before closing
 - **07-tribute** — **deferred:** sheet proposal not applied — drop late Verse/Rock; Intro Am?; Rock ×2 + ROCK!; Refrain/Chorus ×N need live counts
 - **08-while-my-guitar-gently-weeps** — Intro + full 2nd-ending half; Bridge `Bm E7sus4 E7`; form ends Verse → 2nd ending
+- **11-hunger-strike** — Intro×2 → V/C×8 → Bridge×4 → Interlude×2 → V/C×2 → Bridge×4 → V/C×5 → Bridge; Interlude only after first Bridge; ×N sheet-provisional

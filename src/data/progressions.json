@@ -382,6 +382,10 @@
   "11-hunger-strike": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "G A7sus4 G Cadd9"
+      },
+      {
         "section": "Verse / Chorus",
         "chords": "G A7sus4 G Cadd9"
       },
@@ -396,15 +400,14 @@
       }
     ],
     "form": [
-      "Verse / Chorus",
-      "Interlude",
-      "Verse / Chorus",
-      "Interlude",
-      "Verse / Chorus",
-      "Bridge",
-      "Verse / Chorus",
-      "Bridge",
-      "Verse / Chorus"
+      "Intro ×2",
+      "Verse / Chorus ×8",
+      "Bridge ×4",
+      "Interlude ×2",
+      "Verse / Chorus ×2",
+      "Bridge ×4",
+      "Verse / Chorus ×5",
+      "Bridge"
     ]
   },
   "12-s-o-b": {
