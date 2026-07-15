@@ -333,26 +333,32 @@
   "08-while-my-guitar-gently-weeps": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "(Am Am/G D/F# Fmaj7) (Am G D E)"
+      },
+      {
         "section": "Verse",
         "chords": "(Am Am/G D/F# Fmaj7) (Am G D E)"
       },
       {
         "section": "Verse (2nd ending)",
-        "chords": "Am G C E"
+        "chords": "(Am Am/G D/F# Fmaj7) (Am G C E)"
       },
       {
         "section": "Bridge",
-        "chords": "A C#m F#m C#m Bm E"
+        "chords": "A C#m F#m C#m Bm E7sus4 E7"
       }
     ],
     "form": [
+      "Intro",
       "Verse",
       "Verse (2nd ending)",
       "Bridge",
       "Verse",
       "Verse (2nd ending)",
       "Bridge",
-      "Verse"
+      "Verse",
+      "Verse (2nd ending)"
     ]
   },
   "09-pride-and-joy": {
