@@ -24,6 +24,8 @@
           }
           if (typeof c.ink === 'string') root.style.color = c.ink
           if (typeof c.bg === 'string') root.style.background = c.bg
+          if (raw.theme && raw.theme.rowStripe === true) root.dataset.rowStripe = '1'
+          else delete root.dataset.rowStripe
         } catch (e) { /* ignore corrupt settings */ }
       })()
     </script>

@@ -35,6 +35,8 @@ export interface ThemePrefs {
   /** Named preset, or `'custom'` when any swatch has been edited. */
   preset: ThemePresetId | 'custom'
   colors: ThemeColors
+  /** Subtle zebra tone on cheat-card section rows ( `|` breaks stay one row). */
+  rowStripe: boolean
 }
 
 export interface AppSettings {
@@ -47,7 +49,7 @@ export interface AppSettings {
 export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, boolean>>>
 
 const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
-const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE } }
+const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: false }
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
 const isPosition = (v: unknown): v is FingeringPosition =>
@@ -67,13 +69,14 @@ function readTheme(raw: unknown): ThemePrefs {
   if (!raw || typeof raw !== 'object') return { ...DEFAULT_THEME, colors: { ...MARTIN_DRIVE } }
   const o = raw as Record<string, unknown>
   const colors = normalizeColors(o.colors, MARTIN_DRIVE)
+  const rowStripe = o.rowStripe === true
   if (isThemePresetId(o.preset)) {
     // Prefer the live preset palette so shipping a palette tweak updates saved presets.
-    return { preset: o.preset, colors: { ...THEME_PRESETS[o.preset].colors } }
+    return { preset: o.preset, colors: { ...THEME_PRESETS[o.preset].colors }, rowStripe }
   }
-  if (o.preset === 'custom') return { preset: 'custom', colors }
+  if (o.preset === 'custom') return { preset: 'custom', colors, rowStripe }
   // Older saves without a preset id — match if possible.
-  return { preset: matchPreset(colors), colors }
+  return { preset: matchPreset(colors), colors, rowStripe }
 }
 
 function readSettings(): AppSettings {
@@ -114,6 +117,7 @@ interface SettingsStore {
   patchFingering: (surface: FingeringSurface, update: Partial<FingeringPrefs>) => void
   setThemePreset: (preset: ThemePresetId) => void
   patchThemeColor: (key: ThemeColorKey, value: string) => void
+  setRowStripe: (on: boolean) => void
   resetTheme: () => void
   isFingeringOnly: (songId: string, surface: FingeringSurface) => boolean
   toggleFingeringOnly: (songId: string, surface: FingeringSurface) => void
@@ -121,28 +125,36 @@ interface SettingsStore {
 
 const SettingsContext = createContext<SettingsStore | null>(null)
 
+function applyRowStripe(on: boolean) {
+  if (on) document.documentElement.dataset.rowStripe = '1'
+  else delete document.documentElement.dataset.rowStripe
+}
+
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(readSettings)
   const [fingeringOnly, setFingeringOnly] = useState<FingeringOnlyMap>(readFingeringOnly)
   useEffect(() => { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)) }, [settings])
   useEffect(() => { localStorage.setItem(FINGERING_ONLY_KEY, JSON.stringify(fingeringOnly)) }, [fingeringOnly])
   useEffect(() => { applyTheme(settings.theme.colors) }, [settings.theme.colors])
+  useEffect(() => { applyRowStripe(settings.theme.rowStripe) }, [settings.theme.rowStripe])
   const patchFingering = (surface: FingeringSurface, update: Partial<FingeringPrefs>) =>
     setSettings((old) => ({ ...old, [surface]: { ...old[surface], ...update } }))
   const setThemePreset = (preset: ThemePresetId) =>
     setSettings((old) => ({
       ...old,
-      theme: { preset, colors: { ...THEME_PRESETS[preset].colors } },
+      theme: { ...old.theme, preset, colors: { ...THEME_PRESETS[preset].colors } },
     }))
   const patchThemeColor = (key: ThemeColorKey, value: string) =>
     setSettings((old) => {
       const colors = { ...old.theme.colors, [key]: value }
-      return { ...old, theme: { preset: matchPreset(colors), colors } }
+      return { ...old, theme: { ...old.theme, preset: matchPreset(colors), colors } }
     })
+  const setRowStripe = (on: boolean) =>
+    setSettings((old) => ({ ...old, theme: { ...old.theme, rowStripe: on } }))
   const resetTheme = () =>
     setSettings((old) => ({
       ...old,
-      theme: { preset: 'martin-drive', colors: { ...MARTIN_DRIVE } },
+      theme: { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: old.theme.rowStripe },
     }))
   const isFingeringOnly = (songId: string, surface: FingeringSurface) => !!fingeringOnly[songId]?.[surface]
   const toggleFingeringOnly = (songId: string, surface: FingeringSurface) => setFingeringOnly((old) => {
@@ -155,7 +167,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return next
   })
   const value = useMemo(
-    () => ({ settings, patchFingering, setThemePreset, patchThemeColor, resetTheme, isFingeringOnly, toggleFingeringOnly }),
+    () => ({ settings, patchFingering, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
     [settings, fingeringOnly],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
@@ -253,9 +265,20 @@ function FingeringFields({ surface, label }: { surface: FingeringSurface; label:
 }
 
 function ThemeFields() {
-  const { settings, setThemePreset, patchThemeColor, resetTheme } = useSettings()
+  const { settings, setThemePreset, patchThemeColor, setRowStripe, resetTheme } = useSettings()
   const { theme } = settings
   return <div className="settings-theme">
+    <label className="theme-stripe-toggle">
+      <input
+        type="checkbox"
+        checked={theme.rowStripe}
+        onChange={(e) => setRowStripe(e.target.checked)}
+      />
+      <span className="theme-stripe-meta">
+        <strong>Alternate section tone</strong>
+        <small>Soft tint on every other cheat-card section. A `|` break stays one section.</small>
+      </span>
+    </label>
     <div className="theme-presets" role="group" aria-label="Color presets">
       {(Object.keys(THEME_PRESETS) as ThemePresetId[]).map((id) => {
         const preset = THEME_PRESETS[id]
