@@ -276,7 +276,7 @@ function ThemeFields() {
       />
       <span className="theme-stripe-meta">
         <strong>Alternate section tone</strong>
-        <small>Soft tint on every other cheat-card section. A `|` break stays one section.</small>
+        <small>Soft tint on every other cheat-card section.</small>
       </span>
     </label>
     <div className="theme-presets" role="group" aria-label="Color presets">
