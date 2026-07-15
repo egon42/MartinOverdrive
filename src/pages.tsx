@@ -20,8 +20,8 @@ const priorityLabel = ['None', 'Low', 'Medium', 'High']
 const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED = 120, SCROLL_SPEED_STEP = 4
 // Lead-in before the crawl starts when ▶ is pressed at the top of the sheet — gives the
 // first lines a beat to read before they scroll away. Duration = LEAD_IN_PX / speed
-// (e.g. 72 px at 24 px/s → 3 s; faster speeds wait less). Mid-sheet presses skip it.
-const SCROLL_LEAD_IN_PX = 72
+// (e.g. 96 px at 24 px/s → 4 s; faster speeds wait less). Mid-sheet presses skip it.
+const SCROLL_LEAD_IN_PX = 96
 // localStorage (not sessionStorage): mobile OSes kill backgrounded tabs under memory
 // pressure, and mid-set that must not reset the show to song 1. Keyed per deployment
 // like the practice store, so /dev/ and prod don't share a show position.
@@ -229,10 +229,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
               </span>)}</span>
             {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
             {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
-            {row.tabMore && <details className="cheat-prog-more" onToggle={refitCheat}>
-              <summary>More fills</summary>
-              <pre className="cheat-prog-tab">{row.tabMore}</pre>
-            </details>}
+            {row.tabMore && <MoreFills tab={row.tabMore} onToggle={refitCheat} />}
           </div>
         </div>)}
       </div>}
@@ -250,6 +247,37 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
       </div>
     </details>
   </div>
+}
+
+/** Extra ASCII fills behind a disclosure. Bottom "Hide fills" stays reachable after
+ *  auto-fit scrolls the summary off-screen; summary itself also relabels when open. */
+function MoreFills({ tab, onToggle }: { tab: string, onToggle: () => void }) {
+  const detailsRef = useRef<HTMLDetailsElement>(null)
+  const [open, setOpen] = useState(false)
+  const hide = () => {
+    const details = detailsRef.current
+    if (!details || !details.open) return
+    details.open = false
+  }
+  return <details
+    className="cheat-prog-more"
+    ref={detailsRef}
+    onToggle={(e) => {
+      const next = e.currentTarget.open
+      setOpen(next)
+      onToggle()
+      if (next) {
+        // After refit shrinks the card, keep the summary on-screen so the top control stays tappable.
+        requestAnimationFrame(() => {
+          detailsRef.current?.querySelector('summary')?.scrollIntoView({ block: 'nearest' })
+        })
+      }
+    }}
+  >
+    <summary>{open ? 'Hide fills' : 'More fills'}</summary>
+    <pre className="cheat-prog-tab">{tab}</pre>
+    <button type="button" className="cheat-prog-hide" onClick={hide}>Hide fills</button>
+  </details>
 }
 
 /** Shared stage chrome strip: tuning / transpose / capo / amp presets / home frets. */

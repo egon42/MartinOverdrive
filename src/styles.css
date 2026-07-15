@@ -151,7 +151,14 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 /* Stage cue tucked under that section's chips; row gap separates sections */
 .cheat-prog-hint{font-size:.68em;color:var(--muted);font-style:italic;line-height:1.25}
 .cheat-prog-tab{margin:2px 0 0;padding:0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.58em;line-height:1.2;letter-spacing:0;white-space:pre;overflow-x:auto;color:#c5cec9;font-style:normal;background:transparent;border:0}
-.cheat-prog-more{margin:4px 0 0}.cheat-prog-more>summary{cursor:pointer;font-size:.62em;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);list-style:none}.cheat-prog-more>summary::-webkit-details-marker{display:none}.cheat-prog-more>summary::before{content:"+ ";color:var(--acid)}.cheat-prog-more[open]>summary::before{content:"− "}.cheat-prog-more .cheat-prog-tab{margin-top:4px}
+.cheat-prog-more{margin:4px 0 0}
+.cheat-prog-more>summary{cursor:pointer;font-size:.62em;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);list-style:none;display:inline-block;padding:6px 0;min-height:1.6em;-webkit-tap-highlight-color:transparent}
+.cheat-prog-more>summary::-webkit-details-marker{display:none}
+.cheat-prog-more>summary::before{content:"+ ";color:var(--acid)}
+.cheat-prog-more[open]>summary::before{content:"− "}
+.cheat-prog-more .cheat-prog-tab{margin-top:4px}
+.cheat-prog-hide{display:block;margin:6px 0 2px;padding:0;border:0;background:none;color:var(--muted);font-size:.62em;font-weight:800;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cheat-prog-hide::before{content:"− ";color:var(--acid)}
 .cheat-prog-chords .chord-chip{font-size:1.05em;padding:2px 8px}
 /* Secondary stage info — collapsed by default so it never taxes chip auto-fit */
 .cheat-more{flex:0 0 auto}
