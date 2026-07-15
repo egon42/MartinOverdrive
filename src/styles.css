@@ -135,7 +135,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 /* Section label above chips — full width for the chord row on a phone */
 .cheat-prog-row{display:flex;flex-direction:column;gap:3px;align-items:stretch}
 .cheat-prog-label{font-size:.55em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800;line-height:1.2}
-.cheat-prog-label-times{color:#fff}
+.cheat-prog-label-times{color:#fff;font-size:1.25em;letter-spacing:.04em}
 .cheat-prog-body{display:flex;flex-direction:column;gap:2px;min-width:0}
 .cheat-prog-chords{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-start}
 .cheat-prog-span{display:inline-flex;gap:6px;align-items:flex-start;flex-wrap:wrap}
