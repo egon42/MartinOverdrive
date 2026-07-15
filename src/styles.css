@@ -348,7 +348,8 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .live-panel p{margin:0;color:#9da79e;font-size:.88rem;line-height:1.5}
 .live-panel label{display:flex;flex-direction:column;gap:6px}
 .live-panel input{background:var(--input);border:1px solid var(--line);border-radius:10px;color:#f5f7ef;padding:.68rem;text-transform:uppercase;letter-spacing:.15em}
-.live-code{font-size:2.3rem;font-weight:900;letter-spacing:.3em;text-align:center;color:var(--acid);font-variant-numeric:tabular-nums;user-select:all;margin-right:-.3em}
+.live-code{appearance:none;border:0;background:transparent;width:100%;padding:0;font:inherit;font-size:2.3rem;font-weight:900;letter-spacing:.3em;text-align:center;color:var(--acid);font-variant-numeric:tabular-nums;user-select:all;margin-right:-.3em;cursor:pointer;touch-action:manipulation}
+.live-code:focus-visible{outline:2px solid var(--acid);outline-offset:4px;border-radius:8px}
 .live-qr{display:grid;place-items:center}
 .live-qr img{border-radius:10px;background:#fff;padding:6px}
 .live-status{font-size:.82rem;font-weight:700}

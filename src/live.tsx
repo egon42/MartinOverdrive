@@ -185,6 +185,7 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
   const { config, connected, followers, leaderPresent, leader, lead, follow, stop } = useLive()
   const [code, setCode] = useState('')
   const [qrDataUrl, setQrDataUrl] = useState('')
+  const [copied, setCopied] = useState<'invite' | 'qr' | null>(null)
   const configured = isBackendConfigured()
 
   const followUrl = config?.role === 'lead' ? `${window.location.origin}${import.meta.env.BASE_URL}?follow=${config.code}#/show` : ''
@@ -195,14 +196,38 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
     return () => { alive = false }
   }, [followUrl])
 
+  useEffect(() => {
+    if (!copied) return
+    const t = window.setTimeout(() => setCopied(null), 1600)
+    return () => window.clearTimeout(t)
+  }, [copied])
+
   const leaderSong = leader ? songs.find((s) => s.id === leader.songId) : undefined
   const handleFollow = () => { if (code.trim()) { follow(code); setCode('') } }
+
+  const copyInvite = () => {
+    if (!config || config.role !== 'lead' || !followUrl) return
+    const text = `Live show code: ${config.code}\n${followUrl}`
+    navigator.clipboard?.writeText(text).then(() => setCopied('invite')).catch(() => {})
+  }
+
+  const copyQr = async () => {
+    if (!qrDataUrl) return
+    try {
+      const blob = await (await fetch(qrDataUrl)).blob()
+      await navigator.clipboard.write([new ClipboardItem({ [blob.type || 'image/png']: blob })])
+      setCopied('qr')
+    } catch {
+      // Image clipboard isn't available everywhere (some mobile browsers) — fall back to the invite text.
+      copyInvite()
+    }
+  }
 
   return <div className="show-picker live-overlay" onClick={onClose}>
     <div className="live-panel" role="dialog" aria-label="Live show sync" onClick={(e) => e.stopPropagation()}>
       {!config && <>
         <div><span className="eyebrow">Live show sync</span><h2>Follow along</h2></div>
-        <p>One phone leads; the rest follow. When the leader turns to the next song, every connected device turns with it. Everyone keeps their own views and settings.</p>
+        <p>One phone leads. Everyone else jumps to the same song when it does. Views and settings stay on each phone.</p>
         {!configured && <p className="live-status">Sync isn’t set up on this build yet. See SYNC-SETUP.md.</p>}
         <div className="live-actions"><button disabled={!configured} onClick={lead}>Lead tonight’s show</button></div>
         <div className="live-divider" />
@@ -213,9 +238,13 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
       </>}
       {config?.role === 'lead' && <>
         <div><span className="eyebrow">Live show sync</span><h2>You’re leading</h2></div>
-        <div className="live-code">{config.code}</div>
+        <button type="button" className="live-code" onClick={copyInvite} title="Copy code and link">{config.code}</button>
         {qrDataUrl && <div className="live-qr"><img src={qrDataUrl} alt="QR code that joins this live show as a follower" width={200} height={200} /></div>}
-        <p>Bandmates: scan this, or open show mode → Live and type the code. Their devices will follow your song changes.</p>
+        <p>Scan the QR, or type the code under Live in show mode.</p>
+        <div className="live-actions">
+          <button type="button" className="secondary" onClick={copyInvite}>{copied === 'invite' ? 'Copied!' : 'Copy code & link'}</button>
+          <button type="button" className="secondary" disabled={!qrDataUrl} onClick={() => { void copyQr() }}>{copied === 'qr' ? 'Copied!' : 'Copy QR'}</button>
+        </div>
         <p className="live-status">{connected
           ? <>Broadcasting · <b>{followers}</b> following</>
           : 'Connecting…'}</p>
@@ -223,8 +252,8 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
       </>}
       {config?.role === 'follow' && <>
         <div><span className="eyebrow">Live show sync</span><h2>Following {config.code}</h2></div>
-        <p className="live-status">{!connected ? 'Connecting…' : !leaderPresent ? 'Connected. Waiting for the leader.' : leaderSong ? <>Leader is on <b>{leaderSong.title}</b></> : 'Leader is live. Waiting for their first song.'}</p>
-        <p>Song changes follow the leader. You can still page ahead; the next leader change snaps you back.</p>
+        <p className="live-status">{!connected ? 'Connecting…' : !leaderPresent ? 'Connected. Waiting for the leader.' : leaderSong ? <>Leader is on <b>{leaderSong.title}</b></> : 'Leader’s connected. Waiting for the first song.'}</p>
+        <p>You’ll jump when the leader does. Page ahead anytime; the next change pulls you back.</p>
         <div className="live-actions">
           {leaderSong && <button onClick={() => { onJump(leaderSong.id); onClose() }}>Go to leader’s song</button>}
           <button className="secondary" onClick={stop}>Stop following</button>
