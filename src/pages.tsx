@@ -11,7 +11,7 @@ import { SyncPanel } from './sync'
 import { LiveOverlay, useLive } from './live'
 import { setOrdered, tonightsSongs } from './setlist'
 import { shapesTabClass, useSettings } from './settings'
-import { statuses, type Song } from './types'
+import { statuses, type PracticeEntry, type Song } from './types'
 
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
 const tunings = ['Standard', 'Drop D']
@@ -34,6 +34,26 @@ const SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
 const SHOW_PINS_KEY = `overdrive-show-pins${SHOW_KEY_SUFFIX}`
 const readPins = (): Record<string, string> => {
   try { const p = JSON.parse(localStorage.getItem(SHOW_PINS_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
+}
+
+/** Resolve a saved show position (song id, or legacy numeric index) to an index in the
+ * walk list. Skipped songs resume at the next active slot after their set position. */
+function resolveShowIndex(saved: string, setSongs: Song[], get: (id: string) => PracticeEntry): number {
+  const byId = setSongs.findIndex((item) => item.id === saved)
+  if (byId >= 0) return byId
+  // Saved song got skipped at soundcheck: resume at the next active song after its
+  // slot (or the last one), not back at song 1 — the whole point of persisting.
+  const full = setOrdered(get)
+  const at = full.findIndex((item) => item.id === saved)
+  if (at >= 0) {
+    for (let i = at + 1; i < full.length; i++) {
+      const idx = setSongs.findIndex((item) => item.id === full[i].id)
+      if (idx >= 0) return idx
+    }
+    return Math.max(0, setSongs.length - 1)
+  }
+  const numeric = Number(saved)
+  return Number.isFinite(numeric) ? Math.max(0, Math.min(setSongs.length - 1, numeric)) : 0
 }
 
 export function Dashboard() {
@@ -80,11 +100,7 @@ export function SongDetail() {
   const [sheetView, setSheetView] = useState<SheetKind | null>(null)
   if (!song) return <PageTitle eyebrow="Not found" title="That song isn’t in this set" copy="Return to the full song list and try another." />
   const transpose = transposeFor(song.id)
-  // Jump straight to this song's stage view: seed the persisted show position, then
-  // enter show mode (Show()'s initializer picks the id up; skipped songs resolve to
-  // the nearest active one).
-  const openInShow = () => localStorage.setItem(SHOW_INDEX_KEY, song.id)
-  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div><Link className="button secondary song-show-link" to="/show" onClick={openInShow}>Stage view ↗</Link></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/>{song.rehearsalNotes && <Field label="Ask the band" value={song.rehearsalNotes}/>}</dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
+  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div><Link className="button secondary song-show-link" to={`/show/${song.id}`}>Stage view ↗</Link></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>At a glance</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Likely role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/>{song.rehearsalNotes && <Field label="Ask the band" value={song.rehearsalNotes}/>}</dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
 }
 
 // Shrinks the sheet's font until it fits the container (height for compact chords,
@@ -231,7 +247,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
           <span className="cheat-prog-label">{renderProgLabel(row.label)}</span>
           <div className="cheat-prog-body">
             <span className="cheat-prog-chords">{row.spans.map((span, s) =>
-              <span className="cheat-prog-span" key={s}>
+              <span className={span.chords.length > 1 ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
                 {span.chords.map((chord, j) =>
                   <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
                 {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
@@ -324,6 +340,8 @@ class ShowSongBoundary extends Component<{ song: Song, onCheatView?: () => void,
 }
 
 export function Show() {
+  const { songId: urlSongId } = useParams()
+  const navigate = useNavigate()
   const { get, patch } = usePractice()
   const live = useLive()
   const following = live.config?.role === 'follow'
@@ -333,50 +351,26 @@ export function Show() {
   // navigation belongs to the leader, whose song must stay findable here even if
   // this device skipped it at soundcheck.
   const setSongs = useMemo(() => following ? setOrdered(get) : tonightsSongs(get), [get, following])
-  // The saved position is the song id (survives set reorders/skips between sessions);
-  // a legacy numeric index from earlier builds still restores as a clamped index.
-  const [index, setIndex] = useState(() => {
-    const saved = localStorage.getItem(SHOW_INDEX_KEY) || ''
-    const byId = setSongs.findIndex((item) => item.id === saved)
-    if (byId >= 0) return byId
-    // Saved song got skipped at soundcheck: resume at the next active song after its
-    // slot (or the last one), not back at song 1 — the whole point of persisting.
-    const full = setOrdered(get)
-    const at = full.findIndex((item) => item.id === saved)
-    if (at >= 0) {
-      for (let i = at + 1; i < full.length; i++) {
-        const idx = setSongs.findIndex((item) => item.id === full[i].id)
-        if (idx >= 0) return idx
-      }
-      return setSongs.length - 1
-    }
-    const numeric = Number(saved)
-    return Number.isFinite(numeric) ? Math.max(0, Math.min(setSongs.length - 1, numeric)) : 0
-  })
+  // Song id lives in the URL (`/show/:songId`) so the browser back/forward buttons
+  // step through songs instead of leaving show mode. Bare `/show` (nav links) falls
+  // back to the persisted id; skipped/missing ids resume at the next active slot.
+  const index = resolveShowIndex(urlSongId || localStorage.getItem(SHOW_INDEX_KEY) || '', setSongs, get)
   const wakeLock = useRef<any>(null); const song = setSongs[Math.min(index, setSongs.length - 1)]
-  // If tonight's set changes under us (a sync pull after a soundcheck edit on another
-  // device), keep following the song that was on screen — or clamp if it was removed.
-  // Without this, index can point past the end forever: "12 / 5" and dead nav buttons.
-  const shownIdRef = useRef(song.id)
+  // Canonicalize the URL onto the resolved song (bare `/show`, skipped id, set-list
+  // edits that drop the current song). replace — don't invent a history entry for a
+  // redirect the user didn't navigate.
   useEffect(() => {
-    const at = setSongs.findIndex((item) => item.id === shownIdRef.current)
-    if (at >= 0) { setIndex(at); return }
-    // The shown song fell out of the walk list — e.g. it was skipped mid-set on another
-    // device, or the user stopped following the live leader while peeking at a skipped
-    // song. Resume at the next song after its slot in full set order (the same walk the
-    // index initializer does), not at a blindly clamped index.
-    const full = setOrdered(get)
-    const from = full.findIndex((item) => item.id === shownIdRef.current)
-    if (from >= 0) {
-      for (let i = from + 1; i < full.length; i++) {
-        const idx = setSongs.findIndex((item) => item.id === full[i].id)
-        if (idx >= 0) { setIndex(idx); return }
-      }
-      setIndex(setSongs.length - 1)
-      return
-    }
-    setIndex((i) => Math.max(0, Math.min(setSongs.length - 1, i)))
-  }, [setSongs, get])
+    if (!song) return
+    if (urlSongId !== song.id) navigate(`/show/${song.id}`, { replace: true })
+  }, [song, urlSongId, navigate])
+  // Push (or replace) a history entry when turning the set. Every in-show next/prev
+  // goes through here so Back returns to the previous song.
+  const goTo = (i: number, replace = false) => {
+    const clamped = Math.max(0, Math.min(setSongs.length - 1, i))
+    const id = setSongs[clamped]?.id
+    if (!id || (id === urlSongId && !replace)) return
+    navigate(`/show/${id}`, { replace })
+  }
   const sheets = sheetsFor(song.id)
   const { settings, isFingeringOnly, toggleFingeringOnly } = useSettings()
   const cheatShapes = isFingeringOnly(song.id, 'cheat')
