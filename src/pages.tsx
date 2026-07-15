@@ -4,7 +4,7 @@ import { songs } from './data'
 import { AmpPresetField, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, HomeFretBadges, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
-import { cheatRowsFor, progressionFor } from './progressions'
+import { cheatRowsFor, progressionFor, type CheatChordSpan } from './progressions'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
@@ -207,7 +207,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
     ? cheatRowsFor(custom)
     : derived?.map((row) => ({
         label: row.label,
-        spans: row.chords.map((chord) => ({ chords: [chord], ghosts: [false], shapes: [] as string[], times: 1 })),
+        spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], shapes: [], times: 1 })),
         hint: undefined as string | undefined,
         tab: undefined as string | undefined,
         tabMore: undefined as string | undefined,
@@ -231,7 +231,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
           <span className="cheat-prog-label">{renderProgLabel(row.label)}</span>
           <div className="cheat-prog-body">
             <span className="cheat-prog-chords">{row.spans.map((span, s) =>
-              <span className={span.chords.length > 1 ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
+              <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
                 {span.chords.map((chord, j) =>
                   <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
                 {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}

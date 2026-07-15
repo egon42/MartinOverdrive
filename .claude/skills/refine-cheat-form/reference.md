@@ -16,7 +16,8 @@ Do **not** move a uniform form `Verse ×2` into chords `(Em C D) ×2` just to "u
 
 - Plain: `Em C D`
 - Group + repeat: `(E A) ×3` (parens required; `×`/`x`/`X`; N≥2)
-- Phrase groups without repeat (times 1): `(E A B A B) (E A B A E)`
+- Phrase groups without repeat (times 1): `(E A B A B) (E A B A E)` — same row; wrap only if narrow
+- Forced line break: `(C G Bb F Am G C) | (C G Bb F Am G Ab)` — `|` starts the next span on a new row
 - Mixed: `Am (E A) ×2 G`
 - Ghost (show for beat, don't play): `~A` — e.g. `F# ~A B E B A`
 

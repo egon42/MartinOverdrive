@@ -57,7 +57,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **15-dani-california** — Intro×2 → Verse×8 → Chorus → Interlude×2 → Verse×4 → Chorus → Bridge×4 → Verse×4 → Chorus×2 → Solo/Outro; Intro/Interlude/Solo = verse pattern; Chorus `(F C Dm)×4`
 - **16-teenage-dirtbag** — **deferred:** form on `dev` (`81f287e`) — Intro×2 → (Verse×3 Pre×2 Chorus×3)×2 → Bridge×2 → Verse×3 → Chorus×3 → Bridge×2 → Outro walk-down; confirm ×N / soft chorus / bridge live
 - **17-the-pretender** — Intro×2 → Verse×2 → Heavy → Pre×2 → Chorus×3 → Interlude → Pre → Interlude×4 → Outro×4 → Verse×2 → Chorus×3 → Outro×4; Heavy `A5 F#5 F5`
-- **18-here-it-goes-again** — **deferred:** form on `dev` — Intro C; Verse×3; Pre `(E Am)×2 G`; Chorus `(C G Bb F Am G C)(C G Bb F Am G Ab)`; Bridge×2 → Verse×3 (no Pre) → Chorus → Outro; confirm ×N / outro live
+- **18-here-it-goes-again** — **deferred:** form on `dev` — Intro C; Verse×3; Pre `(E Am)×2 G`; Chorus `(C G Bb F Am G C) | (C G Bb F Am G Ab)`; Bridge×2 → Verse×3 (no Pre) → Chorus → Outro; confirm ×N / outro live
 - **19-purple-rain** — **deferred (sheet first pass):** Intro + V/C×3 → Solo → Outro (no post-solo Chorus); confirm live
 - **20-when-i-come-around** — **deferred (sheet first pass):** Intro → V → C → V → C → Solo → Chorus×2; confirm live
 - **21-the-middle** — **skipped:** whole-song `D A G` is fine for now (user)

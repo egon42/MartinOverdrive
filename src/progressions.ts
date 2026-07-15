@@ -20,6 +20,8 @@ import data from './data/progressions.json'
 // When the whole section is N plays of one cycle, put ×N on the form label instead
 // ("Verse ×4" + chords "Em C D") — that reads clearer on stage than chord-chip ×N.
 // Prefix a chord with ~ to keep the beat chip visible but mark it "don't play" ("F# ~A B").
+// Use `|` to force a line break before the next span ("(C G Bb F Am G C) | (C G Bb F Am G Ab)").
+// Parentheses alone do NOT stack lines — only `|` (or natural wrap) does.
 export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string; tab?: string; tabMore?: string }
 export interface SongProgression { sections: ProgSection[]; form?: string[]; capo?: string }
 
@@ -30,6 +32,8 @@ export interface CheatChordSpan {
   ghosts: boolean[]
   shapes: string[]
   times: number
+  /** Force this span onto a new row (from `|` in the chord string). */
+  breakBefore?: boolean
 }
 
 export interface CheatRow {
@@ -55,14 +59,15 @@ export function formStepBase(label: string): string {
 /**
  * Parse cheat-card chord notation into display spans.
  * - "Em C G D" → one span per chord (times 1), or keep as singles
- * - "(E A) ×3 (E G A) ×2" → two grouped spans
+ * - "(E A) ×3 (E G A) ×2" → two grouped spans (same row; wrap only if narrow)
+ * - "A B | C D" → line break before the span after `|`
  * - Bare chords may mix with groups: "Am (E A) ×2 G"
  * - "~A" / "(E ~A)" → ghost chip (shown for beat, don't play)
  * Throws on unbalanced parens, empty groups, or ×N not attached to a group.
  */
 export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
   const shapeTokens = shapes.trim() ? shapes.trim().split(/\s+/).filter(Boolean) : []
-  const spans: { chords: string[]; ghosts: boolean[]; times: number }[] = []
+  const spans: { chords: string[]; ghosts: boolean[]; times: number; breakBefore?: boolean }[] = []
   const src = chords.trim()
   if (!src) return []
 
@@ -83,10 +88,11 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
     return { chords: chordsOut, ghosts: ghostsOut }
   }
 
-  // Tokenize: "(...)", "×N"/"xN", or a bare chord-ish token
-  const re = /\(([^)]*)\)|[×xX]\s*(\d+)|([^\s×xX()]+)/gu
+  // Tokenize: "(...)", "×N"/"xN", "|", or a bare chord-ish token
+  const re = /\(([^)]*)\)|[×xX]\s*(\d+)|\||([^\s×xX|()]+)/gu
   let match: RegExpExecArray | null
   let lastWasGroup = false
+  let breakBeforeNext = false
   let cursor = 0
 
   while ((match = re.exec(src)) !== null) {
@@ -94,10 +100,16 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
     if (gap) throw new Error(`unexpected "${gap}" in "${chords}"`)
     cursor = match.index + match[0].length
 
+    if (match[0] === '|') {
+      breakBeforeNext = true
+      lastWasGroup = false
+      continue
+    }
     if (match[1] !== undefined) {
       const group = splitTokens(match[1])
       if (!group.chords.length) throw new Error(`empty chord group in "${chords}"`)
-      spans.push({ ...group, times: 1 })
+      spans.push({ ...group, times: 1, ...(breakBeforeNext ? { breakBefore: true } : {}) })
+      breakBeforeNext = false
       lastWasGroup = true
       continue
     }
@@ -110,7 +122,8 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
       continue
     }
     const one = splitTokens(match[3])
-    spans.push({ ...one, times: 1 })
+    spans.push({ ...one, times: 1, ...(breakBeforeNext ? { breakBefore: true } : {}) })
+    breakBeforeNext = false
     lastWasGroup = false
   }
   const trailing = src.slice(cursor).trim()
@@ -120,7 +133,13 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
   return spans.map((span) => {
     const slice = shapeTokens.slice(shapeAt, shapeAt + span.chords.length)
     shapeAt += span.chords.length
-    return { chords: span.chords, ghosts: span.ghosts, times: span.times, shapes: slice }
+    return {
+      chords: span.chords,
+      ghosts: span.ghosts,
+      times: span.times,
+      shapes: slice,
+      ...(span.breakBefore ? { breakBefore: true } : {}),
+    }
   })
 }
 
