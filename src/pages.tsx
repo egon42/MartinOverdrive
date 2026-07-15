@@ -195,7 +195,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
     ? cheatRowsFor(custom)
     : derived?.map((row) => ({
         label: row.label,
-        spans: row.chords.map((chord) => ({ chords: [chord], shapes: [] as string[], times: 1 })),
+        spans: row.chords.map((chord) => ({ chords: [chord], ghosts: [false], shapes: [] as string[], times: 1 })),
         hint: undefined as string | undefined,
         tab: undefined as string | undefined,
         tabMore: undefined as string | undefined,
@@ -225,7 +225,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
         <span className="cheat-prog-chords">{row.spans.map((span, s) =>
           <span className="cheat-prog-span" key={s}>
             {span.chords.map((chord, j) =>
-              <ChordChip name={chord} curatedShape={span.shapes[j]} surface="cheat" songId={song.id} key={j} />)}
+              <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
             {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
           </span>)}</span>
         {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}

@@ -43,4 +43,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **01-welcome-home** — Intro Em; Verse ×4; Bridge ×2 → Outro (verse pattern); Chorus `(F Am C)×2`
 - **02-all-the-small-things** — Intro `C G F G` ×2; Verse ×4/×2; Pre-Chorus ringing C; Chorus `(C G F)×2`; after Interlude → Pre-Chorus/Bridge/Outro (no Nana); more fixes deferred pending guitar
 - **03-a-little-less-conversation** — Intro ×3 A D; Verse ×4; Chorus phrase groups; Bridge `(A)×3 C D E`; Verse ×2 after Bridge then Chorus; other ×N still provisional
-- **04-i-believe-in-a-thing-called-love** — Intro ×2; post-solo Verse (in)→Verse→Bridge−B; Solo ×4; Clap `(E A F# B)×3`; Outro `(E A F# B)×4 E`
+- **04-i-believe-in-a-thing-called-love** — Intro ×2; Verse (in) `F# ~A B…` + Bridge−B `…~B`; Solo ×4; Clap with C#m D; Outro `(E A F# B)×4 E`; ghost `~` chips for skipped beats

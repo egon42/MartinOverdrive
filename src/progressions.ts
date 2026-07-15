@@ -19,12 +19,15 @@ import data from './data/progressions.json'
 // Prefer grouped repeats for mixed tiles inside one section ("(E A) ×3 (E G A) ×2").
 // When the whole section is N plays of one cycle, put ×N on the form label instead
 // ("Verse ×4" + chords "Em C D") — that reads clearer on stage than chord-chip ×N.
+// Prefix a chord with ~ to keep the beat chip visible but mark it "don't play" ("F# ~A B").
 export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string; tab?: string; tabMore?: string }
 export interface SongProgression { sections: ProgSection[]; form?: string[]; capo?: string }
 
 /** One display unit on the cheat chord row: chord chips, optionally with a ×N badge. */
 export interface CheatChordSpan {
   chords: string[]
+  /** Parallel to `chords`: true = show chip for beat, don't play. */
+  ghosts: boolean[]
   shapes: string[]
   times: number
 }
@@ -54,13 +57,31 @@ export function formStepBase(label: string): string {
  * - "Em C G D" → one span per chord (times 1), or keep as singles
  * - "(E A) ×3 (E G A) ×2" → two grouped spans
  * - Bare chords may mix with groups: "Am (E A) ×2 G"
+ * - "~A" / "(E ~A)" → ghost chip (shown for beat, don't play)
  * Throws on unbalanced parens, empty groups, or ×N not attached to a group.
  */
 export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
   const shapeTokens = shapes.trim() ? shapes.trim().split(/\s+/).filter(Boolean) : []
-  const spans: { chords: string[]; times: number }[] = []
+  const spans: { chords: string[]; ghosts: boolean[]; times: number }[] = []
   const src = chords.trim()
   if (!src) return []
+
+  const splitTokens = (raw: string) => {
+    const chordsOut: string[] = []
+    const ghostsOut: boolean[] = []
+    for (const token of raw.trim().split(/\s+/).filter(Boolean)) {
+      if (token.startsWith('~')) {
+        const name = token.slice(1)
+        if (!name) throw new Error(`empty ghost chord in "${chords}"`)
+        chordsOut.push(name)
+        ghostsOut.push(true)
+      } else {
+        chordsOut.push(token)
+        ghostsOut.push(false)
+      }
+    }
+    return { chords: chordsOut, ghosts: ghostsOut }
+  }
 
   // Tokenize: "(...)", "×N"/"xN", or a bare chord-ish token
   const re = /\(([^)]*)\)|[×xX]\s*(\d+)|([^\s×xX()]+)/gu
@@ -74,9 +95,9 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
     cursor = match.index + match[0].length
 
     if (match[1] !== undefined) {
-      const groupChords = match[1].trim().split(/\s+/).filter(Boolean)
-      if (!groupChords.length) throw new Error(`empty chord group in "${chords}"`)
-      spans.push({ chords: groupChords, times: 1 })
+      const group = splitTokens(match[1])
+      if (!group.chords.length) throw new Error(`empty chord group in "${chords}"`)
+      spans.push({ ...group, times: 1 })
       lastWasGroup = true
       continue
     }
@@ -88,7 +109,8 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
       lastWasGroup = false
       continue
     }
-    spans.push({ chords: [match[3]], times: 1 })
+    const one = splitTokens(match[3])
+    spans.push({ ...one, times: 1 })
     lastWasGroup = false
   }
   const trailing = src.slice(cursor).trim()
@@ -98,15 +120,19 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
   return spans.map((span) => {
     const slice = shapeTokens.slice(shapeAt, shapeAt + span.chords.length)
     shapeAt += span.chords.length
-    return { chords: span.chords, times: span.times, shapes: slice }
+    return { chords: span.chords, ghosts: span.ghosts, times: span.times, shapes: slice }
   })
 }
 
-/** Flatten spans to the sounded chord list (groups expanded by times). */
+/** Flatten spans to the sounded chord list (groups expanded by times; ghosts omitted). */
 export function expandChordSpans(spans: CheatChordSpan[]): string[] {
   const out: string[] = []
   for (const span of spans) {
-    for (let i = 0; i < span.times; i++) out.push(...span.chords)
+    for (let i = 0; i < span.times; i++) {
+      for (let j = 0; j < span.chords.length; j++) {
+        if (!span.ghosts[j]) out.push(span.chords[j])
+      }
+    }
   }
   return out
 }
@@ -121,11 +147,16 @@ function sectionToRow(label: string, section: ProgSection | undefined): CheatRow
     // Fall back to naive split so a bad curated string still shows something on stage
     const shapeTokens = shapes.trim() ? shapes.trim().split(/\s+/).filter(Boolean) : []
     spans = chords.trim()
-      ? chords.trim().split(/\s+/).filter(Boolean).map((c, i) => ({
-          chords: [c],
-          times: 1,
-          shapes: shapeTokens[i] ? [shapeTokens[i]] : [],
-        }))
+      ? chords.trim().split(/\s+/).filter(Boolean).map((c, i) => {
+          const ghost = c.startsWith('~')
+          const name = ghost ? c.slice(1) : c
+          return {
+            chords: [name || c],
+            ghosts: [ghost && !!name],
+            times: 1,
+            shapes: shapeTokens[i] ? [shapeTokens[i]] : [],
+          }
+        })
       : []
   }
   return {

@@ -50,7 +50,7 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 // Optional `curatedShape` (cheat-card progressions) overrides the generated tab fingering.
 // `surface` picks which Settings prefs apply (Cheat vs Chords are independent).
 // `songId` enables the per-song "Shapes" toggle (fingering-only chips).
-export function ChordChip({ name, curatedShape, surface = 'chords', songId }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string }) {
+export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghost = false }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string; ghost?: boolean }) {
   const { settings, isFingeringOnly } = useSettings()
   const prefs = settings[surface]
   const fingeringOnly = !!songId && isFingeringOnly(songId, surface)
@@ -98,6 +98,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId }: { 
   const style: CSSProperties = box
     ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
     : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
+  const label = ghost ? `${name} (don't play)` : name
   const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`}>
     {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
   </span>
@@ -107,16 +108,18 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId }: { 
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) }
     },
   }
+  const chipClass = ghost ? 'chord-chip chord-chip--ghost' : 'chord-chip'
   // Per-song Shapes toggle: replace the chord name with a vertical tab chip (still tappable).
   if (fingering && fingeringOnly) {
     return <span className="chord-chip-wrap" ref={ref}>
-      <b className="chord-chip chord-chip--fingering" role="button" tabIndex={0} aria-expanded={open}
-        aria-label={name} {...openHandlers}>{formatVerticalFingering(fingering)}</b>
+      <b className={`${chipClass} chord-chip--fingering`} role="button" tabIndex={0} aria-expanded={open}
+        aria-label={label} title={ghost ? "Don't play — keep the beat" : undefined} {...openHandlers}>{formatVerticalFingering(fingering)}</b>
       {pop}
     </span>
   }
   const chip = <>
-    <b className="chord-chip" role="button" tabIndex={0} aria-expanded={open} {...openHandlers}>{name}</b>
+    <b className={chipClass} role="button" tabIndex={0} aria-expanded={open} aria-label={label}
+      title={ghost ? "Don't play — keep the beat" : undefined} {...openHandlers}>{name}</b>
     {pop}
   </>
   // Ref stays on the chip-only wrap so the popover aims at the name, not the fingering.

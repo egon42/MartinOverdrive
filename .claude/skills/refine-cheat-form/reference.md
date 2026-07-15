@@ -18,8 +18,9 @@ Do **not** move a uniform form `Verse ×2` into chords `(Em C D) ×2` just to "u
 - Group + repeat: `(E A) ×3` (parens required; `×`/`x`/`X`; N≥2)
 - Phrase groups without repeat (times 1): `(E A B A B) (E A B A E)`
 - Mixed: `Am (E A) ×2 G`
+- Ghost (show for beat, don't play): `~A` — e.g. `F# ~A B E B A`
 
-Shapes: one token per **written** chord name (group contents once), not the expanded play-through.
+Shapes: one token per **written** chord name (group contents once; include ghosts), not the expanded play-through.
 
 ## Welcome Home (worked example)
 
