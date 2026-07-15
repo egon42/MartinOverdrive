@@ -304,22 +304,31 @@ function ThemeFields() {
 }
 
 export function SettingsPage() {
+  const { settings } = useSettings()
+  const presetLabel = settings.theme.preset === 'custom'
+    ? 'Custom'
+    : THEME_PRESETS[settings.theme.preset].label
   return <>
     <header className="page-title compact">
       <span className="eyebrow">Display preferences stay on this device</span>
       <h1>Settings</h1>
     </header>
     <section className="panel settings-panel">
-      <span className="eyebrow">Look</span>
-      <h2>Colors</h2>
-      <p className="settings-lead">Pick a preset or customize each surface. Amp bank chips (amber / green / red) stay fixed — they match the hardware.</p>
-      <ThemeFields />
-    </section>
-    <section className="panel settings-panel">
       <span className="eyebrow">Chord chips</span>
       <h2>Chord fingerings</h2>
       <FingeringFields surface="cheat" label="Cheat" />
       <FingeringFields surface="chords" label="Chords" />
     </section>
+    <details className="settings-colors-disclosure">
+      <summary>
+        <span className="eyebrow">Look</span>
+        <strong>Colors</strong>
+        <span className="settings-colors-current">{presetLabel}</span>
+      </summary>
+      <div className="settings-colors-body">
+        <p className="settings-lead">Pick a preset or customize each surface. Amp bank chips (amber / green / red) stay fixed — they match the hardware.</p>
+        <ThemeFields />
+      </div>
+    </details>
   </>
 }
