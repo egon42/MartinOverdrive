@@ -638,35 +638,51 @@
   "18-here-it-goes-again": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "C",
+        "shapes": "-355--",
+        "hint": "Chug; C–G–C then one verse cycle into V1"
+      },
+      {
         "section": "Verse",
         "chords": "C G Bb F",
         "shapes": "-355-- 355--- -133-- 133---"
       },
       {
         "section": "Pre-Chorus",
-        "chords": "E Am G",
+        "chords": "(E Am) ×2 G",
         "shapes": "022--- -022-- 355---"
       },
       {
         "section": "Chorus",
-        "chords": "C G Bb F Am G C",
-        "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355--"
+        "chords": "(C G Bb F) (Am G C) (C G Bb F Am) (G Ab)",
+        "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355-- -355-- 355--- -133-- 133--- 577--- 355--- 466---",
+        "hint": "Ab tag, then G into next"
       },
       {
         "section": "Bridge",
         "chords": "Eb Bb C G Ab",
         "shapes": "-688-- 688--- -355-- 355--- 466---"
+      },
+      {
+        "section": "Outro",
+        "chords": "(C G Bb F Am G) ×3",
+        "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
+        "hint": "Ab → C to close"
       }
     ],
     "form": [
-      "Verse",
+      "Intro",
+      "Verse ×3",
       "Pre-Chorus",
       "Chorus",
-      "Verse",
+      "Verse ×3",
       "Pre-Chorus",
       "Chorus",
-      "Bridge",
-      "Chorus"
+      "Bridge ×2",
+      "Verse ×3",
+      "Chorus",
+      "Outro"
     ]
   },
   "19-purple-rain": {
