@@ -4,7 +4,7 @@ import { songs } from './data'
 import { AmpPresetField, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, HomeFretBadges, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
-import { progressionFor } from './progressions'
+import { cheatRowsFor, progressionFor } from './progressions'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
@@ -189,9 +189,11 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   const custom = progressionFor(song.id)
   const transpose = transposeFor(song.id)
   const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
+  // When `form` is set, rows follow that roadmap (labels like "Verse ×4"); otherwise
+  // unique `sections` order. Fills always append last.
   const rows = custom
-    ? custom.sections.map((s) => ({ label: s.section, chords: s.chords.split(/\s+/).filter(Boolean), shapes: s.shapes ? s.shapes.split(/\s+/).filter(Boolean) : [], hint: s.hint, tab: s.tab, tabMore: s.tabMore }))
-    : derived?.map((row) => ({ ...row, shapes: [] as string[], hint: undefined as string | undefined, tab: undefined as string | undefined, tabMore: undefined as string | undefined }))
+    ? cheatRowsFor(custom)
+    : derived?.map((row) => ({ label: row.label, chords: row.chords, shapes: [] as string[], hint: undefined as string | undefined, tab: undefined as string | undefined, tabMore: undefined as string | undefined }))
   // Re-run the parent's height auto-fit after More fills opens/closes — otherwise the
   // newly revealed tabs overflow (or leave empty space) until the next resize.
   const refitCheat = () => {

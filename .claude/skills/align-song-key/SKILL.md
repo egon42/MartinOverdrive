@@ -46,11 +46,17 @@ phantom chorus `D` that a bare-stub cheat had but the actual chart doesn't).
 
 Structure, keyed by songId (see `src/progressions.ts` for the full contract):
 ```json
-"29-ain-t-goin-down-til-the-sun-comes-up": { "sections": [
-  { "section": "Verse",  "chords": "G C G D G",     "shapes": "320003 -32010 320003 --0232 320003" },
-  { "section": "Chorus", "chords": "C Bb G Bb C G", "shapes": "-32010 -13331 320003 -13331 -32010 320003" }
-] }
+"29-ain-t-goin-down-til-the-sun-comes-up": {
+  "form": ["Verse ×2", "Chorus", "Verse", "Chorus ×2"],
+  "sections": [
+    { "section": "Verse",  "chords": "G C G D G",     "shapes": "320003 -32010 320003 --0232 320003" },
+    { "section": "Chorus", "chords": "C Bb G Bb C G", "shapes": "-32010 -13331 320003 -13331 -32010 320003" }
+  ]
+}
 ```
+- `form` (optional) — linear song roadmap with repeats (`×N` or `xN`). The cheat card
+  renders rows in this order; each label's base name looks up chords in `sections`.
+  Prefer `form` whenever section order is easy to lose on stage.
 - `chords` — space-separated **one-cycle** progression for the section (collapse repeats).
 - `shapes` (optional) — space-separated 6-char guitar fingerings, **aligned 1:1** with
   `chords`. Order **low-E → high-e**; digit = fret, `-` = string not played.

@@ -1,157 +1,867 @@
 {
-  "01-welcome-home": { "sections": [
-    { "section": "Verse", "chords": "Em C D" },
-    { "section": "Chorus", "chords": "F Am C F Am C" },
-    { "section": "Bridge", "chords": "F Am G F" }
-  ] },
-  "02-all-the-small-things": { "sections": [
-    { "section": "Intro", "chords": "C F G", "shapes": "-355-- 133--- 355---" },
-    { "section": "Verse", "chords": "C G F G", "shapes": "-355-- 355--- 133--- 355---" },
-    { "section": "Pre-Chorus", "chords": "C G F C", "shapes": "-355-- 355--- 133--- -355--" },
-    { "section": "Chorus", "chords": "C G F", "shapes": "-355-- 355--- 133---" },
-    { "section": "Interlude", "chords": "C F G", "shapes": "-355-- 133--- 355---" }
-  ] },
-  "03-a-little-less-conversation": { "sections": [
-    { "section": "Verse", "chords": "A D" },
-    { "section": "Chorus", "chords": "A C D G A E A D" },
-    { "section": "Bridge", "chords": "A C D E" }
-  ] },
-  "04-i-believe-in-a-thing-called-love": { "sections": [
-    { "section": "Verse", "chords": "F# A B A E B A", "shapes": "244--- -022-- -244-- -022-- 022--- -244-- -022--" },
-    { "section": "Chorus", "chords": "E A F# B C#m D", "shapes": "022--- -022-- 244--- -244-- -466-- -577--" },
-    { "section": "Bridge", "chords": "E F#m A A# B", "shapes": "022--- 244--- 577--- 688--- 799---" }
-  ] },
-  "05-thunderstruck": { "sections": [
-    { "section": "Riff", "chords": "B5", "shapes": "-244--", "hint": "Lead plays the one-string riff on B: 4-0-7-0 then 5-0-8-0 vs open B, walking down 12-10-9-7-5-4 (rhythm rests until the chug)" },
-    { "section": "Verse", "chords": "B5", "shapes": "-244--", "hint": "Palm-muted B5 chug under the vocal" },
-    { "section": "Pre-Chorus", "chords": "B5 E5 B5 A5 E5", "shapes": "-244-- 022--- -244-- -022-- 022---" },
-    { "section": "Chorus", "chords": "B5 A5 E5 A5 E5", "shapes": "-244-- -022-- 022--- -022-- 022---" },
-    { "section": "Solo", "chords": "E5 B5 A5", "shapes": "022--- -244-- -022--" }
-  ] },
-  "06-don-t-stop-believin": { "sections": [
-    { "section": "Verse", "chords": "E B C#m A E B G#m A", "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--" },
-    { "section": "Pre-Chorus", "chords": "A E B" },
-    { "section": "Chorus", "chords": "E B C#m A", "shapes": "022--- -244-- -466-- -022--" }
-  ] },
-  "07-tribute": { "sections": [
-    { "section": "Verse", "chords": "Am G F" },
-    { "section": "Rock part", "chords": "D F C G F" },
-    { "section": "Tribute refrain", "chords": "Am G Am" },
-    { "section": "Chorus", "chords": "Am G D F" },
-    { "section": "Outro", "chords": "E F G E F" }
-  ] },
-  "08-while-my-guitar-gently-weeps": { "sections": [
-    { "section": "Verse", "chords": "Am Am/G D/F# Fmaj7 Am G D E" },
-    { "section": "Verse (2nd ending)", "chords": "Am G C E" },
-    { "section": "Bridge", "chords": "A C#m F#m C#m Bm E" }
-  ] },
-  "09-pride-and-joy": { "sections": [
-    { "section": "12-bar shuffle in E", "chords": "E7 A7 B7", "hint": "Swung open-position boogie: alternate 5th/6th (E: A-str 2-4, A: D-str 2-4, B7 barre); b3-to-3 hammer turnaround" }
-  ] },
-  "10-zombie": { "sections": [
-    { "section": "Whole song", "chords": "Em C G D", "hint": "Verses: quiet clean arpeggio over the same loop; chorus: big open strums (let the top strings ring)" }
-  ] },
-  "11-hunger-strike": { "sections": [
-    { "section": "Verse / Chorus", "chords": "G A7sus4 G Cadd9" },
-    { "section": "Interlude", "chords": "G Am Bm Cadd9" },
-    { "section": "Bridge", "chords": "D5 E5 D5 E5 Emadd9", "hint": "Record riffs this low in Drop D; in Standard grab D5 x577xx and E5 022xxx" }
-  ] },
-  "12-s-o-b": { "sections": [
-    { "section": "Verse", "chords": "E A B" },
-    { "section": "Chorus", "chords": "E A E B E A B A E" }
-  ] },
-  "13-save-a-horse-ride-a-cowboy": { "sections": [
-    { "section": "Verse", "chords": "E A" },
-    { "section": "Chorus", "chords": "E A E G A" }
-  ] },
-  "14-sweet-home-alabama": { "sections": [
-    { "section": "Whole song", "chords": "D C G", "hint": "Picked D–C–G groove; keep the top strings ringing" },
-    { "section": "Fills", "chords": "", "tab": "Turnaround (D–C–G)\ne|------------------------|\nB|----3-3-----3-3----3-3--|\nG|----2-2-----0-0----0-0--|\nD|0-0-0---------0----0-0--|\nA|--------3-3------0h2----|\nE|----------------3-3-----|\n\nChorus stabs\ne|------------------|\nB|------------------|\nG|------------------|\nD|--7-9-7---5-7-5-5-|\nA|5-5-5-5-3-3-3-3-3-|\nE|------------------|", "tabMore": "Interlude climb\ne|-------------------------------|\nB|-------------------------------|\nG|--------7-(7)-7---------5-5----|\nD|--------7-(7)-7---------5-5----|\nA|7h-8h-9---------9/-5h-7-----7/-|\nE|-------------------------------|\n\nG pull into next cycle\ne|----------------|\nB|----3-3-----3---|\nG|----0-0-----0---|\nD|----0-0-----0---|\nA|----------------|\nE|3-3-----3-3-----|" }
-  ] },
-  "15-dani-california": { "sections": [
-    { "section": "Verse", "chords": "Am G Dm Am", "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr) — mute between hits" },
-    { "section": "Chorus", "chords": "F C Dm" },
-    { "section": "Bridge", "chords": "Bm G F#" }
-  ] },
-  "16-teenage-dirtbag": { "sections": [
-    { "section": "Verse", "chords": "E B E A", "shapes": "022--- -244-- 022--- -022--" },
-    { "section": "Pre-Chorus", "chords": "C#m A B", "shapes": "-466-- -022-- -244--" },
-    { "section": "Chorus", "chords": "E A B C#m G#m", "shapes": "022--- -022-- -244-- -466-- 466---" },
-    { "section": "Bridge", "chords": "E Asus2 C#m G#m A B" }
-  ] },
-  "17-the-pretender": { "sections": [
-    { "section": "Verse", "chords": "Am D/F#", "hint": "Quiet intro/verse: picked Am arpeggio, bass walking A-B-C-A then F#-G-F# underneath" },
-    { "section": "Pre-Chorus", "chords": "A5 F#5 F5 D5 E5 F#5 G5" },
-    { "section": "Chorus", "chords": "A5 F#5 F5", "shapes": "577--- 244--- 133---" },
-    { "section": "Interlude", "chords": "Am Am6 Am7 Am6" },
-    { "section": "Outro (who are you?)", "chords": "A5 Am7" }
-  ] },
-  "18-here-it-goes-again": { "sections": [
-    { "section": "Verse", "chords": "C G Bb F", "shapes": "-355-- 355--- -133-- 133---" },
-    { "section": "Pre-Chorus", "chords": "E Am G", "shapes": "022--- -022-- 355---" },
-    { "section": "Chorus", "chords": "C G Bb F Am G C", "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355--" },
-    { "section": "Bridge", "chords": "Eb Bb C G Ab", "shapes": "-688-- 688--- -355-- 355--- 466---" }
-  ] },
-  "19-purple-rain": { "sections": [
-    { "section": "Verse", "chords": "G Em7 D C" },
-    { "section": "Chorus", "chords": "C G Em7 D G" },
-    { "section": "Fills", "chords": "", "tab": "Verse walk into D\ne|----------------|\nB|----------------|\nG|----2---2-------|\nD|----0---0-----2-|\nA|------------4---|\nE|2-2-2-2-2-2-----|\n\nG arp tail (into Em)\ne|3-----3-3---|\nB|3-(3)-3-3---|\nG|0-(0)---0-2-|\nD|0-------0-0-|\nA|------------|\nE|3-------3-3-|", "tabMore": "Chorus C voicing (push)\ne|------3--(3)----3----|\nB|------5--(5)----5----|\nG|------7--(7)----7----|\nD|------5---------5----|\nA|3-3-3---------3------|\nE|---------------------|\n\nOutro / slow-down tag\ne|--------------|\nB|--------------|\nG|--------------|\nD|------5-------|\nA|--------------|\nE|3-0-2---------|" }
-  ] },
-  "20-when-i-come-around": { "sections": [
-    { "section": "Verse", "chords": "G5 D5 Em C5", "shapes": "355--- -577-- -799-- -355--" },
-    { "section": "Chorus", "chords": "Am C5 Am C5 G5 D5 Em C5", "shapes": "-022-- -355-- -022-- -355-- 355--- -577-- -799-- -355--", "hint": "Walk the roots up A-B-C (A-str 0-2-3) into each chorus line (passing B5 is in the tab)" }
-  ] },
-  "21-the-middle": { "sections": [
-    { "section": "Whole song", "chords": "D A G", "shapes": "000--- 777--- 555---" }
-  ] },
-  "22-dream-on": { "sections": [
-    { "section": "Verse", "chords": "Em Em7 Em6 Am6" },
-    { "section": "Pre-Chorus", "chords": "Em6 B7sus4 B7 Cmaj7 C#7 B7" },
-    { "section": "Chorus", "chords": "Em D C D Em" },
-    { "section": "Climax", "chords": "Am B5 C E Em" },
-    { "section": "Fills", "chords": "", "tab": "Chorus signature (between hits)\ne|----|----|----|----|\nB|----|----|----|----|\nG|4-2-|0-2-|4-2-|0-2-|\nD|----|----|----|----|\nA|----|----|----|----|\nE|----|----|----|----|\n\nVerse climb\ne|3---5---7---5-3-5-|\nB|5---5---5---5-5-5-|\nG|--4---4---4-----4-|\nD|------------------|\nA|------------------|\nE|------------------|", "tabMore": "Pre-chorus walk\ne|7---7---5-3-3-|\nB|8---8---7-5-5-|\nG|--6---6-----4-|\nD|--------------|\nA|--------------|\nE|--------------|\n\nClimax trill\ne|2---2---2---2---|\nB|0-1-0-1-0-1-0-1-|\nG|--4---4---4---4-|\nD|----------------|\nA|----------------|\nE|----------------|" }
-  ] },
-  "23-lola-montez": { "sections": [
-    { "section": "Verse", "chords": "D G A D", "shapes": "-577-- 355--- 577--- -577--" },
-    { "section": "Chorus", "chords": "G A D Bm A D", "shapes": "355--- 577--- -577-- -244-- 577--- -577--" }
-  ] },
-  "24-mary-jane-s-last-dance": { "sections": [
-    { "section": "Verse", "chords": "Am G D Am", "hint": "Keep it sparse — the Am hammer riff is the song" },
-    { "section": "Chorus", "chords": "Em7 A Em7 A G" },
-    { "section": "Fills", "chords": "", "tab": "Am riff (main fill)\ne|----------0h2-0-0-----|\nB|------1-1-3-----1-1-1-|\nG|0h2---2-2-2-----------|\nD|0h2---2-2-0-----------|\nA|0---------------------|\nE|--------------3-------|\n\nInto next Am\ne|---------0h2-0-0-0----|\nB|0h3-x---3------1-1----|\nG|0h2-x---2-------------|\nD|0---------------------|\nA|------------------0---|\nE|----------------------|", "tabMore": "After G back to Am\ne|-------3---------------|\nB|-------1-1---------0-0-|\nG|0h2---2---2-0-0---0-0-|\nD|0h2---------------0-0-|\nA|0----------------------|\nE|-----------------3-----|\n\nD walk into Am\ne|---------0h2-0-0-0----|\nB|0h3-x---3------1-1----|\nG|0h2-x---2-------------|\nD|2-2-2-0---------------|\nA|0-0-0-----------------|\nE|----------------------|" }
-  ] },
-  "25-valerie": { "sections": [
-    { "section": "Verse / Chorus", "chords": "E F#m", "shapes": "022100 244222" },
-    { "section": "Pre-Chorus", "chords": "A G#m B", "shapes": "577655 466444 799877" }
-  ] },
-  "26-voodoo-child-slight-return": { "sections": [
-    { "section": "Verse", "chords": "E7#9 G A", "hint": "It's all the E7#9 riff: open low E, 3fr bend, D-str 0h2, G-to-A moves filling every line" },
-    { "section": "Chorus", "chords": "C7 D7 E G A" }
-  ] },
-  "27-fat-bottomed-girls": { "sections": [
-    { "section": "Verse", "chords": "D A D G D A D", "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---", "hint": "Big open Drop-D chords; leave space for the low-string runs" },
-    { "section": "Chorus", "chords": "D C G D C A D G D A D", "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---" },
-    { "section": "Interlude", "chords": "G D A", "shapes": "555--- 000--- -022--" },
-    { "section": "Fills", "chords": "", "tab": "Intro / interlude (Drop D)\ne|----------|\nB|----------|\nG|----------|\nD|----5-3-0-|\nA|----5-3-0-|\nD|----5-3-0-|\n\nVerse pickup + tag\ne|------------------|\nB|2/-3-3-3---3-2/-3-|\nG|1/-2-2-2-2---1/-2-|\nD|0-------0-----0---|\nA|------------------|\nD|(0)---------------|", "tabMore": "Verse end tags\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|-----------3h-0-|\nD|-------------3h-0|\n\nChorus power walk\ne|----------------------|\nB|----------------------|\nG|----------------------|\nD|3-5-5-5-5-5-5-5-3-0-|\nA|3-5-5-5-5-5-5-5-3-0-|\nD|3-5-5-5-5-5-5-5-3-0-|" }
-  ] },
-  "28-mama-i-m-coming-home": { "sections": [
-    { "section": "Verse", "chords": "E A E" },
-    { "section": "Pre-Chorus", "chords": "C#m A E C#m A B" },
-    { "section": "Chorus", "chords": "A E" },
-    { "section": "Bridge", "chords": "G A E B" }
-  ] },
-  "29-ain-t-goin-down-til-the-sun-comes-up": { "sections": [
-    { "section": "Verse", "chords": "G C G D G", "shapes": "320003 -32010 320003 --0232 320003" },
-    { "section": "Chorus", "chords": "C Bb G Bb C G", "shapes": "-32010 -13331 320003 -13331 -32010 320003" },
-    { "section": "Fills", "chords": "", "tab": "Verse walk (over G)\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|5-5-7---8---7-5-|\nE|3-3-3---3---3-3-|\n\nSame shape up (over C / D)\ne|----------------|\nB|----------------|\nG|----------------|\nD|5-5-7-5-5-5-7-5-|\nA|3-3-3-3-3-3-3-3-|\nE|----------------|", "tabMore": "Turn into next section\ne|--------------|\nB|--------------|\nG|--------------|\nD|------------7-|\nA|(5)-5-7-5-7-5-|\nE|(3)-3-3-3-3---|\n\nChorus lift (over D)\ne|----------------|\nB|----------------|\nG|----------------|\nD|(7)-7-9-7-9-7-|\nA|(5)-5-5-5-5-5-|\nE|----------------|" }
-  ] },
-  "30-pink-pony-club": { "sections": [
-    { "section": "Verse / Chorus", "chords": "F# G#m D#m B", "shapes": "244--- 466--- -11--- -24---" },
-    { "section": "Bridge", "chords": "B C# D#m G#m", "shapes": "-24--- -46--- -11--- 466---" }
-  ] },
-  "31-banditos": { "sections": [
-    { "section": "Verse", "chords": "E D A E", "shapes": "022--- -577-- 577--- 022---", "hint": "Palm-muted E5 chug under the vocal" },
-    { "section": "Chorus", "chords": "E A E B A B E C#m A B E", "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022---" },
-    { "section": "Fills", "chords": "", "tab": "Between vocal lines\ne|--------------|\nB|--------------|\nG|--------------|\nD|------2---2---|\nA|2---2---0---0-|\nE|0---0---------|\n\nIntro hook\ne|--------------|\nB|------3-(3)-3-|\nG|------2-(2)-2-|\nD|5-(5)-0-(0)-0-|\nA|7-(7)---------|\nE|--------------|", "tabMore": "Pre-chorus walk\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|2-7-7-2-2-6-6-7-|\nE|0-5-5-0-0-4-4-5-|\n\nInto chorus (A → B)\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|7-7-7-7-9-9-9-9-|\nE|5-5-5-5-7-7-7-7-|" }
-  ] }
+  "01-welcome-home": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "Em C D"
+      },
+      {
+        "section": "Chorus",
+        "chords": "F Am C F Am C"
+      },
+      {
+        "section": "Bridge",
+        "chords": "F Am G F"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse ×2",
+      "Chorus",
+      "Bridge",
+      "Chorus ×2"
+    ]
+  },
+  "02-all-the-small-things": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "C F G",
+        "shapes": "-355-- 133--- 355---"
+      },
+      {
+        "section": "Verse",
+        "chords": "C G F G",
+        "shapes": "-355-- 355--- 133--- 355---"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "C G F C",
+        "shapes": "-355-- 355--- 133--- -355--"
+      },
+      {
+        "section": "Chorus",
+        "chords": "C G F",
+        "shapes": "-355-- 355--- 133---"
+      },
+      {
+        "section": "Interlude",
+        "chords": "C F G",
+        "shapes": "-355-- 133--- 355---"
+      }
+    ],
+    "form": [
+      "Intro",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Interlude",
+      "Chorus"
+    ]
+  },
+  "03-a-little-less-conversation": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "A D"
+      },
+      {
+        "section": "Chorus",
+        "chords": "A C D G A E A D"
+      },
+      {
+        "section": "Bridge",
+        "chords": "A C D E"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Bridge",
+      "Chorus"
+    ]
+  },
+  "04-i-believe-in-a-thing-called-love": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "F# A B A E B A",
+        "shapes": "244--- -022-- -244-- -022-- 022--- -244-- -022--"
+      },
+      {
+        "section": "Chorus",
+        "chords": "E A F# B C#m D",
+        "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
+      },
+      {
+        "section": "Bridge",
+        "chords": "E F#m A A# B",
+        "shapes": "022--- 244--- 577--- 688--- 799---"
+      },
+      {
+        "section": "Intro",
+        "chords": "F# A B A E B A",
+        "shapes": "244--- -022-- -244-- -022-- 022--- -244-- -022--",
+        "hint": "Same shapes as verse — count in carefully"
+      },
+      {
+        "section": "Solo",
+        "chords": "E A F# B C#m D",
+        "shapes": "022--- -022-- 244--- -244-- -466-- -577--",
+        "hint": "Hold chorus changes under the solo"
+      },
+      {
+        "section": "Outro",
+        "chords": "E A F# B C#m D",
+        "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
+      }
+    ],
+    "form": [
+      "Intro",
+      "Verse",
+      "Bridge",
+      "Chorus",
+      "Solo",
+      "Verse",
+      "Bridge",
+      "Chorus",
+      "Solo",
+      "Bridge",
+      "Chorus",
+      "Solo",
+      "Outro"
+    ]
+  },
+  "05-thunderstruck": {
+    "sections": [
+      {
+        "section": "Riff",
+        "chords": "B5",
+        "shapes": "-244--",
+        "hint": "Lead plays the one-string riff on B: 4-0-7-0 then 5-0-8-0 vs open B, walking down 12-10-9-7-5-4 (rhythm rests until the chug)"
+      },
+      {
+        "section": "Verse",
+        "chords": "B5",
+        "shapes": "-244--",
+        "hint": "Palm-muted B5 chug under the vocal"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "B5 E5 B5 A5 E5",
+        "shapes": "-244-- 022--- -244-- -022-- 022---"
+      },
+      {
+        "section": "Chorus",
+        "chords": "B5 A5 E5 A5 E5",
+        "shapes": "-244-- -022-- 022--- -022-- 022---"
+      },
+      {
+        "section": "Solo",
+        "chords": "E5 B5 A5",
+        "shapes": "022--- -244-- -022--"
+      }
+    ],
+    "form": [
+      "Riff",
+      "Verse ×2",
+      "Pre-Chorus",
+      "Chorus",
+      "Solo",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus ×2",
+      "Solo",
+      "Chorus"
+    ]
+  },
+  "06-don-t-stop-believin": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "E B C#m A E B G#m A",
+        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "A E B"
+      },
+      {
+        "section": "Chorus",
+        "chords": "E B C#m A",
+        "shapes": "022--- -244-- -466-- -022--"
+      },
+      {
+        "section": "Intro",
+        "chords": "E B C#m A",
+        "shapes": "022--- -244-- -466-- -022--",
+        "hint": "Piano intro — enter on verse feel"
+      },
+      {
+        "section": "Solo",
+        "chords": "E B C#m A",
+        "shapes": "022--- -244-- -466-- -022--",
+        "hint": "Chorus changes under the solo"
+      },
+      {
+        "section": "Outro",
+        "chords": "E B C#m A",
+        "shapes": "022--- -244-- -466-- -022--"
+      }
+    ],
+    "form": [
+      "Intro",
+      "Verse ×2",
+      "Pre-Chorus",
+      "Chorus",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Solo",
+      "Chorus",
+      "Outro"
+    ]
+  },
+  "07-tribute": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "Am G F"
+      },
+      {
+        "section": "Rock part",
+        "chords": "D F C G F"
+      },
+      {
+        "section": "Tribute refrain",
+        "chords": "Am G Am"
+      },
+      {
+        "section": "Chorus",
+        "chords": "Am G D F"
+      },
+      {
+        "section": "Outro",
+        "chords": "E F G E F"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Rock part",
+      "Tribute refrain",
+      "Chorus",
+      "Verse",
+      "Rock part",
+      "Chorus",
+      "Outro"
+    ]
+  },
+  "08-while-my-guitar-gently-weeps": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "Am Am/G D/F# Fmaj7 Am G D E"
+      },
+      {
+        "section": "Verse (2nd ending)",
+        "chords": "Am G C E"
+      },
+      {
+        "section": "Bridge",
+        "chords": "A C#m F#m C#m Bm E"
+      }
+    ],
+    "form": [
+      "Verse",
+      "Verse (2nd ending)",
+      "Bridge",
+      "Verse",
+      "Verse (2nd ending)",
+      "Bridge",
+      "Verse"
+    ]
+  },
+  "09-pride-and-joy": {
+    "sections": [
+      {
+        "section": "12-bar shuffle in E",
+        "chords": "E7 A7 B7",
+        "hint": "Swung open-position boogie: alternate 5th/6th (E: A-str 2-4, A: D-str 2-4, B7 barre); b3-to-3 hammer turnaround"
+      }
+    ]
+  },
+  "10-zombie": {
+    "sections": [
+      {
+        "section": "Whole song",
+        "chords": "Em C G D",
+        "hint": "Verses: quiet clean arpeggio over the same loop; chorus: big open strums (let the top strings ring)"
+      }
+    ]
+  },
+  "11-hunger-strike": {
+    "sections": [
+      {
+        "section": "Verse / Chorus",
+        "chords": "G A7sus4 G Cadd9"
+      },
+      {
+        "section": "Interlude",
+        "chords": "G Am Bm Cadd9"
+      },
+      {
+        "section": "Bridge",
+        "chords": "D5 E5 D5 E5 Emadd9",
+        "hint": "Record riffs this low in Drop D; in Standard grab D5 x577xx and E5 022xxx"
+      }
+    ],
+    "form": [
+      "Verse / Chorus",
+      "Interlude",
+      "Verse / Chorus",
+      "Interlude",
+      "Verse / Chorus",
+      "Bridge",
+      "Verse / Chorus",
+      "Bridge",
+      "Verse / Chorus"
+    ]
+  },
+  "12-s-o-b": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "E A B"
+      },
+      {
+        "section": "Chorus",
+        "chords": "E A E B E A B A E"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus ×2"
+    ]
+  },
+  "13-save-a-horse-ride-a-cowboy": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "E A"
+      },
+      {
+        "section": "Chorus",
+        "chords": "E A E G A"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus ×2"
+    ]
+  },
+  "14-sweet-home-alabama": {
+    "sections": [
+      {
+        "section": "Whole song",
+        "chords": "D C G",
+        "hint": "Picked D–C–G groove; keep the top strings ringing"
+      },
+      {
+        "section": "Fills",
+        "chords": "",
+        "tab": "Turnaround (D–C–G)\ne|------------------------|\nB|----3-3-----3-3----3-3--|\nG|----2-2-----0-0----0-0--|\nD|0-0-0---------0----0-0--|\nA|--------3-3------0h2----|\nE|----------------3-3-----|\n\nChorus stabs\ne|------------------|\nB|------------------|\nG|------------------|\nD|--7-9-7---5-7-5-5-|\nA|5-5-5-5-3-3-3-3-3-|\nE|------------------|",
+        "tabMore": "Interlude climb\ne|-------------------------------|\nB|-------------------------------|\nG|--------7-(7)-7---------5-5----|\nD|--------7-(7)-7---------5-5----|\nA|7h-8h-9---------9/-5h-7-----7/-|\nE|-------------------------------|\n\nG pull into next cycle\ne|----------------|\nB|----3-3-----3---|\nG|----0-0-----0---|\nD|----0-0-----0---|\nA|----------------|\nE|3-3-----3-3-----|"
+      }
+    ]
+  },
+  "15-dani-california": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "Am G Dm Am",
+        "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr) — mute between hits"
+      },
+      {
+        "section": "Chorus",
+        "chords": "F C Dm"
+      },
+      {
+        "section": "Bridge",
+        "chords": "Bm G F#"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Bridge",
+      "Verse",
+      "Chorus ×2"
+    ]
+  },
+  "16-teenage-dirtbag": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "E B E A",
+        "shapes": "022--- -244-- 022--- -022--"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "C#m A B",
+        "shapes": "-466-- -022-- -244--"
+      },
+      {
+        "section": "Chorus",
+        "chords": "E A B C#m G#m",
+        "shapes": "022--- -022-- -244-- -466-- 466---"
+      },
+      {
+        "section": "Bridge",
+        "chords": "E Asus2 C#m G#m A B"
+      },
+      {
+        "section": "Intro",
+        "chords": "E B E A",
+        "shapes": "022--- -244-- 022--- -022--"
+      },
+      {
+        "section": "Outro",
+        "chords": "E A B C#m G#m",
+        "shapes": "022--- -022-- -244-- -466-- 466---"
+      }
+    ],
+    "form": [
+      "Intro",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Bridge",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Bridge",
+      "Outro"
+    ]
+  },
+  "17-the-pretender": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "Am D/F#",
+        "hint": "Quiet intro/verse: picked Am arpeggio, bass walking A-B-C-A then F#-G-F# underneath"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "A5 F#5 F5 D5 E5 F#5 G5"
+      },
+      {
+        "section": "Chorus",
+        "chords": "A5 F#5 F5",
+        "shapes": "577--- 244--- 133---"
+      },
+      {
+        "section": "Interlude",
+        "chords": "Am Am6 Am7 Am6"
+      },
+      {
+        "section": "Outro (who are you?)",
+        "chords": "A5 Am7"
+      }
+    ],
+    "form": [
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Interlude",
+      "Chorus",
+      "Outro (who are you?)"
+    ]
+  },
+  "18-here-it-goes-again": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "C G Bb F",
+        "shapes": "-355-- 355--- -133-- 133---"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "E Am G",
+        "shapes": "022--- -022-- 355---"
+      },
+      {
+        "section": "Chorus",
+        "chords": "C G Bb F Am G C",
+        "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355--"
+      },
+      {
+        "section": "Bridge",
+        "chords": "Eb Bb C G Ab",
+        "shapes": "-688-- 688--- -355-- 355--- 466---"
+      }
+    ],
+    "form": [
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Bridge",
+      "Chorus"
+    ]
+  },
+  "19-purple-rain": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "G Em7 D C"
+      },
+      {
+        "section": "Chorus",
+        "chords": "C G Em7 D G"
+      },
+      {
+        "section": "Fills",
+        "chords": "",
+        "tab": "Verse walk into D\ne|----------------|\nB|----------------|\nG|----2---2-------|\nD|----0---0-----2-|\nA|------------4---|\nE|2-2-2-2-2-2-----|\n\nG arp tail (into Em)\ne|3-----3-3---|\nB|3-(3)-3-3---|\nG|0-(0)---0-2-|\nD|0-------0-0-|\nA|------------|\nE|3-------3-3-|",
+        "tabMore": "Chorus C voicing (push)\ne|------3--(3)----3----|\nB|------5--(5)----5----|\nG|------7--(7)----7----|\nD|------5---------5----|\nA|3-3-3---------3------|\nE|---------------------|\n\nOutro / slow-down tag\ne|--------------|\nB|--------------|\nG|--------------|\nD|------5-------|\nA|--------------|\nE|3-0-2---------|"
+      },
+      {
+        "section": "Solo",
+        "chords": "C G Em7 D G",
+        "hint": "Less is more — chorus changes, slow bends"
+      }
+    ],
+    "form": [
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Solo",
+      "Chorus"
+    ]
+  },
+  "20-when-i-come-around": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "G5 D5 Em C5",
+        "shapes": "355--- -577-- -799-- -355--"
+      },
+      {
+        "section": "Chorus",
+        "chords": "Am C5 Am C5 G5 D5 Em C5",
+        "shapes": "-022-- -355-- -022-- -355-- 355--- -577-- -799-- -355--",
+        "hint": "Walk the roots up A-B-C (A-str 0-2-3) into each chorus line (passing B5 is in the tab)"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus ×2"
+    ]
+  },
+  "21-the-middle": {
+    "sections": [
+      {
+        "section": "Whole song",
+        "chords": "D A G",
+        "shapes": "000--- 777--- 555---"
+      }
+    ]
+  },
+  "22-dream-on": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "Em Em7 Em6 Am6"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "Em6 B7sus4 B7 Cmaj7 C#7 B7"
+      },
+      {
+        "section": "Chorus",
+        "chords": "Em D C D Em"
+      },
+      {
+        "section": "Climax",
+        "chords": "Am B5 C E Em"
+      },
+      {
+        "section": "Fills",
+        "chords": "",
+        "tab": "Chorus signature (between hits)\ne|----|----|----|----|\nB|----|----|----|----|\nG|4-2-|0-2-|4-2-|0-2-|\nD|----|----|----|----|\nA|----|----|----|----|\nE|----|----|----|----|\n\nVerse climb\ne|3---5---7---5-3-5-|\nB|5---5---5---5-5-5-|\nG|--4---4---4-----4-|\nD|------------------|\nA|------------------|\nE|------------------|",
+        "tabMore": "Pre-chorus walk\ne|7---7---5-3-3-|\nB|8---8---7-5-5-|\nG|--6---6-----4-|\nD|--------------|\nA|--------------|\nE|--------------|\n\nClimax trill\ne|2---2---2---2---|\nB|0-1-0-1-0-1-0-1-|\nG|--4---4---4---4-|\nD|----------------|\nA|----------------|\nE|----------------|"
+      }
+    ],
+    "form": [
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Climax",
+      "Chorus"
+    ]
+  },
+  "23-lola-montez": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "D G A D",
+        "shapes": "-577-- 355--- 577--- -577--"
+      },
+      {
+        "section": "Chorus",
+        "chords": "G A D Bm A D",
+        "shapes": "355--- 577--- -577-- -244-- 577--- -577--"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus ×2"
+    ]
+  },
+  "24-mary-jane-s-last-dance": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "Am G D Am",
+        "hint": "Keep it sparse — the Am hammer riff is the song"
+      },
+      {
+        "section": "Chorus",
+        "chords": "Em7 A Em7 A G"
+      },
+      {
+        "section": "Fills",
+        "chords": "",
+        "tab": "Am riff (main fill)\ne|----------0h2-0-0-----|\nB|------1-1-3-----1-1-1-|\nG|0h2---2-2-2-----------|\nD|0h2---2-2-0-----------|\nA|0---------------------|\nE|--------------3-------|\n\nInto next Am\ne|---------0h2-0-0-0----|\nB|0h3-x---3------1-1----|\nG|0h2-x---2-------------|\nD|0---------------------|\nA|------------------0---|\nE|----------------------|",
+        "tabMore": "After G back to Am\ne|-------3---------------|\nB|-------1-1---------0-0-|\nG|0h2---2---2-0-0---0-0-|\nD|0h2---------------0-0-|\nA|0----------------------|\nE|-----------------3-----|\n\nD walk into Am\ne|---------0h2-0-0-0----|\nB|0h3-x---3------1-1----|\nG|0h2-x---2-------------|\nD|2-2-2-0---------------|\nA|0-0-0-----------------|\nE|----------------------|"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus"
+    ]
+  },
+  "25-valerie": {
+    "sections": [
+      {
+        "section": "Verse / Chorus",
+        "chords": "E F#m",
+        "shapes": "022100 244222"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "A G#m B",
+        "shapes": "577655 466444 799877"
+      }
+    ],
+    "form": [
+      "Verse / Chorus ×2",
+      "Pre-Chorus",
+      "Verse / Chorus",
+      "Pre-Chorus",
+      "Verse / Chorus ×2"
+    ]
+  },
+  "26-voodoo-child-slight-return": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "E7#9 G A",
+        "hint": "It's all the E7#9 riff: open low E, 3fr bend, D-str 0h2, G-to-A moves filling every line"
+      },
+      {
+        "section": "Chorus",
+        "chords": "C7 D7 E G A"
+      }
+    ],
+    "form": [
+      "Verse ×4",
+      "Chorus",
+      "Verse ×4",
+      "Chorus"
+    ]
+  },
+  "27-fat-bottomed-girls": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "D A D G D A D",
+        "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---",
+        "hint": "Big open Drop-D chords; leave space for the low-string runs"
+      },
+      {
+        "section": "Chorus",
+        "chords": "D C G D C A D G D A D",
+        "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---"
+      },
+      {
+        "section": "Interlude",
+        "chords": "G D A",
+        "shapes": "555--- 000--- -022--"
+      },
+      {
+        "section": "Fills",
+        "chords": "",
+        "tab": "Intro / interlude (Drop D)\ne|----------|\nB|----------|\nG|----------|\nD|----5-3-0-|\nA|----5-3-0-|\nD|----5-3-0-|\n\nVerse pickup + tag\ne|------------------|\nB|2/-3-3-3---3-2/-3-|\nG|1/-2-2-2-2---1/-2-|\nD|0-------0-----0---|\nA|------------------|\nD|(0)---------------|",
+        "tabMore": "Verse end tags\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|-----------3h-0-|\nD|-------------3h-0|\n\nChorus power walk\ne|----------------------|\nB|----------------------|\nG|----------------------|\nD|3-5-5-5-5-5-5-5-3-0-|\nA|3-5-5-5-5-5-5-5-3-0-|\nD|3-5-5-5-5-5-5-5-3-0-|"
+      }
+    ],
+    "form": [
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Interlude",
+      "Verse",
+      "Chorus"
+    ]
+  },
+  "28-mama-i-m-coming-home": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "E A E"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "C#m A E C#m A B"
+      },
+      {
+        "section": "Chorus",
+        "chords": "A E"
+      },
+      {
+        "section": "Bridge",
+        "chords": "G A E B"
+      },
+      {
+        "section": "Solo",
+        "chords": "E A E",
+        "hint": "Verse changes under the solo"
+      },
+      {
+        "section": "Outro",
+        "chords": "A E"
+      }
+    ],
+    "form": [
+      "Verse",
+      "Pre-Chorus",
+      "Verse",
+      "Pre-Chorus",
+      "Chorus",
+      "Solo",
+      "Pre-Chorus",
+      "Chorus",
+      "Outro"
+    ]
+  },
+  "29-ain-t-goin-down-til-the-sun-comes-up": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "G C G D G",
+        "shapes": "320003 -32010 320003 --0232 320003"
+      },
+      {
+        "section": "Chorus",
+        "chords": "C Bb G Bb C G",
+        "shapes": "-32010 -13331 320003 -13331 -32010 320003"
+      },
+      {
+        "section": "Fills",
+        "chords": "",
+        "tab": "Verse walk (over G)\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|5-5-7---8---7-5-|\nE|3-3-3---3---3-3-|\n\nSame shape up (over C / D)\ne|----------------|\nB|----------------|\nG|----------------|\nD|5-5-7-5-5-5-7-5-|\nA|3-3-3-3-3-3-3-3-|\nE|----------------|",
+        "tabMore": "Turn into next section\ne|--------------|\nB|--------------|\nG|--------------|\nD|------------7-|\nA|(5)-5-7-5-7-5-|\nE|(3)-3-3-3-3---|\n\nChorus lift (over D)\ne|----------------|\nB|----------------|\nG|----------------|\nD|(7)-7-9-7-9-7-|\nA|(5)-5-5-5-5-5-|\nE|----------------|"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus ×2"
+    ]
+  },
+  "30-pink-pony-club": {
+    "sections": [
+      {
+        "section": "Verse / Chorus",
+        "chords": "F# G#m D#m B",
+        "shapes": "244--- 466--- -11--- -24---"
+      },
+      {
+        "section": "Bridge",
+        "chords": "B C# D#m G#m",
+        "shapes": "-24--- -46--- -11--- 466---"
+      }
+    ],
+    "form": [
+      "Verse / Chorus ×2",
+      "Bridge",
+      "Verse / Chorus ×2"
+    ]
+  },
+  "31-banditos": {
+    "sections": [
+      {
+        "section": "Verse",
+        "chords": "E D A E",
+        "shapes": "022--- -577-- 577--- 022---",
+        "hint": "Palm-muted E5 chug under the vocal"
+      },
+      {
+        "section": "Chorus",
+        "chords": "E A E B A B E C#m A B E",
+        "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022---"
+      },
+      {
+        "section": "Fills",
+        "chords": "",
+        "tab": "Between vocal lines\ne|--------------|\nB|--------------|\nG|--------------|\nD|------2---2---|\nA|2---2---0---0-|\nE|0---0---------|\n\nIntro hook\ne|--------------|\nB|------3-(3)-3-|\nG|------2-(2)-2-|\nD|5-(5)-0-(0)-0-|\nA|7-(7)---------|\nE|--------------|",
+        "tabMore": "Pre-chorus walk\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|2-7-7-2-2-6-6-7-|\nE|0-5-5-0-0-4-4-5-|\n\nInto chorus (A → B)\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|7-7-7-7-9-9-9-9-|\nE|5-5-5-5-7-7-7-7-|"
+      }
+    ],
+    "form": [
+      "Verse ×2",
+      "Chorus",
+      "Verse",
+      "Chorus ×2"
+    ]
+  }
 }

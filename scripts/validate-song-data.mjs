@@ -162,6 +162,19 @@ if (progressions && typeof progressions === 'object') {
         }
       }
     })
+    if (Array.isArray(entry.form)) {
+      const names = new Set(sections.map((s) => s.section))
+      entry.form.forEach((step, index) => {
+        if (typeof step !== 'string' || !step.trim()) {
+          fail(songId, `progressions.json form #${index + 1}: empty step.`)
+          return
+        }
+        const base = step.replace(/\s*[×xX]\s*\d+\s*$/u, '').trim()
+        if (!names.has(base) && !names.has(step.trim())) {
+          fail(songId, `progressions.json form "${step}" has no matching sections entry (looked up "${base}").`)
+        }
+      })
+    }
   }
 }
 
