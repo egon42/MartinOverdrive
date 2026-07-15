@@ -481,12 +481,13 @@ export function Show() {
   const { reportSong } = live
   useEffect(() => { reportSong(song.id) }, [song.id, reportSong])
   const [liveOpen, setLiveOpen] = useState(false)
-  const leaderUpdate = following ? live.leader : null
+  const leaderUpdate = following && !live.paused ? live.leader : null
   // Identity guard: `setSongs` gets a new identity on every practice-state change (any
   // patch or sync pull), and without the ref that would re-run the snap and yank a
   // peeking follower back even though the leader never moved. Snap only when the
   // leader update object itself is new. replace: leader-driven turns shouldn't stack
-  // history the follower would have to back through.
+  // history the follower would have to back through. Pause following clears this
+  // update (channel stays up); resume bumps leader.seq so the snap fires again.
   const appliedLeaderRef = useRef<typeof leaderUpdate>(null)
   useEffect(() => {
     if (!leaderUpdate || leaderUpdate === appliedLeaderRef.current) return
@@ -561,10 +562,10 @@ export function Show() {
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => goTo(index - 1)} aria-label="Previous song">‹</button>
       <button type="button" className="show-counter" onClick={() => { pickerCenteredRef.current = false; setPicker(true) }} aria-label="Jump to a song">{index + 1} / {setSongs.length}</button>
       <button type="button"
-        className={`show-live${live.config ? (live.config.role === 'lead' ? ' leading' : ' following') : ''}${live.config && !live.connected ? ' pending' : ''}`}
+        className={`show-live${live.config ? (live.config.role === 'lead' ? ' leading' : live.paused ? ' paused' : ' following') : ''}${live.config && !live.connected ? ' pending' : ''}`}
         onClick={() => setLiveOpen(true)}
-        aria-label={live.config ? (live.config.role === 'lead' ? 'Leading the live show' : 'Following the live show') : 'Live show sync'}>
-        {live.config?.role === 'lead' ? `Live · ${live.followers}` : live.config?.role === 'follow' ? 'Following' : 'Live'}
+        aria-label={live.config ? (live.config.role === 'lead' ? 'Leading the live show' : live.paused ? 'Live follow paused' : 'Following the live show') : 'Live show sync'}>
+        {live.config?.role === 'lead' ? `Live · ${live.followers}` : live.config?.role === 'follow' ? (live.paused ? 'Paused' : 'Following') : 'Live'}
       </button>
       <div><i style={{ width: `${((index + 1) / setSongs.length) * 100}%` }}/></div>
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => goTo(index + 1)} aria-label="Next song">›</button>

@@ -38,9 +38,13 @@ interface LiveContextValue {
   followers: number
   leaderPresent: boolean
   leader: LeaderSong | null
+  /** Follower-only: stay on the channel but stop snapping to the leader's song. */
+  paused: boolean
   lead: () => void
   follow: (code: string) => void
   stop: () => void
+  pause: () => void
+  resume: () => void
   /** Show mode reports every song it displays; only a leading device broadcasts it. */
   reportSong: (songId: string) => void
 }
@@ -53,27 +57,36 @@ function generateShowCode(): string {
   return [...bytes].map((b) => BASE32[b & 31]).join('')
 }
 
-function loadLiveConfig(): LiveConfig | null {
+/** Persisted blob: session fields plus optional follower pause (channel stays up either way). */
+type StoredLive = LiveConfig & { paused?: boolean }
+
+function loadLiveConfig(): { config: LiveConfig | null; paused: boolean } {
   try {
     const raw = localStorage.getItem(LIVE_KEY)
-    if (!raw) return null
-    const parsed = JSON.parse(raw) as Partial<LiveConfig>
-    if (!parsed || (parsed.role !== 'lead' && parsed.role !== 'follow')) return null
-    if (typeof parsed.code !== 'string' || !parsed.code) return null
-    if (typeof parsed.at !== 'number' || Date.now() - parsed.at > SESSION_MAX_AGE_MS) return null
-    return { role: parsed.role, code: parsed.code, at: parsed.at }
-  } catch { return null }
+    if (!raw) return { config: null, paused: false }
+    const parsed = JSON.parse(raw) as Partial<StoredLive>
+    if (!parsed || (parsed.role !== 'lead' && parsed.role !== 'follow')) return { config: null, paused: false }
+    if (typeof parsed.code !== 'string' || !parsed.code) return { config: null, paused: false }
+    if (typeof parsed.at !== 'number' || Date.now() - parsed.at > SESSION_MAX_AGE_MS) return { config: null, paused: false }
+    return {
+      config: { role: parsed.role, code: parsed.code, at: parsed.at },
+      paused: parsed.role === 'follow' && parsed.paused === true,
+    }
+  } catch { return { config: null, paused: false } }
 }
 
-function saveLiveConfig(config: LiveConfig | null) {
-  if (config) localStorage.setItem(LIVE_KEY, JSON.stringify(config))
-  else localStorage.removeItem(LIVE_KEY)
+function saveLiveConfig(config: LiveConfig | null, paused = false) {
+  if (!config) { localStorage.removeItem(LIVE_KEY); return }
+  const stored: StoredLive = paused && config.role === 'follow' ? { ...config, paused: true } : config
+  localStorage.setItem(LIVE_KEY, JSON.stringify(stored))
 }
 
 const LiveContext = createContext<LiveContextValue | null>(null)
 
 export function LiveProvider({ children }: { children: ReactNode }) {
-  const [config, setConfig] = useState<LiveConfig | null>(loadLiveConfig)
+  const [{ config: initialConfig, paused: initialPaused }] = useState(loadLiveConfig)
+  const [config, setConfig] = useState<LiveConfig | null>(initialConfig)
+  const [paused, setPaused] = useState(initialPaused)
   const [connected, setConnected] = useState(false)
   const [followers, setFollowers] = useState(0)
   const [leaderPresent, setLeaderPresent] = useState(false)
@@ -141,8 +154,9 @@ export function LiveProvider({ children }: { children: ReactNode }) {
   }, [config, sendCurrent])
 
   const apply = useCallback((next: LiveConfig | null) => {
-    saveLiveConfig(next)
+    saveLiveConfig(next, false)
     setLeader(null)
+    setPaused(false)
     setConfig(next)
   }, [])
 
@@ -163,13 +177,29 @@ export function LiveProvider({ children }: { children: ReactNode }) {
   const follow = useCallback((code: string) => { const c = normalizeCode(code); if (c) apply({ role: 'follow', code: c, at: Date.now() }) }, [apply])
   const stop = useCallback(() => apply(null), [apply])
 
+  // Pause keeps the websocket + presence up and keeps receiving the leader's song; only
+  // the show-mode snap is gated. Resume bumps leader.seq so show mode snaps immediately
+  // even if the leader hasn't moved since the pause.
+  const pause = useCallback(() => {
+    if (configRef.current?.role !== 'follow') return
+    setPaused(true)
+    saveLiveConfig(configRef.current, true)
+  }, [])
+  const resume = useCallback(() => {
+    if (configRef.current?.role !== 'follow') return
+    setPaused(false)
+    saveLiveConfig(configRef.current, false)
+    setLeader((prev) => prev ? { songId: prev.songId, seq: prev.seq + 1 } : prev)
+  }, [])
+
   const reportSong = useCallback((songId: string) => {
     songIdRef.current = songId
     sendCurrent()
   }, [sendCurrent])
 
-  const value = useMemo<LiveContextValue>(() => ({ config, connected, followers, leaderPresent, leader, lead, follow, stop, reportSong }),
-    [config, connected, followers, leaderPresent, leader, lead, follow, stop, reportSong])
+  const value = useMemo<LiveContextValue>(() => ({
+    config, connected, followers, leaderPresent, leader, paused, lead, follow, stop, pause, resume, reportSong,
+  }), [config, connected, followers, leaderPresent, leader, paused, lead, follow, stop, pause, resume, reportSong])
   return <LiveContext.Provider value={value}>{children}</LiveContext.Provider>
 }
 
@@ -182,7 +212,7 @@ export function useLive(): LiveContextValue {
 // ---- overlay (rendered by show mode) ------------------------------------
 
 export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: (songId: string) => void }) {
-  const { config, connected, followers, leaderPresent, leader, lead, follow, stop } = useLive()
+  const { config, connected, followers, leaderPresent, leader, paused, lead, follow, stop, pause, resume } = useLive()
   const [code, setCode] = useState('')
   const [qrDataUrl, setQrDataUrl] = useState('')
   const [copied, setCopied] = useState<'invite' | 'qr' | null>(null)
@@ -251,13 +281,18 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
         <div className="live-actions"><button className="secondary" onClick={stop}>Stop leading</button><button className="secondary" onClick={onClose}>Close</button></div>
       </>}
       {config?.role === 'follow' && <>
-        <div><span className="eyebrow">Live show sync</span><h2>Following {config.code}</h2></div>
+        <div><span className="eyebrow">Live show sync</span><h2>{paused ? 'Paused' : 'Following'} {config.code}</h2></div>
         <p className="live-status">{!connected ? 'Connecting…' : !leaderPresent ? 'Connected. Waiting for the leader.' : leaderSong ? <>Leader is on <b>{leaderSong.title}</b></> : 'Leader’s connected. Waiting for the first song.'}</p>
-        <p>You’ll jump when the leader does. Page ahead anytime; the next change pulls you back.</p>
+        <p>{paused
+          ? 'Navigate freely. Resume to jump back to the leader; no code needed.'
+          : 'You’ll jump when the leader does. Pause to navigate on your own.'}</p>
         <div className="live-actions">
-          {leaderSong && <button onClick={() => { onJump(leaderSong.id); onClose() }}>Go to leader’s song</button>}
-          <button className="secondary" onClick={stop}>Stop following</button>
-          <button className="secondary" onClick={onClose}>Close</button>
+          {paused
+            ? <button type="button" onClick={() => { resume(); onClose() }}>Resume following</button>
+            : <button type="button" className="secondary" onClick={pause}>Pause following</button>}
+          {leaderSong && <button type="button" className="secondary" onClick={() => { onJump(leaderSong.id); onClose() }}>Go to leader’s song</button>}
+          <button type="button" className="secondary" onClick={stop}>Leave show</button>
+          <button type="button" className="secondary" onClick={onClose}>Close</button>
         </div>
       </>}
     </div>
