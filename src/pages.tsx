@@ -181,6 +181,15 @@ function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: numb
   }, [ref, playing])
 }
 
+/** Highlight ×N / xN in section labels (e.g. "Verse ×4") so the count reads white. */
+function renderProgLabel(label: string) {
+  const parts = label.split(/([×xX]\s*\d+)/u)
+  return parts.map((part, i) =>
+    /^[×xX]\s*\d+$/u.test(part)
+      ? <span className="cheat-prog-label-times" key={i}>{part}</span>
+      : part)
+}
+
 // The live cheat card — the default show-mode view. Everything needed to play the song
 // on one screen: tuning strip, compact chord progression (derived from the chord sheet),
 // role / must-know / fallback, and the collapsed fretboard + scale hint. `innerRef` is the
@@ -219,7 +228,7 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
     <div className="cheat-fit" ref={innerRef}>
       {rows && <div className="cheat-progression">
         {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
-          <span className="cheat-prog-label">{row.label}</span>
+          <span className="cheat-prog-label">{renderProgLabel(row.label)}</span>
           <div className="cheat-prog-body">
             <span className="cheat-prog-chords">{row.spans.map((span, s) =>
               <span className="cheat-prog-span" key={s}>

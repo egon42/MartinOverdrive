@@ -13,6 +13,14 @@ import { formatFingering, formatVerticalFingering, resolveFingering, shapesTabCl
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
+/** Tab fingering text: fretted digits white; muted `-` / `x` stay grey. */
+function FingeringText({ text }: { text: string }) {
+  return <>{Array.from(text).map((ch, i) =>
+    ch === '-' || ch === 'x' || ch === 'X'
+      ? <span className="chord-fingering-mute" key={i}>{ch}</span>
+      : ch)}</>
+}
+
 // A small SVG fingering diagram for one chord. Strings run left→right as low-E (6th)
 // to high-e (1st), the standard chord-chart layout; a labelled row underneath removes
 // any ambiguity. Frets 5+ shift into a window with a "Nfr" position label.
@@ -126,7 +134,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   if (!fingering) return <span className="chord-chip-wrap" ref={ref}>{chip}</span>
   return <span className={`chord-with-fingering chord-with-fingering--${prefs.position}`}>
     <span className="chord-chip-wrap" ref={ref}>{chip}</span>
-    <span className="chord-fingering">{formatFingering(fingering, prefs.position)}</span>
+    <span className="chord-fingering"><FingeringText text={formatFingering(fingering, prefs.position)} /></span>
   </span>
 }
 
