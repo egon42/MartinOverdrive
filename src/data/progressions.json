@@ -506,7 +506,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "F C Dm"
+        "chords": "(F C Dm) ×4"
       },
       {
         "section": "Bridge",
@@ -514,12 +514,12 @@
       }
     ],
     "form": [
-      "Verse ×2",
+      "Verse ×8",
       "Chorus",
-      "Verse",
+      "Verse ×3",
       "Chorus",
-      "Bridge",
-      "Verse",
+      "Bridge ×3",
+      "Verse ×3",
       "Chorus ×2"
     ]
   },
