@@ -54,4 +54,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **12-s-o-b** — **skipped:** E hang + chorus phrases fine for now
 - **13-save-a-horse-ride-a-cowboy** — kept E–A form; dropped ×N math hints; Outro `E G A` + N.C. after final Chorus
 - **14-sweet-home-alabama** — **skipped:** whole-song D C G + fills card is enough for now
-- **15-dani-california** — Verse×8 → Chorus → Verse×3 → Chorus → Bridge×3 → Verse×3 → Chorus×2; Chorus `(F C Dm)×4`
+- **15-dani-california** — Verse×8 → Chorus → Verse×4 → Chorus → Bridge×3 → Verse×4 → Chorus×2; Chorus `(F C Dm)×4`
