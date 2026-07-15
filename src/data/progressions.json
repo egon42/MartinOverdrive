@@ -450,8 +450,7 @@
       },
       {
         "section": "Verse",
-        "chords": "(E A) ×2",
-        "hint": "Form ×2 on this row = four E–A pairs (one full verse)"
+        "chords": "(E A) ×2"
       },
       {
         "section": "Chorus",
@@ -463,8 +462,12 @@
       },
       {
         "section": "Bridge",
-        "chords": "(E A) ×2",
-        "hint": "Same E–A groove; form ×4 covers the full bridge"
+        "chords": "(E A) ×2"
+      },
+      {
+        "section": "Outro",
+        "chords": "E G A",
+        "hint": "N.C. on the last line"
       }
     ],
     "form": [
@@ -475,7 +478,8 @@
       "Chorus",
       "Solo ×2",
       "Bridge ×4",
-      "Chorus"
+      "Chorus",
+      "Outro"
     ]
   },
   "14-sweet-home-alabama": {

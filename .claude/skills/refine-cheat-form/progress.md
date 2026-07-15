@@ -18,7 +18,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [ ] 10-zombie
 - [x] 11-hunger-strike
 - [ ] 12-s-o-b
-- [ ] 13-save-a-horse-ride-a-cowboy
+- [x] 13-save-a-horse-ride-a-cowboy
 - [ ] 14-sweet-home-alabama
 - [ ] 15-dani-california
 - [ ] 16-teenage-dirtbag
@@ -49,3 +49,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **07-tribute** — **deferred:** sheet proposal not applied — drop late Verse/Rock; Intro Am?; Rock ×2 + ROCK!; Refrain/Chorus ×N need live counts
 - **08-while-my-guitar-gently-weeps** — Intro + full 2nd-ending half; Bridge `Bm E7sus4 E7`; form ends Verse → 2nd ending
 - **11-hunger-strike** — Intro×2 → V/C×8 → Bridge×4 → Interlude×2 → V/C×2 → Bridge×4 → V/C×4 → Bridge; Interlude only after first Bridge
+- **13-save-a-horse-ride-a-cowboy** — kept E–A form; dropped ×N math hints; Outro `E G A` + N.C. after final Chorus
