@@ -108,9 +108,11 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .autoscroll-step{width:2.4rem;height:2.4rem;font-size:1.3rem}
 .autoscroll-speed{min-width:3.4em;text-align:center;color:var(--muted);font-size:.85rem;font-weight:750;font-variant-numeric:tabular-nums}
 .autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase}
+/* Lead-in countdown when ▶ is pressed at the top of the sheet (see SCROLL_LEAD_IN_PX). */
+.autoscroll-delay{min-width:2.6em;text-align:center;color:var(--acid);font-size:.9rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.05}
+.autoscroll-delay i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:750}
 .show-song.sheet-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .show-sheet{flex:1;min-height:0;overflow:auto}
-@media(max-width:760px){.show-song.sheet-view .show-preset{margin-bottom:10px}.show-song.sheet-view .show-preset .preset-chip{font-size:.85rem}.show-song.sheet-view .show-preset .home-fret-chip{font-size:.85rem;min-width:1.7em;height:1.7em}}
 .sheet-compact .chord-chip{font-size:.72rem}
 
 /* Verbatim ASCII tab text (practice panel and show mode) */
@@ -119,12 +121,11 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-panel .fretboard-toggle{margin:0}
 .show-tabs .tab-text{overflow-x:visible;width:max-content;min-width:100%}
 
-/* Live cheat card (default show-mode view). --sheet-fit scales strip+progression only
+/* Live cheat card (default show-mode view). --sheet-fit scales progression only
    (`.cheat-fit`); fretboard/fields sit in collapsed `.cheat-more` so they don't shrink chips. */
 .show-song.cheat-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .cheat-card{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px}
-.cheat-fit{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:10px;font-size:calc(var(--sheet-fit,1)*1rem)}
-.cheat-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cheat-fit{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:6px;font-size:calc(var(--sheet-fit,1)*1rem)}
 .cheat-chip{border:1px solid #36423e;border-radius:999px;padding:.28em .7em;font-size:.8em;font-weight:750;color:#c5cec9}
 .cheat-chip.cheat-tuning{background:var(--acid);color:#061008;border-color:var(--acid)}
 .cheat-chip.cheat-capo{background:var(--orange);color:#fff;border-color:var(--orange)}
@@ -162,31 +163,31 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-more .field dt{font-size:.6rem}
 .cheat-more .show-fields .field dd{font-size:1.05rem}
 .cheat-more .show-scale .field dd{font-size:.82rem}
-/* Amp preset chips sit inline in the strip (no dedicated row) to reclaim vertical space */
-.cheat-strip{gap:5px;row-gap:2px}
-.cheat-strip .preset-badges{gap:5px}
-.cheat-strip .preset-chip{font-size:.68em;width:1.65em;height:1.65em}
-.cheat-strip .preset-joiner{font-size:.75em}
-.cheat-strip .preset-notes{font-size:.62em;line-height:1.2;color:#c5cec9}
-.cheat-strip .home-fret-chip{font-size:.62em;min-width:1.5em;height:1.5em;border-width:1px}
-.cheat-fit{gap:6px}
 
-/* Cheat view: stage-compact chrome — artist+title one line, smaller nav/tabs */
-.show-song-head{display:block}
-.show-song.cheat-view .show-song-head{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;margin:0 0 2px;min-width:0}
-.show-song.cheat-view .show-song-head .eyebrow{margin:0;font-size:.52rem;line-height:1.1;flex:0 0 auto}
-.show-song.cheat-view .show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0}
-.show-song.cheat-view .show-view-bar{margin:0 0 4px;gap:6px}
-.show-song.cheat-view .fretboard-toggle{gap:4px}
-.show-song.cheat-view .fretboard-toggle button,.show-song.cheat-view .show-pin{padding:.28rem .58rem;font-size:.62rem}
-.show-mode--cheat{padding-top:max(12px,env(safe-area-inset-top));padding-bottom:max(12px,env(safe-area-inset-bottom))}
-.show-mode--cheat .show-progress{margin:4px 0 6px}
-.show-mode--cheat .show-nav-btn{width:40px;height:40px;font-size:1.25rem}
-.show-mode--cheat .show-counter{padding:.35rem .7rem;font-size:.7rem}
-.show-mode--cheat .show-upnext{margin-top:6px;font-size:.72rem}
+/* Shared stage chrome (Cheat / Chords / Tabs): compact head, tabs, amp strip, footer */
+.show-mode{padding-top:max(12px,env(safe-area-inset-top));padding-bottom:max(12px,env(safe-area-inset-bottom))}
+.show-mode .show-progress{margin:4px 0 6px}
+.show-mode .show-nav-btn{width:40px;height:40px;font-size:1.25rem}
+.show-mode .show-counter{padding:.35rem .7rem;font-size:.7rem}
+.show-song-head{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;margin:0 0 2px;min-width:0}
+.show-song-head .eyebrow{margin:0;font-size:.52rem;line-height:1.1;flex:0 0 auto}
+.show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0}
+.show-song .show-view-bar{margin:0 0 4px;gap:6px}
+.show-song .fretboard-toggle{gap:4px}
+.show-song .fretboard-toggle button,.show-song .show-pin{padding:.28rem .58rem;font-size:.62rem}
+.show-stage-strip{display:flex;flex-wrap:wrap;gap:5px;row-gap:2px;align-items:center;margin:0 0 4px}
+.show-stage-strip .preset-badges{gap:5px}
+.show-stage-strip .preset-chip{font-size:.68rem;width:1.65em;height:1.65em}
+.show-stage-strip .preset-joiner{font-size:.75rem}
+.show-stage-strip .preset-notes{font-size:.68rem;line-height:1.2;color:#c5cec9}
+.show-stage-strip .home-fret-chip{font-size:.62rem;min-width:1.5em;height:1.5em;border-width:1px}
+.show-song .show-autoscroll{gap:6px;margin:0 0 6px}
+.show-song .autoscroll-play{min-width:2.1rem;height:2.1rem;font-size:.9rem}
+.show-song .autoscroll-step{width:2rem;height:2rem;font-size:1.1rem}
+.show-song .autoscroll-speed{min-width:2.8em;font-size:.72rem}
 @media(max-width:760px){
-  .show-song.cheat-view .show-song-head h1{font-size:.88rem}
-  .show-song.cheat-view .show-view-bar{margin:0 0 3px}
+  .show-song-head h1{font-size:.88rem}
+  .show-song .show-view-bar{margin:0 0 3px}
 }
 
 /* Show mode: landscape reclaims height for the scrollable sheet + tighter chrome */
@@ -250,10 +251,10 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 
 
 /* Show mode: next-song footer (title + tuning + amp preset, for the changeover) */
-.show-upnext{margin:10px auto 0;padding-top:10px;border-top:1px solid #1f2622;color:#9aa59f;font-size:.8rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap;max-width:1000px;width:100%}
-.show-upnext-label{text-transform:uppercase;letter-spacing:.12em;font-size:.62rem;font-weight:800;color:var(--acid)}
+.show-upnext{margin:6px auto 0;padding-top:6px;border-top:1px solid #1f2622;color:#9aa59f;font-size:.72rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1000px;width:100%}
+.show-upnext-label{text-transform:uppercase;letter-spacing:.12em;font-size:.58rem;font-weight:800;color:var(--acid)}
 .show-upnext b{color:#c5cec9}
-.show-upnext .cheat-chip{font-size:.68rem;padding:.2em .6em}
+.show-upnext .cheat-chip{font-size:.62rem;padding:.2em .55em}
 
 /* Jump-to-song overlay: tap the show-mode counter, tap a song (audible calls) */
 .show-counter{border:0;background:#ffffff14;color:#c7cfc9;border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:.8rem;font-weight:750;font-variant-numeric:tabular-nums;touch-action:manipulation}

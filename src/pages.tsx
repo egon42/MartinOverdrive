@@ -18,6 +18,10 @@ const tunings = ['Standard', 'Drop D']
 const priorityLabel = ['None', 'Low', 'Medium', 'High']
 // Show-mode autoscroll speed, px/second (per-song, stored as PracticeEntry.scrollSpeed).
 const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED = 120, SCROLL_SPEED_STEP = 4
+// Lead-in before the crawl starts when ▶ is pressed at the top of the sheet — gives the
+// first lines a beat to read before they scroll away. Duration = LEAD_IN_PX / speed
+// (e.g. 72 px at 24 px/s → 3 s; faster speeds wait less). Mid-sheet presses skip it.
+const SCROLL_LEAD_IN_PX = 72
 // localStorage (not sessionStorage): mobile OSes kill backgrounded tabs under memory
 // pressure, and mid-set that must not reset the show to song 1. Keyed per deployment
 // like the practice store, so /dev/ and prod don't share a show position.
@@ -187,7 +191,6 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   // Prefer the curated per-section progression; fall back to one derived from the chord
   // sheet (a single loop, or the distinct chords used) when a song isn't researched yet.
   const custom = progressionFor(song.id)
-  const transpose = transposeFor(song.id)
   const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
   // When `form` is set, rows follow that roadmap (labels like "Verse ×4"); otherwise
   // unique `sections` order. Fills always append last.
@@ -214,13 +217,6 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   }
   return <div className="cheat-card">
     <div className="cheat-fit" ref={innerRef}>
-      <div className="cheat-strip">
-        {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
-        {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>Transpose {transposeLabel(transpose.semitones)}</span>}
-        {custom?.capo && <span className="cheat-chip cheat-capo">{custom.capo}</span>}
-        <PresetBadges songId={song.id} showNotes />
-        <HomeFretBadges song={song} />
-      </div>
       {rows && <div className="cheat-progression">
         {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
           <span className="cheat-prog-label">{row.label}</span>
@@ -253,6 +249,19 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
         </div>
       </div>
     </details>
+  </div>
+}
+
+/** Shared stage chrome strip: tuning / transpose / capo / amp presets / home frets. */
+function ShowStageStrip({ song }: { song: Song }) {
+  const transpose = transposeFor(song.id)
+  const capo = progressionFor(song.id)?.capo
+  return <div className="show-stage-strip">
+    {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
+    {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>Transpose {transposeLabel(transpose.semitones)}</span>}
+    {capo && <span className="cheat-chip cheat-capo">{capo}</span>}
+    <PresetBadges songId={song.id} showNotes />
+    <HomeFretBadges song={song} />
   </div>
 }
 
@@ -376,15 +385,35 @@ export function Show() {
   // Autoscroll: only the chords/tabs sheets scroll (the cheat card auto-fits one screen).
   const speed = get(song.id).scrollSpeed || DEFAULT_SCROLL_SPEED
   const [playing, setPlaying] = useState(false)
+  // Lead-in when ▶ is pressed at the top: `delayUntil` is a performance.now() deadline
+  // (0 = none); `delayLeft` is the displayed seconds remaining.
+  const [delayUntil, setDelayUntil] = useState(0)
+  const [delayLeft, setDelayLeft] = useState(0)
   const [scrollable, setScrollable] = useState(false)
   const [picker, setPicker] = useState(false) // jump-to-song overlay (audible calls)
   const pickerCenteredRef = useRef(false) // center the current song once per open, not on every re-render
   const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'chords' ? chordsRef : null
-  useAutoScroll(scrollTarget, speed, playing, () => setPlaying(false))
+  // Hook only crawls after any top-of-sheet lead-in finishes.
+  useAutoScroll(scrollTarget, speed, playing && delayUntil === 0, () => setPlaying(false))
+  // Tick the lead-in countdown while a deadline is armed.
+  useEffect(() => {
+    if (!playing || delayUntil === 0) return
+    let raf = 0
+    const tick = (now: number) => {
+      const left = Math.max(0, (delayUntil - now) / 1000)
+      setDelayLeft(left)
+      if (left > 0) raf = requestAnimationFrame(tick)
+      else setDelayUntil(0)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [playing, delayUntil])
   // New song or view: start paused at the top, and re-measure whether the sheet overflows.
   // Resize (e.g. phone rotation) only re-measures — it must not yank scroll back to the top.
   useLayoutEffect(() => {
     setPlaying(false)
+    setDelayUntil(0)
+    setDelayLeft(0)
     const el = scrollTarget?.current
     if (el) el.scrollTop = 0
     const measure = () => setScrollable(!!el && el.scrollHeight > el.clientHeight + 1)
@@ -394,12 +423,24 @@ export function Show() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, effective, sheets.chords, sheets.tabs])
   const bumpSpeed = (delta: number) => patch(song.id, { scrollSpeed: Math.max(MIN_SCROLL_SPEED, Math.min(MAX_SCROLL_SPEED, speed + delta)) })
-  // Toggle play; if we're starting from the very bottom (a finished crawl), rewind to the top first.
-  const togglePlay = () => setPlaying((p) => {
+  // Toggle play; if we're starting from the very bottom (a finished crawl), rewind to the top
+  // first. At the top, arm a speed-based lead-in so the first lines aren't scrolled away
+  // before you can read them; mid-sheet presses crawl immediately.
+  const togglePlay = () => {
+    if (playing) { setPlaying(false); setDelayUntil(0); setDelayLeft(0); return }
     const el = scrollTarget?.current
-    if (!p && el && el.scrollTop + el.clientHeight >= el.scrollHeight - 1) el.scrollTop = 0
-    return !p
-  })
+    if (el && el.scrollTop + el.clientHeight >= el.scrollHeight - 1) el.scrollTop = 0
+    const atTop = !el || el.scrollTop <= 1
+    if (atTop) {
+      const secs = SCROLL_LEAD_IN_PX / Math.max(speed, 1)
+      setDelayUntil(performance.now() + secs * 1000)
+      setDelayLeft(secs)
+    } else {
+      setDelayUntil(0)
+      setDelayLeft(0)
+    }
+    setPlaying(true)
+  }
   useEffect(() => { shownIdRef.current = song.id; localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   // Live show sync: report every displayed song (only a leading device broadcasts it),
   // and snap to the leader's song when following. `live.leader` changes identity only
@@ -480,7 +521,7 @@ export function Show() {
       if (wakeLock.current) { wakeLock.current.release(); wakeLock.current = null }
     }
   }, [])
-  return <div className={`show-mode${effective === 'scale' ? ' show-mode--cheat' : ''}`}>
+  return <div className="show-mode">
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => setIndex((i) => Math.max(0, i - 1))} aria-label="Previous song">‹</button>
@@ -495,7 +536,7 @@ export function Show() {
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => setIndex((i) => Math.min(setSongs.length - 1, i + 1))} aria-label="Next song">›</button>
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
-    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>{effective !== 'scale' && <div className="show-preset"><PresetBadges songId={song.id} showNotes/><HomeFretBadges song={song}/></div>}
+    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
         <button type="button" role="tab" aria-selected={effective === 'scale'} aria-pressed={effective === 'scale' ? cheatShapes : undefined}
@@ -510,8 +551,10 @@ export function Show() {
       </div>
       {(sheets.chords || sheets.tabs) && <button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song - tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button>}
     </div>
+    <ShowStageStrip song={song} />
     {effective !== 'scale' && scrollable && <div className="show-autoscroll">
       <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
+      {playing && delayLeft > 0 && <span className="autoscroll-delay" aria-live="polite" aria-label={`Starting in ${delayLeft.toFixed(1)} seconds`}>{delayLeft.toFixed(1)}<i>s</i></span>}
       <button type="button" className="autoscroll-step" aria-label="Slower" disabled={speed <= MIN_SCROLL_SPEED} onClick={() => bumpSpeed(-SCROLL_SPEED_STEP)}>−</button>
       <span className="autoscroll-speed" aria-label={`Scroll speed ${speed} pixels per second`}>{speed}<i>px/s</i></span>
       <button type="button" className="autoscroll-step" aria-label="Faster" disabled={speed >= MAX_SCROLL_SPEED} onClick={() => bumpSpeed(SCROLL_SPEED_STEP)}>+</button>
