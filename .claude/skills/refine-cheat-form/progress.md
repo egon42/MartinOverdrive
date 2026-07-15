@@ -46,3 +46,4 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **04-i-believe-in-a-thing-called-love** — Intro ×2; Verse (in) `F# ~A B…` + Bridge−B `…~B`; Solo ×4; Clap with C#m D; Outro `(E A F# B)×4 E`; ghost `~` chips for skipped beats
 - **05-thunderstruck** — **blocked (guitar):** sheet proposal on `dev` (`5084c40`) — Riff ~B5; Chug×2 → Verse×4 → Build×2 → Verse×4 → Pre → Chorus → Solo → Chorus×2 → Solo → Outro; needs live pass to confirm ×N / Build / Solo placement
 - **06-don-t-stop-believin** — **deferred (interlude):** Intro×2 → Verse×4 → Pre → Interlude (fill+intro) → Verse×2 → Pre → Interlude → Solo → Chorus×4; Pre `(A E)×4`; Chorus `(E B C#m A)(E B G#m)` — form on `dev`; confirm fill/interlude against recording before closing
+- **07-tribute** — **deferred:** sheet proposal not applied — drop late Verse/Rock; Intro Am?; Rock ×2 + ROCK!; Refrain/Chorus ×N need live counts
