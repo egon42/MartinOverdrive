@@ -10,9 +10,9 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [ ] 02-all-the-small-things
 - [x] 03-a-little-less-conversation
 - [x] 04-i-believe-in-a-thing-called-love
-- [ ] 05-thunderstruck
+- [x] 05-thunderstruck
 - [x] 06-don-t-stop-believin
-- [ ] 07-tribute
+- [x] 07-tribute
 - [x] 08-while-my-guitar-gently-weeps
 - [x] 09-pride-and-joy
 - [x] 10-zombie
@@ -21,7 +21,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 13-save-a-horse-ride-a-cowboy
 - [x] 14-sweet-home-alabama
 - [x] 15-dani-california
-- [ ] 16-teenage-dirtbag
+- [x] 16-teenage-dirtbag
 - [x] 17-the-pretender
 - [ ] 18-here-it-goes-again
 - [ ] 19-purple-rain
@@ -41,12 +41,12 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 ## Done notes
 
 - **01-welcome-home** — Intro Em; Verse ×4; Chorus ×2 (`F Am C`); Bridge ×2 → Outro (verse pattern)
-- **02-all-the-small-things** — **blocked (guitar):** Intro `C G F G` ×2; Verse ×4/×2; Pre-Chorus ringing C; Chorus ×2 (`C G F`); after Interlude → Pre-Chorus/Bridge/Outro (no Nana); more form fixes deferred pending guitar
+- **02-all-the-small-things** — **blocked (guitar) + researched (2026-07-16, NOT applied — hand-vetted parts conflict):** research says na-na = post-chorus ×2 right after each sung chorus; instrumental verse-unit ×2 before V2; Interlude = `C C F G` ×4 once (1:44–2:10); no separate Bridge/Outro — ends on extended final chorus by 2:48; math 105 bars @150 ✓ — awaiting user decision vs "(no Nana)" note
 - **03-a-little-less-conversation** — Intro ×3 A D; Verse ×4; Chorus phrase groups; Bridge `(A)×3 C D E`; Verse ×2 after Bridge then Chorus; other ×N still provisional
 - **04-i-believe-in-a-thing-called-love** — Intro ×2; Verse (in) `F# ~A B…` + Bridge−B `…~B`; Solo ×4; Clap with C#m D; Outro `(E A F# B)×4 E`; ghost `~` chips for skipped beats
-- **05-thunderstruck** — **blocked (guitar):** sheet proposal on `dev` (`5084c40`) — Riff ~B5; Chug×2 → Verse×4 → Build×2 → Verse×4 → Pre → Chorus → Solo → Chorus×2 → Solo → Outro; needs live pass to confirm ×N / Build / Solo placement
+- **05-thunderstruck** — **research-verified (2026-07-16):** Riff → Chug (Thunder! chant) → V1 (~26 bars) → V2 (~16) → Pre → Chorus → V3 (short) → Solo → Pre (2-bar hit) → Chorus×2 → Outro (2nd ad-lib solo, ritard); Build section removed (doesn't exist on record — 2 sources agree); verse bar counts in hint (V2/solo lengths med confidence)
 - **06-don-t-stop-believin** — **research-verified (2026-07-16):** Intro×2 → V×2 → Interlude×2 (arpeggio entrance) → V (half) → Pre×4 → Interlude (short fill) → V×2 → Pre×4 → Solo → Chorus×3 to fade; no interlude before solo; math 124 bars @118 ≈ 4:12 vs 4:11 ✓ (chorus ×3 vs ×4 = med confidence)
-- **07-tribute** — **deferred:** sheet proposal not applied — drop late Verse/Rock; Intro Am?; Rock ×2 + ROCK!; Refrain/Chorus ×N need live counts
+- **07-tribute** — **research-verified (2026-07-16):** Intro (spoken/Am) → Verse → Rock×2 → Spoken (Am) → Rock (short stab) → Refrain×2 → Chorus×2 → Scat break → Solo×2 (chorus changes) → Spoken bridge → Climax×2 → Outro×2 + F tag; solo + scat were missing entirely (high conf, 2 sources); ×N on 7/9/11 vary slightly by transcriber
 - **08-while-my-guitar-gently-weeps** — Intro + full 2nd-ending half; Bridge `Bm E7sus4 E7`; form ends Verse → 2nd ending
 - **09-pride-and-joy** — **skipped:** single 12-bar shuffle card is enough for now
 - **10-zombie** — **skipped:** whole-song Em C G D loop is enough for now
@@ -55,7 +55,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **13-save-a-horse-ride-a-cowboy** — Intro/Verse/Solo `E A` with form ×4; Bridge ×8; Chorus keeps `(E A)×3 (E G A)×2`; Outro `E G A` + N.C. after final Chorus
 - **14-sweet-home-alabama** — **skipped:** whole-song D C G + fills card is enough for now
 - **15-dani-california** — Intro×2 → Verse×8 → Chorus×4 → Interlude×2 → Verse×4 → Chorus×4 → Bridge×4 → Verse×4 → Chorus×8 → Solo/Outro; Intro/Interlude/Solo = verse pattern; Chorus unit `F C Dm`
-- **16-teenage-dirtbag** — **deferred:** form on `dev` (`81f287e`) — Intro×2 → (Verse×3 Pre×2 Chorus×3)×2 → Bridge×2 → Verse×3 → Chorus×3 → Bridge×2 → Outro walk-down; confirm ×N / soft chorus / bridge live
+- **16-teenage-dirtbag** — **research-verified (2026-07-16):** added Intro reprise after Chorus 1 (med conf, 1 source); girl verse ×4 not ×3 (high conf, 2 sources) + gets Pre×2 before final Chorus; chorus = ×3 + short turnaround tag (hint)
 - **17-the-pretender** — Intro×2 → Verse×2 → Heavy → Pre×2 → Chorus×3 → Interlude → Pre → Interlude×4 → Outro×4 → Verse×2 → Chorus×3 → Outro×4; Heavy `A5 F#5 F5`
 - **18-here-it-goes-again** — **deferred:** form on `dev` — Intro C; Verse×3; Pre `(E Am)×2 G`; Chorus `(C G Bb F Am G C) | (C G Bb F Am G Ab)`; Bridge×2 → Verse×3 (no Pre) → Chorus → Outro×3; confirm ×N / outro live
 - **19-purple-rain** — **deferred (sheet first pass):** Intro + V/C×3 → Solo → Outro (no post-solo Chorus); confirm live

@@ -198,23 +198,19 @@
         "section": "Chug",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "Palm-mute enter"
+        "hint": "Palm-mute enter — Thunder! call-and-response"
       },
       {
         "section": "Verse",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "Palm-mute under vocal"
-      },
-      {
-        "section": "Build",
-        "chords": "B5",
-        "shapes": "-244--"
+        "hint": "Palm-mute under vocal — V1 long (~26 bars), V2 ~16, V3 short"
       },
       {
         "section": "Pre-Chorus",
         "chords": "B5 E5 B5 A5 E5",
-        "shapes": "-244-- 022--- -244-- -022-- 022---"
+        "shapes": "-244-- 022--- -244-- -022-- 022---",
+        "hint": "2nd time just a 2-bar hit"
       },
       {
         "section": "Chorus",
@@ -231,20 +227,20 @@
         "section": "Outro",
         "chords": "B5 (A5 E5) ×2",
         "shapes": "-244-- -022-- 022---",
-        "hint": "Ritard"
+        "hint": "2nd ad-lib solo — ritard to close"
       }
     ],
     "form": [
       "Riff",
-      "Chug ×2",
-      "Verse ×4",
-      "Build ×2",
-      "Verse ×4",
+      "Chug",
+      "Verse",
+      "Verse",
       "Pre-Chorus",
       "Chorus",
+      "Verse",
       "Solo",
+      "Pre-Chorus",
       "Chorus ×2",
-      "Solo",
       "Outro"
     ]
   },
@@ -301,12 +297,23 @@
   "07-tribute": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "Am",
+        "hint": "Spoken over the Am vamp"
+      },
+      {
         "section": "Verse",
         "chords": "Am G F"
       },
       {
         "section": "Rock part",
-        "chords": "D F C G F"
+        "chords": "D F C G F",
+        "hint": "2nd pass is one short stab"
+      },
+      {
+        "section": "Spoken",
+        "chords": "Am",
+        "hint": "Story time — hold the Am vamp"
       },
       {
         "section": "Tribute refrain",
@@ -317,19 +324,44 @@
         "chords": "Am G D F"
       },
       {
+        "section": "Scat break",
+        "chords": "Am",
+        "hint": "Vocal gibberish + band stabs — then back in"
+      },
+      {
+        "section": "Solo",
+        "chords": "Am G D F",
+        "hint": "Chorus changes under the lead"
+      },
+      {
+        "section": "Spoken bridge",
+        "chords": "Am G D F",
+        "hint": "Spoken over the changes"
+      },
+      {
+        "section": "Climax",
+        "chords": "Am G D F",
+        "hint": "Big final verse on the chorus changes"
+      },
+      {
         "section": "Outro",
-        "chords": "E F G E F"
+        "chords": "E F G E F",
+        "hint": "Quick tag — end on F"
       }
     ],
     "form": [
-      "Verse ×2",
-      "Rock part",
-      "Tribute refrain",
-      "Chorus",
+      "Intro",
       "Verse",
+      "Rock part ×2",
+      "Spoken",
       "Rock part",
-      "Chorus",
-      "Outro"
+      "Tribute refrain ×2",
+      "Chorus ×2",
+      "Scat break",
+      "Solo ×2",
+      "Spoken bridge",
+      "Climax ×2",
+      "Outro ×2"
     ]
   },
   "08-while-my-guitar-gently-weeps": {
