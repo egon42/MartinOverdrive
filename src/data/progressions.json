@@ -1266,6 +1266,12 @@
   "31-banditos": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "E D A E",
+        "shapes": "022--- -577-- 577--- 022---",
+        "hint": "Cold open — hook riff over the verse cycle"
+      },
+      {
         "section": "Verse",
         "chords": "E D A E",
         "shapes": "022--- -577-- 577--- 022---",
@@ -1283,6 +1289,12 @@
         "hint": "Verse changes under the solo"
       },
       {
+        "section": "Outro",
+        "chords": "E D A E",
+        "shapes": "022--- -577-- 577--- 022---",
+        "hint": "Solo riff rides out"
+      },
+      {
         "section": "Fills",
         "chords": "",
         "tab": "Between vocal lines\ne|--------------|\nB|--------------|\nG|--------------|\nD|------2---2---|\nA|2---2---0---0-|\nE|0---0---------|\n\nIntro hook\ne|--------------|\nB|------3-(3)-3-|\nG|------2-(2)-2-|\nD|5-(5)-0-(0)-0-|\nA|7-(7)---------|\nE|--------------|",
@@ -1290,12 +1302,14 @@
       }
     ],
     "form": [
-      "Verse ×3",
-      "Chorus",
+      "Intro",
       "Verse ×2",
       "Chorus",
-      "Solo",
-      "Chorus"
+      "Verse",
+      "Chorus",
+      "Solo ×2",
+      "Chorus",
+      "Outro ×2"
     ]
   }
 }

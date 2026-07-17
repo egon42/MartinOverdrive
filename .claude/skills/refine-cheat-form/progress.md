@@ -35,15 +35,15 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 27-fat-bottomed-girls
 - [x] 28-mama-i-m-coming-home
 - [x] 29-ain-t-goin-down-til-the-sun-comes-up
-- [ ] 30-pink-pony-club
-- [ ] 31-banditos
+- [x] 30-pink-pony-club
+- [x] 31-banditos
 
 ## Done notes
 
 - **01-welcome-home** — Intro Em; Verse ×4; Chorus ×2 (`F Am C`); Bridge ×2 → Outro (verse pattern)
 - **02-all-the-small-things** — **blocked (guitar) + researched (2026-07-16, NOT applied — hand-vetted parts conflict):** research says na-na = post-chorus ×2 right after each sung chorus; instrumental verse-unit ×2 before V2; Interlude = `C C F G` ×4 once (1:44–2:10); no separate Bridge/Outro — ends on extended final chorus by 2:48; math 105 bars @150 ✓ — awaiting user decision vs "(no Nana)" note
-- **03-a-little-less-conversation** — Intro ×3 A D; Verse ×4; Chorus phrase groups; Bridge `(A)×3 C D E`; Verse ×2 after Bridge then Chorus; other ×N still provisional
-- **04-i-believe-in-a-thing-called-love** — Intro ×2; Verse (in) `F# ~A B…` + Bridge−B `…~B`; Solo ×4; Clap with C#m D; Outro `(E A F# B)×4 E`; ghost `~` chips for skipped beats
+- **03-a-little-less-conversation** — Intro ×3 A D; Verse ×4; Chorus phrase groups; Bridge `(A)×3 C D E`; Verse ×2 after Bridge then Chorus; other ×N still provisional. **Research 2026-07-16 (NOT applied — needs user call):** card's A-major + 3-verse form matches neither cut cleanly — 1968 single is in A but has only ~1 verse/no bridge-tail; JXL 2002 remix matches the card's form skeleton but is in E major (5th up). Ask which recording is canon before touching key or form.
+- **04-i-believe-in-a-thing-called-love** — Intro ×2; Verse (in) `F# ~A B…` + Bridge−B `…~B`; Solo ×4; Clap with C#m D; Outro `(E A F# B)×4 E`; ghost `~` chips for skipped beats. **Research 2026-07-16 (NOT applied):** hand-vetted parts hold (Solo ×4 confirmed; Clap ≈ record's chorus-vamp solo 3); one real gap = keyboard **Middle 8 ×3 at ~2:37** between Bridge 3 and the Clap — no source gives its guitar chords, needs a listen; research also says bridge climax is `A A# B` (no G) and bridge endings identical ×3 (med conf, contradicts hand-vetted Bridge−B — trust user's ears unless they re-check); track is 3:36 not 4:36; standard tuning ✓ (album mix, semitone below single)
 - **05-thunderstruck** — **research-verified (2026-07-16):** Riff → Chug (Thunder! chant) → V1 (~26 bars) → V2 (~16) → Pre → Chorus → V3 (short) → Solo → Pre (2-bar hit) → Chorus×2 → Outro (2nd ad-lib solo, ritard); Build section removed (doesn't exist on record — 2 sources agree); verse bar counts in hint (V2/solo lengths med confidence)
 - **06-don-t-stop-believin** — **research-verified (2026-07-16):** Intro×2 → V×2 → Interlude×2 (arpeggio entrance) → V (half) → Pre×4 → Interlude (short fill) → V×2 → Pre×4 → Solo → Chorus×3 to fade; no interlude before solo; math 124 bars @118 ≈ 4:12 vs 4:11 ✓ (chorus ×3 vs ×4 = med confidence)
 - **07-tribute** — **research-verified (2026-07-16):** Intro (spoken/Am) → Verse → Rock×2 → Spoken (Am) → Rock (short stab) → Refrain×2 → Chorus×2 → Scat break → Solo×2 (chorus changes) → Spoken bridge → Climax×2 → Outro×2 + F tag; solo + scat were missing entirely (high conf, 2 sources); ×N on 7/9/11 vary slightly by transcriber
@@ -69,5 +69,5 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **27-fat-bottomed-girls** — **research-verified (2026-07-16, album version):** Interlude restored (Brian May confirms it's what the single cuts) + Solo added — Chorus (sparse open) → V1 → Interlude → V2 → Chorus → Solo → Outro (double hook + bikes tag, COLD end, not fade); Drop D ✓; middle-section bar counts uncertain — confirm live
 - **28-mama-i-m-coming-home** — **research-verified (2026-07-16):** Bridge restored to form (Chorus → Bridge×3 `G A E` → Solo; 3 sources, med conf on exact chords); Intro×2; final chorus extended; record outro is a descending run (hint); record is Eb standard (we sound a half-step up)
 - **29-ain-t-goin-down-til-the-sun-comes-up** — **research-CONFIRMED (2026-07-16):** form shape matches record (Intro → V×2 → C → Solo → V → Solo → C → V → Solo → C; 2 chord charts agree); record solos are fiddle + harmonica (hint updated); G major standard ✓; per-block ×N + ending unverified (charts abbreviate)
-- **30-pink-pony-club** — **deferred (sheet first pass):** split Verse/Refrain/Pre/Chorus (same loop); Intro C#; Bridge; Solo×4 at end; confirm ×N live
-- **31-banditos** — **deferred (sheet first pass):** Verse×3 → C → Verse×2 → C → Solo → C; confirm ×N live
+- **30-pink-pony-club** — **research-CONFIRMED (2026-07-16):** form verbatim incl. final Solo×4 (UG chords tab reproduces it exactly); F# major, standard, no capo ✓; math 29 cycles @107 ≈ 4:21 vs 4:18 ✓; only open ×N = mid-song Solo/Bridge cycle counts (assumed here)
+- **31-banditos** — **research-verified (2026-07-16):** Intro (cold-open riff) → V×2 → C → V → C → Solo×2 → C → Outro×2 (solo riff out); 3 verses total not 5; E mixolydian standard ✓; ~157 bars @147.5 ≈ 4:16 ✓; pre-solo verse grouping rests on one mirrored transcription (med conf)
