@@ -251,9 +251,21 @@
   "06-don-t-stop-believin": {
     "sections": [
       {
+        "section": "Intro",
+        "chords": "E B C#m A",
+        "shapes": "022--- -244-- -466-- -022--",
+        "hint": "Piano intro — enter on verse feel"
+      },
+      {
         "section": "Verse",
         "chords": "(E B C#m A) (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--"
+      },
+      {
+        "section": "Interlude",
+        "chords": "E B C#m A",
+        "shapes": "022--- -244-- -466-- -022--",
+        "hint": "Arpeggios on the intro cycle; 2nd time just a short fill"
       },
       {
         "section": "Pre-Chorus",
@@ -261,39 +273,29 @@
         "shapes": "-022-- 022---"
       },
       {
-        "section": "Chorus",
-        "chords": "(E B C#m A) (E B G#m)",
-        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466---"
-      },
-      {
-        "section": "Intro",
-        "chords": "E B C#m A",
-        "shapes": "022--- -244-- -466-- -022--",
-        "hint": "Piano intro — enter on verse feel"
-      },
-      {
-        "section": "Interlude",
-        "chords": "E B C#m A",
-        "shapes": "022--- -244-- -466-- -022--",
-        "hint": "Little fill, then intro pattern"
-      },
-      {
         "section": "Solo",
         "chords": "(E B C#m A) (E B G#m)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466---",
         "hint": "Chorus changes under the solo"
+      },
+      {
+        "section": "Chorus",
+        "chords": "(E B C#m A) (E B G#m)",
+        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466---",
+        "hint": "Only at the very end — rides to fade"
       }
     ],
     "form": [
       "Intro ×2",
-      "Verse ×4",
+      "Verse ×2",
+      "Interlude ×2",
+      "Verse",
       "Pre-Chorus ×4",
       "Interlude",
       "Verse ×2",
       "Pre-Chorus ×4",
-      "Interlude",
       "Solo",
-      "Chorus ×4"
+      "Chorus ×3"
     ]
   },
   "07-tribute": {

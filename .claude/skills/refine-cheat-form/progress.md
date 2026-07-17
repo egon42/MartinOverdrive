@@ -11,7 +11,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 03-a-little-less-conversation
 - [x] 04-i-believe-in-a-thing-called-love
 - [ ] 05-thunderstruck
-- [ ] 06-don-t-stop-believin
+- [x] 06-don-t-stop-believin
 - [ ] 07-tribute
 - [x] 08-while-my-guitar-gently-weeps
 - [x] 09-pride-and-joy
@@ -45,7 +45,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **03-a-little-less-conversation** — Intro ×3 A D; Verse ×4; Chorus phrase groups; Bridge `(A)×3 C D E`; Verse ×2 after Bridge then Chorus; other ×N still provisional
 - **04-i-believe-in-a-thing-called-love** — Intro ×2; Verse (in) `F# ~A B…` + Bridge−B `…~B`; Solo ×4; Clap with C#m D; Outro `(E A F# B)×4 E`; ghost `~` chips for skipped beats
 - **05-thunderstruck** — **blocked (guitar):** sheet proposal on `dev` (`5084c40`) — Riff ~B5; Chug×2 → Verse×4 → Build×2 → Verse×4 → Pre → Chorus → Solo → Chorus×2 → Solo → Outro; needs live pass to confirm ×N / Build / Solo placement
-- **06-don-t-stop-believin** — **deferred (interlude):** Intro×2 → Verse×4 → Pre×4 → Interlude (fill+intro) → Verse×2 → Pre×4 → Interlude → Solo → Chorus×4; Pre `A E`; Chorus `(E B C#m A)(E B G#m)` — form on `dev`; confirm fill/interlude against recording before closing
+- **06-don-t-stop-believin** — **research-verified (2026-07-16):** Intro×2 → V×2 → Interlude×2 (arpeggio entrance) → V (half) → Pre×4 → Interlude (short fill) → V×2 → Pre×4 → Solo → Chorus×3 to fade; no interlude before solo; math 124 bars @118 ≈ 4:12 vs 4:11 ✓ (chorus ×3 vs ×4 = med confidence)
 - **07-tribute** — **deferred:** sheet proposal not applied — drop late Verse/Rock; Intro Am?; Rock ×2 + ROCK!; Refrain/Chorus ×N need live counts
 - **08-while-my-guitar-gently-weeps** — Intro + full 2nd-ending half; Bridge `Bm E7sus4 E7`; form ends Verse → 2nd ending
 - **09-pride-and-joy** — **skipped:** single 12-bar shuffle card is enough for now
