@@ -809,5 +809,144 @@
         "Verse (2nd ending)"
       ]
     }
+  ],
+  "13-save-a-horse-ride-a-cowboy": [
+    {
+      "label": "Jul 15 hand pass",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E A"
+        },
+        {
+          "section": "Verse",
+          "chords": "E A"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(E A) ×3 (E G A) ×2"
+        },
+        {
+          "section": "Solo",
+          "chords": "E A"
+        },
+        {
+          "section": "Bridge",
+          "chords": "E A"
+        },
+        {
+          "section": "Outro",
+          "chords": "E G A",
+          "hint": "N.C. on the last line"
+        }
+      ],
+      "form": [
+        "Intro ×4",
+        "Verse ×4",
+        "Chorus",
+        "Verse ×4",
+        "Chorus",
+        "Solo ×4",
+        "Bridge ×8",
+        "Chorus",
+        "Outro"
+      ]
+    }
+  ],
+  "15-dani-california": [
+    {
+      "label": "Jul 15 hand pass",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am G Dm Am"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am G Dm Am",
+          "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr) — mute between hits"
+        },
+        {
+          "section": "Chorus",
+          "chords": "F C Dm"
+        },
+        {
+          "section": "Interlude",
+          "chords": "Am G Dm Am"
+        },
+        {
+          "section": "Bridge",
+          "chords": "Bm G F#"
+        },
+        {
+          "section": "Solo / Outro",
+          "chords": "Am G Dm Am"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×8",
+        "Chorus ×4",
+        "Interlude ×2",
+        "Verse ×4",
+        "Chorus ×4",
+        "Bridge ×4",
+        "Verse ×4",
+        "Chorus ×8",
+        "Solo / Outro"
+      ]
+    }
+  ],
+  "17-the-pretender": [
+    {
+      "label": "Jul 15 hand pass",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am D/F#",
+          "hint": "Quiet: picked Am arpeggio, bass walking A-B-C-A then F#-G-F# underneath"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am D/F#"
+        },
+        {
+          "section": "Heavy",
+          "chords": "A5 F#5 F5",
+          "shapes": "577--- 244--- 133---"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "A5 F#5 F5 D5 E5 F#5 G5"
+        },
+        {
+          "section": "Chorus",
+          "chords": "A5 F#5 F5",
+          "shapes": "577--- 244--- 133---"
+        },
+        {
+          "section": "Interlude",
+          "chords": "Am Am6 Am7 Am6"
+        },
+        {
+          "section": "Outro (who are you?)",
+          "chords": "A5 Am7"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×2",
+        "Heavy",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Interlude",
+        "Pre-Chorus",
+        "Interlude ×4",
+        "Outro (who are you?) ×4",
+        "Verse ×2",
+        "Chorus ×3",
+        "Outro (who are you?) ×4"
+      ]
+    }
   ]
 }

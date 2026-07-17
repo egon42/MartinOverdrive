@@ -18,9 +18,14 @@
         "chords": "F Am G F"
       },
       {
+        "section": "Solo",
+        "chords": "Em C D",
+        "hint": "Twin-guitar leads over the verse cycle"
+      },
+      {
         "section": "Outro",
         "chords": "Em C D",
-        "hint": "Verse pattern under the solo / oh’s"
+        "hint": "Verse pattern — oh’s + strings, fades out"
       }
     ],
     "form": [
@@ -30,7 +35,8 @@
       "Verse ×4",
       "Chorus ×2",
       "Bridge ×2",
-      "Outro"
+      "Solo ×5",
+      "Outro ×5"
     ]
   },
   "02-all-the-small-things": {
@@ -381,6 +387,16 @@
       {
         "section": "Bridge",
         "chords": "A C#m F#m C#m Bm E7sus4 E7"
+      },
+      {
+        "section": "Solo",
+        "chords": "(Am Am/G D/F# Fmaj7) (Am G D E) | (Am Am/G D/F# Fmaj7) (Am G C E)",
+        "hint": "Clapton — one full verse pair under the lead"
+      },
+      {
+        "section": "Outro",
+        "chords": "(Am Am/G D/F# Fmaj7) (Am G D E)",
+        "hint": "Lead + ad-lib vocal over verse changes — fade"
       }
     ],
     "form": [
@@ -390,9 +406,11 @@
       "Bridge",
       "Verse",
       "Verse (2nd ending)",
+      "Solo",
       "Bridge",
       "Verse",
-      "Verse (2nd ending)"
+      "Verse (2nd ending)",
+      "Outro ×4"
     ]
   },
   "09-pride-and-joy": {
@@ -492,7 +510,8 @@
       },
       {
         "section": "Solo",
-        "chords": "E A"
+        "chords": "E A",
+        "hint": "Guitar ×2 then fiddle ×2 on the record"
       },
       {
         "section": "Bridge",
@@ -544,7 +563,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "F C Dm"
+        "chords": "F C Dm G"
       },
       {
         "section": "Interlude",
@@ -556,7 +575,8 @@
       },
       {
         "section": "Solo / Outro",
-        "chords": "Am G Dm Am"
+        "chords": "F C Dm G",
+        "hint": "Lead over the chorus loop — rides the fade"
       }
     ],
     "form": [
@@ -568,8 +588,8 @@
       "Chorus ×4",
       "Bridge ×4",
       "Verse ×4",
-      "Chorus ×8",
-      "Solo / Outro"
+      "Chorus ×2",
+      "Solo / Outro ×8"
     ]
   },
   "16-teenage-dirtbag": {
@@ -649,12 +669,14 @@
         "shapes": "577--- 244--- 133---"
       },
       {
-        "section": "Interlude",
-        "chords": "Am Am6 Am7 Am6"
+        "section": "Bridge",
+        "chords": "Am Am6 Am7 Am6",
+        "hint": "One long quiet build — tease, hush, then the last chorus wave"
       },
       {
         "section": "Outro (who are you?)",
-        "chords": "A5 Am7"
+        "chords": "A5 Am7",
+        "hint": "Cold ending"
       }
     ],
     "form": [
@@ -663,12 +685,11 @@
       "Heavy",
       "Pre-Chorus ×2",
       "Chorus ×3",
-      "Interlude",
-      "Pre-Chorus",
-      "Interlude ×4",
-      "Outro (who are you?) ×4",
       "Verse ×2",
+      "Pre-Chorus ×2",
       "Chorus ×3",
+      "Bridge ×4",
+      "Chorus ×6",
       "Outro (who are you?) ×4"
     ]
   },
