@@ -325,7 +325,10 @@ function CheatCard({ song, innerRef, variant }: { song: Song, innerRef: RefObjec
         </div>)}
       </div>}
     </div>
-    <details className="cheat-more">
+    {/* The compact Cheat card has room to spare, so More starts open there; the dense
+        roadmap card keeps it collapsed. `open` only seeds the initial state — React
+        never rewrites it, so tapping the summary still toggles freely. */}
+    <details className="cheat-more" open={variant === 'cheat'}>
       <summary>More</summary>
       <div className="show-content">
         <div className="show-scale"><FretboardPanel song={song} /><dl><Field label="Scale hint" value={song.scaleHint} /></dl></div>
