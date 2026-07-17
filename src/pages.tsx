@@ -4,7 +4,7 @@ import { songs } from './data'
 import { AmpPresetField, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, HomeFretBadges, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
-import { cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
+import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
@@ -27,13 +27,38 @@ const SCROLL_LEAD_IN_PX = 96
 // like the practice store, so /dev/ and prod don't share a show position.
 const SHOW_KEY_SUFFIX = import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''
 const SHOW_INDEX_KEY = `overdrive-show-index${SHOW_KEY_SUFFIX}`
-const SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
-// Per-song pinned default view (songId -> 'scale' | 'chords' | 'tabs'). Deliberately in
-// localStorage, NOT the synced practice store: pins are a per-device rehearsal preference,
-// not band data. Keyed per deployment like the other show keys.
-const SHOW_PINS_KEY = `overdrive-show-pins${SHOW_KEY_SUFFIX}`
+// Show-mode view ids: 'cheat' (building-blocks card), 'chords' (full roadmap card),
+// 'lyrics' (chord-over-lyric sheet), 'tabs'. The 2026-07 tab rename shifted meanings —
+// 'scale' was the roadmap card and 'chords' was the lyric sheet — so the view/pin keys
+// were bumped to *2 and legacy values are mapped on first read (an un-bumped key would
+// make a stored 'chords' ambiguous between the old sheet and the new card).
+const migrateLegacyView = (v: string): string => (v === 'scale' ? 'chords' : v === 'chords' ? 'lyrics' : v)
+const SHOW_VIEW_KEY = `overdrive-show-view2${SHOW_KEY_SUFFIX}`
+const LEGACY_SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
+const readShowView = (): string => {
+  try {
+    const v = localStorage.getItem(SHOW_VIEW_KEY)
+    if (v) return v
+    const legacy = localStorage.getItem(LEGACY_SHOW_VIEW_KEY)
+    return legacy ? migrateLegacyView(legacy) : ''
+  } catch { return '' }
+}
+// Per-song pinned default view (songId -> view id above). Deliberately in localStorage,
+// NOT the synced practice store: pins are a per-device rehearsal preference, not band
+// data. Keyed per deployment like the other show keys.
+const SHOW_PINS_KEY = `overdrive-show-pins2${SHOW_KEY_SUFFIX}`
+const LEGACY_SHOW_PINS_KEY = `overdrive-show-pins${SHOW_KEY_SUFFIX}`
 const readPins = (): Record<string, string> => {
-  try { const p = JSON.parse(localStorage.getItem(SHOW_PINS_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
+  try {
+    const raw = localStorage.getItem(SHOW_PINS_KEY)
+    const parsed = raw ? JSON.parse(raw) : null
+    if (parsed && typeof parsed === 'object') return parsed
+    const legacy = JSON.parse(localStorage.getItem(LEGACY_SHOW_PINS_KEY) || '{}')
+    if (legacy && typeof legacy === 'object') {
+      return Object.fromEntries(Object.entries(legacy).map(([id, v]) => [id, migrateLegacyView(String(v))]))
+    }
+    return {}
+  } catch { return {} }
 }
 
 // Cheat-card version picker (dev deploys + local dev server only): songId -> archived
@@ -155,7 +180,7 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
 // crawl resumes from wherever the finger/fling left it. A finger resting on the sheet
 // pauses the creep (holding); up/cancel listen on window so a drag that drifts off the
 // element still un-pauses (the lesson from 43f64da). Stops and calls onReachEnd at the
-// bottom. No-op when ref is null (the cheat view auto-fits one screen).
+// bottom. No-op when ref is null (the card views auto-fit one screen).
 function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: number, playing: boolean, onReachEnd: () => void) {
   const onReachEndRef = useRef(onReachEnd)
   onReachEndRef.current = onReachEnd
@@ -217,16 +242,20 @@ function renderProgLabel(label: string) {
       : part)
 }
 
-// The live cheat card — the default show-mode view. Everything needed to play the song
-// on one screen: tuning strip, compact chord progression (derived from the chord sheet),
-// role / must-know / fallback, and the collapsed fretboard + scale hint. `innerRef` is the
+// The two progression cards in show mode, one component: `variant` 'chords' is the full
+// roadmap card (form order + repeats — the original "cheat card", now the Chords tab);
+// 'cheat' is the building-blocks card (each section once, plus fills — trusts the player
+// to know the song's shape). Both put everything on one screen: tuning strip, chord
+// rows, and the collapsed fretboard + role / must-know / fallback. `innerRef` is the
 // height auto-fit ref from Show(), so a dense song shrinks to fit instead of scrolling.
-function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDivElement | null> }) {
+function CheatCard({ song, innerRef, variant }: { song: Song, innerRef: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords' }) {
   const sheets = sheetsFor(song.id)
   const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
-  // Dev-only version picker: choose an archived cheat-card version to render instead of
-  // the live entry, so old and new forms can be A/B'd against the recording.
-  const versions = CHEAT_VERSIONS_UI ? progressionVersionsFor(song.id) : []
+  // Dev-only version picker (roadmap card only): choose an archived cheat-card version to
+  // render instead of the live entry, so old and new forms can be A/B'd against the
+  // recording. The Cheat card always shows the CURRENT sections — the refined data is
+  // the source of truth, not the pre-research basic forms.
+  const versions = variant === 'chords' && CHEAT_VERSIONS_UI ? progressionVersionsFor(song.id) : []
   const [versionChoices, setVersionChoices] = useState(readCheatVersionChoices)
   const pickVersion = (label: string) => {
     const next = { ...versionChoices }
@@ -241,10 +270,10 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
   // sheet (a single loop, or the distinct chords used) when a song isn't researched yet.
   const custom = chosen ?? progressionFor(song.id)
   const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
-  // When `form` is set, rows follow that roadmap (labels like "Verse ×4"); otherwise
-  // unique `sections` order. Fills always append last.
+  // Roadmap variant: `form` order when set (labels like "Verse ×4"), fills excluded.
+  // Cheat variant: each section once in stored order, fills included.
   const rows = custom
-    ? cheatRowsFor(custom)
+    ? (variant === 'chords' ? cheatRowsFor(custom) : basicRowsFor(custom))
     : derived?.map((row) => ({
         label: row.label,
         spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], shapes: [], times: 1 })),
@@ -361,16 +390,17 @@ function ShowStageStrip({ song }: { song: Song }) {
 // Last line of defense on stage: if anything in the song view throws mid-set (e.g. a
 // sheet edited the night before breaks the parser), show the song's name instead of a
 // white screen — the prev/next controls live outside the boundary and keep working.
-// Keyed by song+view in Show() so navigating away retries rendering fresh.
-class ShowSongBoundary extends Component<{ song: Song, onCheatView?: () => void, children: ReactNode }, { failed: boolean }> {
+// Keyed by song+view in Show() so navigating away retries rendering fresh. `onCardView`
+// escapes to the other progression card (a different code path than whatever crashed).
+class ShowSongBoundary extends Component<{ song: Song, onCardView?: () => void, cardLabel?: string, children: ReactNode }, { failed: boolean }> {
   state = { failed: false }
   static getDerivedStateFromError() { return { failed: true } }
   render() {
     if (!this.state.failed) return this.props.children
-    const { song, onCheatView } = this.props
+    const { song, onCardView, cardLabel } = this.props
     return <article className="show-song cheat-view"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1>
       <p className="show-error">This song’s view hit an error. Use ‹ › to keep the show moving.</p>
-      {onCheatView && <p><button type="button" className="secondary" onClick={onCheatView}>Open the cheat card instead</button></p>}
+      {onCardView && <p><button type="button" className="secondary" onClick={onCardView}>{cardLabel ?? 'Open the chords card instead'}</button></p>}
       <div className="show-content"><div className="show-fields">
         <Field label="Role" value={song.role} />
         <Field label="Must know" value={song.mustKnow} />
@@ -413,15 +443,19 @@ export function Show() {
   }
   const sheets = sheetsFor(song.id)
   const { settings, isFingeringOnly, toggleFingeringOnly } = useSettings()
-  const cheatShapes = isFingeringOnly(song.id, 'cheat')
-  const chordsShapes = isFingeringOnly(song.id, 'chords')
+  // Fingering surfaces predate the tab rename: 'cheat' governs chips on BOTH progression
+  // cards (Cheat and Chords tabs share one toggle per song); 'chords' governs the Lyrics sheet.
+  const cardShapes = isFingeringOnly(song.id, 'cheat')
+  const lyricsShapes = isFingeringOnly(song.id, 'chords')
   const [pins, setPins] = useState<Record<string, string>>(readPins)
   useEffect(() => { localStorage.setItem(SHOW_PINS_KEY, JSON.stringify(pins)) }, [pins])
   // Open each song on its pinned default view when present; otherwise fall back to the
-  // last view used (carried over across songs) or the cheat card.
-  const [view, setView] = useState(() => pins[song.id] || localStorage.getItem(SHOW_VIEW_KEY) || 'scale')
+  // last view used (carried over across songs) or the roadmap card.
+  const [view, setView] = useState(() => pins[song.id] || readShowView() || 'chords')
   useEffect(() => { localStorage.setItem(SHOW_VIEW_KEY, view) }, [view])
-  const effective = view === 'chords' && sheets.chords ? 'chords' : view === 'tabs' && sheets.tabs ? 'tabs' : 'scale'
+  // Sheets need their file to exist; unknown/legacy ids land on the roadmap card.
+  const effective = view === 'lyrics' && sheets.chords ? 'lyrics' : view === 'tabs' && sheets.tabs ? 'tabs' : view === 'cheat' ? 'cheat' : 'chords'
+  const cardView = effective === 'cheat' || effective === 'chords'
   // On song change, snap to that song's pinned view (a manual mid-song switch is transient
   // — the pin is the default we return to). Done in render, not an effect: an effect paints
   // the carried-over view first and corrects it after, flashing the wrong sheet and
@@ -438,22 +472,24 @@ export function Show() {
     if (next[song.id] === effective) delete next[song.id]; else next[song.id] = effective
     return next
   })
-  const views = ['scale', ...(sheets.chords ? ['chords'] : []), ...(sheets.tabs ? ['tabs'] : [])]
+  const views = ['cheat', 'chords', ...(sheets.chords ? ['lyrics'] : []), ...(sheets.tabs ? ['tabs'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
-  const selectCheat = () => {
-    if (effective === 'scale') {
+  // Tapping the already-active card tab re-taps into fingering chips (both cards share
+  // the 'cheat' surface); same retap on the Lyrics tab flips its own 'chords' surface.
+  const selectCard = (target: 'cheat' | 'chords') => {
+    if (effective === target) {
       if (settings.cheat.scope !== 'none') toggleFingeringOnly(song.id, 'cheat')
-    } else setView('scale')
+    } else setView(target)
   }
-  const selectChords = () => {
-    if (effective === 'chords') {
+  const selectLyrics = () => {
+    if (effective === 'lyrics') {
       if (settings.chords.scope !== 'none') toggleFingeringOnly(song.id, 'chords')
-    } else setView('chords')
+    } else setView('lyrics')
   }
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
-  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cheatShapes], 'height', 0.7)
-  const chordsRef = useRef<HTMLDivElement>(null)
-  // Autoscroll: only the chords/tabs sheets scroll (the cheat card auto-fits one screen).
+  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7)
+  const lyricsRef = useRef<HTMLDivElement>(null)
+  // Autoscroll: only the lyrics/tabs sheets scroll (the progression cards auto-fit one screen).
   const speed = get(song.id).scrollSpeed || DEFAULT_SCROLL_SPEED
   const [playing, setPlaying] = useState(false)
   // Lead-in when ▶ is pressed at the top: `delayUntil` is a performance.now() deadline
@@ -463,7 +499,7 @@ export function Show() {
   const [scrollable, setScrollable] = useState(false)
   const [picker, setPicker] = useState(false) // jump-to-song overlay (audible calls)
   const pickerCenteredRef = useRef(false) // center the current song once per open, not on every re-render
-  const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'chords' ? chordsRef : null
+  const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'lyrics' ? lyricsRef : null
   // Hook only crawls after any top-of-sheet lead-in finishes.
   useAutoScroll(scrollTarget, speed, playing && delayUntil === 0, () => setPlaying(false))
   // Tick the lead-in countdown while a deadline is armed.
@@ -552,7 +588,7 @@ export function Show() {
     return () => window.removeEventListener('keydown', key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [effective, sheets.chords, sheets.tabs, scrollable, setSongs, picker, liveOpen, index, urlSongId])
-  // Swipe navigation, cheat view only (it never scrolls horizontally, so a horizontal
+  // Swipe navigation, card views only (they never scroll horizontally, so a horizontal
   // drag is unambiguous there; sheet views keep swipes for scrolling). Mostly-horizontal
   // moves past the threshold turn the song; pointercancel means the browser claimed the
   // gesture as a scroll, so it's dropped.
@@ -567,7 +603,7 @@ export function Show() {
     if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 2) return
     goTo(dx < 0 ? index + 1 : index - 1)
   }
-  const swipeProps = effective === 'scale' ? { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: () => { swipeStart.current = null } } : {}
+  const swipeProps = cardView ? { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: () => { swipeStart.current = null } } : {}
   // Auto wake lock: request on mount, release on unmount, and silently re-acquire on
   // visibilitychange (the browser drops the lock whenever the tab/screen goes
   // background and never restores it automatically).
@@ -609,35 +645,39 @@ export function Show() {
       <div><i style={{ width: `${((index + 1) / setSongs.length) * 100}%` }}/></div>
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => goTo(index + 1)} aria-label="Next song">›</button>
     </div>
-    <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCheatView={effective !== 'scale' ? () => setView('scale') : undefined}>
-    <article className={`show-song${effective !== 'scale' ? ' sheet-view' : ' cheat-view'}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
+    <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCardView={effective !== 'chords' ? () => setView('chords') : () => setView('cheat')} cardLabel={effective !== 'chords' ? 'Open the chords card instead' : 'Open the cheat card instead'}>
+    <article className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
-        <button type="button" role="tab" aria-selected={effective === 'scale'} aria-pressed={effective === 'scale' ? cheatShapes : undefined}
-          className={shapesTabClass(effective === 'scale', cheatShapes, settings.cheat.scope !== 'none')}
-          title={effective === 'scale' && settings.cheat.scope !== 'none' ? (cheatShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
-          onClick={selectCheat}>Cheat</button>
-        {sheets.chords && <button type="button" role="tab" aria-selected={effective === 'chords'} aria-pressed={effective === 'chords' ? chordsShapes : undefined}
-          className={shapesTabClass(effective === 'chords', chordsShapes, settings.chords.scope !== 'none')}
-          title={effective === 'chords' && settings.chords.scope !== 'none' ? (chordsShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
-          onClick={selectChords}>Chords</button>}
+        <button type="button" role="tab" aria-selected={effective === 'cheat'} aria-pressed={effective === 'cheat' ? cardShapes : undefined}
+          className={shapesTabClass(effective === 'cheat', cardShapes, settings.cheat.scope !== 'none')}
+          title={effective === 'cheat' && settings.cheat.scope !== 'none' ? (cardShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          onClick={() => selectCard('cheat')}>Cheat</button>
+        <button type="button" role="tab" aria-selected={effective === 'chords'} aria-pressed={effective === 'chords' ? cardShapes : undefined}
+          className={shapesTabClass(effective === 'chords', cardShapes, settings.cheat.scope !== 'none')}
+          title={effective === 'chords' && settings.cheat.scope !== 'none' ? (cardShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          onClick={() => selectCard('chords')}>Chords</button>
+        {sheets.chords && <button type="button" role="tab" aria-selected={effective === 'lyrics'} aria-pressed={effective === 'lyrics' ? lyricsShapes : undefined}
+          className={shapesTabClass(effective === 'lyrics', lyricsShapes, settings.chords.scope !== 'none')}
+          title={effective === 'lyrics' && settings.chords.scope !== 'none' ? (lyricsShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+          onClick={selectLyrics}>Lyrics</button>}
         {sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}
       </div>
-      {(sheets.chords || sheets.tabs) && <button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song - tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button>}
+      <button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song - tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button>
     </div>
     <ShowStageStrip song={song} />
-    {effective !== 'scale' && scrollable && <div className="show-autoscroll">
+    {!cardView && scrollable && <div className="show-autoscroll">
       <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
       {playing && delayLeft > 0 && <span className="autoscroll-delay" aria-live="polite" aria-label={`Starting in ${delayLeft.toFixed(1)} seconds`}>{delayLeft.toFixed(1)}<i>s</i></span>}
       <button type="button" className="autoscroll-step" aria-label="Slower" disabled={speed <= MIN_SCROLL_SPEED} onClick={() => bumpSpeed(-SCROLL_SPEED_STEP)}>−</button>
       <span className="autoscroll-speed" aria-label={`Scroll speed ${speed} pixels per second`}>{speed}<i>px/s</i></span>
       <button type="button" className="autoscroll-step" aria-label="Faster" disabled={speed >= MAX_SCROLL_SPEED} onClick={() => bumpSpeed(SCROLL_SPEED_STEP)}>+</button>
     </div>}
-    {effective === 'chords'
-      ? <div className="show-sheet" ref={chordsRef}><ChordSheetView text={sheets.chords!} songId={song.id}/></div>
+    {effective === 'lyrics'
+      ? <div className="show-sheet" ref={lyricsRef}><ChordSheetView text={sheets.chords!} songId={song.id}/></div>
       : effective === 'tabs'
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
-        : <CheatCard song={song} innerRef={cheatRef}/>}</article>
+        : <CheatCard song={song} innerRef={cheatRef} variant={effective === 'cheat' ? 'cheat' : 'chords'}/>}</article>
     </ShowSongBoundary>
     {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className="show-upnext" onClick={() => goTo(index + 1)} aria-label={`Next song: ${next.title}`}>
       <span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/>

@@ -346,7 +346,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   const { settings, isFingeringOnly, toggleFingeringOnly } = useSettings()
   const sheets = sheetsFor(song.id)
   const available: SheetKind[] = ([['chords', sheets.chords], ['tabs', sheets.tabs]] as const).filter(([, data]) => data).map(([kind]) => kind)
-  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><h2>Tabs & chords</h2><p className="launcher-hint">Nothing built in for this song yet.</p></section>
+  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><h2>Lyrics & tabs</h2><p className="launcher-hint">Nothing built in for this song yet.</p></section>
   const preferred = entry.preferredSource === 'tabs' || entry.preferredSource === 'chords' ? entry.preferredSource : available[0]
   const active = view && available.includes(view) ? view : available.includes(preferred) ? preferred : available[0]
   const chordsShapes = isFingeringOnly(song.id, 'chords')
@@ -356,12 +356,12 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
     } else onViewChange('chords')
   }
   return <section className="panel chord-panel" id="song-sheet">
-    <div className="section-heading"><div><h2>Tabs & chords</h2></div>
+    <div className="section-heading"><div><h2>Lyrics & tabs</h2></div>
       {(available.length > 1 || available[0] === 'chords') && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
         {available.includes('chords') && <button type="button" role="tab" aria-selected={active === 'chords'} aria-pressed={active === 'chords' ? chordsShapes : undefined}
           className={shapesTabClass(active === 'chords', chordsShapes, settings.chords.scope !== 'none')}
           title={active === 'chords' && settings.chords.scope !== 'none' ? (chordsShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
-          onClick={selectChords}>Chords</button>}
+          onClick={selectChords}>Lyrics</button>}
         {available.includes('tabs') && <button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button>}
       </div>}
     </div>

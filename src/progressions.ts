@@ -13,9 +13,11 @@ import versionsData from './data/progressionVersions.json'
 // Empty `chords` is fine when a section is tab-only.
 //
 // `form`, when present, is the linear song roadmap (order + repeats), e.g.
-// ["Intro", "Verse ×4", "Chorus", "Verse ×2", "Outro"]. The cheat card renders rows in
-// that order; each label's base name (strip " ×N" / " xN") looks up chords in `sections`.
-// Fills stay at the end. Without `form`, `sections` order is used as before.
+// ["Intro", "Verse ×4", "Chorus", "Verse ×2", "Outro"]. Two stage cards render this
+// data: the Chords card walks `form` (each label's base name — strip " ×N" / " xN" —
+// looks up chords in `sections`; no Fills), and the Cheat card shows each section once
+// in `sections` order with the fills, ignoring `form`. Without `form`, both show
+// `sections` order.
 //
 // Prefer grouped repeats for mixed tiles inside one section ("(E A) ×3 (E G A) ×2").
 // When the whole section is N plays of one cycle, put ×N on the form label instead
@@ -204,15 +206,15 @@ function sectionToRow(label: string, section: ProgSection | undefined): CheatRow
   }
 }
 
-/** Rows for the cheat card: form order when set, else sections order. Fills always last. */
+/** Rows for the Chords card (full song roadmap): form order when set, else sections
+ * order. "Fills" pseudo-sections are excluded — fills live on the Cheat card. */
 export function cheatRowsFor(prog: SongProgression): CheatRow[] {
-  const fills = prog.sections.filter((s) => /^fills$/i.test(s.section))
   const bank = prog.sections.filter((s) => !/^fills$/i.test(s.section))
   const byName = new Map(bank.map((s) => [s.section, s]))
 
   if (prog.form?.length) {
     const seenHints = new Set<string>()
-    const rows = prog.form.map((label) => {
+    return prog.form.map((label) => {
       const base = formStepBase(label)
       const section = byName.get(base) ?? byName.get(label)
       const row = sectionToRow(label, section)
@@ -222,9 +224,14 @@ export function cheatRowsFor(prog: SongProgression): CheatRow[] {
       }
       return row
     })
-    for (const fill of fills) rows.push(sectionToRow(fill.section, fill))
-    return rows
   }
 
+  return bank.map((s) => sectionToRow(s.section, s))
+}
+
+/** Rows for the Cheat card: the song's building blocks only — each section once, in
+ * stored order, with its cycle, hint, and fills. The `form` roadmap is deliberately
+ * ignored: this view trusts the player to know the song's shape. */
+export function basicRowsFor(prog: SongProgression): CheatRow[] {
   return prog.sections.map((s) => sectionToRow(s.section, s))
 }

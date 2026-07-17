@@ -82,14 +82,29 @@ misread and risks silently saving to the wrong preset slot. Bulk-write presets w
 tools built for this (`load_presets.py` / `load_presets_gui.py` / `mustang-loader.bat`,
 see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
 
+## Show-mode tabs (renamed 2026-07-16 — labels vs internals)
+
+- Four tabs: **Cheat** (building-blocks card: each `progressions.json` section once, in
+  stored order, incl. Fills — ignores `form`), **Chords** (full roadmap card: `form`
+  order + ×N repeats, Fills excluded — this is what code/docs/skills call the "cheat
+  card"), **Lyrics** (the `.chords.txt` chord-over-lyric sheet), **Tabs**.
+- Internal names deliberately did NOT move with the labels: CSS `cheat-*` classes, the
+  `cheat`/`chords` fingering surfaces (`'cheat'` = both cards, `'chords'` = Lyrics
+  sheet), `cheatRowsFor` (roadmap) / `basicRowsFor` (cheat tab), and `SheetKind
+  'chords'` (lyrics text) all keep their old ids. Don't rename them piecemeal.
+- View/pin storage keys were bumped (`overdrive-show-view2`, `overdrive-show-pins2`)
+  because the old id `'chords'` changed meaning; legacy values migrate on first read
+  (`'scale'`→`'chords'`, `'chords'`→`'lyrics'`). Don't reuse the old keys.
+
 ## Cheat-card versioning (dev-branch feature, added 2026-07-16)
 
 - **Snapshot before rewriting any song's cheat card**: `node scripts/snapshot-progression.mjs
   <songId> "<label>"` archives the current `progressions.json` entry into
   `src/data/progressionVersions.json` (newest first; identical-content retry is a no-op).
-  The dev deploy's cheat card shows a **"Card version" dropdown** (also on the local dev
-  server) to A/B archived forms against the recording; **prod never renders it** and always
-  plays the live card. `npm run validate` checks archived versions with the same rules.
+  The dev deploy shows a **"Card version" dropdown** on the **Chords tab** (the roadmap
+  card; also on the local dev server) to A/B archived forms against the recording;
+  **prod never renders it** and always plays the live card. The Cheat tab always renders
+  the current sections. `npm run validate` checks archived versions with the same rules.
 - Standing user instruction (2026-07-16): because versions are always recoverable, apply
   recording-research corrections **without waiting for approval** — including to hand-vetted
   cards — but keep the user's played counts when research only weakly (med confidence)
@@ -108,8 +123,9 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   editable and diff-able). `TabsAndChords/` (gitignored) is the raw-material drop
   folder. Note: XPS/OXPS print exports are usually rasterized page images with no
   extractable text — ask for a text source instead of transcribing pictures.
-- Both practice (song page panel) and show mode offer a Chords/Tabs switch; show
-  mode auto-shrinks (chords fit by height, tabs by width).
+- Both practice (song page panel) and show mode offer a Lyrics/Tabs switch (the
+  lyric sheet was labeled "Chords" before the 2026-07-16 tab rename); show mode
+  auto-shrinks (lyrics fit by height, tabs by width).
 - `scripts/ug-chords-to-sheet.mjs` carries a **duplicated copy of `CHORD_RE`** from
   `src/chords.ts` ("keep in sync" comment) — if you edit the regex in either file,
   update both. `npm run validate` checks this drift plus cheat-card/sheet/setlist

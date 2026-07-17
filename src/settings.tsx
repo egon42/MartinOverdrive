@@ -24,6 +24,7 @@ try { localStorage.removeItem(`overdrive-settings2${KEY_SUFFIX}`) } catch { /* s
 
 export type FingeringScope = 'power' | 'all' | 'none'
 export type FingeringPosition = 'under' | 'over' | 'left' | 'right'
+// Storage keys predate the tab rename: 'cheat' governs chips on the Cheat & Chords cards; 'chords' governs the Lyrics sheet.
 export type FingeringSurface = 'cheat' | 'chords'
 
 export interface FingeringPrefs {
@@ -220,7 +221,7 @@ export function formatVerticalFingering(shape: string): string {
   return shape
 }
 
-/** Class for Cheat/Chords tabs: `shapes-hint` when retap is available, `shapes` when on. */
+/** Class for the show-mode / sheet-panel view tabs: `shapes-hint` when retap is available, `shapes` when on. */
 export function shapesTabClass(active: boolean, shapesOn: boolean, canToggle: boolean): string {
   const parts = [active ? 'active' : '']
   if (shapesOn) parts.push('shapes')
@@ -339,8 +340,8 @@ export function SettingsPage() {
     <section className="panel settings-panel">
       <span className="eyebrow">Chord chips</span>
       <h2>Chord fingerings</h2>
-      <FingeringFields surface="cheat" label="Cheat" />
-      <FingeringFields surface="chords" label="Chords" />
+      <FingeringFields surface="cheat" label="Cheat & Chords cards" />
+      <FingeringFields surface="chords" label="Lyrics sheet" />
     </section>
     <details className="settings-colors-disclosure">
       <summary>
