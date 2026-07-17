@@ -948,5 +948,39 @@
         "Outro (who are you?) ×4"
       ]
     }
+  ],
+  "11-hunger-strike": [
+    {
+      "label": "Jul 15 hand pass",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "G A7sus4 G Cadd9"
+        },
+        {
+          "section": "Verse / Chorus",
+          "chords": "G A7sus4 G Cadd9"
+        },
+        {
+          "section": "Interlude",
+          "chords": "G Am Bm Cadd9"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(D5 E5) ×2 Emadd9",
+          "hint": "Record riffs this low in Drop D; in Standard grab D5 x577xx and E5 022xxx"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse / Chorus ×8",
+        "Bridge ×4",
+        "Interlude ×2",
+        "Verse / Chorus ×2",
+        "Bridge ×4",
+        "Verse / Chorus ×4",
+        "Bridge"
+      ]
+    }
   ]
 }

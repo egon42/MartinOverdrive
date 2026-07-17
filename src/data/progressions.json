@@ -439,11 +439,12 @@
       },
       {
         "section": "Verse / Chorus",
-        "chords": "G A7sus4 G Cadd9"
+        "chords": "G A7sus4 G Cadd9",
+        "hint": "3 blocks up top: solo verse → duet → refrain (same cycle)"
       },
       {
         "section": "Interlude",
-        "chords": "G Am Bm Cadd9"
+        "chords": "G A7sus4 G/B Cadd9"
       },
       {
         "section": "Bridge",
@@ -454,6 +455,8 @@
     "form": [
       "Intro ×2",
       "Verse / Chorus ×8",
+      "Verse / Chorus ×6",
+      "Verse / Chorus ×4",
       "Bridge ×4",
       "Interlude ×2",
       "Verse / Chorus ×2",

@@ -50,7 +50,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **08-while-my-guitar-gently-weeps** — Intro + full 2nd-ending half; Bridge `Bm E7sus4 E7`; form ends Verse → 2nd ending. **Research applied 2026-07-16 (old = "Jul 15 hand pass"):** added mid-song Clapton Solo (full verse pair, between V2 and Bridge 2) + Outro ×4 fade over verse changes — both high conf (Pollack + Krerowicz timestamps); standard tuning ✓
 - **09-pride-and-joy** — **skipped:** single 12-bar shuffle card is enough for now
 - **10-zombie** — **skipped:** whole-song Em C G D loop is enough for now
-- **11-hunger-strike** — Intro×2 → V/C×8 → Bridge×4 → Interlude×2 → V/C×2 → Bridge×4 → V/C×4 → Bridge; Interlude only after first Bridge
+- **11-hunger-strike** — **Research applied 2026-07-16 (old = "Jul 15 hand pass"):** opening block split into 3 sub-blocks ×8 → ×6 → ×4 (solo verse / duet / refrain — 2 lyric-aligned charts + bar math; exact 6-8 counts vary by transcriber); Interlude chords corrected to `G A7sus4 G/B Cadd9` (high conf, 2 sources); rest of form confirmed; record is Drop D (matches bridge riff hint); ends cold on final Bridge
 - **12-s-o-b** — **skipped:** E hang + chorus phrases fine for now
 - **13-save-a-horse-ride-a-cowboy** — Intro/Verse/Solo `E A` with form ×4; Bridge ×8; Chorus keeps `(E A)×3 (E G A)×2`; Outro `E G A` + N.C. after final Chorus. **Research 2026-07-16: card CONFIRMED** (math ≈3:20 exact); solo hint now "guitar ×2 then fiddle ×2"; intro ×5 claimed by one source (kept ×4); NOTE record may sound in D (whole-step down) — med conf
 - **14-sweet-home-alabama** — **skipped:** whole-song D C G + fills card is enough for now
