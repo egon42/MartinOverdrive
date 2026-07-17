@@ -89,7 +89,11 @@ Welcome Home worked example is in the reference.
 
 ## Step 4 — Apply
 
-Edit only that song's entry in `src/data/progressions.json`.
+**Snapshot first** (versioning, added 2026-07-16): before rewriting the entry, run
+`node scripts/snapshot-progression.mjs <songId> "<label>"` so the old card stays
+selectable in the dev cheat-card version dropdown. Then edit only that song's entry in
+`src/data/progressions.json`. (Web-research passes instead of live counting →
+**research-song-form** skill.)
 
 ```bash
 npm run validate

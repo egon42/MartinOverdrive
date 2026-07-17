@@ -82,6 +82,21 @@ misread and risks silently saving to the wrong preset slot. Bulk-write presets w
 tools built for this (`load_presets.py` / `load_presets_gui.py` / `mustang-loader.bat`,
 see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
 
+## Cheat-card versioning (dev-branch feature, added 2026-07-16)
+
+- **Snapshot before rewriting any song's cheat card**: `node scripts/snapshot-progression.mjs
+  <songId> "<label>"` archives the current `progressions.json` entry into
+  `src/data/progressionVersions.json` (newest first; identical-content retry is a no-op).
+  The dev deploy's cheat card shows a **"Card version" dropdown** (also on the local dev
+  server) to A/B archived forms against the recording; **prod never renders it** and always
+  plays the live card. `npm run validate` checks archived versions with the same rules.
+- Standing user instruction (2026-07-16): because versions are always recoverable, apply
+  recording-research corrections **without waiting for approval** — including to hand-vetted
+  cards — but keep the user's played counts when research only weakly (med confidence)
+  contradicts them, and never pick between two canonical recordings without asking.
+- The research workflow itself is `.claude/skills/research-song-form` (subagent prompt
+  template, no-lyrics rule, bars×BPM arithmetic check, tuning/key flag).
+
 ## Per-song tabs & chords (dev-branch feature)
 
 - Curated **text** files, glob-loaded by `src/sheets.ts`:

@@ -919,22 +919,20 @@
       {
         "section": "Interlude",
         "chords": "D G A D",
-        "shapes": "-577-- 355--- 577--- -577--"
+        "shapes": "-577-- 355--- 577--- -577--",
+        "hint": "Lead solos over this loop"
       },
       {
         "section": "Chorus",
         "chords": "(G A D Bm G A D) (A Bm A) (G A D Bm G A D)",
-        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--"
+        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--",
+        "hint": "Endings: D · F#m · D"
       },
       {
         "section": "Bridge",
-        "chords": "(A D G) ×2 A G A",
-        "shapes": "577--- -577-- 355--- 577--- 355--- 577---"
-      },
-      {
-        "section": "Outro",
-        "chords": "D G A D",
-        "shapes": "-577-- 355--- 577--- -577--"
+        "chords": "(D A Bm G) ×2 (Em A D G) (Em A D) (G A) | (G A D Bm G)",
+        "shapes": "-577-- 577--- -244-- 355--- 022--- 577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
+        "hint": "Instrumental ×2, then vocals — tag into the last chorus"
       }
     ],
     "form": [
@@ -947,7 +945,7 @@
       "Verse",
       "Chorus",
       "Bridge",
-      "Outro"
+      "Chorus"
     ]
   },
   "24-mary-jane-s-last-dance": {

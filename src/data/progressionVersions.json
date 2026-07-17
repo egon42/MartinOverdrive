@@ -982,5 +982,55 @@
         "Bridge"
       ]
     }
+  ],
+  "23-lola-montez": [
+    {
+      "label": "Jul 15 sheet-aligned",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "D5 G5 A5 D5",
+          "shapes": "-577-- 355--- 577--- -577--"
+        },
+        {
+          "section": "Verse",
+          "chords": "(D5 G5 A5) ×2 D5",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Power-chord verse; longer verses keep walking the same D5–G5–A5 loop"
+        },
+        {
+          "section": "Interlude",
+          "chords": "D G A D",
+          "shapes": "-577-- 355--- 577--- -577--"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(G A D Bm G A D) (A Bm A) (G A D Bm G A D)",
+          "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(A D G) ×2 A G A",
+          "shapes": "577--- -577-- 355--- 577--- 355--- 577---"
+        },
+        {
+          "section": "Outro",
+          "chords": "D G A D",
+          "shapes": "-577-- 355--- 577--- -577--"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Bridge",
+        "Outro"
+      ]
+    }
   ]
 }
