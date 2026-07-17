@@ -24,13 +24,13 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 16-teenage-dirtbag
 - [x] 17-the-pretender
 - [x] 18-here-it-goes-again
-- [ ] 19-purple-rain
-- [ ] 20-when-i-come-around
+- [x] 19-purple-rain
+- [x] 20-when-i-come-around
 - [x] 21-the-middle
-- [ ] 22-dream-on
+- [x] 22-dream-on
 - [x] 23-lola-montez
-- [ ] 24-mary-jane-s-last-dance
-- [ ] 25-valerie
+- [x] 24-mary-jane-s-last-dance
+- [x] 25-valerie
 - [ ] 26-voodoo-child-slight-return
 - [ ] 27-fat-bottomed-girls
 - [ ] 28-mama-i-m-coming-home
@@ -58,13 +58,13 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **16-teenage-dirtbag** — **research-verified (2026-07-16):** added Intro reprise after Chorus 1 (med conf, 1 source); girl verse ×4 not ×3 (high conf, 2 sources) + gets Pre×2 before final Chorus; chorus = ×3 + short turnaround tag (hint)
 - **17-the-pretender** — Intro×2 → Verse×2 → Heavy → Pre×2 → Chorus×3 → Interlude → Pre → Interlude×4 → Outro×4 → Verse×2 → Chorus×3 → Outro×4; Heavy `A5 F#5 F5`
 - **18-here-it-goes-again** — **research-verified (2026-07-16):** Verse blocks ×4 not ×3; Chorus rebuilt as one 6-chord loop `C G Bb F Am G` that grows ×2 → ×3 → Outro ×5 vamp (Ab tags in hints); Bridge×2 then instrumental verse cycle into V3; E standard / C major confirmed
-- **19-purple-rain** — **deferred (sheet first pass):** Intro + V/C×3 → Solo → Outro (no post-solo Chorus); confirm live
-- **20-when-i-come-around** — **deferred (sheet first pass):** Intro → V → C → V → C → Solo → Chorus×2; confirm live
+- **19-purple-rain** — **research-verified (2026-07-16):** section order CONFIRMED (Intro → V/C ×3 → Solo → long coda outro; 3 sources); per-block cycle counts unverified but not contradicted; solo+outro ≈ half the 8:41 runtime; record is Bb major (band plays G — known transposition)
+- **20-when-i-come-around** — **research-verified (2026-07-16):** Intro×3 → V×8 → C → V×8 → C → Solo×2 → C → Outro×3 (rotated `Em C5 G5 D5`, cold end); chorus chips now `(Am C5)×2 (G5 D5 Em C5)×2`; record is Eb standard (sounds F#/Gb — we're a half-step up)
 - **21-the-middle** — **skipped:** whole-song `D A G` is fine for now (user)
-- **22-dream-on** — **deferred (sheet first pass):** Intro; Interlude `Em B7 Em`; 3rd Chorus before Climax; post-Climax Pre → Chorus → Am6 Outro; confirm live
+- **22-dream-on** — **research-verified (2026-07-16):** Intro×2 (with B7 tag) → V×2 → Pre (only one in the song) → Interlude → V → Chorus → Build×8 (Am6 swells) → Chorus → Climax×3 → out-Chorus → Am6 fade; Climax 4th chord = D not E (med-high); 87 bars @78 ≈ 4:28 ✓; record sounds ~half-step up (≈Fm)
 - **23-lola-montez** — **skipped:** already sheet-aligned (Intro/V/Interlude/C/Bridge/Outro)
-- **24-mary-jane-s-last-dance** — **deferred (sheet first pass):** Intro×2; Verse×4/×2; Breakdown×2; Chorus keeps `(Em7 A)×2 G`; confirm live
-- **25-valerie** — **deferred (sheet first pass):** Pre `(A G#m)×2 (A G#m B)`; V/C×2 → Pre → V/C → V/C×4 → Pre → V/C×2; confirm ×N live
+- **24-mary-jane-s-last-dance** — **research-verified skeleton (2026-07-16):** phantom "Breakdown" replaced by harmonica Interludes; added Solo×2 (Am-pent over verse cycle) + Outro (intro riff, fade); Chorus 8-bar phrase confirmed; **per-block ×N provisional** (UG/Songsterr blocked scraping) — confirm counts live
+- **25-valerie** — **research-verified (2026-07-16, 3 sources agree):** Intro (E vamp) → V/C×2 → Pre → C → V×2 (back-to-back) → Pre → C → Verse (quiet breakdown) → Pre → C×2 (ritard) → E tag; Zutons record is Eb standard (sounds Eb — we're a half-step up)
 - **26-voodoo-child-slight-return** — **deferred (sheet first pass):** Intro; Pre-Chorus; Solo; Outro; Verse×2 then V2 once; confirm live
 - **27-fat-bottomed-girls** — **deferred (sheet first pass):** opens Chorus; drop Interlude; Outro = chorus hook; confirm live
 - **28-mama-i-m-coming-home** — **deferred (sheet first pass):** Intro; Bridge section kept but not in form (tab goes Chorus→Solo); confirm live

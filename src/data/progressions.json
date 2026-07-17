@@ -745,7 +745,7 @@
       {
         "section": "Outro",
         "chords": "C G Em7 D G",
-        "hint": "After Solo; slow-down tag stays in Fills"
+        "hint": "Long coda — strings/ad-libs ride it out; slow-down tag in Fills"
       },
       {
         "section": "Fills",
@@ -781,7 +781,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "(Am C5) ×2 G5 D5 Em C5",
+        "chords": "(Am C5) ×2 (G5 D5 Em C5) ×2",
         "shapes": "-022-- -355-- 355--- -577-- -799-- -355--",
         "hint": "Walk the roots up A-B-C (A-str 0-2-3) into each chorus line (passing B5 is in the tab)"
       },
@@ -790,16 +790,23 @@
         "chords": "G5 D5 Em C5",
         "shapes": "355--- -577-- -799-- -355--",
         "hint": "Verse changes under the solo"
+      },
+      {
+        "section": "Outro",
+        "chords": "Em C5 G5 D5",
+        "shapes": "-799-- -355-- 355--- -577--",
+        "hint": "Rotated cycle — 3rd pass runs long; cold ending"
       }
     ],
     "form": [
-      "Intro",
-      "Verse",
+      "Intro ×3",
+      "Verse ×8",
       "Chorus",
-      "Verse",
+      "Verse ×8",
       "Chorus",
-      "Solo",
-      "Chorus ×2"
+      "Solo ×2",
+      "Chorus",
+      "Outro ×3"
     ]
   },
   "21-the-middle": {
@@ -815,33 +822,41 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "Em Em7 Em6 Am6"
+        "chords": "(Em Em7 Em6 Am6) (Em B7 Em)"
       },
       {
         "section": "Verse",
-        "chords": "Em Em7 Em6 Am6"
+        "chords": "Em Em7 Em6 Am6",
+        "hint": "V1 two passes, V2 one"
       },
       {
         "section": "Pre-Chorus",
-        "chords": "Em6 B7sus4 B7 Cmaj7 C#7 B7"
+        "chords": "Em6 B7sus4 B7 Cmaj7 C#7 B7",
+        "hint": "Only once — after V1"
+      },
+      {
+        "section": "Interlude",
+        "chords": "Em B7 Em",
+        "hint": "Intro tag — into V2"
       },
       {
         "section": "Chorus",
         "chords": "Em D C D Em"
       },
       {
-        "section": "Interlude",
-        "chords": "Em B7 Em",
-        "hint": "Between 2nd and 3rd Chorus — not full Pre-Chorus"
+        "section": "Build",
+        "chords": "Am6",
+        "hint": "Am6/add9 pulse — 8 swells into Chorus 2"
       },
       {
         "section": "Climax",
-        "chords": "Am B5 C E Em"
+        "chords": "Am B5 C D Em",
+        "hint": "3rd pass varies — D/Dsus4 into the scream"
       },
       {
         "section": "Outro",
         "chords": "Am6",
-        "hint": "Am add-6/9 fade — ×N uncertain"
+        "hint": "Am add-6/9 fade"
       },
       {
         "section": "Fills",
@@ -851,17 +866,15 @@
       }
     ],
     "form": [
-      "Intro",
-      "Verse",
+      "Intro ×2",
+      "Verse ×2",
       "Pre-Chorus",
-      "Chorus",
-      "Verse",
-      "Pre-Chorus",
-      "Chorus",
       "Interlude",
+      "Verse",
       "Chorus",
-      "Climax",
-      "Pre-Chorus",
+      "Build ×8",
+      "Chorus",
+      "Climax ×3",
       "Chorus",
       "Outro"
     ]
@@ -930,9 +943,19 @@
         "chords": "(Em7 A) ×2 G"
       },
       {
-        "section": "Breakdown",
+        "section": "Interlude",
         "chords": "Am G D Am",
-        "hint": "Sparse — same cycle as Verse"
+        "hint": "Harmonica over the intro riff"
+      },
+      {
+        "section": "Solo",
+        "chords": "Am G D Am",
+        "hint": "Same cycle — double-stop lead"
+      },
+      {
+        "section": "Outro",
+        "chords": "Am G D Am",
+        "hint": "Intro riff — solo out, fade"
       },
       {
         "section": "Fills",
@@ -944,16 +967,26 @@
     "form": [
       "Intro ×2",
       "Verse ×4",
+      "Interlude",
+      "Verse ×4",
       "Chorus",
+      "Interlude",
+      "Verse ×4",
+      "Chorus",
+      "Solo ×2",
       "Verse ×2",
       "Chorus",
-      "Breakdown ×2",
-      "Verse ×2",
-      "Chorus"
+      "Outro"
     ]
   },
   "25-valerie": {
     "sections": [
+      {
+        "section": "Intro",
+        "chords": "E",
+        "shapes": "022100",
+        "hint": "Two-bar vamp — riff enters"
+      },
       {
         "section": "Verse / Chorus",
         "chords": "E F#m",
@@ -962,16 +995,34 @@
       {
         "section": "Pre-Chorus",
         "chords": "(A G#m) ×2 (A G#m B)",
-        "shapes": "577655 466444 577655 466444 799877"
+        "shapes": "577655 466444 577655 466444 799877",
+        "hint": "Hang the B into the chorus"
+      },
+      {
+        "section": "Verse (quiet)",
+        "chords": "E F#m",
+        "shapes": "022100 244222",
+        "hint": "Breakdown — drop the riff, near-silent"
+      },
+      {
+        "section": "Outro",
+        "chords": "E",
+        "shapes": "022100",
+        "hint": "Short tag on E"
       }
     ],
     "form": [
+      "Intro",
       "Verse / Chorus ×2",
       "Pre-Chorus",
       "Verse / Chorus",
-      "Verse / Chorus ×4",
+      "Verse / Chorus ×2",
       "Pre-Chorus",
-      "Verse / Chorus ×2"
+      "Verse / Chorus",
+      "Verse (quiet)",
+      "Pre-Chorus",
+      "Verse / Chorus ×2",
+      "Outro"
     ]
   },
   "26-voodoo-child-slight-return": {
