@@ -4,7 +4,7 @@ import { songs } from './data'
 import { AmpPresetField, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, HomeFretBadges, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
 import { chordProgression } from './chords'
-import { cheatRowsFor, progressionFor, type CheatChordSpan } from './progressions'
+import { cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
@@ -34,6 +34,16 @@ const SHOW_VIEW_KEY = `overdrive-show-view${SHOW_KEY_SUFFIX}`
 const SHOW_PINS_KEY = `overdrive-show-pins${SHOW_KEY_SUFFIX}`
 const readPins = (): Record<string, string> => {
   try { const p = JSON.parse(localStorage.getItem(SHOW_PINS_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
+}
+
+// Cheat-card version picker (dev deploys + local dev server only): songId -> archived
+// version label, '' / absent = the live "Current" entry. Per-device review preference,
+// like pins — NOT synced practice data. Prod never renders the picker, so prod always
+// plays the current card even if this key somehow exists there.
+const CHEAT_VERSIONS_UI = import.meta.env.DEV || import.meta.env.BASE_URL.includes('/dev/')
+const CHEAT_VERSION_KEY = `overdrive-cheat-version${SHOW_KEY_SUFFIX}`
+const readCheatVersionChoices = (): Record<string, string> => {
+  try { const p = JSON.parse(localStorage.getItem(CHEAT_VERSION_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
 }
 
 
@@ -214,9 +224,22 @@ function renderProgLabel(label: string) {
 function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDivElement | null> }) {
   const sheets = sheetsFor(song.id)
   const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
+  // Dev-only version picker: choose an archived cheat-card version to render instead of
+  // the live entry, so old and new forms can be A/B'd against the recording.
+  const versions = CHEAT_VERSIONS_UI ? progressionVersionsFor(song.id) : []
+  const [versionChoices, setVersionChoices] = useState(readCheatVersionChoices)
+  const pickVersion = (label: string) => {
+    const next = { ...versionChoices }
+    if (label) next[song.id] = label
+    else delete next[song.id]
+    setVersionChoices(next)
+    try { localStorage.setItem(CHEAT_VERSION_KEY, JSON.stringify(next)) } catch { /* storage full/blocked: picker still works for this session */ }
+  }
+  const chosenLabel = versions.length ? versionChoices[song.id] ?? '' : ''
+  const chosen = chosenLabel ? versions.find((v) => v.label === chosenLabel) ?? null : null
   // Prefer the curated per-section progression; fall back to one derived from the chord
   // sheet (a single loop, or the distinct chords used) when a song isn't researched yet.
-  const custom = progressionFor(song.id)
+  const custom = chosen ?? progressionFor(song.id)
   const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
   // When `form` is set, rows follow that roadmap (labels like "Verse ×4"); otherwise
   // unique `sections` order. Fills always append last.
@@ -241,7 +264,20 @@ function CheatCard({ song, innerRef }: { song: Song, innerRef: RefObject<HTMLDiv
       el.style.setProperty('--sheet-fit', String(ratio < 1 ? Math.max(0.7, ratio * 0.97) : 1))
     })
   }
+  // Switching card versions changes row count without changing song — refit or the
+  // taller/shorter card keeps the previous version's scale.
+  useEffect(() => { refitCheat() }, [chosenLabel]) // eslint-disable-line react-hooks/exhaustive-deps
   return <div className="cheat-card">
+    {versions.length > 0 && <label className="cheat-version">
+      <span>Card version</span>
+      <select
+        value={chosen ? chosenLabel : ''}
+        onChange={(e) => pickVersion(e.target.value)}
+      >
+        <option value="">Current</option>
+        {versions.map((v) => <option key={v.label} value={v.label}>{v.label}</option>)}
+      </select>
+    </label>}
     <div className="cheat-fit" ref={innerRef}>
       {rows && <div className="cheat-progression">
         {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
@@ -309,6 +345,9 @@ function MoreFills({ tab, onToggle }: { tab: string, onToggle: () => void }) {
 /** Shared stage chrome strip: tuning / transpose / capo / amp presets / home frets. */
 function ShowStageStrip({ song }: { song: Song }) {
   const transpose = transposeFor(song.id)
+  // Known limit: always the LIVE entry's capo — the dev version dropdown in CheatCard
+  // doesn't reach up here, so an archived version with a different capo would show the
+  // current capo chip. Acceptable while no card uses `capo`; lift the choice up if one does.
   const capo = progressionFor(song.id)?.capo
   return <div className="show-stage-strip">
     {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}

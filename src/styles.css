@@ -158,6 +158,8 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    (`.cheat-fit`); fretboard/fields sit in collapsed `.cheat-more` so they don't shrink chips. */
 .show-song.cheat-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .cheat-card{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.cheat-version{display:flex;align-items:center;gap:8px;flex:none;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
+.cheat-version select{flex:1;min-width:0}
 .cheat-fit{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:6px;font-size:calc(var(--sheet-fit,1)*1rem)}
 .cheat-chip{border:1px solid #36423e;border-radius:999px;padding:.28em .7em;font-size:.8em;font-weight:750;color:#c5cec9}
 .cheat-chip.cheat-tuning{background:var(--acid);color:var(--on-acid);border-color:var(--acid)}

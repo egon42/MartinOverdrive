@@ -14,6 +14,7 @@ import process from 'node:process'
 const SETLIST = 'src/data/setlist.json'
 const SHEETS_DIR = 'src/data/sheets'
 const PROGRESSIONS = 'src/data/progressions.json'
+const PROG_VERSIONS = 'src/data/progressionVersions.json'
 const TAB_LINKS = 'src/data/tab-links.json'
 const CHORDS_TS = 'src/chords.ts'
 const UG_SCRIPT = 'scripts/ug-chords-to-sheet.mjs'
@@ -122,6 +123,7 @@ if (chordLiteralTs && chordLiteralUg && chordLiteralTs !== chordLiteralUg) {
 // --- Load data ------------------------------------------------------------------
 const setlist = readJson(SETLIST)
 const progressions = readJson(PROGRESSIONS)
+const progressionVersions = readJson(PROG_VERSIONS)
 const tabLinks = readJson(TAB_LINKS)
 
 // If core inputs are missing/unparseable, report blockers and bail (exit 1).
@@ -173,14 +175,15 @@ if (META_RE) {
   }
 }
 
-// --- Check 2: progressions.json cheat cards --------------------------------------
-if (progressions && typeof progressions === 'object') {
-  for (const [songId, entry] of Object.entries(progressions)) {
-    if (!songIds.has(songId)) fail(songId, `progressions.json entry keys to a song not in the setlist.`)
+// --- Check 2: cheat cards (progressions.json + archived progressionVersions.json) --
+// Archived versions render through the exact same parser when picked in the dev
+// version dropdown, so they must satisfy the same rules as the live cards.
+function validateCard(songId, entry, where) {
+  {
     const sections = entry && Array.isArray(entry.sections) ? entry.sections : null
-    if (!sections) { fail(songId, `progressions.json entry has no "sections" array.`); continue }
+    if (!sections) { fail(songId, `${where} entry has no "sections" array.`); return }
     sections.forEach((section, index) => {
-      const label = `progressions.json section #${index + 1}`
+      const label = `${where} section #${index + 1}`
       const sectionName = typeof section.section === 'string' ? section.section.trim() : ''
       const chords = typeof section.chords === 'string' ? section.chords.trim() : ''
       if (!sectionName) fail(songId, `${label}: empty "section".`)
@@ -214,15 +217,39 @@ if (progressions && typeof progressions === 'object') {
       const names = new Set(sections.map((s) => s.section))
       entry.form.forEach((step, index) => {
         if (typeof step !== 'string' || !step.trim()) {
-          fail(songId, `progressions.json form #${index + 1}: empty step.`)
+          fail(songId, `${where} form #${index + 1}: empty step.`)
           return
         }
         const base = step.replace(/\s*[×xX]\s*\d+\s*$/u, '').trim()
         if (!names.has(base) && !names.has(step.trim())) {
-          fail(songId, `progressions.json form "${step}" has no matching sections entry (looked up "${base}").`)
+          fail(songId, `${where} form "${step}" has no matching sections entry (looked up "${base}").`)
         }
       })
     }
+  }
+}
+
+if (progressions && typeof progressions === 'object') {
+  for (const [songId, entry] of Object.entries(progressions)) {
+    if (!songIds.has(songId)) fail(songId, `progressions.json entry keys to a song not in the setlist.`)
+    validateCard(songId, entry, 'progressions.json')
+  }
+}
+
+let archivedVersionCount = 0
+if (progressionVersions && typeof progressionVersions === 'object') {
+  for (const [songId, list] of Object.entries(progressionVersions)) {
+    if (!songIds.has(songId)) fail(songId, `progressionVersions.json entry keys to a song not in the setlist.`)
+    if (!Array.isArray(list)) { fail(songId, `progressionVersions.json entry is not an array of versions.`); continue }
+    const labels = new Set()
+    list.forEach((version, index) => {
+      const label = typeof version?.label === 'string' ? version.label.trim() : ''
+      if (!label) { fail(songId, `progressionVersions.json version #${index + 1}: empty "label".`); return }
+      if (labels.has(label)) fail(songId, `progressionVersions.json duplicate version label "${label}".`)
+      labels.add(label)
+      archivedVersionCount += 1
+      validateCard(songId, version, `progressionVersions.json "${label}"`)
+    })
   }
 }
 
@@ -259,5 +286,6 @@ if (blockers.length || findings.size) {
 }
 
 console.log(`Song-data validation passed: ${songs.length} songs, ${sheetEntries.length} sheet files, ` +
-  `${Object.keys(progressions).length} cheat cards, ${Object.keys(tabLinks).length} tab-link entries. ` +
+  `${Object.keys(progressions).length} cheat cards (+${archivedVersionCount} archived versions), ` +
+  `${Object.keys(tabLinks).length} tab-link entries. ` +
   `CHORD_RE in sync across ${CHORDS_TS} and ${UG_SCRIPT}.`)

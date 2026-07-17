@@ -1,4 +1,5 @@
 import data from './data/progressions.json'
+import versionsData from './data/progressionVersions.json'
 
 // Curated per-section chord progressions for the live cheat card, keyed by song id. The
 // .chords.txt sheets are raw chord-over-lyric paste with no section markers, so a compact
@@ -49,6 +50,22 @@ const progressions = data as Record<string, SongProgression>
 export function progressionFor(songId: string): SongProgression | null {
   const entry = progressions[songId]
   return entry && entry.sections.length ? entry : null
+}
+
+// Archived cheat-card versions (progressionVersions.json): every time a song's live
+// entry gets rewritten (research pass, live correction), the previous entry is
+// snapshotted there (scripts/snapshot-progression.mjs) so nothing right is lost.
+// The dev deploy's cheat card offers a version dropdown to A/B them against the
+// recording; the live progressions.json entry is always "Current".
+export interface ProgressionVersion extends SongProgression { label: string }
+
+const progressionVersions = versionsData as unknown as Record<string, ProgressionVersion[]>
+
+/** Archived (non-current) versions for a song, newest first as stored. */
+export function progressionVersionsFor(songId: string): ProgressionVersion[] {
+  const list = progressionVersions[songId]
+  if (!Array.isArray(list)) return []
+  return list.filter((v) => v && typeof v.label === 'string' && v.label.trim() !== '' && Array.isArray(v.sections) && v.sections.length > 0)
 }
 
 /** "Verse ×4" / "Verse x2" → "Verse"; unchanged if no repeat suffix. */
