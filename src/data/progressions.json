@@ -25,7 +25,7 @@
       {
         "section": "Outro",
         "chords": "Em C D",
-        "hint": "Verse pattern — oh’s + strings, fades out"
+        "hint": "Verse pattern: oh’s + strings, fades out"
       }
     ],
     "form": [
@@ -77,7 +77,7 @@
         "section": "Outro",
         "chords": "C G F C",
         "shapes": "-355-- 355--- 133--- -355--",
-        "hint": "Hang F — night will go on"
+        "hint": "Hang F: night will go on"
       }
     ],
     "form": [
@@ -131,7 +131,7 @@
         "section": "Intro",
         "chords": "F# A B E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
-        "hint": "Same as verse — count in carefully"
+        "hint": "Same as verse; count in carefully"
       },
       {
         "section": "Verse",
@@ -198,19 +198,19 @@
         "section": "Riff",
         "chords": "~B5",
         "shapes": "-244--",
-        "hint": "Rest — lead has the one-string riff"
+        "hint": "Rest; lead has the one-string riff"
       },
       {
         "section": "Chug",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "Palm-mute enter — Thunder! call-and-response"
+        "hint": "Palm-mute enter: Thunder! call-and-response"
       },
       {
         "section": "Verse",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "Palm-mute under vocal — V1 long (~26 bars), V2 ~16, V3 short"
+        "hint": "Palm-mute under vocal: V1 long (~26 bars), V2 ~16, V3 short"
       },
       {
         "section": "Pre-Chorus",
@@ -233,7 +233,7 @@
         "section": "Outro",
         "chords": "B5 (A5 E5) ×2",
         "shapes": "-244-- -022-- 022---",
-        "hint": "2nd ad-lib solo — ritard to close"
+        "hint": "2nd ad-lib solo, ritard to close"
       }
     ],
     "form": [
@@ -256,7 +256,7 @@
         "section": "Intro",
         "chords": "E B C#m A",
         "shapes": "022--- -244-- -466-- -022--",
-        "hint": "Piano intro — enter on verse feel"
+        "hint": "Piano intro: enter on verse feel"
       },
       {
         "section": "Verse",
@@ -284,7 +284,7 @@
         "section": "Chorus",
         "chords": "(E B C#m A) (E B G#m)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466---",
-        "hint": "Only at the very end — rides to fade"
+        "hint": "Only at the very end, rides to fade"
       }
     ],
     "form": [
@@ -319,7 +319,7 @@
       {
         "section": "Spoken",
         "chords": "Am",
-        "hint": "Story time — hold the Am vamp"
+        "hint": "Story time: hold the Am vamp"
       },
       {
         "section": "Tribute refrain",
@@ -332,7 +332,7 @@
       {
         "section": "Scat break",
         "chords": "Am",
-        "hint": "Vocal gibberish + band stabs — then back in"
+        "hint": "Vocal gibberish + band stabs, then back in"
       },
       {
         "section": "Solo",
@@ -352,7 +352,7 @@
       {
         "section": "Outro",
         "chords": "E F G E F",
-        "hint": "Quick tag — end on F"
+        "hint": "Quick tag: end on F"
       }
     ],
     "form": [
@@ -391,12 +391,12 @@
       {
         "section": "Solo",
         "chords": "(Am Am/G D/F# Fmaj7) (Am G D E) | (Am Am/G D/F# Fmaj7) (Am G C E)",
-        "hint": "Clapton — one full verse pair under the lead"
+        "hint": "Clapton: one full verse pair under the lead"
       },
       {
         "section": "Outro",
         "chords": "(Am Am/G D/F# Fmaj7) (Am G D E)",
-        "hint": "Lead + ad-lib vocal over verse changes — fade"
+        "hint": "Lead + ad-lib vocal over verse changes, fade"
       }
     ],
     "form": [
@@ -475,7 +475,7 @@
       {
         "section": "Verse",
         "chords": "E",
-        "hint": "Stay on E — don't walk A/B until the chorus"
+        "hint": "Stay on E; don't walk A/B until the chorus"
       },
       {
         "section": "Chorus",
@@ -562,7 +562,7 @@
       {
         "section": "Verse",
         "chords": "Am G Dm Am",
-        "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr) — mute between hits"
+        "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr); mute between hits"
       },
       {
         "section": "Chorus",
@@ -579,7 +579,7 @@
       {
         "section": "Solo / Outro",
         "chords": "F C Dm G",
-        "hint": "Lead over the chorus loop — rides the fade"
+        "hint": "Lead over the chorus loop, rides the fade"
       }
     ],
     "form": [
@@ -674,7 +674,7 @@
       {
         "section": "Bridge",
         "chords": "Am Am6 Am7 Am6",
-        "hint": "One long quiet build — tease, hush, then the last chorus wave"
+        "hint": "One long quiet build: tease, hush, then the last chorus wave"
       },
       {
         "section": "Outro (who are you?)",
@@ -718,7 +718,7 @@
         "section": "Chorus",
         "chords": "C G Bb F Am G",
         "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
-        "hint": "One 6-chord loop — last pass tags Ab"
+        "hint": "One 6-chord loop; last pass tags Ab"
       },
       {
         "section": "Bridge",
@@ -751,7 +751,7 @@
       {
         "section": "Intro",
         "chords": "G Em7 D C",
-        "hint": "Instrumental pickup — same cycle as Verse"
+        "hint": "Instrumental pickup: same cycle as Verse"
       },
       {
         "section": "Verse",
@@ -764,12 +764,12 @@
       {
         "section": "Solo",
         "chords": "C G Em7 D G",
-        "hint": "Less is more — chorus changes, slow bends"
+        "hint": "Less is more: chorus changes, slow bends"
       },
       {
         "section": "Outro",
         "chords": "C G Em7 D G",
-        "hint": "Long coda — strings/ad-libs ride it out; slow-down tag in Fills"
+        "hint": "Long coda: strings/ad-libs ride it out; slow-down tag in Fills"
       },
       {
         "section": "Fills",
@@ -796,7 +796,7 @@
         "section": "Intro",
         "chords": "G5 D5 Em C5",
         "shapes": "355--- -577-- -799-- -355--",
-        "hint": "Riff intro — verse power-chord cycle"
+        "hint": "Riff intro: verse power-chord cycle"
       },
       {
         "section": "Verse",
@@ -819,7 +819,7 @@
         "section": "Outro",
         "chords": "Em C5 G5 D5",
         "shapes": "-799-- -355-- 355--- -577--",
-        "hint": "Rotated cycle — 3rd pass runs long; cold ending"
+        "hint": "Rotated cycle: 3rd pass runs long; cold ending"
       }
     ],
     "form": [
@@ -856,12 +856,12 @@
       {
         "section": "Pre-Chorus",
         "chords": "Em6 B7sus4 B7 Cmaj7 C#7 B7",
-        "hint": "Only once — after V1"
+        "hint": "Only once, after V1"
       },
       {
         "section": "Interlude",
         "chords": "Em B7 Em",
-        "hint": "Intro tag — into V2"
+        "hint": "Intro tag, into V2"
       },
       {
         "section": "Chorus",
@@ -870,12 +870,12 @@
       {
         "section": "Build",
         "chords": "Am6",
-        "hint": "Am6/add9 pulse — 8 swells into Chorus 2"
+        "hint": "Am6/add9 pulse: 8 swells into Chorus 2"
       },
       {
         "section": "Climax",
         "chords": "Am B5 C D Em",
-        "hint": "3rd pass varies — D/Dsus4 into the scream"
+        "hint": "3rd pass varies: D/Dsus4 into the scream"
       },
       {
         "section": "Outro",
@@ -932,7 +932,7 @@
         "section": "Bridge",
         "chords": "(D A Bm G) ×2 (Em A D G) (Em A D) (G A) | (G A D Bm G)",
         "shapes": "-577-- 577--- -244-- 355--- 022--- 577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
-        "hint": "Instrumental ×2, then vocals — tag into the last chorus"
+        "hint": "Instrumental ×2, then vocals; tag into the last chorus"
       }
     ],
     "form": [
@@ -958,7 +958,7 @@
       {
         "section": "Verse",
         "chords": "Am G D Am",
-        "hint": "Keep it sparse — the Am hammer riff is the song"
+        "hint": "Keep it sparse: the Am hammer riff is the song"
       },
       {
         "section": "Chorus",
@@ -972,12 +972,12 @@
       {
         "section": "Solo",
         "chords": "Am G D Am",
-        "hint": "Same cycle — double-stop lead"
+        "hint": "Same cycle: double-stop lead"
       },
       {
         "section": "Outro",
         "chords": "Am G D Am",
-        "hint": "Intro riff — solo out, fade"
+        "hint": "Intro riff: solo out, fade"
       },
       {
         "section": "Fills",
@@ -1007,7 +1007,7 @@
         "section": "Intro",
         "chords": "E",
         "shapes": "022100",
-        "hint": "Two-bar vamp — riff enters"
+        "hint": "Two-bar vamp, riff enters"
       },
       {
         "section": "Verse / Chorus",
@@ -1024,7 +1024,7 @@
         "section": "Verse (quiet)",
         "chords": "E F#m",
         "shapes": "022100 244222",
-        "hint": "Breakdown — drop the riff, near-silent"
+        "hint": "Breakdown: drop the riff, near-silent"
       },
       {
         "section": "Outro",
@@ -1069,12 +1069,12 @@
       {
         "section": "Solo",
         "chords": "E7#9 G A",
-        "hint": "Verse riff under the lead — 2nd solo runs long"
+        "hint": "Verse riff under the lead; 2nd solo runs long"
       },
       {
         "section": "Outro",
         "chords": "E G A E",
-        "hint": "Hard ending — no fade"
+        "hint": "Hard ending: no fade"
       }
     ],
     "form": [
@@ -1101,7 +1101,7 @@
         "section": "Chorus",
         "chords": "(D C G D C A D) (G D A D)",
         "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---",
-        "hint": "1st one opens sparse — band crashes in after"
+        "hint": "1st one opens sparse; band crashes in after"
       },
       {
         "section": "Interlude",
@@ -1113,13 +1113,13 @@
         "section": "Solo",
         "chords": "(D A D) G (D A D)",
         "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---",
-        "hint": "Under the lead — verse-type changes"
+        "hint": "Under the lead: verse-type changes"
       },
       {
         "section": "Outro",
         "chords": "(D C G D C A D) (G D A D)",
         "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---",
-        "hint": "Double hook, bikes tag — cold ending"
+        "hint": "Double hook, bikes tag; cold ending"
       },
       {
         "section": "Fills",
@@ -1160,7 +1160,7 @@
       {
         "section": "Bridge",
         "chords": "G A E",
-        "hint": "Acoustic bridge — last pass walks B into the solo"
+        "hint": "Acoustic bridge: last pass walks B into the solo"
       },
       {
         "section": "Solo",
@@ -1170,7 +1170,7 @@
       {
         "section": "Outro",
         "chords": "A E",
-        "hint": "Record ends on a descending run — fade"
+        "hint": "Record ends on a descending run, fade"
       }
     ],
     "form": [
@@ -1208,7 +1208,7 @@
         "section": "Solo",
         "chords": "G C G D G",
         "shapes": "320003 -32010 320003 --0232 320003",
-        "hint": "Verse changes — fiddle/harmonica breaks on the record"
+        "hint": "Verse changes: fiddle/harmonica breaks on the record"
       },
       {
         "section": "Fills",
@@ -1291,7 +1291,7 @@
         "section": "Intro",
         "chords": "E D A E",
         "shapes": "022--- -577-- 577--- 022---",
-        "hint": "Cold open — hook riff over the verse cycle"
+        "hint": "Cold open: hook riff over the verse cycle"
       },
       {
         "section": "Verse",
