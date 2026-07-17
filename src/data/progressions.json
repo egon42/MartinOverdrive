@@ -1047,22 +1047,23 @@
       {
         "section": "Solo",
         "chords": "E7#9 G A",
-        "hint": "Verse riff under the solo"
+        "hint": "Verse riff under the lead — 2nd solo runs long"
       },
       {
         "section": "Outro",
-        "chords": "E G A E"
+        "chords": "E G A E",
+        "hint": "Hard ending — no fade"
       }
     ],
     "form": [
       "Intro",
-      "Verse ×2",
+      "Verse",
       "Pre-Chorus",
       "Chorus",
       "Solo",
       "Verse",
-      "Pre-Chorus",
       "Chorus",
+      "Solo",
       "Outro"
     ]
   },
@@ -1077,13 +1078,26 @@
       {
         "section": "Chorus",
         "chords": "(D C G D C A D) (G D A D)",
-        "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---"
+        "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---",
+        "hint": "1st one opens sparse — band crashes in after"
+      },
+      {
+        "section": "Interlude",
+        "chords": "(D A D) G (D A D)",
+        "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---",
+        "hint": "Guitar fill between verses (cut from the single)"
+      },
+      {
+        "section": "Solo",
+        "chords": "(D A D) G (D A D)",
+        "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---",
+        "hint": "Under the lead — verse-type changes"
       },
       {
         "section": "Outro",
         "chords": "(D C G D C A D) (G D A D)",
         "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---",
-        "hint": "Double hook then bikes tag"
+        "hint": "Double hook, bikes tag — cold ending"
       },
       {
         "section": "Fills",
@@ -1095,9 +1109,10 @@
     "form": [
       "Chorus",
       "Verse",
-      "Chorus",
+      "Interlude",
       "Verse",
       "Chorus",
+      "Solo",
       "Outro"
     ]
   },

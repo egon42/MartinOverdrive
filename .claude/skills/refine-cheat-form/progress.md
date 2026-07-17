@@ -31,8 +31,8 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 23-lola-montez
 - [x] 24-mary-jane-s-last-dance
 - [x] 25-valerie
-- [ ] 26-voodoo-child-slight-return
-- [ ] 27-fat-bottomed-girls
+- [x] 26-voodoo-child-slight-return
+- [x] 27-fat-bottomed-girls
 - [x] 28-mama-i-m-coming-home
 - [x] 29-ain-t-goin-down-til-the-sun-comes-up
 - [ ] 30-pink-pony-club
@@ -65,8 +65,8 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **23-lola-montez** — **skipped:** already sheet-aligned (Intro/V/Interlude/C/Bridge/Outro)
 - **24-mary-jane-s-last-dance** — **research-verified skeleton (2026-07-16):** phantom "Breakdown" replaced by harmonica Interludes; added Solo×2 (Am-pent over verse cycle) + Outro (intro riff, fade); Chorus 8-bar phrase confirmed; **per-block ×N provisional** (UG/Songsterr blocked scraping) — confirm counts live
 - **25-valerie** — **research-verified (2026-07-16, 3 sources agree):** Intro (E vamp) → V/C×2 → Pre → C → V×2 (back-to-back) → Pre → C → Verse (quiet breakdown) → Pre → C×2 (ritard) → E tag; Zutons record is Eb standard (sounds Eb — we're a half-step up)
-- **26-voodoo-child-slight-return** — **deferred (sheet first pass):** Intro; Pre-Chorus; Solo; Outro; Verse×2 then V2 once; confirm live
-- **27-fat-bottomed-girls** — **deferred (sheet first pass):** opens Chorus; drop Interlude; Outro = chorus hook; confirm live
+- **26-voodoo-child-slight-return** — **research-verified skeleton (2026-07-16, SRV cut):** two Chorus+Solo pairs — Intro → V1 → Pre → Chorus → Solo → V2 → Chorus → Solo (long) → Outro (hard end, no fade); 2nd pre dropped per research (med conf); SRV plays Eb standard (we sound half-step up); verse/solo cycle counts = open risk, confirm live
+- **27-fat-bottomed-girls** — **research-verified (2026-07-16, album version):** Interlude restored (Brian May confirms it's what the single cuts) + Solo added — Chorus (sparse open) → V1 → Interlude → V2 → Chorus → Solo → Outro (double hook + bikes tag, COLD end, not fade); Drop D ✓; middle-section bar counts uncertain — confirm live
 - **28-mama-i-m-coming-home** — **research-verified (2026-07-16):** Bridge restored to form (Chorus → Bridge×3 `G A E` → Solo; 3 sources, med conf on exact chords); Intro×2; final chorus extended; record outro is a descending run (hint); record is Eb standard (we sound a half-step up)
 - **29-ain-t-goin-down-til-the-sun-comes-up** — **research-CONFIRMED (2026-07-16):** form shape matches record (Intro → V×2 → C → Solo → V → Solo → C → V → Solo → C; 2 chord charts agree); record solos are fiddle + harmonica (hint updated); G major standard ✓; per-block ×N + ending unverified (charts abbreviate)
 - **30-pink-pony-club** — **deferred (sheet first pass):** split Verse/Refrain/Pre/Chorus (same loop); Intro C#; Bridge; Solo×4 at end; confirm ×N live
