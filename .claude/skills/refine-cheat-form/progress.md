@@ -23,7 +23,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 15-dani-california
 - [x] 16-teenage-dirtbag
 - [x] 17-the-pretender
-- [ ] 18-here-it-goes-again
+- [x] 18-here-it-goes-again
 - [ ] 19-purple-rain
 - [ ] 20-when-i-come-around
 - [x] 21-the-middle
@@ -57,7 +57,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **15-dani-california** — Intro×2 → Verse×8 → Chorus×4 → Interlude×2 → Verse×4 → Chorus×4 → Bridge×4 → Verse×4 → Chorus×8 → Solo/Outro; Intro/Interlude/Solo = verse pattern; Chorus unit `F C Dm`
 - **16-teenage-dirtbag** — **research-verified (2026-07-16):** added Intro reprise after Chorus 1 (med conf, 1 source); girl verse ×4 not ×3 (high conf, 2 sources) + gets Pre×2 before final Chorus; chorus = ×3 + short turnaround tag (hint)
 - **17-the-pretender** — Intro×2 → Verse×2 → Heavy → Pre×2 → Chorus×3 → Interlude → Pre → Interlude×4 → Outro×4 → Verse×2 → Chorus×3 → Outro×4; Heavy `A5 F#5 F5`
-- **18-here-it-goes-again** — **deferred:** form on `dev` — Intro C; Verse×3; Pre `(E Am)×2 G`; Chorus `(C G Bb F Am G C) | (C G Bb F Am G Ab)`; Bridge×2 → Verse×3 (no Pre) → Chorus → Outro×3; confirm ×N / outro live
+- **18-here-it-goes-again** — **research-verified (2026-07-16):** Verse blocks ×4 not ×3; Chorus rebuilt as one 6-chord loop `C G Bb F Am G` that grows ×2 → ×3 → Outro ×5 vamp (Ab tags in hints); Bridge×2 then instrumental verse cycle into V3; E standard / C major confirmed
 - **19-purple-rain** — **deferred (sheet first pass):** Intro + V/C×3 → Solo → Outro (no post-solo Chorus); confirm live
 - **20-when-i-come-around** — **deferred (sheet first pass):** Intro → V → C → V → C → Solo → Chorus×2; confirm live
 - **21-the-middle** — **skipped:** whole-song `D A G` is fine for now (user)

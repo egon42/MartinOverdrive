@@ -692,13 +692,15 @@
       },
       {
         "section": "Chorus",
-        "chords": "(C G Bb F Am G C) | (C G Bb F Am G Ab)",
-        "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- -355-- -355-- 355--- -133-- 133--- 577--- 355--- 466---"
+        "chords": "C G Bb F Am G",
+        "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
+        "hint": "One 6-chord loop — last pass tags Ab"
       },
       {
         "section": "Bridge",
         "chords": "Eb Bb C G Ab",
-        "shapes": "-688-- 688--- -355-- 355--- 466---"
+        "shapes": "-688-- 688--- -355-- 355--- 466---",
+        "hint": "Then one instrumental verse cycle into V3"
       },
       {
         "section": "Outro",
@@ -709,16 +711,15 @@
     ],
     "form": [
       "Intro",
-      "Verse ×3",
+      "Verse ×4",
       "Pre-Chorus",
-      "Chorus",
-      "Verse ×3",
+      "Chorus ×2",
+      "Verse ×4",
       "Pre-Chorus",
-      "Chorus",
+      "Chorus ×3",
       "Bridge ×2",
-      "Verse ×3",
-      "Chorus",
-      "Outro ×3"
+      "Verse ×4",
+      "Outro ×5"
     ]
   },
   "19-purple-rain": {
