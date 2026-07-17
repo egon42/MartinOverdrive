@@ -1117,11 +1117,13 @@
       },
       {
         "section": "Chorus",
-        "chords": "A E"
+        "chords": "A E",
+        "hint": "Final one runs extended"
       },
       {
         "section": "Bridge",
-        "chords": "G A E B"
+        "chords": "G A E",
+        "hint": "Acoustic bridge — last pass walks B into the solo"
       },
       {
         "section": "Solo",
@@ -1130,16 +1132,18 @@
       },
       {
         "section": "Outro",
-        "chords": "A E"
+        "chords": "A E",
+        "hint": "Record ends on a descending run — fade"
       }
     ],
     "form": [
-      "Intro",
+      "Intro ×2",
       "Verse",
       "Pre-Chorus",
       "Verse",
       "Pre-Chorus",
       "Chorus",
+      "Bridge ×3",
       "Solo",
       "Pre-Chorus",
       "Chorus",
@@ -1167,7 +1171,7 @@
         "section": "Solo",
         "chords": "G C G D G",
         "shapes": "320003 -32010 320003 --0232 320003",
-        "hint": "Verse changes under the solo"
+        "hint": "Verse changes — fiddle/harmonica breaks on the record"
       },
       {
         "section": "Fills",

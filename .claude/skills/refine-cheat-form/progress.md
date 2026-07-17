@@ -33,8 +33,8 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - [x] 25-valerie
 - [ ] 26-voodoo-child-slight-return
 - [ ] 27-fat-bottomed-girls
-- [ ] 28-mama-i-m-coming-home
-- [ ] 29-ain-t-goin-down-til-the-sun-comes-up
+- [x] 28-mama-i-m-coming-home
+- [x] 29-ain-t-goin-down-til-the-sun-comes-up
 - [ ] 30-pink-pony-club
 - [ ] 31-banditos
 
@@ -67,7 +67,7 @@ Status: `unchecked` · `done` · `skipped` · `blocked` (need user / better shee
 - **25-valerie** — **research-verified (2026-07-16, 3 sources agree):** Intro (E vamp) → V/C×2 → Pre → C → V×2 (back-to-back) → Pre → C → Verse (quiet breakdown) → Pre → C×2 (ritard) → E tag; Zutons record is Eb standard (sounds Eb — we're a half-step up)
 - **26-voodoo-child-slight-return** — **deferred (sheet first pass):** Intro; Pre-Chorus; Solo; Outro; Verse×2 then V2 once; confirm live
 - **27-fat-bottomed-girls** — **deferred (sheet first pass):** opens Chorus; drop Interlude; Outro = chorus hook; confirm live
-- **28-mama-i-m-coming-home** — **deferred (sheet first pass):** Intro; Bridge section kept but not in form (tab goes Chorus→Solo); confirm live
-- **29-ain-t-goin-down-til-the-sun-comes-up** — **deferred (sheet first pass):** Intro + three Solos on verse cycle per sheet markers; confirm live
+- **28-mama-i-m-coming-home** — **research-verified (2026-07-16):** Bridge restored to form (Chorus → Bridge×3 `G A E` → Solo; 3 sources, med conf on exact chords); Intro×2; final chorus extended; record outro is a descending run (hint); record is Eb standard (we sound a half-step up)
+- **29-ain-t-goin-down-til-the-sun-comes-up** — **research-CONFIRMED (2026-07-16):** form shape matches record (Intro → V×2 → C → Solo → V → Solo → C → V → Solo → C; 2 chord charts agree); record solos are fiddle + harmonica (hint updated); G major standard ✓; per-block ×N + ending unverified (charts abbreviate)
 - **30-pink-pony-club** — **deferred (sheet first pass):** split Verse/Refrain/Pre/Chorus (same loop); Intro C#; Bridge; Solo×4 at end; confirm ×N live
 - **31-banditos** — **deferred (sheet first pass):** Verse×3 → C → Verse×2 → C → Solo → C; confirm ×N live
