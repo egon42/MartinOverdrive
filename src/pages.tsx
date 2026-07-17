@@ -245,8 +245,8 @@ function renderProgLabel(label: string) {
 // The two progression cards in show mode, one component: `variant` 'chords' is the full
 // roadmap card (form order + repeats — the original "cheat card", now the Chords tab);
 // 'cheat' is the building-blocks card (each section once, plus fills — trusts the player
-// to know the song's shape). Both put everything on one screen: tuning strip, chord
-// rows, and the collapsed fretboard + role / must-know / fallback. `innerRef` is the
+// to know the song's shape). Both put the chord rows on one screen; the Cheat card alone
+// carries the fretboard + role / must-know / fallback below the fold. `innerRef` is the
 // height auto-fit ref from Show(), so a dense song shrinks to fit instead of scrolling.
 function CheatCard({ song, innerRef, variant }: { song: Song, innerRef: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords' }) {
   const sheets = sheetsFor(song.id)
@@ -297,39 +297,42 @@ function CheatCard({ song, innerRef, variant }: { song: Song, innerRef: RefObjec
   // taller/shorter card keeps the previous version's scale.
   useEffect(() => { refitCheat() }, [chosenLabel]) // eslint-disable-line react-hooks/exhaustive-deps
   return <div className="cheat-card">
-    {versions.length > 0 && <label className="cheat-version">
-      <span>Card version</span>
-      <select
-        value={chosen ? chosenLabel : ''}
-        onChange={(e) => pickVersion(e.target.value)}
-      >
-        <option value="">Current</option>
-        {versions.map((v) => <option key={v.label} value={v.label}>{v.label}</option>)}
-      </select>
-    </label>}
-    <div className="cheat-fit" ref={innerRef}>
-      {rows && <div className="cheat-progression">
-        {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
-          <span className="cheat-prog-label">{renderProgLabel(row.label)}</span>
-          <div className="cheat-prog-body">
-            <span className="cheat-prog-chords">{row.spans.map((span, s) =>
-              <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
-                {span.chords.map((chord, j) =>
-                  <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
-                {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
-              </span>)}</span>
-            {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
-            {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
-            {row.tabMore && <MoreFills tab={row.tabMore} onToggle={refitCheat} />}
-          </div>
-        </div>)}
-      </div>}
+    {/* Exactly one card-height (flex-shrink:0), so the chord rows own the first screen and
+        the reference block below can't steal height from them. Auto-fit measures `.cheat-fit`
+        inside this box, so the version picker reduces its space without escaping the fold. */}
+    <div className={`cheat-screen${variant === 'cheat' ? ' cheat-screen-peek' : ''}`}>
+      {versions.length > 0 && <label className="cheat-version">
+        <span>Card version</span>
+        <select
+          value={chosen ? chosenLabel : ''}
+          onChange={(e) => pickVersion(e.target.value)}
+        >
+          <option value="">Current</option>
+          {versions.map((v) => <option key={v.label} value={v.label}>{v.label}</option>)}
+        </select>
+      </label>}
+      <div className="cheat-fit" ref={innerRef}>
+        {rows && <div className="cheat-progression">
+          {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
+            <span className="cheat-prog-label">{renderProgLabel(row.label)}</span>
+            <div className="cheat-prog-body">
+              <span className="cheat-prog-chords">{row.spans.map((span, s) =>
+                <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
+                  {span.chords.map((chord, j) =>
+                    <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
+                  {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
+                </span>)}</span>
+              {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
+              {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
+              {row.tabMore && <MoreFills tab={row.tabMore} onToggle={refitCheat} />}
+            </div>
+          </div>)}
+        </div>}
+      </div>
     </div>
-    {/* The compact Cheat card has room to spare, so More starts open there; the dense
-        roadmap card keeps it collapsed. `open` only seeds the initial state — React
-        never rewrites it, so tapping the summary still toggles freely. */}
-    <details className="cheat-more" open={variant === 'cheat'}>
-      <summary>More</summary>
+    {/* Cheat tab only: plain content past the fold rather than a disclosure — scroll the
+        card to reach it. The roadmap card doesn't carry it at all. */}
+    {variant === 'cheat' && <div className="cheat-more">
       <div className="show-content">
         <div className="show-scale"><FretboardPanel song={song} /><dl><Field label="Scale hint" value={song.scaleHint} /></dl></div>
         <div className="show-fields">
@@ -339,7 +342,7 @@ function CheatCard({ song, innerRef, variant }: { song: Song, innerRef: RefObjec
           {ownNotes && <Field label="My notes" value={ownNotes} />}
         </div>
       </div>
-    </details>
+    </div>}
   </div>
 }
 

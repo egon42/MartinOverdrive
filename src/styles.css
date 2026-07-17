@@ -155,9 +155,21 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .show-tabs .tab-text{overflow-x:visible;width:max-content;min-width:100%}
 
 /* Live cheat card (default show-mode view). --sheet-fit scales progression only
-   (`.cheat-fit`); fretboard/fields sit in collapsed `.cheat-more` so they don't shrink chips. */
+   (`.cheat-fit`); `.cheat-screen` pins the chord rows to exactly one card-height so the
+   `.cheat-more` reference block scrolls in below the fold instead of shrinking chips. */
 .show-song.cheat-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .cheat-card{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px}
+/* flex-basis 100% + no shrink = one screen exactly; .cheat-card (definite height) is the
+   scroller. min-height:0 is load-bearing: without it the auto min-content size can clamp
+   this above 100% and shove .cheat-more further down. */
+.cheat-screen{flex:0 0 100%;min-height:0;display:flex;flex-direction:column;gap:8px}
+/* Cheat tab only: hold back enough that .cheat-more's first button is cut in half above the
+   fold. iOS overlay scrollbars show nothing at rest, so an exact 100% hides the block with no
+   affordance — and stopping at the 1px rule (22px) isn't one either: it's the same hairline
+   .cheat-progression and .show-upnext already use, so it reads as the card's bottom edge. 34px
+   = 8 gap + 1 rule + 12 pad + 13px of a ~26px pill. A half-cut control says "scroll"; a line
+   doesn't. The roadmap card keeps the full 100% — nothing sits below it to hint at. */
+.cheat-screen-peek{flex-basis:calc(100% - 34px)}
 .cheat-version{display:flex;align-items:center;gap:8px;flex:none;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
 .cheat-version select{flex:1;min-width:0}
 .cheat-fit{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:6px;font-size:calc(var(--sheet-fit,1)*1rem)}
@@ -202,13 +214,9 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .cheat-prog-hide{display:block;margin:6px 0 2px;padding:0;border:0;background:none;color:var(--muted);font-size:.62em;font-weight:800;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .cheat-prog-hide::before{content:"− ";color:var(--acid)}
 .cheat-prog-chords .chord-chip{font-size:1.05em;padding:2px 8px}
-/* Secondary stage info — collapsed by default so it never taxes chip auto-fit */
-.cheat-more{flex:0 0 auto}
-.cheat-more>summary{cursor:pointer;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);list-style:none;padding:4px 0}
-.cheat-more>summary::-webkit-details-marker{display:none}
-.cheat-more>summary::before{content:"+ ";color:var(--acid)}
-.cheat-more[open]>summary::before{content:"− "}
-.cheat-more .show-content{gap:18px;margin-top:8px}
+/* Secondary stage info — sits past the fold (Cheat tab only), outside chip auto-fit */
+.cheat-more{flex:0 0 auto;border-top:1px solid #36423e;padding-top:12px}
+.cheat-more .show-content{gap:18px}
 .cheat-more .field dt{font-size:.6rem}
 .cheat-more .show-fields .field dd{font-size:1.05rem}
 .cheat-more .show-scale .field dd{font-size:.82rem}
