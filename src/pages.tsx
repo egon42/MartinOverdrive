@@ -142,11 +142,14 @@ export function SongDetail() {
 // Shrinks the sheet's font until it fits the container (height for compact chords,
 // width for monospace tab lines), so a phone in show mode sees as much of the song
 // as possible without scrolling. Floored — extreme songs scroll a little instead.
-function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor = 0.6) {
+// `frozen` suspends fitting: while the user has pinch-zoomed the card, --sheet-fit is
+// left at its last fitted value (the 1× baseline) and --zoom multiplies from there, so
+// auto-fit and the user's zoom don't fight over the same font-size on the same element.
+function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor = 0.6, frozen = false) {
   const ref = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     const el = ref.current
-    if (!el) return
+    if (!el || frozen) return
     const measure = () => {
       el.style.setProperty('--sheet-fit', '1')
       const ratio = axis === 'height' ? el.clientHeight / el.scrollHeight : el.clientWidth / el.scrollWidth
@@ -156,8 +159,55 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
     window.addEventListener('resize', measure)
     return () => window.removeEventListener('resize', measure)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
+  }, [...deps, frozen])
   return ref
+}
+
+// Pinch-to-zoom for show-mode sheets. Multiplies a --zoom CSS var (0.75–3×) that scales
+// font-size — real reflow, so chord chips and lyric lines re-wrap smartly as you zoom in,
+// unlike a transform:scale that would just magnify and overflow. Two-finger pinch (via a
+// non-passive touchmove so we can preventDefault the native page-zoom/scroll) plus
+// ctrl+wheel for trackpads/desktop. Resets to 1× whenever `resetKey` changes (song or
+// view switch). `enabled` is false on the Tabs sheet, which stays fit-to-width.
+const MAX_ZOOM = 3
+function useZoom(resetKey: string, minZoom: number, enabled: boolean) {
+  const [zoom, setZoom] = useState(1)
+  const zoomRef = useRef(1)
+  zoomRef.current = zoom
+  const elRef = useRef<HTMLElement | null>(null)
+  const pinch = useRef<{ d0: number, z0: number } | null>(null)
+  // Fresh baseline per song/view. Layout effect so the reset lands before paint.
+  useLayoutEffect(() => { setZoom(1) }, [resetKey])
+  // resetKey is in the deps because the article that holds elRef is remounted on every
+  // song/view change (ShowSongBoundary's key). Without it, listeners would stay bound to
+  // the detached old node and the fresh article would get none — pinch dead after turn 1.
+  useEffect(() => {
+    const el = elRef.current
+    if (!el || !enabled) return
+    const clamp = (z: number) => Math.min(MAX_ZOOM, Math.max(minZoom, z))
+    const dist = (t: TouchList) => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY)
+    const onStart = (e: TouchEvent) => { if (e.touches.length === 2) pinch.current = { d0: dist(e.touches), z0: zoomRef.current } }
+    const onMove = (e: TouchEvent) => {
+      if (!pinch.current || e.touches.length < 2) return
+      e.preventDefault() // owns the 2-finger gesture: no native zoom, no scroll fighting it
+      if (pinch.current.d0 > 0) setZoom(clamp(pinch.current.z0 * (dist(e.touches) / pinch.current.d0)))
+    }
+    const onEnd = (e: TouchEvent) => { if (e.touches.length < 2) pinch.current = null }
+    const onWheel = (e: WheelEvent) => { if (!e.ctrlKey) return; e.preventDefault(); setZoom(clamp(zoomRef.current * (1 - e.deltaY / 100))) }
+    el.addEventListener('touchstart', onStart, { passive: true })
+    el.addEventListener('touchmove', onMove, { passive: false })
+    el.addEventListener('touchend', onEnd)
+    el.addEventListener('touchcancel', onEnd)
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => {
+      el.removeEventListener('touchstart', onStart)
+      el.removeEventListener('touchmove', onMove)
+      el.removeEventListener('touchend', onEnd)
+      el.removeEventListener('touchcancel', onEnd)
+      el.removeEventListener('wheel', onWheel)
+    }
+  }, [enabled, minZoom, resetKey])
+  return { zoom, setZoom, elRef }
 }
 
 // Teleprompter autoscroll: while `playing`, creep `ref`'s scroll container down at
@@ -248,7 +298,7 @@ function renderProgLabel(label: string) {
 // to know the song's shape). Both put the chord rows on one screen; the Cheat card alone
 // carries the fretboard + role / must-know / fallback below the fold. `innerRef` is the
 // height auto-fit ref from Show(), so a dense song shrinks to fit instead of scrolling.
-function CheatCard({ song, innerRef, variant }: { song: Song, innerRef: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords' }) {
+function CheatCard({ song, innerRef, variant, zoomFrozen = false }: { song: Song, innerRef: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean }) {
   const sheets = sheetsFor(song.id)
   const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
   // Dev-only version picker (roadmap card only): choose an archived cheat-card version to
@@ -284,9 +334,11 @@ function CheatCard({ song, innerRef, variant }: { song: Song, innerRef: RefObjec
   // Re-run height auto-fit after More fills opens/closes — otherwise the newly
   // revealed tabs overflow (or leave empty space) until the next resize. The
   // secondary "More" details (fretboard/fields) does NOT refit — chips keep size.
+  // Suspended while pinch-zoomed: the user owns --sheet-fit's baseline then, and a
+  // refit here would divide the zoom back out (same fight useFitScale's `frozen` avoids).
   const refitCheat = () => {
     const el = innerRef.current
-    if (!el) return
+    if (!el || zoomFrozen) return
     requestAnimationFrame(() => {
       el.style.setProperty('--sheet-fit', '1')
       const ratio = el.clientHeight / el.scrollHeight
@@ -492,8 +544,11 @@ export function Show() {
       if (settings.chords.scope !== 'none') toggleFingeringOnly(song.id, 'chords')
     } else setView('lyrics')
   }
+  // Pinch-zoom the three text sheets (not the fit-to-width Tabs). Cards can't shrink below
+  // their fitted 1× baseline (min 1); the lyric sheet can shrink a little to show more.
+  const { zoom, setZoom, elRef: zoomElRef } = useZoom(`${song.id}:${effective}`, effective === 'lyrics' ? 0.75 : 1, effective !== 'tabs')
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
-  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7)
+  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1)
   const lyricsRef = useRef<HTMLDivElement>(null)
   // Autoscroll: only the lyrics/tabs sheets scroll (the progression cards auto-fit one screen).
   const speed = get(song.id).scrollSpeed || DEFAULT_SCROLL_SPEED
@@ -597,11 +652,23 @@ export function Show() {
   // Swipe navigation, card views only (they never scroll horizontally, so a horizontal
   // drag is unambiguous there; sheet views keep swipes for scrolling). Mostly-horizontal
   // moves past the threshold turn the song; pointercancel means the browser claimed the
-  // gesture as a scroll, so it's dropped.
+  // gesture as a scroll, so it's dropped. Pointer count is tracked so a two-finger
+  // pinch-zoom never reads as a swipe: `multi` latches once a 2nd finger lands and a
+  // swipe is only committed if the whole gesture stayed single-touch.
   const swipeStart = useRef<{ x: number, y: number } | null>(null)
-  const onSwipeDown = (e: React.PointerEvent) => { if (e.pointerType !== 'mouse' && e.isPrimary) swipeStart.current = { x: e.clientX, y: e.clientY } }
+  const pointers = useRef<Set<number>>(new Set())
+  const multi = useRef(false)
+  const onSwipeDown = (e: React.PointerEvent) => {
+    if (e.pointerType === 'mouse') return
+    pointers.current.add(e.pointerId)
+    if (pointers.current.size > 1) { multi.current = true; swipeStart.current = null; return }
+    if (cardView) swipeStart.current = { x: e.clientX, y: e.clientY }
+  }
   const onSwipeUp = (e: React.PointerEvent) => {
-    if (!e.isPrimary) return // a second finger lifting must not read the first finger's start point
+    const wasMulti = multi.current
+    pointers.current.delete(e.pointerId)
+    if (pointers.current.size === 0) multi.current = false
+    if (!e.isPrimary || wasMulti || !cardView) return // multi-touch gesture (pinch) — not a swipe
     const start = swipeStart.current
     swipeStart.current = null
     if (!start) return
@@ -609,7 +676,19 @@ export function Show() {
     if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 2) return
     goTo(dx < 0 ? index + 1 : index - 1)
   }
-  const swipeProps = cardView ? { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: () => { swipeStart.current = null } } : {}
+  const onSwipeCancel = (e: React.PointerEvent) => {
+    pointers.current.delete(e.pointerId)
+    if (pointers.current.size === 0) multi.current = false
+    swipeStart.current = null
+  }
+  const swipeProps = { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: onSwipeCancel }
+  // The article that owns these pointers remounts on every song/view change (ShowSongBoundary
+  // key). If it remounts while a finger rests on it — a live-sync snap or page-turner pedal
+  // mid-touch — that pointer's up lands on the new node and never clears the old id, stranding
+  // `pointers` non-empty so every later touch reads as multi-touch and swipe dies for the
+  // session. Clear on the same boundary; resetKey never changes mid-pinch, so no live gesture
+  // is clobbered.
+  useEffect(() => { pointers.current.clear(); multi.current = false; swipeStart.current = null }, [song.id, effective])
   // Auto wake lock: request on mount, release on unmount, and silently re-acquire on
   // visibilitychange (the browser drops the lock whenever the tab/screen goes
   // background and never restores it automatically).
@@ -652,7 +731,7 @@ export function Show() {
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => goTo(index + 1)} aria-label="Next song">›</button>
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCardView={effective !== 'chords' ? () => setView('chords') : () => setView('cheat')} cardLabel={effective !== 'chords' ? 'Open the chords card instead' : 'Open the cheat card instead'}>
-    <article className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
+    <article ref={zoomElRef as RefObject<HTMLElement>} style={{ ['--zoom' as string]: zoom } as React.CSSProperties} className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}${effective !== 'tabs' ? ' show-zoomable' : ''}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
         <button type="button" role="tab" aria-selected={effective === 'cheat'} aria-pressed={effective === 'cheat' ? cardShapes : undefined}
@@ -683,8 +762,9 @@ export function Show() {
       ? <div className="show-sheet" ref={lyricsRef}><ChordSheetView text={sheets.chords!} songId={song.id}/></div>
       : effective === 'tabs'
         ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
-        : <CheatCard song={song} innerRef={cheatRef} variant={effective === 'cheat' ? 'cheat' : 'chords'}/>}</article>
+        : <CheatCard song={song} innerRef={cheatRef} variant={effective === 'cheat' ? 'cheat' : 'chords'} zoomFrozen={zoom !== 1}/>}</article>
     </ShowSongBoundary>
+    {effective !== 'tabs' && zoom !== 1 && <button type="button" className="show-zoom-reset" onClick={() => setZoom(1)} aria-label="Reset zoom to fit">{zoom.toFixed(1)}× · Reset</button>}
     {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className="show-upnext" onClick={() => goTo(index + 1)} aria-label={`Next song: ${next.title}`}>
       <span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/>
     </button> })()}

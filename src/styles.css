@@ -147,6 +147,24 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .show-song.sheet-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .show-sheet{flex:1;min-height:0;overflow:auto}
 .sheet-compact .chord-chip{font-size:.72rem}
+/* Pinch-zoom the lyric sheet: --zoom scales the container font, children ride it in em
+   (chord chips already do); the rem sizes below are restated as their original values in
+   em so 1× is pixel-identical to before and only zoom changes them. pan-y keeps one-finger
+   scroll while the JS pinch handler owns two-finger. Tabs use .tab-text, not these, so the
+   fit-to-width Tabs sheet is untouched. */
+.show-song.sheet-view .sheet-full{font-size:calc(var(--zoom,1)*1rem)}
+/* Zoomable views (Cheat/Chords/Lyrics) keep one-finger vertical scroll while the JS pinch
+   handler owns two-finger; native page-zoom is suppressed here. Tabs is not zoomable and
+   keeps its default touch-action so its wide ASCII can still pan horizontally. */
+.show-song.show-zoomable{touch-action:pan-y}
+.show-song.sheet-view .sheet-meta{font-size:.78em}
+.show-song.sheet-view .sheet-section{font-size:.7em}
+.show-song.sheet-view .sheet-tab{font-size:.78em}
+/* Floating reset back to 1× fit — pinching precisely to 1.0 on stage is fiddly. Anchored
+   bottom-LEFT so it clears the "Up next" footer's right-trailing tuning/preset badges and
+   doesn't steal taps meant to advance the song (the footer's title/badges stay tappable). */
+.show-zoom-reset{position:fixed;left:14px;bottom:max(16px,env(safe-area-inset-bottom));z-index:115;border:1px solid var(--line);background:#000000cc;color:#dfe6e1;border-radius:999px;padding:.5rem .85rem;font:inherit;font-size:.7rem;font-weight:800;letter-spacing:.04em;font-variant-numeric:tabular-nums;-webkit-user-select:none;user-select:none;touch-action:manipulation;backdrop-filter:blur(4px)}
+.show-zoom-reset:active{background:#000000e6}
 
 /* Verbatim ASCII tab text (practice panel and show mode) */
 .tab-text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82rem;line-height:1.5;margin:0;overflow-x:auto;color:inherit}
@@ -172,7 +190,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .cheat-screen-peek{flex-basis:calc(100% - 34px)}
 .cheat-version{display:flex;align-items:center;gap:8px;flex:none;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
 .cheat-version select{flex:1;min-width:0}
-.cheat-fit{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:6px;font-size:calc(var(--sheet-fit,1)*1rem)}
+.cheat-fit{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:6px;font-size:calc(var(--sheet-fit,1)*var(--zoom,1)*1rem)}
 .cheat-chip{border:1px solid #36423e;border-radius:999px;padding:.28em .7em;font-size:.8em;font-weight:750;color:#c5cec9}
 .cheat-chip.cheat-tuning{background:var(--acid);color:var(--on-acid);border-color:var(--acid)}
 .cheat-chip.cheat-capo{background:var(--orange);color:#fff;border-color:var(--orange)}
