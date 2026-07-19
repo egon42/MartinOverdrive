@@ -985,6 +985,52 @@
   ],
   "23-lola-montez": [
     {
+      "label": "before chorus/bridge wrap",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "D5 G5 A5 D5",
+          "shapes": "-577-- 355--- 577--- -577--"
+        },
+        {
+          "section": "Verse",
+          "chords": "(D5 G5 A5) ×2 D5",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Power-chord verse; longer verses keep walking the same D5–G5–A5 loop"
+        },
+        {
+          "section": "Interlude",
+          "chords": "D G A D",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Lead solos over this loop"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(G A D Bm G A D) (A Bm A) (G A D Bm G A D)",
+          "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--",
+          "hint": "Endings: D · F#m · D"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(D A Bm G) ×2 (Em A D G) (Em A D) (G A) | (G A D Bm G)",
+          "shapes": "-577-- 577--- -244-- 355--- 022--- 577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
+          "hint": "Instrumental ×2, then vocals; tag into the last chorus"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Bridge",
+        "Chorus"
+      ]
+    },
+    {
       "label": "Jul 15 sheet-aligned",
       "sections": [
         {

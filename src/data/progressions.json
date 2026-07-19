@@ -924,13 +924,13 @@
       },
       {
         "section": "Chorus",
-        "chords": "(G A D Bm G A D) (A Bm A) (G A D Bm G A D)",
+        "chords": "(G A D Bm G A D) | (A Bm A) | (G A D Bm G A D)",
         "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--",
         "hint": "Endings: D · F#m · D"
       },
       {
         "section": "Bridge",
-        "chords": "(D A Bm G) ×2 (Em A D G) (Em A D) (G A) | (G A D Bm G)",
+        "chords": "(D A Bm G) ×2 | (Em A D G) (Em A D) (G A) | (G A D Bm G)",
         "shapes": "-577-- 577--- -244-- 355--- 022--- 577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
         "hint": "Instrumental ×2, then vocals; tag into the last chorus"
       }
