@@ -121,7 +121,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    ascenders of the text beneath it (em-based so it scales with font-size / show zoom).
    Uniform across every chord slot, so lyric baselines still align across columns
    (keeps the 5e94046 lifted-first-letter fix). */
-.sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:-0.18em}
+.sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:var(--chip-pull,-0.18em)}
 .sheet-above-chord .chord-chip,.sheet-above-chord .chord-chip-wrap{margin:0}
 .sheet-above-lyric{line-height:1.1;white-space:pre-wrap}
 /* Chordless lyric lines in above-mode: plain text, no reserved chord slot */
@@ -134,6 +134,12 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    .practice-sheet scroll container. Vertical spacing untouched: the sheet stays condensed. */
 html[data-row-stripe] .sheet-full .sheet-line{padding:1px 7px}
 html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-mix(in srgb,var(--ink) 5.5%,transparent);border-radius:6px}
+/* TEMPORARY on-device tuner for --chip-pull (dev only). Remove with ChipPullTuner. */
+.chip-pull-tuner{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:120;display:flex;align-items:center;gap:8px;background:#000000d9;border:1px solid var(--acid);border-radius:999px;padding:6px 12px;backdrop-filter:blur(4px);font-size:.72rem;color:#f5f7ef;-webkit-user-select:none;user-select:none}
+.chip-pull-tuner .chip-pull-label{font-weight:800;letter-spacing:.03em;color:#9da79e;text-transform:uppercase;font-size:.6rem}
+.chip-pull-tuner button{padding:0;width:28px;height:28px;min-width:28px;border-radius:999px;border:1px solid var(--line);background:#ffffff14;color:#f5f7ef;font-size:1.1rem;line-height:1;display:grid;place-items:center;touch-action:manipulation}
+.chip-pull-tuner input[type=range]{width:130px;accent-color:var(--acid)}
+.chip-pull-tuner .chip-pull-val{font-variant-numeric:tabular-nums;font-weight:800;min-width:4.2em;text-align:right}
 .sheet-section{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.7rem;color:var(--acid);margin:12px 0 5px}
 .sheet-section.amp-marker{display:inline-flex;align-items:center;gap:6px;text-transform:none;letter-spacing:normal}
 .sheet-tab{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;line-height:1.45;margin:0 0 7px;overflow-x:auto}

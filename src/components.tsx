@@ -346,6 +346,30 @@ function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string
   </div>
 }
 
+// TEMPORARY dev-only tuner for the above-mode chord→lyric gap. Sets the --chip-pull
+// CSS var live so the value can be dialed in on-device. Remove once the value is chosen.
+const CHIP_PULL_DEV = import.meta.env.DEV || import.meta.env.BASE_URL.includes('/dev/')
+const CHIP_PULL_KEY = 'overdrive-chip-pull'
+function ChipPullTuner() {
+  const [em, setEm] = useState(() => {
+    const saved = Number(localStorage.getItem(CHIP_PULL_KEY))
+    return Number.isFinite(saved) && saved !== 0 ? saved : -0.18
+  })
+  useEffect(() => {
+    document.documentElement.style.setProperty('--chip-pull', `${em}em`)
+    localStorage.setItem(CHIP_PULL_KEY, String(em))
+  }, [em])
+  const step = (d: number) => setEm((v) => Math.round((v + d) * 100) / 100)
+  return <div className="chip-pull-tuner">
+    <span className="chip-pull-label">chip pull (temp)</span>
+    <button type="button" onClick={() => step(0.01)} aria-label="less">−</button>
+    <input type="range" min={-0.4} max={0.05} step={0.01} value={em}
+      onChange={(e) => setEm(Number(e.target.value))} />
+    <button type="button" onClick={() => step(-0.01)} aria-label="more">+</button>
+    <b className="chip-pull-val">{em.toFixed(2)}em</b>
+  </div>
+}
+
 export function ChordSheetView({ text, songId, compact = false }: { text: string, songId?: string, compact?: boolean }) {
   const sheet = useMemo(() => parseChordSheet(text), [text])
   const { settings } = useSettings()
@@ -362,6 +386,7 @@ export function ChordSheetView({ text, songId, compact = false }: { text: string
     })}</div>
   }
   return <div className="sheet-full">
+    {above && CHIP_PULL_DEV && <ChipPullTuner />}
     {sheet.meta.map((line, index) => <p className="sheet-meta" key={index}>{line}</p>)}
     {sheet.lines.map((line, index) => {
       if (line.kind === 'section') {
