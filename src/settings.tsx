@@ -38,7 +38,7 @@ export interface ThemePrefs {
   /** Named preset, or `'custom'` when any swatch has been edited. */
   preset: ThemePresetId | 'custom'
   colors: ThemeColors
-  /** Subtle zebra tone on cheat-card section rows ( `|` breaks stay one row). */
+  /** Subtle zebra tone on cheat-card section rows and Lyrics-sheet lines. */
   rowStripe: boolean
 }
 
@@ -302,7 +302,7 @@ function ThemeFields() {
       />
       <span className="theme-stripe-meta">
         <strong>Alternate section tone</strong>
-        <small>Soft tint on every other cheat-card section.</small>
+        <small>Soft tint on every other cheat-card section and lyric line.</small>
       </span>
     </label>
     <div className="theme-presets" role="group" aria-label="Color presets">

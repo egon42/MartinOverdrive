@@ -119,11 +119,18 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-above-col{display:inline-flex;flex-direction:column;align-items:flex-start;max-width:100%}
 .sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:1px}
 .sheet-above-chord .chord-chip,.sheet-above-chord .chord-chip-wrap{margin:0}
-.sheet-above-lyric{line-height:1.4;white-space:pre-wrap}
+/* Tight lyric leading so the chord chip nearly touches the text beneath it */
+.sheet-above-lyric{line-height:1.15;white-space:pre-wrap}
 /* Chordless lyric lines in above-mode: plain text, no reserved chord slot */
-.sheet-line--above-plain{line-height:1.4;margin:0 0 5px}
+.sheet-line--above-plain{line-height:1.3;margin:0 0 5px}
 .sheet-line--above .chord-chip,.sheet-line--above-chords .chord-chip{font-size:.7em;padding:1px 6px;line-height:1.2}
 .sheet-line--above-chords{margin:0 0 5px}
+/* Zebra tint on Lyrics-sheet lines, honoring the "Alternate section tone" toggle
+   (same var(--ink) 5.5% wash as the cheat-card rows). Text is inset with padding and
+   the tint fills the full line width — no negative margins, so it can't overflow the
+   .practice-sheet scroll container. Vertical spacing untouched: the sheet stays condensed. */
+html[data-row-stripe] .sheet-full .sheet-line{padding:1px 7px}
+html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-mix(in srgb,var(--ink) 5.5%,transparent);border-radius:6px}
 .sheet-section{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.7rem;color:var(--acid);margin:12px 0 5px}
 .sheet-section.amp-marker{display:inline-flex;align-items:center;gap:6px;text-transform:none;letter-spacing:normal}
 .sheet-tab{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;line-height:1.45;margin:0 0 7px;overflow-x:auto}
