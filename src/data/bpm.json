@@ -33,7 +33,9 @@
     "confidence": "medium"
   },
   "09-pride-and-joy": {
-    "bpm": 127
+    "bpm": 127,
+    "feel": "shuffle",
+    "note": "Texas shuffle (swung triplet feel)"
   },
   "10-zombie": {
     "bpm": 84,

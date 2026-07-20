@@ -170,7 +170,11 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   backing track: `src/metronome.tsx` (Web Audio lookahead scheduler — keep the
   background-tab clamp and iOS-resume nudge), seeded from researched `src/data/bpm.json`
   tempos with the user's own tapped/stepped tempo persisted per song
-  (`PracticeEntry.bpm`). A per-song simple drum-pattern option is a possible follow-up.
+  (`PracticeEntry.bpm`). It also has a **Drums sound** (added same day): synthesized
+  kick/snare/hat on a subdivision grid (straight 8ths / shuffle triplets / 6/8), with
+  optional per-song `timeSig`/`feel` seeds in `bpm.json` (absent = 4/4 straight; only
+  high-confidence research values get written — currently just Pride and Joy's Texas
+  shuffle).
 - **Jam page removed** (2026-07, user request) — it grouped songs by pentatonic key.
   Don't re-propose it.
 

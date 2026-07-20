@@ -676,6 +676,7 @@ export function PracticeControls({ song }: { song: Song }) {
       <label><span>Priority</span><select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label>
       <label className="practice-notes"><span>Quick notes</span><textarea value={entry.notes} onChange={(e) => patch(song.id, { notes: e.target.value })} placeholder="Fingering, tone, rehearsal changes…" /></label>
     </div>
-    <Metronome songId={song.id} />
+    {/* Keyed: beats/feel seed from bpm.json at mount, so a song change must remount. */}
+    <Metronome songId={song.id} key={song.id} />
   </section>
 }
