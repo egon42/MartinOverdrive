@@ -116,6 +116,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    Fixed chord-slot height keeps lyric baselines aligned across columns (a shorter empty
    slot used to lift the first letter of the next word into the neighboring chip). */
 .sheet-line--above{display:flex;flex-wrap:wrap;align-items:flex-start;max-width:100%;margin:0 0 5px;row-gap:4px;column-gap:0}
+/* Each word is a nowrap group of chord-split columns, so a mid-word chord can't
+   break the word across lines; the line wraps only between words. */
+.sheet-above-word{display:inline-flex;align-items:flex-start;white-space:nowrap;max-width:100%}
 .sheet-above-col{display:inline-flex;flex-direction:column;align-items:flex-start;max-width:100%}
 /* Negative margin pulls the lyric up so the chip tucks tight against the text,
    overlapping the tops of full-height letters (em-based so it scales with font-size /
@@ -123,7 +126,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    columns (keeps the 5e94046 lifted-first-letter fix). The lyric is raised above the
    chip (z-index) so the letters read on top of the chip where they overlap — the chip
    sits UNDER the text. Popover stays clickable/on-top via its own z-index:130. */
-.sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:-0.6em}
+.sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:-0.5em}
 .sheet-above-chord .chord-chip,.sheet-above-chord .chord-chip-wrap{margin:0}
 .sheet-above-lyric{position:relative;z-index:1;line-height:1.1;white-space:pre-wrap}
 /* Chordless lyric lines in above-mode: plain text, no reserved chord slot */

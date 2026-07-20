@@ -295,19 +295,30 @@ function AmpMarkerSection({ tokens }: { tokens: string[] }) {
 }
 
 /** UG-style: chord name above the lyric segment where it falls. Name-only chips
- *  (no under-fingerings) so the lyric stays readable and dense like UG charts. */
-function aboveColumns(parts: SheetPart[]): { chord?: string; text: string }[] {
-  const columns: { chord?: string; text: string }[] = []
+ *  (no under-fingerings) so the lyric stays readable and dense like UG charts.
+ *
+ *  Columns split at every chord (a chip sits above the text that follows), but they
+ *  are grouped into WORDS so a chord landing mid-word (e.g. "th"+[B]+"e" for "the")
+ *  can't push half the word onto the next line. Each word is a nowrap unit; the line
+ *  wraps only at spaces between words. Sub-word chip placement is preserved. */
+interface AboveCol { chord?: string; text: string }
+function aboveWords(parts: SheetPart[]): AboveCol[][] {
+  const groups: AboveCol[][] = []
+  let group: AboveCol[] = []
+  let col: AboveCol | null = null
+  const pushCol = () => { if (col && (col.chord || col.text)) group.push(col); col = null }
+  const pushGroup = () => { pushCol(); if (group.length) { groups.push(group); group = [] } }
   for (const part of parts) {
-    if (part.chord) {
-      columns.push({ chord: part.chord, text: '' })
-      continue
-    }
+    if (part.chord) { pushCol(); col = { chord: part.chord, text: '' }; continue }
     if (part.text == null) continue
-    if (columns.length === 0) columns.push({ text: part.text })
-    else columns[columns.length - 1].text += part.text
+    for (const ch of part.text) {
+      if (!col) col = { text: '' }
+      col.text += ch
+      if (/\s/.test(ch)) pushGroup() // space ends the word — the only place a wrap may fall
+    }
   }
-  return columns
+  pushGroup()
+  return groups
 }
 
 function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
@@ -335,12 +346,16 @@ function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string
     </p>
   }
   return <div className="sheet-line sheet-line--above">
-    {aboveColumns(parts).map((col, i) => (
-      <span className="sheet-above-col" key={i}>
-        <span className="sheet-above-chord">
-          {col.chord ? <ChordChip name={col.chord} songId={songId} bare /> : null}
-        </span>
-        <span className="sheet-above-lyric">{col.text}</span>
+    {aboveWords(parts).map((group, gi) => (
+      <span className="sheet-above-word" key={gi}>
+        {group.map((col, ci) => (
+          <span className="sheet-above-col" key={ci}>
+            <span className="sheet-above-chord">
+              {col.chord ? <ChordChip name={col.chord} songId={songId} bare /> : null}
+            </span>
+            <span className="sheet-above-lyric">{col.text}</span>
+          </span>
+        ))}
       </span>
     ))}
   </div>
