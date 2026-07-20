@@ -1,10 +1,10 @@
 import { Component, useEffect, useLayoutEffect, useMemo, useRef, useState, type ChangeEvent, type ReactNode, type RefObject } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { songs } from './data'
-import { AmpPresetField, ChordChip, ChordSheetView, Difficulty, Field, FretboardPanel, HomeFretBadges, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
+import { AmpPresetField, CheatCard, ChordSheetView, Difficulty, Field, FretboardPanel, HomeFretBadges, PracticeControls, PracticeLauncher, PresetBadges, SheetPanel, SongCard, SongLinks, TabText, unknown, type SheetKind } from './components'
 import { usePractice } from './storage'
-import { chordProgression } from './chords'
-import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
+import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
+import { progressionFor } from './progressions'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
@@ -16,12 +16,6 @@ import { statuses, type PracticeEntry, type Song } from './types'
 const styles = [...new Set(songs.map((song) => song.practiceStyle))]
 const tunings = ['Standard', 'Drop D']
 const priorityLabel = ['None', 'Low', 'Medium', 'High']
-// Show-mode autoscroll speed, px/second (per-song, stored as PracticeEntry.scrollSpeed).
-const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED = 120, SCROLL_SPEED_STEP = 4
-// Lead-in before the crawl starts when ▶ is pressed at the top of the sheet — gives the
-// first lines a beat to read before they scroll away. Duration = LEAD_IN_PX / speed
-// (e.g. 96 px at 24 px/s → 4 s; faster speeds wait less). Mid-sheet presses skip it.
-const SCROLL_LEAD_IN_PX = 96
 // localStorage (not sessionStorage): mobile OSes kill backgrounded tabs under memory
 // pressure, and mid-set that must not reset the show to song 1. Keyed per deployment
 // like the practice store, so /dev/ and prod don't share a show position.
@@ -60,17 +54,6 @@ const readPins = (): Record<string, string> => {
     return {}
   } catch { return {} }
 }
-
-// Cheat-card version picker (dev deploys + local dev server only): songId -> archived
-// version label, '' / absent = the live "Current" entry. Per-device review preference,
-// like pins — NOT synced practice data. Prod never renders the picker, so prod always
-// plays the current card even if this key somehow exists there.
-const CHEAT_VERSIONS_UI = import.meta.env.DEV || import.meta.env.BASE_URL.includes('/dev/')
-const CHEAT_VERSION_KEY = `overdrive-cheat-version${SHOW_KEY_SUFFIX}`
-const readCheatVersionChoices = (): Record<string, string> => {
-  try { const p = JSON.parse(localStorage.getItem(CHEAT_VERSION_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
-}
-
 
 /** Resolve a saved show position (song id, or legacy numeric index) to an index in the
  * walk list. Skipped songs resume at the next active slot after their set position. */
@@ -210,225 +193,6 @@ function useZoom(resetKey: string, minZoom: number, enabled: boolean) {
   return { zoom, setZoom, elRef }
 }
 
-// Teleprompter autoscroll: while `playing`, creep `ref`'s scroll container down at
-// `speed` px/second. Full spec + the history of why it's written exactly this way:
-// docs/autoscroll-spec.md — read that before touching this hook.
-//
-// Core rule: NEVER route the crawl's math through the live scrollTop. Engines quantize
-// scroll positions (writes snap to whole CSS or device pixels; some engines round reads
-// too), so a read-modify-write of scrollTop re-quantizes every frame — sub-pixel deltas
-// round away entirely (slow speeds stall) and everything faster pins near 1px/frame
-// (all high speeds look identical): the "one speed above ~30px/s, nothing below" bug.
-// Instead the hook owns a float `pos`, advances it by speed*dt per rAF tick (frame-rate
-// independent on 60Hz and 120Hz alike), and only ever WRITES Math.floor(pos); the
-// fraction stays in `pos`, so quantization can't feed back into the math.
-//
-// Manual scrolling coexists by adoption, not fighting: any frame where scrollTop isn't
-// where our last write left it (native swipe, momentum fling, mouse wheel), we adopt
-// that position into `pos` and skip the write — iOS kills a fling the moment a script
-// writes scrollTop, so yielding until the sheet settles keeps swipes native, and the
-// crawl resumes from wherever the finger/fling left it. A finger resting on the sheet
-// pauses the creep (holding); up/cancel listen on window so a drag that drifts off the
-// element still un-pauses (the lesson from 43f64da). Stops and calls onReachEnd at the
-// bottom. No-op when ref is null (the card views auto-fit one screen).
-function useAutoScroll(ref: RefObject<HTMLDivElement | null> | null, speed: number, playing: boolean, onReachEnd: () => void) {
-  const onReachEndRef = useRef(onReachEnd)
-  onReachEndRef.current = onReachEnd
-  // Speed is read live through a ref, NOT an effect dep: a speed change (a +/- tap, or a
-  // sync pull patching scrollSpeed mid-song) must adjust the crawl in place, not tear the
-  // effect down — a restart resets `holding` to false while a finger may still be resting
-  // on the sheet, letting the crawl creep under it (council finding, 2026-07-11). Don't
-  // "fix" that with a holding ref that persists across ALL restarts: a finger lifting
-  // while playing=false (listeners detached) would strand holding=true and make the next
-  // ▶ appear dead. Scoping the fix to speed is deliberate.
-  const speedRef = useRef(speed)
-  speedRef.current = speed
-  useEffect(() => {
-    const el = ref?.current
-    if (!el || !playing) return
-    let raf = 0
-    let last = 0 // rAF clock; 0 = no previous tick yet
-    let pos = Math.max(0, el.scrollTop) // float position this hook owns — the DOM only ever sees Math.floor(pos)
-    let written = Math.floor(pos) // last whole px we wrote/adopted; how we recognize our own motion next frame
-    let holding = false
-    const step = (now: number) => {
-      raf = requestAnimationFrame(step)
-      const dt = last ? Math.min((now - last) / 1000, 0.1) : 0 // clamp so a backgrounded tab doesn't jump on resume
-      last = now
-      if (holding || dt <= 0 || speedRef.current <= 0) return
-      const actual = el.scrollTop
-      if (Math.abs(actual - written) > 1) { // >1 tolerates engines snapping our write to device pixels
-        pos = Math.max(0, actual) // the sheet moved without us — adopt the new position, yield this frame
-        written = Math.floor(pos)
-        return
-      }
-      const max = el.scrollHeight - el.clientHeight
-      pos = Math.min(pos + speedRef.current * dt, max)
-      const target = Math.floor(pos)
-      if (target > written) { el.scrollTop = target; written = target }
-      if (pos >= max - 1) { cancelAnimationFrame(raf); onReachEndRef.current() }
-    }
-    const onDown = () => { holding = true }
-    const onUp = () => { holding = false } // the clock keeps ticking through a hold, so resuming carries no dt jump
-    el.addEventListener('pointerdown', onDown)
-    window.addEventListener('pointerup', onUp)
-    window.addEventListener('pointercancel', onUp)
-    raf = requestAnimationFrame(step)
-    return () => {
-      cancelAnimationFrame(raf)
-      el.removeEventListener('pointerdown', onDown)
-      window.removeEventListener('pointerup', onUp)
-      window.removeEventListener('pointercancel', onUp)
-    }
-  }, [ref, playing])
-}
-
-/** Highlight ×N / xN in section labels (e.g. "Verse ×4") so the count reads white. */
-function renderProgLabel(label: string) {
-  const parts = label.split(/([×xX]\s*\d+)/u)
-  return parts.map((part, i) =>
-    /^[×xX]\s*\d+$/u.test(part)
-      ? <span className="cheat-prog-label-times" key={i}>{part}</span>
-      : part)
-}
-
-// The two progression cards in show mode, one component: `variant` 'chords' is the full
-// roadmap card (form order + repeats — the original "cheat card", now the Chords tab);
-// 'cheat' is the building-blocks card (each section once, plus fills — trusts the player
-// to know the song's shape). Both put the chord rows on one screen; the Cheat card alone
-// carries the fretboard + role / must-know / fallback below the fold. `innerRef` is the
-// height auto-fit ref from Show(), so a dense song shrinks to fit instead of scrolling.
-function CheatCard({ song, innerRef, variant, zoomFrozen = false }: { song: Song, innerRef: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean }) {
-  const sheets = sheetsFor(song.id)
-  const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
-  // Dev-only version picker (roadmap card only): choose an archived cheat-card version to
-  // render instead of the live entry, so old and new forms can be A/B'd against the
-  // recording. The Cheat card always shows the CURRENT sections — the refined data is
-  // the source of truth, not the pre-research basic forms.
-  const versions = variant === 'chords' && CHEAT_VERSIONS_UI ? progressionVersionsFor(song.id) : []
-  const [versionChoices, setVersionChoices] = useState(readCheatVersionChoices)
-  const pickVersion = (label: string) => {
-    const next = { ...versionChoices }
-    if (label) next[song.id] = label
-    else delete next[song.id]
-    setVersionChoices(next)
-    try { localStorage.setItem(CHEAT_VERSION_KEY, JSON.stringify(next)) } catch { /* storage full/blocked: picker still works for this session */ }
-  }
-  const chosenLabel = versions.length ? versionChoices[song.id] ?? '' : ''
-  const chosen = chosenLabel ? versions.find((v) => v.label === chosenLabel) ?? null : null
-  // Prefer the curated per-section progression; fall back to one derived from the chord
-  // sheet (a single loop, or the distinct chords used) when a song isn't researched yet.
-  const custom = chosen ?? progressionFor(song.id)
-  const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
-  // Roadmap variant: `form` order when set (labels like "Verse ×4"), fills excluded.
-  // Cheat variant: each section once in stored order, fills included.
-  const rows = custom
-    ? (variant === 'chords' ? cheatRowsFor(custom) : basicRowsFor(custom))
-    : derived?.map((row) => ({
-        label: row.label,
-        spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], shapes: [], times: 1 })),
-        hint: undefined as string | undefined,
-        tab: undefined as string | undefined,
-        tabMore: undefined as string | undefined,
-      }))
-  // Re-run height auto-fit after More fills opens/closes — otherwise the newly
-  // revealed tabs overflow (or leave empty space) until the next resize. The
-  // secondary "More" details (fretboard/fields) does NOT refit — chips keep size.
-  // Suspended while pinch-zoomed: the user owns --sheet-fit's baseline then, and a
-  // refit here would divide the zoom back out (same fight useFitScale's `frozen` avoids).
-  const refitCheat = () => {
-    const el = innerRef.current
-    if (!el || zoomFrozen) return
-    requestAnimationFrame(() => {
-      el.style.setProperty('--sheet-fit', '1')
-      const ratio = el.clientHeight / el.scrollHeight
-      el.style.setProperty('--sheet-fit', String(ratio < 1 ? Math.max(0.7, ratio * 0.97) : 1))
-    })
-  }
-  // Switching card versions changes row count without changing song — refit or the
-  // taller/shorter card keeps the previous version's scale.
-  useEffect(() => { refitCheat() }, [chosenLabel]) // eslint-disable-line react-hooks/exhaustive-deps
-  return <div className="cheat-card">
-    {/* Exactly one card-height (flex-shrink:0), so the chord rows own the first screen and
-        the reference block below can't steal height from them. Auto-fit measures `.cheat-fit`
-        inside this box, so the version picker reduces its space without escaping the fold. */}
-    <div className={`cheat-screen${variant === 'cheat' ? ' cheat-screen-peek' : ''}`}>
-      {versions.length > 0 && <label className="cheat-version">
-        <span>Card version</span>
-        <select
-          value={chosen ? chosenLabel : ''}
-          onChange={(e) => pickVersion(e.target.value)}
-        >
-          <option value="">Current</option>
-          {versions.map((v) => <option key={v.label} value={v.label}>{v.label}</option>)}
-        </select>
-      </label>}
-      <div className="cheat-fit" ref={innerRef}>
-        {rows && <div className="cheat-progression">
-          {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
-            <span className="cheat-prog-label">{renderProgLabel(row.label)}</span>
-            <div className="cheat-prog-body">
-              <span className="cheat-prog-chords">{row.spans.map((span, s) =>
-                <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
-                  {span.chords.map((chord, j) =>
-                    <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
-                  {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
-                </span>)}</span>
-              {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
-              {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
-              {row.tabMore && <MoreFills tab={row.tabMore} onToggle={refitCheat} />}
-            </div>
-          </div>)}
-        </div>}
-      </div>
-    </div>
-    {/* Cheat tab only: plain content past the fold rather than a disclosure — scroll the
-        card to reach it. The roadmap card doesn't carry it at all. */}
-    {variant === 'cheat' && <div className="cheat-more">
-      <div className="show-content">
-        <div className="show-scale"><FretboardPanel song={song} /><dl><Field label="Scale hint" value={song.scaleHint} /></dl></div>
-        <div className="show-fields">
-          <Field label="Role" value={song.role} />
-          <Field label="Must know" value={song.mustKnow} />
-          <Field label="Fallback" value={song.fallback} />
-          {ownNotes && <Field label="My notes" value={ownNotes} />}
-        </div>
-      </div>
-    </div>}
-  </div>
-}
-
-/** Extra ASCII fills behind a disclosure. Bottom "Hide fills" stays reachable after
- *  auto-fit scrolls the summary off-screen; summary itself also relabels when open. */
-function MoreFills({ tab, onToggle }: { tab: string, onToggle: () => void }) {
-  const detailsRef = useRef<HTMLDetailsElement>(null)
-  const [open, setOpen] = useState(false)
-  const hide = () => {
-    const details = detailsRef.current
-    if (!details || !details.open) return
-    details.open = false
-  }
-  return <details
-    className="cheat-prog-more"
-    ref={detailsRef}
-    onToggle={(e) => {
-      const next = e.currentTarget.open
-      setOpen(next)
-      onToggle()
-      if (next) {
-        // After refit shrinks the card, keep the summary on-screen so the top control stays tappable.
-        requestAnimationFrame(() => {
-          detailsRef.current?.querySelector('summary')?.scrollIntoView({ block: 'nearest' })
-        })
-      }
-    }}
-  >
-    <summary>{open ? 'Hide fills' : 'More fills'}</summary>
-    <pre className="cheat-prog-tab">{tab}</pre>
-    <button type="button" className="cheat-prog-hide" onClick={hide}>Hide fills</button>
-  </details>
-}
-
 /** Shared stage chrome strip: tuning / transpose / capo / amp presets / home frets. */
 function ShowStageStrip({ song }: { song: Song }) {
   const transpose = transposeFor(song.id)
@@ -470,7 +234,7 @@ class ShowSongBoundary extends Component<{ song: Song, onCardView?: () => void, 
 export function Show() {
   const { songId: urlSongId } = useParams()
   const navigate = useNavigate()
-  const { get, patch } = usePractice()
+  const { get } = usePractice()
   const live = useLive()
   const following = live.config?.role === 'follow'
   // Tonight's set (skips + order from the Set page) — falls back to the full setlist
@@ -550,65 +314,12 @@ export function Show() {
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
   const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1)
   const lyricsRef = useRef<HTMLDivElement>(null)
-  // Autoscroll: only the lyrics/tabs sheets scroll (the progression cards auto-fit one screen).
-  const speed = get(song.id).scrollSpeed || DEFAULT_SCROLL_SPEED
-  const [playing, setPlaying] = useState(false)
-  // Lead-in when ▶ is pressed at the top: `delayUntil` is a performance.now() deadline
-  // (0 = none); `delayLeft` is the displayed seconds remaining.
-  const [delayUntil, setDelayUntil] = useState(0)
-  const [delayLeft, setDelayLeft] = useState(0)
-  const [scrollable, setScrollable] = useState(false)
   const [picker, setPicker] = useState(false) // jump-to-song overlay (audible calls)
   const pickerCenteredRef = useRef(false) // center the current song once per open, not on every re-render
+  // Autoscroll: only the lyrics/tabs sheets scroll (the progression cards auto-fit one
+  // screen). State machine + speed persistence shared with the practice page: autoscroll.tsx.
   const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'lyrics' ? lyricsRef : null
-  // Hook only crawls after any top-of-sheet lead-in finishes.
-  useAutoScroll(scrollTarget, speed, playing && delayUntil === 0, () => setPlaying(false))
-  // Tick the lead-in countdown while a deadline is armed.
-  useEffect(() => {
-    if (!playing || delayUntil === 0) return
-    let raf = 0
-    const tick = (now: number) => {
-      const left = Math.max(0, (delayUntil - now) / 1000)
-      setDelayLeft(left)
-      if (left > 0) raf = requestAnimationFrame(tick)
-      else setDelayUntil(0)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [playing, delayUntil])
-  // New song or view: start paused at the top, and re-measure whether the sheet overflows.
-  // Resize (e.g. phone rotation) only re-measures — it must not yank scroll back to the top.
-  useLayoutEffect(() => {
-    setPlaying(false)
-    setDelayUntil(0)
-    setDelayLeft(0)
-    const el = scrollTarget?.current
-    if (el) el.scrollTop = 0
-    const measure = () => setScrollable(!!el && el.scrollHeight > el.clientHeight + 1)
-    measure()
-    window.addEventListener('resize', measure)
-    return () => window.removeEventListener('resize', measure)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, effective, sheets.chords, sheets.tabs])
-  const bumpSpeed = (delta: number) => patch(song.id, { scrollSpeed: Math.max(MIN_SCROLL_SPEED, Math.min(MAX_SCROLL_SPEED, speed + delta)) })
-  // Toggle play; if we're starting from the very bottom (a finished crawl), rewind to the top
-  // first. At the top, arm a speed-based lead-in so the first lines aren't scrolled away
-  // before you can read them; mid-sheet presses crawl immediately.
-  const togglePlay = () => {
-    if (playing) { setPlaying(false); setDelayUntil(0); setDelayLeft(0); return }
-    const el = scrollTarget?.current
-    if (el && el.scrollTop + el.clientHeight >= el.scrollHeight - 1) el.scrollTop = 0
-    const atTop = !el || el.scrollTop <= 1
-    if (atTop) {
-      const secs = SCROLL_LEAD_IN_PX / Math.max(speed, 1)
-      setDelayUntil(performance.now() + secs * 1000)
-      setDelayLeft(secs)
-    } else {
-      setDelayUntil(0)
-      setDelayLeft(0)
-    }
-    setPlaying(true)
-  }
+  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs])
   useEffect(() => { localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   // Live show sync: report every displayed song (only a leading device broadcasts it),
   // and snap to the leader's song when following. `live.leader` changes identity only
@@ -643,12 +354,12 @@ export function Show() {
       if (e.key === 'ArrowUp') cycleView(-1)
       // Space toggles autoscroll — but only as a global shortcut; if a control is focused,
       // let it handle its own Space (avoids a double-toggle with the button's native activation).
-      if (e.key === ' ' && scrollable && !(e.target as HTMLElement)?.closest('button,a,input,textarea,select')) { e.preventDefault(); togglePlay() }
+      if (e.key === ' ' && scroll.scrollable && !(e.target as HTMLElement)?.closest('button,a,input,textarea,select')) { e.preventDefault(); scroll.togglePlay() }
     }
     window.addEventListener('keydown', key)
     return () => window.removeEventListener('keydown', key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effective, sheets.chords, sheets.tabs, scrollable, setSongs, picker, liveOpen, index, urlSongId])
+  }, [effective, sheets.chords, sheets.tabs, scroll.scrollable, setSongs, picker, liveOpen, index, urlSongId])
   // Swipe navigation, card views only (they never scroll horizontally, so a horizontal
   // drag is unambiguous there; sheet views keep swipes for scrolling). Mostly-horizontal
   // moves past the threshold turn the song; pointercancel means the browser claimed the
@@ -751,13 +462,7 @@ export function Show() {
       <button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song - tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button>
     </div>
     <ShowStageStrip song={song} />
-    {!cardView && scrollable && <div className="show-autoscroll">
-      <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
-      {playing && delayLeft > 0 && <span className="autoscroll-delay" aria-live="polite" aria-label={`Starting in ${delayLeft.toFixed(1)} seconds`}>{delayLeft.toFixed(1)}<i>s</i></span>}
-      <button type="button" className="autoscroll-step" aria-label="Slower" disabled={speed <= MIN_SCROLL_SPEED} onClick={() => bumpSpeed(-SCROLL_SPEED_STEP)}>−</button>
-      <span className="autoscroll-speed" aria-label={`Scroll speed ${speed} pixels per second`}>{speed}<i>px/s</i></span>
-      <button type="button" className="autoscroll-step" aria-label="Faster" disabled={speed >= MAX_SCROLL_SPEED} onClick={() => bumpSpeed(SCROLL_SPEED_STEP)}>+</button>
-    </div>}
+    {!cardView && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
     {effective === 'lyrics'
       ? <div className="show-sheet" ref={lyricsRef}><ChordSheetView text={sheets.chords!} songId={song.id}/></div>
       : effective === 'tabs'

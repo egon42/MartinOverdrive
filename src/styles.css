@@ -122,6 +122,14 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-tab{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;line-height:1.45;margin:0 0 7px;overflow-x:auto}
 .chord-panel textarea{min-height:220px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem;margin-bottom:12px}
 .chord-panel .section-heading{margin-bottom:14px}
+/* Practice-page sheet panel. The progression cards render at natural height there —
+   .cheat-screen's flex-basis:100% only means "one screen" inside show mode's
+   fixed-height column, so neutralize the flex sizing under .chord-panel. The lyric/tab
+   sheets instead scroll inside a capped viewport so autoscroll has a scrollport. */
+.chord-panel .cheat-card{flex:none;overflow:visible}
+.chord-panel .cheat-screen{flex:none}
+.chord-panel .cheat-fit{flex:none;overflow:visible}
+.practice-sheet{max-height:72vh;overflow:auto;overscroll-behavior:contain}
 .sheet-compact{font-size:calc(var(--sheet-fit,1)*1rem)}
 .compact-line{display:flex;gap:.7em;align-items:baseline;padding:.11em 0}
 .compact-chords{display:inline-flex;gap:.3em;flex:0 0 auto;min-width:5.2em}
@@ -330,6 +338,24 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .setlist-move button:disabled{opacity:.25}
 @media(max-width:520px){.setlist-row{gap:10px;padding:10px 12px}.setlist-main h3{font-size:.95rem}.setlist-move button{width:40px;height:40px}}
 
+/* Practice metronome (song page) */
+.metronome{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:12px}
+.metro-toggle{min-width:6.2em}
+.metro-toggle.active{background:var(--acid);border-color:var(--acid);color:#061008}
+.metro-tempo{display:flex;align-items:center;gap:8px}
+.metro-tempo button{width:44px;height:44px;padding:0;border-radius:999px;background:transparent;border:1px solid var(--line);color:inherit;font-size:1.25rem}
+.metro-tempo button:disabled{opacity:.3}
+.metro-bpm{min-width:3.6em;text-align:center;font-variant-numeric:tabular-nums}
+.metro-bpm strong{font-size:1.35rem}
+.metro-bpm i{display:block;font-style:normal;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.metro-tap{background:transparent;border:1px solid var(--line);color:inherit}
+.metro-beats{display:flex;align-items:center;gap:8px}
+.metro-beats span{font-size:.67rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:750}
+.metro-dots{display:flex;gap:7px}
+.metro-dots i{width:12px;height:12px;border-radius:50%;background:var(--line);transition:background .05s}
+.metro-dots i.on{background:var(--ink)}
+.metro-dots i.on.accent{background:var(--acid)}
+.metro-note{flex-basis:100%;margin:0;color:var(--muted);font-size:.78rem;font-style:italic}
 
 /* Show mode: next-song footer (title + tuning + amp preset, for the changeover) */
 .show-upnext{margin:6px auto 0;padding:6px 0 0;border:0;border-top:1px solid #1f2622;background:transparent;color:#9aa59f;font:inherit;font-size:.72rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1000px;width:100%;text-align:left;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}

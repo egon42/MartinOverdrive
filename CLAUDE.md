@@ -123,9 +123,16 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   editable and diff-able). `TabsAndChords/` (gitignored) is the raw-material drop
   folder. Note: XPS/OXPS print exports are usually rasterized page images with no
   extractable text — ask for a text source instead of transcribing pictures.
-- Both practice (song page panel) and show mode offer a Lyrics/Tabs switch (the
-  lyric sheet was labeled "Chords" before the 2026-07-16 tab rename); show mode
-  auto-shrinks (lyrics fit by height, tabs by width).
+- The practice (song page) sheet panel mirrors show mode's four tabs (2026-07-20):
+  Cheat / Chords / Lyrics / Tabs. `SheetKind` grew ids `'cheat'` and `'roadmap'`
+  (labels Cheat/Chords — `'chords'` still means the lyric sheet). `CheatCard` +
+  version-picker constants now live in `src/components.tsx` (shared; show mode passes
+  `innerRef` for one-screen auto-fit, practice renders natural height with
+  `withMore={false}`), and autoscroll lives in `src/autoscroll.tsx`
+  (`useAutoScroll` moved verbatim — read `docs/autoscroll-spec.md` before touching;
+  both surfaces share the per-song synced `scrollSpeed`). Show mode auto-shrinks
+  (lyrics fit by height, tabs by width); the practice sheets scroll in a capped
+  `.practice-sheet` viewport instead.
 - `scripts/ug-chords-to-sheet.mjs` carries a **duplicated copy of `CHORD_RE`** from
   `src/chords.ts` ("keep in sync" comment) — if you edit the regex in either file,
   update both. `npm run validate` checks this drift plus cheat-card/sheet/setlist
@@ -155,13 +162,17 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   tap the n/N counter for the jump-to-song overlay, "Up next" footer shows the
   changeover info (next title/tuning/amp preset). A render crash inside the song view is
   caught by `ShowSongBoundary` — nav stays alive.
-- **No metronome, no practice-session logging** — both were built and then removed at
-  the user's request (2026-07): practice happens against the actual recordings, and
+- **No practice-session logging** — built and removed at the user's request (2026-07);
   status/priority/notes are the only per-song practice data the user wants to maintain.
   `lastPracticed`/`sessions`/`secondsPracticed` are deliberately dead fields; don't
-  resurrect any of this without being asked.
+  resurrect them without being asked. The **metronome was removed in the same pass but
+  explicitly re-requested 2026-07-20** as a play-along click for practicing without the
+  backing track: `src/metronome.tsx` (Web Audio lookahead scheduler — keep the
+  background-tab clamp and iOS-resume nudge), seeded from researched `src/data/bpm.json`
+  tempos with the user's own tapped/stepped tempo persisted per song
+  (`PracticeEntry.bpm`). A per-song simple drum-pattern option is a possible follow-up.
 - **Jam page removed** (2026-07, user request) — it grouped songs by pentatonic key.
-  Like the metronome, don't re-propose it.
+  Don't re-propose it.
 
 ## Cross-device sync (dev-branch feature)
 

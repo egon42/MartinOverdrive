@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
-import { compactSheet, parseChordSheet, type SheetPart } from './chords'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
+import { chordProgression, compactSheet, parseChordSheet, type SheetPart } from './chords'
+import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
+import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
 import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, homeFretsFor, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
 import { isStatus, usePractice } from './storage'
+import { Metronome } from './metronome'
 import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
@@ -380,27 +383,221 @@ export function TabText({ text }: { text: string }) {
   return <pre className="tab-text">{nodes}</pre>
 }
 
-export type SheetKind = 'chords' | 'tabs'
+// Cheat-card version picker (dev deploys + local dev server only): songId -> archived
+// version label, '' / absent = the live "Current" entry. Per-device review preference,
+// NOT synced practice data. Prod never renders the picker, so prod always plays the
+// current card even if this key somehow exists there. Key suffix mirrors the practice
+// store's /dev/ split (same expression as pages.tsx's SHOW_KEY_SUFFIX; importing it
+// from there would be a components→pages cycle).
+const CHEAT_VERSIONS_UI = import.meta.env.DEV || import.meta.env.BASE_URL.includes('/dev/')
+const CHEAT_VERSION_KEY = `overdrive-cheat-version${import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''}`
+const readCheatVersionChoices = (): Record<string, string> => {
+  try { const p = JSON.parse(localStorage.getItem(CHEAT_VERSION_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
+}
 
-// Curated tabs/chords built into the app (src/data/sheets). `view`/`onViewChange` keep
-// the Chords/Tabs selection so the toggle can switch it.
+/** Highlight ×N / xN in section labels (e.g. "Verse ×4") so the count reads white. */
+function renderProgLabel(label: string) {
+  const parts = label.split(/([×xX]\s*\d+)/u)
+  return parts.map((part, i) =>
+    /^[×xX]\s*\d+$/u.test(part)
+      ? <span className="cheat-prog-label-times" key={i}>{part}</span>
+      : part)
+}
+
+// The two progression cards, one component — show mode's Cheat and Chords tabs, and the
+// same cards on the practice page's sheet panel. `variant` 'chords' is the full roadmap
+// card (form order + repeats — the original "cheat card", now the Chords tab); 'cheat'
+// is the building-blocks card (each section once, plus fills — trusts the player to know
+// the song's shape). `innerRef` is the height auto-fit ref from Show(), which pins the
+// chord rows to one screen; omit it (practice page) and the card renders at natural
+// height. `withMore` gates the Cheat variant's below-fold fretboard/role/must-know block
+// — the practice page passes false because it already shows those in its own panels.
+export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMore = true }: { song: Song, innerRef?: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean, withMore?: boolean }) {
+  const sheets = sheetsFor(song.id)
+  const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
+  // Dev-only version picker (roadmap card only): choose an archived cheat-card version to
+  // render instead of the live entry, so old and new forms can be A/B'd against the
+  // recording. The Cheat card always shows the CURRENT sections — the refined data is
+  // the source of truth, not the pre-research basic forms.
+  const versions = variant === 'chords' && CHEAT_VERSIONS_UI ? progressionVersionsFor(song.id) : []
+  const [versionChoices, setVersionChoices] = useState(readCheatVersionChoices)
+  const pickVersion = (label: string) => {
+    const next = { ...versionChoices }
+    if (label) next[song.id] = label
+    else delete next[song.id]
+    setVersionChoices(next)
+    try { localStorage.setItem(CHEAT_VERSION_KEY, JSON.stringify(next)) } catch { /* storage full/blocked: picker still works for this session */ }
+  }
+  const chosenLabel = versions.length ? versionChoices[song.id] ?? '' : ''
+  const chosen = chosenLabel ? versions.find((v) => v.label === chosenLabel) ?? null : null
+  // Prefer the curated per-section progression; fall back to one derived from the chord
+  // sheet (a single loop, or the distinct chords used) when a song isn't researched yet.
+  const custom = chosen ?? progressionFor(song.id)
+  const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
+  // Roadmap variant: `form` order when set (labels like "Verse ×4"), fills excluded.
+  // Cheat variant: each section once in stored order, fills included.
+  const rows = custom
+    ? (variant === 'chords' ? cheatRowsFor(custom) : basicRowsFor(custom))
+    : derived?.map((row) => ({
+        label: row.label,
+        spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], shapes: [], times: 1 })),
+        hint: undefined as string | undefined,
+        tab: undefined as string | undefined,
+        tabMore: undefined as string | undefined,
+      }))
+  // Re-run height auto-fit after More fills opens/closes — otherwise the newly
+  // revealed tabs overflow (or leave empty space) until the next resize. The
+  // secondary "More" details (fretboard/fields) does NOT refit — chips keep size.
+  // Suspended while pinch-zoomed: the user owns --sheet-fit's baseline then, and a
+  // refit here would divide the zoom back out (same fight useFitScale's `frozen` avoids).
+  // No-op without an innerRef (practice page): natural height, nothing to fit.
+  const refitCheat = () => {
+    const el = innerRef?.current
+    if (!el || zoomFrozen) return
+    requestAnimationFrame(() => {
+      el.style.setProperty('--sheet-fit', '1')
+      const ratio = el.clientHeight / el.scrollHeight
+      el.style.setProperty('--sheet-fit', String(ratio < 1 ? Math.max(0.7, ratio * 0.97) : 1))
+    })
+  }
+  // Switching card versions changes row count without changing song — refit or the
+  // taller/shorter card keeps the previous version's scale.
+  useEffect(() => { refitCheat() }, [chosenLabel]) // eslint-disable-line react-hooks/exhaustive-deps
+  return <div className="cheat-card">
+    {/* Exactly one card-height (flex-shrink:0), so the chord rows own the first screen and
+        the reference block below can't steal height from them. Auto-fit measures `.cheat-fit`
+        inside this box, so the version picker reduces its space without escaping the fold. */}
+    <div className={`cheat-screen${variant === 'cheat' ? ' cheat-screen-peek' : ''}`}>
+      {versions.length > 0 && <label className="cheat-version">
+        <span>Card version</span>
+        <select
+          value={chosen ? chosenLabel : ''}
+          onChange={(e) => pickVersion(e.target.value)}
+        >
+          <option value="">Current</option>
+          {versions.map((v) => <option key={v.label} value={v.label}>{v.label}</option>)}
+        </select>
+      </label>}
+      <div className="cheat-fit" ref={innerRef}>
+        {rows && <div className="cheat-progression">
+          {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
+            <span className="cheat-prog-label">{renderProgLabel(row.label)}</span>
+            <div className="cheat-prog-body">
+              <span className="cheat-prog-chords">{row.spans.map((span, s) =>
+                <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
+                  {span.chords.map((chord, j) =>
+                    <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
+                  {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
+                </span>)}</span>
+              {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
+              {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
+              {row.tabMore && <MoreFills tab={row.tabMore} onToggle={refitCheat} />}
+            </div>
+          </div>)}
+        </div>}
+      </div>
+    </div>
+    {/* Cheat tab only: plain content past the fold rather than a disclosure — scroll the
+        card to reach it. The roadmap card doesn't carry it at all. */}
+    {variant === 'cheat' && withMore && <div className="cheat-more">
+      <div className="show-content">
+        <div className="show-scale"><FretboardPanel song={song} /><dl><Field label="Scale hint" value={song.scaleHint} /></dl></div>
+        <div className="show-fields">
+          <Field label="Role" value={song.role} />
+          <Field label="Must know" value={song.mustKnow} />
+          <Field label="Fallback" value={song.fallback} />
+          {ownNotes && <Field label="My notes" value={ownNotes} />}
+        </div>
+      </div>
+    </div>}
+  </div>
+}
+
+/** Extra ASCII fills behind a disclosure. Bottom "Hide fills" stays reachable after
+ *  auto-fit scrolls the summary off-screen; summary itself also relabels when open. */
+function MoreFills({ tab, onToggle }: { tab: string, onToggle: () => void }) {
+  const detailsRef = useRef<HTMLDetailsElement>(null)
+  const [open, setOpen] = useState(false)
+  const hide = () => {
+    const details = detailsRef.current
+    if (!details || !details.open) return
+    details.open = false
+  }
+  return <details
+    className="cheat-prog-more"
+    ref={detailsRef}
+    onToggle={(e) => {
+      const next = e.currentTarget.open
+      setOpen(next)
+      onToggle()
+      if (next) {
+        // After refit shrinks the card, keep the summary on-screen so the top control stays tappable.
+        requestAnimationFrame(() => {
+          detailsRef.current?.querySelector('summary')?.scrollIntoView({ block: 'nearest' })
+        })
+      }
+    }}
+  >
+    <summary>{open ? 'Hide fills' : 'More fills'}</summary>
+    <pre className="cheat-prog-tab">{tab}</pre>
+    <button type="button" className="cheat-prog-hide" onClick={hide}>Hide fills</button>
+  </details>
+}
+
+// Practice-page sheet ids. 'cheat' and 'roadmap' are the two progression cards (labels
+// Cheat / Chords, matching show mode — 'roadmap' because the id 'chords' already means
+// the lyric sheet here, part of the 2026-07 label/internals split; see CLAUDE.md).
+export type SheetKind = 'cheat' | 'roadmap' | 'chords' | 'tabs'
+
+// Sheet panel on the song (practice) page — the same four views as show mode: Cheat
+// (building-blocks card), Chords (roadmap card), Lyrics (chord-over-lyric sheet), Tabs.
+// `view`/`onViewChange` keep the selection so the toggle can switch it.
 export function SheetPanel({ song, view, onViewChange }: { song: Song, view: SheetKind | null, onViewChange: (kind: SheetKind) => void }) {
   const { get } = usePractice(); const entry = get(song.id)
   const { settings, isFingeringOnly, toggleFingeringOnly } = useSettings()
   const sheets = sheetsFor(song.id)
-  const available: SheetKind[] = ([['chords', sheets.chords], ['tabs', sheets.tabs]] as const).filter(([, data]) => data).map(([kind]) => kind)
-  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><h2>Lyrics & tabs</h2><p className="launcher-hint">Nothing built in for this song yet.</p></section>
-  const preferred = entry.preferredSource === 'tabs' || entry.preferredSource === 'chords' ? entry.preferredSource : available[0]
-  const active = view && available.includes(view) ? view : available.includes(preferred) ? preferred : available[0]
+  // The cards render from a curated progression, or derive one from the chords sheet.
+  const hasCard = !!progressionFor(song.id) || !!sheets.chords
+  const available: SheetKind[] = [
+    ...(hasCard ? (['cheat', 'roadmap'] as SheetKind[]) : []),
+    ...(sheets.chords ? (['chords'] as SheetKind[]) : []),
+    ...(sheets.tabs ? (['tabs'] as SheetKind[]) : []),
+  ]
+  // Default stays the lyric/tab sheet (the pre-cards behavior); the cards are a tap away.
+  const preferred = entry.preferredSource === 'tabs' || entry.preferredSource === 'chords' ? entry.preferredSource : null
+  const sheetDefault = (['chords', 'tabs'] as const).find((kind) => available.includes(kind))
+  const active = view && available.includes(view) ? view : preferred && available.includes(preferred) ? preferred : sheetDefault ?? available[0]
+  // Fingering surfaces predate the tab rename: 'cheat' governs chips on BOTH progression
+  // cards (one toggle per song, same as show mode); 'chords' governs the Lyrics sheet.
+  const cardShapes = isFingeringOnly(song.id, 'cheat')
   const chordsShapes = isFingeringOnly(song.id, 'chords')
+  // Autoscroll for the two text sheets, sharing show mode's per-song synced speed
+  // (PracticeEntry.scrollSpeed). The sheet scrolls inside a capped-height container
+  // (.practice-sheet) so the crawl has a scrollport. Hooks stay above the early return.
+  // chordsShapes is in the reset key: a fingering-chip retap re-lays-out the lyric sheet
+  // (different height), so "scrollable" must re-measure or the ▶ bar strands stale.
+  const sheetRef = useRef<HTMLDivElement>(null)
+  const scroll = useAutoScrollControls(sheetRef, song.id, [song.id, active, chordsShapes])
+  if (!available.length) return <section className="panel chord-panel" id="song-sheet"><h2>Song sheets</h2><p className="launcher-hint">Nothing built in for this song yet.</p></section>
+  const selectCard = (kind: 'cheat' | 'roadmap') => {
+    if (active === kind) {
+      if (settings.cheat.scope !== 'none') toggleFingeringOnly(song.id, 'cheat')
+    } else onViewChange(kind)
+  }
   const selectChords = () => {
     if (active === 'chords') {
       if (settings.chords.scope !== 'none') toggleFingeringOnly(song.id, 'chords')
     } else onViewChange('chords')
   }
+  const cardTab = (kind: 'cheat' | 'roadmap', label: string) => <button type="button" role="tab" aria-selected={active === kind} aria-pressed={active === kind ? cardShapes : undefined}
+    className={shapesTabClass(active === kind, cardShapes, settings.cheat.scope !== 'none')}
+    title={active === kind && settings.cheat.scope !== 'none' ? (cardShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
+    onClick={() => selectCard(kind)}>{label}</button>
   return <section className="panel chord-panel" id="song-sheet">
-    <div className="section-heading"><div><h2>Lyrics & tabs</h2></div>
-      {(available.length > 1 || available[0] === 'chords') && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
+    <div className="section-heading"><div><h2>Song sheets</h2></div>
+      {available.length > 1 && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
+        {hasCard && cardTab('cheat', 'Cheat')}
+        {hasCard && cardTab('roadmap', 'Chords')}
         {available.includes('chords') && <button type="button" role="tab" aria-selected={active === 'chords'} aria-pressed={active === 'chords' ? chordsShapes : undefined}
           className={shapesTabClass(active === 'chords', chordsShapes, settings.chords.scope !== 'none')}
           title={active === 'chords' && settings.chords.scope !== 'none' ? (chordsShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
@@ -408,7 +605,10 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
         {available.includes('tabs') && <button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button>}
       </div>}
     </div>
-    {active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/> : <TabText text={sheets.tabs!}/>}
+    {(active === 'chords' || active === 'tabs') && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
+    {active === 'cheat' || active === 'roadmap'
+      ? <CheatCard song={song} variant={active === 'cheat' ? 'cheat' : 'chords'} withMore={false}/>
+      : <div className="practice-sheet" ref={sheetRef}>{active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/> : <TabText text={sheets.tabs!}/>}</div>}
   </section>
 }
 
@@ -476,5 +676,6 @@ export function PracticeControls({ song }: { song: Song }) {
       <label><span>Priority</span><select value={entry.priority} onChange={(e) => patch(song.id, { priority: Number(e.target.value) })}><option value="0">None</option><option value="1">Low</option><option value="2">Medium</option><option value="3">High</option></select></label>
       <label className="practice-notes"><span>Quick notes</span><textarea value={entry.notes} onChange={(e) => patch(song.id, { notes: e.target.value })} placeholder="Fingering, tone, rehearsal changes…" /></label>
     </div>
+    <Metronome songId={song.id} />
   </section>
 }

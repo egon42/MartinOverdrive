@@ -1,7 +1,10 @@
 # Show-mode autoscroll — spec, failure history, and phone test script
 
-Owner code: `useAutoScroll` in `src/pages.tsx`. Speed persistence:
-`PracticeEntry.scrollSpeed` (per-song, rides the sync merge), bounds in
+Owner code: `useAutoScroll` in `src/autoscroll.tsx` (moved verbatim from
+`src/pages.tsx` 2026-07-20, when the practice page's sheet panel gained the same
+autoscroll; `useAutoScrollControls`/`AutoScrollBar` in the same file wrap it for both
+surfaces). Speed persistence: `PracticeEntry.scrollSpeed` (per-song, rides the sync
+merge — one speed shared by show mode and the practice page), bounds in
 `DEFAULT_SCROLL_SPEED / MIN / MAX / STEP` (24 / 6 / 120 / 4 px/s).
 
 This feature failed on-device repeatedly. This document exists so the next change
