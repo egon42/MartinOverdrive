@@ -272,7 +272,10 @@ function ChipPullExample() {
         {[['Em', 'Midnight '], ['C', 'train '], ['G', 'going ']].map(([chord, word], i) => (
           <span className="sheet-above-word" key={i}>
             <span className="sheet-above-col">
-              <span className="sheet-above-chord"><b className="chord-chip">{chord}</b></span>
+              {/* Mirror ChordChip(bare)'s DOM — the .chord-chip-wrap inherits the sheet's
+                  line-height and lifts the chip, so without it the preview overlaps more
+                  than the real sheet does. */}
+              <span className="sheet-above-chord"><span className="chord-chip-wrap"><b className="chord-chip">{chord}</b></span></span>
               <span className="sheet-above-lyric">{word}</span>
             </span>
           </span>
