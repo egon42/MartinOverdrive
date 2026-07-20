@@ -24,6 +24,8 @@ try { localStorage.removeItem(`overdrive-settings2${KEY_SUFFIX}`) } catch { /* s
 
 export type FingeringScope = 'power' | 'all' | 'none'
 export type FingeringPosition = 'under' | 'over' | 'left' | 'right'
+/** Lyrics sheet: chips in the lyric flow, or stacked above each lyric segment (UG-style). */
+export type LyricChordPlacement = 'inline' | 'above'
 // Storage keys predate the tab rename: 'cheat' governs chips on the Cheat & Chords cards; 'chords' governs the Lyrics sheet.
 export type FingeringSurface = 'cheat' | 'chords'
 
@@ -44,6 +46,8 @@ export interface AppSettings {
   cheat: FingeringPrefs
   chords: FingeringPrefs
   theme: ThemePrefs
+  /** Where chord chips sit on the Lyrics sheet (practice + show). */
+  lyricChordPlacement: LyricChordPlacement
 }
 
 /** Per-song, per-surface: when true, chord chips are replaced by vertical fingering chips. */
@@ -51,10 +55,13 @@ export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, b
 
 const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
 const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: true }
+const DEFAULT_LYRIC_CHORD_PLACEMENT: LyricChordPlacement = 'inline'
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
 const isPosition = (v: unknown): v is FingeringPosition =>
   v === 'under' || v === 'over' || v === 'left' || v === 'right'
+const isLyricChordPlacement = (v: unknown): v is LyricChordPlacement =>
+  v === 'inline' || v === 'above'
 
 function readPrefs(raw: unknown, fallback: FingeringPrefs): FingeringPrefs {
   if (!raw || typeof raw !== 'object') return { ...fallback }
@@ -94,12 +101,16 @@ function readSettings(): AppSettings {
       cheat: readPrefs(raw.cheat, fallback),
       chords: readPrefs(raw.chords, fallback),
       theme: readTheme(raw.theme),
+      lyricChordPlacement: isLyricChordPlacement(raw.lyricChordPlacement)
+        ? raw.lyricChordPlacement
+        : DEFAULT_LYRIC_CHORD_PLACEMENT,
     }
   } catch {
     return {
       cheat: { ...DEFAULT_PREFS },
       chords: { ...DEFAULT_PREFS },
       theme: { ...DEFAULT_THEME, colors: { ...MARTIN_DRIVE } },
+      lyricChordPlacement: DEFAULT_LYRIC_CHORD_PLACEMENT,
     }
   }
 }
@@ -116,6 +127,7 @@ function readFingeringOnly(): FingeringOnlyMap {
 interface SettingsStore {
   settings: AppSettings
   patchFingering: (surface: FingeringSurface, update: Partial<FingeringPrefs>) => void
+  setLyricChordPlacement: (placement: LyricChordPlacement) => void
   setThemePreset: (preset: ThemePresetId) => void
   patchThemeColor: (key: ThemeColorKey, value: string) => void
   setRowStripe: (on: boolean) => void
@@ -140,6 +152,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => { applyRowStripe(settings.theme.rowStripe) }, [settings.theme.rowStripe])
   const patchFingering = (surface: FingeringSurface, update: Partial<FingeringPrefs>) =>
     setSettings((old) => ({ ...old, [surface]: { ...old[surface], ...update } }))
+  const setLyricChordPlacement = (placement: LyricChordPlacement) =>
+    setSettings((old) => ({ ...old, lyricChordPlacement: placement }))
   const setThemePreset = (preset: ThemePresetId) =>
     setSettings((old) => ({
       ...old,
@@ -168,7 +182,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return next
   })
   const value = useMemo(
-    () => ({ settings, patchFingering, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
+    () => ({ settings, patchFingering, setLyricChordPlacement, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
     [settings, fingeringOnly],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
@@ -230,11 +244,22 @@ export function shapesTabClass(active: boolean, shapesOn: boolean, canToggle: bo
 }
 
 function FingeringFields({ surface, label }: { surface: FingeringSurface; label: string }) {
-  const { settings, patchFingering } = useSettings()
+  const { settings, patchFingering, setLyricChordPlacement } = useSettings()
   const prefs = settings[surface]
   return <div className="settings-surface">
     <h3>{label}</h3>
     <div className="settings-fields">
+      {surface === 'chords' && <label>
+        <span>Chord placement</span>
+        <select
+          aria-label={`${label}: chord placement`}
+          value={settings.lyricChordPlacement}
+          onChange={(e) => isLyricChordPlacement(e.target.value) && setLyricChordPlacement(e.target.value)}
+        >
+          <option value="inline">In the lyric line</option>
+          <option value="above">Above the lyric line</option>
+        </select>
+      </label>}
       <label>
         <span>Show fingerings for</span>
         <select

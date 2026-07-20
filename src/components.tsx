@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
-import { compactSheet, parseChordSheet } from './chords'
+import { compactSheet, parseChordSheet, type SheetPart } from './chords'
 import { chordShape, type ChordShape } from './chordShapes'
 import type { Song } from './types'
 import { statuses } from './types'
@@ -290,8 +290,50 @@ function AmpMarkerSection({ tokens }: { tokens: string[] }) {
   return <div className="sheet-section amp-marker">{tokens.map((token, i) => <AmpChip label={token} key={i} />)}</div>
 }
 
+/** Pair each chord with the lyric text that follows it (UG-style columns). */
+function aboveColumns(parts: SheetPart[]): { chord?: string; text: string }[] {
+  const columns: { chord?: string; text: string }[] = []
+  for (const part of parts) {
+    if (part.chord) {
+      columns.push({ chord: part.chord, text: '' })
+      continue
+    }
+    if (part.text == null) continue
+    if (columns.length === 0) columns.push({ text: part.text })
+    else columns[columns.length - 1].text += part.text
+  }
+  return columns
+}
+
+function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
+  const chordsOnly = parts.every((part) => part.chord)
+  return <p className={chordsOnly ? 'sheet-line sheet-line--chords' : 'sheet-line'}>
+    {parts.map((part, i) => part.chord
+      ? <ChordChip name={part.chord} songId={songId} key={i} />
+      : <span key={i}>{part.text}</span>)}
+  </p>
+}
+
+function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
+  if (parts.every((part) => part.chord)) {
+    return <LyricLineInline parts={parts} songId={songId} />
+  }
+  return <div className="sheet-line sheet-line--above">
+    {aboveColumns(parts).map((col, i) => (
+      <span className="sheet-above-col" key={i}>
+        <span className="sheet-above-chord">
+          {col.chord ? <ChordChip name={col.chord} songId={songId} /> : null}
+        </span>
+        <span className="sheet-above-lyric">{col.text}</span>
+      </span>
+    ))}
+  </div>
+}
+
 export function ChordSheetView({ text, songId, compact = false }: { text: string, songId?: string, compact?: boolean }) {
   const sheet = useMemo(() => parseChordSheet(text), [text])
+  const { settings } = useSettings()
+  const above = settings.lyricChordPlacement === 'above'
   if (compact) {
     return <div className="sheet-compact">{compactSheet(sheet).map((line, index) => {
       if (line.kind === 'section') {
@@ -310,9 +352,10 @@ export function ChordSheetView({ text, songId, compact = false }: { text: string
         const tokens = ampMarkerTokens(line.raw)
         return tokens ? <AmpMarkerSection tokens={tokens} key={index} /> : <h4 className="sheet-section" key={index}>{line.raw}</h4>
       }
-      return line.kind === 'tab'
-        ? <pre className="sheet-tab" key={index}>{line.raw}</pre>
-        : <p className={line.parts.every((part) => part.chord) ? 'sheet-line sheet-line--chords' : 'sheet-line'} key={index}>{line.parts.map((part, i) => part.chord ? <ChordChip name={part.chord} songId={songId} key={i} /> : <span key={i}>{part.text}</span>)}</p>
+      if (line.kind === 'tab') return <pre className="sheet-tab" key={index}>{line.raw}</pre>
+      return above
+        ? <LyricLineAbove parts={line.parts} songId={songId} key={index} />
+        : <LyricLineInline parts={line.parts} songId={songId} key={index} />
     })}
   </div>
 }

@@ -111,6 +111,12 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 /* Instrumental/chord-only rows: pack chips horizontally instead of one tall row each */
 .sheet-line--chords{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;line-height:1.4;margin:0 0 6px}
 .sheet-line--chords .chord-chip,.sheet-line--chords .chord-with-fingering{margin:0}
+/* Settings → Lyrics sheet: chips above each lyric segment (UG / Real Book style) */
+.sheet-line--above{display:flex;flex-wrap:wrap;align-items:flex-end;margin:0 0 10px;line-height:1.45;row-gap:6px}
+.sheet-above-col{display:inline-flex;flex-direction:column;align-items:flex-start;max-width:100%}
+.sheet-above-chord{margin-bottom:1px;display:flex;align-items:flex-end}
+.sheet-above-chord .chord-chip,.sheet-above-chord .chord-with-fingering{margin:0}
+.sheet-above-lyric{white-space:pre-wrap}
 .sheet-section{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.7rem;color:var(--acid);margin:18px 0 8px}
 .sheet-section.amp-marker{display:inline-flex;align-items:center;gap:6px;text-transform:none;letter-spacing:normal}
 .sheet-tab{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;line-height:1.45;margin:0 0 7px;overflow-x:auto}
