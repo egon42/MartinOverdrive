@@ -111,11 +111,11 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 /* Instrumental/chord-only rows: pack chips horizontally instead of one tall row each */
 .sheet-line--chords{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;line-height:1.4;margin:0 0 6px}
 .sheet-line--chords .chord-chip,.sheet-line--chords .chord-with-fingering{margin:0}
-/* Settings → Lyrics sheet: chord chips on a row above continuous lyric text */
-.sheet-line--above{display:flex;flex-direction:column;align-items:stretch;gap:4px;margin:0 0 14px;line-height:1.45}
-.sheet-above-chords{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-end}
-.sheet-above-chords .chord-chip,.sheet-above-chords .chord-with-fingering{margin:0}
-.sheet-above-lyrics{margin:0;line-height:1.55;white-space:pre-wrap}
+/* Settings → Lyrics sheet: chips float above their spot; lyric stays one readable line */
+.sheet-line--above{margin:0 0 18px;padding-top:2.75em;line-height:2.35;white-space:pre-wrap}
+.sheet-above-anchor{position:relative;display:inline-block;width:0;vertical-align:baseline}
+.sheet-above-float{position:absolute;left:0;bottom:calc(100% + 2px);display:flex;z-index:1}
+.sheet-above-float .chord-chip,.sheet-above-float .chord-with-fingering{margin:0}
 .sheet-section{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.7rem;color:var(--acid);margin:18px 0 8px}
 .sheet-section.amp-marker{display:inline-flex;align-items:center;gap:6px;text-transform:none;letter-spacing:normal}
 .sheet-tab{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;line-height:1.45;margin:0 0 7px;overflow-x:auto}

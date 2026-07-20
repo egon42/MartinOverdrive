@@ -302,20 +302,26 @@ function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: strin
   </p>
 }
 
-/** Chords on their own row, continuous lyric underneath — sing-along readable. */
+/** Chords float above their spot in a continuous lyric line (sing-along readable). */
 function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
   if (parts.every((part) => part.chord)) {
     return <LyricLineInline parts={parts} songId={songId} />
   }
-  const chords = parts.flatMap((part) => (part.chord ? [part.chord] : []))
-  // Join text fragments so mid-word chord splits ("aggravat"+"ion") read as real words.
-  const lyric = parts.map((part) => part.text ?? '').join('').replace(/\s+$/, '')
-  return <div className="sheet-line sheet-line--above">
-    {chords.length > 0 && <div className="sheet-above-chords" aria-label="Chords">
-      {chords.map((chord, i) => <ChordChip name={chord} songId={songId} key={i} />)}
-    </div>}
-    {lyric.length > 0 && <p className="sheet-above-lyrics">{lyric}</p>}
-  </div>
+  const nodes: ReactNode[] = []
+  parts.forEach((part, i) => {
+    if (part.chord) {
+      // Zero-width anchor so mid-word splits still read as one word underneath.
+      nodes.push(
+        <span className="sheet-above-anchor" key={`c${i}`}>
+          <span className="sheet-above-float">
+            <ChordChip name={part.chord} songId={songId} />
+          </span>
+        </span>,
+      )
+    }
+    if (part.text) nodes.push(<span key={`t${i}`}>{part.text}</span>)
+  })
+  return <p className="sheet-line sheet-line--above">{nodes}</p>
 }
 
 export function ChordSheetView({ text, songId, compact = false }: { text: string, songId?: string, compact?: boolean }) {
