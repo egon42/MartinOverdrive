@@ -2,12 +2,12 @@ Standard (EADGBE)
 
 [Intro]
 
-E
+F#
 (stomp-clap, vocals only)
 
 [Verse 1]
 
-E
+F#
 I'm gonna need someone to help me
 
 I'm gonna need somebody's hand
@@ -24,36 +24,36 @@ I'm going to cover myself with the ashes of you and nobody's gonna give a damn
 
 [Chorus]
 
-E
+F#
 Son of a bitch
 
-A
+B
 Give me a drink
 
-B
+C#
 One more night
 
-A
-This ca
 B
+This ca
+C#
 n't be me
 
-E
+F#
 Son of a bitch
 
-A
+B
 If I can't get clean
 
-B
+C#
 I'm gonna dri
-A
+B
 nk my lif
-E
+F#
 e away
 
 [Verse 2]
 
-E
+F#
 (Whoa oh, whoa oh, whoa oh oh oh) x2
 
 Now for seventeen years I've been throwing them back
@@ -66,36 +66,36 @@ Or somebody give me a goddamn drink
 
 [Chorus]
 
-E
+F#
 Son of a bitch
 
-A
+B
 Give me a drink
 
-B
+C#
 One more night
 
-A
-This ca
 B
+This ca
+C#
 n't be me
 
-E
+F#
 Son of a bitch
 
-A
+B
 If I can't get clean
 
-B
+C#
 I'm gonna dri
-A
+B
 nk my lif
-E
+F#
 e away
 
 [Verse 3]
 
-E
+F#
 (Mmmm hmm, mmmm hmm, mmmm hmm hmm hmm) x2
 
 My heart was breaking, hands are shaking, bugs are crawling all over me.
@@ -108,63 +108,63 @@ My heart was breaking, hands are shaking, bugs are crawling all over me.
 
 [Chorus]
 
-E
+F#
 Son of a bitch
 
-A
+B
 Give me a drink
 
-B
+C#
 One more night
 
-A
-This ca
 B
+This ca
+C#
 n't be me
 
-E
+F#
 Son of a bitch
 
-A
+B
 If I can't get clean
 
-B
+C#
 I'm gonna dri
-A
+B
 nk my lif
-E
+F#
 e away
 
-E
+F#
 Son of a bitch
 
-A
+B
 Give me a drink
 
-B
+C#
 Son of a bitch
 
-A
-This ca
 B
+This ca
+C#
 n't be me
 
-E
+F#
 Son of a bitch
 
-A
+B
 If I can't get clean
 
-B
+C#
 I'm gonna dri
-A
+B
 nk my lif
-E
+F#
 e away
 
 [Outro]
 
-E
+F#
 (Whoa oh, whoa oh, whoa oh oh oh)
 
 (stomp-clap, vocals only)

@@ -469,21 +469,21 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "E",
-        "hint": "Stomp-clap; vocals over open E"
+        "chords": "F#",
+        "hint": "Stomp-clap; vocals over F#"
       },
       {
         "section": "Verse",
-        "chords": "E",
-        "hint": "Stay on E; don't walk A/B until the chorus"
+        "chords": "F#",
+        "hint": "Stay on F#; don't walk B/C# until the chorus"
       },
       {
         "section": "Chorus",
-        "chords": "(E A B A B) (E A B A E)"
+        "chords": "(F# B C# B C#) (F# B C# B F#)"
       },
       {
         "section": "Outro",
-        "chords": "(E A B A B) (E A B A E)"
+        "chords": "(F# B C# B C#) (F# B C# B F#)"
       }
     ],
     "form": [
@@ -901,7 +901,8 @@
       "Climax ×3",
       "Chorus",
       "Outro"
-    ]
+    ],
+    "capo": "Capo 1"
   },
   "23-lola-montez": {
     "sections": [
