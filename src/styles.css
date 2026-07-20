@@ -130,6 +130,16 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-panel .cheat-screen{flex:none}
 .chord-panel .cheat-fit{flex:none;overflow:visible}
 .practice-sheet{max-height:72vh;overflow:auto;overscroll-behavior:contain}
+/* Practice-page song nav — the same ‹ counter › controls as show mode's progress bar.
+   Double-class specificity on purpose: the .song-detail-top>div rules (base gap + the
+   ≤760px column stack, written for the old eyebrow/difficulty content) must not win
+   here — the nav row stays a row on phones. Colors ride --ink so the cream-paper
+   (light) theme keeps the controls visible on the page background, unlike show mode's
+   fixed-dark backdrop where the hardcoded whites are safe. */
+.song-detail-top .song-nav{display:flex;flex-direction:row;align-items:center;gap:10px}
+.song-nav .show-nav-btn{width:44px;height:44px;font-size:1.35rem}
+.song-nav .show-nav-btn,.song-nav .show-counter{background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink)}
+.song-nav .difficulty{margin-left:8px}
 .sheet-compact{font-size:calc(var(--sheet-fit,1)*1rem)}
 .compact-line{display:flex;gap:.7em;align-items:baseline;padding:.11em 0}
 .compact-chords{display:inline-flex;gap:.3em;flex:0 0 auto;min-width:5.2em}
@@ -371,7 +381,7 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .show-counter{border:0;background:#ffffff14;color:#c7cfc9;border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:.8rem;font-weight:750;font-variant-numeric:tabular-nums;touch-action:manipulation}
 .show-picker{position:fixed;inset:0;z-index:140;background:rgba(0,0,0,.72);display:grid;place-items:center;padding:24px}
 .show-picker-list{background:var(--paper);border:1px solid var(--line);border-radius:14px;max-height:min(80vh,640px);width:min(92vw,440px);overflow-y:auto;padding:8px;display:grid;gap:2px}
-.show-picker-list button{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:#dfe6e1;border-radius:10px;padding:12px 14px;text-align:left;font-weight:650;font-size:.95rem}
+.show-picker-list button{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:var(--ink);border-radius:10px;padding:12px 14px;text-align:left;font-weight:650;font-size:.95rem}
 .show-picker-list button.current{background:var(--acid);color:var(--on-acid)}
 .show-picker-num{font-variant-numeric:tabular-nums;color:inherit;opacity:.6;font-size:.78rem;font-weight:800}
 .show-picker-title{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

@@ -114,12 +114,63 @@ export function Practice() {
   return <><PageTitle title="Practice" compact/><SongFilters {...props}/><div className="sort-row"><span>{ordered.length} songs</span><div className="sort-controls"><label>Sort <select value={sort} onChange={(e) => changeSort(e.target.value)}><option value="priority">Priority</option><option value="difficulty">Difficulty</option><option value="set">Set order</option></select></label><label>Order <select aria-label="Sort direction" value={direction} onChange={(e) => setDirection(e.target.value as 'asc' | 'desc')}><option value="desc">Descending</option><option value="asc">Ascending</option></select></label></div></div><div className="practice-list">{ordered.map((song) => { const entry = get(song.id); return <Link className="practice-row" to={`/song/${song.id}`} key={song.id}><div className="practice-row-main"><span className="eyebrow">{String(song.order).padStart(2, '0')} · {entry.status} · {priorityLabel[entry.priority]} priority</span> <PresetBadges songId={song.id} /><h3>{song.title}</h3><p>{song.artist}</p></div><Difficulty value={song.difficulty} /></Link>})}</div></>
 }
 
+/** Jump-to-song overlay, shared by show mode and the song (practice) page. Mounted per
+ *  open (callers render it conditionally), so the one-time centering resets each open. */
+function SongPicker({ list, currentId, onPick, onClose }: { list: Song[], currentId: string, onPick: (song: Song, index: number) => void, onClose: () => void }) {
+  const centeredRef = useRef(false)
+  return <div className="show-picker" onClick={onClose}>
+    <div className="show-picker-list" role="dialog" aria-label="Jump to song" onClick={(e) => e.stopPropagation()}>
+      {list.map((item, i) => <button type="button" key={item.id} className={item.id === currentId ? 'current' : ''}
+        ref={item.id === currentId ? (el) => { if (el && !centeredRef.current) { centeredRef.current = true; el.scrollIntoView({ block: 'center' }) } } : undefined}
+        onClick={() => { onPick(item, i); onClose() }}>
+        <span className="show-picker-num">{String(i + 1).padStart(2, '0')}</span>
+        <span className="show-picker-title">{item.title}</span>
+        {item.tuning !== 'Standard' && <i className="show-picker-tuning">{item.tuning}</i>}
+      </button>)}
+    </div>
+  </div>
+}
+
 export function SongDetail() {
   const { id } = useParams(); const song = songs.find((item) => item.id === id)
+  const navigate = useNavigate()
   const [sheetView, setSheetView] = useState<SheetKind | null>(null)
+  const [picker, setPicker] = useState(false)
+  // Practice navigation mirrors show mode's controls (‹ › + tap-the-counter picker) but
+  // walks the FULL setlist in set order — practice isn't scoped to tonight's set.
+  const index = song ? songs.indexOf(song) : -1
+  const goTo = (i: number) => {
+    const target = songs[Math.max(0, Math.min(songs.length - 1, i))]
+    if (target && target.id !== song?.id) navigate(`/song/${target.id}`)
+  }
+  // Same keys as show mode (ArrowLeft/Right + PageUp/PageDown pedals), but bail whenever
+  // a form control is focused — arrows must keep editing the notes textarea, not turn songs.
+  useEffect(() => {
+    const key = (e: KeyboardEvent) => {
+      if (!song) return // not-found page: arrows must not silently jump to song 1
+      if ((e.target as HTMLElement)?.closest('input,textarea,select')) return
+      if (picker) { if (e.key === 'Escape') setPicker(false); return }
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goTo(index + 1) }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goTo(index - 1) }
+    }
+    window.addEventListener('keydown', key)
+    return () => window.removeEventListener('keydown', key)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index, picker])
+  // Song→song nav reuses this mounted page — start each song at the top like show mode.
+  // Layout effect: after paint the old scroll offset flashes for a frame on song turn.
+  useLayoutEffect(() => { window.scrollTo(0, 0) }, [id])
   if (!song) return <PageTitle eyebrow="Not found" title="That song isn’t in this set" copy="Return to the full song list and try another." />
   const transpose = transposeFor(song.id)
-  return <div className="song-detail"><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div><span className="eyebrow">Song {song.order} of {songs.length}</span><Difficulty value={song.difficulty}/></div></div><section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div><Link className="button secondary song-show-link" to={`/show/${song.id}`}>Stage view ↗</Link></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>Song info</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/>{song.rehearsalNotes && <Field label="Ask the band" value={song.rehearsalNotes}/>}</dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
+  // Keyed like show mode's ShowSongBoundary: prev/next now reuses this mounted route, and
+  // per-song child state (fretboard variant toggle, chip popovers) must reset per song.
+  return <div className="song-detail" key={song.id}><div className="song-detail-top"><Link className="back" to="/practice">← Back to practice</Link><div className="song-nav">
+      <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => goTo(index - 1)} aria-label="Previous song">‹</button>
+      <button type="button" className="show-counter" onClick={() => setPicker(true)} aria-label="Jump to a song">{index + 1} / {songs.length}</button>
+      <button type="button" className="show-nav-btn" disabled={index === songs.length - 1} onClick={() => goTo(index + 1)} aria-label="Next song">›</button>
+      <Difficulty value={song.difficulty}/>
+    </div></div>
+    {picker && <SongPicker list={songs} currentId={song.id} onPick={(_, i) => goTo(i)} onClose={() => setPicker(false)}/>}<section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div><Link className="button secondary song-show-link" to={`/show/${song.id}`}>Stage view ↗</Link></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>Song info</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/>{song.rehearsalNotes && <Field label="Ask the band" value={song.rehearsalNotes}/>}</dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
 }
 
 // Shrinks the sheet's font until it fits the container (height for compact chords,
@@ -315,7 +366,6 @@ export function Show() {
   const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1)
   const lyricsRef = useRef<HTMLDivElement>(null)
   const [picker, setPicker] = useState(false) // jump-to-song overlay (audible calls)
-  const pickerCenteredRef = useRef(false) // center the current song once per open, not on every re-render
   // Autoscroll: only the lyrics/tabs sheets scroll (the progression cards auto-fit one
   // screen). State machine + speed persistence shared with the practice page: autoscroll.tsx.
   const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'lyrics' ? lyricsRef : null
@@ -431,7 +481,7 @@ export function Show() {
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => goTo(index - 1)} aria-label="Previous song">‹</button>
-      <button type="button" className="show-counter" onClick={() => { pickerCenteredRef.current = false; setPicker(true) }} aria-label="Jump to a song">{index + 1} / {setSongs.length}</button>
+      <button type="button" className="show-counter" onClick={() => setPicker(true)} aria-label="Jump to a song">{index + 1} / {setSongs.length}</button>
       <button type="button"
         className={`show-live${live.config ? (live.config.role === 'lead' ? ' leading' : live.paused ? ' paused' : ' following') : ''}${live.config && !live.connected ? ' pending' : ''}`}
         onClick={() => setLiveOpen(true)}
@@ -474,17 +524,7 @@ export function Show() {
       <span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/>
     </button> })()}
     {liveOpen && <LiveOverlay onClose={() => setLiveOpen(false)} onJump={(songId) => { const at = setSongs.findIndex((item) => item.id === songId); if (at >= 0) goTo(at) }} />}
-    {picker && <div className="show-picker" onClick={() => setPicker(false)}>
-      <div className="show-picker-list" role="dialog" aria-label="Jump to song" onClick={(e) => e.stopPropagation()}>
-        {setSongs.map((item, i) => <button type="button" key={item.id} className={i === index ? 'current' : ''}
-          ref={i === index ? (el) => { if (el && !pickerCenteredRef.current) { pickerCenteredRef.current = true; el.scrollIntoView({ block: 'center' }) } } : undefined}
-          onClick={() => { goTo(i); setPicker(false) }}>
-          <span className="show-picker-num">{String(i + 1).padStart(2, '0')}</span>
-          <span className="show-picker-title">{item.title}</span>
-          {item.tuning !== 'Standard' && <i className="show-picker-tuning">{item.tuning}</i>}
-        </button>)}
-      </div>
-    </div>}
+    {picker && <SongPicker list={setSongs} currentId={song.id} onPick={(_, i) => goTo(i)} onClose={() => setPicker(false)}/>}
     </div>
 }
 
