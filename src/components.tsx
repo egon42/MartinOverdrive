@@ -61,7 +61,7 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 // Optional `curatedShape` (cheat-card progressions) overrides the generated tab fingering.
 // `surface` picks which Settings prefs apply (Cheat vs Chords are independent).
 // `songId` enables the per-song "Shapes" toggle (fingering-only chips).
-export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghost = false }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string; ghost?: boolean }) {
+export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghost = false, bare = false }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string; ghost?: boolean; bare?: boolean }) {
   const { settings, isFingeringOnly } = useSettings()
   const prefs = settings[surface]
   const fingeringOnly = !!songId && isFingeringOnly(songId, surface)
@@ -134,7 +134,8 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     {pop}
   </>
   // Ref stays on the chip-only wrap so the popover aims at the name, not the fingering.
-  if (!fingering) return <span className="chord-chip-wrap" ref={ref}>{chip}</span>
+  // `bare`: UG-style above-lyrics mode — name only; tap still opens the diagram.
+  if (!fingering || bare) return <span className="chord-chip-wrap" ref={ref}>{chip}</span>
   return <span className={`chord-with-fingering chord-with-fingering--${prefs.position}`}>
     <span className="chord-chip-wrap" ref={ref}>{chip}</span>
     <span className="chord-fingering"><FingeringText text={formatFingering(fingering, prefs.position)} /></span>
@@ -293,6 +294,22 @@ function AmpMarkerSection({ tokens }: { tokens: string[] }) {
   return <div className="sheet-section amp-marker">{tokens.map((token, i) => <AmpChip label={token} key={i} />)}</div>
 }
 
+/** UG-style: chord name above the lyric segment where it falls. Name-only chips
+ *  (no under-fingerings) so the lyric stays readable and dense like UG charts. */
+function aboveColumns(parts: SheetPart[]): { chord?: string; text: string }[] {
+  const columns: { chord?: string; text: string }[] = []
+  for (const part of parts) {
+    if (part.chord) {
+      columns.push({ chord: part.chord, text: '' })
+      continue
+    }
+    if (part.text == null) continue
+    if (columns.length === 0) columns.push({ text: part.text })
+    else columns[columns.length - 1].text += part.text
+  }
+  return columns
+}
+
 function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
   const chordsOnly = parts.every((part) => part.chord)
   return <p className={chordsOnly ? 'sheet-line sheet-line--chords' : 'sheet-line'}>
@@ -302,26 +319,24 @@ function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: strin
   </p>
 }
 
-/** Chords float above their spot in a continuous lyric line (sing-along readable). */
 function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
   if (parts.every((part) => part.chord)) {
-    return <LyricLineInline parts={parts} songId={songId} />
+    return <p className="sheet-line sheet-line--chords sheet-line--above-chords">
+      {parts.map((part, i) => part.chord
+        ? <ChordChip name={part.chord} songId={songId} bare key={i} />
+        : null)}
+    </p>
   }
-  const nodes: ReactNode[] = []
-  parts.forEach((part, i) => {
-    if (part.chord) {
-      // Zero-width anchor so mid-word splits still read as one word underneath.
-      nodes.push(
-        <span className="sheet-above-anchor" key={`c${i}`}>
-          <span className="sheet-above-float">
-            <ChordChip name={part.chord} songId={songId} />
-          </span>
-        </span>,
-      )
-    }
-    if (part.text) nodes.push(<span key={`t${i}`}>{part.text}</span>)
-  })
-  return <p className="sheet-line sheet-line--above">{nodes}</p>
+  return <div className="sheet-line sheet-line--above">
+    {aboveColumns(parts).map((col, i) => (
+      <span className="sheet-above-col" key={i}>
+        <span className="sheet-above-chord">
+          {col.chord ? <ChordChip name={col.chord} songId={songId} bare /> : null}
+        </span>
+        <span className="sheet-above-lyric">{col.text}</span>
+      </span>
+    ))}
+  </div>
 }
 
 export function ChordSheetView({ text, songId, compact = false }: { text: string, songId?: string, compact?: boolean }) {

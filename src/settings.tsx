@@ -257,7 +257,7 @@ function FingeringFields({ surface, label }: { surface: FingeringSurface; label:
           onChange={(e) => isLyricChordPlacement(e.target.value) && setLyricChordPlacement(e.target.value)}
         >
           <option value="inline">In the lyric line</option>
-          <option value="above">Above the lyric line</option>
+          <option value="above">Above the lyric line (UG-style)</option>
         </select>
       </label>}
       <label>
