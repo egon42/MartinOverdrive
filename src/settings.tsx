@@ -48,6 +48,9 @@ export interface AppSettings {
   theme: ThemePrefs
   /** Where chord chips sit on the Lyrics sheet (practice + show). */
   lyricChordPlacement: LyricChordPlacement
+  /** Above-mode only: em offset pulling each chord chip down onto the lyric beneath it
+   *  (negative = overlap, the chip layers under the text). Applied as the --chip-pull var. */
+  lyricChipPull: number
 }
 
 /** Per-song, per-surface: when true, chord chips are replaced by vertical fingering chips. */
@@ -56,12 +59,18 @@ export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, b
 const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
 const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: true }
 const DEFAULT_LYRIC_CHORD_PLACEMENT: LyricChordPlacement = 'inline'
+const DEFAULT_LYRIC_CHIP_PULL = -0.5
+/** Clamp the range the slider offers, so a stored/edited value can't hide chips or blow up layout. */
+export const CHIP_PULL_MIN = -0.9
+export const CHIP_PULL_MAX = 0.1
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
 const isPosition = (v: unknown): v is FingeringPosition =>
   v === 'under' || v === 'over' || v === 'left' || v === 'right'
 const isLyricChordPlacement = (v: unknown): v is LyricChordPlacement =>
   v === 'inline' || v === 'above'
+const readChipPull = (v: unknown): number =>
+  typeof v === 'number' && Number.isFinite(v) ? Math.min(CHIP_PULL_MAX, Math.max(CHIP_PULL_MIN, v)) : DEFAULT_LYRIC_CHIP_PULL
 
 function readPrefs(raw: unknown, fallback: FingeringPrefs): FingeringPrefs {
   if (!raw || typeof raw !== 'object') return { ...fallback }
@@ -104,6 +113,7 @@ function readSettings(): AppSettings {
       lyricChordPlacement: isLyricChordPlacement(raw.lyricChordPlacement)
         ? raw.lyricChordPlacement
         : DEFAULT_LYRIC_CHORD_PLACEMENT,
+      lyricChipPull: readChipPull(raw.lyricChipPull),
     }
   } catch {
     return {
@@ -111,6 +121,7 @@ function readSettings(): AppSettings {
       chords: { ...DEFAULT_PREFS },
       theme: { ...DEFAULT_THEME, colors: { ...MARTIN_DRIVE } },
       lyricChordPlacement: DEFAULT_LYRIC_CHORD_PLACEMENT,
+      lyricChipPull: DEFAULT_LYRIC_CHIP_PULL,
     }
   }
 }
@@ -128,6 +139,7 @@ interface SettingsStore {
   settings: AppSettings
   patchFingering: (surface: FingeringSurface, update: Partial<FingeringPrefs>) => void
   setLyricChordPlacement: (placement: LyricChordPlacement) => void
+  setLyricChipPull: (em: number) => void
   setThemePreset: (preset: ThemePresetId) => void
   patchThemeColor: (key: ThemeColorKey, value: string) => void
   setRowStripe: (on: boolean) => void
@@ -143,6 +155,10 @@ function applyRowStripe(on: boolean) {
   else delete document.documentElement.dataset.rowStripe
 }
 
+function applyChipPull(em: number) {
+  document.documentElement.style.setProperty('--chip-pull', `${em}em`)
+}
+
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(readSettings)
   const [fingeringOnly, setFingeringOnly] = useState<FingeringOnlyMap>(readFingeringOnly)
@@ -150,10 +166,13 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => { localStorage.setItem(FINGERING_ONLY_KEY, JSON.stringify(fingeringOnly)) }, [fingeringOnly])
   useEffect(() => { applyTheme(settings.theme.colors) }, [settings.theme.colors])
   useEffect(() => { applyRowStripe(settings.theme.rowStripe) }, [settings.theme.rowStripe])
+  useEffect(() => { applyChipPull(settings.lyricChipPull) }, [settings.lyricChipPull])
   const patchFingering = (surface: FingeringSurface, update: Partial<FingeringPrefs>) =>
     setSettings((old) => ({ ...old, [surface]: { ...old[surface], ...update } }))
   const setLyricChordPlacement = (placement: LyricChordPlacement) =>
     setSettings((old) => ({ ...old, lyricChordPlacement: placement }))
+  const setLyricChipPull = (em: number) =>
+    setSettings((old) => ({ ...old, lyricChipPull: Math.min(CHIP_PULL_MAX, Math.max(CHIP_PULL_MIN, em)) }))
   const setThemePreset = (preset: ThemePresetId) =>
     setSettings((old) => ({
       ...old,
@@ -182,7 +201,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return next
   })
   const value = useMemo(
-    () => ({ settings, patchFingering, setLyricChordPlacement, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
+    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
     [settings, fingeringOnly],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
@@ -243,9 +262,27 @@ export function shapesTabClass(active: boolean, shapesOn: boolean, canToggle: bo
   return parts.filter(Boolean).join(' ')
 }
 
+/** Live sample of the above-mode chip overlap — uses the real sheet classes so it
+ *  tracks the --chip-pull var as the slider moves, right here in Settings. */
+function ChipPullExample() {
+  return <div className="chip-pull-example" aria-hidden="true">
+    <div className="sheet-line--above">
+      {[['Em', 'Midnight '], ['C', 'train '], ['G', 'going ']].map(([chord, word], i) => (
+        <span className="sheet-above-word" key={i}>
+          <span className="sheet-above-col">
+            <span className="sheet-above-chord"><b className="chord-chip">{chord}</b></span>
+            <span className="sheet-above-lyric">{word}</span>
+          </span>
+        </span>
+      ))}
+    </div>
+  </div>
+}
+
 function FingeringFields({ surface, label }: { surface: FingeringSurface; label: string }) {
-  const { settings, patchFingering, setLyricChordPlacement } = useSettings()
+  const { settings, patchFingering, setLyricChordPlacement, setLyricChipPull } = useSettings()
   const prefs = settings[surface]
+  const above = settings.lyricChordPlacement === 'above'
   return <div className="settings-surface">
     <h3>{label}</h3>
     <div className="settings-fields">
@@ -260,6 +297,23 @@ function FingeringFields({ surface, label }: { surface: FingeringSurface; label:
           <option value="above">Above the lyric line (UG-style)</option>
         </select>
       </label>}
+      {surface === 'chords' && above && <div className="chip-pull-field">
+        <div className="chip-pull-head">
+          <span>Chord overlap</span>
+          <b className="chip-pull-val">{settings.lyricChipPull.toFixed(2)}em</b>
+        </div>
+        <ChipPullExample />
+        <input
+          type="range"
+          aria-label="Chord overlap amount"
+          min={CHIP_PULL_MIN}
+          max={CHIP_PULL_MAX}
+          step={0.01}
+          value={settings.lyricChipPull}
+          onChange={(e) => setLyricChipPull(Number(e.target.value))}
+        />
+        <small className="chip-pull-hint">How far the chord chips tuck down onto the lyrics. More negative = tighter overlap (chips sit under the letters).</small>
+      </div>}
       <label>
         <span>Show fingerings for</span>
         <select

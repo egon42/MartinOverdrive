@@ -71,7 +71,15 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .settings-surface h3{margin:0 0 12px;font-size:1.05rem;font-weight:800}
 .settings-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:640px}.settings-fields label{display:flex;flex-direction:column;gap:7px}.settings-fields label>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}.settings-fields select{width:100%}
 @media(max-width:760px){.settings-fields{grid-template-columns:1fr}}
-.settings-colors-disclosure{margin:14px 0;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper)}
+/* Chord-overlap slider + live sample (above-mode Lyrics). Spans both columns. */
+.chip-pull-field{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
+.chip-pull-head{display:flex;justify-content:space-between;align-items:baseline}
+.chip-pull-head>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
+.chip-pull-val{font-variant-numeric:tabular-nums;font-weight:800;font-size:.82rem;color:var(--acid)}
+.chip-pull-example{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px 14px 12px;overflow:hidden;font-size:17px;line-height:1.75}
+.chip-pull-example .sheet-line--above{margin:0}
+.chip-pull-field input[type=range]{width:100%;accent-color:var(--acid)}
+.chip-pull-hint{color:var(--muted);font-size:.72rem;line-height:1.35}
 .settings-colors-disclosure>summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .settings-colors-disclosure>summary::-webkit-details-marker{display:none}
 .settings-colors-disclosure>summary:after{content:"+";margin-left:auto;color:var(--muted);font-weight:800}
@@ -126,7 +134,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    columns (keeps the 5e94046 lifted-first-letter fix). The lyric is raised above the
    chip (z-index) so the letters read on top of the chip where they overlap — the chip
    sits UNDER the text. Popover stays clickable/on-top via its own z-index:130. */
-.sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:-0.5em}
+.sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:var(--chip-pull,-0.5em)}
 .sheet-above-chord .chord-chip,.sheet-above-chord .chord-chip-wrap{margin:0}
 .sheet-above-lyric{position:relative;z-index:1;line-height:1.1;white-space:pre-wrap}
 /* Chordless lyric lines in above-mode: plain text, no reserved chord slot */
