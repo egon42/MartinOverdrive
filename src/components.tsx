@@ -327,6 +327,13 @@ function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string
         : null)}
     </p>
   }
+  // No chords on this line — skip the empty chord slot and render plain text so
+  // chordless lyric lines don't each eat a wasted ~1.35em row (denser, less scroll).
+  if (parts.every((part) => !part.chord)) {
+    return <p className="sheet-line sheet-line--above-plain">
+      {parts.map((part, i) => <span key={i}>{part.text}</span>)}
+    </p>
+  }
   return <div className="sheet-line sheet-line--above">
     {aboveColumns(parts).map((col, i) => (
       <span className="sheet-above-col" key={i}>
