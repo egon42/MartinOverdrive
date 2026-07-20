@@ -363,6 +363,50 @@
   ],
   "20-when-i-come-around": [
     {
+      "label": "UG key of G (+1 of record, pre-band-practice)",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "G5 D5 Em C5",
+          "shapes": "355--- -577-- -799-- -355--",
+          "hint": "Riff intro: verse power-chord cycle"
+        },
+        {
+          "section": "Verse",
+          "chords": "G5 D5 Em C5",
+          "shapes": "355--- -577-- -799-- -355--"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(Am C5) ×2 (G5 D5 Em C5) ×2",
+          "shapes": "-022-- -355-- 355--- -577-- -799-- -355--",
+          "hint": "Walk the roots up A-B-C (A-str 0-2-3) into each chorus line (passing B5 is in the tab)"
+        },
+        {
+          "section": "Solo",
+          "chords": "G5 D5 Em C5",
+          "shapes": "355--- -577-- -799-- -355--",
+          "hint": "Verse changes under the solo"
+        },
+        {
+          "section": "Outro",
+          "chords": "Em C5 G5 D5",
+          "shapes": "-799-- -355-- 355--- -577--",
+          "hint": "Rotated cycle: 3rd pass runs long; cold ending"
+        }
+      ],
+      "form": [
+        "Intro ×3",
+        "Verse ×8",
+        "Chorus",
+        "Verse ×8",
+        "Chorus",
+        "Solo ×2",
+        "Chorus",
+        "Outro ×3"
+      ]
+    },
+    {
       "label": "Jul 15 pass (pre-research)",
       "sections": [
         {
@@ -1076,6 +1120,39 @@
         "Chorus",
         "Bridge",
         "Outro"
+      ]
+    }
+  ],
+  "03-a-little-less-conversation": [
+    {
+      "label": "UG chart key (A/D, pre-band-practice)",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "A D"
+        },
+        {
+          "section": "Verse",
+          "chords": "A D"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(A C) (A D G) (A E A D) (A D)"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(A) ×3 C D E"
+        }
+      ],
+      "form": [
+        "Intro ×3",
+        "Verse ×4",
+        "Chorus",
+        "Verse ×4",
+        "Chorus",
+        "Bridge",
+        "Verse ×2",
+        "Chorus"
       ]
     }
   ]

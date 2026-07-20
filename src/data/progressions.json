@@ -99,19 +99,19 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "A D"
+        "chords": "E A"
       },
       {
         "section": "Verse",
-        "chords": "A D"
+        "chords": "E A"
       },
       {
         "section": "Chorus",
-        "chords": "(A C) (A D G) (A E A D) (A D)"
+        "chords": "(E G) (E A D) (E B E A) (E A)"
       },
       {
         "section": "Bridge",
-        "chords": "(A) ×3 C D E"
+        "chords": "(E) ×3 G A B"
       }
     ],
     "form": [
@@ -794,31 +794,31 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "G5 D5 Em C5",
-        "shapes": "355--- -577-- -799-- -355--",
+        "chords": "F#5 C#5 D#m B5",
+        "shapes": "244--- -466-- -688-- -244--",
         "hint": "Riff intro: verse power-chord cycle"
       },
       {
         "section": "Verse",
-        "chords": "G5 D5 Em C5",
-        "shapes": "355--- -577-- -799-- -355--"
+        "chords": "F#5 C#5 D#m B5",
+        "shapes": "244--- -466-- -688-- -244--"
       },
       {
         "section": "Chorus",
-        "chords": "(Am C5) ×2 (G5 D5 Em C5) ×2",
-        "shapes": "-022-- -355-- 355--- -577-- -799-- -355--",
-        "hint": "Walk the roots up A-B-C (A-str 0-2-3) into each chorus line (passing B5 is in the tab)"
+        "chords": "(G#m B5) ×2 (F#5 C#5 D#m B5) ×2",
+        "shapes": "466--- -244-- 244--- -466-- -688-- -244--",
+        "hint": "Walk the roots up G#-A#-B (E-str 4, then A-str 1-2) into each chorus line (passing A#5 is in the tab)"
       },
       {
         "section": "Solo",
-        "chords": "G5 D5 Em C5",
-        "shapes": "355--- -577-- -799-- -355--",
+        "chords": "F#5 C#5 D#m B5",
+        "shapes": "244--- -466-- -688-- -244--",
         "hint": "Verse changes under the solo"
       },
       {
         "section": "Outro",
-        "chords": "Em C5 G5 D5",
-        "shapes": "-799-- -355-- 355--- -577--",
+        "chords": "D#m B5 F#5 C#5",
+        "shapes": "-688-- -244-- 244--- -466--",
         "hint": "Rotated cycle: 3rd pass runs long; cold ending"
       }
     ],
