@@ -2,7 +2,7 @@ Purple Rain — Prince
 Track: Wendy Melvoin | Rickenbacker 330 | Clean Guitar (Songsterr s14754t3, rev 7649426)
 Tuning (high→low): E B G D A E — 4/4
 Legend: x dead note · (n) tie · <n> harmonic · nb bend · n/ slide · nh hammer/pull · n~ vibrato · . palm mute
-Note: fret numbers are G-shape / capo-relative (open-position voicings reworked from the Songsterr Bb source). Put a capo on fret 3 and it sounds Bb — the record key the band plays (leader's chart is capo 3). Without a capo these frets sound G.
+Note: fret numbers are G-shape / capo-relative (open-position voicings reworked from the Songsterr Bb source). Put a capo on fret 3 and it sounds Bb, the record key the band plays (leader's chart is capo 3). Without a capo these frets sound G.
 
 m1  [Intro] (58 bpm)                                                                      [Verse 1]
 E-|3-----3-3-3-3---|--------3-(3)---3-3---|------------------x---|------3--(3)------3----|3-|
