@@ -76,7 +76,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chip-pull-head{display:flex;justify-content:space-between;align-items:baseline}
 .chip-pull-head>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
 .chip-pull-val{font-variant-numeric:tabular-nums;font-weight:800;font-size:.82rem;color:var(--acid)}
-.chip-pull-example{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px 14px 12px;overflow:hidden;font-size:17px;line-height:1.75}
+.chip-pull-example{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px 14px 12px;overflow:hidden;font-size:1rem}
 .chip-pull-example .sheet-line--above{margin:0}
 .chip-pull-field input[type=range]{width:100%;accent-color:var(--acid)}
 .chip-pull-hint{color:var(--muted);font-size:.72rem;line-height:1.35}
@@ -139,7 +139,10 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-above-lyric{position:relative;z-index:1;line-height:1.1;white-space:pre-wrap}
 /* Chordless lyric lines in above-mode: plain text, no reserved chord slot */
 .sheet-line--above-plain{line-height:1.3;margin:0 0 5px}
-.sheet-line--above .chord-chip,.sheet-line--above-chords .chord-chip{font-size:.7em;padding:1px 6px;line-height:1.2}
+/* em padding/radius so the chip scales with font-size — a fixed-px chip looks chunkier
+   (more overlap) at small sizes and slimmer when zoomed, making the Settings preview and
+   the live sheet disagree. em keeps them identical at any size. */
+.sheet-line--above .chord-chip,.sheet-line--above-chords .chord-chip{font-size:.7em;padding:.09em .5em;line-height:1.2;border-radius:.45em}
 .sheet-line--above-chords{margin:0 0 5px}
 /* Zebra tint on Lyrics-sheet lines, honoring the "Alternate section tone" toggle
    (same var(--ink) 5.5% wash as the cheat-card rows). Text is inset with padding and

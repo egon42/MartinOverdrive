@@ -265,16 +265,19 @@ export function shapesTabClass(active: boolean, shapesOn: boolean, canToggle: bo
 /** Live sample of the above-mode chip overlap — uses the real sheet classes so it
  *  tracks the --chip-pull var as the slider moves, right here in Settings. */
 function ChipPullExample() {
+  // Same wrapper/classes/size as the real Lyrics sheet so the overlap matches it exactly.
   return <div className="chip-pull-example" aria-hidden="true">
-    <div className="sheet-line--above">
-      {[['Em', 'Midnight '], ['C', 'train '], ['G', 'going ']].map(([chord, word], i) => (
-        <span className="sheet-above-word" key={i}>
-          <span className="sheet-above-col">
-            <span className="sheet-above-chord"><b className="chord-chip">{chord}</b></span>
-            <span className="sheet-above-lyric">{word}</span>
+    <div className="sheet-full">
+      <div className="sheet-line sheet-line--above">
+        {[['Em', 'Midnight '], ['C', 'train '], ['G', 'going ']].map(([chord, word], i) => (
+          <span className="sheet-above-word" key={i}>
+            <span className="sheet-above-col">
+              <span className="sheet-above-chord"><b className="chord-chip">{chord}</b></span>
+              <span className="sheet-above-lyric">{word}</span>
+            </span>
           </span>
-        </span>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
 }
