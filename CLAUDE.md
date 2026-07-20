@@ -65,6 +65,8 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
   runtime; **Songsterr links default to the rhythm-guitar track** when one exists.
 - The XLSX importer preserves every original column under each song's `source` object;
   practice state is separate and must never be overwritten by an import.
+- **App copy stays plain** — no em-dashes or other AI-tells in cheat-card hints, chord/tab
+  header notes, or UI strings. The copy had a deliberate em-dash purge; keep it that way.
 
 ## amp-presets/ — real-world hardware side-project
 
