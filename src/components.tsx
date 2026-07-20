@@ -293,21 +293,6 @@ function AmpMarkerSection({ tokens }: { tokens: string[] }) {
   return <div className="sheet-section amp-marker">{tokens.map((token, i) => <AmpChip label={token} key={i} />)}</div>
 }
 
-/** Pair each chord with the lyric text that follows it (UG-style columns). */
-function aboveColumns(parts: SheetPart[]): { chord?: string; text: string }[] {
-  const columns: { chord?: string; text: string }[] = []
-  for (const part of parts) {
-    if (part.chord) {
-      columns.push({ chord: part.chord, text: '' })
-      continue
-    }
-    if (part.text == null) continue
-    if (columns.length === 0) columns.push({ text: part.text })
-    else columns[columns.length - 1].text += part.text
-  }
-  return columns
-}
-
 function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
   const chordsOnly = parts.every((part) => part.chord)
   return <p className={chordsOnly ? 'sheet-line sheet-line--chords' : 'sheet-line'}>
@@ -317,19 +302,19 @@ function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: strin
   </p>
 }
 
+/** Chords on their own row, continuous lyric underneath — sing-along readable. */
 function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
   if (parts.every((part) => part.chord)) {
     return <LyricLineInline parts={parts} songId={songId} />
   }
+  const chords = parts.flatMap((part) => (part.chord ? [part.chord] : []))
+  // Join text fragments so mid-word chord splits ("aggravat"+"ion") read as real words.
+  const lyric = parts.map((part) => part.text ?? '').join('').replace(/\s+$/, '')
   return <div className="sheet-line sheet-line--above">
-    {aboveColumns(parts).map((col, i) => (
-      <span className="sheet-above-col" key={i}>
-        <span className="sheet-above-chord">
-          {col.chord ? <ChordChip name={col.chord} songId={songId} /> : null}
-        </span>
-        <span className="sheet-above-lyric">{col.text}</span>
-      </span>
-    ))}
+    {chords.length > 0 && <div className="sheet-above-chords" aria-label="Chords">
+      {chords.map((chord, i) => <ChordChip name={chord} songId={songId} key={i} />)}
+    </div>}
+    {lyric.length > 0 && <p className="sheet-above-lyrics">{lyric}</p>}
   </div>
 }
 
