@@ -136,8 +136,8 @@ D
 st for today
 
  
-Em
- Maybe tomorrow the   
+Em/C#
+ Maybe tomorrow the
 Cmaj7
 good Lord will take you away
 
@@ -155,7 +155,7 @@ C
 ream on
 
 Dream y
-E
+D
 ourself a dream come t
 Em
 rue
@@ -168,7 +168,7 @@ C
 eam on
 
 Dream un
-E
+D
 til your dream comes tr
 Em
 ue
@@ -181,6 +181,19 @@ C
 eam on, Dr
 D
 eam on
+
+Em
+Dream on, dr
+F#5
+eam on, Dr
+G
+eam on,
+A
+Ah
+
+B7b9
+B
+Ah------
 
 Repeat Pre-Chorus
 

@@ -1,397 +1,261 @@
 Standard (EADGBE)
 
-"The Pretender"  -  Foo Fighters (*
+[Intro]
+
 Am
- — Bass: 
-A
- – 
-B
- – 
-C
- – 
-A
-          **
+Keep you in the dark
+
+You know they 
+F#m7b5
+all pret
+Fmaj7
+end
+
 Am
- — Bass: 
-F#
- – 
+Keep you in the dark
+
+And so it 
+F#m7b5
+all beg
+Fmaj7
+an
+
+[Verse 1]
+
+Am
+  Send in your skeletons
+
+Sing as their bones go marching i
+D/F#
+n... aga
+F
+in
+
+Am
+  The need you buried deep
+
+The secrets that you keep are 
+D/F#
+at the ready
+
+F
+Are you ready?
 G
- – 
-F#
-)
 
-<intro.>
-
- 
 Am
- –
+  I'm finished making sense
 
- 
-Amadd9
- – *
+Done pleading ignorance
 
- 
-Am
- – **
-
- 
-Am
-
- 
+That o
 D/F#
- –
-
+ld, def
+F
+ense
+G
 
 Am
+  Spinning infinity, but
 
- <verse 1="">
+The wheel is spinning me
 
-  
-Am
-
-  
-Amadd9
-
-  
-Am
-
-  
-Am
-
-Ke
+It's 
 D/F#
-ep   you  
+neverending, 
+F
+neverending
+G
+
+D
+Same old story
+
+[Chorus]
+
 Am
- in      the   dark,   you know they all,        pretend.
-
-  
-Am
-
-  
-Amadd9
- – *
-
-  
-Am
-
-  
-Am
-
-Ke
-D/F#
-ep   you   in        t
-Am
-he dark,   and so it all,                   began...
-
-  <verse 2="">
-
-Sen
-A5
-d in your skeletons...Sing as their bones go marchin' in... a-gain.                 
-F#5
-                           
-F5
-
-   
-A5
- The need you buried deep...the secrets that you keep are at the rea-dy...               
-F#5
-
-Are
-A5
- you ready?
-
-   
-A5
-  I'm finished makin' sense...Done ple
-F#5
-ading ig-nor-ance.  That w
-F5
-hole............defense.
-
-   <pre-chorus>
-
-    
-A5
- Spinning infinity, boy.
-
-The 
-F#5
-wheel is spinnin'
-F5
- me...It
-D5
-'s never-endin
-E5
-g, never-
-F#5
-endin'...   S
-G5
-ame  old  story.
-
-    
-
-      x2
-
-What 
-A5
-if I say I'm not like the others?
-
-What 
-F#5
-if I say I'm not just another,  one of your plays?  You're the pretender...
-
-What 
-F5
-if I say I will never surrender?
-
-     
-
-      
-Am
-         
-Am6
-         
-Am7
-
-      
-Am6
-
-      
-Am
-
-      <pre-chorus>
-
-    In 
-A5
-time or so I'm told...   I'm just another soul for sale... oh, well                
-F#5
-                                        
-F5
-
-    The
-A5
- page is out of print..   We are not permanent... We're temporary, temporary    
-F#5
-                            
-F5
-
-Same  o
-D5
-ld  story.       
-E5
-                   
-F#5
-                                   
-G5
-
-Ooooohh
-D5
-hhh         
-E5
-                      
-F#5
-                                   
-G5
-
-       
-
-        
-Am
-
-        
-Am6
-
-        
-Am7
-
-        
-Am6
-
-        
-Am
-
-        
-Am6
-
-        
-Am7
-
-        
-Am
-
-        
-
-         
-Am
-           
-Am6
-            
-Am7
-           
-Am6
-              
-Am
-              
-Am
-           
-Am6
-            
-Am7
-           
-Am6
-
-         
-Am
-…
-
-I'm the voice inside your head...  You refuse to hear.
-
-I'm the f
-Am
-ace that you 
-Am6
-have to face,  
-Am7
-Mirrored in yo
-Am6
-ur stare.        
-Am
-                             
-Am
-                                          
-Am6
-                                                        
-Am7
-                                                                      
-Am6
-                                                                                    
-Am
-
-         
-Am
-           
-Am6
-           
-Am7
-           
-Am6
-           
-Am
-                      
-Am
-
-         
-Am
-
-         
-Aadd9
-
-I'm what'
-A5
-s left, I'm what's right,  I'm the enemy.
-
-I'm the h
-Asus4
-and that will take
-Am
- you down... Br
-Aadd9
-ing you to your knees                   
-Asus4
-                                     
-Am
-                                                    
-Aadd9
-
-So who...
-A5
-               are yo
-Am7
-u?           
-A5
-                                         
-Am7
-
-Yeah who.
-A5
-..           are you?
-Am7
-             
-A5
-                                           
-Am7
-
-Yeah who.
-A5
-..           are you? 
-Am7
-              
-A5
-                                            
-Am7
-
-Yeah who.
-A5
-..           are you? 
-Am7
-              
-A5
-                                            
-Am7
-
-         
-Am
-
-         
-Amadd9
-
-         
-Am
-
-         
-Am
-
-Keep  you
-D/F#
-  in             the 
-Am
- dark,  you know they all...        pretend.
-
-[x2]
-
 What if I say I'm not like the others?
 
-(Keep     you     in       the           dark)
-
-What if I say I'm not just another one of your plays?
-
-(You        know    they   all...      pretend)
+What if I say I'm not just another 
+D/F#
+one of your plays?
 
 You're the pretender
 
-What if I say I will never surrender?
+F
+What if I say that I'll never surrender?
 
+Am
+What if I say I'm not like the others?
+
+What if I say I'm not just another 
+D/F#
+one of your plays?
+
+You're the pretender
+
+F
+What if I say that I'll never surrender?
+
+[Verse 2]
+
+Am
+  In time or so I'm told
+
+I'm just another soul for s
+D/F#
+ale... oh, we
+F
+ll
+G
+
+Am
+  The page is out of print
+
+We are not permanent
+
+We're 
+D/F#
+temporary, 
+F
+temporary
+G
+
+D
+Same old story
+
+[Chorus]
+
+Am
+What if I say I'm not like the others?
+
+What if I say I'm not just another 
+D/F#
+one of your plays?
+
+You're the pretender
+
+F
+What if I say that I'll never surrender?
+
+Am
+What if I say I'm not like the others?
+
+What if I say I'm not just another 
+D/F#
+one of your plays?
+
+You're the pretender
+
+F
+What if I say that I'll never surrender?
+D
+
+[Bridge]
+
+A5
+I'm the voice inside your head
+
+A5
+You refuse to hear
+
+A5
+I'm the face that you have to face
+
+A5
+Mirrored in your stare
+
+A5
+I'm what's left, I'm what's right
+
+A5
+I'm the enemy
+
+A5
+I'm the hand that will take you down
+
+A5
+Bring you to your knees
+
+A5
 So who are you?
 
+A5
 Yeah, who are you?
 
+A5
 Yeah, who are you?
 
-        
+A5
+Yeah, who are you?
 
-       
+[Interlude]
 
-      </pre-chorus>
+Am
+Keep you in the dark
 
-     
+You know they 
+F#m7b5
+all pret
+Fmaj7
+end
 
-    
+[Chorus]
 
-   </pre-chorus>
+Am
+What if I say I'm not like the others?
 
-  
+What if I say I'm not just another 
+D/F#
+one of your plays?
 
- 
+You're the pretender
 
-</intro.>
+F
+What if I say that I'll never surrender?
+
+Am
+What if I say I'm not like the others?
+
+What if I say I'm not just another 
+D/F#
+one of your plays?
+
+You're the pretender
+
+F
+What if I say that I'll never surrender?
+
+Am
+What if I say I'm not like the others?
+
+What if I say I'm not just another 
+D/F#
+one of your plays?
+
+You're the pretender
+
+F
+What if I say that I'll never surrender?
+
+Am
+What if I say I'm not like the others?
+
+What if I say I'm not just another 
+D/F#
+one of your plays?
+
+You're the pretender
+
+F
+What if I say that I'll never surrender?
+D
+
+[Outro]
+
+A5
+So who are you?
+
+A5
+Yeah, who are you?
+
+A5
+Yeah, who are you?

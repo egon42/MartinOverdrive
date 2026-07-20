@@ -943,6 +943,57 @@
   ],
   "17-the-pretender": [
     {
+      "label": "Heavy power-chord arrangement (pre leader-chart)",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am D/F#",
+          "hint": "Quiet: picked Am arpeggio, bass walking A-B-C-A then F#-G-F# underneath"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am D/F#"
+        },
+        {
+          "section": "Heavy",
+          "chords": "A5 F#5 F5",
+          "shapes": "577--- 244--- 133---"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "A5 F#5 F5 D5 E5 F#5 G5"
+        },
+        {
+          "section": "Chorus",
+          "chords": "A5 F#5 F5",
+          "shapes": "577--- 244--- 133---"
+        },
+        {
+          "section": "Bridge",
+          "chords": "Am Am6 Am7 Am6",
+          "hint": "One long quiet build: tease, hush, then the last chorus wave"
+        },
+        {
+          "section": "Outro (who are you?)",
+          "chords": "A5 Am7",
+          "hint": "Cold ending"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×2",
+        "Heavy",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Verse ×2",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Bridge ×4",
+        "Chorus ×6",
+        "Outro (who are you?) ×4"
+      ]
+    },
+    {
       "label": "Jul 15 hand pass",
       "sections": [
         {

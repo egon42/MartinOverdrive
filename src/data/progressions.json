@@ -650,50 +650,43 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "Am D/F#",
-        "hint": "Quiet: picked Am arpeggio, bass walking A-B-C-A then F#-G-F# underneath"
+        "chords": "Am F#m7b5 Fmaj7",
+        "hint": "Quiet: picked Am arpeggio; F#m7b5->Fmaj7 answer"
       },
       {
         "section": "Verse",
-        "chords": "Am D/F#"
-      },
-      {
-        "section": "Heavy",
-        "chords": "A5 F#5 F5",
-        "shapes": "577--- 244--- 133---"
-      },
-      {
-        "section": "Pre-Chorus",
-        "chords": "A5 F#5 F5 D5 E5 F#5 G5"
+        "chords": "Am D/F# F G D"
       },
       {
         "section": "Chorus",
-        "chords": "A5 F#5 F5",
-        "shapes": "577--- 244--- 133---"
+        "chords": "Am D/F# F",
+        "hint": "\"What if I say\"; last pass tags a D"
       },
       {
         "section": "Bridge",
-        "chords": "Am Am6 Am7 Am6",
-        "hint": "One long quiet build: tease, hush, then the last chorus wave"
+        "chords": "A5",
+        "hint": "Palm-muted A5 drive: \"I'm the voice inside your head\""
       },
       {
-        "section": "Outro (who are you?)",
-        "chords": "A5 Am7",
-        "hint": "Cold ending"
+        "section": "Interlude",
+        "chords": "Am F#m7b5 Fmaj7"
+      },
+      {
+        "section": "Outro",
+        "chords": "A5",
+        "hint": "Cold ending on \"So who are you?\""
       }
     ],
     "form": [
       "Intro ×2",
-      "Verse ×2",
-      "Heavy",
-      "Pre-Chorus ×2",
-      "Chorus ×3",
-      "Verse ×2",
-      "Pre-Chorus ×2",
-      "Chorus ×3",
-      "Bridge ×4",
-      "Chorus ×6",
-      "Outro (who are you?) ×4"
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Bridge",
+      "Interlude",
+      "Chorus",
+      "Outro"
     ]
   },
   "18-here-it-goes-again": {
@@ -866,7 +859,8 @@
       },
       {
         "section": "Chorus",
-        "chords": "Em D C D Em"
+        "chords": "(Em D) (C D) (Em D) (Em/C# Cmaj7)",
+        "hint": "\"Sing with me\"; last line Em/C#->Cmaj7, then B7b9/B tag"
       },
       {
         "section": "Build",
@@ -875,8 +869,8 @@
       },
       {
         "section": "Climax",
-        "chords": "Am B5 C D Em",
-        "hint": "3rd pass varies: D/Dsus4 into the scream"
+        "chords": "(Am B5 C) (D Em) (Am B5 C D) (Em F#5 G A) B7b9",
+        "hint": "3rd pass ascends Em-F#5-G-A into the scream, then B7b9/B tag"
       },
       {
         "section": "Outro",

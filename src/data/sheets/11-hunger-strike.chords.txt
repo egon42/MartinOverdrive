@@ -208,11 +208,11 @@ E5
   Emadd9  x4
 
 G
- 
-Am
- 
-Bm
- 
+
+A7sus4
+
+G/B
+
 Cadd9
  x2
 
