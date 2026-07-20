@@ -112,13 +112,15 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-line--chords{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;line-height:1.4;margin:0 0 6px}
 .sheet-line--chords .chord-chip,.sheet-line--chords .chord-with-fingering{margin:0}
 /* UG-style above-lyrics: name-only chips over each lyric segment; wrap as column units.
-   Fingerings stay off the sheet here (tap a chip for the diagram) — UG keeps charts dense. */
+   Fingerings stay off the sheet here (tap a chip for the diagram) — UG keeps charts dense.
+   Fixed chord-slot height keeps lyric baselines aligned across columns (a shorter empty
+   slot used to lift the first letter of the next word into the neighboring chip). */
 .sheet-line--above{display:flex;flex-wrap:wrap;align-items:flex-start;max-width:100%;margin:0 0 8px;row-gap:6px;column-gap:0}
 .sheet-above-col{display:inline-flex;flex-direction:column;align-items:flex-start;max-width:100%}
-.sheet-above-chord{display:flex;align-items:flex-end;min-height:1.25em;margin-bottom:1px}
+.sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:2px}
 .sheet-above-chord .chord-chip,.sheet-above-chord .chord-chip-wrap{margin:0}
 .sheet-above-lyric{line-height:1.4;white-space:pre-wrap}
-.sheet-line--above .chord-chip,.sheet-line--above-chords .chord-chip{font-size:.7em;padding:1px 6px}
+.sheet-line--above .chord-chip,.sheet-line--above-chords .chord-chip{font-size:.7em;padding:1px 6px;line-height:1.2}
 .sheet-line--above-chords{margin:0 0 8px}
 .sheet-section{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.7rem;color:var(--acid);margin:18px 0 8px}
 .sheet-section.amp-marker{display:inline-flex;align-items:center;gap:6px;text-transform:none;letter-spacing:normal}
