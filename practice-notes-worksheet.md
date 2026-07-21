@@ -211,7 +211,7 @@ Fill this out as you run songs. Leave anything blank you haven't hit yet. When y
 - Tuning: Standard · Role: Groove/chords · Must-know: Stomp/clap pocket and repeated ending
 - Comfort (1–5):4
 - What's solid:
-- What's shaky: Just need to keep practicing the riff
+- What's shaky: Just need to keep practicing the riff (band key **F# / B / C#** — not the old E arrangement)
 - Trouble spots (section / what fails):
 - Amp / tone notes:
 - Open questions:
@@ -281,7 +281,7 @@ Fill this out as you run songs. Leave anything blank you haven't hit yet. When y
 - Tuning: Standard · Role: Specific riff + heavy rhythm · Must-know: Quiet intro → explosive heavy entrance
 - Comfort (1–5): 2
 - What's solid:
-- What's shaky:chords, transitions between sections, amp switches
+- What's shaky: chords (live Am / F#m7b5 / Fmaj7 chart — not the old power wall), transitions between sections, amp switches
 - Trouble spots (section / what fails):
 - Amp / tone notes:
 - Open questions:
@@ -309,16 +309,10 @@ Fill this out as you run songs. Leave anything blank you haven't hit yet. When y
 - Tuning: Standard · Role: Chords + melodic lead · Must-know: Slow emotional bends; less is more
 - Comfort (1–5): 4
 - What's solid:
-- What's shaky: anything besides improv scales
+- What's shaky:
 - Trouble spots (section / what fails):
-- Amp / tone notes:
+- Amp / tone notes: **Capo 3** (G/Em7/D/C shapes → sounds Bb)
 - Open questions:
-
----
-
-
-
-## 20 — When I Come Around (Green Day)
 
 - Tuning: Standard · Role: Power-chord rhythm · Must-know: Lazy-but-steady groove and palm muting
 - Comfort (1–5):4
@@ -351,21 +345,15 @@ Fill this out as you run songs. Leave anything blank you haven't hit yet. When y
 - Tuning: Standard · Role: Chords/arpeggios + melodic fills · Must-know: Clean arpeggio feel and big build
 - Comfort (1–5):4
 - What's solid:
-- What's shaky:everything but improv
+- What's shaky: everything but improv; climax Em–F#5–G–A + B7b9
 - Trouble spots (section / what fails):
-- Amp / tone notes:
+- Amp / tone notes: **Capo 1** (Em shapes → sounds Fm)
 - Open questions:
-
----
-
-
-
-## 23 — Lola Montez (Volbeat)
 
 - Tuning: Standard · Role: Heavy rhythm + hooks · Must-know: Main groove/riff and chorus hook
 - Comfort (1–5):2
 - What's solid:
-- What's shaky:
+- What's shaky: 2nd-chorus **F#m**; bridge **Em** (live card)
 - Trouble spots (section / what fails):
 - Amp / tone notes:
 - Open questions: box 1 on 10th? not 12th?
