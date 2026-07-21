@@ -217,6 +217,9 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
 - Session `{ role, code, at }` persists in `overdrive-live[-dev]` with a 20h expiry so a
   mid-set reload resumes but last week's session doesn't. `live.tsx` mirrors
   `SHOW_INDEX_KEY` from `pages.tsx` (import would be circular) — keep them in sync.
+- **Ryan shares App's live channel** (no `show-dev-` prefix). A Ryan leader's QR/invite
+  deliberately points followers at `/app/` so bandmates stay on production; typing the
+  code on App works the same. `/dev/` stays isolated.
 
 ## Layout notes
 
