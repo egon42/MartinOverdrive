@@ -71,8 +71,12 @@ living just to find emotion
 
 A
 Hiding, somewhere in the 
-E
+B
 night
+E
+B
+E
+A
 
 E
 Working hard to 
@@ -128,8 +132,12 @@ E
 
 A
 Hiding, somewhere in the 
-E
+B
 night
+E
+B
+E
+A
 
 E
 Don't stop bel
@@ -145,6 +153,7 @@ Streetlight
 B
  people     
 G#m
+A
 
 E
 Don't stop bel
@@ -160,6 +169,7 @@ Streetlight
 B
  people     
 G#m
+A
 
 E
 Don't stop bel
@@ -175,5 +185,6 @@ Streetlight
 B
  people     
 G#m
+A
 
                                       -Mike

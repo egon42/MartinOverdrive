@@ -84,6 +84,7 @@ st In Pe
 Dm
 ace,
 
+G
 Simul
 F
 taneou
@@ -92,6 +93,7 @@ s rele
 Dm
 ase,
 
+G
 Calif
 F
 ornia, s
@@ -100,6 +102,7 @@ how your t
 Dm
 eeth,
 
+G
 She's my pri
 F
 estess, I'
@@ -156,6 +159,7 @@ st In Pe
 Dm
 ace,
 
+G
 Simul
 F
 taneou
@@ -164,6 +168,7 @@ s rele
 Dm
 ase,
 
+G
 Calif
 F
 ornia, s
@@ -172,6 +177,7 @@ how your t
 Dm
 eeth,
 
+G
 She's my pri
 F
 estess, I'
@@ -187,20 +193,26 @@ Bm
 Who knew the har
 G
 dest s
+D
+ide
 F#
-ide of you?
+ of you?
 
 Bm
 Who knew the har
 G
 dest t
+D
+ime
 F#
-ime to prove?
+ to prove?
 
 Bm
 Too true to s
 G
-ay good
+ay
+D
+good
 F#
 bye to you
 
@@ -252,6 +264,7 @@ st In Pe
 Dm
 ace,
 
+G
 Simul
 F
 taneou
@@ -260,6 +273,7 @@ s rele
 Dm
 ase,
 
+G
 Calif
 F
 ornia, s
@@ -268,6 +282,7 @@ how your t
 Dm
 eeth,
 
+G
 She's my pri
 F
 estess, I'
@@ -287,6 +302,7 @@ st In Pe
 Dm
 ace,
 
+G
 Simul
 F
 taneou
@@ -295,6 +311,7 @@ s rele
 Dm
 ase,
 
+G
 Calif
 F
 ornia, s
@@ -303,6 +320,7 @@ how your t
 Dm
 eeth,
 
+G
 She's my pri
 F
 estess, I'

@@ -1,7 +1,7 @@
 Standard (EADGBE)
 
 [Intro]
-Am   Am/G   D/F#   Fmaj7
+Am   Am/G   F#m7b5   Fmaj7
 
 Am   G   D   E
 
@@ -11,7 +11,7 @@ Am
 look at you 
 Am/G
 all see the 
-D/F#
+F#m7b5
 love there that's 
 Fmaj7
 sleeping
@@ -29,7 +29,7 @@ Am
 look at the 
 Am/G
 floor and I 
-D/F#
+F#m7b5
 see it needs 
 Fmaj7
 sweeping
@@ -53,10 +53,12 @@ C#m
 told you
 
 Bm
-how to unfold your 
-E7sus4
+how to 
+E
+unfold your 
+Esus4
 love 
-E7
+E
 
 A
 I don't know 
@@ -68,10 +70,12 @@ C#m
 olled you
 
 Bm
-They bought and sold 
-E7sus4
+They 
+E
+bought and sold 
+Esus4
 you 
-E7
+E
 
 [Verse 2]
 I 
@@ -79,7 +83,7 @@ Am
 look at the world 
 Am/G
 and I notice 
-D/F#
+F#m7b5
 it's 
 Fmaj7
 turning
@@ -97,7 +101,7 @@ Am
 every mistake 
 Am/G
 we must surely 
-D/F#
+F#m7b5
 be 
 Fmaj7
 learning
@@ -121,10 +125,12 @@ C#m
 verted
 
 Bm
-You were perverted 
-E7sus4
+You were 
+E
+perverted 
+Esus4
 too 
-E7
+E
 
 A
 I don't know how 
@@ -136,10 +142,12 @@ C#m
 verted
 
 Bm
-No one alerted 
-E7sus4
+No one 
+E
+alerted 
+Esus4
 you 
-E7
+E
 
 [Verse 3]
 I 
@@ -147,7 +155,7 @@ Am
 look at you 
 Am/G
 all see the 
-D/F#
+F#m7b5
 love there that's 
 Fmaj7
 sleeping
@@ -164,7 +172,7 @@ Am
 Look at 
 Am/G
 you 
-D/F#
+F#m7b5
 all
 Fmaj7
 ...

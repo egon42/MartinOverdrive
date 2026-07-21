@@ -99,19 +99,19 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "E A"
+        "chords": "E7 A7"
       },
       {
         "section": "Verse",
-        "chords": "E A"
+        "chords": "E7 A7"
       },
       {
         "section": "Chorus",
-        "chords": "(E G) (E A D) (E B E A) (E A)"
+        "chords": "(E G) (A D) (E B7 E7 A7) (E7 A7)"
       },
       {
         "section": "Bridge",
-        "chords": "(E) ×3 G A B"
+        "chords": "(E) ×3 G A B7"
       }
     ],
     "form": [
@@ -271,19 +271,19 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "A E",
-        "shapes": "-022-- 022---"
+        "chords": "(A E) ×3 (A B E B E A)",
+        "shapes": "-022-- 022--- -022-- -244-- 022--- -244-- 022--- -022--"
       },
       {
         "section": "Solo",
-        "chords": "(E B C#m A) (E B G#m)",
-        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466---",
+        "chords": "(E B C#m A) (E B G#m A)",
+        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
         "hint": "Chorus changes under the solo"
       },
       {
         "section": "Chorus",
-        "chords": "(E B C#m A) (E B G#m)",
-        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466---",
+        "chords": "(E B C#m A) (E B G#m A)",
+        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
         "hint": "Only at the very end, rides to fade"
       }
     ],
@@ -292,10 +292,10 @@
       "Verse ×2",
       "Interlude ×2",
       "Verse",
-      "Pre-Chorus ×4",
+      "Pre-Chorus",
       "Interlude",
       "Verse ×2",
-      "Pre-Chorus ×4",
+      "Pre-Chorus",
       "Solo",
       "Chorus ×3"
     ]
@@ -374,28 +374,28 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "(Am Am/G D/F# Fmaj7) (Am G D E)"
+        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E)"
       },
       {
         "section": "Verse",
-        "chords": "(Am Am/G D/F# Fmaj7) (Am G D E)"
+        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E)"
       },
       {
         "section": "Verse (2nd ending)",
-        "chords": "(Am Am/G D/F# Fmaj7) (Am G C E)"
+        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G C E)"
       },
       {
         "section": "Bridge",
-        "chords": "A C#m F#m C#m Bm E7sus4 E7"
+        "chords": "A C#m F#m C#m Bm E Esus4 E"
       },
       {
         "section": "Solo",
-        "chords": "(Am Am/G D/F# Fmaj7) (Am G D E) | (Am Am/G D/F# Fmaj7) (Am G C E)",
+        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E) | (Am Am/G F#m7b5 Fmaj7) (Am G C E)",
         "hint": "Clapton: one full verse pair under the lead"
       },
       {
         "section": "Outro",
-        "chords": "(Am Am/G D/F# Fmaj7) (Am G D E)",
+        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E)",
         "hint": "Lead + ad-lib vocal over verse changes, fade"
       }
     ],
@@ -417,8 +417,8 @@
     "sections": [
       {
         "section": "12-bar shuffle in E",
-        "chords": "E7 A7 B7",
-        "hint": "Swung open-position boogie: alternate 5th/6th (E: A-str 2-4, A: D-str 2-4, B7 barre); b3-to-3 hammer turnaround"
+        "chords": "E A7 B7",
+        "hint": "Swung open-position boogie: alternate 5th/6th (E: A-str 2-4, A: D-str 2-4, B7 barre); b3-to-3 hammer turnaround; quick E7 tags at line ends"
       }
     ]
   },
@@ -435,12 +435,17 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "G A7sus4 G Cadd9"
+        "chords": "G A7sus4 G"
       },
       {
-        "section": "Verse / Chorus",
-        "chords": "G A7sus4 G Cadd9",
-        "hint": "3 blocks up top: solo verse → duet → refrain (same cycle)"
+        "section": "Verse 1",
+        "chords": "G A7sus4",
+        "hint": "Solo-verse blocks up top: no Cadd9 yet"
+      },
+      {
+        "section": "Verse 2 / Chorus",
+        "chords": "G Cadd9",
+        "hint": "Duet and refrain; turnaround runs G Cadd9 G/B Cadd9"
       },
       {
         "section": "Interlude",
@@ -454,14 +459,14 @@
     ],
     "form": [
       "Intro ×2",
-      "Verse / Chorus ×8",
-      "Verse / Chorus ×6",
-      "Verse / Chorus ×4",
+      "Verse 1 ×8",
+      "Verse 2 / Chorus ×6",
+      "Verse 2 / Chorus ×4",
       "Bridge ×4",
       "Interlude ×2",
-      "Verse / Chorus ×2",
+      "Verse 2 / Chorus ×2",
       "Bridge ×4",
-      "Verse / Chorus ×4",
+      "Verse 2 / Chorus ×4",
       "Bridge"
     ]
   },
@@ -475,15 +480,15 @@
       {
         "section": "Verse",
         "chords": "F#",
-        "hint": "Stay on F#; don't walk B/C# until the chorus"
+        "hint": "Mostly F#; short B walks on the punch words, C# waits for the chorus"
       },
       {
         "section": "Chorus",
-        "chords": "(F# B C# B C#) (F# B C# B F#)"
+        "chords": "(F# B F# C#) (F# B C# B F#)"
       },
       {
         "section": "Outro",
-        "chords": "(F# B C# B C#) (F# B C# B F#)"
+        "chords": "(F# B F# C#) (F# B C# B F#)"
       }
     ],
     "form": [
@@ -543,7 +548,7 @@
       {
         "section": "Whole song",
         "chords": "D C G",
-        "hint": "Picked D–C–G groove; keep the top strings ringing"
+        "hint": "Picked D–C–G groove; keep the top strings ringing; chorus tags F C into the next verse"
       },
       {
         "section": "Fills",
@@ -574,7 +579,7 @@
       },
       {
         "section": "Bridge",
-        "chords": "Bm G F#"
+        "chords": "Bm G D F#"
       },
       {
         "section": "Solo / Outro",
@@ -704,7 +709,7 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "(E Am) ×2 G",
+        "chords": "(Em Am) ×2 G",
         "shapes": "022--- -022-- 355---"
       },
       {
@@ -715,15 +720,14 @@
       },
       {
         "section": "Bridge",
-        "chords": "Eb Bb C G Ab",
-        "shapes": "-688-- 688--- -355-- 355--- 466---",
+        "chords": "Eb Bb G7/B Cm Eb/G Ab",
         "hint": "Then one instrumental verse cycle into V3"
       },
       {
         "section": "Outro",
         "chords": "C G Bb F Am G",
         "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
-        "hint": "Ab → C to close"
+        "hint": "Last pass tags Ab Bb Eb to close"
       }
     ],
     "form": [
@@ -788,30 +792,30 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "F#5 C#5 D#m B5",
+        "chords": "F#5 C#5 D#m B",
         "shapes": "244--- -466-- -688-- -244--",
         "hint": "Riff intro: verse power-chord cycle"
       },
       {
         "section": "Verse",
-        "chords": "F#5 C#5 D#m B5",
+        "chords": "F#5 C#5 D#m B",
         "shapes": "244--- -466-- -688-- -244--"
       },
       {
         "section": "Chorus",
-        "chords": "(G#m B5) ×2 (F#5 C#5 D#m B5) ×2",
+        "chords": "(G#m B) ×2 (F#5 C#5 D#m B) ×2",
         "shapes": "466--- -244-- 244--- -466-- -688-- -244--",
         "hint": "Walk the roots up G#-A#-B (E-str 4, then A-str 1-2) into each chorus line (passing A#5 is in the tab)"
       },
       {
         "section": "Solo",
-        "chords": "F#5 C#5 D#m B5",
+        "chords": "F#5 C#5 D#m B",
         "shapes": "244--- -466-- -688-- -244--",
         "hint": "Verse changes under the solo"
       },
       {
         "section": "Outro",
-        "chords": "D#m B5 F#5 C#5",
+        "chords": "D#m B F#5 C#5",
         "shapes": "-688-- -244-- 244--- -466--",
         "hint": "Rotated cycle: 3rd pass runs long; cold ending"
       }
@@ -948,12 +952,12 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "Am G D Am",
+        "chords": "Am G Dsus2 Am",
         "hint": "Am hammer riff"
       },
       {
         "section": "Verse",
-        "chords": "Am G D Am",
+        "chords": "Am G Dsus2 Am",
         "hint": "Keep it sparse: the Am hammer riff is the song"
       },
       {
@@ -962,17 +966,17 @@
       },
       {
         "section": "Interlude",
-        "chords": "Am G D Am",
+        "chords": "Am G Dsus2 Am",
         "hint": "Harmonica over the intro riff"
       },
       {
         "section": "Solo",
-        "chords": "Am G D Am",
+        "chords": "Am G Dsus2 Am",
         "hint": "Same cycle: double-stop lead"
       },
       {
         "section": "Outro",
-        "chords": "Am G D Am",
+        "chords": "Am G Dsus2 Am",
         "hint": "Intro riff: solo out, fade"
       },
       {
@@ -1095,15 +1099,15 @@
       },
       {
         "section": "Chorus",
-        "chords": "(D C G D C A D) (G D A D)",
+        "chords": "(D C G/B D C A D) (G D A D)",
         "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---",
         "hint": "1st one opens sparse; band crashes in after"
       },
       {
         "section": "Interlude",
-        "chords": "(D A D) G (D A D)",
-        "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---",
-        "hint": "Guitar fill between verses (cut from the single)"
+        "chords": "G G D D A A G",
+        "shapes": "555--- 555--- 000--- 000--- -022-- -022-- 555---",
+        "hint": "Hey-listen-here lead-in between verses (cut from the single)"
       },
       {
         "section": "Solo",
@@ -1113,7 +1117,7 @@
       },
       {
         "section": "Outro",
-        "chords": "(D C G D C A D) (G D A D)",
+        "chords": "(D C G/B D C A D) (G D A D)",
         "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---",
         "hint": "Double hook, bikes tag; cold ending"
       },
@@ -1160,13 +1164,13 @@
       },
       {
         "section": "Solo",
-        "chords": "E A E",
-        "hint": "Verse changes under the solo"
+        "chords": "A B",
+        "hint": "Sits on A, walks up to B at the end"
       },
       {
         "section": "Outro",
-        "chords": "A E",
-        "hint": "Record ends on a descending run, fade"
+        "chords": "Asus2 Bsus4 C D E",
+        "hint": "Closing run after the last chorus; C D E three times to end"
       }
     ],
     "form": [
