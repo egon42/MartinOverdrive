@@ -1,10 +1,7 @@
 Standard (EADGBE)
 
 [Intro / Verse — A string, palm mute]
-A|-9-9-5-5-5-5-5-5-|-5-5-5-9-9-9-9-9-|
-A|-7-7-4-4-4-4-4-4-|-4-4-4-4-4-4-4-4-|
-A|-5-5-5-5-5-5-5-4-|-4-4-4-4-4-4-4-4-|
-A|-5-5-5-5-5-5-5-5-|-5-5-5-5-5-5-5-5-|
+(chips = fret on the A string)
 
 [Chorus]
 It just t
@@ -20,18 +17,30 @@ D
 be all right (all right)
 
 [Verse]
-A|-9-9-5-5-5-5-5-5-|-5-5-5-9-9-9-9-9-|
-A|-7-7-4-4-4-4-4-4-|-4-4-4-4-4-4-4-4-|
-A|-5-5-5-5-5-5-5-4-|-4-4-4-4-4-4-4-4-|
-A|-5-5-5-5-5-5-5-5-|-5-5-5-5-5-5-5-5-|
+5
+Hey, you know they're all the 
+0
+same.
 
-Hey, you know they're all the same.
+You know you're doing better 
+10
+on your own,
+ so don't buy i
+5
+n.
 
-You know you're doing better on your own, so don't buy in.
+Live right n
+5
+ow.       Yeah, just be yours
+0
+elf.
 
-Live right now. Yeah, just be yourself.
-
-It doesn't matter if it's good enough for someone else.
+It doesn't matter if it's go
+10
+od enough     
+  for someone 
+5
+else.
 
 [Chorus]
 It just t
@@ -47,18 +56,30 @@ D
 be all right (all right)
 
 [Verse]
-A|-9-9-5-5-5-5-5-5-|-5-5-5-9-9-9-9-9-|
-A|-7-7-4-4-4-4-4-4-|-4-4-4-4-4-4-4-4-|
-A|-5-5-5-5-5-5-5-4-|-4-4-4-4-4-4-4-4-|
-A|-5-5-5-5-5-5-5-5-|-5-5-5-5-5-5-5-5-|
+5
+Hey, don't write yourself off y
+0
+et.
 
-Hey, don't write yourself off yet.
+It's only in your head you f
+10
+eel left out   
+   or looked down
+5
+ on.
 
-It's only in your head you feel left out or looked down on.
+Just do your b
+5
+est, do everything you c
+0
+an.
 
-Just do your best, do everything you can.
-
-And don't you worry what the bitter hearts are gonna say.
+And don't you worry what the b
+10
+itter hearts    
+ are gonna 
+5
+say.
 
 [Chorus]
 It just t
@@ -87,4 +108,5 @@ be all right (all right)
 
 END on D
 
-Open chords in Standard: D = xx0232, A = x02220, G = 320003.
+Chorus open chords: D = xx0232, A = x02220, G = 320003.
+Verse frets on A: D→5 · A→0 · G→10.

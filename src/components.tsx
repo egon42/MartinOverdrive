@@ -62,6 +62,11 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 // `surface` picks which Settings prefs apply (Cheat vs Chords are independent).
 // `songId` enables the per-song "Shapes" toggle (fingering-only chips).
 export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghost = false, bare = false }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string; ghost?: boolean; bare?: boolean }) {
+  // Numeric tokens are A-string fret cues (The Middle verse, etc.) — chip shows the fret,
+  // no diagram popover.
+  if (/^(?:[0-9]|1[0-9]|2[0-4])$/.test(name)) {
+    return <b className="chord-chip chord-chip--fret" aria-label={`A string fret ${name}`} title={`A string fret ${name}`}>{name}</b>
+  }
   const { settings, isFingeringOnly } = useSettings()
   const prefs = settings[surface]
   const fingeringOnly = !!songId && isFingeringOnly(songId, surface)

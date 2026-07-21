@@ -18,10 +18,14 @@ const TAB_RE = /\|-{2,}|-{2,}\||^\s*[eEBGDAd]\s*\|/
 const META_RE = /^(?:standard\s*\(|drop\s+[a-g]\b|tuning\s*[:\-]|capo\s*[:\-]?\s*\d|key\s*[:\-]\s*[a-g]\b)/i
 
 export const isChordToken = (token: string) => CHORD_RE.test(token)
+// Bare fret numbers (0–24) for single-string cues in a lyrics sheet — rendered as
+// fret chips, not chord diagrams (see ChordChip).
+const FRET_RE = /^(?:[0-9]|1[0-9]|2[0-4])$/
+export const isFretToken = (token: string) => FRET_RE.test(token)
 
 function isChordLine(trimmed: string) {
   const tokens = trimmed.split(/\s+/)
-  return tokens.length > 0 && tokens.every(isChordToken)
+  return tokens.length > 0 && tokens.every((token) => isChordToken(token) || isFretToken(token))
 }
 
 export function parseChordSheet(text: string): ParsedSheet {
