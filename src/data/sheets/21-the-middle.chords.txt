@@ -1,4 +1,4 @@
-Drop D (DADGBE)
+Standard (EADGBE)
 
 It just t
 D
@@ -68,4 +68,4 @@ say.
 
 END on D
 
-Power chords in Drop D: D5 = 000xxx, A5 = 777xxx, G5 = 555xxx (barre one finger flat across the low three strings).
+Open chords in Standard: D = xx0232, A = x02220, G = 320003.

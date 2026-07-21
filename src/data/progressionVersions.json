@@ -815,6 +815,56 @@
   ],
   "27-fat-bottomed-girls": [
     {
+      "label": "Drop D arrangement (pre standard switch)",
+      "sections": [
+        {
+          "section": "Verse",
+          "chords": "(D A D) G (D A D)",
+          "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---",
+          "hint": "Big open Drop-D chords; leave space for the low-string runs"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(D C G/B D C A D) (G D A D)",
+          "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---",
+          "hint": "1st one opens sparse; band crashes in after"
+        },
+        {
+          "section": "Interlude",
+          "chords": "G G D D A A G",
+          "shapes": "555--- 555--- 000--- 000--- -022-- -022-- 555---",
+          "hint": "Hey-listen-here lead-in between verses (cut from the single)"
+        },
+        {
+          "section": "Solo",
+          "chords": "(D A D) G (D A D)",
+          "shapes": "000--- -022-- 000--- 555--- 000--- -022-- 000---",
+          "hint": "Under the lead: verse-type changes"
+        },
+        {
+          "section": "Outro",
+          "chords": "(D C G/B D C A D) (G D A D)",
+          "shapes": "000--- -355-- 555--- 000--- -355-- -022-- 000--- 555--- 000--- -022-- 000---",
+          "hint": "Double hook, bikes tag; cold ending"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Intro / interlude (Drop D)\ne|----------|\nB|----------|\nG|----------|\nD|----5-3-0-|\nA|----5-3-0-|\nD|----5-3-0-|\n\nVerse pickup + tag\ne|------------------|\nB|2/-3-3-3---3-2/-3-|\nG|1/-2-2-2-2---1/-2-|\nD|0-------0-----0---|\nA|------------------|\nD|(0)---------------|",
+          "tabMore": "Verse end tags\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|-----------3h-0-|\nD|-------------3h-0|\n\nChorus power walk\ne|----------------------|\nB|----------------------|\nG|----------------------|\nD|3-5-5-5-5-5-5-5-3-0-|\nA|3-5-5-5-5-5-5-5-3-0-|\nD|3-5-5-5-5-5-5-5-3-0-|"
+        }
+      ],
+      "form": [
+        "Chorus",
+        "Verse",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Solo",
+        "Outro"
+      ]
+    },
+    {
       "label": "Pre positional-UG-alignment (2026-07-20)",
       "sections": [
         {
@@ -1721,6 +1771,18 @@
           "chords": "",
           "tab": "Turnaround (D–C–G)\ne|------------------------|\nB|----3-3-----3-3----3-3--|\nG|----2-2-----0-0----0-0--|\nD|0-0-0---------0----0-0--|\nA|--------3-3------0h2----|\nE|----------------3-3-----|\n\nChorus stabs\ne|------------------|\nB|------------------|\nG|------------------|\nD|--7-9-7---5-7-5-5-|\nA|5-5-5-5-3-3-3-3-3-|\nE|------------------|",
           "tabMore": "Interlude climb\ne|-------------------------------|\nB|-------------------------------|\nG|--------7-(7)-7---------5-5----|\nD|--------7-(7)-7---------5-5----|\nA|7h-8h-9---------9/-5h-7-----7/-|\nE|-------------------------------|\n\nG pull into next cycle\ne|----------------|\nB|----3-3-----3---|\nG|----0-0-----0---|\nD|----0-0-----0---|\nA|----------------|\nE|3-3-----3-3-----|"
+        }
+      ]
+    }
+  ],
+  "21-the-middle": [
+    {
+      "label": "Drop D power-chord arrangement",
+      "sections": [
+        {
+          "section": "Whole song",
+          "chords": "D A G",
+          "shapes": "000--- 777--- 555---"
         }
       ]
     }
