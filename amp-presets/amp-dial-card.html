@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mustang LED arc — 1–8</title>
+<style>
+  /*
+    Cut-out for the curved amp-type labels beside the Mustang I V2
+    PRESET LEDs. Numbers only (1–8). Print at 100% / Actual size.
+  */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: #cfcfcf;
+    color: #111;
+    padding: 18px;
+  }
+
+  .toolbar {
+    max-width: 28em;
+    margin: 0 auto 16px;
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+  .toolbar button {
+    font: inherit;
+    font-weight: 800;
+    padding: 8px 14px;
+    border: 2px solid #111;
+    background: #111;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0 8px 10px 0;
+  }
+  .toolbar label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    margin-right: 12px;
+  }
+  .toolbar input[type="range"] { width: 120px; }
+  .toolbar p { color: #222; }
+
+  .page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4in;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .card {
+    background: #fff;
+    padding: 0.15in;
+  }
+
+  svg.strip {
+    display: block;
+    /* Physical print size driven by viewBox (inches) */
+    width: 1.35in;
+    height: 2.35in;
+  }
+
+  .num {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-weight: 900;
+    fill: #111;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0.35in; }
+    .toolbar { display: none; }
+    .card { padding: 0.08in; }
+    @page { size: letter; margin: 0.4in; }
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <button type="button" onclick="window.print()">Print</button>
+    <label>Curve tighter
+      <input id="spread" type="range" min="95" max="155" value="125" oninput="redraw()">
+    </label>
+    <label>Radius
+      <input id="radius" type="range" min="55" max="95" value="72" oninput="redraw()">
+    </label>
+    <p>
+      Print at <b>100% / Actual size</b>. Tape over the factory names so each
+      number sits next to its LED. Top = 8, bottom = 1. Use the sliders if the
+      arc doesn’t match your amp, then print.
+    </p>
+  </div>
+
+  <div class="page" id="page"></div>
+
+<script>
+  // Geometry: arc bows like "(" — center of curvature is to the RIGHT of the strip.
+  // viewBox units = inches.
+  const W = 1.35;
+  const H = 2.35;
+  const CX = W - 0.08; // center of curvature, just right of the cut
+  const CY = H / 2;
+
+  function polar(r, deg) {
+    const a = (deg * Math.PI) / 180;
+    return [CX + r * Math.cos(a), CY + r * Math.sin(a)];
+  }
+
+  function oneStrip(spreadDeg, radiusHundredths) {
+    const R = radiusHundredths / 100;
+    const half = spreadDeg / 2;
+    // Left side of circle: top = 180+half, bottom = 180-half
+    const aTop = 180 + half;
+    const aBot = 180 - half;
+
+    const nums = [];
+    for (let i = 0; i < 8; i++) {
+      const t = i / 7;
+      const deg = aTop + t * (aBot - aTop);
+      const [x, y] = polar(R, deg);
+      nums.push(
+        `<text class="num" x="${x.toFixed(3)}" y="${y.toFixed(3)}" font-size="0.26">${8 - i}</text>`
+      );
+    }
+
+    return `<div class="card"><svg class="strip" viewBox="0 0 ${W} ${H}" width="${W}in" height="${H}in">
+      ${nums.join("\n      ")}
+    </svg></div>`;
+  }
+
+  function redraw() {
+    const spread = +document.getElementById("spread").value;
+    const radius = +document.getElementById("radius").value;
+    document.getElementById("page").innerHTML =
+      oneStrip(spread, radius) +
+      oneStrip(spread, radius) +
+      oneStrip(spread, radius);
+  }
+
+  redraw();
+</script>
+</body>
+</html>

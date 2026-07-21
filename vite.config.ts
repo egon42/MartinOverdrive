@@ -24,7 +24,7 @@ function deployIdentity(): Plugin {
         )
         .replace(/<meta name="theme-color" content="[^"]*"\s*\/?>/, `<meta name="theme-color" content="${theme}" />`)
         // BASE_URL is already expanded by the time this runs.
-        .replace(/icon\.png/g, icon)
+        .replace(/icon-v2\.png/g, icon)
     },
     writeBundle(options) {
       const flavor = deployFlavor(base)
@@ -68,7 +68,7 @@ const FLAVORS: Record<Flavor, {
     name: 'Overdrive Setlist Companion',
     short_name: 'Overdrive',
     description: 'Local-first guitar practice and show-night setlist.',
-    icon: 'icon.png',
+    icon: 'icon-v2.png',
     theme: '#64d66f',
   },
   dev: {
@@ -76,7 +76,7 @@ const FLAVORS: Record<Flavor, {
     name: 'Overdrive Dev',
     short_name: 'OD Dev',
     description: 'Development build of the Overdrive setlist companion.',
-    icon: 'icon-dev.png',
+    icon: 'icon-dev-v2.png',
     theme: '#ef4d4d',
   },
   ryan: {
@@ -84,7 +84,7 @@ const FLAVORS: Record<Flavor, {
     name: 'Overdrive Ryan',
     short_name: 'OD Ryan',
     description: 'Personal App offshoot with Ryan-specific sheet tweaks.',
-    icon: 'icon-ryan.png',
+    icon: 'icon-ryan-v2.png',
     theme: '#ff2a6d',
   },
 }
