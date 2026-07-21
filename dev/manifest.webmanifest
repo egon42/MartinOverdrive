@@ -1,0 +1,19 @@
+{
+  "id": "/MartinOverdrive/dev/",
+  "name": "Overdrive Dev",
+  "short_name": "OD Dev",
+  "description": "Development build of the Overdrive setlist companion.",
+  "start_url": "/MartinOverdrive/dev/",
+  "scope": "/MartinOverdrive/dev/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ef4d4d",
+  "icons": [
+    {
+      "src": "icon-dev-v2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

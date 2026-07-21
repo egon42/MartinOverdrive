@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#64d66f" />
+    <meta name="description" content="A local-first guitar setlist and practice companion." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Overdrive" />
+    <link rel="manifest" href="/MartinOverdrive/app/manifest.webmanifest" />
+    <link rel="icon" href="/MartinOverdrive/app/icon-v2.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/MartinOverdrive/app/icon-v2.png" />
+    <title>Overdrive</title>
+    <script>
+      // Apply saved theme before paint so a custom palette doesn't flash the default.
+      (function () {
+        try {
+          var suffix = '/MartinOverdrive/app/'.indexOf('/dev/') >= 0 ? '-dev' : ''
+          var raw = JSON.parse(localStorage.getItem('overdrive-settings' + suffix) || '{}')
+          var c = raw.theme && raw.theme.colors
+          if (!c) return
+          var map = { bg: '--bg', ink: '--ink', muted: '--muted', paper: '--paper', line: '--line', acid: '--acid', onAcid: '--on-acid', orange: '--orange', blue: '--blue', topbar: '--topbar', showBg: '--show-bg', input: '--input' }
+          var root = document.documentElement
+          for (var key in map) {
+            var val = c[key]
+            if (typeof val === 'string' && /^#[0-9a-fA-F]{6}$/.test(val)) root.style.setProperty(map[key], val)
+          }
+          if (typeof c.ink === 'string') root.style.color = c.ink
+          if (typeof c.bg === 'string') root.style.background = c.bg
+          if (raw.theme && raw.theme.rowStripe === true) root.dataset.rowStripe = '1'
+          else delete root.dataset.rowStripe
+        } catch (e) { /* ignore corrupt settings */ }
+      })()
+    </script>
+    <script type="module" crossorigin src="/MartinOverdrive/app/assets/index-C_hbBUZU.js"></script>
+    <link rel="stylesheet" crossorigin href="/MartinOverdrive/app/assets/index-B-qzcUvd.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

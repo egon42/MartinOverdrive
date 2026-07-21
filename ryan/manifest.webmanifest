@@ -1,0 +1,19 @@
+{
+  "id": "/MartinOverdrive/ryan/",
+  "name": "Overdrive Ryan",
+  "short_name": "OD Ryan",
+  "description": "Personal App offshoot with Ryan-specific sheet tweaks.",
+  "start_url": "/MartinOverdrive/ryan/",
+  "scope": "/MartinOverdrive/ryan/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ff2a6d",
+  "icons": [
+    {
+      "src": "icon-ryan-v2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "/MartinOverdrive/app/",
+  "name": "Overdrive Setlist Companion",
+  "short_name": "Overdrive",
+  "description": "Local-first guitar practice and show-night setlist.",
+  "start_url": "/MartinOverdrive/app/",
+  "scope": "/MartinOverdrive/app/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#64d66f",
+  "icons": [
+    {
+      "src": "icon-v2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
