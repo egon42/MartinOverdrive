@@ -39,6 +39,9 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
 - App / Dev / Ryan home-screen installs use distinct manifest `id` / name / icon (see
   `vite.config.ts` `deployIdentity`). After the /app/ move, re-add the prod icon from
   `/MartinOverdrive/app/` if an old root-scoped install is still on the phone.
+- The GitHub **github-pages** environment must allow `main`, `dev`, and `ryan` as
+  deployment branches (Settings → Environments → github-pages). A green build with
+  a rejected deploy usually means `ryan` is missing from that allow-list.
 - **To verify a deploy actually went live:** check the workflow run
   (`gh run list --limit 3` / `gh run watch`), not just the push. A green push ≠ deployed.
 - The service worker uses **network-first caching for app updates** (fixed in `8904e94`
