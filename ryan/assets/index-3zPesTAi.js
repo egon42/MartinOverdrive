@@ -5173,8 +5173,10 @@ D#m\r
 B\r
 `,Vi=`Standard (EADGBE)\r
 \r
-[Intro / Verse — A string, palm mute]\r
-(chips = fret on the A string)\r
+[Intro — A string, palm mute]\r
+9 5 7 4\r
+\r
+5 4 5 5\r
 \r
 [Chorus]\r
 It just t\r
@@ -5189,27 +5191,27 @@ be just fine, everything, everything will \r
 D\r
 be all right (all right)\r
 \r
-[Verse]\r
-5\r
+[Verse — A string, palm mute]\r
+9\r
 Hey, you know they're all the \r
-0\r
+5\r
 same.\r
 \r
 You know you're doing better \r
-10\r
+7\r
 on your own,\r
  so don't buy i\r
-5\r
+4\r
 n.\r
 \r
 Live right n\r
 5\r
 ow.       Yeah, just be yours\r
-0\r
+4\r
 elf.\r
 \r
 It doesn't matter if it's go\r
-10\r
+5\r
 od enough     \r
   for someone \r
 5\r
@@ -5228,27 +5230,27 @@ be just fine, everything, everything will \r
 D\r
 be all right (all right)\r
 \r
-[Verse]\r
-5\r
+[Verse — A string, palm mute]\r
+9\r
 Hey, don't write yourself off y\r
-0\r
+5\r
 et.\r
 \r
 It's only in your head you f\r
-10\r
+7\r
 eel left out   \r
    or looked down\r
-5\r
+4\r
  on.\r
 \r
 Just do your b\r
 5\r
 est, do everything you c\r
-0\r
+4\r
 an.\r
 \r
 And don't you worry what the b\r
-10\r
+5\r
 itter hearts    \r
  are gonna \r
 5\r
@@ -5282,7 +5284,7 @@ be all right (all right)\r
 END on D\r
 \r
 Chorus open chords: D = xx0232, A = x02220, G = 320003.\r
-Verse frets on A: D→5 · A→0 · G→10.\r
+Verse/Intro frets = A-string palm-mute riff (one chip per bar).\r
 `,Hi=`Standard (EADGBE)\r
 Capo 1 (shapes below are Em; with the capo it sounds F minor, the record/band key)\r
 \r
