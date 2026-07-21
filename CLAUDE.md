@@ -32,7 +32,8 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
 - **Ryan** is a permanent offshoot of App (`main`). Keep it in sync with
   `git checkout ryan && git merge --ff-only main && git push` (same linear-history
   rule). Ryan-only sheet tweaks live only on `ryan` — when a merge touches those
-  files (currently `src/data/sheets/07-tribute.tabs.txt`), keep Ryan's version.
+  files (currently `src/data/sheets/07-tribute.tabs.txt` and
+  `src/data/sheets/07-tribute.chords.txt`), keep Ryan's version.
   Ryan **shares App's practice/sync/live localStorage keys** (anything that isn't
   `/dev/` uses the prod keys), so phone state follows you between `/app/` and `/ryan/`.
 - App / Dev / Ryan home-screen installs use distinct manifest `id` / name / icon (see

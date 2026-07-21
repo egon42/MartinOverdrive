@@ -11,7 +11,8 @@ export interface ParsedSheet { meta: string[]; lines: SheetLine[] }
 // Known ambiguity, accepted: a lyric line that is entirely one chord-shaped word
 // ("A", "Am", "Em") classifies as a chord — inherent to this format, rare in practice.
 const CHORD_RE = /^[A-G][#b]?(?:maj|min|dim|aug|sus|add|m|M|\+|°)?\d*(?:(?:maj|min|sus|add|b|#)\d+)*(?:\/[A-G][#b]?)?$/
-const TAB_RE = /\|-{2,}|-{2,}\||^\s*[eEBGDAd]\s*\|-/
+// String-label form (`E-|…`, `B-|5-…`) or dash-run form (`|--2--|`, `2---|`).
+const TAB_RE = /\|-{2,}|-{2,}\||^\s*[eEBGDAd]\s*\|/
 // Metadata must have its telltale shape ("Standard (…)", "Drop D", "Capo 3", "Key: G"),
 // otherwise a lyric that merely opens with one of these words would be eaten as meta.
 const META_RE = /^(?:standard\s*\(|drop\s+[a-g]\b|tuning\s*[:\-]|capo\s*[:\-]?\s*\d|key\s*[:\-]\s*[a-g]\b)/i
@@ -59,7 +60,9 @@ export function parseChordSheet(text: string): ParsedSheet {
   // Instrumental runs often arrive as one chord per blank-separated "line"
   // (Songsterr imports, UG pastes). Merge consecutive chord-only lyric lines so
   // chips sit on one row instead of wasting a full row per chord.
-  return { meta, lines: mergeChordOnlyRuns(lines) }
+  // Consecutive ASCII-tab string rows become one block so a 6-string fill stays
+  // tight in the Lyrics view (each row alone would get .sheet-tab's per-line margin).
+  return { meta, lines: mergeTabRuns(mergeChordOnlyRuns(lines)) }
 }
 
 function isChordOnlyLine(line: SheetLine) {
@@ -72,6 +75,19 @@ function mergeChordOnlyRuns(lines: SheetLine[]): SheetLine[] {
     const prev = out[out.length - 1]
     if (isChordOnlyLine(line) && prev && isChordOnlyLine(prev)) {
       prev.parts.push(...line.parts)
+      continue
+    }
+    out.push(line)
+  }
+  return out
+}
+
+function mergeTabRuns(lines: SheetLine[]): SheetLine[] {
+  const out: SheetLine[] = []
+  for (const line of lines) {
+    const prev = out[out.length - 1]
+    if (line.kind === 'tab' && prev?.kind === 'tab') {
+      prev.raw += `\n${line.raw}`
       continue
     }
     out.push(line)

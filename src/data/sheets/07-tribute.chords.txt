@@ -2,31 +2,30 @@ Standard (EADGBE)
 
 [Amp: 4Amber]
 
-Am
 This is the greatest and best song in the world...   Tribute.
 
-Am
 Long time ago me and my brother Kyle here,
 
-Am
 We was hitchhikin' down a long and lonesome road.
 
-Am
 All of a sudden, there shined a shiny demon...
 
-Am
 In the middle of the road.
 
-Am
+[Fill]
+E-|-------|-------|--0-------|--------|
+B-|5--(5)-|-------|--0-0-(0)-|(0)-----|
+G-|7b-(7)-|-------|--5-------|--------|
+D-|-------|6b-(6)-|----------|--------|
+A-|-------|-------|----------|--------|
+E-|-------|-------|----------|--------|
+
 And he said:
 
-A5
 "Play the best song in the world, or I'll eat your souls."
 
-Am
 Well me and Kyle, we looked at each other,
 
-Am
 And we each said...   "Okay"
 
 Am
@@ -43,6 +42,14 @@ G
 World, it was 
 F
 The Best Song in the World.
+
+[Fill]
+E-|-------------|-------------|---------|-------------|--------|
+B-|-------------|-------------|---------|----3-0---3-3-|1-------|
+G-|----12-12-14-|14-----12----|12h-14---|14--2--------|--------|
+D-|-------------|--12/-14--14-|---------|--------3-----|--------|
+A-|-------------|-------------|---------|-------------|--------|
+E-|-------------|-------------|-----15/-|-------------|--------|
 
 D
 Look into my eyes and it's 
@@ -74,19 +81,14 @@ And the
 F
 grass don't grow...
 
-Am
 Needless to say, the beast was stunned.
 
-Am
 Whip-crack went his schwumpy tail,
 
-Am
 And the beast was done.
 
-Am
 He asked us: "Be you angels?"
 
-Am
 And we said, "Nay. We are but men!"
 
 [Amp: 5Amber]
