@@ -13,12 +13,20 @@ import { normalizeCode } from './sync'
 // ephemeral and the worst a guesser can do is see/flip song numbers for one night.
 
 // Keyed per deployment like the practice/sync stores, so /dev/ and prod don't share a session.
+// Ryan shares App's keys and Realtime channel (it's an App offshoot); only /dev/ is isolated.
 const IS_DEV_DEPLOY = import.meta.env.BASE_URL.includes('/dev/')
+const IS_RYAN_DEPLOY = import.meta.env.BASE_URL.includes('/ryan/')
 const LIVE_KEY = IS_DEV_DEPLOY ? 'overdrive-live-dev' : 'overdrive-live'
 // Mirrors SHOW_INDEX_KEY in pages.tsx (can't import it — pages imports this file). Seeds the
 // leader's "current song" from the persisted show position, so a mid-set reload resumes
 // broadcasting the right song even before show mode remounts.
 const SHOW_INDEX_KEY = IS_DEV_DEPLOY ? 'overdrive-show-index-dev' : 'overdrive-show-index'
+/** Base path followers should open. A Ryan leader still broadcasts on the App channel, but
+ * the QR/invite must land on /app/ so bandmates install/use production, not the Ryan fork. */
+function followerBaseUrl(): string {
+  const base = import.meta.env.BASE_URL
+  return IS_RYAN_DEPLOY ? base.replace('/ryan/', '/app/') : base
+}
 // Leader re-announces its song every 10s: late joiners and reconnecting followers resync
 // without any server-side state. (Presence joins also trigger an immediate re-announce.)
 const HEARTBEAT_MS = 10_000
@@ -112,7 +120,8 @@ export function LiveProvider({ children }: { children: ReactNode }) {
     if (!config || !isBackendConfigured()) return
     const client = new RealtimeClient(`${SUPABASE_URL.replace(/^http/i, 'ws')}/realtime/v1`, { params: { apikey: SUPABASE_ANON_KEY } })
     // Deploy-namespaced like every other store: a /dev/ leader and a prod follower must
-    // not share a channel — the two builds' song data can differ.
+    // not share a channel — the two builds' song data can differ. Ryan uses the prod
+    // channel so a Ryan leader can drive phones that stay on /app/.
     const channel = client.channel(`show-${IS_DEV_DEPLOY ? 'dev-' : ''}${normalizeCode(config.code)}`, { config: { broadcast: { self: false } } })
     if (config.role === 'follow') {
       channel.on('broadcast', { event: 'song' }, ({ payload }) => {
@@ -218,7 +227,7 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
   const [copied, setCopied] = useState<'invite' | 'qr' | null>(null)
   const configured = isBackendConfigured()
 
-  const followUrl = config?.role === 'lead' ? `${window.location.origin}${import.meta.env.BASE_URL}?follow=${config.code}#/show` : ''
+  const followUrl = config?.role === 'lead' ? `${window.location.origin}${followerBaseUrl()}?follow=${config.code}#/show` : ''
   useEffect(() => {
     if (!followUrl) { setQrDataUrl(''); return }
     let alive = true
@@ -270,7 +279,7 @@ export function LiveOverlay({ onClose, onJump }: { onClose: () => void; onJump: 
         <div><span className="eyebrow">Live show sync</span><h2>You’re leading</h2></div>
         <button type="button" className="live-code" onClick={copyInvite} title="Copy code and link">{config.code}</button>
         {qrDataUrl && <div className="live-qr"><img src={qrDataUrl} alt="QR code that joins this live show as a follower" width={200} height={200} /></div>}
-        <p>Scan the QR, or type the code under Live in show mode.</p>
+        <p>Scan the QR, or type the code under Live in show mode.{IS_RYAN_DEPLOY ? ' Followers open App (/app/), not Ryan.' : ''}</p>
         <div className="live-actions">
           <button type="button" className="secondary" onClick={copyInvite}>{copied === 'invite' ? 'Copied!' : 'Copy code & link'}</button>
           <button type="button" className="secondary" disabled={!qrDataUrl} onClick={() => { void copyQr() }}>{copied === 'qr' ? 'Copied!' : 'Copy QR'}</button>
