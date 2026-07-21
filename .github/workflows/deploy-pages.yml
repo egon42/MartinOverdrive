@@ -87,5 +87,18 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Overlapping pushes can leave a Pages deployment stuck "in progress" even after
+      # Actions marks the job green. Cancel known zombies, then retry create a few times.
+      - name: Clear stuck Pages lock
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          for id in 26902381dc1310f69e605950a5b428e3c2360a2f; do
+            echo "Cancel pages deployment $id"
+            gh api -X POST "repos/${{ github.repository }}/pages/deployments/${id}/cancel"
+            gh api "repos/${{ github.repository }}/pages/deployments/${id}" || true
+          done
+          sleep 10
       - id: deployment
         uses: actions/deploy-pages@v4
