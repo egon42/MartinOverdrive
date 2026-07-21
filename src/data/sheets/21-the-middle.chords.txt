@@ -1,7 +1,9 @@
 Standard (EADGBE)
 
-[Intro / Verse — A string, palm mute]
-(chips = fret on the A string)
+[Intro — A string, palm mute]
+9 5 7 4
+
+5 4 5 5
 
 [Chorus]
 It just t
@@ -16,27 +18,27 @@ be just fine, everything, everything will
 D
 be all right (all right)
 
-[Verse]
-5
+[Verse — A string, palm mute]
+9
 Hey, you know they're all the 
-0
+5
 same.
 
 You know you're doing better 
-10
+7
 on your own,
  so don't buy i
-5
+4
 n.
 
 Live right n
 5
 ow.       Yeah, just be yours
-0
+4
 elf.
 
 It doesn't matter if it's go
-10
+5
 od enough     
   for someone 
 5
@@ -55,27 +57,27 @@ be just fine, everything, everything will
 D
 be all right (all right)
 
-[Verse]
-5
+[Verse — A string, palm mute]
+9
 Hey, don't write yourself off y
-0
+5
 et.
 
 It's only in your head you f
-10
+7
 eel left out   
    or looked down
-5
+4
  on.
 
 Just do your b
 5
 est, do everything you c
-0
+4
 an.
 
 And don't you worry what the b
-10
+5
 itter hearts    
  are gonna 
 5
@@ -109,4 +111,4 @@ be all right (all right)
 END on D
 
 Chorus open chords: D = xx0232, A = x02220, G = 320003.
-Verse frets on A: D→5 · A→0 · G→10.
+Verse/Intro frets = A-string palm-mute riff (one chip per bar).
