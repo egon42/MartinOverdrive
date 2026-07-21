@@ -116,7 +116,7 @@ export function chordProgression(text: string): ProgressionRow[] | null {
   const open = (label: string) => { current = { label, chords: [] }; sections.push(current) }
   for (const line of sheet.lines) {
     if (line.kind === 'section') {
-      if (/^amp\b/i.test(line.raw.trim())) continue // mid-song amp marker, not a section
+      if (/^amp\b/i.test(line.raw.trim()) || /^stomp\b/i.test(line.raw.trim())) continue // mid-song amp/FS cue, not a section
       open(line.raw.trim())
       continue
     }

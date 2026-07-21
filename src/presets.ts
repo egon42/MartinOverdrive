@@ -4,7 +4,13 @@ import rawPresets from './data/amp-presets.json'
 // The amp's PRESET knob has 8 positions across three color banks, so slot 1–24
 // is spoken as position + bank: 1–8 = Amber, 9–16 = Green, 17–24 = Red
 // (slot 10 → "2Green").
-export interface AmpAssignment { presets: number[], joiner: '' | '→' | '↔', notes: string }
+export interface AmpAssignment {
+  presets: number[]
+  joiner: '' | '→' | '↔'
+  notes: string
+  /** Assigned to the 1-button footswitch — mid-song cues use the FS chip, not dial Amp chips. */
+  footswitch?: boolean
+}
 
 export const ampPresets = rawPresets as Record<string, AmpAssignment>
 

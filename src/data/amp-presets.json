@@ -70,7 +70,8 @@
       18
     ],
     "joiner": "↔",
-    "notes": "Verse 1Red, chorus 2Red"
+    "notes": "Verse 1Red, chorus 2Red (footswitch)",
+    "footswitch": true
   },
   "11-hunger-strike": {
     "presets": [
@@ -78,7 +79,8 @@
       18
     ],
     "joiner": "↔",
-    "notes": "Same pair"
+    "notes": "Same pair (footswitch)",
+    "footswitch": true
   },
   "12-s-o-b": {
     "presets": [

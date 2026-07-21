@@ -170,11 +170,14 @@ export function Field({ label, value }: { label: string, value: string | number 
 }
 
 export function PresetBadges({ songId, showNotes = false }: { songId: string, showNotes?: boolean }) {
+  const { settings } = useSettings()
   const assignment = ampPresets[songId]
-  if (!assignment) return null
+  if (!settings.showAmpChips || !assignment) return null
   return <span className="preset-badges" aria-label="Amp preset">
     {assignment.presets.map((slot, index) => <span className="preset-badge-group" key={slot}>
-      {index > 0 && <span className="preset-joiner" aria-hidden="true">{assignment.joiner}</span>}
+      {index > 0 && (assignment.footswitch
+        ? <StompChip />
+        : <span className="preset-joiner" aria-hidden="true">{assignment.joiner}</span>)}
       <b className={`preset-chip bank-${presetBank(slot).toLowerCase()}`} title={`${presetBank(slot)} bank, PRESET knob position ${presetPosition(slot)} (slot ${slot} of 24)`}>{presetLabel(slot)}</b>
     </span>)}
     {showNotes && assignment.notes && <span className="preset-notes">{assignment.notes}</span>}
@@ -192,8 +195,21 @@ export function HomeFretBadges({ song }: { song: Song }) {
 }
 
 export function AmpPresetField({ songId, showNotes = true }: { songId: string, showNotes?: boolean }) {
-  if (!ampPresets[songId]) return null
+  const { settings } = useSettings()
+  if (!settings.showAmpChips || !ampPresets[songId]) return null
   return <div className="field"><dt>Amp preset</dt><dd><PresetBadges songId={songId} showNotes={showNotes} /></dd></div>
+}
+
+/** Footswitch stomp cue — distinct from round bank chips so it reads as an action. */
+export function StompChip({ target }: { target?: string }) {
+  const slot = target ? parsePresetLabel(target) : null
+  const title = slot != null
+    ? `Footswitch: stomp to ${presetBank(slot)} ${presetPosition(slot)}`
+    : 'Footswitch: stomp for the other tone'
+  return <span className="stomp-chip-group" title={title}>
+    <b className="stomp-chip" aria-label={title}>FS</b>
+    {slot != null && <b className={`preset-chip bank-${presetBank(slot).toLowerCase()}`} aria-hidden="true">{presetPosition(slot)}</b>}
+  </span>
 }
 
 // Mid-song amp-change marker authored in a sheet's text as "[Amp: 7Red]" — renders the
@@ -204,12 +220,21 @@ export function AmpChip({ label }: { label: string }) {
   return <b className={`preset-chip bank-${presetBank(slot).toLowerCase()}`} title={`${presetBank(slot)} bank, PRESET knob position ${presetPosition(slot)} (slot ${slot} of 24)`}>{presetPosition(slot)}</b>
 }
 
-// Splits the captured group of an "Amp: 7Red 2Green" (or "Amp: 7Red → 2Green") marker
-// into individual preset-label tokens for AmpChip. Returns null if raw isn't an amp marker.
-function ampMarkerTokens(raw: string): string[] | null {
-  const match = /^Amp:\s*(.+)$/i.exec(raw.trim())
-  if (!match) return null
-  return match[1].split(/\s+|→/).map((token) => token.trim()).filter(Boolean)
+/** Section/cue line: "Amp: 1Red 2Green", "Stomp", or "Stomp: 2Red". */
+type SheetAmpCue =
+  | { kind: 'amp'; tokens: string[] }
+  | { kind: 'stomp'; target?: string }
+
+function parseSheetAmpCue(raw: string): SheetAmpCue | null {
+  const text = raw.trim()
+  const amp = /^Amp:\s*(.+)$/i.exec(text)
+  if (amp) {
+    const tokens = amp[1].split(/\s+|→|↔/).map((token) => token.trim()).filter(Boolean)
+    return tokens.length ? { kind: 'amp', tokens } : null
+  }
+  const stomp = /^Stomp(?:\s*:\s*(.+))?$/i.exec(text)
+  if (stomp) return { kind: 'stomp', target: stomp[1]?.trim() || undefined }
+  return null
 }
 
 export function ScalePattern({ value }: { value: string }) {
@@ -290,8 +315,9 @@ function TabServiceControl({ label, domain, savedUrl, openUrl, searchUrl, isSave
   </div>
 }
 
-function AmpMarkerSection({ tokens }: { tokens: string[] }) {
-  return <div className="sheet-section amp-marker">{tokens.map((token, i) => <AmpChip label={token} key={i} />)}</div>
+function AmpMarkerSection({ cue }: { cue: SheetAmpCue }) {
+  if (cue.kind === 'stomp') return <div className="sheet-section amp-marker"><StompChip target={cue.target} /></div>
+  return <div className="sheet-section amp-marker">{cue.tokens.map((token, i) => <AmpChip label={token} key={i} />)}</div>
 }
 
 /** UG-style: chord name above the lyric segment where it falls. Name-only chips
@@ -365,11 +391,13 @@ export function ChordSheetView({ text, songId, compact = false }: { text: string
   const sheet = useMemo(() => parseChordSheet(text), [text])
   const { settings } = useSettings()
   const above = settings.lyricChordPlacement === 'above'
+  const showAmp = settings.showAmpChips
   if (compact) {
     return <div className="sheet-compact">{compactSheet(sheet).map((line, index) => {
       if (line.kind === 'section') {
-        const tokens = ampMarkerTokens(line.cue)
-        return tokens ? <AmpMarkerSection tokens={tokens} key={index} /> : <div className="sheet-section" key={index}>{line.cue}</div>
+        const cue = parseSheetAmpCue(line.cue)
+        if (cue) return showAmp ? <AmpMarkerSection cue={cue} key={index} /> : null
+        return <div className="sheet-section" key={index}>{line.cue}</div>
       }
       return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.cue}</pre>
@@ -380,8 +408,9 @@ export function ChordSheetView({ text, songId, compact = false }: { text: string
     {sheet.meta.map((line, index) => <p className="sheet-meta" key={index}>{line}</p>)}
     {sheet.lines.map((line, index) => {
       if (line.kind === 'section') {
-        const tokens = ampMarkerTokens(line.raw)
-        return tokens ? <AmpMarkerSection tokens={tokens} key={index} /> : <h4 className="sheet-section" key={index}>{line.raw}</h4>
+        const cue = parseSheetAmpCue(line.raw)
+        if (cue) return showAmp ? <AmpMarkerSection cue={cue} key={index} /> : null
+        return <h4 className="sheet-section" key={index}>{line.raw}</h4>
       }
       if (line.kind === 'tab') return <pre className="sheet-tab" key={index}>{line.raw}</pre>
       return above
@@ -394,17 +423,25 @@ export function ChordSheetView({ text, songId, compact = false }: { text: string
 // [^\]\n] (not just [^\]]) caps a typo'd unclosed marker to one line instead of
 // swallowing everything up to the next ']' in the file (tabs already use '[...]'
 // for section headers, e.g. "[[A] Intro]").
-const AMP_INLINE_MARKER_RE = /\[Amp:\s*([^\]\n]+)\]/gi
+const AMP_INLINE_MARKER_RE = /\[(?:Amp|Stomp):\s*([^\]\n]+)\]|\[Stomp\]/gi
 
 export function TabText({ text }: { text: string }) {
+  const { settings } = useSettings()
+  const showAmp = settings.showAmpChips
   const nodes: ReactNode[] = []
   const re = new RegExp(AMP_INLINE_MARKER_RE)
   let lastIndex = 0
   let match: RegExpExecArray | null
   while ((match = re.exec(text))) {
     if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index))
-    const tokens = match[1].split(/\s+|→/).map((token) => token.trim()).filter(Boolean)
-    tokens.forEach((token, i) => nodes.push(<AmpChip label={token} key={`${match!.index}-${i}`} />))
+    if (showAmp) {
+      const inner = match[0].slice(1, -1) // strip [ ]
+      const cue = parseSheetAmpCue(inner)
+      if (cue?.kind === 'stomp') nodes.push(<StompChip target={cue.target} key={match.index} />)
+      else if (cue?.kind === 'amp') {
+        cue.tokens.forEach((token, i) => nodes.push(<AmpChip label={token} key={`${match!.index}-${i}`} />))
+      }
+    }
     lastIndex = match.index + match[0].length
   }
   if (lastIndex < text.length) nodes.push(text.slice(lastIndex))

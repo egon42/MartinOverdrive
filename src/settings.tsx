@@ -51,6 +51,8 @@ export interface AppSettings {
   /** Above-mode only: em offset pulling each chord chip down onto the lyric beneath it
    *  (negative = overlap, the chip layers under the text). Applied as the --chip-pull var. */
   lyricChipPull: number
+  /** Bank chips in song headers + mid-song Amp/Stomp cues on Lyrics/Tabs. Off by default. */
+  showAmpChips: boolean
 }
 
 /** Per-song, per-surface: when true, chord chips are replaced by vertical fingering chips. */
@@ -60,6 +62,7 @@ const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
 const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: true }
 const DEFAULT_LYRIC_CHORD_PLACEMENT: LyricChordPlacement = 'inline'
 const DEFAULT_LYRIC_CHIP_PULL = -0.5
+const DEFAULT_SHOW_AMP_CHIPS = false
 /** Clamp the range the slider offers, so a stored/edited value can't hide chips or blow up layout. */
 export const CHIP_PULL_MIN = -0.9
 export const CHIP_PULL_MAX = 0.1
@@ -114,6 +117,7 @@ function readSettings(): AppSettings {
         ? raw.lyricChordPlacement
         : DEFAULT_LYRIC_CHORD_PLACEMENT,
       lyricChipPull: readChipPull(raw.lyricChipPull),
+      showAmpChips: raw.showAmpChips === true,
     }
   } catch {
     return {
@@ -122,6 +126,7 @@ function readSettings(): AppSettings {
       theme: { ...DEFAULT_THEME, colors: { ...MARTIN_DRIVE } },
       lyricChordPlacement: DEFAULT_LYRIC_CHORD_PLACEMENT,
       lyricChipPull: DEFAULT_LYRIC_CHIP_PULL,
+      showAmpChips: DEFAULT_SHOW_AMP_CHIPS,
     }
   }
 }
@@ -140,6 +145,7 @@ interface SettingsStore {
   patchFingering: (surface: FingeringSurface, update: Partial<FingeringPrefs>) => void
   setLyricChordPlacement: (placement: LyricChordPlacement) => void
   setLyricChipPull: (em: number) => void
+  setShowAmpChips: (on: boolean) => void
   setThemePreset: (preset: ThemePresetId) => void
   patchThemeColor: (key: ThemeColorKey, value: string) => void
   setRowStripe: (on: boolean) => void
@@ -173,6 +179,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setSettings((old) => ({ ...old, lyricChordPlacement: placement }))
   const setLyricChipPull = (em: number) =>
     setSettings((old) => ({ ...old, lyricChipPull: Math.min(CHIP_PULL_MAX, Math.max(CHIP_PULL_MIN, em)) }))
+  const setShowAmpChips = (on: boolean) =>
+    setSettings((old) => ({ ...old, showAmpChips: on }))
   const setThemePreset = (preset: ThemePresetId) =>
     setSettings((old) => ({
       ...old,
@@ -201,7 +209,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return next
   })
   const value = useMemo(
-    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
+    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
     [settings, fingeringOnly],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
@@ -413,7 +421,7 @@ function ThemeFields() {
 }
 
 export function SettingsPage() {
-  const { settings } = useSettings()
+  const { settings, setShowAmpChips } = useSettings()
   const presetLabel = settings.theme.preset === 'custom'
     ? 'Custom'
     : THEME_PRESETS[settings.theme.preset].label
@@ -427,6 +435,21 @@ export function SettingsPage() {
       <h2>Chord fingerings</h2>
       <FingeringFields surface="cheat" label="Cheat & Chords cards" />
       <FingeringFields surface="chords" label="Lyrics sheet" />
+    </section>
+    <section className="panel settings-panel">
+      <span className="eyebrow">Amp</span>
+      <h2>Amp presets</h2>
+      <label className="theme-stripe-toggle">
+        <input
+          type="checkbox"
+          checked={settings.showAmpChips}
+          onChange={(e) => setShowAmpChips(e.target.checked)}
+        />
+        <span className="theme-stripe-meta">
+          <strong>Show amp chips</strong>
+          <small>Bank chips in song headers, and mid-song Amp / FS cues on Lyrics and Tabs. Footswitch songs use a distinct FS chip.</small>
+        </span>
+      </label>
     </section>
     <details className="settings-colors-disclosure">
       <summary>
