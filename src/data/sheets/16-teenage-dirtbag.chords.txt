@@ -1,5 +1,7 @@
 Standard (EADGBE)
 
+[Amp: 3Red]
+
 E
  
 B
@@ -7,7 +9,7 @@ B
 E
  
 A
- 
+             
 E
  
 B
@@ -65,6 +67,7 @@ ive a d
 B
 amn about me.
 
+[Amp: 4Red]
 'Cause 
 E
 I'm just a 
@@ -111,6 +114,7 @@ A
                      
 B
 
+[Amp: 3Red]
 Same Chords as intro for Link:
 
 Same Chords as Verse 1 for Verse 2:
@@ -131,6 +135,7 @@ But he doesn't know who i am,
 
 And he doesn't give a damn about me.
 
+[Amp: 4Red]
 Same Chords as Chorus 1 For Chorus 2:
 
 'Cause I'm just a teenage dirtbag, baby.
@@ -191,6 +196,7 @@ E
  
 A
 
+[Amp: 3Red]
 Same Chords as previous verse for Verse 3:
 
 Man, i feel like mold,
@@ -209,6 +215,7 @@ How does she know who i am?
 
 And why does she give a damn about?
 
+[Amp: 4Red]
 (same chords but softer than previous chorus', possibly pluck certain notes)
 
 I've got two tickets to iron maiden, baby,

@@ -1,6 +1,7 @@
 Standard (EADGBE)
 Capo 1 (shapes below are Em; with the capo it sounds F minor, the record/band key)
 
+[Amp: 7Red]
   
 Em
    
@@ -147,6 +148,7 @@ Am6
 Am
  add 6/9) x 8
 
+[Amp: 8Red]
 Am
 Dream on, dr
 B5
@@ -195,6 +197,7 @@ B7b9
 B
 Ah------
 
+[Amp: 7Red]
 Repeat Pre-Chorus
 
  

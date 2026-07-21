@@ -1,5 +1,6 @@
 Standard (EADGBE)
 
+[Amp: 7Red]
 E
 
 E
@@ -58,6 +59,7 @@ A
 E
 Mama, Im coming home
 
+[Amp: 8Red]
 (Distortion)
 
 (Power Chords)
@@ -80,8 +82,10 @@ F#5
 G#5
 I just got to have it all
 
+[Amp: 7Red]
 (Little Acoustic Thingy)
 
+[Amp: 8Red]
 (Solo Chords)
 
 (Lead in)

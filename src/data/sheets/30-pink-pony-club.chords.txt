@@ -1,6 +1,7 @@
 Standard (EADGBE)
 
 [Intro]
+[Amp: 3Red]
 
 C#
 
@@ -83,6 +84,7 @@ It's where I be
 B
 long down at the
 
+[Amp: 4Red]
 [Chorus]
 
 F#
@@ -110,6 +112,7 @@ Pink Pony Club
 B
 Pink Pony Club
 
+[Amp: 3Red]
 [Verse 2]
 
 F#
@@ -187,6 +190,7 @@ It's where I be
 B
 long down at the
 
+[Amp: 4Red]
 [Chorus]
 
 F#
@@ -215,10 +219,12 @@ Pink Pony Club
 B
 Pink Pony Club
 
+[Amp: 4Red]
 [Solo]
 
 F# G#m D#m B
 
+[Amp: 3Red]
 [Bridge]
 
 B
@@ -271,6 +277,7 @@ It's where I be
 B
 long down at the
 
+[Amp: 4Red]
 [Chorus]
 
 F#
@@ -299,6 +306,7 @@ Pink Pony Club
 B
 Pink Pony Club
 
+[Amp: 4Red]
 [Solo]
 
 F# G#m D#m B x4

@@ -1,5 +1,7 @@
 Standard (EADGBE)
 
+[Amp: 4Amber]
+
 Am
 This is the greatest and best song in the world...   Tribute.
 
@@ -87,6 +89,7 @@ He asked us: "Be you angels?"
 Am
 And we said, "Nay. We are but men!"
 
+[Amp: 5Amber]
 ROCK!
 
 D

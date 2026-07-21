@@ -1,6 +1,7 @@
 Standard (EADGBE)
 
 [Intro]
+[Amp: 5Red]
 
 Am
 Keep you in the dark
@@ -20,6 +21,7 @@ all beg
 Fmaj7
 an
 
+[Amp: 6Red]
 [Verse 1]
 
 Am
@@ -187,6 +189,7 @@ Yeah, who are you?
 A5
 Yeah, who are you?
 
+[Amp: 5Red]
 [Interlude]
 
 Am
@@ -198,6 +201,7 @@ all pret
 Fmaj7
 end
 
+[Amp: 6Red]
 [Chorus]
 
 Am
