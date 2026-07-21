@@ -19,16 +19,23 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
 
 ## Deploy — GitHub Pages via Actions
 
-- Pushing to `main` **or `dev`** triggers `.github/workflows/deploy-pages.yml`. It builds
-  both branches into one Pages artifact with **sibling** paths so each can be installed
-  as its own phone app: `main` at `/MartinOverdrive/app/` (production) and `dev` at
-  `/MartinOverdrive/dev/` (development). Root `/MartinOverdrive/` redirects to `/app/`.
-  Nested `/dev/` under a root-scoped PWA blocked installing both — don't put them back.
-  There is no other deploy path.
+- Pushing to `main`, `dev`, **or `ryan`** triggers `.github/workflows/deploy-pages.yml`.
+  It builds all three branches into one Pages artifact with **sibling** paths so each
+  can be installed as its own phone app: `main` at `/MartinOverdrive/app/` (production),
+  `dev` at `/MartinOverdrive/dev/` (development), and `ryan` at `/MartinOverdrive/ryan/`
+  (personal App offshoot). Root `/MartinOverdrive/` redirects to `/app/`. Nested
+  installs under a root-scoped PWA blocked co-install — don't put them back. There is
+  no other deploy path.
 - **New features are developed on the `dev` branch** and used live at the /dev/ URL;
   porting a feature to production = merging `dev` → `main`. Keep the workflow file
-  identical on both branches (push events use the pushed branch's copy).
-- Prod and Dev home-screen installs use distinct manifest `id` / name / icon (see
+  identical on all three branches (push events use the pushed branch's copy).
+- **Ryan** is a permanent offshoot of App (`main`). Keep it in sync with
+  `git checkout ryan && git merge --ff-only main && git push` (same linear-history
+  rule). Ryan-only sheet tweaks live only on `ryan` — when a merge touches those
+  files (currently `src/data/sheets/07-tribute.tabs.txt`), keep Ryan's version.
+  Ryan **shares App's practice/sync/live localStorage keys** (anything that isn't
+  `/dev/` uses the prod keys), so phone state follows you between `/app/` and `/ryan/`.
+- App / Dev / Ryan home-screen installs use distinct manifest `id` / name / icon (see
   `vite.config.ts` `deployIdentity`). After the /app/ move, re-add the prod icon from
   `/MartinOverdrive/app/` if an old root-scoped install is still on the phone.
 - **To verify a deploy actually went live:** check the workflow run
