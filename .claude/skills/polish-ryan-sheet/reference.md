@@ -209,6 +209,121 @@ ratios at 1× are enough for the first seed.
 
 Before retuning a shared slot (e.g. 4Amber), grep sheets + `amp-presets.json` for other users. Tribute-only → safe to retune in `amp-presets/generate_presets.py` and regen `.fuse`. Tell the user to reload the amp.
 
+## Stage patterns (learned 2026-07-22 multi-song polish)
+
+Canonical shapes. Copy the *structure*; do not invent chord names without band/tab/user.
+
+### 1. Between-line riffs (Thunderstruck pre / la-la)
+
+Hits live in the **gap** between lyric lines — not on syllables:
+
+```
+[Pre-Chorus - B5 A5 E5 A5 between lines]
+Sound of the drums
+
+B5
+
+A5
+
+E5
+
+A5
+beatin' in my heart
+```
+
+On-vocal sections in the same song keep chips on the lyric splits (`[Chorus - … on vocal]`).
+Never force one chip per syllable when the recording puts the cycle in the gaps.
+
+### 2. Ringing hold vs full cycle (All the Small Things pre)
+
+Early occurrence = one ringing chip; later occurrence = full progression:
+
+```
+[Pre-Chorus - ringing C5]
+C5
+Late night, come home work
+
+…
+
+[Pre-Chorus - full C G F C]
+C5
+…
+G5
+…
+F5
+…
+C5
+…
+```
+
+Same section *name*, different instructions — do not apply one treatment song-wide.
+
+### 3. Prepare ghosts + ×N riff (ATS interlude)
+
+Ghost the prepare strums, write the learned cycle once, collapse with ×N **after** the
+count is verified:
+
+```
+~C5
+
+~F5
+
+~G5
+
+~G5
+
+[Interlude - muted octaves (C C C B) x3]
+C5
+…
+C5
+…
+C5
+…
+B5
+…
+```
+
+Incomplete “tab glances” that omit bars of the repeating riff are worse than no glance.
+
+### 4. SOLO/OUTRO single-cycle collapse (Welcome Home)
+
+When post-bridge is the same vamp forever, one written cycle + section note beats
+pasting the form dump:
+
+```
+[SOLO/OUTRO - Em C D Em; Oh cue]
+Em
+…
+C
+…
+D
+…
+Em
+…
+```
+
+Re-estimate scroll after collapsing (row count drops).
+
+### 5. Hard-stop single / lead vocal (A Little Less Conversation)
+
+Role card: lead vocal, chords while singing, **no fills**, hard stop on the single cut.
+Trim remix/fade tails and second bridges. Do not invent `^N`. Vocal entrance notes belong
+in section headers (`[Intro - vamp, vocal after 3]`).
+
+## Bulk draft boundaries
+
+| Safe to bulk-auto (drafted) | Human-gated before lock |
+|---|---|
+| Copy band `.chords.txt` UG body verbatim | Sit-out vs join timing |
+| Add `[Amp:]` from `amp-presets.json` | Between-line vs on-vocal mapping |
+| Strip Chords-used / Songsterr stitch dumps | Ring vs full section variants |
+| Convert obvious `*5` songs to power tokens | ×N counts without ear/tab proof |
+| Draft sit-out intro headers (unplayed) | Fill cue **words** |
+| Tribute-calibrated scroll **estimate** | Final scroll lock on device |
+| Ghost `~` only when notes say don’t-play | Hard-stop / ending form |
+| Mark progress **drafted** (not `[x]`) | Shared amp slot retunes |
+| Mechanical UG-spine gate | Any new above-lyrics chip type |
+
 ## Tribute reference (locked 2026-07-22)
 
 - Fills ^1/^2/^3 on long / looked / men; no chord chips before ROCK
