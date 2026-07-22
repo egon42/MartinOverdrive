@@ -44,6 +44,9 @@ Bare `0`–`24` on a chord line → bordered fret chip (A-string cues). Band lyr
 
 - Ryan pinch zoom starts at **0.8×** (`useZoom` initialZoom); Reset restores 0.8×
 - Autoscroll advances at `scrollSpeed * zoom` (1×-normalized dial)
+- While autoscroll is playing (incl. lead-in), show mode adds `show-mode--crawling` and
+  collapses artist / view tabs+Pin / stage strip / Up next / zoom-reset. Dial scrollSpeed
+  with that chrome collapsed so the viewport matches gig use.
 
 ## Amp slot retunes
 

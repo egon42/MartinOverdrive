@@ -134,6 +134,14 @@ timing matches. At 2× it advances 60 CSS px/s against ~2× height — same song
 Lead-in duration is `96 / speed` seconds and does not include zoom (zoom cancels: more
 content in the lead-in window, faster crawl once it starts).
 
+Show mode adds `show-mode--crawling` while `scroll.playing` (including the lead-in
+countdown). That class hides non-essential chrome (artist eyebrow, view bar + Pin, stage
+strip, Up next, zoom-reset) so the sheet scrollport grows. Dial per-song `scrollSpeed`
+against the **collapsed** layout — crawl `max` is read live each frame
+(`scrollHeight - clientHeight`), and a `ResizeObserver` on the scrollport re-measures
+`scrollable` when chrome toggles. Do not route that remeasure through a playing-effect
+restart of the crawl loop.
+
 ## What is verified and what is not
 
 - Verified here: root cause reconstructed from `f7a7414`'s code; the float-`pos` math

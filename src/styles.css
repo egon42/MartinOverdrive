@@ -318,6 +318,15 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .show-song-head{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;margin:0 0 2px;min-width:0}
 .show-song-head .eyebrow{margin:0;font-size:.52rem;line-height:1.1;flex:0 0 auto}
 .show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0}
+/* Autoscroll playing (incl. lead-in): hide artist / view tabs+Pin / stage strip / Up next /
+   zoom-reset. Keeps × exit, compact title, page-turner ‹ n/N ›, Live chip, AutoScrollBar. */
+.show-mode--crawling .show-song-head .eyebrow,
+.show-mode--crawling .show-view-bar,
+.show-mode--crawling .show-stage-strip,
+.show-mode--crawling .show-upnext,
+.show-mode--crawling .show-zoom-reset{display:none}
+.show-mode--crawling .show-song-head{margin:0}
+.show-mode--crawling .show-song-head h1{font-size:.78rem}
 .show-song .show-view-bar{margin:0 0 4px;gap:6px}
 .show-song .fretboard-toggle{gap:4px}
 .show-song .fretboard-toggle button,.show-song .show-pin{padding:.28rem .58rem;font-size:.62rem}

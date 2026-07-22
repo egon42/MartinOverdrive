@@ -173,8 +173,8 @@ export function useAutoScrollControls(
     return () => cancelAnimationFrame(raf)
   }, [playing, delayUntil])
   // New song or view (`resetKey`): start paused at the top, and re-measure whether the
-  // sheet overflows. Resize (e.g. phone rotation) only re-measures — it must not yank
-  // scroll back to the top.
+  // sheet overflows. Window resize and element ResizeObserver (chrome collapse while
+  // crawling grows the scrollport) only re-measure — they must not yank scroll to the top.
   useLayoutEffect(() => {
     setPlaying(false)
     setDelayUntil(0)
@@ -187,11 +187,20 @@ export function useAutoScrollControls(
     const measure = () => setScrollable(!!el && el.scrollHeight > el.clientHeight + 1)
     measure()
     window.addEventListener('resize', measure)
-    return () => window.removeEventListener('resize', measure)
+    let ro: ResizeObserver | undefined
+    if (el && typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(measure)
+      ro.observe(el)
+    }
+    return () => {
+      window.removeEventListener('resize', measure)
+      ro?.disconnect()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, resetKey as unknown[])
   // Pinch-zoom reflows the sheet (font-size --zoom) without a song/view change — re-measure
   // overflow so the ▶ bar appears/disappears correctly, but do not reset scroll or pause.
+  // (ResizeObserver above also catches zoom reflow; this keeps the zoom dep explicit.)
   useLayoutEffect(() => {
     const el = target?.current
     setScrollable(!!el && el.scrollHeight > el.clientHeight + 1)

@@ -73,10 +73,30 @@ Fills: ^1 long · ^2 looked · ^3 men
 | Chord chips where only fills are played | Strip chord tokens in that stretch (Tribute: no chords before ROCK) |
 | Amp chips wrong for what is actually played | Update `[Amp:]` + `amp-presets.json` notes; retune a slot in `amp-presets/generate_presets.py` only when nothing else needs the old tone |
 | Stage noise (chords-used lists, full stitched Songsterr dumps) | Cut — kills set-and-forget autoscroll; full tab stays on Tabs |
-| Autoscroll | After content is stable, dial `scrollSpeed` on `/dev/` against the track (zoom-compensated) |
+| Autoscroll | After content is stable, dial on `/dev/` **with chrome collapsed** (see Dial-in below) |
 | Default show zoom | Ryan opens at **0.8×** (show mode); don't fight that in the sheet |
 
 **Ask** when band lyrics and recording disagree, or when a fill cue word is uncertain (propose + ear-check).
+
+### Dial-in (after content is stable)
+
+`scrollSpeed` is per-song practice state (synced), not a file in the repo. The user dials it
+on device; you only tweak constants if lead-in feels wrong globally.
+
+1. Hard-refresh `/MartinOverdrive/dev/` → song → Ryan (flag on). Zoom at default **0.8×**.
+2. Press ▶ — show chrome collapses while `scroll.playing` (incl. lead-in countdown). Dial
+   against this larger viewport; pausing restores chrome.
+3. Tap − / + (`SCROLL_SPEED_STEP` = 4) until crawl hits the sheet end with the track.
+   Stored value is 1×-normalized; crawl runs at `speed * zoom` (pinch mid-song should still
+   roughly hold song length). See `docs/autoscroll-spec.md`.
+4. Lead-in is global: `SCROLL_LEAD_IN_PX = 96` → seconds = `96 / speed` (not per-song). If
+   first lines vanish too soon/late after dial, adjust that constant in `src/autoscroll.tsx`
+   and note it in the spec — don't invent a per-song lead-in without asking.
+5. Confirm numbered fill cues against the recording (practice-notes links when present).
+
+Chrome while crawling (product, already wired in `Show`): keep × exit, compact title,
+‹ n/N ›, Live chip, AutoScrollBar; hide artist eyebrow, view bar + Pin, stage strip, Up next,
+zoom-reset. Practice SheetPanel does not collapse yet.
 
 ## Step 3 — Settled Ryan syntax
 

@@ -486,7 +486,9 @@ export function Show() {
       if (wakeLock.current) { wakeLock.current.release(); wakeLock.current = null }
     }
   }, [])
-  return <div className="show-mode">
+  // Collapse non-essential chrome while autoscroll is armed (playing or lead-in) so the
+  // sheet gets max viewport. Keep × exit, compact title, ‹ n/N ›, Live chip, AutoScrollBar.
+  return <div className={`show-mode${scroll.playing ? ' show-mode--crawling' : ''}`}>
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => goTo(index - 1)} aria-label="Previous song">‹</button>
