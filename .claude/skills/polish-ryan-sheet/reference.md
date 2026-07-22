@@ -1,6 +1,7 @@
 # Ryan sheet syntax (settled during Tribute polish, 2026-07-22)
 
 Parsed only when `parseChordSheet(text, { frets: true })` — Ryan render sites only.
+(`~` ghost chips also parse with `frets: false`, same as band sheets, but prefer them on Ryan.)
 
 ## Fill cues
 
@@ -24,12 +25,36 @@ E-|-------|...
 - Triangle sits at the **top** of the chord slot (`align-items: flex-start`) so it clears the lyric; do not change `--chip-pull` for cues (that moves the text).
 - Numbers are 1–99.
 
+## Ghost / don't-play chips
+
+Prefix `~` (same as cheat-card progressions):
+
+```
+~Am
+
+~G
+
+~D
+
+~F
+
+Am
+
+G
+
+D
+
+F
+```
+
+Renders dashed strikethrough chips ("don't play; keep the beat") then the normal played bar.
+Use for a vocal-only measure that sits on the same vamp as the following solo/comping.
+
 ## Sections & amp
 
 - `[Intro - spoken, follow along]` — follow-along even when not playing
 - `[Amp: 4Amber]` / `[Amp: 5Amber]` — same amp-chip parsing as band sheets
 - Mid-song amp changes stay as section markers
-- Ghost chips: `~Am` (don't play, keep the beat) — dashed strikethrough; same `~` as cheat cards
 
 ## Frets
 
@@ -45,14 +70,18 @@ Bare `0`–`24` on a chord line → bordered fret chip (A-string cues). Band lyr
 
 - Ryan pinch zoom starts at **0.75×** (`useZoom` initialZoom; min **0.6×**); Reset restores 0.75×
 - Autoscroll advances at `scrollSpeed * zoom` (1×-normalized dial)
-- Polished defaults live in `src/data/scrollSpeeds.json` (practice override wins when set;
-  tap the acid px/s readout to clear an override and restore the seed)
-- While autoscroll is playing (incl. lead-in), show mode adds `show-mode--crawling` and
-  collapses artist / view tabs+Pin / stage strip / Up next / zoom-reset (short max-height
-  fade). Home-fret scale chips sit in `.show-sheet-tools` next to AutoScrollBar on sheet
-  views so they stay visible. Dial scrollSpeed with chrome collapsed so the viewport
-  matches gig use.
+- Polished defaults live in `src/data/scrollSpeeds.json` (`speed`, optional `leadInSec`;
+  practice override wins when set; tap the acid px/s readout to clear an override)
+- Dial with chrome collapsed; aim upper-middle on the section being played. Home-fret chips
+  sit beside AutoScrollBar so they survive collapse. Crawl-end pins to true bottom after
+  chrome re-expands.
 
 ## Amp slot retunes
 
 Before retuning a shared slot (e.g. 4Amber), grep sheets + `amp-presets.json` for other users. Tribute-only → safe to retune in `amp-presets/generate_presets.py` and regen `.fuse`. Tell the user to reload the amp.
+
+## Tribute reference (locked 2026-07-22)
+
+- Fills ^1/^2/^3 on long / looked / men; no chord chips before ROCK
+- Ghost `~Am ~G ~D ~F` then played Am G D F before "And the peculiar…"
+- Amp 4Amber (ETHEREAL) → 5Amber; scroll seed `10` + `leadInSec: 11.6`

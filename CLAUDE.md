@@ -146,14 +146,17 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
 - Optional `<songId>.ryan.txt` (added 2026-07-22, harvested from the retired `ryan`
   branch): personal per-song sheet in chord-sheet format (may embed ASCII-tab blocks),
   rendered by `ChordSheetView` only where the hidden **Ryan sheets** flag is on.
-  Currently `07-tribute` (fills + follow-along through ROCK) and `21-the-middle`
-  (A-string palm-mute fret chips). Bare numeric tokens 0–24 on chord lines render as
-  bordered **fret chips** (`isFretToken`); numbered fill cues use `^N` / `[Fill ^N]`
-  (`isCueToken`) — both are **opt-in per sheet** (`parseChordSheet`'s `frets` option,
-  passed only at the ryan render sites): a band lyrics sheet can legitimately sing a
-  bare number (Mary Jane's "18"), which must stay lyric text. Polish song-by-song with
-  `.claude/skills/polish-ryan-sheet/`. Ryan sheets are optional per song; the validator
-  only checks their songId.
+  Currently `07-tribute` (fills + follow-along through ROCK; polished 2026-07-22) and
+  `21-the-middle` (A-string palm-mute fret chips). Bare numeric tokens 0–24 on chord lines
+  render as bordered **fret chips** (`isFretToken`); numbered fill cues use `^N` /
+  `[Fill ^N]` (`isCueToken`); ghost / don't-play chips use a `~` prefix (`~Am`, same as
+  cheat-card progressions) — frets/cues are **opt-in per sheet** (`parseChordSheet`'s
+  `frets` option, passed only at the ryan render sites): a band lyrics sheet can
+  legitimately sing a bare number (Mary Jane's "18"), which must stay lyric text. Polish
+  song-by-song with `.claude/skills/polish-ryan-sheet/`. Per-song autoscroll defaults
+  (after dial-in) live in `src/data/scrollSpeeds.json` (`speed`, optional `leadInSec`);
+  practice `scrollSpeed` overrides when set. Ryan sheets are optional per song; the
+  validator checks their songId and scroll-speed seeds.
 - The user hands over source material (text, exports, screenshots); convert it to
   those text files — **no paste UI, no images in the app** (deliberate: text is
   editable and diff-able). `TabsAndChords/` (gitignored) is the raw-material drop

@@ -1,8 +1,8 @@
 # Ryan sheet polish — progress
 
 Setlist order = `src/data/setlist.json` ids. Check off when the Ryan sheet is stage-ready
-(ear-checks done, scroll dialed, no known placement bugs). Songs without a `.ryan.txt` yet
-stay unchecked until one exists and is polished.
+(ear-checks done, scroll dialed + seeded, no known placement bugs). Songs without a
+`.ryan.txt` yet stay unchecked until one exists and is polished.
 
 ## Status
 
@@ -12,7 +12,7 @@ stay unchecked until one exists and is polished.
 - [ ] 04-i-believe-in-a-thing-called-love
 - [ ] 05-thunderstruck
 - [ ] 06-dont-stop-believin
-- [ ] 07-tribute — **in progress (2026-07-22):** intro + fills ^1/^2/^3, pre-ROCK chords stripped, 4Amber→ETHEREAL, appendix/tab stitch cut; show chrome collapses while crawling; scroll seed **10** in `scrollSpeeds.json` (upper-middle at ROCK). Still open: ear-check fill ^3 on "men"; confirm 10 on device (tap acid readout if an old override is stuck); reload amp slot 4. Research links in `practice-notes-worksheet.md` §07.
+- [x] 07-tribute — **done (2026-07-22):** intro + fills ^1/^2/^3 (long/looked/men), pre-ROCK chords stripped, ghost `~Am ~G ~D ~F` vocal bar before played solo, 4Amber→ETHEREAL, appendix/tab stitch cut, scroll seed **10** + `leadInSec` **11.6**, Ryan zoom 0.75×. Research links in `practice-notes-worksheet.md` §07. Reload amp slot 4 on hardware when convenient.
 - [ ] 08-while-my-guitar-gently-weeps
 - [ ] 09-pride-and-joy
 - [ ] 10-zombie
@@ -40,4 +40,4 @@ stay unchecked until one exists and is polished.
 
 ## Last done
 
-Tribute pass underway (fill cues + amp retune + trim). Next after Tribute closes: **21-the-middle**.
+**07-tribute** (2026-07-22). Next: **21-the-middle**.
