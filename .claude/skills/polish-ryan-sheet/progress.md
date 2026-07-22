@@ -17,7 +17,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 01-welcome-home — **done (2026-07-22):** sit-out intro + ringing Em; bridge syncopated→verse-chug; SOLO/OUTRO one Em-C-D-Em cycle; scroll **6** + `leadInSec` **48**.
 - [x] 02-all-the-small-things — **done (2026-07-22):** power `*5`; ringing early pre / full late pre; instrumental ×2; interlude prepare ghosts + (C C C B)×3; scroll **11** + `leadInSec` **8**.
 - [x] 03-a-little-less-conversation — **done (2026-07-22):** lead vocal / chords while singing / no fills / hard stop on single; scroll **14** + `leadInSec` **10**.
-- [ ] 04-i-believe-in-a-thing-called-love — **drafted (history pass):** optional Solo → 6Green; scroll **12**. Device dial.
+- [ ] 04-i-believe-in-a-thing-called-love — **drafted (2026-07-22):** power `*5` like ATS; optional Solo → 6Green; scroll **14** + leadIn **8.2**. History layers (Verse-in / Bridge−B / Clap ghosts) still pending. Device dial.
 - [ ] 05-thunderstruck — **drafted (2026-07-22):** between-line vs on-vocal; scroll **10** + leadIn **50**. End/guitar pass open.
 - [ ] 06-don-t-stop-believin — **drafted (history pass):** keys-only intro sit-out; guitar in on verse; leadIn **12**. Device dial.
 - [x] 07-tribute — **done (2026-07-22):** fills ^1/^2/^3, ghosts, 4Amber→5Amber, scroll **10** + **11.6**.

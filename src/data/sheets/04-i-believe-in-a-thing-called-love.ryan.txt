@@ -4,233 +4,277 @@ Standard (EADGBE)
 
 [Intro]
 
-F# A B E B A
+F#5
+
+A5
+
+B5
+
+E5
+
+B5
+
+A5
 
 [Verse 1]
 
-F#
+F#5
 Can't expl
-A
+A5
 ain all th
-B
+B5
 e feelings that you're making 
-E
+E5
 me
-B
+B5
  f
-A
+A5
 eel
 
-F#
+F#5
 My heart's in
-A
+A5
  o
-B
+B5
 verdrive and you're behind the steeri
-E
+E5
 ng
-B
+B5
  w
-A
+A5
 heel
 
 [Bridge]
 
-E    
-F#m
+E5    
+F#5
     Touching you
 
-E    
-F#m
+E5    
+F#5
     Touching me
 
-E    
-F#m
+E5    
+F#5
     Touching you,
 
-A
+A5
 God you're to
-A#
+A#5
 uching 
-B
+B5
 me
 
 [Chorus]
 
-E
+E5
 I believe in a t
-A
+A5
 hing called love
 
-F#
+F#5
 Just listen to the r
-B
+B5
 hythm of my heart
 
-E
+E5
 There's a chance we could m
-A
+A5
 ake it now
 
-F#
+F#5
 We'll be rocking 'til the s
-B
+B5
 un goes down
 
-E
+E5
 I believe in a 
-A
+A5
 thing call
-F#
+F#5
 ed 
-B
+B5
 love
 
-C#m
+C#5
 OoOOOO
-D
+D5
 Oh! Huh!
 
 [Solo - optional jump 6Green]
 
-F# A B E B A
+F#5
+
+A5
+
+B5
+
+E5
+
+B5
+
+A5
 
 [Verse 2]
 
-F#
+F#5
 I wanna kiss you every minute, every hour, every day
-E
-B
-A
+E5
+B5
+A5
 
-F#
+F#5
 You got me in a spin but everythin' is A-OK!
-E
-B
-A
+E5
+B5
+A5
 
 [Bridge]
 
-E    
-F#m
+E5    
+F#5
     Touching you
 
-E    
-F#m
+E5    
+F#5
     Touching me
 
-E    
-F#m
+E5    
+F#5
     Touching you,
 
-A
+A5
 God you're to
-A#
+A#5
 uching 
-B
+B5
 me
 
 [Chorus]
 
-E
+E5
 I believe in a t
-A
+A5
 hing called love
 
-F#
+F#5
 Just listen to the r
-B
+B5
 hythm of my heart
 
-E
+E5
 There's a chance we could m
-A
+A5
 ake it now
 
-F#
+F#5
 We'll be rocking 'til the s
-B
+B5
 un goes down
 
-E
+E5
 I believe in a 
-A
+A5
 thing call
-F#
+F#5
 ed 
-B
+B5
 love
 
-C#m
+C#5
 OoOOOO
-D
+D5
 Oh! Guitar!
 
 [Solo - optional jump 6Green]
 
-F# A B E B A
+F#5
+
+A5
+
+B5
+
+E5
+
+B5
+
+A5
 
 [Bridge]
 
-E    
-F#m
+E5    
+F#5
     Touching you
 
-E    
-F#m
+E5    
+F#5
     Touching me
 
-E    
-F#m
+E5    
+F#5
     Touching you,
 
-A
+A5
 God you're to
-A#
+A#5
 uching 
-B
+B5
 me, ahhhhhh!
 
 [Chorus]
 
-E
+E5
 I believe in a t
-A
+A5
 hing called love
 
-F#
+F#5
 Just listen to the r
-B
+B5
 hythm of my heart
 
-E
+E5
 There's a chance we could m
-A
+A5
 ake it now
 
-F#
+F#5
 We'll be rocking 'til the s
-B
+B5
 un goes down
 
-E
+E5
 I believe in a 
-A
+A5
 thing call
-F#
+F#5
 ed 
-B
+B5
 love
 
-C#m
+C#5
 OoOOOO
-D
+D5
 Oh! Huh!
 
 [Solo - optional jump 6Green]
 
-E A F# B
+E5
+
+A5
+
+F#5
+
+B5
 
 [Outro]
 
-E A F# B E
+E5
+
+A5
+
+F#5
+
+B5
+
+E5
