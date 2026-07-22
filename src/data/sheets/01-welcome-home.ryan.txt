@@ -2,7 +2,12 @@ Standard (EADGBE)
 
 [Amp: 5Green]
 
-[Intro - sit out main riff, wait for vocal]
+[Intro - sit out lead riff; ringing Em then muted chug]
+Em
+
+Em
+C
+D
 
 [Verse]
 Em          C
