@@ -1,8 +1,8 @@
 {
   "01-welcome-home": {
-    "speed": 6,
+    "speed": 8,
     "leadInSec": 48,
-    "note": "Estimate 2026-07-22. Studio 6:15; sheet ~0.78× Tribute height. Raw end-align ≈5, clamped to min 6. leadInSec≈48 holds ringing Em through long sit-out riff (~m1–m20 @~77). Dial on device — uneven density (sparse intro, dense outro×5)."
+    "note": "Estimate 2026-07-22 (recalc after UG-spine rebuild). Studio 6:15; ~1.05× Tribute non-empty lines → raw≈7.65 with leadIn 48 → speed 8. leadInSec 48 holds ringing Em through sit-out riff. Dial on device."
   },
   "07-tribute": {
     "speed": 10,
