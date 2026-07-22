@@ -132,7 +132,7 @@ nana na na
 
 ~G5
 
-[Interlude - muted octaves (C C C B) ×2]
+[Interlude - muted octaves (C C C B) ×3]
 e-|----------------|----------------|
 B-|----------------|----------------|
 G-|5---5---5---5---|5---5---5---5---|
