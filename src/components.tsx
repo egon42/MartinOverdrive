@@ -685,7 +685,13 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
     {(active === 'chords' || active === 'tabs' || active === 'ryan') && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
     {active === 'cheat' || active === 'roadmap'
       ? <CheatCard song={song} variant={active === 'cheat' ? 'cheat' : 'chords'} withMore={false}/>
-      : <div className="practice-sheet" ref={sheetRef}>{active === 'ryan' ? <ChordSheetView text={sheets.ryan!} songId={song.id} frets/> : active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/> : <TabText text={sheets.tabs!}/>}</div>}
+      : <div className="practice-sheet" ref={sheetRef}>
+          <div className="autoscroll-inner">
+            {active === 'ryan' ? <ChordSheetView text={sheets.ryan!} songId={song.id} frets/>
+              : active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/>
+              : <TabText text={sheets.tabs!}/>}
+          </div>
+        </div>}
   </section>
 }
 

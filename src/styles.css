@@ -204,6 +204,9 @@ html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-m
 .autoscroll-delay i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:750}
 .show-song.sheet-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .show-sheet{flex:1;min-height:0;overflow:auto}
+/* Direct child of the scrollport — useAutoScroll paints the sub-pixel remainder here via
+   translate3d so the crawl isn't steppy between whole-px scrollTop writes. */
+.autoscroll-inner{will-change:transform}
 .sheet-compact .chord-chip{font-size:.72rem}
 /* Pinch-zoom the lyric sheet: --zoom scales the container font, children ride it in em
    (chord chips already do); the rem sizes below are restated as their original values in

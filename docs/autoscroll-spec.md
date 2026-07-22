@@ -5,7 +5,12 @@ Owner code: `useAutoScroll` in `src/autoscroll.tsx` (moved verbatim from
 autoscroll; `useAutoScrollControls`/`AutoScrollBar` in the same file wrap it for both
 surfaces). Speed persistence: `PracticeEntry.scrollSpeed` (per-song, rides the sync
 merge — one speed shared by show mode and the practice page), bounds in
-`DEFAULT_SCROLL_SPEED / MIN / MAX / STEP` (24 / 6 / 120 / 4 px/s).
+`DEFAULT_SCROLL_SPEED / MIN / MAX / STEP` (24 / 6 / 120 / 4 px/s **at 1× sheet zoom**).
+
+Show-mode pinch zoom (`--zoom` on the sheet, typically 0.75–3×) reflows content via
+font-size, so `scrollHeight` scales with zoom. The crawl advances at `speed * zoom`
+CSS px/s so a dialed-in song length survives pinch in/out. Practice has no pinch zoom
+and passes `zoom = 1`. The UI readout is the stored 1×-normalized value.
 
 This feature failed on-device repeatedly. This document exists so the next change
 starts from the proven root cause instead of re-deriving it.
@@ -73,35 +78,43 @@ hard-refresh first, or it may be exercising a pre-fix bundle.
 
 ## The definitive design (current code)
 
-Invariants — all five must survive any future edit:
+Invariants — all six must survive any future edit:
 
 1. **The crawl's position lives in a float the hook owns (`pos`), never in
-   `scrollTop`.** Each rAF tick: `pos += speed * dt` (`dt` from rAF timestamps, so
+   `scrollTop`.** Each rAF tick: `pos += speed * zoom * dt` (`dt` from rAF timestamps, so
    60 Hz vs 120 Hz is irrelevant; clamped at 0.1 s so a backgrounded tab doesn't jump
-   on resume).
-2. **Only whole pixels are ever written**: `scrollTop = Math.floor(pos)`, and only when
-   that floor advances past the last written value. The fractional remainder stays in
-   `pos`. Quantization of the write can never feed back into the math because nothing
-   is read back into the accumulator.
-3. **Manual scroll coexists by adoption, not fighting.** Each tick compares the live
+   on resume). `zoom` is show-mode's pinch `--zoom` (1 on the practice page).
+2. **Only whole pixels are ever written to `scrollTop`**: `scrollTop = Math.floor(pos)`,
+   and only when that floor advances past the last written value. Quantization of the
+   write can never feed back into the math because nothing is read back into the
+   accumulator.
+3. **Sub-pixel paint on `.autoscroll-inner`**: the fractional remainder
+   `pos - floor(pos)` is applied as `translate3d(0, -frac, 0)` on the scrollport's
+   direct `.autoscroll-inner` child so motion looks continuous between whole-px writes
+   (otherwise 24 px/s is visibly steppy — 1 px every ~2.5 frames at 60 Hz). Clear the
+   transform on adopt, pointer-down hold, pause/cleanup, and bottom stop so native
+   drag/fling stays pixel-aligned.
+4. **Manual scroll coexists by adoption, not fighting.** Each tick compares the live
    `scrollTop` against the last value we wrote (`written`, tolerance ±1 px for
    device-pixel snapping). If they disagree, someone else moved the sheet (finger drag,
-   momentum fling, mouse wheel): adopt that position into `pos`, skip the write, check
-   again next frame. A fling therefore plays out natively (no writes to cancel it) and
-   the crawl resumes from wherever the sheet settles. A finger resting on the sheet
-   (`pointerdown` on the element) pauses accumulation until `pointerup`/`pointercancel`
-   **on window** — a drag that drifts off the element must still un-pause (43f64da).
-4. **Bottom stop**: when `pos` reaches `scrollHeight - clientHeight - 1`, cancel the
+   momentum fling, mouse wheel): adopt that position into `pos`, clear the frac
+   transform, skip the write, check again next frame. A fling therefore plays out
+   natively (no writes to cancel it) and the crawl resumes from wherever the sheet
+   settles. A finger resting on the sheet (`pointerdown` on the element) pauses
+   accumulation until `pointerup`/`pointercancel` **on window** — a drag that drifts
+   off the element must still un-pause (43f64da).
+5. **Bottom stop**: when `pos` reaches `scrollHeight - clientHeight - 1`, cancel the
    loop and fire `onReachEnd` (Show un-latches ▶; pressing ▶ again at the bottom
    rewinds to the top first — that lives in `togglePlay`, not the hook).
-5. **Speed changes adjust the crawl in place** — `speed` is read via a ref each tick
-   and is deliberately NOT an effect dependency. Restarting the effect on a speed
-   change resets the local `holding` flag while a finger may still be resting on the
-   sheet (reachable: a sync pull patches `scrollSpeed` mid-touch), letting the crawl
-   creep under a motionless finger (council finding, 2026-07-11). Do not "fix" that
-   with a holding ref that persists across ALL restarts — a finger lifting while
-   `playing=false` (listeners detached) would strand it true and make the next ▶
-   appear dead.
+6. **Speed and zoom changes adjust the crawl in place** — both are read via refs each
+   tick and are deliberately NOT effect dependencies. Restarting the effect on a
+   speed/zoom change resets the local `holding` flag while a finger may still be
+   resting on the sheet (reachable: a sync pull patches `scrollSpeed` mid-touch, or a
+   pinch mid-crawl), letting the crawl creep under a motionless finger (council
+   finding, 2026-07-11). Do not "fix" that with a holding ref that persists across
+   ALL restarts — a finger lifting while `playing=false` (listeners detached) would
+   strand it true and make the next ▶ appear dead. Zoom changes also re-measure
+   `scrollable` (content height changed) without resetting scroll or pausing.
 
 Additional load-bearing details the council verified: both strict comparisons
 (`|actual - written| > 1` and `target > written`) must stay strict — `>=` on the first
@@ -109,45 +122,56 @@ causes spurious adoption on engines whose getter floors device-pixel-snapped pos
 (worst-case error is exactly 1), and `>=` on the second re-writes the same pixel every
 frame, which re-cancels iOS momentum. The hook also relies on the ▶ control only
 rendering when `scrollHeight > clientHeight + 1` (so `max ≥ 2` whenever it runs); if
-that render guard ever changes, add a `max` guard to the hook.
+that render guard ever changes, add a `max` guard to the hook. The scrollport must keep
+a direct child with class `autoscroll-inner` or the sub-pixel paint is a no-op (still
+correct average speed, but steppy again).
 
-Worked example, 30 px/s at 60 Hz: `pos` gains 0.5/frame → 0.5, 1.0, 1.5, 2.0 … writes
-land on frames where `floor(pos)` advances: 1 px on frames 2, 4, 6 … = 30 px/s exactly.
-At 120 Hz the gain is 0.25/frame and writes land every 4th frame — same 30 px/s.
-10 px/s writes 1 px every 6th frame (60 Hz). 120 px/s writes 2 px every frame. The set
-number is now the real speed at any refresh rate.
+Worked example, 30 px/s at 1× zoom and 60 Hz: `pos` gains 0.5/frame → 0.5, 1.0, 1.5,
+2.0 … `scrollTop` writes land when `floor(pos)` advances; the inner translate carries
+the 0.5 remainder so every frame paints a half-pixel advance. At 0.75× zoom (lyrics/Ryan
+default) the same dialed 30 advances 22.5 CSS px/s — content is ~0.75× as tall, so end
+timing matches. At 2× it advances 60 CSS px/s against ~2× height — same song length.
+Lead-in duration is `96 / speed` seconds and does not include zoom (zoom cancels: more
+content in the lead-in window, faster crawl once it starts).
 
 ## What is verified and what is not
 
-- Verified here: root cause reconstructed from `f7a7414`'s code; the new math walked
-  frame-by-frame at 10/30/120 px/s on 60 Hz and 120 Hz; `npm run build` (strict tsc)
-  passes; council-reviewed (animation math + React lifecycle lenses).
-- **Not verified: real phone behavior.** Nobody in this chain of sessions has watched
-  it scroll on the actual device. Run the script below before calling this fixed.
+- Verified here: root cause reconstructed from `f7a7414`'s code; the float-`pos` math
+  walked frame-by-frame at 10/30/120 px/s on 60 Hz and 120 Hz; `npm run build` (strict
+  tsc) passes; council-reviewed (animation math + React lifecycle lenses).
+- **Not verified: real phone behavior** for the sub-pixel transform + zoom scaling.
+  Run the script below before calling this fixed.
 
 ## 5-minute phone test script
 
 Setup: deploy the branch (or `npm run dev -- --host` and open the LAN URL on the
 phone). **Hard-refresh first** (or kill/reopen the installed PWA twice) so the service
 worker can't serve a stale bundle. Open Show mode → any song with a long chord sheet
-(e.g. one where the Chords view clearly overflows the screen) → Chords view.
+(e.g. one where the Lyrics/Ryan view clearly overflows the screen) → Lyrics or Ryan.
 
 1. **10 px/s (slow creep test).** Tap − until the readout shows ~8–10 px/s. Press ▶.
    Expected: the sheet visibly creeps — slower than comfortable reading speed, but
-   *moving* (≈1 cm every 4–6 s). FAIL if it sits frozen for 10+ seconds.
+   *moving* (≈1 cm every 4–6 s), and the motion looks **smooth** (not 1px stair-steps).
+   FAIL if it sits frozen for 10+ seconds or looks obviously steppy/jerky.
 2. **30 px/s (the old plateau, low end).** Tap + to ~30. Expected: a comfortable slow
-   read speed, clearly ~3× faster than step 1.
+   read speed, clearly ~3× faster than step 1, still smooth.
 3. **120 px/s (the old plateau, top end).** Tap + to 120. Expected: obviously fast —
    **4× the speed of step 2** (a screenful in a few seconds), not the same speed as 30.
    This is the step that catches the one-speed bug.
-4. **Manual scroll coexistence.** At ~30 px/s while playing: swipe the sheet up and
+4. **Zoom hold (set-and-forget).** At ~30 px/s while playing: note roughly where you are
+   in the song timing, pinch-zoom in to ~1.5–2×, then back toward 0.75×. Expected: the
+   crawl does not freeze; end-of-sheet timing still roughly tracks the same song length
+   (faster CSS px/s when zoomed in, slower when zoomed out). FAIL if pinch makes the
+   sheet race or crawl to a halt relative to the track.
+5. **Manual scroll coexistence.** At ~30 px/s while playing: swipe the sheet up and
    flick (momentum). Expected: the fling runs naturally, isn't jerked back, and the
    crawl resumes from where the sheet settled. Hold a finger on the sheet: crawl
    pauses; lift: resumes without a jump.
-5. **End + song change.** Let it reach the bottom: ▶ un-latches. Tap ▶ again: it
+6. **End + song change.** Let it reach the bottom: ▶ un-latches. Tap ▶ again: it
    rewinds to the top and restarts. Change songs mid-crawl (› button): new song starts
    at the top, paused.
 
 If step 1 fails or steps 2/3 look the same speed, the bug is *not* fixed — capture the
 phone model + browser and whether the URL was the /dev/ deployment, and check for a
-stale bundle before touching the math.
+stale bundle before touching the math. If step 4 races/stalls, the zoom multiplier is
+wrong or `--zoom` isn't reaching the hook.

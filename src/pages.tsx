@@ -372,7 +372,10 @@ export function Show() {
   // Autoscroll: only the lyrics/tabs sheets scroll (the progression cards auto-fit one
   // screen). State machine + speed persistence shared with the practice page: autoscroll.tsx.
   const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'lyrics' ? lyricsRef : effective === 'ryan' ? ryanRef : null
-  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs, sheets.ryan])
+  // Pass show-mode pinch --zoom so the crawl scales with content height (set-and-forget
+  // speed survives zoom). Tabs aren't pinch-zoomable (fit-to-width); still pass zoom for
+  // consistency when the user was mid-gesture on another view.
+  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs, sheets.ryan], zoom)
   useEffect(() => { localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   // Live show sync: report every displayed song (only a leading device broadcasts it),
   // and snap to the leader's song when following. `live.leader` changes identity only
@@ -518,11 +521,11 @@ export function Show() {
     <ShowStageStrip song={song} />
     {!cardView && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
     {effective === 'ryan'
-      ? <div className="show-sheet" ref={ryanRef}><ChordSheetView text={sheets.ryan!} songId={song.id} frets/></div>
+      ? <div className="show-sheet" ref={ryanRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.ryan!} songId={song.id} frets/></div></div>
       : effective === 'lyrics'
-        ? <div className="show-sheet" ref={lyricsRef}><ChordSheetView text={sheets.chords!} songId={song.id}/></div>
+        ? <div className="show-sheet" ref={lyricsRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.chords!} songId={song.id}/></div></div>
         : effective === 'tabs'
-          ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
+          ? <div className="show-sheet show-tabs" ref={tabsRef}><div className="autoscroll-inner"><TabText text={sheets.tabs!}/></div></div>
           : <CheatCard song={song} innerRef={cheatRef} variant={effective === 'cheat' ? 'cheat' : 'chords'} zoomFrozen={zoom !== 1}/>}</article>
     </ShowSongBoundary>
     {effective !== 'tabs' && zoom !== 1 && <button type="button" className="show-zoom-reset" onClick={() => setZoom(1)} aria-label="Reset zoom to fit">{zoom.toFixed(1)}× · Reset</button>}
