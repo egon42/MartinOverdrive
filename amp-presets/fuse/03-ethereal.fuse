@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Preset amplifier="Mustang I/II" ProductId="1">
+ <Amplifier>
+  <Module ID="117" POS="0" BypassState="1">
+   <Param ControlIndex="0">52428</Param>
+   <Param ControlIndex="1">18247</Param>
+   <Param ControlIndex="2">0</Param>
+   <Param ControlIndex="3">52428</Param>
+   <Param ControlIndex="4">35980</Param>
+   <Param ControlIndex="5">32896</Param>
+   <Param ControlIndex="6">35980</Param>
+   <Param ControlIndex="7">32896</Param>
+   <Param ControlIndex="8">32896</Param>
+   <Param ControlIndex="9">32896</Param>
+   <Param ControlIndex="10">32896</Param>
+   <Param ControlIndex="11">32896</Param>
+   <Param ControlIndex="12">5</Param>
+   <Param ControlIndex="13">5</Param>
+   <Param ControlIndex="14">5</Param>
+   <Param ControlIndex="15">0</Param>
+   <Param ControlIndex="16">0</Param>
+   <Param ControlIndex="17">9</Param>
+   <Param ControlIndex="18">5</Param>
+   <Param ControlIndex="19">1</Param>
+   <Param ControlIndex="20">0</Param>
+   <Param ControlIndex="21">1</Param>
+   <Param ControlIndex="22">29298</Param>
+  </Module>
+ </Amplifier>
+ <FX>
+  <Stompbox ID="1">
+   <Module ID="0" POS="0" BypassState="1"></Module>
+  </Stompbox>
+  <Modulation ID="2">
+   <Module ID="0" POS="0" BypassState="1"></Module>
+  </Modulation>
+  <Delay ID="3">
+   <Module ID="22" POS="4" BypassState="1">
+    <Param ControlIndex="0">29555</Param>
+    <Param ControlIndex="1">32896</Param>
+    <Param ControlIndex="2">26214</Param>
+    <Param ControlIndex="3">32896</Param>
+    <Param ControlIndex="4">32896</Param>
+   </Module>
+  </Delay>
+  <Reverb ID="4">
+   <Module ID="58" POS="5" BypassState="1">
+    <Param ControlIndex="0">32896</Param>
+    <Param ControlIndex="1">39321</Param>
+    <Param ControlIndex="2">26214</Param>
+    <Param ControlIndex="3">39321</Param>
+    <Param ControlIndex="4">32896</Param>
+   </Module>
+  </Reverb>
+ </FX>
+ <FUSE>
+  <Info name="04 ETHEREAL" author="MartinOverdrive" rating="0" genre1="-1" genre2="-1" genre3="-1" tags="" fenderid="0"></Info>
+ </FUSE>
+ <UsbGain>0</UsbGain>
+</Preset>

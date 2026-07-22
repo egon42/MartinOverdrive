@@ -57,7 +57,7 @@ control and is not stored.
 | 1 | BIG CLEAN | '65 Twin Reverb | 2×12 Twin | 3 | 7 | 6 | 5.5 | 6 | Presence 5.5, Large Hall reverb (lvl 4, decay 5) |
 | 2 | CHORUS CLEAN | '65 Twin Reverb | 2×12 Twin | 2.8 | 7 | 5.5 | 5 | 5.5 | Sine Chorus (lvl 5, rate 3, depth 5) + Small Hall (3.5) |
 | 3 | FUNK DRY CLEAN | '65 Deluxe Reverb | 1×12 Deluxe | 3.5 | 7 | 6.5 | 4.5 | 4.5 | Bright ON, '65 Spring reverb (3) |
-| 4 | ACOUSTIC SIM | Studio Preamp | (cab off) | 4 | 6.5 | 6.5 | 5 | 5.5 | Compressor (lvl 5) + Small Hall (3.5) |
+| 4 | ETHEREAL | '65 Twin Reverb | 2×12 Twin | 2.8 | 8 | 5.5 | 5 | 5.5 | Mono Delay (4.5/5/4) + Large Hall (5, decay 6) — Tribute intro fills (Red8 wetness, clean) |
 | 5 | EDGE BREAKUP | '57 Deluxe (tweed) | 1×12 Tweed | 5 | 7 | 5.5 | 6 | 5 | '65 Spring reverb (2.5) |
 | 6 | COUNTRY SNAP | '59 Bassman | 4×10 Bassman | 4 | 7 | 6.5 | 5.5 | 4.5 | Bright ON, Compressor (5) + '65 Spring (2) |
 | 7 | TEXAS BLUES | '59 Bassman | 4×10 Bassman | 6.5 | 7.5 | 6 | 6.5 | 5.5 | '63 Spring reverb (3.5) |
@@ -101,7 +101,7 @@ control and is not stored.
 | 4 | I Believe in a Thing Called Love | **16** | Solo: jump 14 if you take it |
 | 5 | Thunderstruck | **9** | |
 | 6 | Don't Stop Believin' | **1** | |
-| 7 | Tribute | **4 → 5** | One click up for the rock payoff |
+| 7 | Tribute | **4 → 5** | Ethereal fills on 4, one click up for ROCK |
 | 8 | While My Guitar Gently Weeps | **23 ↔ 24** | Rhythm on 23, fills/solo on 24 |
 | 9 | Pride and Joy | **7** | |
 | 10 | Zombie | **17 ↔ 18** | Verse 17, chorus 18 |
@@ -121,7 +121,7 @@ control and is not stored.
 | 24 | Mary Jane's Last Dance | **5** | |
 | 25 | Valerie | **3** | |
 | 26 | Voodoo Child (Slight Return) | **15** | Touch wah responds to pick attack |
-| 27 | Fat Bottomed Girls | **10** | Intro: guitar volume down (or 4 then jump) |
+| 27 | Fat Bottomed Girls | **10** | Intro: guitar volume down |
 | 28 | Mama, I'm Coming Home | **23 ↔ 24** | Verses 23, chorus/solo 24 |
 | 29 | Ain't Goin' Down ('Til the Sun Comes Up) | **6** | Don't fall behind |
 | 30 | Pink Pony Club | **19 ↔ 20** | Verse 19, chorus 20 |

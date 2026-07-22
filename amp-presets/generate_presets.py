@@ -224,12 +224,14 @@ TONES = {
                   "bass": 4.5},
         "fx": [{"type": "65_SPRING", "knobs": [3, 4, 4, 5, 5.5]}],
     },
-    "ACOUSTIC_SIM": {
-        "amp": "STUDIO_PREAMP", "cabinet": "OFF",
-        "knobs": {"volume": 8.5, "gain": 4, "treble": 6.5, "middle": 5,
-                  "bass": 5.5},
-        "fx": [{"type": "COMPRESSOR", "knobs": [5, 5, 4, 5, 5]},
-               {"type": "SMALL_HALL", "knobs": [3.5, 5, 4, 6, 6]}],
+    # Tribute intro fills — clean/wet, Red8 (LEAD BOOST) delay+hall character without
+    # the high-gain British stack. Replaces the old ACOUSTIC SIM; nothing else cues 4Amber.
+    "ETHEREAL": {
+        "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
+        "knobs": {"volume": 8, "gain": 2.8, "treble": 5.5, "middle": 5,
+                  "bass": 5.5, "presence": 5},
+        "fx": [{"type": "MONO_DELAY", "knobs": [4.5, 5, 4, 5, 5]},
+               {"type": "LARGE_HALL", "knobs": [5, 6, 4, 6, 5]}],
     },
     "EDGE_BREAKUP": {
         "amp": "57_DELUXE", "cabinet": "57DLX",
@@ -335,7 +337,7 @@ PRESETS = [
     tone("BIG_CLEAN",       "01 BIG CLEAN",       "big-clean"),        # slot 0
     tone("CHORUS_CLEAN",    "02 CHORUS CLEAN",    "chorus-clean"),     # slot 1
     tone("FUNK_DRY_CLEAN",  "03 FUNK DRY CLEAN",  "funk-dry-clean"),   # slot 2
-    tone("ACOUSTIC_SIM",    "04 ACOUSTIC SIM",    "acoustic-sim"),     # slot 3
+    tone("ETHEREAL",        "04 ETHEREAL",        "ethereal"),         # slot 3 — Tribute fills
     tone("EDGE_BREAKUP",    "05 EDGE BREAKUP",    "edge-breakup"),     # slot 4
     tone("COUNTRY_SNAP",    "06 COUNTRY SNAP",    "country-snap"),     # slot 5
     tone("TEXAS_BLUES",     "07 TEXAS BLUES",     "texas-blues"),      # slot 6

@@ -123,7 +123,7 @@ bake into the preset files permanently.
 | 1 | BIG CLEAN | 3 | 7 | Clean — hold high / +0.5 | ___ |
 | 2 | CHORUS CLEAN | 2.8 | 7 | Clean — hold high | ___ |
 | 3 | FUNK DRY CLEAN | 3.5 | 7 | Clean — hold high | ___ |
-| 4 | ACOUSTIC SIM | 4 | 6.5 | Compressed — small down/flat | ___ |
+| 4 | ETHEREAL | 2.8 | 8 | Twin + delay/hall — check vs Red8 wetness | ___ |
 | 5 | EDGE BREAKUP | 5 | 7 | Mild breakup — slight down | ___ |
 | 6 | COUNTRY SNAP | 4 | 7 | Comp'd clean — flat | ___ |
 | 7 | TEXAS BLUES | 6.5 | 7.5 | Mid-gain, already loud — **down** | ___ |
