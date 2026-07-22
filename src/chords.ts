@@ -11,19 +11,25 @@ export interface ParsedSheet { meta: string[]; lines: SheetLine[] }
 // Known ambiguity, accepted: a lyric line that is entirely one chord-shaped word
 // ("A", "Am", "Em") classifies as a chord — inherent to this format, rare in practice.
 const CHORD_RE = /^[A-G][#b]?(?:maj|min|dim|aug|sus|add|m|M|\+|°)?\d*(?:(?:maj|min|sus|add|b|#)\d+)*(?:\/[A-G][#b]?)?$/
-const TAB_RE = /\|-{2,}|-{2,}\||^\s*[eEBGDAd]\s*\|-/
+// String-label form (`E |…`, `E-|…`, `B-|5-…`) or dash-run form (`|--2--|`, `2---|`).
+const TAB_RE = /\|-{2,}|-{2,}\||^\s*[eEBGDAd]\s*-?\|/
 // Metadata must have its telltale shape ("Standard (…)", "Drop D", "Capo 3", "Key: G"),
 // otherwise a lyric that merely opens with one of these words would be eaten as meta.
 const META_RE = /^(?:standard\s*\(|drop\s+[a-g]\b|tuning\s*[:\-]|capo\s*[:\-]?\s*\d|key\s*[:\-]\s*[a-g]\b)/i
 
 export const isChordToken = (token: string) => CHORD_RE.test(token)
+// Bare fret numbers (0–24) for single-string cues — rendered as fret chips, not chord
+// diagrams (see ChordChip). Opt-in per sheet (the ryan sheets): a band lyrics sheet can
+// legitimately sing a bare number ("18" in Mary Jane), which must stay lyric text.
+const FRET_RE = /^(?:[0-9]|1[0-9]|2[0-4])$/
+export const isFretToken = (token: string) => FRET_RE.test(token)
 
-function isChordLine(trimmed: string) {
+function isChordLine(trimmed: string, frets: boolean) {
   const tokens = trimmed.split(/\s+/)
-  return tokens.length > 0 && tokens.every(isChordToken)
+  return tokens.length > 0 && tokens.every((token) => isChordToken(token) || (frets && isFretToken(token)))
 }
 
-export function parseChordSheet(text: string): ParsedSheet {
+export function parseChordSheet(text: string, { frets = false }: { frets?: boolean } = {}): ParsedSheet {
   const meta: string[] = []
   const lines: SheetLine[] = []
   let current: SheetPart[] = []
@@ -42,7 +48,7 @@ export function parseChordSheet(text: string): ParsedSheet {
     if (TAB_RE.test(rawLine)) { flush(); lines.push({ kind: 'tab', parts: [], raw: rawLine.replace(/\s+$/, '') }); sawChord = true; continue }
     if (/^\[.+\]$/.test(trimmed)) { flush(); lines.push({ kind: 'section', parts: [], raw: trimmed.slice(1, -1) }); continue }
     if (!sawChord && current.length === 0 && META_RE.test(trimmed)) { meta.push(trimmed); continue }
-    if (isChordLine(trimmed)) {
+    if (isChordLine(trimmed, frets)) {
       sawChord = true
       for (const token of trimmed.split(/\s+/)) current.push({ chord: token })
       continue
@@ -59,7 +65,9 @@ export function parseChordSheet(text: string): ParsedSheet {
   // Instrumental runs often arrive as one chord per blank-separated "line"
   // (Songsterr imports, UG pastes). Merge consecutive chord-only lyric lines so
   // chips sit on one row instead of wasting a full row per chord.
-  return { meta, lines: mergeChordOnlyRuns(lines) }
+  // Consecutive ASCII-tab string rows become one block so a 6-string fill stays
+  // tight in the Lyrics view (each row alone would get .sheet-tab's per-line margin).
+  return { meta, lines: mergeTabRuns(mergeChordOnlyRuns(lines)) }
 }
 
 function isChordOnlyLine(line: SheetLine) {
@@ -72,6 +80,19 @@ function mergeChordOnlyRuns(lines: SheetLine[]): SheetLine[] {
     const prev = out[out.length - 1]
     if (isChordOnlyLine(line) && prev && isChordOnlyLine(prev)) {
       prev.parts.push(...line.parts)
+      continue
+    }
+    out.push(line)
+  }
+  return out
+}
+
+function mergeTabRuns(lines: SheetLine[]): SheetLine[] {
+  const out: SheetLine[] = []
+  for (const line of lines) {
+    const prev = out[out.length - 1]
+    if (line.kind === 'tab' && prev?.kind === 'tab') {
+      prev.raw += `\n${line.raw}`
       continue
     }
     out.push(line)

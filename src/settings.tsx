@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { chordShape, type ChordShape } from './chordShapes'
 import {
   applyTheme,
@@ -53,6 +53,10 @@ export interface AppSettings {
   lyricChipPull: number
   /** Bank chips in song headers + mid-song Amp/Stomp cues on Lyrics/Tabs. Off by default. */
   showAmpChips: boolean
+  /** Hidden Developer toggle: shows the Card version dropdown on the Chords card. */
+  devMode: boolean
+  /** Hidden Developer toggle: shows the personal Ryan tab (show mode + song pages). */
+  ryanTab: boolean
 }
 
 /** Per-song, per-surface: when true, chord chips are replaced by vertical fingering chips. */
@@ -118,6 +122,8 @@ function readSettings(): AppSettings {
         : DEFAULT_LYRIC_CHORD_PLACEMENT,
       lyricChipPull: readChipPull(raw.lyricChipPull),
       showAmpChips: raw.showAmpChips === true,
+      devMode: raw.devMode === true,
+      ryanTab: raw.ryanTab === true,
     }
   } catch {
     return {
@@ -127,6 +133,8 @@ function readSettings(): AppSettings {
       lyricChordPlacement: DEFAULT_LYRIC_CHORD_PLACEMENT,
       lyricChipPull: DEFAULT_LYRIC_CHIP_PULL,
       showAmpChips: DEFAULT_SHOW_AMP_CHIPS,
+      devMode: false,
+      ryanTab: false,
     }
   }
 }
@@ -146,6 +154,8 @@ interface SettingsStore {
   setLyricChordPlacement: (placement: LyricChordPlacement) => void
   setLyricChipPull: (em: number) => void
   setShowAmpChips: (on: boolean) => void
+  setDevMode: (on: boolean) => void
+  setRyanTab: (on: boolean) => void
   setThemePreset: (preset: ThemePresetId) => void
   patchThemeColor: (key: ThemeColorKey, value: string) => void
   setRowStripe: (on: boolean) => void
@@ -181,6 +191,10 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setSettings((old) => ({ ...old, lyricChipPull: Math.min(CHIP_PULL_MAX, Math.max(CHIP_PULL_MIN, em)) }))
   const setShowAmpChips = (on: boolean) =>
     setSettings((old) => ({ ...old, showAmpChips: on }))
+  const setDevMode = (on: boolean) =>
+    setSettings((old) => ({ ...old, devMode: on }))
+  const setRyanTab = (on: boolean) =>
+    setSettings((old) => ({ ...old, ryanTab: on }))
   const setThemePreset = (preset: ThemePresetId) =>
     setSettings((old) => ({
       ...old,
@@ -209,7 +223,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return next
   })
   const value = useMemo(
-    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
+    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setDevMode, setRyanTab, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
     [settings, fingeringOnly],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
@@ -421,14 +435,28 @@ function ThemeFields() {
 }
 
 export function SettingsPage() {
-  const { settings, setShowAmpChips } = useSettings()
+  const { settings, setShowAmpChips, setDevMode, setRyanTab } = useSettings()
   const presetLabel = settings.theme.preset === 'custom'
     ? 'Custom'
     : THEME_PRESETS[settings.theme.preset].label
+  // Android-style hidden unlock: 7 quick taps on the heading reveal the Developer
+  // section (1.5s of no taps resets the count — but not once revealed, or the section
+  // would vanish 1.5s after the unlocking tap). Once either flag is on, the section
+  // stays visible without the gesture so it can be turned back off.
+  const [revealTaps, setRevealTaps] = useState(0)
+  const tapTimer = useRef<number | undefined>(undefined)
+  const tapHeading = () => {
+    window.clearTimeout(tapTimer.current)
+    const next = revealTaps + 1
+    if (next < 7) tapTimer.current = window.setTimeout(() => setRevealTaps(0), 1500)
+    setRevealTaps(next)
+  }
+  useEffect(() => () => window.clearTimeout(tapTimer.current), [])
+  const revealed = settings.devMode || settings.ryanTab || revealTaps >= 7
   return <>
     <header className="page-title compact">
       <span className="eyebrow">On this device only</span>
-      <h1>Settings</h1>
+      <h1 onClick={tapHeading}>Settings</h1>
     </header>
     <section className="panel settings-panel">
       <span className="eyebrow">Chord chips</span>
@@ -451,6 +479,32 @@ export function SettingsPage() {
         </span>
       </label>
     </section>
+    {revealed && <section className="panel settings-panel">
+      <span className="eyebrow">Hidden</span>
+      <h2>Developer</h2>
+      <label className="theme-stripe-toggle">
+        <input
+          type="checkbox"
+          checked={settings.devMode}
+          onChange={(e) => setDevMode(e.target.checked)}
+        />
+        <span className="theme-stripe-meta">
+          <strong>Dev mode</strong>
+          <small>Shows the Card version dropdown on the Chords card.</small>
+        </span>
+      </label>
+      <label className="theme-stripe-toggle">
+        <input
+          type="checkbox"
+          checked={settings.ryanTab}
+          onChange={(e) => setRyanTab(e.target.checked)}
+        />
+        <span className="theme-stripe-meta">
+          <strong>Ryan sheets</strong>
+          <small>Shows the Ryan tab in show mode and on song pages, for songs that have one.</small>
+        </span>
+      </label>
+    </section>}
     <details className="settings-colors-disclosure">
       <summary>
         <span className="eyebrow">Look</span>

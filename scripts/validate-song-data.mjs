@@ -148,8 +148,8 @@ for (const song of songs) {
 }
 
 for (const entry of sheetEntries) {
-  const match = entry.match(/^(.+)\.(chords|tabs)\.txt$/)
-  if (!match) { fail('Orphan sheet files', `Unexpected file (not <songId>.chords/tabs.txt): ${entry}`); continue }
+  const match = entry.match(/^(.+)\.(chords|tabs|ryan)\.txt$/)
+  if (!match) { fail('Orphan sheet files', `Unexpected file (not <songId>.chords/tabs/ryan.txt): ${entry}`); continue }
   if (!songIds.has(match[1])) fail('Orphan sheet files', `Sheet has no setlist entry: ${entry} (song id "${match[1]}")`)
 }
 

@@ -320,6 +320,8 @@ export function Show() {
   // cards (Cheat and Chords tabs share one toggle per song); 'chords' governs the Lyrics sheet.
   const cardShapes = isFingeringOnly(song.id, 'cheat')
   const lyricsShapes = isFingeringOnly(song.id, 'chords')
+  // Personal Ryan sheet: needs both the file and the hidden device-local flag.
+  const ryanOn = !!sheets.ryan && settings.ryanTab
   const [pins, setPins] = useState<Record<string, string>>(readPins)
   useEffect(() => { localStorage.setItem(SHOW_PINS_KEY, JSON.stringify(pins)) }, [pins])
   // Open each song on its pinned default view when present; otherwise fall back to the
@@ -327,7 +329,7 @@ export function Show() {
   const [view, setView] = useState(() => pins[song.id] || readShowView() || 'chords')
   useEffect(() => { localStorage.setItem(SHOW_VIEW_KEY, view) }, [view])
   // Sheets need their file to exist; unknown/legacy ids land on the roadmap card.
-  const effective = view === 'lyrics' && sheets.chords ? 'lyrics' : view === 'tabs' && sheets.tabs ? 'tabs' : view === 'cheat' ? 'cheat' : 'chords'
+  const effective = view === 'ryan' && ryanOn ? 'ryan' : view === 'lyrics' && sheets.chords ? 'lyrics' : view === 'tabs' && sheets.tabs ? 'tabs' : view === 'cheat' ? 'cheat' : 'chords'
   const cardView = effective === 'cheat' || effective === 'chords'
   // On song change, snap to that song's pinned view (a manual mid-song switch is transient
   // — the pin is the default we return to). Done in render, not an effect: an effect paints
@@ -345,7 +347,7 @@ export function Show() {
     if (next[song.id] === effective) delete next[song.id]; else next[song.id] = effective
     return next
   })
-  const views = ['cheat', 'chords', ...(sheets.chords ? ['lyrics'] : []), ...(sheets.tabs ? ['tabs'] : [])]
+  const views = [...(ryanOn ? ['ryan'] : []), 'cheat', 'chords', ...(sheets.chords ? ['lyrics'] : []), ...(sheets.tabs ? ['tabs'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
   // Tapping the already-active card tab re-taps into fingering chips (both cards share
   // the 'cheat' surface); same retap on the Lyrics tab flips its own 'chords' surface.
@@ -361,15 +363,16 @@ export function Show() {
   }
   // Pinch-zoom the three text sheets (not the fit-to-width Tabs). Cards can't shrink below
   // their fitted 1× baseline (min 1); the lyric sheet can shrink a little to show more.
-  const { zoom, setZoom, elRef: zoomElRef } = useZoom(`${song.id}:${effective}`, effective === 'lyrics' ? 0.75 : 1, effective !== 'tabs')
+  const { zoom, setZoom, elRef: zoomElRef } = useZoom(`${song.id}:${effective}`, effective === 'lyrics' || effective === 'ryan' ? 0.75 : 1, effective !== 'tabs')
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
   const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1)
   const lyricsRef = useRef<HTMLDivElement>(null)
+  const ryanRef = useRef<HTMLDivElement>(null)
   const [picker, setPicker] = useState(false) // jump-to-song overlay (audible calls)
   // Autoscroll: only the lyrics/tabs sheets scroll (the progression cards auto-fit one
   // screen). State machine + speed persistence shared with the practice page: autoscroll.tsx.
-  const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'lyrics' ? lyricsRef : null
-  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs])
+  const scrollTarget = effective === 'tabs' ? tabsRef : effective === 'lyrics' ? lyricsRef : effective === 'ryan' ? ryanRef : null
+  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs, sheets.ryan])
   useEffect(() => { localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   // Live show sync: report every displayed song (only a leading device broadcasts it),
   // and snap to the leader's song when following. `live.leader` changes identity only
@@ -409,7 +412,7 @@ export function Show() {
     window.addEventListener('keydown', key)
     return () => window.removeEventListener('keydown', key)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effective, sheets.chords, sheets.tabs, scroll.scrollable, setSongs, picker, liveOpen, index, urlSongId])
+  }, [effective, sheets.chords, sheets.tabs, ryanOn, scroll.scrollable, setSongs, picker, liveOpen, index, urlSongId])
   // Swipe navigation, card views only (they never scroll horizontally, so a horizontal
   // drag is unambiguous there; sheet views keep swipes for scrolling). Mostly-horizontal
   // moves past the threshold turn the song; pointercancel means the browser claimed the
@@ -495,6 +498,7 @@ export function Show() {
     <article ref={zoomElRef as RefObject<HTMLElement>} style={{ ['--zoom' as string]: zoom } as React.CSSProperties} className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}${effective !== 'tabs' ? ' show-zoomable' : ''}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
+        {ryanOn && <button type="button" role="tab" aria-selected={effective === 'ryan'} className={effective === 'ryan' ? 'active' : ''} onClick={() => setView('ryan')}>Ryan</button>}
         <button type="button" role="tab" aria-selected={effective === 'cheat'} aria-pressed={effective === 'cheat' ? cardShapes : undefined}
           className={shapesTabClass(effective === 'cheat', cardShapes, settings.cheat.scope !== 'none')}
           title={effective === 'cheat' && settings.cheat.scope !== 'none' ? (cardShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
@@ -513,11 +517,13 @@ export function Show() {
     </div>
     <ShowStageStrip song={song} />
     {!cardView && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
-    {effective === 'lyrics'
-      ? <div className="show-sheet" ref={lyricsRef}><ChordSheetView text={sheets.chords!} songId={song.id}/></div>
-      : effective === 'tabs'
-        ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
-        : <CheatCard song={song} innerRef={cheatRef} variant={effective === 'cheat' ? 'cheat' : 'chords'} zoomFrozen={zoom !== 1}/>}</article>
+    {effective === 'ryan'
+      ? <div className="show-sheet" ref={ryanRef}><ChordSheetView text={sheets.ryan!} songId={song.id} frets/></div>
+      : effective === 'lyrics'
+        ? <div className="show-sheet" ref={lyricsRef}><ChordSheetView text={sheets.chords!} songId={song.id}/></div>
+        : effective === 'tabs'
+          ? <div className="show-sheet show-tabs" ref={tabsRef}><TabText text={sheets.tabs!}/></div>
+          : <CheatCard song={song} innerRef={cheatRef} variant={effective === 'cheat' ? 'cheat' : 'chords'} zoomFrozen={zoom !== 1}/>}</article>
     </ShowSongBoundary>
     {effective !== 'tabs' && zoom !== 1 && <button type="button" className="show-zoom-reset" onClick={() => setZoom(1)} aria-label="Reset zoom to fit">{zoom.toFixed(1)}× · Reset</button>}
     {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className="show-upnext" onClick={() => goTo(index + 1)} aria-label={`Next song: ${next.title}`}>

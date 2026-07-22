@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
-import { chordProgression, compactSheet, parseChordSheet, type SheetPart } from './chords'
+import { chordProgression, compactSheet, isFretToken, parseChordSheet, type SheetPart } from './chords'
 import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
@@ -104,6 +104,12 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     const arrow = Math.max(-limit, Math.min(limit, center - (left + pop.width / 2)))
     setBox({ left, top, below, arrow })
   }, [open])
+  // Numeric tokens are A-string fret cues (The Middle verse, etc.) — chip shows the fret,
+  // no diagram popover. The return sits below every hook call so a token that flips
+  // between fret and chord at the same tree position can't change the hook order.
+  if (isFretToken(name)) {
+    return <b className="chord-chip chord-chip--fret" aria-label={`A string fret ${name}`} title={`A string fret ${name}`}>{name}</b>
+  }
   // First render (box null) lays the popover out hidden so it can be measured; the effect
   // then pins it to the computed spot.
   const style: CSSProperties = box
@@ -387,8 +393,8 @@ function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string
   </div>
 }
 
-export function ChordSheetView({ text, songId, compact = false }: { text: string, songId?: string, compact?: boolean }) {
-  const sheet = useMemo(() => parseChordSheet(text), [text])
+export function ChordSheetView({ text, songId, compact = false, frets = false }: { text: string, songId?: string, compact?: boolean, frets?: boolean }) {
+  const sheet = useMemo(() => parseChordSheet(text, { frets }), [text, frets])
   const { settings } = useSettings()
   const above = settings.lyricChordPlacement === 'above'
   const showAmp = settings.showAmpChips
@@ -448,13 +454,13 @@ export function TabText({ text }: { text: string }) {
   return <pre className="tab-text">{nodes}</pre>
 }
 
-// Cheat-card version picker (dev deploys + local dev server only): songId -> archived
+// Cheat-card version picker (hidden Dev mode flag + local dev server): songId -> archived
 // version label, '' / absent = the live "Current" entry. Per-device review preference,
-// NOT synced practice data. Prod never renders the picker, so prod always plays the
-// current card even if this key somehow exists there. Key suffix mirrors the practice
-// store's /dev/ split (same expression as pages.tsx's SHOW_KEY_SUFFIX; importing it
-// from there would be a components→pages cycle).
-const CHEAT_VERSIONS_UI = import.meta.env.DEV || import.meta.env.BASE_URL.includes('/dev/')
+// NOT synced practice data. The picker renders only where the device-local devMode
+// setting is on (or under the local dev server), so a device that never flips it always
+// plays the current card even if this key somehow exists there. Key suffix mirrors the
+// practice store's /dev/ split (same expression as pages.tsx's SHOW_KEY_SUFFIX; importing
+// it from there would be a components→pages cycle).
 const CHEAT_VERSION_KEY = `overdrive-cheat-version${import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''}`
 const readCheatVersionChoices = (): Record<string, string> => {
   try { const p = JSON.parse(localStorage.getItem(CHEAT_VERSION_KEY) || '{}'); return p && typeof p === 'object' ? p : {} } catch { return {} }
@@ -480,11 +486,13 @@ function renderProgLabel(label: string) {
 export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMore = true }: { song: Song, innerRef?: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean, withMore?: boolean }) {
   const sheets = sheetsFor(song.id)
   const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
-  // Dev-only version picker (roadmap card only): choose an archived cheat-card version to
+  const { settings } = useSettings()
+  // Dev-mode version picker (roadmap card only): choose an archived cheat-card version to
   // render instead of the live entry, so old and new forms can be A/B'd against the
   // recording. The Cheat card always shows the CURRENT sections — the refined data is
   // the source of truth, not the pre-research basic forms.
-  const versions = variant === 'chords' && CHEAT_VERSIONS_UI ? progressionVersionsFor(song.id) : []
+  const versionsUi = import.meta.env.DEV || settings.devMode
+  const versions = variant === 'chords' && versionsUi ? progressionVersionsFor(song.id) : []
   const [versionChoices, setVersionChoices] = useState(readCheatVersionChoices)
   const pickVersion = (label: string) => {
     const next = { ...versionChoices }
@@ -612,10 +620,12 @@ function MoreFills({ tab, onToggle }: { tab: string, onToggle: () => void }) {
 // Practice-page sheet ids. 'cheat' and 'roadmap' are the two progression cards (labels
 // Cheat / Chords, matching show mode — 'roadmap' because the id 'chords' already means
 // the lyric sheet here, part of the 2026-07 label/internals split; see CLAUDE.md).
-export type SheetKind = 'cheat' | 'roadmap' | 'chords' | 'tabs'
+// 'ryan' is the flag-gated personal sheet (only for songs with a .ryan.txt file).
+export type SheetKind = 'cheat' | 'roadmap' | 'chords' | 'tabs' | 'ryan'
 
-// Sheet panel on the song (practice) page — the same four views as show mode: Cheat
-// (building-blocks card), Chords (roadmap card), Lyrics (chord-over-lyric sheet), Tabs.
+// Sheet panel on the song (practice) page — the same views as show mode: Cheat
+// (building-blocks card), Chords (roadmap card), Lyrics (chord-over-lyric sheet), Tabs,
+// plus the flag-gated Ryan sheet in front when the song has one.
 // `view`/`onViewChange` keep the selection so the toggle can switch it.
 export function SheetPanel({ song, view, onViewChange }: { song: Song, view: SheetKind | null, onViewChange: (kind: SheetKind) => void }) {
   const { get } = usePractice(); const entry = get(song.id)
@@ -624,6 +634,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   // The cards render from a curated progression, or derive one from the chords sheet.
   const hasCard = !!progressionFor(song.id) || !!sheets.chords
   const available: SheetKind[] = [
+    ...(sheets.ryan && settings.ryanTab ? (['ryan'] as SheetKind[]) : []),
     ...(hasCard ? (['cheat', 'roadmap'] as SheetKind[]) : []),
     ...(sheets.chords ? (['chords'] as SheetKind[]) : []),
     ...(sheets.tabs ? (['tabs'] as SheetKind[]) : []),
@@ -661,6 +672,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   return <section className="panel chord-panel" id="song-sheet">
     <div className="section-heading"><div><h2>Song sheets</h2></div>
       {available.length > 1 && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
+        {available.includes('ryan') && <button type="button" role="tab" aria-selected={active === 'ryan'} className={active === 'ryan' ? 'active' : ''} onClick={() => onViewChange('ryan')}>Ryan</button>}
         {hasCard && cardTab('cheat', 'Cheat')}
         {hasCard && cardTab('roadmap', 'Chords')}
         {available.includes('chords') && <button type="button" role="tab" aria-selected={active === 'chords'} aria-pressed={active === 'chords' ? chordsShapes : undefined}
@@ -670,10 +682,10 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
         {available.includes('tabs') && <button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button>}
       </div>}
     </div>
-    {(active === 'chords' || active === 'tabs') && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
+    {(active === 'chords' || active === 'tabs' || active === 'ryan') && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
     {active === 'cheat' || active === 'roadmap'
       ? <CheatCard song={song} variant={active === 'cheat' ? 'cheat' : 'chords'} withMore={false}/>
-      : <div className="practice-sheet" ref={sheetRef}>{active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/> : <TabText text={sheets.tabs!}/>}</div>}
+      : <div className="practice-sheet" ref={sheetRef}>{active === 'ryan' ? <ChordSheetView text={sheets.ryan!} songId={song.id} frets/> : active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/> : <TabText text={sheets.tabs!}/>}</div>}
   </section>
 }
 
