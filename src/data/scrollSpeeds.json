@@ -1,8 +1,8 @@
 {
   "01-welcome-home": {
-    "speed": 8,
+    "speed": 6,
     "leadInSec": 48,
-    "note": "Estimate 2026-07-22 (recalc after UG-spine rebuild). Studio 6:15; ~1.05× Tribute non-empty lines → raw≈7.65 with leadIn 48 → speed 8. leadInSec 48 holds ringing Em through sit-out riff. Dial on device."
+    "note": "Estimate 2026-07-22 (recalc after SOLO/OUTRO compress). Studio 6:15; ~0.76× Tribute non-empty → raw≈5.0 with leadIn 48 → clamped to 6. leadInSec 48 for sit-out riff. Dial on device — dense verses then short vamp tail."
   },
   "07-tribute": {
     "speed": 10,
