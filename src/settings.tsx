@@ -276,9 +276,9 @@ export function formatVerticalFingering(shape: string): string {
   return shape
 }
 
-/** Power-chord chip: low E–A–D–G only (drop B/e), left→right = low-E→G. */
+/** Power-chord chip: low E–A–D–G only (drop B/e), left→right = low-E→G. Mute = ×. */
 export function formatPowerFingering(shape: string): string {
-  if (TAB_SHAPE_RE.test(shape)) return shape.slice(0, 4)
+  if (TAB_SHAPE_RE.test(shape)) return shape.slice(0, 4).replace(/-/g, '×')
   return shape
 }
 

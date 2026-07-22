@@ -16,10 +16,10 @@ import { formatFingering, formatPowerFingering, formatVerticalFingering, isPower
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
-/** Tab fingering text: fretted digits white; muted `-` / `x` stay grey. */
+/** Tab fingering text: fretted digits white; muted `-` / `x` / `×` stay grey. */
 function FingeringText({ text }: { text: string }) {
   return <>{Array.from(text).map((ch, i) =>
-    ch === '-' || ch === 'x' || ch === 'X'
+    ch === '-' || ch === 'x' || ch === 'X' || ch === '×'
       ? <span className="chord-fingering-mute" key={i}>{ch}</span>
       : ch)}</>
 }

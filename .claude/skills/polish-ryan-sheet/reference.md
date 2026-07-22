@@ -108,9 +108,10 @@ Bare `0`–`24` on a chord line → bordered fret chip (A-string cues). Band lyr
 
 Ryan render sites pass `powerFingerings` into `ChordSheetView`. For `*5` tokens (`C5`,
 `G5`, `F5`, …) chips always show the **4-string** fingering horizontally (low E–A–D–G
-left→right, e.g. C5 → `-355`) in the normal chord slot — no Shapes retap. Tap still
-opens the diagram. Write power-chord Ryan songs as `C5`/`G5`/… so the shape generator
-hits quality `5` (`-355--`, `355---`, `133---`, …). Non-`*5` tokens on Ryan stay name
+left→right, e.g. C5 → `×355`) in the normal chord slot — no Shapes retap. Mute strings
+use `×` (not `-`). Sit at the **top** of the above-slot like fill cues (flex-start; do
+not change `--chip-pull`). Tap still opens the diagram. Write power-chord Ryan songs as
+`C5`/`G5`/… so the shape generator hits quality `5`. Non-`*5` tokens on Ryan stay name
 chips (Tribute, Welcome Home, etc.).
 
 ## Trim rules (stage)
