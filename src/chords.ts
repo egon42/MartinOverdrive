@@ -23,10 +23,22 @@ export const isChordToken = (token: string) => CHORD_RE.test(token)
 // legitimately sing a bare number ("18" in Mary Jane), which must stay lyric text.
 const FRET_RE = /^(?:[0-9]|1[0-9]|2[0-4])$/
 export const isFretToken = (token: string) => FRET_RE.test(token)
+// Numbered fill/join cues (`^1`, `^2`, … `^99`) — triangle chips that link a lyric word to
+// a matching fill block. Same ryan opt-in as frets (band sheets must not eat a caret).
+const CUE_RE = /^\^([1-9][0-9]?)$/
+export const isCueToken = (token: string) => CUE_RE.test(token)
+export const cueNumber = (token: string): number | null => {
+  const match = CUE_RE.exec(token)
+  return match ? Number(match[1]) : null
+}
+
+function isRyanToken(token: string, frets: boolean) {
+  return isChordToken(token) || (frets && (isFretToken(token) || isCueToken(token)))
+}
 
 function isChordLine(trimmed: string, frets: boolean) {
   const tokens = trimmed.split(/\s+/)
-  return tokens.length > 0 && tokens.every((token) => isChordToken(token) || (frets && isFretToken(token)))
+  return tokens.length > 0 && tokens.every((token) => isRyanToken(token, frets))
 }
 
 export function parseChordSheet(text: string, { frets = false }: { frets?: boolean } = {}): ParsedSheet {
@@ -143,7 +155,7 @@ export function chordProgression(text: string): ProgressionRow[] | null {
     }
     if (line.kind !== 'lyric') continue
     if (!current) open('')
-    for (const part of line.parts) if (part.chord) current!.chords.push(part.chord)
+    for (const part of line.parts) if (part.chord && !isCueToken(part.chord) && !isFretToken(part.chord)) current!.chords.push(part.chord)
   }
   // Group by identical (deduped) chord sequence, preserving first-seen order.
   const groups: { seq: string; labels: string[]; chords: string[] }[] = []

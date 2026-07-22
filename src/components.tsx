@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
-import { chordProgression, compactSheet, isFretToken, parseChordSheet, type SheetPart } from './chords'
+import { chordProgression, compactSheet, cueNumber, isCueToken, isFretToken, parseChordSheet, type SheetPart } from './chords'
 import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
@@ -105,8 +105,13 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     setBox({ left, top, below, arrow })
   }, [open])
   // Numeric tokens are A-string fret cues (The Middle verse, etc.) — chip shows the fret,
-  // no diagram popover. The return sits below every hook call so a token that flips
-  // between fret and chord at the same tree position can't change the hook order.
+  // no diagram popover. Cue tokens (`^1`) are numbered triangle chips linking a lyric word
+  // to a matching fill block. Both returns sit below every hook call so a token that flips
+  // between kinds at the same tree position can't change the hook order.
+  const cue = cueNumber(name)
+  if (cue != null) {
+    return <b className="chord-chip chord-chip--cue" aria-label={`Fill cue ${cue}`} title={`Fill cue ${cue}`}>{cue}</b>
+  }
   if (isFretToken(name)) {
     return <b className="chord-chip chord-chip--fret" aria-label={`A string fret ${name}`} title={`A string fret ${name}`}>{name}</b>
   }
@@ -354,6 +359,11 @@ function aboveWords(parts: SheetPart[]): AboveCol[][] {
 }
 
 function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
+  // Fill cues (`^1`) must sit above the following word even when the user prefers inline
+  // chords — fall through to the above layout for any line that carries one.
+  if (parts.some((part) => part.chord && isCueToken(part.chord))) {
+    return <LyricLineAbove parts={parts} songId={songId} />
+  }
   const chordsOnly = parts.every((part) => part.chord)
   return <p className={chordsOnly ? 'sheet-line sheet-line--chords' : 'sheet-line'}>
     {parts.map((part, i) => part.chord
