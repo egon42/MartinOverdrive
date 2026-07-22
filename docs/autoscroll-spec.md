@@ -128,8 +128,8 @@ correct average speed, but steppy again).
 
 Worked example, 30 px/s at 1× zoom and 60 Hz: `pos` gains 0.5/frame → 0.5, 1.0, 1.5,
 2.0 … `scrollTop` writes land when `floor(pos)` advances; the inner translate carries
-the 0.5 remainder so every frame paints a half-pixel advance. At 0.75× zoom (lyrics/Ryan
-default) the same dialed 30 advances 22.5 CSS px/s — content is ~0.75× as tall, so end
+the 0.5 remainder so every frame paints a half-pixel advance. At 0.75× zoom (Ryan
+default; lyrics min) the same dialed 30 advances 22.5 CSS px/s — content is ~0.75× as tall, so end
 timing matches. At 2× it advances 60 CSS px/s against ~2× height — same song length.
 Lead-in duration is `96 / speed` seconds and does not include zoom (zoom cancels: more
 content in the lead-in window, faster crawl once it starts).
