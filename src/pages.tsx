@@ -532,7 +532,7 @@ export function Show() {
       <HomeFretBadges song={song} />
     </div>}
     {effective === 'ryan'
-      ? <div className="show-sheet" ref={ryanRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.ryan!} songId={song.id} frets/></div></div>
+      ? <div className="show-sheet" ref={ryanRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.ryan!} songId={song.id} frets powerFingerings/></div></div>
       : effective === 'lyrics'
         ? <div className="show-sheet" ref={lyricsRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.chords!} songId={song.id}/></div></div>
         : effective === 'tabs'

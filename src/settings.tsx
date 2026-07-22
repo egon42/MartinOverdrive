@@ -276,6 +276,12 @@ export function formatVerticalFingering(shape: string): string {
   return shape
 }
 
+/** Power-chord chip: low E–A–D–G only (drop B/e), high string on top among those four. */
+export function formatPowerFingering(shape: string): string {
+  if (TAB_SHAPE_RE.test(shape)) return shape.slice(0, 4).split('').reverse().join('\n')
+  return formatVerticalFingering(shape)
+}
+
 /** Class for the show-mode / sheet-panel view tabs: `shapes-hint` when retap is available, `shapes` when on. */
 export function shapesTabClass(active: boolean, shapesOn: boolean, canToggle: boolean): string {
   const parts = [active ? 'active' : '']

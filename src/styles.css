@@ -139,8 +139,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    columns (keeps the 5e94046 lifted-first-letter fix). The lyric is raised above the
    chip (z-index) so the letters read on top of the chip where they overlap — the chip
    sits UNDER the text. Popover stays clickable/on-top via its own z-index:130. */
-.sheet-above-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;margin-bottom:var(--chip-pull,-0.5em)}
+.sheet-above-chord{box-sizing:border-box;min-height:1.35em;height:auto;display:flex;align-items:flex-end;margin-bottom:var(--chip-pull,-0.5em)}
 .sheet-above-chord .chord-chip,.sheet-above-chord .chord-chip-wrap{margin:0}
+.sheet-above-chord:has(.chord-chip--fingering){align-items:flex-end}
 .sheet-above-lyric{position:relative;z-index:1;line-height:1.1;white-space:pre-wrap}
 /* Chordless lyric lines in above-mode: plain text, no reserved chord slot */
 .sheet-line--above-plain{line-height:1.3;margin:0 0 5px}

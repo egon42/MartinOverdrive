@@ -12,7 +12,7 @@ import { Metronome } from './metronome'
 import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
-import { formatFingering, formatVerticalFingering, resolveFingering, shapesTabClass, useSettings, type FingeringSurface } from './settings'
+import { formatFingering, formatPowerFingering, formatVerticalFingering, isPowerChord, resolveFingering, shapesTabClass, useSettings, type FingeringSurface } from './settings'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
@@ -61,15 +61,20 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 // Optional `curatedShape` (cheat-card progressions) overrides the generated tab fingering.
 // `surface` picks which Settings prefs apply (Cheat vs Chords are independent).
 // `songId` enables the per-song "Shapes" toggle (fingering-only chips).
-export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghost = false, bare = false }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string; ghost?: boolean; bare?: boolean }) {
+// `forcePowerFingering`: Ryan opt-in — power chords (*5) always render as 4-string
+// fingering chips (EADG) with no Shapes retap required.
+export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghost = false, bare = false, forcePowerFingering = false }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string; ghost?: boolean; bare?: boolean; forcePowerFingering?: boolean }) {
   const { settings, isFingeringOnly } = useSettings()
   const prefs = settings[surface]
   const fingeringOnly = !!songId && isFingeringOnly(songId, surface)
-  // The per-song Shapes retap is an explicit "show me fingerings" request, so it resolves
-  // as if scope were 'all' — under the default power-only scope the mode would otherwise
-  // be a silent no-op on every non-power chord ("retap doesn't do anything"). Scope 'none'
-  // still wins: it disables the retap toggle, so a stored flag for it is stale.
-  const fingering = resolveFingering(name, curatedShape, fingeringOnly && prefs.scope === 'power' ? 'all' : prefs.scope)
+  const powerChip = forcePowerFingering && isPowerChord(name)
+  // Ryan power chips always resolve shapes (ignore Settings scope). Shapes retap still
+  // upgrades 'power' → 'all' so non-power chords get fingerings; scope 'none' disables retap.
+  const fingering = resolveFingering(
+    name,
+    curatedShape,
+    powerChip ? 'all' : fingeringOnly && prefs.scope === 'power' ? 'all' : prefs.scope,
+  )
   const [open, setOpen] = useState(false)
   const [box, setBox] = useState<{ left: number; top: number; below: boolean; arrow: number } | null>(null)
   const ref = useRef<HTMLSpanElement>(null)
@@ -131,11 +136,12 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     },
   }
   const chipClass = ghost ? 'chord-chip chord-chip--ghost' : 'chord-chip'
-  // Per-song Shapes toggle: replace the chord name with a vertical tab chip (still tappable).
-  if (fingering && fingeringOnly) {
+  // Ryan power chips / Shapes retap: replace the chord name with a vertical tab chip (still tappable).
+  if (fingering && (fingeringOnly || powerChip)) {
+    const body = powerChip ? formatPowerFingering(fingering) : formatVerticalFingering(fingering)
     return <span className="chord-chip-wrap" ref={ref}>
       <b className={`${chipClass} chord-chip--fingering`} role="button" tabIndex={0} aria-expanded={open}
-        aria-label={label} title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}>{formatVerticalFingering(fingering)}</b>
+        aria-label={label} title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}><FingeringText text={body} /></b>
       {pop}
     </span>
   }
@@ -371,25 +377,25 @@ function aboveWords(parts: SheetPart[]): AboveCol[][] {
   return groups
 }
 
-function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
+function LyricLineInline({ parts, songId, forcePowerFingering = false }: { parts: SheetPart[]; songId?: string; forcePowerFingering?: boolean }) {
   // Fill cues (`^1`) must sit above the following word even when the user prefers inline
   // chords — fall through to the above layout for any line that carries one.
   if (parts.some((part) => part.chord && isCueToken(part.chord))) {
-    return <LyricLineAbove parts={parts} songId={songId} />
+    return <LyricLineAbove parts={parts} songId={songId} forcePowerFingering={forcePowerFingering} />
   }
   const chordsOnly = parts.every((part) => part.chord)
   return <p className={chordsOnly ? 'sheet-line sheet-line--chords' : 'sheet-line'}>
     {parts.map((part, i) => part.chord
-      ? <ChordChip name={part.chord} ghost={part.ghost} songId={songId} key={i} />
+      ? <ChordChip name={part.chord} ghost={part.ghost} songId={songId} forcePowerFingering={forcePowerFingering} key={i} />
       : <span key={i}>{part.text}</span>)}
   </p>
 }
 
-function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string }) {
+function LyricLineAbove({ parts, songId, forcePowerFingering = false }: { parts: SheetPart[]; songId?: string; forcePowerFingering?: boolean }) {
   if (parts.every((part) => part.chord)) {
     return <p className="sheet-line sheet-line--chords sheet-line--above-chords">
       {parts.map((part, i) => part.chord
-        ? <ChordChip name={part.chord} ghost={part.ghost} songId={songId} bare key={i} />
+        ? <ChordChip name={part.chord} ghost={part.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} key={i} />
         : null)}
     </p>
   }
@@ -406,7 +412,7 @@ function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string
         {group.map((col, ci) => (
           <span className="sheet-above-col" key={ci}>
             <span className="sheet-above-chord">
-              {col.chord ? <ChordChip name={col.chord} ghost={col.ghost} songId={songId} bare /> : null}
+              {col.chord ? <ChordChip name={col.chord} ghost={col.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} /> : null}
             </span>
             <span className="sheet-above-lyric">{col.text}</span>
           </span>
@@ -416,7 +422,7 @@ function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string
   </div>
 }
 
-export function ChordSheetView({ text, songId, compact = false, frets = false }: { text: string, songId?: string, compact?: boolean, frets?: boolean }) {
+export function ChordSheetView({ text, songId, compact = false, frets = false, powerFingerings = false }: { text: string, songId?: string, compact?: boolean, frets?: boolean, powerFingerings?: boolean }) {
   const sheet = useMemo(() => parseChordSheet(text, { frets }), [text, frets])
   const { settings } = useSettings()
   const above = settings.lyricChordPlacement === 'above'
@@ -433,7 +439,7 @@ export function ChordSheetView({ text, songId, compact = false, frets = false }:
       }
       return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.cue}</pre>
-        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <ChordChip name={chord} songId={songId} key={i} />)}</span><span className="compact-cue">{line.cue}</span></div>
+        : <div className="compact-line" key={index}><span className="compact-chords">{line.chords.map((chord, i) => <ChordChip name={chord} songId={songId} forcePowerFingering={powerFingerings} key={i} />)}</span><span className="compact-cue">{line.cue}</span></div>
     })}</div>
   }
   return <div className="sheet-full">
@@ -446,8 +452,8 @@ export function ChordSheetView({ text, songId, compact = false, frets = false }:
       }
       if (line.kind === 'tab') return <pre className="sheet-tab" key={index}>{line.raw}</pre>
       return above
-        ? <LyricLineAbove parts={line.parts} songId={songId} key={index} />
-        : <LyricLineInline parts={line.parts} songId={songId} key={index} />
+        ? <LyricLineAbove parts={line.parts} songId={songId} forcePowerFingering={powerFingerings} key={index} />
+        : <LyricLineInline parts={line.parts} songId={songId} forcePowerFingering={powerFingerings} key={index} />
     })}
   </div>
 }
@@ -713,7 +719,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
       ? <CheatCard song={song} variant={active === 'cheat' ? 'cheat' : 'chords'} withMore={false}/>
       : <div className="practice-sheet" ref={sheetRef}>
           <div className="autoscroll-inner">
-            {active === 'ryan' ? <ChordSheetView text={sheets.ryan!} songId={song.id} frets/>
+            {active === 'ryan' ? <ChordSheetView text={sheets.ryan!} songId={song.id} frets powerFingerings/>
               : active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/>
               : <TabText text={sheets.tabs!}/>}
           </div>

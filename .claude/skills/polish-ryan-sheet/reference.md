@@ -104,6 +104,15 @@ Use for a vocal-only measure that sits on the same vamp as the following solo/co
 
 Bare `0`–`24` on a chord line → bordered fret chip (A-string cues). Band lyrics sheets must **not** pass `frets: true` (Mary Jane's "18" stays lyric text).
 
+## Power-fingering chips (Ryan)
+
+Ryan render sites pass `powerFingerings` into `ChordSheetView`. For `*5` tokens (`C5`,
+`G5`, `F5`, …) chips always show the **4-string** fingering (low E–A–D–G only, high
+string on top among those four) in the normal chord slot — no Shapes retap. Tap still
+opens the diagram. Write power-chord Ryan songs as `C5`/`G5`/… so the shape generator
+hits quality `5` (`-355--`, `355---`, `133---`, …). Non-`*5` tokens on Ryan stay name
+chips (Tribute, Welcome Home, etc.).
+
 ## Trim rules (stage)
 
 - Drop "Chords used" appendices and full Songsterr stitch dumps from Ryan sheets

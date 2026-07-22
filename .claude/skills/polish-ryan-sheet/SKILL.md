@@ -172,6 +172,8 @@ Read [reference.md](reference.md) **before writing sheet text** (especially § S
 - Amp: `[Amp: 4Amber]` section lines (same as band)
 - Ghost / don't-play chips: prefix `~` (`~Am ~G ~D ~F`) — dashed strikethrough chip, keep the beat (same marker as cheat-card progressions)
 - Bare `0`–`24` = A-string fret chips (The Middle); never enable frets on band lyrics sheets
+- Power-chord Ryan songs: write `C5`/`G5`/… ; Ryan views pass `powerFingerings` so `*5`
+  chips show 4-string EADG fingering always (see reference § Power-fingering chips)
 - Cue triangles sit at the **top** of the above-slot (`align-items: flex-start`); never change `--chip-pull` to "fix" overlap (that moves lyric text)
 - Chip hints (`Am{Hold}`) — reserved; add when a song needs them
 - App copy: no em-dashes
