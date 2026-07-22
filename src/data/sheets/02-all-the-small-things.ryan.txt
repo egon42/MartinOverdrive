@@ -60,16 +60,13 @@ Commiserati
 G5
 ng
 
-[Pre-Chorus]
+[Pre-Chorus - ringing C5]
 C5
 Say it ain't so, i will not g
-G5
 o
 
 Turn the lights 
-F5
 off, carry me hom
-C5
 e
 
 [Chorus ×2]
@@ -80,6 +77,27 @@ G5
 Nana nana nana 
 F5
 nana na na
+
+[Instrumental]
+C5
+
+G5
+
+F5
+
+e-|-----------------|--------------------|----------------|
+B-|-----------------|--------------------|----------------|
+G-|5-5-5-5-5-5-5-5/-|10-10-10-10-9-9-9-9-|7-7-7-7-7-7-7-7-|
+D-|x-x-x-x-x-x-x-x--|x--x--x--x--x-x-x-x-|x-x-x-x-x-x-x-x-|
+A-|3-3-3-3-3-3-3-3/-|8--8--8--8--7-7-7-7-|5-5-5-5-5-5-5-5-|
+E-|-----------------|--------------------|----------------|
+
+e-|----------------|-----------------|--------------------|----------------|
+B-|----------------|-----------------|--------------------|----------------|
+G-|7---------------|5-5-5-5-5-5-5-5/-|10-10-10-10-9-9-9-9-|7---------------|
+D-|x---------3-3-3-|x-x-x-x-x-x-x-x--|x--x--x--x--x-x-x-x-|x---------3-3-3-|
+A-|5-0-0-0-0-3-3-3-|3-3-3-3-3-3-3-3/-|8--8--8--8--7-7-7-7-|5-0-0-0-0-3-3-3-|
+E-|----------1-1-1-|-----------------|--------------------|----------1-1-1-|
 
 [Verse]
 C5
@@ -102,15 +120,12 @@ Surprises let me know she
 G5
 cares
 
-[Pre-Chorus]
+[Pre-Chorus - ringing C5]
 C5
 Say it ain't so, i will not 
-G5
 go
 
-F5
 Turn the lights off, carry me 
-C5
 home
 
 [Chorus ×2]
@@ -146,16 +161,13 @@ D-|--5---5---5---5-|--5---5---5---5-|
 A-|----------------|----------------|
 E-|----------------|----------------|
 
-[Pre-Chorus]
+[Pre-Chorus - ringing C5]
 C5
 Say it ain't so, i will not g
-G5
 o
 
 Turn the lights of
-F5
 f, carry me home
-C5
 
 [Bridge]
 C5
@@ -167,15 +179,12 @@ The night will go
 F5
 on, my little windmill
 
-[Pre-Chorus]
+[Pre-Chorus - ringing C5]
 C5
 Say it ain't so, i will not go 
-G5
 
 Turn the lights off
-F5
 , carry me home
-C5
 
 [Outro]
 C5
