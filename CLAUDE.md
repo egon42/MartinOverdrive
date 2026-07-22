@@ -19,23 +19,19 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
 
 ## Deploy — GitHub Pages via Actions
 
-- Pushing to `main`, `dev`, **or `ryan`** triggers `.github/workflows/deploy-pages.yml`.
-  It builds all three branches into one Pages artifact with **sibling** paths so each
-  can be installed as its own phone app: `main` at `/MartinOverdrive/app/` (production),
-  `dev` at `/MartinOverdrive/dev/` (development), and `ryan` at `/MartinOverdrive/ryan/`
-  (personal App offshoot). Root `/MartinOverdrive/` redirects to `/app/`. Nested
-  installs under a root-scoped PWA blocked co-install — don't put them back. There is
-  no other deploy path.
+- Pushing to `main` **or `dev`** triggers `.github/workflows/deploy-pages.yml`.
+  It builds both branches into one Pages artifact with **sibling** paths so each
+  can be installed as its own phone app: `main` at `/MartinOverdrive/app/` (production)
+  and `dev` at `/MartinOverdrive/dev/` (development). Root `/MartinOverdrive/` redirects
+  to `/app/`. Nested installs under a root-scoped PWA blocked co-install — don't put
+  them back. There is no other deploy path.
 - **New features are developed on the `dev` branch** and used live at the /dev/ URL;
   porting a feature to production = merging `dev` → `main`. Keep the workflow file
-  identical on all three branches (push events use the pushed branch's copy).
-- **Ryan** is a permanent offshoot of App (`main`). Keep it in sync with
-  `git checkout ryan && git merge --ff-only main && git push` (same linear-history
-  rule). Ryan-only sheet tweaks live only on `ryan` — when a merge touches those
-  files (currently `src/data/sheets/07-tribute.tabs.txt`), keep Ryan's version.
-  Ryan **shares App's practice/sync/live localStorage keys** (anything that isn't
-  `/dev/` uses the prod keys), so phone state follows you between `/app/` and `/ryan/`.
-- App / Dev / Ryan home-screen installs use distinct manifest `id` / name / icon (see
+  identical on both branches (push events use the pushed branch's copy).
+- The **`ryan` branch / `/ryan/` deployment was retired 2026-07-22**. Its content lives
+  on as the flag-gated Ryan tab (`.ryan.txt` sheets, see "Per-song tabs & chords") and
+  the branch tip is preserved as the `ryan-archive` tag. Don't rebuild the third deploy.
+- App / Dev home-screen installs use distinct manifest `id` / name / icon (see
   `vite.config.ts` `deployIdentity`). After the /app/ move, re-add the prod icon from
   `/MartinOverdrive/app/` if an old root-scoped install is still on the phone.
 - **To verify a deploy actually went live:** check the workflow run
@@ -97,6 +93,11 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   stored order, incl. Fills — ignores `form`), **Chords** (full roadmap card: `form`
   order + ×N repeats, Fills excluded — this is what code/docs/skills call the "cheat
   card"), **Lyrics** (the `.chords.txt` chord-over-lyric sheet), **Tabs**.
+- A fifth **Ryan** tab (added 2026-07-22) sits in front of Cheat, but only when the song
+  has a `.ryan.txt` sheet AND the hidden device-local **Ryan sheets** flag is on (see
+  "Hidden Developer settings"). View id `'ryan'` is purely additive — no view/pin
+  storage-key bumps; with the flag off a stored/pinned `'ryan'` falls back to the
+  roadmap card.
 - Internal names deliberately did NOT move with the labels: CSS `cheat-*` classes, the
   `cheat`/`chords` fingering surfaces (`'cheat'` = both cards, `'chords'` = Lyrics
   sheet), `cheatRowsFor` (roadmap) / `basicRowsFor` (cheat tab), and `SheetKind
@@ -105,15 +106,30 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   because the old id `'chords'` changed meaning; legacy values migrate on first read
   (`'scale'`→`'chords'`, `'chords'`→`'lyrics'`). Don't reuse the old keys.
 
+## Hidden Developer settings (added 2026-07-22)
+
+- `AppSettings` (`src/settings.tsx`) has two device-local booleans that never sync and
+  are not normally visible: **`devMode`** (shows the Card version dropdown) and
+  **`ryanTab`** (shows the personal Ryan tab). Both default off on every install.
+- Unlock: **tap the "Settings" heading 7 times** (Android style, 1.5s of no taps resets
+  the count) on the `/settings` page — a "Developer" section appears with both
+  checkboxes. Once either flag is on, the section stays visible so it can be turned off.
+- The flags are per deployment install (`overdrive-settings` vs `overdrive-settings-dev`),
+  so enable them once per device per install. Deployments are otherwise
+  feature-identical — never gate a feature on `BASE_URL` again; add a flag here instead.
+
 ## Cheat-card versioning (dev-branch feature, added 2026-07-16)
 
 - **Snapshot before rewriting any song's cheat card**: `node scripts/snapshot-progression.mjs
   <songId> "<label>"` archives the current `progressions.json` entry into
   `src/data/progressionVersions.json` (newest first; identical-content retry is a no-op).
-  The dev deploy shows a **"Card version" dropdown** on the **Chords tab** (the roadmap
-  card; also on the local dev server) to A/B archived forms against the recording;
-  **prod never renders it** and always plays the live card. The Cheat tab always renders
-  the current sections. `npm run validate` checks archived versions with the same rules.
+  The **"Card version" dropdown** on the **Chords tab** (the roadmap card) A/Bs archived
+  forms against the recording. Since 2026-07-22 it is gated by the hidden device-local
+  **Dev mode** flag (see "Hidden Developer settings"), not by deployment — /dev/ and
+  /app/ are feature-identical, and a device that never flips the flag always plays the
+  live card. The local dev server (`import.meta.env.DEV`) always shows it. The Cheat tab
+  always renders the current sections. `npm run validate` checks archived versions with
+  the same rules.
 - Standing user instruction (2026-07-16): because versions are always recoverable, apply
   recording-research corrections **without waiting for approval** — including to hand-vetted
   cards — but keep the user's played counts when research only weakly (med confidence)
@@ -127,6 +143,16 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   `src/data/sheets/<songId>.chords.txt` (UG-style chord/lyric text, parsed by
   `src/chords.ts`) and `src/data/sheets/<songId>.tabs.txt` (ASCII tab, rendered
   verbatim in monospace). Song ids match `src/data/setlist.json` (`01-welcome-home`).
+- Optional `<songId>.ryan.txt` (added 2026-07-22, harvested from the retired `ryan`
+  branch): personal per-song sheet in chord-sheet format (may embed ASCII-tab blocks),
+  rendered by `ChordSheetView` only where the hidden **Ryan sheets** flag is on.
+  Currently `07-tribute` (chord tweaks + the stitched clean/distortion tab) and
+  `21-the-middle` (A-string palm-mute fret chips). Bare numeric tokens 0–24 on chord
+  lines render as bordered **fret chips** (`isFretToken` in `src/chords.ts`,
+  `.chord-chip--fret`) — fret parsing is **opt-in per sheet** (`parseChordSheet`'s
+  `frets` option, passed only at the ryan render sites): a band lyrics sheet can
+  legitimately sing a bare number (Mary Jane's "18"), which must stay lyric text.
+  Ryan sheets are optional per song; the validator only checks their songId.
 - The user hands over source material (text, exports, screenshots); convert it to
   those text files — **no paste UI, no images in the app** (deliberate: text is
   editable and diff-able). `TabsAndChords/` (gitignored) is the raw-material drop
@@ -217,9 +243,9 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
 - Session `{ role, code, at }` persists in `overdrive-live[-dev]` with a 20h expiry so a
   mid-set reload resumes but last week's session doesn't. `live.tsx` mirrors
   `SHOW_INDEX_KEY` from `pages.tsx` (import would be circular) — keep them in sync.
-- **Ryan shares App's live channel** (no `show-dev-` prefix). A Ryan leader's QR/invite
-  deliberately points followers at `/app/` so bandmates stay on production; typing the
-  code on App works the same. `/dev/` stays isolated.
+- Channels are deploy-namespaced: `/dev/` uses a `show-dev-` prefix and stays isolated
+  from prod. (The retired /ryan/ deploy used to share App's channel; that special case
+  is gone.)
 
 ## Layout notes
 
