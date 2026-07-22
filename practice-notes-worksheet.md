@@ -143,8 +143,13 @@ Fill this out as you run songs. Leave anything blank you haven't hit yet. When y
 - What's solid:
 - What's shaky: Second AM fill part. Timing of repeated chords
 - Trouble spots (section / what fails):
-- Amp / tone notes:
+- Amp / tone notes: 4Amber retuned to ETHEREAL (Twin + delay + hall) for intro fills → one click to 5Amber for ROCK. Reload slot 4 on the amp when convenient.
 - Open questions:
+- Ryan fills (ear-check at guitar):
+  - Sheet cues: ^1 on "long" (lonesome road), ^2 on "looked", ^3 on "men" (just before ROCK — confirm placement)
+  - ActionTab (3 fills before distortion): https://actiontab.com/actiontabs/tribute_fills
+  - GoTabs (Gtr II lead lines / fill-3 notes): https://www.gotabs.com/tenacious-d/tribute-tab
+  - Songsterr (rhythm-synced full tab): https://www.songsterr.com/a/wsa/tenacious-d-tribute-tab-s458
 
 ---
 
