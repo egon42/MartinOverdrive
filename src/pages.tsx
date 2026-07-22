@@ -197,21 +197,21 @@ function useFitScale(deps: unknown[], axis: 'height' | 'width' = 'height', floor
   return ref
 }
 
-// Pinch-to-zoom for show-mode sheets. Multiplies a --zoom CSS var (0.75–3×) that scales
+// Pinch-to-zoom for show-mode sheets. Multiplies a --zoom CSS var (minZoom–3×) that scales
 // font-size — real reflow, so chord chips and lyric lines re-wrap smartly as you zoom in,
 // unlike a transform:scale that would just magnify and overflow. Two-finger pinch (via a
 // non-passive touchmove so we can preventDefault the native page-zoom/scroll) plus
-// ctrl+wheel for trackpads/desktop. Resets to 1× whenever `resetKey` changes (song or
-// view switch). `enabled` is false on the Tabs sheet, which stays fit-to-width.
+// ctrl+wheel for trackpads/desktop. Resets to `initialZoom` whenever `resetKey` changes
+// (song or view switch). `enabled` is false on the Tabs sheet, which stays fit-to-width.
 const MAX_ZOOM = 3
-function useZoom(resetKey: string, minZoom: number, enabled: boolean) {
-  const [zoom, setZoom] = useState(1)
-  const zoomRef = useRef(1)
+function useZoom(resetKey: string, minZoom: number, enabled: boolean, initialZoom = 1) {
+  const [zoom, setZoom] = useState(initialZoom)
+  const zoomRef = useRef(initialZoom)
   zoomRef.current = zoom
   const elRef = useRef<HTMLElement | null>(null)
   const pinch = useRef<{ d0: number, z0: number } | null>(null)
   // Fresh baseline per song/view. Layout effect so the reset lands before paint.
-  useLayoutEffect(() => { setZoom(1) }, [resetKey])
+  useLayoutEffect(() => { setZoom(initialZoom) }, [resetKey, initialZoom])
   // resetKey is in the deps because the article that holds elRef is remounted on every
   // song/view change (ShowSongBoundary's key). Without it, listeners would stay bound to
   // the detached old node and the fresh article would get none — pinch dead after turn 1.
@@ -241,7 +241,7 @@ function useZoom(resetKey: string, minZoom: number, enabled: boolean) {
       el.removeEventListener('wheel', onWheel)
     }
   }, [enabled, minZoom, resetKey])
-  return { zoom, setZoom, elRef }
+  return { zoom, setZoom, elRef, initialZoom }
 }
 
 /** Shared stage chrome strip: tuning / transpose / capo / amp presets / home frets. */
@@ -363,7 +363,10 @@ export function Show() {
   }
   // Pinch-zoom the three text sheets (not the fit-to-width Tabs). Cards can't shrink below
   // their fitted 1× baseline (min 1); the lyric sheet can shrink a little to show more.
-  const { zoom, setZoom, elRef: zoomElRef } = useZoom(`${song.id}:${effective}`, effective === 'lyrics' || effective === 'ryan' ? 0.75 : 1, effective !== 'tabs')
+  // Ryan sheets start at 0.8× so fills + follow-along fit the phone without a pinch first.
+  const zoomMin = effective === 'lyrics' || effective === 'ryan' ? 0.75 : 1
+  const zoomInitial = effective === 'ryan' ? 0.8 : 1
+  const { zoom, setZoom, elRef: zoomElRef, initialZoom } = useZoom(`${song.id}:${effective}`, zoomMin, effective !== 'tabs', zoomInitial)
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
   const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1)
   const lyricsRef = useRef<HTMLDivElement>(null)
@@ -528,7 +531,7 @@ export function Show() {
           ? <div className="show-sheet show-tabs" ref={tabsRef}><div className="autoscroll-inner"><TabText text={sheets.tabs!}/></div></div>
           : <CheatCard song={song} innerRef={cheatRef} variant={effective === 'cheat' ? 'cheat' : 'chords'} zoomFrozen={zoom !== 1}/>}</article>
     </ShowSongBoundary>
-    {effective !== 'tabs' && zoom !== 1 && <button type="button" className="show-zoom-reset" onClick={() => setZoom(1)} aria-label="Reset zoom to fit">{zoom.toFixed(1)}× · Reset</button>}
+    {effective !== 'tabs' && zoom !== initialZoom && <button type="button" className="show-zoom-reset" onClick={() => setZoom(initialZoom)} aria-label="Reset zoom to fit">{zoom.toFixed(1)}× · Reset</button>}
     {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className="show-upnext" onClick={() => goTo(index + 1)} aria-label={`Next song: ${next.title}`}>
       <span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/>
     </button> })()}
