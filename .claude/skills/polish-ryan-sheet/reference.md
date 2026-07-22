@@ -42,7 +42,7 @@ Bare `0`–`24` on a chord line → bordered fret chip (A-string cues). Band lyr
 
 ## Show-mode defaults
 
-- Ryan pinch zoom starts at **0.8×** (`useZoom` initialZoom); Reset restores 0.8×
+- Ryan pinch zoom starts at **0.75×** (`useZoom` initialZoom; min **0.6×**); Reset restores 0.75×
 - Autoscroll advances at `scrollSpeed * zoom` (1×-normalized dial)
 - While autoscroll is playing (incl. lead-in), show mode adds `show-mode--crawling` and
   collapses artist / view tabs+Pin / stage strip / Up next / zoom-reset (short max-height

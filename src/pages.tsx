@@ -364,9 +364,10 @@ export function Show() {
   }
   // Pinch-zoom the three text sheets (not the fit-to-width Tabs). Cards can't shrink below
   // their fitted 1× baseline (min 1); the lyric sheet can shrink a little to show more.
-  // Ryan sheets start at 0.8× so fills + follow-along fit the phone without a pinch first.
-  const zoomMin = effective === 'lyrics' || effective === 'ryan' ? 0.75 : 1
-  const zoomInitial = effective === 'ryan' ? 0.8 : 1
+  // Ryan sheets start at 0.75× so fills + follow-along fit the phone without a pinch first;
+  // min 0.6× lets a long sheet shrink further on stage. Lyrics stay min 0.75× / start 1×.
+  const zoomMin = effective === 'ryan' ? 0.6 : effective === 'lyrics' ? 0.75 : 1
+  const zoomInitial = effective === 'ryan' ? 0.75 : 1
   const { zoom, setZoom, elRef: zoomElRef, initialZoom } = useZoom(`${song.id}:${effective}`, zoomMin, effective !== 'tabs', zoomInitial)
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
   const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1)
