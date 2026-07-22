@@ -229,49 +229,38 @@ uching
 B5
 me, ahhhhhh!
 
-[Clap - ghosts under; C#m-box lead over]
+[Clap - staccato E A F# B, double on B ×3]
 
-e-|9--12-9--12-9-------|
-B-|-------------9--12--|
-G-|--------------------|
-D-|--------------------|
-A-|--------------------|
-E-|--------------------|
-
-e-|12-9----9-----------|
-B-|-----12---12-9------|
-G-|----------------11--|
-D-|--------------------|
-A-|--------------------|
-E-|--------------------|
-
-~E5
+E5
 I believe in a t
-~A5
+A5
 hing called love
 
-~F#5
+F#5
 Just listen to the r
-~B5
+B5
+B5
 hythm of my heart
 
-~E5
+E5
 There's a chance we could m
-~A5
+A5
 ake it now
 
-~F#5
+F#5
 We'll be rocking 'til the s
-~B5
+B5
+B5
 un goes down
 
-~E5
+E5
 I believe in a 
-~A5
+A5
 thing call
-~F#5
+F#5
 ed 
-~B5
+B5
+B5
 love
 
 C#5
