@@ -3,9 +3,10 @@ Standard (EADGBE)
 [Intro]
 [Amp: 3Red]
 
+[Verse setup]
 C#
 
-[Verse 1]
+[Verse 1 - quiet]
 
 F#
 I know you 
@@ -85,7 +86,7 @@ B
 long down at the
 
 [Amp: 4Red]
-[Chorus]
+[Chorus - big lift]
 
 F#
 Pink Pony Club
@@ -191,7 +192,7 @@ B
 long down at the
 
 [Amp: 4Red]
-[Chorus]
+[Chorus - big lift]
 
 F#
 Pink Pony Club
@@ -278,7 +279,7 @@ B
 long down at the
 
 [Amp: 4Red]
-[Chorus]
+[Chorus - big lift]
 
 F#
 Pink Pony Club

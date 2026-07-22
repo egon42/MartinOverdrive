@@ -2,7 +2,7 @@ Standard (EADGBE)
 
 [Amp: 5Green]
 
-[Intro]
+[Intro - heavy rhythm; power chips]
 
 D5 G5 A5 D5
 
@@ -207,7 +207,7 @@ life, yeah-
 F#m
 eah
 
-[Bridge]
+[Bridge - Em landing]
 
 A
 Oh Lola I'm sure that the love would have been

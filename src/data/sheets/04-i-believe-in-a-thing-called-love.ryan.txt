@@ -91,7 +91,7 @@ OoOOOO
 D
 Oh! Huh!
 
-[Solo]
+[Solo - optional jump 6Green]
 
 F# A B E B A
 
@@ -166,7 +166,7 @@ OoOOOO
 D
 Oh! Guitar!
 
-[Solo]
+[Solo - optional jump 6Green]
 
 F# A B E B A
 
@@ -227,7 +227,7 @@ OoOOOO
 D
 Oh! Huh!
 
-[Solo]
+[Solo - optional jump 6Green]
 
 E A F# B
 

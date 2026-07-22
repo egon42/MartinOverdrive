@@ -1,6 +1,6 @@
 Standard (EADGBE)
 
-[Intro]
+[Intro - quiet; count last bar]
 [Amp: 5Red]
 
 Am
@@ -22,7 +22,7 @@ Fmaj7
 an
 
 [Amp: 6Red]
-[Verse 1]
+[Verse 1 - explode; nail entrance with drums]
 
 Am
   Send in your skeletons
@@ -253,7 +253,7 @@ F
 What if I say that I'll never surrender?
 D
 
-[Outro]
+[Outro - cold]
 
 A5
 So who are you?

@@ -1,6 +1,7 @@
 Standard (EADGBE)
 
 [Amp: 7Red]
+[Verse - clean/edge rhythm]
 E
 
 E
@@ -60,6 +61,7 @@ E
 Mama, Im coming home
 
 [Amp: 8Red]
+[Chorus/solo - lift]
 (Distortion)
 
 (Power Chords)

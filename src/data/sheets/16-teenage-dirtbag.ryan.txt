@@ -2,6 +2,7 @@ Standard (EADGBE)
 
 [Amp: 3Red]
 
+[Verse - quiet / palm mute; prefer full chords]
 E
  
 B
@@ -68,6 +69,7 @@ B
 amn about me.
 
 [Amp: 4Red]
+[Chorus - big / open]
 'Cause 
 E
 I'm just a 
@@ -180,6 +182,7 @@ B
 amn about me.
 
 [Amp: 4Red]
+[Chorus - big / open]
 'Cause 
 E
 I'm just a 

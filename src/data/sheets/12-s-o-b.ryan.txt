@@ -2,9 +2,10 @@ Standard (EADGBE)
 
 [Amp: 3Amber]
 
-[Intro]
+[Intro - sit out (stomp-clap, vocals only)]
 
-F#
+~F#
+
 (stomp-clap, vocals only)
 
 [Verse 1]
@@ -144,9 +145,10 @@ nk my lif
 F#
 e away
 
-[Outro]
+[Outro - sit out (stomp-clap, vocals only)]
 
-F#
+~F#
+
 (Whoa oh, whoa oh, whoa oh oh oh)
 
 (stomp-clap, vocals only)

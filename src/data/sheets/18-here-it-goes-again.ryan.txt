@@ -2,6 +2,8 @@ Standard (EADGBE)
 
 [Amp: 3Green]
 
+[Intro - roll guitar volume]
+
 C5
 
 C5
@@ -20,6 +22,7 @@ Bb5
    
 F5
 
+[Verse - roll guitar volume]
 C5
   It could be ten, but then
 G5
@@ -65,6 +68,7 @@ when you get
 G5
 on a roll,
 
+[Chorus]
 C5
  Here it 
 G5
@@ -149,6 +153,7 @@ when you get
 G5
 on a roll,
 
+[Chorus]
 C5
  Here it 
 G5

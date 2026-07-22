@@ -6,7 +6,7 @@ Am   Am/G   F#m7b5   Fmaj7
 
 Am   G   D   E
 
-[Verse 1]
+[Verse 1 - let chords ring]
 I 
 Am
 look at you 
@@ -44,7 +44,7 @@ weeps
 E
 
 [Amp: 8Red]
-[Bridge]
+[Bridge - fills/solo; space not noodling]
 A
 I don't know 
 C#m
@@ -118,7 +118,7 @@ weeps
 E
 
 [Amp: 8Red]
-[Bridge 2]
+[Bridge 2 - fills/solo; space not noodling]
 A
 I don't know how 
 C#m

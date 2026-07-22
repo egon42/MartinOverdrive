@@ -2,6 +2,7 @@ Standard (EADGBE)
 
 [Amp: 3Green]
 
+[Verse - palm mute; don't rush; power chords fine]
 F#5
   
 C#5
@@ -13,7 +14,6 @@ B
 G#m
 When
 B
- G#m as a power chord: 466xxx (E-string 4th fret)
 
 F#5
    I h

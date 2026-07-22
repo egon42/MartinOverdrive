@@ -1,6 +1,8 @@
 Standard (EADGBE)
 
 [Amp: 1Red]
+
+[Verse - sit under trading vocals; clean]
 G
 
 A7sus4
@@ -80,6 +82,7 @@ G
 choking
 
 [Stomp: 2Red]
+[Chorus - dirt lift]
 But 
 G
 I'm going 

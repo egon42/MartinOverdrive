@@ -2,11 +2,11 @@ Standard (EADGBE)
 
 [Amp: 7Green]
 
-[Intro]
+[Intro - wah riff; touch wah on pick attack]
 
 E
 
-[Verse 1]
+[Verse 1 - support riff, not full SRV]
 
 Well, I 
 E
@@ -69,7 +69,7 @@ E
 G
 E
 
-[Solo]
+[Solo - support under other lead; E7#9 / G-A]
 
 E G A
 
