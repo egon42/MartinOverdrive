@@ -120,7 +120,8 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    (flex-start) so the point clears the lyric without changing chip-pull / text position. */
 .chord-chip--cue{display:inline-grid;place-items:center;box-sizing:border-box;width:1.5em;height:1.15em;min-width:1.5em;padding:.22em 0 0;border-radius:0;background:var(--acid);color:var(--on-acid);font-variant-numeric:tabular-nums;font-size:.7em;line-height:1;clip-path:polygon(50% 0%,100% 100%,0% 100%);vertical-align:baseline}
 .chord-chip--fingering{white-space:pre;line-height:1.1;letter-spacing:0;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:4px 6px;vertical-align:middle}
-.chord-chip--power{white-space:nowrap;letter-spacing:.08em;padding:.09em .5em;line-height:1.2;font-weight:900}
+/* Power fingering (Ryan): same box metrics as name chips in above-mode; bold; × mute. */
+.chord-chip--power{white-space:nowrap;letter-spacing:.08em;font-weight:900;vertical-align:baseline}
 .sheet-line--above .chord-chip--power,.sheet-line--above-chords .chord-chip--power{font-size:.7em;padding:.09em .5em;line-height:1.2;border-radius:.45em}
 .sheet-full{max-width:820px}.sheet-meta{color:var(--muted);font-size:.78rem;margin:0 0 8px}.sheet-line{margin:0 0 5px;line-height:1.75}.sheet-line .chord-chip{margin:0 2px}
 /* Instrumental/chord-only rows: pack chips horizontally instead of one tall row each */
@@ -150,11 +151,27 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    (more overlap) at small sizes and slimmer when zoomed, making the Settings preview and
    the live sheet disagree. em keeps them identical at any size. */
 .sheet-line--above .chord-chip,.sheet-line--above-chords .chord-chip{font-size:.7em;padding:.09em .5em;line-height:1.2;border-radius:.45em}
-/* Cue triangles + power chips: sit at the TOP of the chord slot so they
-   clear the lyric. Do NOT change margin-bottom/--chip-pull (that moves the text). */
+/*
+  Above-slot chip alignment (learned 2026-07-22 on fill cues, then power chips):
+
+  1. Keep `.sheet-above-chord` at FIXED `height: 1.35em` — never `height: auto`. Growing
+     the slot pushes the lyric row down.
+  2. Never tweak `--chip-pull` / margin-bottom to "raise" a custom chip — that shifts
+     every lyric baseline.
+  3. Name chips: `align-items: flex-end` (default) so they tuck against the lyric.
+  4. Tall / pointed custom chips (cues, power fingerings): `align-items: flex-start` on
+     the slot so extra height grows UP into the pull gap, not down into the text.
+  5. Kill the `.chord-chip-wrap` line-box strut (`line-height: 0` + flex) for those
+     custom types — otherwise inherited sheet line-height makes a tall wrap and
+     `vertical-align: middle` parks the chip halfway down the slot (looks "too low"
+     even after flex-start). Fill cues skip the wrap entirely; wrapped types need
+     this strut kill.
+*/
 .sheet-line--above .chord-chip--cue,.sheet-line--above-chords .chord-chip--cue{padding:.22em 0 0;border-radius:0;width:1.5em;min-width:1.5em;height:1.15em;font-size:.7em;line-height:1}
 .sheet-above-col:has(.chord-chip--cue) .sheet-above-chord,
 .sheet-above-col:has(.chord-chip--power) .sheet-above-chord{align-items:flex-start}
+.sheet-above-chord .chord-chip-wrap:has(.chord-chip--power){display:flex;align-items:flex-start;line-height:0}
+.sheet-above-chord .chord-chip-wrap:has(.chord-chip--power) .chord-chip--power{line-height:1.2}
 .sheet-line--above-chords{margin:0 0 5px}
 /* Zebra tint on Lyrics-sheet lines, honoring the "Alternate section tone" toggle
    (same var(--ink) 5.5% wash as the cheat-card rows). Text is inset with padding and

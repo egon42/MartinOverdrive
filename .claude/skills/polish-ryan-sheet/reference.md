@@ -109,10 +109,35 @@ Bare `0`–`24` on a chord line → bordered fret chip (A-string cues). Band lyr
 Ryan render sites pass `powerFingerings` into `ChordSheetView`. For `*5` tokens (`C5`,
 `G5`, `F5`, …) chips always show the **4-string** fingering horizontally (low E–A–D–G
 left→right, e.g. C5 → `×355`) in the normal chord slot — no Shapes retap. Mute strings
-use `×` (not `-`). Sit at the **top** of the above-slot like fill cues (flex-start; do
-not change `--chip-pull`). Tap still opens the diagram. Write power-chord Ryan songs as
-`C5`/`G5`/… so the shape generator hits quality `5`. Non-`*5` tokens on Ryan stay name
-chips (Tribute, Welcome Home, etc.).
+use `×` in the **same color** as the frets (not grey). Above-slot alignment: see
+**New above-lyrics chip types** below. Tap still opens the diagram. Write power-chord
+Ryan songs as `C5`/`G5`/… so the shape generator hits quality `5`. Non-`*5` tokens on
+Ryan stay name chips (Tribute, Welcome Home, etc.).
+
+## New above-lyrics chip types (do not re-learn)
+
+Fill cues (2026-07) and power chips (2026-07-22) both looked "too low" and shoved
+lyrics. The fix lives in `src/styles.css` next to `.sheet-above-chord` — follow it for
+every new chip kind:
+
+1. **Fixed slot height** — `.sheet-above-chord { height: 1.35em }` stays fixed. Never
+   `height: auto` to fit a taller chip (that pushes the lyric row down).
+2. **Do not touch `--chip-pull`** to raise a chip — it shifts every lyric baseline.
+3. **Name chips** stay `align-items: flex-end` (tucked to the lyric).
+4. **Custom / tall chips** (cues, power, …): set
+   `.sheet-above-col:has(.chord-chip--YOURTYPE) .sheet-above-chord { align-items: flex-start }`
+   so overflow grows up into the pull gap.
+5. **Kill the wrap strut** if the chip is inside `.chord-chip-wrap` (most are; cues are
+   the exception — they return a bare `<b>`). Inherited sheet `line-height` makes the
+   wrap taller than the chip and `vertical-align: middle` parks it mid-slot:
+   ```css
+   .sheet-above-chord .chord-chip-wrap:has(.chord-chip--YOURTYPE) {
+     display: flex; align-items: flex-start; line-height: 0;
+   }
+   ```
+6. Match above-mode **box metrics** to name chips where possible
+   (`font-size: .7em; padding: .09em .5em; line-height: 1.2`) so the row rhythm
+   matches.
 
 ## Trim rules (stage)
 

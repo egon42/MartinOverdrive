@@ -175,6 +175,9 @@ Read [reference.md](reference.md) **before writing sheet text** (especially § S
 - Power-chord Ryan songs: write `C5`/`G5`/… ; Ryan views pass `powerFingerings` so `*5`
   chips show horizontal 4-string EADG fingering always (see reference § Power-fingering chips)
 - Cue triangles sit at the **top** of the above-slot (`align-items: flex-start`); never change `--chip-pull` to "fix" overlap (that moves lyric text)
+- **New above-lyrics chip types:** follow reference § "New above-lyrics chip types" (fixed
+  slot height, flex-start, kill `.chord-chip-wrap` line-height strut) — same bugs as fill
+  cues and power chips, twice
 - Chip hints (`Am{Hold}`) — reserved; add when a song needs them
 - App copy: no em-dashes
 

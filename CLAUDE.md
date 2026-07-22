@@ -156,7 +156,12 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   song-by-song with `.claude/skills/polish-ryan-sheet/`. Per-song autoscroll defaults
   (after dial-in) live in `src/data/scrollSpeeds.json` (`speed`, optional `leadInSec`);
   practice `scrollSpeed` overrides when set. Ryan sheets are optional per song; the
-  validator checks their songId and scroll-speed seeds.
+  validator checks their songId and scroll-speed seeds. **Above-lyrics custom chips**
+  (fill cues, Ryan power fingerings, any future type): keep `.sheet-above-chord` at
+  fixed `1.35em`, use `align-items: flex-start` for the custom type, and kill the
+  `.chord-chip-wrap` line-height strut — never `height: auto` or `--chip-pull` tweaks
+  (lyrics shift). Full checklist in `.claude/skills/polish-ryan-sheet/reference.md`
+  § "New above-lyrics chip types".
 - The user hands over source material (text, exports, screenshots); convert it to
   those text files — **no paste UI, no images in the app** (deliberate: text is
   editable and diff-able). `TabsAndChords/` (gitignored) is the raw-material drop

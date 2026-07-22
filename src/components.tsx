@@ -136,12 +136,15 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     },
   }
   const chipClass = ghost ? 'chord-chip chord-chip--ghost' : 'chord-chip'
-  // Ryan power chips / Shapes retap: replace the chord name with a vertical tab chip (still tappable).
+  // Ryan power chips / Shapes retap: replace the chord name with a fingering chip (still tappable).
   if (fingering && (fingeringOnly || powerChip)) {
     const body = powerChip ? formatPowerFingering(fingering) : formatVerticalFingering(fingering)
     return <span className="chord-chip-wrap" ref={ref}>
       <b className={`${chipClass} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}`} role="button" tabIndex={0} aria-expanded={open}
-        aria-label={label} title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}><FingeringText text={body} /></b>
+        aria-label={label} title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}>
+        {/* Power chips: × mute stays on-acid (same color as frets). Shapes mode greys mutes. */}
+        {powerChip ? body : <FingeringText text={body} />}
+      </b>
       {pop}
     </span>
   }
