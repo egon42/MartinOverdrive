@@ -48,7 +48,14 @@ A5
 
 [Chorus - B5 / A5 E5 A5 E5]
 B5
-You've been thunderstruck.
+You've been 
+A5
+thunder-
+E5
+struck,
+A5
+
+E5
 
 [Verse - B5 palm mute]
 B5
@@ -110,17 +117,15 @@ A5
 struck, 
 E5
 
-[Chorus - ooh]
-A5
-Ooh, thunder-
+[Chorus - ooh - B5 / A5 E5 A5 E5]
 B5
-struck. 
+Ooh, thunder-
 A5
-    
+struck, 
 E5
-        
+
 A5
-           
+
 E5
 
 [Link - B5 ×4]
@@ -194,15 +199,9 @@ E5
 
 [Bridge - B5 E5 ×2]
 B5
-Said 
-B5
-yeah, its al-
+Said yeah, its al-
 E5
-right, 
-B5
-we're doing 
-E5
-fine.
+right, we're doing fine.
 
 [Walk-up - B5 A5 D5 E5]
 B5
@@ -216,46 +215,33 @@ E5
 [Outro - B5 / A5 E5 A5 E5 ×4]
 B5
 Thunder-
-B5
+A5
 struck,
-A5
-   
-E5
-      
-A5
-         
 E5
 
-[Outro - whoa baby]
+A5
+
+E5
+
+[Outro - whoa baby - B5 / A5 E5 A5 E5]
 B5
 Thunder-
-B5
-struck
 A5
-,  whoa,  
+struck, whoa, 
 E5
-baby,
+baby, ba-
 A5
-   ba-
+by, thunder-
 E5
-by, thunder
-B5
--struck
-A5
-.  
-E5
-
-[Outro - tag ×2]
-A5
-You've 
-B5
-been thunder-
-B5
 struck.
+
+[Outro - tag B5 / A5 E5 A5 E5 ×2]
+B5
+You've been 
 A5
-   
+thunder-
 E5
-     
+struck,
 A5
-        
+
 E5
