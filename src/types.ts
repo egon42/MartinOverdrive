@@ -35,7 +35,7 @@ export interface PracticeEntry {
   savedSongsterrUrl: string
   savedUltimateGuitarUrl: string
   preferredSource: '' | 'songsterr' | 'ultimateGuitar' | 'chords' | 'tabs'
-  scrollSpeed: number // show-mode autoscroll px/second; 0 = use the default
+  scrollSpeed: number // autoscroll px/s at 1× zoom; 0 = song seed (scrollSpeeds.json) else global default
   skipTonight: boolean // tonight's set: true = song sits out of show mode
   setPosition: number // tonight's set order override; 0 = use song.order
   bpm: number // metronome tempo override; 0 = use the researched default

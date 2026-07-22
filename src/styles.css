@@ -209,6 +209,9 @@ html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-m
 .autoscroll-step{width:2.4rem;height:2.4rem;font-size:1.3rem}
 .autoscroll-speed{min-width:3.4em;text-align:center;color:var(--muted);font-size:.85rem;font-weight:750;font-variant-numeric:tabular-nums}
 .autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase}
+button.autoscroll-speed{border:0!important;background:transparent!important;padding:0;min-width:3.4em;height:auto;border-radius:0;cursor:pointer;font:inherit;font-weight:750;font-variant-numeric:tabular-nums;color:var(--muted);-webkit-user-select:none;user-select:none;touch-action:manipulation}
+button.autoscroll-speed.overridden{color:var(--acid)}
+button.autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase}
 /* Lead-in countdown when ▶ is pressed at the top of the sheet (see SCROLL_LEAD_IN_PX). */
 .autoscroll-delay{min-width:2.6em;text-align:center;color:var(--acid);font-size:.9rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.05}
 .autoscroll-delay i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:750}

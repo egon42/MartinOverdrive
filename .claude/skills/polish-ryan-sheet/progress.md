@@ -12,7 +12,7 @@ stay unchecked until one exists and is polished.
 - [ ] 04-i-believe-in-a-thing-called-love
 - [ ] 05-thunderstruck
 - [ ] 06-dont-stop-believin
-- [ ] 07-tribute — **in progress (2026-07-22):** intro + fills ^1/^2/^3, pre-ROCK chords stripped, 4Amber→ETHEREAL, appendix/tab stitch cut; show chrome collapses while crawling. Still open: ear-check fill ^3 on "men"; dial scrollSpeed on /dev/ **after** chrome-collapse (larger viewport); reload amp slot 4. Research links in `practice-notes-worksheet.md` §07.
+- [ ] 07-tribute — **in progress (2026-07-22):** intro + fills ^1/^2/^3, pre-ROCK chords stripped, 4Amber→ETHEREAL, appendix/tab stitch cut; show chrome collapses while crawling; scroll seed **10** in `scrollSpeeds.json` (upper-middle at ROCK). Still open: ear-check fill ^3 on "men"; confirm 10 on device (tap acid readout if an old override is stuck); reload amp slot 4. Research links in `practice-notes-worksheet.md` §07.
 - [ ] 08-while-my-guitar-gently-weeps
 - [ ] 09-pride-and-joy
 - [ ] 10-zombie

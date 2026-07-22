@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react'
 import { usePractice } from './storage'
+import scrollSpeedData from './data/scrollSpeeds.json'
 
-// Autoscroll speed, px/second at 1× sheet zoom (per-song, stored as PracticeEntry.scrollSpeed —
-// one synced value shared by show mode and the practice page's sheet panel). Crawl advances
-// at speed * zoom so a dialed-in song length survives pinch-zoom (content height scales with
-// --zoom; see docs/autoscroll-spec.md).
+// Autoscroll speed, px/second at 1× sheet zoom. Resolution order (same pattern as
+// metronome bpm): PracticeEntry.scrollSpeed (synced override) → scrollSpeeds.json seed
+// (polish-committed per song) → DEFAULT_SCROLL_SPEED. Crawl advances at speed * zoom so a
+// dialed-in song length survives pinch-zoom (content height scales with --zoom; see
+// docs/autoscroll-spec.md).
 export const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED = 120, SCROLL_SPEED_STEP = 4
 // Lead-in before the crawl starts when ▶ is pressed at the top of the sheet — gives the
 // first lines a beat to read before they scroll away. Duration = LEAD_IN_PX / speed
@@ -12,6 +14,20 @@ export const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED =
 // Zoom cancels out of the duration (lead-in covers LEAD_IN_PX * zoom content px at
 // speed * zoom), so the wait stays constant across pinch levels.
 const SCROLL_LEAD_IN_PX = 96
+
+type ScrollSpeedSeed = { speed: number, note?: string }
+const scrollSpeedSeeds = scrollSpeedData as Record<string, ScrollSpeedSeed>
+
+/** Polished per-song default from src/data/scrollSpeeds.json, or undefined if unset. */
+export function scrollSpeedSeed(songId: string): number | undefined {
+  const speed = scrollSpeedSeeds[songId]?.speed
+  return typeof speed === 'number' && speed > 0 ? speed : undefined
+}
+
+/** Effective 1×-normalized crawl speed: practice override → song seed → global default. */
+export function scrollSpeedFor(songId: string, practiceSpeed: number): number {
+  return practiceSpeed || scrollSpeedSeed(songId) || DEFAULT_SCROLL_SPEED
+}
 
 function autoscrollInner(el: HTMLElement): HTMLElement | null {
   return el.querySelector(':scope > .autoscroll-inner')
@@ -138,8 +154,12 @@ export interface AutoScrollControls {
   delayLeft: number
   scrollable: boolean
   speed: number
+  /** True when PracticeEntry.scrollSpeed is set (overrides the polished song seed). */
+  overridden: boolean
   togglePlay: () => void
   bumpSpeed: (delta: number) => void
+  /** Clear the practice override so the song seed / global default applies again. */
+  clearSpeedOverride: () => void
 }
 
 export function useAutoScrollControls(
@@ -149,7 +169,9 @@ export function useAutoScrollControls(
   zoom = 1,
 ): AutoScrollControls {
   const { get, patch } = usePractice()
-  const speed = get(songId).scrollSpeed || DEFAULT_SCROLL_SPEED
+  const practiceSpeed = get(songId).scrollSpeed
+  const speed = scrollSpeedFor(songId, practiceSpeed)
+  const overridden = practiceSpeed > 0
   const [playing, setPlaying] = useState(false)
   // Lead-in when ▶ is pressed at the top: `delayUntil` is a performance.now() deadline
   // (0 = none); `delayLeft` is the displayed seconds remaining.
@@ -206,6 +228,7 @@ export function useAutoScrollControls(
     setScrollable(!!el && el.scrollHeight > el.clientHeight + 1)
   }, [target, zoom])
   const bumpSpeed = (delta: number) => patch(songId, { scrollSpeed: Math.max(MIN_SCROLL_SPEED, Math.min(MAX_SCROLL_SPEED, speed + delta)) })
+  const clearSpeedOverride = () => patch(songId, { scrollSpeed: 0 })
   // Toggle play; if we're starting from the very bottom (a finished crawl), rewind to the top
   // first. At the top, arm a speed-based lead-in so the first lines aren't scrolled away
   // before you can read them; mid-sheet presses crawl immediately.
@@ -234,18 +257,20 @@ export function useAutoScrollControls(
     setPlaying(true)
   }
   const togglePlay = useCallback(() => togglePlayRef.current(), [])
-  return { playing, delayLeft, scrollable, speed, togglePlay, bumpSpeed }
+  return { playing, delayLeft, scrollable, speed, overridden, togglePlay, bumpSpeed, clearSpeedOverride }
 }
 
 /** The ▶ / countdown / −speed+ control strip. Callers must only render it when
  *  `scroll.scrollable` (and the target sheet is on screen) — see useAutoScrollControls. */
 export function AutoScrollBar({ scroll }: { scroll: AutoScrollControls }) {
-  const { playing, delayLeft, speed, togglePlay, bumpSpeed } = scroll
+  const { playing, delayLeft, speed, overridden, togglePlay, bumpSpeed, clearSpeedOverride } = scroll
   return <div className="show-autoscroll">
     <button type="button" className="autoscroll-play" aria-pressed={playing} aria-label="Autoscroll" onClick={togglePlay}>{playing ? '⏸' : '▶'}</button>
     {playing && delayLeft > 0 && <span className="autoscroll-delay" aria-live="polite" aria-label={`Starting in ${delayLeft.toFixed(1)} seconds`}>{delayLeft.toFixed(1)}<i>s</i></span>}
     <button type="button" className="autoscroll-step" aria-label="Slower" disabled={speed <= MIN_SCROLL_SPEED} onClick={() => bumpSpeed(-SCROLL_SPEED_STEP)}>−</button>
-    <span className="autoscroll-speed" aria-label={`Scroll speed ${speed} pixels per second at one times zoom`}>{speed}<i>px/s</i></span>
+    {overridden
+      ? <button type="button" className="autoscroll-speed overridden" aria-label={`Scroll speed ${speed} pixels per second at one times zoom. Tap to restore song default`} title="Tap to restore song default" onClick={clearSpeedOverride}>{speed}<i>px/s</i></button>
+      : <span className="autoscroll-speed" aria-label={`Scroll speed ${speed} pixels per second at one times zoom`}>{speed}<i>px/s</i></span>}
     <button type="button" className="autoscroll-step" aria-label="Faster" disabled={speed >= MAX_SCROLL_SPEED} onClick={() => bumpSpeed(SCROLL_SPEED_STEP)}>+</button>
   </div>
 }

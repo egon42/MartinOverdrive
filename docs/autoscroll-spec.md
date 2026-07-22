@@ -3,9 +3,10 @@
 Owner code: `useAutoScroll` in `src/autoscroll.tsx` (moved verbatim from
 `src/pages.tsx` 2026-07-20, when the practice page's sheet panel gained the same
 autoscroll; `useAutoScrollControls`/`AutoScrollBar` in the same file wrap it for both
-surfaces). Speed persistence: `PracticeEntry.scrollSpeed` (per-song, rides the sync
-merge — one speed shared by show mode and the practice page), bounds in
-`DEFAULT_SCROLL_SPEED / MIN / MAX / STEP` (24 / 6 / 120 / 4 px/s **at 1× sheet zoom**).
+surfaces). Speed resolution: `PracticeEntry.scrollSpeed` (synced override) → polished
+seed in `src/data/scrollSpeeds.json` → `DEFAULT_SCROLL_SPEED` (24). Bounds
+`MIN / MAX / STEP` (6 / 120 / 4 px/s **at 1× sheet zoom**). Ryan polish commits seeds
+into that JSON file so every install starts from the dialed value.
 
 Show-mode pinch zoom (`--zoom` on the sheet, typically 0.75–3×) reflows content via
 font-size, so `scrollHeight` scales with zoom. The crawl advances at `speed * zoom`

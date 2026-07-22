@@ -16,6 +16,7 @@ const SHEETS_DIR = 'src/data/sheets'
 const PROGRESSIONS = 'src/data/progressions.json'
 const PROG_VERSIONS = 'src/data/progressionVersions.json'
 const TAB_LINKS = 'src/data/tab-links.json'
+const SCROLL_SPEEDS = 'src/data/scrollSpeeds.json'
 const CHORDS_TS = 'src/chords.ts'
 const UG_SCRIPT = 'scripts/ug-chords-to-sheet.mjs'
 
@@ -125,6 +126,7 @@ const setlist = readJson(SETLIST)
 const progressions = readJson(PROGRESSIONS)
 const progressionVersions = readJson(PROG_VERSIONS)
 const tabLinks = readJson(TAB_LINKS)
+const scrollSpeeds = readJson(SCROLL_SPEEDS)
 
 // If core inputs are missing/unparseable, report blockers and bail (exit 1).
 if (blockers.length && (!setlist || !progressions || !tabLinks || !META_RE)) {
@@ -260,6 +262,20 @@ if (tabLinks && typeof tabLinks === 'object') {
   }
 }
 
+// --- Check 6: scrollSpeeds.json (polished Ryan/show autoscroll defaults) ----------
+const SCROLL_MIN = 6, SCROLL_MAX = 120
+let scrollSpeedCount = 0
+if (scrollSpeeds && typeof scrollSpeeds === 'object') {
+  for (const [songId, entry] of Object.entries(scrollSpeeds)) {
+    if (!songIds.has(songId)) fail(songId, `scrollSpeeds.json entry keys to a song not in the setlist.`)
+    scrollSpeedCount += 1
+    const speed = entry && typeof entry === 'object' ? entry.speed : null
+    if (typeof speed !== 'number' || !Number.isFinite(speed) || speed < SCROLL_MIN || speed > SCROLL_MAX) {
+      fail(songId, `scrollSpeeds.json "speed" must be a number ${SCROLL_MIN}–${SCROLL_MAX} (got ${JSON.stringify(speed)}).`)
+    }
+  }
+}
+
 // --- Report ---------------------------------------------------------------------
 for (const blocker of blockers) console.error(`BLOCKER: ${blocker}`)
 
@@ -287,5 +303,5 @@ if (blockers.length || findings.size) {
 
 console.log(`Song-data validation passed: ${songs.length} songs, ${sheetEntries.length} sheet files, ` +
   `${Object.keys(progressions).length} cheat cards (+${archivedVersionCount} archived versions), ` +
-  `${Object.keys(tabLinks).length} tab-link entries. ` +
+  `${Object.keys(tabLinks).length} tab-link entries, ${scrollSpeedCount} scroll-speed seeds. ` +
   `CHORD_RE in sync across ${CHORDS_TS} and ${UG_SCRIPT}.`)
