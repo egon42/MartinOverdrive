@@ -14,9 +14,9 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 ## Status
 
-- [ ] 01-welcome-home — **drafted (2026-07-22):** UG spine restored; sit-out intro + ringing Em; play solo; bridge syncopated→verse-chug; SOLO/OUTRO one Em-C-D-Em cycle; scroll estimate **6** + `leadInSec` **48**. Needs device dial + lock.
-- [ ] 02-all-the-small-things — **drafted (2026-07-22):** power `*5` chips; ringing early pre / full late pre; instrumental ×2; interlude prepare ghosts + (C C C B)×3; scroll estimate **11** + `leadInSec` **8**. Needs device dial + lock.
-- [ ] 03-a-little-less-conversation — **drafted (2026-07-22):** lead vocal / chords while singing / no fills / hard stop on single; scroll estimate **14** + `leadInSec` **10**. Needs device dial + lock.
+- [x] 01-welcome-home — **done (2026-07-22):** sit-out intro + ringing Em; bridge syncopated→verse-chug; SOLO/OUTRO one Em-C-D-Em cycle; scroll **6** + `leadInSec` **48**.
+- [x] 02-all-the-small-things — **done (2026-07-22):** power `*5`; ringing early pre / full late pre; instrumental ×2; interlude prepare ghosts + (C C C B)×3; scroll **11** + `leadInSec` **8**.
+- [x] 03-a-little-less-conversation — **done (2026-07-22):** lead vocal / chords while singing / no fills / hard stop on single; scroll **14** + `leadInSec` **10**.
 - [ ] 04-i-believe-in-a-thing-called-love — **drafted (history pass):** optional Solo → 6Green; scroll **12**. Device dial.
 - [ ] 05-thunderstruck — **drafted (2026-07-22):** between-line vs on-vocal; scroll **10** + leadIn **50**. End/guitar pass open.
 - [ ] 06-don-t-stop-believin — **drafted (history pass):** keys-only intro sit-out; guitar in on verse; leadIn **12**. Device dial.
@@ -48,8 +48,8 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 ## Last done
 
-**07-tribute** locked (2026-07-22).
+**Locked (2026-07-22):** 01-welcome-home, 02-all-the-small-things, 03-a-little-less-conversation, 07-tribute.
 
-**Drafted (not locked):** all other songs. Bulk copy (2026-07-22) then **history pass** applied polished-song patterns from Tribute/WH/ATS/ALLC/Thunderstruck + practice notes / amp / perf notes / form research (sit-outs, volume rolls, dynamics headers, cold ends, amp role notes). Still no invented `^N` fill words. Scroll seeds re-Estimated.
+**Drafted (not locked):** 04–06, 08–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next:** device-dial / tweak on `/MartinOverdrive/dev/` Ryan tab; lock when crawl + content feel right. Still thin: Purple Rain, Sweet Home, Ain't Goin' Down.
+**Next review queue (handoff):** 04 → 05 → 06 → 08… Still thin: Purple Rain, Sweet Home, Ain't Goin' Down. Thunderstruck end/guitar pass open. The Middle needs role card + scroll seed.

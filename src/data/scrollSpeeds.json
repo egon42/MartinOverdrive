@@ -2,17 +2,17 @@
   "01-welcome-home": {
     "speed": 6,
     "leadInSec": 48,
-    "note": "Estimate 2026-07-22 (recalc after SOLO/OUTRO compress). Studio 6:15; ~0.76× Tribute non-empty → raw≈5.0 with leadIn 48 → clamped to 6. leadInSec 48 for sit-out riff. Dial on device — dense verses then short vamp tail."
+    "note": "Locked 2026-07-22. Sit-out lead-in 48s; speed 6. Dense verses then short Em-C-D-Em vamp tail."
   },
   "02-all-the-small-things": {
     "speed": 11,
     "leadInSec": 8,
-    "note": "Estimate 2026-07-22 after instrumental + ringing pre-chorus. Studio 2:48; added post-chorus instrumental tab glance (was scrolling past Late night early). Dial on device."
+    "note": "Locked 2026-07-22. Power *5; ringing early pre / full late pre; instrumental + interlude ×N. Speed 11, leadIn 8."
   },
   "03-a-little-less-conversation": {
     "speed": 14,
     "leadInSec": 10,
-    "note": "Estimate 2026-07-22. Studio single ~2:30; ~0.88× Tribute non-empty. leadInSec 10 for intro vamp before vocal. Dial on device — lead vocal + chords, hard stop."
+    "note": "Locked 2026-07-22. Lead vocal + chords, no fills, hard stop on single. Speed 14, leadIn 10."
   },
   "05-thunderstruck": {
     "speed": 10,
