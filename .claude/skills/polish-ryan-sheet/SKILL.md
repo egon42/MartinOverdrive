@@ -42,10 +42,17 @@ Authority order when they conflict:
 Do **not** batch-edit the whole setlist. For each song:
 
 1. Load context → propose deltas → wait for confirm (unless they already stated the fix)
-2. Apply → `npm run validate` → **commit + bare `git push` to `dev`** (shipping to `/dev/`
-   for on-device review is the default — standing user instruction)
+2. Apply → `npm run validate` → **commit + bare `git push` to `dev`** in the same turn
 3. Mark progress → point them at live `/MartinOverdrive/dev/` Ryan tab → offer the **next**
    unchecked song
+
+### Always ship to `/dev/` (standing rule — 2026-07-22)
+
+Every applied change (new/edited `.ryan.txt`, scroll seed, amp notes, progress check-off)
+**must** end with validate → commit → bare `git push` on `dev`. Do **not** wait for
+"push to dev" / "ship it" / permission to push. On-device review at `/MartinOverdrive/dev/`
+is how polish happens; leaving work only local is a miss. Stay on `dev` (or checkout
+`dev` first). Never ask whether to push.
 
 Resume from [progress.md](progress.md). Prefer songs that already have a `.ryan.txt`, then
 setlist order for new ones. Ryan tab only appears when `settings.ryanTab` is on (7 taps on
@@ -58,9 +65,9 @@ Settings → Developer).
 | "ryan pass" / "polish ryan" / "start ryan polish" | Open progress; start at first unchecked (or ask) |
 | "next" / "next ryan sheet" | Next unchecked after the last done |
 | Song title / id | That song only |
-| Specific fix ("move fill 3 to beast") | Apply immediately; still validate + push |
-| "push to dev" / "for review" / "ship it" / "ok" / "lgtm" | Treat as accept of the pending proposal → apply + validate + commit + push |
-| "lock this in" / "locked" / "perfect" (after dial + content) | Check off in progress.md; commit seed + notes; offer next song |
+| Specific fix ("move fill 3 to beast") | Apply immediately → validate → commit → push (no ask) |
+| "for review" / "ship it" / "ok" / "lgtm" / "push to dev" | Accept pending proposal → apply → validate → commit → push (push is always implied) |
+| "lock this in" / "locked" / "perfect" (after dial + content) | Check off in progress.md; commit seed + notes; push; offer next song |
 
 ## Step 1 — Load
 
@@ -176,17 +183,20 @@ Before validate: spot-check that chorded lyric stretches still mid-split like th
 
 ```bash
 npm run validate
-# commit ryan sheet (+ scrollSpeeds.json / amp / docs) then bare git push on dev
+# commit ryan sheet (+ scrollSpeeds.json / amp / docs / skill edits)
+# then ALWAYS bare git push on dev — never stop after commit, never ask
+git push
 ```
 
 Point at `/MartinOverdrive/dev/` → song → Ryan tab (flag on). Hard-refresh if the SW looks stale.
-When locking in: update [progress.md](progress.md), then offer the next unchecked song
-(prefer existing `.ryan.txt`, else setlist order).
+When locking in: update [progress.md](progress.md), commit + push, then offer the next
+unchecked song (prefer existing `.ryan.txt`, else setlist order).
 
 ## Out of scope / anti-patterns
 
 - Batch-creating Ryan sheets for every setlist song in one turn
 - Changing band `.chords.txt` / cheat cards unless asked
 - Loading amp hardware (tell the user to run the mustang loader when a `.fuse` changed)
+- Stopping after a local commit without `git push` (or asking the user whether to push)
 - **Rewriting lyrics into “pretty” full lines with space-aligned chords** — breaks
   `parseChordSheet` (Welcome Home regression 2026-07-22); always band spine + Ryan layers
