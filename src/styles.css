@@ -201,7 +201,7 @@ html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-m
 .show-pin{border:1px solid var(--line);background:transparent;color:inherit;border-radius:999px;padding:.45rem .85rem;font-size:.72rem;font-weight:750;line-height:1;cursor:pointer;opacity:.5;-webkit-user-select:none;user-select:none;touch-action:manipulation}
 .show-pin.pinned{background:var(--acid);border-color:var(--acid);color:var(--on-acid);opacity:1}
 /* Show-mode autoscroll bar (teleprompter): play/pause + −/+ speed steppers, big tap targets */
-.show-autoscroll{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.show-autoscroll{display:flex;align-items:center;gap:10px;margin:0}
 .show-autoscroll button{border:1px solid var(--line);background:transparent;color:inherit;border-radius:999px;cursor:pointer;font-weight:800;line-height:1;-webkit-user-select:none;user-select:none;touch-action:manipulation}
 .show-autoscroll button:disabled{opacity:.4;cursor:default}
 .autoscroll-play{min-width:2.6rem;height:2.6rem;font-size:1.05rem}
@@ -212,6 +212,11 @@ html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-m
 /* Lead-in countdown when ▶ is pressed at the top of the sheet (see SCROLL_LEAD_IN_PX). */
 .autoscroll-delay{min-width:2.6em;text-align:center;color:var(--acid);font-size:.9rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.05}
 .autoscroll-delay i{display:block;font-style:normal;font-size:.62em;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:750}
+/* Sheet tools: AutoScrollBar + home-fret scale chips (chips stay visible while chrome collapses). */
+.show-sheet-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.show-sheet-tools:empty{display:none}
+.show-sheet-tools .home-frets{margin-left:2px}
+.show-sheet-tools .home-fret-chip{font-size:.72rem;min-width:1.7em;height:1.7em;border-width:1.5px}
 .show-song.sheet-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .show-sheet{flex:1;min-height:0;overflow:auto}
 /* Direct child of the scrollport — useAutoScroll paints the sub-pixel remainder here via
@@ -317,13 +322,32 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .show-mode .show-counter{padding:.35rem .7rem;font-size:.7rem}
 .show-song-head{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;margin:0 0 2px;min-width:0}
 .show-song-head .eyebrow{margin:0;font-size:.52rem;line-height:1.1;flex:0 0 auto}
-.show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0}
-/* Autoscroll playing (incl. lead-in): hide artist / view tabs+Pin / stage strip / Up next /
-   zoom-reset. Keeps × exit, compact title, page-turner ‹ n/N ›, Live chip, AutoScrollBar. */
+.show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0;transition:font-size .18s ease}
+/* Autoscroll playing (incl. lead-in): collapse artist / view tabs+Pin / stage strip / Up next /
+   zoom-reset. Keeps × exit, compact title, page-turner ‹ n/N ›, Live chip, AutoScrollBar +
+   home-fret chips. Max-height (not display:none) so the collapse can animate. */
+.show-mode .show-song-head .eyebrow,
+.show-mode .show-view-bar,
+.show-mode .show-stage-strip,
+.show-mode .show-upnext{
+  overflow:hidden;
+  opacity:1;
+  max-height:6rem;
+  transition:opacity .18s ease,max-height .18s ease,margin .18s ease,padding .18s ease,border-width .18s ease
+}
 .show-mode--crawling .show-song-head .eyebrow,
 .show-mode--crawling .show-view-bar,
 .show-mode--crawling .show-stage-strip,
-.show-mode--crawling .show-upnext,
+.show-mode--crawling .show-upnext{
+  opacity:0;
+  max-height:0;
+  margin-top:0;
+  margin-bottom:0;
+  padding-top:0;
+  padding-bottom:0;
+  border-width:0;
+  pointer-events:none
+}
 .show-mode--crawling .show-zoom-reset{display:none}
 .show-mode--crawling .show-song-head{margin:0}
 .show-mode--crawling .show-song-head h1{font-size:.78rem}
@@ -337,7 +361,8 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .show-stage-strip .preset-joiner{font-size:.75rem}
 .show-stage-strip .preset-notes{font-size:.68rem;line-height:1.2;color:#c5cec9}
 .show-stage-strip .home-fret-chip{font-size:.62rem;min-width:1.5em;height:1.5em;border-width:1px}
-.show-song .show-autoscroll{gap:6px;margin:0 0 6px}
+.show-song .show-sheet-tools{gap:6px;margin:0 0 6px}
+.show-song .show-sheet-tools .home-fret-chip{font-size:.62rem;min-width:1.5em;height:1.5em;border-width:1px}
 .show-song .autoscroll-play{min-width:2.1rem;height:2.1rem;font-size:.9rem}
 .show-song .autoscroll-step{width:2rem;height:2rem;font-size:1.1rem}
 .show-song .autoscroll-speed{min-width:2.8em;font-size:.72rem}

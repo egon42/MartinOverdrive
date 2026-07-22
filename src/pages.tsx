@@ -245,7 +245,7 @@ function useZoom(resetKey: string, minZoom: number, enabled: boolean, initialZoo
 }
 
 /** Shared stage chrome strip: tuning / transpose / capo / amp presets / home frets. */
-function ShowStageStrip({ song }: { song: Song }) {
+function ShowStageStrip({ song, includeHomeFrets = false }: { song: Song, includeHomeFrets?: boolean }) {
   const transpose = transposeFor(song.id)
   // Known limit: always the LIVE entry's capo — the dev version dropdown in CheatCard
   // doesn't reach up here, so an archived version with a different capo would show the
@@ -256,7 +256,8 @@ function ShowStageStrip({ song }: { song: Song }) {
     {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>Transpose {transposeLabel(transpose.semitones)}</span>}
     {capo && <span className="cheat-chip cheat-capo">{capo}</span>}
     <PresetBadges songId={song.id} showNotes />
-    <HomeFretBadges song={song} />
+    {/* Sheet views park home-fret chips next to AutoScrollBar so they survive chrome collapse. */}
+    {includeHomeFrets && <HomeFretBadges song={song} />}
   </div>
 }
 
@@ -487,7 +488,8 @@ export function Show() {
     }
   }, [])
   // Collapse non-essential chrome while autoscroll is armed (playing or lead-in) so the
-  // sheet gets max viewport. Keep × exit, compact title, ‹ n/N ›, Live chip, AutoScrollBar.
+  // sheet gets max viewport. Keep × exit, compact title, ‹ n/N ›, Live chip, AutoScrollBar,
+  // and home-fret scale chips (parked beside the scroll controls on sheet views).
   return <div className={`show-mode${scroll.playing ? ' show-mode--crawling' : ''}`}>
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
@@ -523,8 +525,11 @@ export function Show() {
       </div>
       <button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song - tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button>
     </div>
-    <ShowStageStrip song={song} />
-    {!cardView && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
+    <ShowStageStrip song={song} includeHomeFrets={cardView} />
+    {!cardView && <div className="show-sheet-tools">
+      {scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
+      <HomeFretBadges song={song} />
+    </div>}
     {effective === 'ryan'
       ? <div className="show-sheet" ref={ryanRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.ryan!} songId={song.id} frets/></div></div>
       : effective === 'lyrics'

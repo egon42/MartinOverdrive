@@ -95,8 +95,9 @@ on device; you only tweak constants if lead-in feels wrong globally.
 5. Confirm numbered fill cues against the recording (practice-notes links when present).
 
 Chrome while crawling (product, already wired in `Show`): keep × exit, compact title,
-‹ n/N ›, Live chip, AutoScrollBar; hide artist eyebrow, view bar + Pin, stage strip, Up next,
-zoom-reset. Practice SheetPanel does not collapse yet.
+‹ n/N ›, Live chip, AutoScrollBar, home-fret scale chips (sheet views park them to the
+right of the scroll controls so collapse does not hide them); hide artist eyebrow, view
+bar + Pin, stage strip, Up next, zoom-reset. Practice SheetPanel does not collapse yet.
 
 ## Step 3 — Settled Ryan syntax
 
