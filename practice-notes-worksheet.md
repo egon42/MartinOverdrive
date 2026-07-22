@@ -82,13 +82,14 @@ Fill this out as you run songs. Leave anything blank you haven't hit yet. When y
 
 ## 03 — A Little Less Conversation (Elvis Presley)
 
-- Tuning: Standard · Role: Chords + vocal support · Must-know: Groove, vocal entrances, clean chord rhythm
+- Tuning: Standard · Role: Lead vocal + chords (no fills) · Must-know: Groove, vocal entrances, clean chord rhythm
 - Comfort (1–5): 4
 - What's solid:
 - What's shaky: Singing timing without listening to the recording
 - Trouble spots (section / what fails):
-- Amp / tone notes:
+- Amp / tone notes: Slot 3 muted funk 16ths
 - Open questions:
+- Ryan (2026-07-22): 1968 single form, hard stop after last chorus (no second bridge / fade tags). Band key E. Lyric nudge: "please" after action; satisfy echoes on chorus 2 + out. Sections labeled for vocal entrances.
 
 ---
 

@@ -9,6 +9,11 @@
     "leadInSec": 8,
     "note": "Estimate 2026-07-22 after instrumental + ringing pre-chorus. Studio 2:48; added post-chorus instrumental tab glance (was scrolling past Late night early). Dial on device."
   },
+  "03-a-little-less-conversation": {
+    "speed": 14,
+    "leadInSec": 10,
+    "note": "Estimate 2026-07-22. Studio single ~2:30; ~0.88× Tribute non-empty. leadInSec 10 for intro vamp before vocal. Dial on device — lead vocal + chords, hard stop."
+  },
   "07-tribute": {
     "speed": 10,
     "leadInSec": 11.6,
