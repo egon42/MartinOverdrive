@@ -14,6 +14,11 @@
     "leadInSec": 10,
     "note": "Estimate 2026-07-22. Studio single ~2:30; ~0.88× Tribute non-empty. leadInSec 10 for intro vamp before vocal. Dial on device — lead vocal + chords, hard stop."
   },
+  "05-thunderstruck": {
+    "speed": 16,
+    "leadInSec": 50,
+    "note": "Estimate 2026-07-22. Studio ~4:52; ~1.54× Tribute non-empty. leadInSec 50 for lead-riff sit-out before Chug B5. Dial on device — power chips, upper-middle at first verse."
+  },
   "07-tribute": {
     "speed": 10,
     "leadInSec": 11.6,
