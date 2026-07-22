@@ -140,7 +140,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   if (fingering && (fingeringOnly || powerChip)) {
     const body = powerChip ? formatPowerFingering(fingering) : formatVerticalFingering(fingering)
     return <span className="chord-chip-wrap" ref={ref}>
-      <b className={`${chipClass} chord-chip--fingering`} role="button" tabIndex={0} aria-expanded={open}
+      <b className={`${chipClass} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}`} role="button" tabIndex={0} aria-expanded={open}
         aria-label={label} title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}><FingeringText text={body} /></b>
       {pop}
     </span>
