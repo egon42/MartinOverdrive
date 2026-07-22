@@ -158,7 +158,7 @@ You seem to take pr
 C
 emise to all of these songs
 
-[Bridge - 1st pass syncopated, 2nd pass verse chug]
+[Bridge - syncopated]
 F
 One last kiss for you
 
@@ -172,6 +172,7 @@ ind girl...
 
 I'd do anything for you
 
+[Bridge - verse chug]
 F
 One last kiss for you
 
@@ -185,36 +186,36 @@ rl...
 
 Before I hope you die
 
-[Solo - ghost rhythm for now ×5]
-~Em
+[Solo ×5]
+Em
 
-~C
+C
 
-~D
+D
 
-~Em
+Em
 
-~C
+C
 
-~D
+D
 
-~Em
+Em
 
-~C
+C
 
-~D
+D
 
-~Em
+Em
 
-~C
+C
 
-~D
+D
 
-~Em
+Em
 
-~C
+C
 
-~D
+D
 
 [Outro ×5]
 Em
