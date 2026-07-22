@@ -23,5 +23,130 @@
     "speed": 10,
     "leadInSec": 11.6,
     "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed; upper-middle at ROCK. leadInSec = 96/10 + 2s. Includes ghost vocal bar before Am-G-D-F solo."
+  },
+  "04-i-believe-in-a-thing-called-love": {
+    "speed": 12,
+    "leadInSec": 7.9,
+    "note": "Estimate 2026-07-22. Studio 3:38; ~1.06× Tribute non-empty (183). speed≈12. leadInSec=7.9 (formula). Role: riff/hooks + optional lead; chords while singing. Dial on device."
+  },
+  "06-don-t-stop-believin": {
+    "speed": 9,
+    "leadInSec": 10.4,
+    "note": "Estimate 2026-07-22. Studio 4:11; ~0.96× Tribute non-empty (165). speed≈9. leadInSec=10.4 (formula). Role: chords + selective lead; section entrances. Dial on device."
+  },
+  "08-while-my-guitar-gently-weeps": {
+    "speed": 8,
+    "leadInSec": 11.5,
+    "note": "Estimate 2026-07-22. Studio 4:45; ~0.98× Tribute non-empty (169). speed≈8. leadInSec=11.5 (formula). Role: chords + expressive fills; 7Red↔8Red. Dial on device."
+  },
+  "09-pride-and-joy": {
+    "speed": 7,
+    "leadInSec": 13.2,
+    "note": "Estimate 2026-07-22. Studio 3:40; ~0.72× Tribute non-empty (124). speed≈7. leadInSec=13.2 (formula). Role: Texas shuffle rhythm + fills. Dial on device."
+  },
+  "10-zombie": {
+    "speed": 6,
+    "leadInSec": 16,
+    "note": "Estimate 2026-07-22. Studio 5:06; ~0.68× Tribute non-empty (117). speed≈6 (clamped from 5). leadInSec=16 (formula). Role: chords + dynamics; 1Red↔2Red footswitch. Dial on device."
+  },
+  "11-hunger-strike": {
+    "speed": 15,
+    "leadInSec": 6.2,
+    "note": "Estimate 2026-07-22. Studio 4:03; ~1.42× Tribute non-empty (245). speed≈15. leadInSec=6.2 (formula). Role: chords + texture; same FS pair as Zombie. Dial on device."
+  },
+  "12-s-o-b": {
+    "speed": 6,
+    "leadInSec": 16,
+    "note": "Estimate 2026-07-22. Studio 4:07; ~0.59× Tribute non-empty (102). speed≈6 (clamped from 5). leadInSec=16 (formula). Role: muted stabs / groove; barely play intro. Dial on device."
+  },
+  "13-save-a-horse-ride-a-cowboy": {
+    "speed": 14,
+    "leadInSec": 7,
+    "note": "Estimate 2026-07-22. Studio 3:22; ~1.10× Tribute non-empty (189). speed≈14. leadInSec=7 (formula). Role: country-rock rhythm. Dial on device."
+  },
+  "14-sweet-home-alabama": {
+    "speed": 6,
+    "leadInSec": 16,
+    "note": "Estimate 2026-07-22. Studio 4:43; ~0.48× Tribute non-empty (83). speed≈6 (clamped from 3). leadInSec=16 (formula). Role: D-C-G riff + rhythm (fills later). Dial on device."
+  },
+  "15-dani-california": {
+    "speed": 15,
+    "leadInSec": 6.2,
+    "note": "Estimate 2026-07-22. Studio 4:42; ~1.64× Tribute non-empty (282). speed≈15. leadInSec=6.2 (formula). Role: riff + rhythm; roll volume on verse. Dial on device."
+  },
+  "16-teenage-dirtbag": {
+    "speed": 22,
+    "leadInSec": 4.3,
+    "note": "Estimate 2026-07-22. Studio 4:02; ~1.95× Tribute non-empty (335). speed≈22. leadInSec=4.3 (formula). Role: quiet verse → big chorus; 3Red↔4Red. Dial on device."
+  },
+  "17-the-pretender": {
+    "speed": 10,
+    "leadInSec": 9.7,
+    "note": "Estimate 2026-07-22. Studio 4:29; ~1.08× Tribute non-empty (185). speed≈10. leadInSec=9.7 (formula). Role: quiet intro → heavy entrance; nail amp click. Dial on device."
+  },
+  "18-here-it-goes-again": {
+    "speed": 24,
+    "leadInSec": 4,
+    "note": "Estimate 2026-07-22. Studio 2:59; ~1.60× Tribute non-empty (275). speed≈24. leadInSec=4 (formula). Role: pop-rock rhythm; roll volume on verses. Dial on device."
+  },
+  "19-purple-rain": {
+    "speed": 6,
+    "leadInSec": 16,
+    "note": "Estimate 2026-07-22. Studio 8:41; ~0.38× Tribute non-empty (66). speed≈6 (clamped from 1). leadInSec=16 (formula). Role: chords + melodic lead; capo 3. Dial on device."
+  },
+  "20-when-i-come-around": {
+    "speed": 18,
+    "leadInSec": 5.3,
+    "note": "Estimate 2026-07-22. Studio 2:58; ~1.23× Tribute non-empty (212). speed≈18. leadInSec=5.3 (formula). Role: power-chord rhythm / palm mute. Dial on device."
+  },
+  "22-dream-on": {
+    "speed": 11,
+    "leadInSec": 9.2,
+    "note": "Estimate 2026-07-22. Studio 4:28; ~1.12× Tribute non-empty (193). speed≈11. leadInSec=9.2 (formula). Role: arpeggios → screamer; capo 1; 7Red↔8Red. Dial on device."
+  },
+  "23-lola-montez": {
+    "speed": 14,
+    "leadInSec": 7,
+    "note": "Estimate 2026-07-22. Studio 4:08; ~1.32× Tribute non-empty (227). speed≈14. leadInSec=7 (formula). Role: heavy rhythm + hooks. Dial on device."
+  },
+  "24-mary-jane-s-last-dance": {
+    "speed": 8,
+    "leadInSec": 12.1,
+    "note": "Estimate 2026-07-22. Studio 4:34; ~0.91× Tribute non-empty (157). speed≈8. leadInSec=12.1 (formula). Role: chords + roots-rock fills later. Dial on device."
+  },
+  "25-valerie": {
+    "speed": 7,
+    "leadInSec": 13.6,
+    "note": "Estimate 2026-07-22. Studio 3:56; ~0.74× Tribute non-empty (128). speed≈7. leadInSec=13.6 (formula). Role: chords/groove (key still shaky). Dial on device."
+  },
+  "26-voodoo-child-slight-return": {
+    "speed": 6,
+    "leadInSec": 16,
+    "note": "Estimate 2026-07-22. Studio 5:13; ~0.73× Tribute non-empty (125). speed≈6 (clamped from 5). leadInSec=16 (formula). Role: wah/riff attitude; support while other solos. Dial on device."
+  },
+  "27-fat-bottomed-girls": {
+    "speed": 9,
+    "leadInSec": 11,
+    "note": "Estimate 2026-07-22. Studio 4:16; ~0.93× Tribute non-empty (160). speed≈9. leadInSec=11 (formula). Role: Drop D big chords; volume down intro. Dial on device."
+  },
+  "28-mama-i-m-coming-home": {
+    "speed": 6,
+    "leadInSec": 16,
+    "note": "Estimate 2026-07-22. Studio 4:11; ~0.69× Tribute non-empty (119). speed≈6. leadInSec=16 (formula). Role: chords + melodic lead; 7Red↔8Red. Dial on device."
+  },
+  "29-ain-t-goin-down-til-the-sun-comes-up": {
+    "speed": 6,
+    "leadInSec": 16,
+    "note": "Estimate 2026-07-22. Studio 4:32; ~0.52× Tribute non-empty (89). speed≈6 (clamped from 4). leadInSec=16 (formula). Role: fast country rhythm; do not fall behind. Dial on device."
+  },
+  "30-pink-pony-club": {
+    "speed": 13,
+    "leadInSec": 7.3,
+    "note": "Estimate 2026-07-22. Studio 4:18; ~1.31× Tribute non-empty (225). speed≈13. leadInSec=7.3 (formula). Role: chords + chorus lift; 3Red↔4Red. Dial on device."
+  },
+  "31-banditos": {
+    "speed": 8,
+    "leadInSec": 12.9,
+    "note": "Estimate 2026-07-22. Studio 3:30; ~0.71× Tribute non-empty (122). speed≈8. leadInSec=12.9 (formula). Role: bar-band groove + simple fills later. Dial on device."
   }
 }
