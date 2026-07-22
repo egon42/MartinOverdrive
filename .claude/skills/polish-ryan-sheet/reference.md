@@ -3,6 +3,37 @@
 Parsed only when `parseChordSheet(text, { frets: true })` — Ryan render sites only.
 (`~` ghost chips also parse with `frets: false`, same as band sheets, but prefer them on Ryan.)
 
+## Sheet format (do not "clean")
+
+`parseChordSheet` is **Ultimate Guitar paste style**, not classic space-padded chord-over-lyric:
+
+- Each chord is its **own line**, splitting the lyric it lands on
+- **Blank lines** end a rendered lyric row
+- Chord column spaces on a shared chord line are **ignored**
+
+```
+Em
+   You could've b
+C
+een all I wanted
+```
+
+→ chip Em over `You could've b`, chip C over `een…` (reads as "been"). Mid-word splits are
+intentional alignment, not typos.
+
+**Wrong** (looks tidy in the file, breaks on screen — Welcome Home Ryan 2026-07-22):
+
+```
+Em          C
+You could've been all I wanted
+```
+
+→ parser emits orphan `[Em][C]` then one text part for the whole lyric → chips misaligned,
+and hard-wrapped full-word fragments can lose/gain spaces when lines join. Start from the
+band `.chords.txt` spine; only add Ryan layers (sections, amp, fills, ghosts, sit-outs).
+
+Tribute’s ROCK block uses the same mid-word split style — copy that, not a "cleaned" rewrite.
+
 ## Fill cues
 
 | In the `.ryan.txt` | Renders as |

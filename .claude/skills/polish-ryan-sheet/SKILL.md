@@ -71,7 +71,7 @@ Scroll: 10 px/s · leadInSec 11.6
 | Check | Typical fix |
 |---|---|
 | Missing Intro / follow-along sections | Add `[Intro - spoken, follow along]` (or similar) even if not playing |
-| Lyrics incomplete or wrong order | Diff against band `.chords.txt` + recording; keep Ryan chord/tab choices |
+| Lyrics incomplete or wrong order | Diff against band `.chords.txt` + recording; keep Ryan chord/tab choices. **Keep the UG mid-word split format** (`b` / `C` / `een`) — do not rewrite into space-aligned chord-over-lyric lines (see reference § Sheet format) |
 | One-off fills not marked | Numbered cues: `^N` above the lyric word + `[Fill ^N]` on the FILL line (see [reference.md](reference.md)) |
 | Chord chips where only fills are played | Strip chord tokens in that stretch (Tribute: no chords before ROCK) |
 | Vocal-only bar over a vamp / before a solo | Ghost chips: same chord names with `~` prefix (`~Am ~G ~D ~F`) so the beat is visible but don't play |
