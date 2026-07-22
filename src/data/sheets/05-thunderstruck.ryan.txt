@@ -16,7 +16,7 @@ Thunder. (A-ha,ha,ha) ×6
 B5
 Thunder. Thunder. Thunder. Thunder
 
-[Verse - B5 palm mute]
+[Verse - B5 palm mute under vocal]
 B5
 I was caught in the middle of a railroad track, (Thunder)
 
@@ -29,35 +29,44 @@ My mind raced and i thought, what could i do? (Thunder)
 B5
 And i knew there was no help, no help from you. (Thunder)
 
-[Pre-Chorus - B5 A5 E5 A5 ×2]
-B5
-Sound of the 
-A5
-drums beatin' in my 
-E5
-heart, 
-A5
+[Pre-Chorus - B5 A5 E5 A5 between phrases]
+Sound of the drums,
 
 B5
-The thunder of 
-A5
-guns tore me a-
-E5
-part.
+
 A5
 
-[Chorus - B5 / A5 E5 A5 E5]
+E5
+
+A5
+
+beatin' in my heart,
+
 B5
-You've been 
-A5
-thunder-
-E5
-struck,
+
 A5
 
 E5
 
-[Verse - B5 palm mute]
+A5
+
+The thunder of guns,
+
+B5
+
+A5
+
+E5
+
+A5
+
+tore me apart.
+
+[Chorus]
+B5
+You've been thunderstruck.
+
+[Verse - B5 palm mute under vocal]
 B5
 Rode down the highway, broke the limit, we hit the town.
 
@@ -114,7 +123,7 @@ A5
 
 You've been...
 
-[Chorus - B5 / A5 E5 A5 E5 ×2]
+[Chorus - B5 / A5 E5 A5 E5 on vocal ×2]
 B5
 Thunder-struck,
 A5
@@ -125,7 +134,7 @@ A5
 struck, 
 E5
 
-[Chorus - ooh - B5 / A5 E5 A5 E5]
+[Chorus - ooh]
 B5
 Ooh, thunder-
 A5
@@ -152,7 +161,7 @@ A5
 
 B5
 
-[Pre-Chorus - short B5 A5 E5 A5 between lines]
+[Pre-Chorus - B5 A5 E5 A5 between lines]
 B5
 
 A5
@@ -182,10 +191,30 @@ A5
 
 E5
 
-[La la - B5 A5 ×4]
+[La la - B5 A5 between lines ×4]
 B5
-La,la,la,la,la,la,la,la.
+
 A5
+
+La,la,la,la,la,la,la,la.
+
+B5
+
+A5
+
+La,la,la,la,la,la,la,la.
+
+B5
+
+A5
+
+La,la,la,la,la,la,la,la.
+
+B5
+
+A5
+
+La,la,la,la,la,la,la,la.
 
 [Into chorus - B5 A5 E5 A5 E5]
 B5
@@ -198,7 +227,7 @@ A5
 
 E5
 
-[Chorus - B5 / A5 E5 A5 E5 ×2]
+[Chorus - B5 / A5 E5 A5 E5 on vocal ×2]
 B5
 Thunder-struck,
 A5
@@ -209,7 +238,7 @@ A5
 struck, 
 E5
 
-[Bridge - B5 E5 ×2]
+[Bridge - B5 E5 on vocal ×2]
 B5
 Said yeah, its al-
 E5
@@ -224,7 +253,7 @@ D5
 
 E5
 
-[Outro - B5 / A5 E5 A5 E5 ×4]
+[Outro - B5 / A5 E5 A5 E5 on vocal ×4]
 B5
 Thunder-
 A5
@@ -235,7 +264,7 @@ A5
 
 E5
 
-[Outro - whoa baby - B5 / A5 E5 A5 E5]
+[Outro - whoa baby]
 B5
 Thunder-
 A5
@@ -247,7 +276,7 @@ by, thunder-
 E5
 struck.
 
-[Outro - tag B5 / A5 E5 A5 E5 ×2]
+[Outro - tag ×2]
 B5
 You've been 
 A5
