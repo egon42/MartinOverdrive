@@ -76,6 +76,56 @@ Bare `0`–`24` on a chord line → bordered fret chip (A-string cues). Band lyr
   sit beside AutoScrollBar so they survive collapse. Crawl-end pins to true bottom after
   chrome re-expands.
 
+## Scroll seed estimate (Tribute-calibrated, 2026-07-22)
+
+Do **not** re-measure CSS line heights each song. Ratio against locked Tribute, then clamp
+and device-dial.
+
+| Symbol | Meaning |
+|---|---|
+| `speed`, `leadInSec` | Values in `scrollSpeeds.json` (1×-normalized px/s) |
+| `studioSec` | Studio cut length in seconds |
+| `V` | Collapsed show-mode viewport ≈ **600px** (good enough for seeds) |
+| `H` | Approximate Ryan sheet scroll height |
+
+**Tribute anchor (locked):** `speed=10`, `leadInSec=11.6`, `studioSec=248` (4:08).
+
+```
+crawlSec_t  = 248 - 11.6                    ≈ 236.4
+scrollDist_t = 10 * crawlSec_t              ≈ 2364px
+H_t         = scrollDist_t + V              ≈ 2964px
+```
+
+**New song:**
+
+```
+# Prefer non-empty line counts of the .ryan.txt files
+H       = H_t * (nonEmpty_new / nonEmpty_tribute)
+
+# lead-in: formula first, then override if sit-out is long
+leadInSec ≈ 96 / speedGuess   # or longer — see below
+speed     = round( (H - V) / (studioSec - leadInSec) )
+speed     = clamp(speed, 6, 120)   # validate-song-data.mjs SCROLL_MIN/MAX
+```
+
+**When to lengthen `leadInSec`:** first *played* chips come after a long instrumental /
+spoken sit-out while the sheet is still nearly empty at the top (Welcome Home sit-out
+riff → ringing Em: **48s**). Formula `96/speed` alone will start crawling too early and
+leave the played entrance low on screen.
+
+**Density caveat:** end-align math fails when the sheet is sparse early and dense late
+(or the reverse). Bias the seed so the **first played section** sits upper-middle when
+crawl begins; fix the rest on device with −/+.
+
+**Seed note template:**
+`Estimate YYYY-MM-DD. Studio M:SS; ~R× Tribute non-empty lines. speed≈N (clamped?). leadInSec=S because …. Dial on device.`
+
+Worked example — **01-welcome-home** (pre-dial): studio 6:15 (375s), ~0.78× Tribute
+non-empty → raw speed ≈5 → stored **6** + `leadInSec` **48**.
+
+Zoom (0.75×) cancels in the ratio (scrollHeight and crawl rate both scale), so line-count
+ratios at 1× are enough for the first seed.
+
 ## Amp slot retunes
 
 Before retuning a shared slot (e.g. 4Amber), grep sheets + `amp-presets.json` for other users. Tribute-only → safe to retune in `amp-presets/generate_presets.py` and regen `.fuse`. Tell the user to reload the amp.

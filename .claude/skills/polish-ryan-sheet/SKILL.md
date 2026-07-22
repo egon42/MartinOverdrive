@@ -105,10 +105,26 @@ Fresh installs and devices with no override pick up the polished seed.
 7. When the user says the crawl feels right ("perfect" / "lock this in"), check off
    [progress.md](progress.md) and stop tweaking that song's seed unless content changes.
 
-**Guessing a starting speed (optional):** studio duration + measured Ryan sheet height at
-0.75× with chrome collapsed can seed a first ±4 step. Prefer upper-middle at the first
-played section (e.g. ROCK) over pure end-of-sheet timing when density is uneven. Always
-confirm on device before committing.
+**Estimating a starting seed (before device dial):** calibrate against locked **Tribute**
+rather than re-deriving px/line from CSS. Full recipe in [reference.md](reference.md)
+§ Scroll seed estimate. Short version:
+
+1. **Anchor** — `07-tribute`: `speed` **10**, `leadInSec` **11.6**, studio **4:08** (248s).
+   Crawl time ≈ `248 − 11.6` → scroll distance ≈ `10 × 236.4` ≈ **2364px**.
+   Assume collapsed viewport **V ≈ 600** → Tribute sheet height **H_t ≈ 2964px**.
+2. **Ratio** — count lines (prefer **non-empty**) in the new `.ryan.txt` vs Tribute’s.
+   `H ≈ H_t × (nonEmpty_new / nonEmpty_tribute)`.
+3. **leadInSec** — start from formula `96 / speed` once you have a speed guess. **Override
+   longer** when the first played chips sit after a long sit-out / sparse intro (Welcome
+   Home: ~48s so ringing Em holds through the lead riff). Sparse→dense sheets need this
+   more than pure end-of-sheet math.
+4. **speed** — `round((H − V) / (studioSec − leadInSec))`. Clamp to validator bounds
+   **6–120** (`SCROLL_MIN` / `SCROLL_MAX` in `scripts/validate-song-data.mjs`). Welcome
+   Home raw ≈5 → stored **6**.
+5. **Write** the seed with `note: "Estimate YYYY-MM-DD. …"` (anchor, duration, any
+   lead-in rationale). Ship for on-device dial; prefer **upper-middle at the first played
+   section** over end-aligned timing when density is uneven. Only drop “Estimate” / lock
+   in progress when the user confirms the crawl.
 
 Chrome while crawling (product, already wired in `Show`): keep × exit, compact title,
 ‹ n/N ›, Live chip, AutoScrollBar, home-fret scale chips (sheet views park them to the
