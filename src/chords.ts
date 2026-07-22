@@ -3,7 +3,7 @@
 // splitting the lyric it lands on ("You could've b / C / een all I wanted"),
 // and lyric-line boundaries are blank or whitespace-only lines — so breaks are
 // the only line delimiters and everything between them flows into one line.
-export interface SheetPart { chord?: string; text?: string }
+export interface SheetPart { chord?: string; ghost?: boolean; text?: string }
 export interface SheetLine { kind: 'lyric' | 'tab' | 'section'; parts: SheetPart[]; raw: string }
 export interface ParsedSheet { meta: string[]; lines: SheetLine[] }
 
@@ -32,8 +32,15 @@ export const cueNumber = (token: string): number | null => {
   return match ? Number(match[1]) : null
 }
 
+/** Prefix `~` = ghost chip (shown for the beat, don't play) — same marker as cheat-card progressions. */
+function splitGhostToken(token: string): { name: string, ghost: boolean } {
+  if (token.startsWith('~')) return { name: token.slice(1), ghost: true }
+  return { name: token, ghost: false }
+}
+
 function isRyanToken(token: string, frets: boolean) {
-  return isChordToken(token) || (frets && (isFretToken(token) || isCueToken(token)))
+  const { name } = splitGhostToken(token)
+  return isChordToken(name) || (frets && (isFretToken(name) || isCueToken(name)))
 }
 
 function isChordLine(trimmed: string, frets: boolean) {
@@ -62,7 +69,10 @@ export function parseChordSheet(text: string, { frets = false }: { frets?: boole
     if (!sawChord && current.length === 0 && META_RE.test(trimmed)) { meta.push(trimmed); continue }
     if (isChordLine(trimmed, frets)) {
       sawChord = true
-      for (const token of trimmed.split(/\s+/)) current.push({ chord: token })
+      for (const token of trimmed.split(/\s+/)) {
+        const { name, ghost } = splitGhostToken(token)
+        current.push(ghost ? { chord: name, ghost: true } : { chord: name })
+      }
       continue
     }
     // Trailing space is meaningful mid-line ("But ␣" before a chord that lands on

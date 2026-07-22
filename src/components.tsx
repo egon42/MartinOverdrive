@@ -351,7 +351,7 @@ function AmpMarkerSection({ cue }: { cue: SheetAmpCue }) {
  *  are grouped into WORDS so a chord landing mid-word (e.g. "th"+[B]+"e" for "the")
  *  can't push half the word onto the next line. Each word is a nowrap unit; the line
  *  wraps only at spaces between words. Sub-word chip placement is preserved. */
-interface AboveCol { chord?: string; text: string }
+interface AboveCol { chord?: string; ghost?: boolean; text: string }
 function aboveWords(parts: SheetPart[]): AboveCol[][] {
   const groups: AboveCol[][] = []
   let group: AboveCol[] = []
@@ -359,7 +359,7 @@ function aboveWords(parts: SheetPart[]): AboveCol[][] {
   const pushCol = () => { if (col && (col.chord || col.text)) group.push(col); col = null }
   const pushGroup = () => { pushCol(); if (group.length) { groups.push(group); group = [] } }
   for (const part of parts) {
-    if (part.chord) { pushCol(); col = { chord: part.chord, text: '' }; continue }
+    if (part.chord) { pushCol(); col = { chord: part.chord, ghost: part.ghost, text: '' }; continue }
     if (part.text == null) continue
     for (const ch of part.text) {
       if (!col) col = { text: '' }
@@ -380,7 +380,7 @@ function LyricLineInline({ parts, songId }: { parts: SheetPart[]; songId?: strin
   const chordsOnly = parts.every((part) => part.chord)
   return <p className={chordsOnly ? 'sheet-line sheet-line--chords' : 'sheet-line'}>
     {parts.map((part, i) => part.chord
-      ? <ChordChip name={part.chord} songId={songId} key={i} />
+      ? <ChordChip name={part.chord} ghost={part.ghost} songId={songId} key={i} />
       : <span key={i}>{part.text}</span>)}
   </p>
 }
@@ -389,7 +389,7 @@ function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string
   if (parts.every((part) => part.chord)) {
     return <p className="sheet-line sheet-line--chords sheet-line--above-chords">
       {parts.map((part, i) => part.chord
-        ? <ChordChip name={part.chord} songId={songId} bare key={i} />
+        ? <ChordChip name={part.chord} ghost={part.ghost} songId={songId} bare key={i} />
         : null)}
     </p>
   }
@@ -406,7 +406,7 @@ function LyricLineAbove({ parts, songId }: { parts: SheetPart[]; songId?: string
         {group.map((col, ci) => (
           <span className="sheet-above-col" key={ci}>
             <span className="sheet-above-chord">
-              {col.chord ? <ChordChip name={col.chord} songId={songId} bare /> : null}
+              {col.chord ? <ChordChip name={col.chord} ghost={col.ghost} songId={songId} bare /> : null}
             </span>
             <span className="sheet-above-lyric">{col.text}</span>
           </span>

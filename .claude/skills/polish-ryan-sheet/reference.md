@@ -29,6 +29,7 @@ E-|-------|...
 - `[Intro - spoken, follow along]` — follow-along even when not playing
 - `[Amp: 4Amber]` / `[Amp: 5Amber]` — same amp-chip parsing as band sheets
 - Mid-song amp changes stay as section markers
+- Ghost chips: `~Am` (don't play, keep the beat) — dashed strikethrough; same `~` as cheat cards
 
 ## Frets
 
