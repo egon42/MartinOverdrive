@@ -2,7 +2,7 @@ Standard (EADGBE)
 
 [Amp: 8Green]
 
-[Intro]
+[Intro ×2]
 
 F#5
 
@@ -101,11 +101,25 @@ OoOOOO
 D5
 Oh! Huh!
 
-[Solo - optional jump 6Green]
+[Solo - rhythm under; optional jump 6Green]
 
 F#5
 
 A5
+
+B5
+
+E5
+
+B5
+
+A5
+
+[Verse 2 - in, enter mid first B]
+
+F#5
+I wanna kiss you every minute, every hour, every day
+~A5
 
 B5
 
@@ -118,18 +132,12 @@ A5
 [Verse 2]
 
 F#5
-I wanna kiss you every minute, every hour, every day
-E5
-B5
-A5
-
-F#5
 You got me in a spin but everythin' is A-OK!
 E5
 B5
 A5
 
-[Bridge]
+[Bridge−B]
 
 E5    
 F#5
@@ -147,7 +155,7 @@ A5
 God you're to
 A#5
 uching 
-B5
+~B5
 me
 
 [Chorus]
@@ -186,7 +194,7 @@ OoOOOO
 D5
 Oh! Guitar!
 
-[Solo - optional jump 6Green]
+[Solo ×4 - optional jump 6Green]
 
 F#5
 
@@ -221,35 +229,35 @@ uching
 B5
 me, ahhhhhh!
 
-[Chorus]
+[Clap - ghosts under; C#m-box lead over]
 
-E5
+~E5
 I believe in a t
-A5
+~A5
 hing called love
 
-F#5
+~F#5
 Just listen to the r
-B5
+~B5
 hythm of my heart
 
-E5
+~E5
 There's a chance we could m
-A5
+~A5
 ake it now
 
-F#5
+~F#5
 We'll be rocking 'til the s
-B5
+~B5
 un goes down
 
-E5
+~E5
 I believe in a 
-A5
+~A5
 thing call
-F#5
+~F#5
 ed 
-B5
+~B5
 love
 
 C#5
@@ -257,7 +265,7 @@ OoOOOO
 D5
 Oh! Huh!
 
-[Solo - optional jump 6Green]
+[Solo - into outro; optional jump 6Green]
 
 E5
 
@@ -267,7 +275,7 @@ F#5
 
 B5
 
-[Outro]
+[Outro - (E A F# B)×4 then E]
 
 E5
 
