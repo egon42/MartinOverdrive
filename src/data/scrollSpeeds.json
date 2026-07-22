@@ -1,6 +1,7 @@
 {
   "07-tribute": {
     "speed": 10,
-    "note": "Ryan 0.75×, chrome collapsed; aims upper-middle at ROCK (~2:00). Sheet holds through outro (ends before 4:08)."
+    "leadInSec": 11.6,
+    "note": "Ryan 0.75×, chrome collapsed; upper-middle at ROCK (~2:00). leadInSec = global 96/speed (+2s)."
   }
 }

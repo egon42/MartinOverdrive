@@ -273,6 +273,12 @@ if (scrollSpeeds && typeof scrollSpeeds === 'object') {
     if (typeof speed !== 'number' || !Number.isFinite(speed) || speed < SCROLL_MIN || speed > SCROLL_MAX) {
       fail(songId, `scrollSpeeds.json "speed" must be a number ${SCROLL_MIN}–${SCROLL_MAX} (got ${JSON.stringify(speed)}).`)
     }
+    if (entry && typeof entry === 'object' && 'leadInSec' in entry) {
+      const lead = entry.leadInSec
+      if (typeof lead !== 'number' || !Number.isFinite(lead) || lead < 0 || lead > 60) {
+        fail(songId, `scrollSpeeds.json "leadInSec" must be 0–60 seconds (got ${JSON.stringify(lead)}).`)
+      }
+    }
   }
 }
 

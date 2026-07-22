@@ -88,12 +88,13 @@ Fresh installs and devices with no override pick up the polished seed.
 2. If the readout is acid-colored, tap it once to clear any old practice override (restores the song seed / global default).
 3. Press ▶ — show chrome collapses while `scroll.playing` (incl. lead-in). Dial −/+ against
    this larger viewport until crawl matches the track (upper-middle on the current section).
-4. **Save the default:** set `"<songId>": { "speed": N, "note": "…" }` in
-   `src/data/scrollSpeeds.json` (1×-normalized px/s; crawl runs at `speed * zoom`). Commit
-   with the Ryan sheet. After deploy, tap the acid readout on devices that still have an
-   override so they pick up the seed.
-5. Lead-in is global: `SCROLL_LEAD_IN_PX = 96` → seconds = `96 / speed`. Don't invent a
-   per-song lead-in without asking.
+4. **Save the default:** set `"<songId>": { "speed": N, "leadInSec": S?, "note": "…" }` in
+   `src/data/scrollSpeeds.json` (1×-normalized px/s; crawl runs at `speed * zoom`).
+   Optional `leadInSec` overrides the global `96 / speed` lead-in. Commit with the Ryan
+   sheet. After deploy, tap the acid readout on devices that still have an override so
+   they pick up the seed.
+5. Lead-in default is global (`SCROLL_LEAD_IN_PX = 96` → seconds = `96 / speed`) unless
+   the song seed sets `leadInSec`. Don't invent other lead-in mechanisms without asking.
 6. Confirm numbered fill cues against the recording (practice-notes links when present).
 
 Chrome while crawling (product, already wired in `Show`): keep × exit, compact title,

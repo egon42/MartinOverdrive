@@ -15,7 +15,7 @@ export const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED =
 // speed * zoom), so the wait stays constant across pinch levels.
 const SCROLL_LEAD_IN_PX = 96
 
-type ScrollSpeedSeed = { speed: number, note?: string }
+type ScrollSpeedSeed = { speed: number, leadInSec?: number, note?: string }
 const scrollSpeedSeeds = scrollSpeedData as Record<string, ScrollSpeedSeed>
 
 /** Polished per-song default from src/data/scrollSpeeds.json, or undefined if unset. */
@@ -29,12 +29,24 @@ export function scrollSpeedFor(songId: string, practiceSpeed: number): number {
   return practiceSpeed || scrollSpeedSeed(songId) || DEFAULT_SCROLL_SPEED
 }
 
+/** Top-of-sheet lead-in seconds: optional per-song seed, else SCROLL_LEAD_IN_PX / speed. */
+export function scrollLeadInSec(songId: string, speed: number): number {
+  const seeded = scrollSpeedSeeds[songId]?.leadInSec
+  if (typeof seeded === 'number' && Number.isFinite(seeded) && seeded >= 0) return seeded
+  return SCROLL_LEAD_IN_PX / Math.max(speed, 1)
+}
+
 function autoscrollInner(el: HTMLElement): HTMLElement | null {
   return el.querySelector(':scope > .autoscroll-inner')
 }
 
 function clearFrac(inner: HTMLElement | null) {
   if (inner) inner.style.transform = ''
+}
+
+function pinScrollToBottom(el: HTMLElement) {
+  clearFrac(autoscrollInner(el))
+  el.scrollTop = Math.max(0, el.scrollHeight - el.clientHeight)
 }
 
 function applyFrac(inner: HTMLElement | null, pos: number) {
@@ -178,9 +190,38 @@ export function useAutoScrollControls(
   const [delayUntil, setDelayUntil] = useState(0)
   const [delayLeft, setDelayLeft] = useState(0)
   const [scrollable, setScrollable] = useState(false)
+  // When the crawl hits the collapsed-chrome bottom and playing clears, chrome re-expands
+  // and the scrollport shrinks — leaving sheet content below the fold. Keep pinned to the
+  // true bottom across that layout until the user plays again or changes song/view.
+  const stickBottomRef = useRef(false)
+  const pinBottom = useCallback(() => {
+    const el = target?.current
+    if (el) pinScrollToBottom(el)
+  }, [target])
   // Hook only crawls after any top-of-sheet lead-in finishes. Zoom scales the crawl so a
   // dialed song length survives pinch-zoom (show mode); practice passes the default 1.
-  useAutoScroll(target, speed, playing && delayUntil === 0, () => setPlaying(false), zoom)
+  useAutoScroll(target, speed, playing && delayUntil === 0, () => {
+    stickBottomRef.current = true
+    setPlaying(false)
+  }, zoom)
+  // After natural end (or pause-at-bottom): re-pin through the chrome-expand transition.
+  useLayoutEffect(() => {
+    if (playing) {
+      stickBottomRef.current = false
+      return
+    }
+    if (!stickBottomRef.current) return
+    pinBottom()
+    const el = target?.current
+    let ro: ResizeObserver | undefined
+    if (el && typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(() => { if (stickBottomRef.current) pinBottom() })
+      ro.observe(el)
+    }
+    // Collapse animation is ~180ms; one extra pin after it settles.
+    const t = window.setTimeout(pinBottom, 220)
+    return () => { ro?.disconnect(); window.clearTimeout(t) }
+  }, [playing, target, pinBottom])
   // Tick the lead-in countdown while a deadline is armed.
   useEffect(() => {
     if (!playing || delayUntil === 0) return
@@ -201,6 +242,7 @@ export function useAutoScrollControls(
     setPlaying(false)
     setDelayUntil(0)
     setDelayLeft(0)
+    stickBottomRef.current = false
     const el = target?.current
     if (el) {
       el.scrollTop = 0
@@ -239,7 +281,16 @@ export function useAutoScrollControls(
   // the lead-in instead of pausing.
   const togglePlayRef = useRef(() => {})
   togglePlayRef.current = () => {
-    if (playing) { setPlaying(false); setDelayUntil(0); setDelayLeft(0); return }
+    if (playing) {
+      const el = target?.current
+      // Pausing while flush with the collapsed bottom — same chrome-expand trap as natural end.
+      if (el && el.scrollTop + el.clientHeight >= el.scrollHeight - 2) stickBottomRef.current = true
+      setPlaying(false)
+      setDelayUntil(0)
+      setDelayLeft(0)
+      return
+    }
+    stickBottomRef.current = false
     const el = target?.current
     if (el && el.scrollTop + el.clientHeight >= el.scrollHeight - 1) {
       el.scrollTop = 0
@@ -247,7 +298,7 @@ export function useAutoScrollControls(
     }
     const atTop = !el || el.scrollTop <= 1
     if (atTop) {
-      const secs = SCROLL_LEAD_IN_PX / Math.max(speed, 1)
+      const secs = scrollLeadInSec(songId, speed)
       setDelayUntil(performance.now() + secs * 1000)
       setDelayLeft(secs)
     } else {

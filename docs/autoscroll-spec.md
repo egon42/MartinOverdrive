@@ -132,16 +132,19 @@ Worked example, 30 px/s at 1× zoom and 60 Hz: `pos` gains 0.5/frame → 0.5, 1.
 the 0.5 remainder so every frame paints a half-pixel advance. At 0.75× zoom (Ryan
 default; lyrics min) the same dialed 30 advances 22.5 CSS px/s — content is ~0.75× as tall, so end
 timing matches. At 2× it advances 60 CSS px/s against ~2× height — same song length.
-Lead-in duration is `96 / speed` seconds and does not include zoom (zoom cancels: more
-content in the lead-in window, faster crawl once it starts).
+Lead-in duration defaults to `96 / speed` seconds (no zoom). A song seed may set
+`leadInSec` in `scrollSpeeds.json` to override that (Tribute uses 11.6 = +2s over the
+formula at speed 10).
 
 Show mode adds `show-mode--crawling` while `scroll.playing` (including the lead-in
 countdown). That class hides non-essential chrome (artist eyebrow, view bar + Pin, stage
 strip, Up next, zoom-reset) so the sheet scrollport grows. Dial per-song `scrollSpeed`
 against the **collapsed** layout — crawl `max` is read live each frame
 (`scrollHeight - clientHeight`), and a `ResizeObserver` on the scrollport re-measures
-`scrollable` when chrome toggles. Do not route that remeasure through a playing-effect
-restart of the crawl loop.
+`scrollable` when chrome toggles. When the crawl reaches the bottom and playing clears,
+chrome re-expands (viewport shrinks); autoscroll pins `scrollTop` to the new bottom so
+sheet content does not appear to stop early. Do not route that remeasure through a
+playing-effect restart of the crawl loop.
 
 ## What is verified and what is not
 
