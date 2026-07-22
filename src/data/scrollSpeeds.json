@@ -15,9 +15,9 @@
     "note": "Estimate 2026-07-22. Studio single ~2:30; ~0.88× Tribute non-empty. leadInSec 10 for intro vamp before vocal. Dial on device — lead vocal + chords, hard stop."
   },
   "05-thunderstruck": {
-    "speed": 12,
+    "speed": 10,
     "leadInSec": 50,
-    "note": "Estimate 2026-07-22 (×N chorus/vamp compress). Studio ~4:52; leadInSec 50 for lead-riff sit-out. Dial on device — shorter sheet after ×N; may need bump if crawl ends early."
+    "note": "Estimate 2026-07-22 (slowed 16→12→10). Studio ~4:52; leadInSec 50 for lead-riff sit-out. ×N compress. Dial on device."
   },
   "07-tribute": {
     "speed": 10,
