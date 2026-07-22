@@ -115,8 +115,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-chip{display:inline-block;background:var(--acid);color:var(--on-acid);border-radius:6px;padding:1px 7px;font-size:.72em;font-weight:850;font-style:normal;letter-spacing:.02em;vertical-align:baseline;white-space:nowrap}
 .chord-chip--ghost{background:transparent;color:var(--muted);border:1px dashed #6a7872;text-decoration:line-through;font-weight:700;opacity:.75}
 .chord-chip--fret{background:transparent;color:var(--acid);border:1px solid var(--acid);font-variant-numeric:tabular-nums;min-width:1.4em;text-align:center}
-/* Numbered fill cue (`^1`): acid triangle with the index — pairs a lyric word to its fill block. */
-.chord-chip--cue{display:inline-grid;place-items:center;min-width:1.45em;width:1.45em;height:1.25em;padding:.28em 0 0;border-radius:0;background:var(--acid);color:var(--on-acid);font-variant-numeric:tabular-nums;font-size:.68em;line-height:1;clip-path:polygon(50% 0%,100% 100%,0% 100%);vertical-align:middle}
+/* Numbered fill cue (`^1`): acid triangle with the index — pairs a lyric word to its
+   fill block (`[Fill ^1]`). Sized to sit on the same baseline band as name chips. */
+.chord-chip--cue{display:inline-grid;place-items:center;box-sizing:border-box;width:1.5em;height:1.05em;min-width:1.5em;padding:.22em 0 0;border-radius:0;background:var(--acid);color:var(--on-acid);font-variant-numeric:tabular-nums;font-size:.68em;line-height:1;clip-path:polygon(50% 0%,100% 100%,0% 100%);vertical-align:baseline}
 .chord-chip--fingering{white-space:pre;line-height:1.1;letter-spacing:0;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:4px 6px;vertical-align:middle}
 .sheet-full{max-width:820px}.sheet-meta{color:var(--muted);font-size:.78rem;margin:0 0 8px}.sheet-line{margin:0 0 5px;line-height:1.75}.sheet-line .chord-chip{margin:0 2px}
 /* Instrumental/chord-only rows: pack chips horizontally instead of one tall row each */
@@ -146,6 +147,8 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    (more overlap) at small sizes and slimmer when zoomed, making the Settings preview and
    the live sheet disagree. em keeps them identical at any size. */
 .sheet-line--above .chord-chip,.sheet-line--above-chords .chord-chip{font-size:.7em;padding:.09em .5em;line-height:1.2;border-radius:.45em}
+/* Cue triangles must not inherit the rounded name-chip padding (it drops them below siblings). */
+.sheet-line--above .chord-chip--cue,.sheet-line--above-chords .chord-chip--cue{padding:.22em 0 0;border-radius:0;width:1.55em;min-width:1.55em;height:1.1em;line-height:1}
 .sheet-line--above-chords{margin:0 0 5px}
 /* Zebra tint on Lyrics-sheet lines, honoring the "Alternate section tone" toggle
    (same var(--ink) 5.5% wash as the cheat-card rows). Text is inset with padding and
@@ -155,6 +158,8 @@ html[data-row-stripe] .sheet-full .sheet-line{padding:1px 7px}
 html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-mix(in srgb,var(--ink) 5.5%,transparent);border-radius:6px}
 .sheet-section{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.7rem;color:var(--acid);margin:12px 0 5px}
 .sheet-section.amp-marker{display:inline-flex;align-items:center;gap:6px;text-transform:none;letter-spacing:normal}
+.sheet-section--cue{display:flex;align-items:center;gap:8px}
+.sheet-section--cue .chord-chip--cue{font-size:.85em;width:1.55em;min-width:1.55em;height:1.15em;padding:.25em 0 0;flex:0 0 auto}
 .sheet-tab{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;line-height:1.45;margin:0 0 7px;overflow-x:auto}
 .chord-panel textarea{min-height:220px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem;margin-bottom:12px}
 .chord-panel .section-heading{margin-bottom:14px}

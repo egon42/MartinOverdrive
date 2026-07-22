@@ -5,17 +5,17 @@ Standard (EADGBE)
 [Intro - spoken, follow along]
 This is the greatest and best song in the world...   Tribute.
 
-^1
 Long time ago me and my brother Kyle here,
 
-We was hitchhikin' down a long and lonesome road.
+We was hitchhikin' down a 
+^1
+long and lonesome road.
 
 All of a sudden, there shined a shiny demon...
 
 In the middle of the road.
 
-[Fill]
-^1
+[Fill ^1]
 E-|-------|-------|--0-------|--------|
 B-|5--(5)-|-------|--0-0-(0)-|(0)-----|
 G-|7b-(7)-|-------|--5-------|--------|

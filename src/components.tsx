@@ -248,6 +248,19 @@ function parseSheetAmpCue(raw: string): SheetAmpCue | null {
   return null
 }
 
+/** Trailing `^N` on a section title (`Fill ^1`) — chip sits on the FILL line itself. */
+function parseSectionCueLabel(raw: string): { label: string; cue: number | null } {
+  const match = /^(.*?)\s*(\^[1-9][0-9]?)\s*$/.exec(raw.trim())
+  if (!match) return { label: raw.trim(), cue: null }
+  return { label: match[1].trim() || raw.trim(), cue: cueNumber(match[2]) }
+}
+
+function SheetSectionHeading({ raw }: { raw: string }) {
+  const { label, cue } = parseSectionCueLabel(raw)
+  if (cue == null) return <h4 className="sheet-section">{label}</h4>
+  return <h4 className="sheet-section sheet-section--cue">{label} <ChordChip name={`^${cue}`} /></h4>
+}
+
 export function ScalePattern({ value }: { value: string }) {
   const colon = value.indexOf(':')
   if (colon < 0) return <div className="scale-pattern"><p>{unknown(value)}</p></div>
@@ -413,7 +426,10 @@ export function ChordSheetView({ text, songId, compact = false, frets = false }:
       if (line.kind === 'section') {
         const cue = parseSheetAmpCue(line.cue)
         if (cue) return showAmp ? <AmpMarkerSection cue={cue} key={index} /> : null
-        return <div className="sheet-section" key={index}>{line.cue}</div>
+        const { label, cue: fillCue } = parseSectionCueLabel(line.cue)
+        return <div className={fillCue != null ? 'sheet-section sheet-section--cue' : 'sheet-section'} key={index}>
+          {label}{fillCue != null ? <>{' '}<ChordChip name={`^${fillCue}`} /></> : null}
+        </div>
       }
       return line.kind === 'tab'
         ? <pre className="sheet-tab" key={index}>{line.cue}</pre>
@@ -426,7 +442,7 @@ export function ChordSheetView({ text, songId, compact = false, frets = false }:
       if (line.kind === 'section') {
         const cue = parseSheetAmpCue(line.raw)
         if (cue) return showAmp ? <AmpMarkerSection cue={cue} key={index} /> : null
-        return <h4 className="sheet-section" key={index}>{line.raw}</h4>
+        return <SheetSectionHeading raw={line.raw} key={index} />
       }
       if (line.kind === 'tab') return <pre className="sheet-tab" key={index}>{line.raw}</pre>
       return above
