@@ -1,5 +1,5 @@
 const BASE = new URL('.', self.location).pathname
-// Cache is namespaced by base path so the /app/, /dev/, and /ryan/ deployments
+// Cache is namespaced by base path so the /app/ and /dev/ deployments
 // (same origin) never delete each other's entries on activate.
 const CACHE = `overdrive-v6:${BASE}`
 const shellPath = (path = '') => `${BASE}${path.replace(/^\//, '')}`
@@ -18,10 +18,8 @@ const SHELL = [
   // apple-touch-icon by URL aggressively). Bump the -vN suffix when icons change.
   shellPath('icon-v2.png'),
   shellPath('icon-dev-v2.png'),
-  shellPath('icon-ryan-v2.png'),
   shellPath('martin-drive-logo.jpg'),
   shellPath('martin-drive-logo-dev.jpg'),
-  shellPath('martin-drive-logo-ryan.jpg'),
   shellPath('raleway-400.ttf'),
   shellPath('raleway-600.ttf'),
   shellPath('raleway-700.ttf'),

@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, dev, ryan]
+    branches: [main, dev]
   workflow_dispatch:
 
 permissions:
@@ -14,8 +14,8 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-# One Pages site, three sibling installs: main → /app/ (production),
-# dev → /dev/ (development), ryan → /ryan/ (personal App offshoot).
+# One Pages site, two sibling installs: main → /app/ (production),
+# dev → /dev/ (development).
 # They must not nest — a PWA scoped to /MartinOverdrive/ would own the others
 # and block installing more than one on a phone. Root / redirects to /app/ and
 # retires the old root-scoped service worker.
@@ -31,10 +31,6 @@ jobs:
         with:
           ref: dev
           path: dev
-      - uses: actions/checkout@v4
-        with:
-          ref: ryan
-          path: ryan
       - uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -45,7 +41,6 @@ jobs:
           cache-dependency-path: |
             main/pnpm-lock.yaml
             dev/pnpm-lock.yaml
-            ryan/pnpm-lock.yaml
       - name: Build production (main)
         working-directory: main
         run: |
@@ -58,24 +53,16 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm exec tsc -b
           pnpm exec vite build --base "/${{ github.event.repository.name }}/dev/"
-      - name: Build Ryan (ryan)
-        working-directory: ryan
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm exec tsc -b
-          pnpm exec vite build --base "/${{ github.event.repository.name }}/ryan/"
       - name: Assemble combined site
         run: |
           mkdir site
           # Root redirect + old-SW retirement. Prefer the triggering branch's copy when
           # multiple checkouts have pages-root (later copies overwrite earlier ones).
           if [ -d main/pages-root ]; then cp -r main/pages-root/. site/; fi
-          if [ -d ryan/pages-root ]; then cp -r ryan/pages-root/. site/; fi
           if [ -d dev/pages-root ]; then cp -r dev/pages-root/. site/; fi
-          mkdir -p site/app site/dev site/ryan
+          mkdir -p site/app site/dev
           cp -r main/dist/. site/app/
           cp -r dev/dist/. site/dev/
-          cp -r ryan/dist/. site/ryan/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

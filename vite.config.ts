@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react'
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-/** Give /app/, /dev/, and /ryan/ distinct PWA identities so all three can be
- * installed on one phone. Nested scopes under the same prefix block a second
- * install — deploy keeps them as siblings. */
+/** Give /app/ and /dev/ distinct PWA identities so both can be installed on
+ * one phone. Nested scopes under the same prefix block a second install —
+ * deploy keeps them as siblings. */
 function deployIdentity(): Plugin {
   let base = '/'
   return {
@@ -53,7 +53,7 @@ function deployIdentity(): Plugin {
   }
 }
 
-type Flavor = 'app' | 'dev' | 'ryan'
+type Flavor = 'app' | 'dev'
 
 const FLAVORS: Record<Flavor, {
   title: string
@@ -79,19 +79,10 @@ const FLAVORS: Record<Flavor, {
     icon: 'icon-dev-v2.png',
     theme: '#ef4d4d',
   },
-  ryan: {
-    title: 'Overdrive Ryan',
-    name: 'Overdrive Ryan',
-    short_name: 'OD Ryan',
-    description: 'Personal App offshoot with Ryan-specific sheet tweaks.',
-    icon: 'icon-ryan-v2.png',
-    theme: '#ff2a6d',
-  },
 }
 
 function deployFlavor(base: string): Flavor {
   if (base.includes('/dev/')) return 'dev'
-  if (base.includes('/ryan/')) return 'ryan'
   return 'app'
 }
 

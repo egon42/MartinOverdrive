@@ -4,12 +4,7 @@ import { Dashboard, Practice, Show, SongDetail } from './pages'
 import { SetlistPage } from './setlist'
 import { SettingsPage } from './settings'
 
-const deployFlavor = baseUrl.includes('/dev/') ? 'dev' : baseUrl.includes('/ryan/') ? 'ryan' : 'app'
-const brandLogo = deployFlavor === 'dev'
-  ? 'martin-drive-logo-dev.jpg'
-  : deployFlavor === 'ryan'
-    ? 'martin-drive-logo-ryan.jpg'
-    : 'martin-drive-logo.jpg'
+const brandLogo = baseUrl.includes('/dev/') ? 'martin-drive-logo-dev.jpg' : 'martin-drive-logo.jpg'
 
 export default function App() {
   return <div className="app-shell">
