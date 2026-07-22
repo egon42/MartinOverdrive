@@ -3,13 +3,17 @@
 Parsed only when `parseChordSheet(text, { frets: true })` — Ryan render sites only.
 (`~` ghost chips also parse with `frets: false`, same as band sheets, but prefer them on Ryan.)
 
-## Sheet format (do not "clean")
+## Sheet format (do not "clean") — standing rule
 
-`parseChordSheet` is **Ultimate Guitar paste style**, not classic space-padded chord-over-lyric:
+**Standing agent rule:** never “improve readability” of chorded lyrics by joining mid-word
+splits or padding spaces on a chord line. File prettiness ≠ on-screen alignment.
+
+`parseChordSheet` (`src/chords.ts`) is **Ultimate Guitar paste style**, not classic
+space-padded chord-over-lyric:
 
 - Each chord is its **own line**, splitting the lyric it lands on
 - **Blank lines** end a rendered lyric row
-- Chord column spaces on a shared chord line are **ignored**
+- Chord column spaces on a shared chord line are **ignored** (`Em          C` ≡ `Em C`)
 
 ```
 Em
@@ -29,10 +33,19 @@ You could've been all I wanted
 ```
 
 → parser emits orphan `[Em][C]` then one text part for the whole lyric → chips misaligned,
-and hard-wrapped full-word fragments can lose/gain spaces when lines join. Start from the
-band `.chords.txt` spine; only add Ryan layers (sections, amp, fills, ghosts, sit-outs).
+and hard-wrapped full-word fragments can lose/gain spaces when lines join.
 
-Tribute’s ROCK block uses the same mid-word split style — copy that, not a "cleaned" rewrite.
+**Workflow for every new/edited Ryan sheet:**
+
+1. Copy band `src/data/sheets/<id>.chords.txt` chord/lyric body as the spine
+2. Add only Ryan layers: `[Section]` / `[Amp:]`, sit-out intros, `^N` / `[Fill ^N]`, `~`
+   ghosts, outro repeats, trim stage noise
+3. If chord *names* change (user plays different shapes), keep the same split points /
+   blank lines unless the user relocates a chord to a different syllable
+
+Tribute’s ROCK block (`07-tribute.ryan.txt`) is the canonical chorded example — match that
+shape, not a cleaned rewrite. Spoken/fill-only stretches may omit chords; when chords
+return, they return in UG split form.
 
 ## Fill cues
 

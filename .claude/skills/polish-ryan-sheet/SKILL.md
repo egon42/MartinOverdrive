@@ -3,8 +3,10 @@ name: polish-ryan-sheet
 description: >-
   Walk Martin Overdrive songs one-by-one and polish personal Ryan sheets (.ryan.txt)
   for show use: sections, lyrics order, numbered fill cues, amp chips, trim stage noise,
-  dial autoscroll. Use when the user says "polish ryan", "ryan pass", "next ryan sheet",
-  "ryan polish for <song>", or wants to finalize .ryan.txt sheets like Tribute.
+  dial autoscroll. Chord/lyric body must stay Ultimate Guitar mid-word-split format
+  (never "clean" into space-aligned chord-over-lyric lines). Use when the user says
+  "polish ryan", "ryan pass", "next ryan sheet", "ryan polish for <song>", or wants to
+  finalize .ryan.txt sheets like Tribute.
 ---
 
 # Polish Ryan sheet (song-by-song)
@@ -14,11 +16,26 @@ stage-ready under the hidden **Ryan sheets** flag. Owns the `.ryan.txt` file (an
 Ryan-only display syntax). Does **not** own band `.chords.txt` / cheat cards (use
 **import-song-sheet** / **refine-cheat-form**) unless the user asks to mirror an amp cue.
 
+### Hard rule — lyric spine format (learned 2026-07-22 on Welcome Home)
+
+`parseChordSheet` only understands **UG paste style**: one chord per its own line,
+mid-word lyric splits, blank line = end of row. Mid-word cuts (`b` / `C` / `een`) are
+**alignment**, not typos — do not rewrite them into “readable” full words with
+space-padded chord lines (`Em          C` over `You could've been…`). That looks tidy
+in the file and **misaligns chips + drops/glues spaces** on screen.
+
+When creating or repairing a Ryan sheet: **copy the band `.chords.txt` chord/lyric body
+verbatim**, then layer Ryan-only edits (sections, `[Amp:]`, fills/`^N`, ghosts/`~`,
+sit-out intros, outro repeats). Chord *names* may change when the user plays different
+shapes; the **split/blank-line structure** must stay UG. Full examples in
+[reference.md](reference.md) § Sheet format.
+
 Authority order when they conflict:
 
 1. **User + recording** (what they play / follow along to)
-2. Band `src/data/sheets/<id>.chords.txt` for lyric/section spine
-3. Existing `.ryan.txt` (personal chord/tab choices win over band when intentional)
+2. Band `src/data/sheets/<id>.chords.txt` for lyric/section **spine** (UG format included)
+3. Existing `.ryan.txt` (personal chord/tab choices win over band when intentional —
+   still keep UG line structure)
 
 ## One song per turn
 
@@ -49,12 +66,16 @@ Settings → Developer).
 
 For song id `NN-slug`:
 
-1. Ryan sheet if present: `src/data/sheets/<id>.ryan.txt` (else start from band chords + user intent)
-2. Band lyrics: `src/data/sheets/<id>.chords.txt`
+1. Ryan sheet if present: `src/data/sheets/<id>.ryan.txt` (else **copy band `.chords.txt` body
+   as the starting spine** — do not invent a cleaned lyric layout)
+2. Band lyrics: `src/data/sheets/<id>.chords.txt` (source of truth for UG splits / blanks)
 3. Amp mapping: `src/data/amp-presets.json` + any mid-song `[Amp:]` in the sheets
 4. Title/tuning from `src/data/setlist.json` if needed
 5. Practice notes for that song in `practice-notes-worksheet.md` (fill research links, amp TODOs)
 6. Existing scroll seed if any: `src/data/scrollSpeeds.json`
+
+If an existing `.ryan.txt` already has space-aligned chord rows or full-word lyrics where
+the band sheet mid-splits, treat that as a bug: restore the band spine, re-apply Ryan layers.
 
 Show a short **before** block:
 
@@ -71,8 +92,9 @@ Scroll: 10 px/s · leadInSec 11.6
 | Check | Typical fix |
 |---|---|
 | Missing Intro / follow-along sections | Add `[Intro - spoken, follow along]` (or similar) even if not playing |
-| Lyrics incomplete or wrong order | Diff against band `.chords.txt` + recording; keep Ryan chord/tab choices. **Keep the UG mid-word split format** (`b` / `C` / `een`) — do not rewrite into space-aligned chord-over-lyric lines (see reference § Sheet format) |
-| One-off fills not marked | Numbered cues: `^N` above the lyric word + `[Fill ^N]` on the FILL line (see [reference.md](reference.md)) |
+| Lyrics incomplete or wrong order | Diff against band `.chords.txt` + recording; keep Ryan chord/tab *choices* |
+| **UG spine intact** (mandatory) | Band mid-word splits and blank-line row breaks still present. **Never** “tidy” into space-aligned `Em          C` / full-word lyric lines. New sheets = band body + Ryan layers only (reference § Sheet format) |
+| One-off fills not marked | Numbered cues: `^N` on its own line before the lyric fragment + `[Fill ^N]` on the FILL line (see [reference.md](reference.md)) — same UG line rules as chords |
 | Chord chips where only fills are played | Strip chord tokens in that stretch (Tribute: no chords before ROCK) |
 | Vocal-only bar over a vamp / before a solo | Ghost chips: same chord names with `~` prefix (`~Am ~G ~D ~F`) so the beat is visible but don't play |
 | Amp chips wrong for what is actually played | Update `[Amp:]` + `amp-presets.json` notes; retune a slot in `amp-presets/generate_presets.py` only when nothing else needs the old tone |
@@ -134,10 +156,11 @@ re-expands (collapsed max ≠ expanded max). Practice SheetPanel does not collap
 
 ## Step 3 — Settled Ryan syntax
 
-Read [reference.md](reference.md). Short version:
+Read [reference.md](reference.md) **before writing sheet text** (especially § Sheet format). Short version:
 
-- Same UG own-line chord/lyric format as band sheets; parse with `frets: true` (fret chips + cues + ghosts)
-- Fill cues: `^1` … `^99` on a chord line above the cue word; matching `[Fill ^1]` section header
+- **UG mid-word-split format only** (band `.chords.txt` / Tribute ROCK) — never space-padded chord-over-lyric rewrites
+- Parse with `frets: true` (fret chips + cues + ghosts)
+- Fill cues: `^1` … `^99` on their own line before the lyric fragment; matching `[Fill ^1]` section header
 - Section notes in the bracket title: `[Intro - spoken, follow along]`
 - Amp: `[Amp: 4Amber]` section lines (same as band)
 - Ghost / don't-play chips: prefix `~` (`~Am ~G ~D ~F`) — dashed strikethrough chip, keep the beat (same marker as cheat-card progressions)
@@ -148,6 +171,9 @@ Read [reference.md](reference.md). Short version:
 
 ## Step 4 — Ship
 
+Before validate: spot-check that chorded lyric stretches still mid-split like the band sheet
+(if you “cleaned” wording for readability, undo that and re-layer).
+
 ```bash
 npm run validate
 # commit ryan sheet (+ scrollSpeeds.json / amp / docs) then bare git push on dev
@@ -157,8 +183,10 @@ Point at `/MartinOverdrive/dev/` → song → Ryan tab (flag on). Hard-refresh i
 When locking in: update [progress.md](progress.md), then offer the next unchecked song
 (prefer existing `.ryan.txt`, else setlist order).
 
-## Out of scope
+## Out of scope / anti-patterns
 
 - Batch-creating Ryan sheets for every setlist song in one turn
 - Changing band `.chords.txt` / cheat cards unless asked
 - Loading amp hardware (tell the user to run the mustang loader when a `.fuse` changed)
+- **Rewriting lyrics into “pretty” full lines with space-aligned chords** — breaks
+  `parseChordSheet` (Welcome Home regression 2026-07-22); always band spine + Ryan layers
