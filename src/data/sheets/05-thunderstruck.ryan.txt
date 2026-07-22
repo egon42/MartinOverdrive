@@ -11,7 +11,7 @@ A-ha,ha,ha. A-ha,ha,ha. A-ha,ha,ha. A-ha,ha,ha.
 
 [Chug - ringing B5]
 B5
-Thunder. (A-ha,ha,ha) [play 6 times]
+Thunder. (A-ha,ha,ha) ×6
 
 B5
 Thunder. Thunder. Thunder. Thunder
@@ -75,7 +75,7 @@ kind,
 B5
 You've been...
 
-[Chorus]
+[Chorus ×2]
 B5
 Thunder-struck,
 
@@ -87,7 +87,6 @@ A5
    
 E5
 
-             
 A5
 Yeah, yeah, 
 E5
@@ -98,7 +97,7 @@ A5
     
 E5
 
-             
+[Chorus - ooh]
 A5
 Ooh, thunder-
 B5
@@ -111,25 +110,14 @@ A5
            
 E5
 
- 
-B5
-    
-B5
-    
-B5
-    
+[Vamp - B5 ×4]
 B5
 
-             
+[Vamp - B5 A5 B5 ×2]
 B5
- 
+
 A5
- 
-B5
-                               
-B5
-A5
- 
+
 B5
 
 [Solo - under the lead]
@@ -149,25 +137,15 @@ Could i come again
 B5
 please?
 
-B5
-La,la,la,la,la,la,la,la.
-
-B5
-La,la,la,la,la,la,la,la.
-A5
-
+[La la - B5 A5 ×4]
 B5
 La,la,la,la,la,la,la,la.
 A5
 
-B5
-La,la,la,la,la,la,la,la.
-
-[Chorus]
+[Chorus ×2]
 B5
 Thunder-struck,
 
-             
 A5
 Yeah, yeah, 
 E5
@@ -190,12 +168,12 @@ A5
     
 E5
 
-             
 A5
 Yeah, yeah, 
 E5
 yeah
 
+[Bridge ×2]
 B5
 Said 
 B5
@@ -207,18 +185,7 @@ we're doing
 E5
 fine.
 
-             
-B5
-Yeah, it's al-
-E5
-right, 
-B5
-we're doing 
-E5
-fine, so fine.
-
-
-[Outro]
+[Outro - walkup]
 B5
 
 A5
@@ -231,25 +198,20 @@ A5
 
 E5
 
+[Outro - Thunderstruck ×4]
 B5
-Thunder-struck,
-
-             
-A5
-Yeah, yeah, 
-E5
-yeah, thunder-
+Thunder-
 B5
-str
+struck,
 A5
-uck,
+   
 E5
       
 A5
- thunder
+         
 E5
--struck
 
+[Outro - whoa baby]
 B5
 Thunder-
 B5
@@ -268,7 +230,7 @@ A5
 .  
 E5
 
-             
+[Outro - tag ×2]
 A5
 You've 
 B5
@@ -282,47 +244,3 @@ E5
 A5
         
 E5
-
-B5
-Thunder-
-B5
-struck,
-A5
-   
-E5
-      
-A5
-         
-E5
-
-B5
-Thunder-
-B5
-struck,
-A5
-   
-E5
-      
-A5
-         
-E5
-
-B5
-Thunder-
-B5
-struck,
-A5
-   
-E5
-      
-A5
-         
-E5
-
-             
-A5
-You've 
-B5
-been thunder-
-B5
-struck.
