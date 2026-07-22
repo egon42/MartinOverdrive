@@ -60,6 +60,65 @@
   ],
   "05-thunderstruck": [
     {
+      "label": "pre vocal-enter hint",
+      "sections": [
+        {
+          "section": "Riff",
+          "chords": "~B5",
+          "shapes": "-244--",
+          "hint": "Rest; lead has the one-string riff"
+        },
+        {
+          "section": "Chug",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Palm-mute enter: Thunder! call-and-response"
+        },
+        {
+          "section": "Verse",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Palm-mute under vocal: V1 long (~26 bars), V2 ~16, V3 short"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "B5 E5 B5 A5 E5",
+          "shapes": "-244-- 022--- -244-- -022-- 022---",
+          "hint": "2nd time just a 2-bar hit"
+        },
+        {
+          "section": "Chorus",
+          "chords": "B5 (A5 E5) ×2",
+          "shapes": "-244-- -022-- 022---"
+        },
+        {
+          "section": "Solo",
+          "chords": "E5 B5 A5",
+          "shapes": "022--- -244-- -022--",
+          "hint": "Under the lead"
+        },
+        {
+          "section": "Outro",
+          "chords": "B5 (A5 E5) ×2",
+          "shapes": "-244-- -022-- 022---",
+          "hint": "2nd ad-lib solo, ritard to close"
+        }
+      ],
+      "form": [
+        "Riff",
+        "Chug",
+        "Verse",
+        "Verse",
+        "Pre-Chorus",
+        "Chorus",
+        "Verse",
+        "Solo",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Outro"
+      ]
+    },
+    {
       "label": "Jul 15 pass (pre-research)",
       "sections": [
         {
@@ -227,6 +286,77 @@
   ],
   "07-tribute": [
     {
+      "label": "pre fills+outro",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am",
+          "hint": "Spoken over the Am vamp"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am G F"
+        },
+        {
+          "section": "Rock part",
+          "chords": "D F C G F",
+          "hint": "2nd pass is one short stab"
+        },
+        {
+          "section": "Spoken",
+          "chords": "Am",
+          "hint": "Story time: hold the Am vamp"
+        },
+        {
+          "section": "Tribute refrain",
+          "chords": "Am G Am"
+        },
+        {
+          "section": "Chorus",
+          "chords": "Am G D F"
+        },
+        {
+          "section": "Scat break",
+          "chords": "Am",
+          "hint": "Vocal gibberish + band stabs, then back in"
+        },
+        {
+          "section": "Solo",
+          "chords": "Am G D F",
+          "hint": "Chorus changes under the lead"
+        },
+        {
+          "section": "Spoken bridge",
+          "chords": "Am G D F",
+          "hint": "Spoken over the changes"
+        },
+        {
+          "section": "Climax",
+          "chords": "Am G D F",
+          "hint": "Big final verse on the chorus changes"
+        },
+        {
+          "section": "Outro",
+          "chords": "E F G E F",
+          "hint": "Quick tag: end on F"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse",
+        "Rock part ×2",
+        "Spoken",
+        "Rock part",
+        "Tribute refrain ×2",
+        "Chorus ×2",
+        "Scat break",
+        "Solo ×2",
+        "Spoken bridge",
+        "Climax ×2",
+        "Outro ×2"
+      ]
+    },
+    {
       "label": "Jul 15 pass (pre-research)",
       "sections": [
         {
@@ -314,6 +444,56 @@
     }
   ],
   "18-here-it-goes-again": [
+    {
+      "label": "pre bridge cue",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "C",
+          "shapes": "-355--",
+          "hint": "Chug; C–G–C then one verse cycle into V1"
+        },
+        {
+          "section": "Verse",
+          "chords": "C G Bb F",
+          "shapes": "-355-- 355--- -133-- 133---"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(Em Am) ×2 G",
+          "shapes": "022--- -022-- 355---"
+        },
+        {
+          "section": "Chorus",
+          "chords": "C G Bb F Am G",
+          "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
+          "hint": "One 6-chord loop; last pass tags Ab"
+        },
+        {
+          "section": "Bridge",
+          "chords": "Eb Bb G7/B Cm Eb/G Ab",
+          "hint": "Then one instrumental verse cycle into V3"
+        },
+        {
+          "section": "Outro",
+          "chords": "C G Bb F Am G",
+          "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
+          "hint": "Last pass tags Ab Bb Eb to close"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse ×4",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Verse ×4",
+        "Pre-Chorus",
+        "Chorus ×3",
+        "Bridge ×2",
+        "Verse ×4",
+        "Outro ×5"
+      ]
+    },
     {
       "label": "Pre positional-UG-alignment (2026-07-20)",
       "sections": [
@@ -417,6 +597,52 @@
     }
   ],
   "19-purple-rain": [
+    {
+      "label": "pre improvised solo hint",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "G Em7 D C",
+          "hint": "Instrumental pickup: same cycle as Verse"
+        },
+        {
+          "section": "Verse",
+          "chords": "G Em7 D C"
+        },
+        {
+          "section": "Chorus",
+          "chords": "C G Em7 D G"
+        },
+        {
+          "section": "Solo",
+          "chords": "C G Em7 D G",
+          "hint": "Less is more: chorus changes, slow bends"
+        },
+        {
+          "section": "Outro",
+          "chords": "C G Em7 D G",
+          "hint": "Long coda: strings/ad-libs ride it out; slow-down tag in Fills"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Verse walk into D\ne|----------------|\nB|----------------|\nG|----2---2-------|\nD|----0---0-----2-|\nA|------------4---|\nE|2-2-2-2-2-2-----|\n\nG arp tail (into Em)\ne|3-----3-3---|\nB|3-(3)-3-3---|\nG|0-(0)---0-2-|\nD|0-------0-0-|\nA|------------|\nE|3-------3-3-|",
+          "tabMore": "Chorus C voicing (push)\ne|------3--(3)----3----|\nB|------5--(5)----5----|\nG|------7--(7)----7----|\nD|------5---------5----|\nA|3-3-3---------3------|\nE|---------------------|\n\nOutro / slow-down tag\ne|--------------|\nB|--------------|\nG|--------------|\nD|------5-------|\nA|--------------|\nE|3-0-2---------|"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse",
+        "Chorus",
+        "Verse",
+        "Chorus",
+        "Verse",
+        "Chorus",
+        "Solo",
+        "Outro"
+      ],
+      "capo": "Capo 3"
+    },
     {
       "label": "Jul 15 pass (pre-research)",
       "sections": [
@@ -1135,6 +1361,47 @@
   ],
   "01-welcome-home": [
     {
+      "label": "pre practice-notes hints",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Em"
+        },
+        {
+          "section": "Verse",
+          "chords": "Em C D"
+        },
+        {
+          "section": "Chorus",
+          "chords": "F Am C"
+        },
+        {
+          "section": "Bridge",
+          "chords": "F Am G F"
+        },
+        {
+          "section": "Solo",
+          "chords": "Em C D",
+          "hint": "Twin-guitar leads over the verse cycle"
+        },
+        {
+          "section": "Outro",
+          "chords": "Em C D",
+          "hint": "Verse pattern: oh’s + strings, fades out"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse ×4",
+        "Chorus ×2",
+        "Verse ×4",
+        "Chorus ×2",
+        "Bridge ×2",
+        "Solo ×5",
+        "Outro ×5"
+      ]
+    },
+    {
       "label": "Jul 15 hand pass",
       "sections": [
         {
@@ -1292,6 +1559,49 @@
     }
   ],
   "15-dani-california": [
+    {
+      "label": "pre chorus hint",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am G Dm Am"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am G Dm Am",
+          "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr); mute between hits"
+        },
+        {
+          "section": "Chorus",
+          "chords": "F C Dm G"
+        },
+        {
+          "section": "Interlude",
+          "chords": "Am G Dm Am"
+        },
+        {
+          "section": "Bridge",
+          "chords": "Bm G D F#"
+        },
+        {
+          "section": "Solo / Outro",
+          "chords": "F C Dm G",
+          "hint": "Lead over the chorus loop, rides the fade"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×8",
+        "Chorus ×4",
+        "Interlude ×2",
+        "Verse ×4",
+        "Chorus ×4",
+        "Bridge ×4",
+        "Verse ×4",
+        "Chorus ×2",
+        "Solo / Outro ×8"
+      ]
+    },
     {
       "label": "Pre positional-UG-alignment (2026-07-20)",
       "sections": [
@@ -1783,6 +2093,88 @@
           "section": "Whole song",
           "chords": "D A G",
           "shapes": "000--- 777--- 555---"
+        }
+      ]
+    }
+  ],
+  "04-i-believe-in-a-thing-called-love": [
+    {
+      "label": "pre clap-fill",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "F# A B E B A",
+          "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+          "hint": "Same as verse; count in carefully"
+        },
+        {
+          "section": "Verse",
+          "chords": "F# A B E B A",
+          "shapes": "244--- -022-- -244-- 022--- -244-- -022--"
+        },
+        {
+          "section": "Verse (in)",
+          "chords": "F# ~A B E B A",
+          "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+          "hint": "Enter mid first B"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(E F#m) ×3 G A A# B",
+          "shapes": "022--- 244--- 355--- 577--- 688--- 799---"
+        },
+        {
+          "section": "Bridge−B",
+          "chords": "(E F#m) ×3 G A A# ~B",
+          "shapes": "022--- 244--- 355--- 577--- 688--- 799---"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(E A F# B) ×3 C#m D",
+          "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
+        },
+        {
+          "section": "Clap",
+          "chords": "(~E ~A ~F# ~B) ×3 C#m D",
+          "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
+        },
+        {
+          "section": "Solo",
+          "chords": "F# A B E B A",
+          "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+          "hint": "Verse riff under the lead"
+        },
+        {
+          "section": "Outro",
+          "chords": "(E A F# B) ×4 E",
+          "shapes": "022--- -022-- 244--- -244-- 022---"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×2",
+        "Bridge",
+        "Chorus",
+        "Solo",
+        "Verse (in)",
+        "Verse",
+        "Bridge−B",
+        "Chorus",
+        "Solo ×4",
+        "Bridge",
+        "Clap",
+        "Outro"
+      ]
+    }
+  ],
+  "10-zombie": [
+    {
+      "label": "pre fills",
+      "sections": [
+        {
+          "section": "Whole song",
+          "chords": "Em C G D",
+          "hint": "Verses: quiet clean arpeggio over the same loop; chorus: big open strums (let the top strings ring)"
         }
       ]
     }
