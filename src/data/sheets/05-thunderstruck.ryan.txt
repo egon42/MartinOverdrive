@@ -9,14 +9,14 @@ A-ha,ha,ha.    A-ha,ha,ha.    A-ha,ha,ha.
 ~B5
 A-ha,ha,ha. A-ha,ha,ha. A-ha,ha,ha. A-ha,ha,ha.
 
-[Chug - ringing B5]
+[Chug - B5 palm / ringing]
 B5
 Thunder. (A-ha,ha,ha) ×6
 
 B5
 Thunder. Thunder. Thunder. Thunder
 
-[Verse - palm mute B5]
+[Verse - B5 palm mute]
 B5
 I was caught in the middle of a railroad track, (Thunder)
 
@@ -29,23 +29,26 @@ My mind raced and i thought, what could i do? (Thunder)
 B5
 And i knew there was no help, no help from you. (Thunder)
 
-[Pre-Chorus]
+[Pre-Chorus - B5 A5 E5 / A5 B5 A5 E5]
 B5
 Sound of the drums
-E5
+A5
 beatin' in my 
-B5
+E5
 heart, 
 A5
-The thunder of guns tore me a-
-E5
+The thunder of 
+B5
+guns tore me a-
+A5
 part.
+E5
 
-[Chorus]
+[Chorus - B5 / A5 E5 A5 E5]
 B5
 You've been thunderstruck.
 
-[Verse - palm mute B5]
+[Verse - B5 palm mute]
 B5
 Rode down the highway, broke the limit, we hit the town.
 
@@ -61,40 +64,30 @@ Broke all the rules, played all the fools, yeah, yeah,
 B5
 They, they, they blew our minds.
 
-[Pre-Chorus]
+[Pre-Chorus - B5 A5 E5 / A5 B5 A5 E5]
 B5
 I was shakin' at the knees,
-E5
+A5
 Could i come again 
-B5
+E5
 please?  
 A5
 Yeah the ladies were too 
-E5
-kind, 
 B5
+kind, 
+A5
 You've been...
+E5
 
-[Chorus ×2]
+[Chorus - B5 / A5 E5 A5 E5 ×2]
 B5
 Thunder-struck,
-
-B5
-Thunder-
-B5
-struck.
-A5
-   
-E5
-
 A5
 Yeah, yeah, 
 E5
 yeah, thunder-
-B5
-struck, 
 A5
-    
+struck, 
 E5
 
 [Chorus - ooh]
@@ -110,25 +103,31 @@ A5
            
 E5
 
-[Vamp - B5 ×4]
+[Link - B5 ×4]
 B5
 
-[Vamp - B5 A5 B5 ×2]
+[Link - B5 A5 B5 / B5 A5 B5]
 B5
 
 A5
 
 B5
 
-[Pre-Chorus]
+B5
+
+A5
+
+B5
+
+[Pre-Chorus - short B5 A5 E5]
 B5
 Well i was shaking at the knees,
-E5
+A5
 Could i come again 
-B5
+E5
 please?
 
-[Solo - under the lead]
+[Solo - E5 B5 A5 E5 ×3]
 E5
 
 B5
@@ -142,38 +141,29 @@ B5
 La,la,la,la,la,la,la,la.
 A5
 
-[Chorus ×2]
+[Into chorus - B5 A5 E5 A5 E5]
+B5
+
+A5
+
+E5
+
+A5
+
+E5
+
+[Chorus - B5 / A5 E5 A5 E5 ×2]
 B5
 Thunder-struck,
-
 A5
 Yeah, yeah, 
 E5
 yeah, thunder-
-B5
+A5
 struck, 
-A5
-    
-E5
-      
-A5
-         
 E5
 
-B5
-Thunder-
-B5
-struck, 
-A5
-    
-E5
-
-A5
-Yeah, yeah, 
-E5
-yeah
-
-[Bridge ×2]
+[Bridge - B5 E5 ×2]
 B5
 Said 
 B5
@@ -185,7 +175,7 @@ we're doing
 E5
 fine.
 
-[Outro - walkup]
+[Walk-up - B5 A5 D5 E5]
 B5
 
 A5
@@ -194,11 +184,7 @@ D5
 
 E5
 
-A5
-
-E5
-
-[Outro - Thunderstruck ×4]
+[Outro - B5 / A5 E5 A5 E5 ×4]
 B5
 Thunder-
 B5
