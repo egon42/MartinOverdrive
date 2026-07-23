@@ -2,9 +2,14 @@ Standard (EADGBE)
 
 [Amp: 5Amber]
 
-[Intro]
-Am   G   Dsus2   Am
-(Am with an index-finger hammer-on; D open position)
+[Intro - Am G Dsus2 Am ×2; Am hammer]
+Am
+
+G
+
+Dsus2
+
+Am
 
 [Verse 1 - relaxed; fills between vocals later]
 Am
@@ -29,6 +34,15 @@ Dsus2
 boys on an Indiana 
 Am
 night
+
+[Interlude - harmonica over intro riff]
+Am
+
+G
+
+Dsus2
+
+Am
 
 [Verse 2]
 Am
@@ -76,6 +90,15 @@ Tired of this town again
 G
 
 (Em7 = open Em plus ring finger on the B string, 3rd fret. On the A: lift the 3rd finger, add the D note on the B string, back to A, and end on G.)
+
+[Interlude - harmonica over intro riff]
+Am
+
+G
+
+Dsus2
+
+Am
 
 [Verse 3]
 Am
@@ -136,7 +159,16 @@ A
 Tired of this town again 
 G
 
-[Breakdown]
+[Solo - Am pent ×2 over verse cycle]
+Am
+
+G
+
+Dsus2
+
+Am
+
+[Verse - pigeons / hotel]
 Am
 There's pigeons down in 
 G
@@ -194,6 +226,11 @@ A
 Tired of this town again 
 G
 
-[Outro]
-Am   G   Dsus2   Am
-(Play over and over till out, with solo guitar and harmonica)
+[Outro - intro riff, solo out, fade]
+Am
+
+G
+
+Dsus2
+
+Am
