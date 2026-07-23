@@ -2,17 +2,7 @@ Standard (EADGBE)
 
 [Amp: 5Green]
 
-[Intro - heavy rhythm; power chips]
-D5
-
-G5
-
-A5
-
-D5
-
 [Verse 1]
-
 D5
 Feel the fire where she wal
 G5
@@ -34,7 +24,15 @@ eyes with her spider
 D5
 dance
 
-[Interlude - D5 G5 A5 D5; lead solos over]
+[Interlude - D5 G5 A5 D5 ×2; lead solos; let ring 2nd]
+D5
+
+G5
+
+A5
+
+D5
+
 D5
 
 G5
@@ -123,7 +121,15 @@ life, yeah-
 D
 eah
 
-[Interlude - D5 G5 A5 D5; lead solos over]
+[Interlude - D5 G5 A5 D5 ×2; lead solos; let ring 2nd]
+D5
+
+G5
+
+A5
+
+D5
+
 D5
 
 G5
