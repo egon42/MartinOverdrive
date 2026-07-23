@@ -44,13 +44,14 @@ function clearFrac(inner: HTMLElement | null) {
   if (inner) inner.style.transform = ''
 }
 
-// Must match the CSS expand duration on .show-mode chrome (not the .18s collapse).
+// Must match CSS on .show-mode chrome: snappy collapse/pause expand vs slow natural-end settle.
+const CHROME_COLLAPSE_MS = 180
 const CHROME_EXPAND_MS = 10800
 
 function pinScrollToBottom(el: HTMLElement) {
   clearFrac(autoscrollInner(el))
-  // Instant pin — the slow chrome expand (CHROME_EXPAND_MS) is the visual; ResizeObserver
-  // fires many times during it, and stacking smooth scrolls would fight each other.
+  // Instant pin — chrome expand is the visual; ResizeObserver fires many times during it,
+  // and stacking smooth scrolls would fight each other.
   el.scrollTop = Math.max(0, el.scrollHeight - el.clientHeight)
 }
 
@@ -173,6 +174,8 @@ export interface AutoScrollControls {
   speed: number
   /** True when PracticeEntry.scrollSpeed is set (overrides the polished song seed). */
   overridden: boolean
+  /** True after a natural crawl end — show mode uses the slow chrome-settle expand. */
+  chromeSettle: boolean
   togglePlay: () => void
   bumpSpeed: (delta: number) => void
   /** Clear the practice override so the song seed / global default applies again. */
@@ -195,6 +198,8 @@ export function useAutoScrollControls(
   const [delayUntil, setDelayUntil] = useState(0)
   const [delayLeft, setDelayLeft] = useState(0)
   const [scrollable, setScrollable] = useState(false)
+  // Slow chrome expand only after a natural crawl end (not pause). Show mode reads this.
+  const [chromeSettle, setChromeSettle] = useState(false)
   // When the crawl hits the collapsed-chrome bottom and playing clears, chrome re-expands
   // and the scrollport shrinks — leaving sheet content below the fold. Keep pinned to the
   // true bottom across that layout until the user plays again or changes song/view.
@@ -207,6 +212,7 @@ export function useAutoScrollControls(
   // dialed song length survives pinch-zoom (show mode); practice passes the default 1.
   useAutoScroll(target, speed, playing && delayUntil === 0, () => {
     stickBottomRef.current = true
+    setChromeSettle(true)
     setPlaying(false)
   }, zoom)
   // After natural end (or pause-at-bottom): re-pin through the chrome-expand transition.
@@ -223,10 +229,11 @@ export function useAutoScrollControls(
       ro = new ResizeObserver(() => { if (stickBottomRef.current) pinBottom() })
       ro.observe(el)
     }
-    // One extra pin after the slow chrome expand settles.
-    const t = window.setTimeout(pinBottom, CHROME_EXPAND_MS + 80)
+    // One extra pin after chrome expand settles (slow only on natural end).
+    const settleMs = chromeSettle ? CHROME_EXPAND_MS : CHROME_COLLAPSE_MS
+    const t = window.setTimeout(pinBottom, settleMs + 80)
     return () => { ro?.disconnect(); window.clearTimeout(t) }
-  }, [playing, target, pinBottom])
+  }, [playing, chromeSettle, target, pinBottom])
   // Tick the lead-in countdown while a deadline is armed.
   useEffect(() => {
     if (!playing || delayUntil === 0) return
@@ -247,6 +254,7 @@ export function useAutoScrollControls(
     setPlaying(false)
     setDelayUntil(0)
     setDelayLeft(0)
+    setChromeSettle(false)
     stickBottomRef.current = false
     const el = target?.current
     if (el) {
@@ -288,14 +296,17 @@ export function useAutoScrollControls(
   togglePlayRef.current = () => {
     if (playing) {
       const el = target?.current
-      // Pausing while flush with the collapsed bottom — same chrome-expand trap as natural end.
+      // Pausing while flush with the collapsed bottom — still pin, but expand is snappy
+      // (chromeSettle stays false). Slow settle is reserved for natural crawl end.
       if (el && el.scrollTop + el.clientHeight >= el.scrollHeight - 2) stickBottomRef.current = true
+      setChromeSettle(false)
       setPlaying(false)
       setDelayUntil(0)
       setDelayLeft(0)
       return
     }
     stickBottomRef.current = false
+    setChromeSettle(false)
     const el = target?.current
     if (el && el.scrollTop + el.clientHeight >= el.scrollHeight - 1) {
       el.scrollTop = 0
@@ -313,7 +324,7 @@ export function useAutoScrollControls(
     setPlaying(true)
   }
   const togglePlay = useCallback(() => togglePlayRef.current(), [])
-  return { playing, delayLeft, scrollable, speed, overridden, togglePlay, bumpSpeed, clearSpeedOverride }
+  return { playing, delayLeft, scrollable, speed, overridden, chromeSettle, togglePlay, bumpSpeed, clearSpeedOverride }
 }
 
 /** The ▶ / countdown / −speed+ control strip. Callers must only render it when

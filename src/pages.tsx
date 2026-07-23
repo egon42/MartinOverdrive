@@ -491,7 +491,7 @@ export function Show() {
   // Collapse non-essential chrome while autoscroll is armed (playing or lead-in) so the
   // sheet gets max viewport. Keep × exit, compact title, ‹ n/N ›, Live chip, AutoScrollBar,
   // and home-fret scale chips (parked beside the scroll controls on sheet views).
-  return <div className={`show-mode${scroll.playing ? ' show-mode--crawling' : ''}`}>
+  return <div className={`show-mode${scroll.playing ? ' show-mode--crawling' : ''}${!scroll.playing && scroll.chromeSettle ? ' show-mode--chrome-settle' : ''}`}>
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => goTo(index - 1)} aria-label="Previous song">‹</button>

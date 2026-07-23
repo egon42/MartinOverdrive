@@ -141,10 +141,11 @@ countdown). That class hides non-essential chrome (artist eyebrow, view bar + Pi
 strip, Up next, zoom-reset) so the sheet scrollport grows. Dial per-song `scrollSpeed`
 against the **collapsed** layout — crawl `max` is read live each frame
 (`scrollHeight - clientHeight`), and a `ResizeObserver` on the scrollport re-measures
-`scrollable` when chrome toggles. When the crawl reaches the bottom and playing clears,
-chrome re-expands (viewport shrinks); autoscroll pins `scrollTop` to the new bottom so
-sheet content does not appear to stop early. Do not route that remeasure through a
-playing-effect restart of the crawl loop.
+`scrollable` when chrome toggles. Collapse on ▶ and expand on ⏸ are both snappy
+(`.18s`). When the crawl reaches the bottom naturally, show mode adds
+`show-mode--chrome-settle` for a slow (`10.8s`) expand so the last lines stay readable;
+autoscroll pins `scrollTop` to the new bottom so sheet content does not appear to stop
+early. Do not route that remeasure through a playing-effect restart of the crawl loop.
 
 ## What is verified and what is not
 
