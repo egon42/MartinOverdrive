@@ -1,10 +1,22 @@
 Standard (EADGBE)
 
-[Intro]
+[Intro - ring]
 [Amp: 7Red]
-Am   Am/G   F#m7b5   Fmaj7
+Am
 
-Am   G   D   E
+Am/G
+
+F#m7b5
+
+Fmaj7
+
+Am
+
+G
+
+D
+
+E
 
 [Verse 1 - let chords ring]
 I 
@@ -44,7 +56,7 @@ weeps
 E
 
 [Amp: 8Red]
-[Bridge - fills/solo; space not noodling]
+[Bridge - chords; improvise fills if space]
 A
 I don't know 
 C#m
@@ -80,7 +92,7 @@ you
 E
 
 [Amp: 7Red]
-[Verse 2]
+[Verse 2 - let chords ring]
 I 
 Am
 look at the world 
@@ -118,7 +130,41 @@ weeps
 E
 
 [Amp: 8Red]
-[Bridge 2 - fills/solo; space not noodling]
+[Solo - chords under lead; verse pair once]
+Am
+
+Am/G
+
+F#m7b5
+
+Fmaj7
+
+Am
+
+G
+
+D
+
+E
+
+Am
+
+Am/G
+
+F#m7b5
+
+Fmaj7
+
+Am
+
+G
+
+C
+
+E
+
+[Amp: 8Red]
+[Bridge 2 - chords; improvise fills if space]
 A
 I don't know how 
 C#m
@@ -154,7 +200,7 @@ you
 E
 
 [Amp: 7Red]
-[Verse 3]
+[Verse 3 - let chords ring]
 I 
 Am
 look at you 
@@ -188,4 +234,22 @@ G
 tar gently 
 C
 weeps 
+E
+
+[Amp: 8Red]
+[Outro - verse vamp ×4 fade; chords]
+Am
+
+Am/G
+
+F#m7b5
+
+Fmaj7
+
+Am
+
+G
+
+D
+
 E
