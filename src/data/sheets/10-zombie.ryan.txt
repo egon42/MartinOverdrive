@@ -2,7 +2,32 @@ Standard (EADGBE)
 
 [Amp: 1Red]
 
+[Intro - Em C G D ×4]
+Em
+
+C
+
+G
+
+D
+
+[Fill ^1]
+e|7h-8---5h-7---3h-5-|
+B|-------------------|
+G|-------------------|
+D|-------------------|
+A|-------------------|
+E|-------------------|
+
+e|--2h-3h-2------|
+B|----------3-3h-|
+G|---------------|
+D|---------------|
+A|---------------|
+E|---------------|
+
 [Verse 1 - clean / quiet]
+^1
 Em
 Another h
 C
@@ -21,6 +46,7 @@ who are we mista
 D
 ken
 
+[Pre - clean]
 But you 
 Em
 see it's not me, it's not 
@@ -69,6 +95,7 @@ e
 
 [Stomp: 1Red]
 [Verse 2 - clean / quiet]
+^1
 Em
 Another m
 C
@@ -87,6 +114,7 @@ we must be mi
 D
 staken.
 
+[Pre - clean]
 It's the 
 Em
 same old theme since 
@@ -133,10 +161,11 @@ G
 D
 e
 
+[SOLO/OUTRO - Em C G D vamp; cold on Em]
 Em
- 
+
 C
- 
+
 G
- 
+
 D

@@ -45,9 +45,9 @@
     "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed. speed=8 leadInSec=24.6. Shuffle rhythm; V3/V4 one-strum until dig-in; 12-bar Intro/Solo."
   },
   "10-zombie": {
-    "speed": 6,
-    "leadInSec": 16,
-    "note": "Estimate 2026-07-22 (history pass). Studio 5:06; ~0.70× Tribute non-empty (121). speed≈6 (clamped from 5). leadInSec=16. Role: clean verse / dirt chorus via Stomp. Dial on device."
+    "speed": 7,
+    "leadInSec": 34,
+    "note": "Estimate 2026-07-22. Studio 5:06; ~0.84× Tribute non-empty (144). speed≈7. leadInSec=34 covers unwritten Intro ×3 so crawl starts on written cycle 4. Role: Intro×4, Fill^1 on Another, clean Pre, dirt chorus Stomp, Solo/Outro vamp. Dial on device."
   },
   "11-hunger-strike": {
     "speed": 15,
