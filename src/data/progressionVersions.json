@@ -445,6 +445,57 @@
   ],
   "18-here-it-goes-again": [
     {
+      "label": "pre power+form polish 2026-07-23",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "C",
+          "shapes": "-355--",
+          "hint": "Chug; C–G–C then one verse cycle into V1"
+        },
+        {
+          "section": "Verse",
+          "chords": "C G Bb F",
+          "shapes": "-355-- 355--- -133-- 133---"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(Em Am) ×2 G",
+          "shapes": "022--- -022-- 355---"
+        },
+        {
+          "section": "Chorus",
+          "chords": "C G Bb F Am G",
+          "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
+          "hint": "One 6-chord loop; last pass tags Ab"
+        },
+        {
+          "section": "Bridge",
+          "chords": "Eb Bb G7/B Cm Eb/G Ab",
+          "hint": "High neck power riff (frets 6-9), not a lead solo. Then one instrumental verse cycle into V3",
+          "shapes": "x688xx x688xx x668xx x3554x 365xxx 466xxx"
+        },
+        {
+          "section": "Outro",
+          "chords": "C G Bb F Am G",
+          "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
+          "hint": "Last pass tags Ab Bb Eb to close"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse ×4",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Verse ×4",
+        "Pre-Chorus",
+        "Chorus ×3",
+        "Bridge ×2",
+        "Verse ×4",
+        "Outro ×5"
+      ]
+    },
+    {
       "label": "pre bridge cue",
       "sections": [
         {

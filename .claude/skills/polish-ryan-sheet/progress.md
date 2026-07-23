@@ -31,7 +31,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 15-dani-california — **done (2026-07-23):** Intro+Interlude chords ×2 (no riff); Bridge/V3/Chorus headers; Solo/Outro ×8; lyrics cleaned; scroll **9** + lead-in **6**.
 - [x] 16-teenage-dirtbag — **done (2026-07-23):** Intro/reprise, Pre, Bridge (Oh yeah/Dirtbag), V1–V3; 3Red↔4Red; final chorus ghost then open walk-up; scroll **11** + lead-in **14**.
 - [x] 17-the-pretender — **done (2026-07-23):** ghost intro + pre-slam Am×4 + interlude; slam-only 6Red; A5×2 before V2; palm A5 bridge; cold outro ×3; scroll **9** + leadIn **11**.
-- [ ] 18-here-it-goes-again — **drafted (2026-07-23 polish):** sections Pre/Bridge/V2/V3/Outro; vol-roll intro+verses only; IMPROVISED trimmed to Outro vamp ×3 + close tag; bridge band grips; no ^N; scroll **12** + leadIn **8**. Device dial.
+- [ ] 18-here-it-goes-again — **drafted (2026-07-23 polish):** all powers (pre E5/A5, bridge Eb5/Bb5/G5/C5/Ab5); Link = full chorus loop after bridge; V3×2 then Chorus×2 + Outro×5; scroll re-estimate. Device dial.
 - [ ] 19-purple-rain — **drafted (history pass):** capo 3; less-is-more (short vs 8:41). Expand + dial.
 - [ ] 20-when-i-come-around — **drafted (history pass):** palm mute; stripped fingering aside. Device dial.
 - [ ] 21-the-middle — **drafted (legacy):** A-string frets; needs role card + scroll seed.

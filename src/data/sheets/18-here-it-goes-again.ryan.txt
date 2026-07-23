@@ -54,17 +54,17 @@ Bb5
 F5
 
 [Pre-Chorus]
-Em
+E5
    Just when you think you're 
-Am
+A5
 in control,
 
 just when you 
-Em
+E5
 think you've got a hold,
 
 just 
-Am
+A5
 when you get 
 G5
 on a roll,
@@ -141,17 +141,17 @@ Bb5
 F5
 
 [Pre-Chorus]
-Em
+E5
    Just when you think you're 
-Am
+A5
 in control,
 
 just when you 
-Em
+E5
 think you've got a hold,
 
 just 
-Am
+A5
 when you get 
 G5
 on a roll,
@@ -208,42 +208,46 @@ again.
 
 Oh, here it goes again.
 
-[Bridge]
-Eb
+[Bridge - powers]
+Eb5
 Oh, 
-Bb
+Bb5
 oh!
 
-G7/B
+G5
 Oh, here it goes, 
-Cm
+C5
 yeah, 
-Eb/G
+Eb5
 oh, 
-Ab
+Ab5
 here it goes 
-Eb
+Eb5
 again.
 
-Bb
+Bb5
 Hey, 
-G7/B
+G5
 hey! 
-Cm
+C5
 Oh, here it 
-Eb/G
+Eb5
 goes, 
-Ab
+Ab5
 all right!
 
-[Instrumental - verse cycle into V3]
+[Link - full chorus loop into V3]
 C5
-   
+
 G5
-   
+
 Bb5
-   
+
 F5
+
+A5
+
+G5
 
 [Verse 3 - roll guitar volume]
 C5
@@ -268,7 +272,7 @@ leave me, yeah, you
 F5
 leave me.
 
-[Outro]
+[Chorus]
 C5
  Here it 
 G5
@@ -302,40 +306,7 @@ here it goes
 C5
 again.
 
-C5
-Here it g
-G5
-oes, h
-Bb5
-ere it g
-F5
-oes,   
-A5
-
-but 
-G5
-here it goes 
-C5
-again.
-
- 
-C5
-I should have 
-G5
-known, 
-Bb5
-should have k
-F5
-nown,    
-A5
-
-but 
-G5
-here it goes 
-C5
-again.
-
-[Outro vamp - C G Bb F A G ×3]
+[Outro - C G Bb F A G ×5]
 C5
 
 G5
