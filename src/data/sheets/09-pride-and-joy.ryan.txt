@@ -2,9 +2,30 @@ Standard (EADGBE)
 
 [Amp: 7Amber]
 
-[Intro - Texas shuffle first; fills later]
+[Intro - Texas shuffle; 12-bar once]
+E
 
-E A7 E A7 E
+E
+
+E
+
+E7
+
+A7
+
+A7
+
+E
+
+E
+
+B7
+
+A7
+
+E
+
+B7
 
 [Verse 1]
 
@@ -89,9 +110,30 @@ boy
 E
 B7
 
-[Solo - sparse; groove first]
+[Solo - shuffle rhythm; 12-bar once]
+E
 
-E A7 E B7 A7 E
+E
+
+E
+
+E7
+
+A7
+
+A7
+
+E
+
+E
+
+B7
+
+A7
+
+E
+
+B7
 
 [Verse 4]
 
@@ -149,10 +191,34 @@ boy
 E
 B7
 
-[Solo - sparse; groove first]
+[Solo - shuffle rhythm; 12-bar once]
+E
 
-E A7 E B7 A7 E
+E
+
+E
+
+E7
+
+A7
+
+A7
+
+E
+
+E
+
+B7
+
+A7
+
+E
+
+B7
 
 [Outro]
+E
 
-E B7 E
+B7
+
+E
