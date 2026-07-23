@@ -21,7 +21,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [ ] 05-thunderstruck — **drafted (good enough 2026-07-22):** between-line vs on-vocal; scroll **10** + leadIn **50**. End/guitar pass deferred.
 - [ ] 06-don-t-stop-believin — **drafted (good enough 2026-07-22):** intro/interlude/solo cycles written out; scroll **8** + leadIn **18**; end pin smooth. Lock later if crawl needs a final nudge.
 - [x] 07-tribute — **done (2026-07-22):** fills ^1/^2/^3, ghosts, 4Amber→5Amber, scroll **10** + **11.6**.
-- [ ] 08-while-my-guitar-gently-weeps — **drafted (2026-07-22 polish):** chords only (improv fills OK); ring verses; Solo+Outro vamp; scroll **10** + leadIn **9.6**. Device dial.
+- [ ] 08-while-my-guitar-gently-weeps — **drafted (2026-07-22 polish):** chords only (improv fills OK); ring verses; Solo+Outro vamp; scroll **10** + leadIn **17.6**. Device dial.
 - [ ] 09-pride-and-joy — **drafted (history pass):** Texas shuffle first; sparse solo. Device dial.
 - [ ] 10-zombie — **drafted (history pass):** clean verse / dirt chorus at Stomp. Device dial.
 - [ ] 11-hunger-strike — **drafted (history pass):** sit under vocals; FS dirt lift. Device dial.
