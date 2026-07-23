@@ -27,7 +27,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 11-hunger-strike — **done (2026-07-22):** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; Bridge grips x00x x22x; scroll **10** + leadIn **12**.
 - [x] 12-s-o-b — **done (2026-07-22):** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**.
 - [x] 13-save-a-horse-ride-a-cowboy — **done (2026-07-22):** chucks; chorus land stops + E G A hook; solo E A E A×2 (intro layout); palm-muted bridge; N.C. outro; scroll **10** + leadIn **18**.
-- [ ] 14-sweet-home-alabama — **drafted (2026-07-22 polish):** Intro play-from-1; D-C-G on all verses/choruses; Interlude + Solos keep D-C-G; F C chorus tags; no ^N (improv fills OK); scroll **15** + leadIn **15**. Device dial.
+- [ ] 14-sweet-home-alabama — **drafted (2026-07-22 polish):** Intro D-C-G x4 join on 3rd (ghost 1–2); D-C-G on all verses/choruses; Interlude + Solos keep D-C-G; F C chorus tags; no ^N; scroll **11** + leadIn **20**. Device dial.
 - [ ] 15-dani-california — **drafted (history pass):** verse volume roll / open chorus. Device dial.
 - [ ] 16-teenage-dirtbag — **drafted (history pass):** quiet verse / big chorus Amp labels. Device dial.
 - [ ] 17-the-pretender — **drafted (history pass):** quiet count-in; explode with drums; cold outro. Device dial.
