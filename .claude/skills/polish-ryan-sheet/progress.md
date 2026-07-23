@@ -34,7 +34,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 18-here-it-goes-again — **done (2026-07-23):** all powers (pre E5/A5, bridge Eb5/Bb5/G5/C5/Ab5); Link = full chorus loop after bridge; V3×2 then Chorus×2 + Outro×5; scroll **12** + leadIn **8**.
 - [ ] 19-purple-rain — **drafted (good enough 2026-07-23):** full album; Intro ring; V1–V3 + choruses; Solo ×6 / Outro ×10 vamp; Slow-down; no ^N; scroll **6** + leadIn **16**. Lock later if crawl dials clean.
 - [x] 20-when-i-come-around — **done (2026-07-23):** all powers; Intro×3; Solo×2; Outro rotated D#5 B5 F#5 C#5 ×3 cold; orphan When stripped; scroll **11** + leadIn **9**.
-- [ ] 21-the-middle — **drafted (2026-07-23 polish):** A-string PM frets; open D/A/G chorus; Solo expanded; cold D; Amp 3Green; skip low E; scroll **6** + leadIn **16**. Device dial.
+- [ ] 21-the-middle — **drafted (2026-07-23 polish):** A-string PM frets; open D/A/G chorus; Solo expanded; cold D; Amp 3Green; skip low E; scroll **7** + leadIn **14** (nudged from 6). Device dial.
 - [ ] 22-dream-on — **drafted (history pass):** arpeggio intro; 8Red outro screamer. Device dial.
 - [ ] 23-lola-montez — **drafted (history pass):** power intro; Em bridge note. Device dial.
 - [ ] 24-mary-jane-s-last-dance — **drafted (history pass):** relaxed; fills later. Device dial.
