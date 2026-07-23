@@ -1,24 +1,24 @@
 Standard (EADGBE)
 
-[Intro - quiet Am F#m7b5 Fmaj7; count last bar aloud]
+[Intro - ghost; count last bar aloud]
 [Amp: 5Red]
 
-Am
+~Am
 Keep you in the dark
 
 You know they 
-F#m7b5
+~F#m7b5
 all pret
-Fmaj7
+~Fmaj7
 end
 
-Am
+~Am
 Keep you in the dark
 
 And so it 
-F#m7b5
+~F#m7b5
 all beg
-Fmaj7
+~Fmaj7
 an
 
 [Amp: 6Red]
