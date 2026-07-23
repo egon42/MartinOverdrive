@@ -24,7 +24,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 08-while-my-guitar-gently-weeps — **done (2026-07-22):** chords only (improv fills OK); ring verses; Solo+Outro vamp; scroll **6** + leadIn **17.6**.
 - [x] 09-pride-and-joy — **done (2026-07-22):** shuffle rhythm only; V3/V4 one-strum until dig-in; 12-bar Intro/Solo; scroll **8** + leadIn **24.6**.
 - [x] 10-zombie — **done (2026-07-22):** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = dirt EmCGD then Em ring+fill; scroll **11** + leadIn **8.7**.
-- [ ] 11-hunger-strike — **drafted (history pass):** sit under vocals; FS dirt lift. Device dial.
+- [ ] 11-hunger-strike — **drafted (polish 2026-07-22):** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; scroll **16** + leadIn **6**. Device dial.
 - [ ] 12-s-o-b — **drafted (history pass):** ghost sit-out intro/outro stomp-clap; leadIn **18**. Device dial.
 - [ ] 13-save-a-horse-ride-a-cowboy — **drafted (history pass):** land the stops; country chucks. Device dial.
 - [ ] 14-sweet-home-alabama — **drafted (history pass):** D-C-G; fills later (short sheet). Device dial / expand.
@@ -52,4 +52,4 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted (not locked):** 04–06, 11–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 11… (04/05/06 good-enough). Still thin: Purple Rain, Sweet Home, Ain't Goin' Down. The Middle needs role card + scroll seed.
+**Next review queue (handoff):** 12… (04/05/06 good-enough; 11 polished awaiting dial). Still thin: Purple Rain, Sweet Home, Ain't Goin' Down. The Middle needs role card + scroll seed.

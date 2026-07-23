@@ -2,7 +2,7 @@ Standard (EADGBE)
 
 [Amp: 1Red]
 
-[Verse - sit under trading vocals; clean]
+[Intro - G A7sus4 G ×2]
 G
 
 A7sus4
@@ -10,6 +10,7 @@ A7sus4
 G
  x2
 
+[Verse - sit under trading vocals; clean]
 G
 I don't mind 
 A7sus4
@@ -207,6 +208,7 @@ Hungry...
 Cadd9
 Yeah)
 
+[Bridge - D5 E5 Emadd9; Standard x577 / 022]
 D5
 -
 E5
@@ -216,6 +218,7 @@ D5
 E5
   Emadd9  x4
 
+[Interlude - G A7sus4 G/B Cadd9 ×2]
 G
 
 A7sus4
@@ -247,6 +250,7 @@ Hungry...
 Cadd9
 Yeah)
 
+[Bridge - D5 E5 Emadd9; Standard x577 / 022]
 D5
 -
 E5
@@ -313,6 +317,7 @@ Hungry...
 Cadd9
 Yeah)
 
+[Bridge - cold end]
 D5
  
 E5
