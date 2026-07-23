@@ -3,7 +3,7 @@ Capo 1 (shapes below are Em; with the capo it sounds F minor, the record/band ke
 
 [Amp: 7Red]
 
-[Intro - clean arpeggios]
+[Intro - clean arpeggios ×2]
   
 Em
    
@@ -21,6 +21,7 @@ B7
 Em
 
  
+[Verse 1]
 Em
   Every t
 Em7
@@ -59,6 +60,7 @@ Am6
 awn
 
  
+[Pre-Chorus - only once]
 Em6
    Isn't that the w
 B7sus4
@@ -77,6 +79,7 @@ C#7
                 
 B7
 
+[Bridge - Em D C D]
 I
 Em
  know n
@@ -101,6 +104,7 @@ Em
 in
 
  
+[Interlude - intro tag]
 Em7
    
 Em6
@@ -114,6 +118,7 @@ B7
 Em
 
  
+[Verse 2]
 Em
   Half my l
 Em7
@@ -151,6 +156,7 @@ ack to y
 Am6
 ou
 
+[Chorus]
 Em
 Sing with me, s
 D
@@ -173,13 +179,11 @@ Cmaj7
 good Lord will take you away
 
  
+[Build - Am6 add9 ×8]
 Am6
- (
-Am
- add 6/9) x 8
 
 [Amp: 8Red]
-[Outro screamer - dig in; save lead for here]
+[Climax - dig in; save lead for here]
 Am
 Dream on, dr
 B5
@@ -229,6 +233,7 @@ B
 Ah------
 
 [Amp: 7Red]
+[Chorus - out]
 Em
 Sing with me, s
 D
@@ -251,9 +256,5 @@ Cmaj7
 good Lord will take you away
 
  
+[Outro - Am6 fade]
 Am6
-  (
-Am
- add 6/9)-fade out
-
-THE END!

@@ -35,7 +35,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [ ] 19-purple-rain — **drafted (good enough 2026-07-23):** full album; Intro ring; V1–V3 + choruses; Solo ×6 / Outro ×10 vamp; Slow-down; no ^N; scroll **6** + leadIn **16**. Lock later if crawl dials clean.
 - [x] 20-when-i-come-around — **done (2026-07-23):** all powers; Intro×3; Solo×2; Outro rotated D#5 B5 F#5 C#5 ×3 cold; orphan When stripped; scroll **11** + leadIn **9**.
 - [x] 21-the-middle — **done (2026-07-23):** A-string PM frets; open D/A/G chorus; Solo expanded; cold D; Amp 3Green; skip low E; scroll **7** + leadIn **14**.
-- [ ] 22-dream-on — **drafted (history pass):** arpeggio intro; 8Red outro screamer. Device dial.
+- [ ] 22-dream-on — **drafted (2026-07-23 polish):** form headers; Intro×2; Bridge Em D C D; Build Am6×8; Climax dig-in; Outro fade; no ^N; scroll **6** + leadIn **16**. Device dial. Landmark: "Half my life's".
 - [ ] 23-lola-montez — **drafted (history pass):** power intro; Em bridge note. Device dial.
 - [ ] 24-mary-jane-s-last-dance — **drafted (history pass):** relaxed; fills later. Device dial.
 - [ ] 25-valerie — **drafted (history pass):** pocket stabs; key still shaky. Device dial.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted (not locked):** 04–06, 14, 19, 22–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 22… (04/05/06/19 good-enough; 14 polish dial pending). Still thin: Ain't Goin' Down.
+**Next review queue (handoff):** 23… (04/05/06/19 good-enough; 14/22 polish dial pending). Still thin: Ain't Goin' Down.
 
 ## Skill audit (2026-07-23) — second-half prep
 
