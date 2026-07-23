@@ -32,7 +32,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 16-teenage-dirtbag — **done (2026-07-23):** Intro/reprise, Pre, Bridge (Oh yeah/Dirtbag), V1–V3; 3Red↔4Red; final chorus ghost then open walk-up; scroll **11** + lead-in **14**.
 - [x] 17-the-pretender — **done (2026-07-23):** ghost intro + pre-slam Am×4 + interlude; slam-only 6Red; A5×2 before V2; palm A5 bridge; cold outro ×3; scroll **9** + leadIn **11**.
 - [x] 18-here-it-goes-again — **done (2026-07-23):** all powers (pre E5/A5, bridge Eb5/Bb5/G5/C5/Ab5); Link = full chorus loop after bridge; V3×2 then Chorus×2 + Outro×5; scroll **12** + leadIn **8**.
-- [ ] 19-purple-rain — **drafted (history pass):** capo 3; less-is-more (short vs 8:41). Expand + dial.
+- [ ] 19-purple-rain — **drafted (2026-07-23 polish):** full album; Intro ring; V1–V3 + choruses; Solo ×6 / Outro ×10 vamp; Slow-down; no ^N; scroll **6** + leadIn **16**. Device dial.
 - [ ] 20-when-i-come-around — **drafted (history pass):** palm mute; stripped fingering aside. Device dial.
 - [ ] 21-the-middle — **drafted (legacy):** A-string frets; needs role card + scroll seed.
 - [ ] 22-dream-on — **drafted (history pass):** arpeggio intro; 8Red outro screamer. Device dial.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted (not locked):** 04–06, 14, 19–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 19… (04/05/06 good-enough; 14 polished dial pending). Still thin: Purple Rain, Ain't Goin' Down. The Middle needs role card + scroll seed.
+**Next review queue (handoff):** 20… (04/05/06 good-enough; 14 polished dial pending; 19 expand shipped, dial pending). Still thin: Ain't Goin' Down. The Middle needs role card + scroll seed.
 
 ## Skill audit (2026-07-23) — second-half prep
 

@@ -4,7 +4,16 @@ Standard (EADGBE)
 
 Capo 3 (shapes below are G/Em7/D/C; with the capo it sounds Bb, the record/band key)
 
-[Verse - slow; less is more]
+[Intro - ring G Em7 D C]
+G
+
+Em7
+
+D
+
+C
+
+[Verse 1 - slow; less is more]
 G
     I never meant to cause you any 
 Em7
@@ -26,6 +35,7 @@ only wanted to see you laughing in the purple
 G
 rain
 
+[Chorus]
     Purple rain purple 
 C
 rain
@@ -45,6 +55,7 @@ D
 G
 ain
 
+[Verse 2]
    I never wanted to be your weekend l
 G
 over    
@@ -66,6 +77,7 @@ D
 G
 end
 
+[Chorus]
    Purple rain purple 
 C
 rain
@@ -84,3 +96,69 @@ D
    I only wanted to see you underneath the purple 
 G
 rain
+
+[Verse 3]
+G
+    Honey I know, I know, I know times are 
+Em7
+changing
+
+D
+    It’s time we all reach out for something new, that means you 
+C
+too
+
+G
+    You say you want a leader, but you can’t seem to make up your 
+Em7
+mind
+
+D
+    I think you better close it, and let me guide you to the purple 
+G
+rain
+
+[Chorus]
+   Purple rain purple 
+C
+rain
+
+C
+   Purple rain purple 
+G
+rain
+
+Em7
+   Purple rain purple 
+D
+rain
+
+D
+   I only wanted to see you, only want to see you, in the purple 
+G
+rain
+
+[Solo - chorus vamp; sparse lead ×6]
+C
+
+G
+
+Em7
+
+D
+
+G
+
+[Outro - same vamp; ride it out ×10]
+C
+
+G
+
+Em7
+
+D
+
+G
+
+[Slow-down - tag; stay on 8Amber]
+G
