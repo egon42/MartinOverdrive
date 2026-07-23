@@ -40,7 +40,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [ ] 24-mary-jane-s-last-dance — **drafted (good enough 2026-07-23):** Intro×4; Interlude×2; Solo×4; pigeons×4; V2 tag + instrumental before chorus; Outro fade+harmonica; `eighteen`; Em7 on cheat hint; no ^N; scroll **9** + leadIn **10.7**. Lock later if crawl dials clean.
 - [x] 25-valerie — **done (2026-07-23):** Intro E vamp; Verse/Pre/Chorus headers; quiet ~E ~F#m ghosts; Outro E tag; Amp 3Amber (Green TBD); no ^N; scroll **8** + leadIn **12**.
 - [ ] 26-voodoo-child-slight-return — **drafted (2026-07-23 polish; revisit later):** backing rhythm under lead; Amp 7Green (slot 15); drop 2nd Pre; Solo1×4 / Solo2×12 written E-G-A; Outro hard stop; plain E; no ^N; scroll **6** + leadIn **16** (SRV 7:59). Dial / Solo×N / cut length open.
-- [ ] 27-fat-bottomed-girls — **drafted (2026-07-23 polish):** album form Chorus→V→Interlude→V→Chorus→Solo×4→Outro; sparse open vol-down; Interlude labeled; double-hook + cold bikes; chords only; scroll **6** + leadIn **16**. Device dial.
+- [ ] 27-fat-bottomed-girls — **drafted (2026-07-23 polish):** album form; open Chorus vocal-only (~ghosts); Intro instrumental ×2 before V1; Interlude; Solo×4; double-hook + cold bikes; chords only; scroll **6** + leadIn **20**. Device dial.
 - [ ] 28-mama-i-m-coming-home — **drafted (history pass):** 7Red verse / 8Red chorus-solo lift. Device dial.
 - [ ] 29-ain-t-goin-down-til-the-sun-comes-up — **drafted (history pass):** fast country; skip fills if needed. Device dial.
 - [ ] 30-pink-pony-club — **drafted (history pass):** quiet verse / big chorus Amp. Device dial.

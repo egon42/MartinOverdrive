@@ -2,32 +2,47 @@ Drop D (DADGBE)
 
 [Amp: 2Green]
 
-[Chorus - sparse / guitar volume down; band crashes after]
-D
+[Chorus - vocal only; sit out]
+~D
 Are you gonna t
-C
+~C
 ake me home t
-G
+~G
 onight?,
-D
+~D
  Ah down b
-C
+~C
 eside that red fire
-A
+~A
 light?
 
-D
+~D
 Are you gonna l
-G
+~G
 et it all hang out?
 
 Fat bottomed g
-D
+~D
 irls You make the r
-A
+~A
 ockin' world go ro
-D
+~D
 und
+
+[Intro - instrumental before V1; volume up ×2]
+D
+
+A
+
+D
+
+G
+
+D
+
+A
+
+D
 
 [Verse 1]
 Hey I was j
