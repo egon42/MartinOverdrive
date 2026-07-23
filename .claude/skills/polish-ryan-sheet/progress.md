@@ -28,7 +28,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 12-s-o-b — **done (2026-07-22):** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**.
 - [x] 13-save-a-horse-ride-a-cowboy — **done (2026-07-22):** chucks; chorus land stops + E G A hook; solo E A E A×2 (intro layout); palm-muted bridge; N.C. outro; scroll **10** + leadIn **18**.
 - [ ] 14-sweet-home-alabama — **drafted (2026-07-22 polish):** Intro D-C-G x4 join on 3rd (ghost 1–2); D-C-G on all verses/choruses; Interlude + Solos keep D-C-G; F C chorus tags; no ^N; scroll **8** + leadIn **20**. Device dial.
-- [ ] 15-dani-california — **drafted (2026-07-23 polish):** Intro+Interlude chords ×2 (no riff); Bridge/V3/Chorus headers; Solo/Outro ×8; scroll **9** + lead-in **6** (speed good). Lyrics cleaned (North Dakota / loaded-breath / other side / a-gunnin' / Gone too fast). Lock when crawl + content feel final.
+- [x] 15-dani-california — **done (2026-07-23):** Intro+Interlude chords ×2 (no riff); Bridge/V3/Chorus headers; Solo/Outro ×8; lyrics cleaned; scroll **9** + lead-in **6**.
 - [ ] 16-teenage-dirtbag — **drafted (history pass):** quiet verse / big chorus Amp labels. Device dial.
 - [ ] 17-the-pretender — **drafted (history pass):** quiet count-in; explode with drums; cold outro. Device dial.
 - [ ] 18-here-it-goes-again — **drafted (history pass):** volume-roll intro/verse; chorus labels. Device dial.
@@ -49,7 +49,8 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 ## Last done
 
 **Locked (2026-07-22):** 01-welcome-home, 02-all-the-small-things, 03-a-little-less-conversation, 07-tribute, 08-while-my-guitar-gently-weeps, 09-pride-and-joy, 10-zombie, 11-hunger-strike, 12-s-o-b, 13-save-a-horse-ride-a-cowboy.
+**Locked (2026-07-23):** 15-dani-california.
 
-**Drafted (not locked):** 04–06, 14–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
+**Drafted (not locked):** 04–06, 14, 16–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 16… (04/05/06 good-enough; 14/15 polished, dial pending). Still thin: Purple Rain, Ain't Goin' Down. The Middle needs role card + scroll seed.
+**Next review queue (handoff):** 16… (04/05/06 good-enough; 14 polished, dial pending). Still thin: Purple Rain, Ain't Goin' Down. The Middle needs role card + scroll seed.
