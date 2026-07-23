@@ -1,4 +1,6 @@
-Standard (EADGBE)
+Standard (EADGBE) — skip low E (Drop D without retuning)
+
+[Amp: 3Green]
 
 [Intro - A string, palm mute]
 9 5 7 4
@@ -7,7 +9,7 @@ Standard (EADGBE)
 
 [Verse 1 - A string, palm mute]
 9
-Hey, don't write yourself off y
+    Hey, don't write yourself off y
 5
 et.
 
@@ -31,7 +33,7 @@ ell themselves
 5
 away.
 
-[Chorus]
+[Chorus - open D A G]
 It just t
 D
 akes some time, little girl you're in the middle o
@@ -46,7 +48,7 @@ be all right (all right)
 
 [Verse 2 - A string, palm mute]
 9
-Hey, you know they're all the
+    Hey, you know they're all the
 5
 same.
 
@@ -70,7 +72,7 @@ od enough
 5
 else.
 
-[Chorus]
+[Chorus - open D A G]
 It just t
 D
 akes some time, little girl you're in the middle o
@@ -95,18 +97,24 @@ be just fine, everything, everything will
 D
 be all right (all right)
 
-[Solo]
-A D
+[Solo - open; 6Green if wanted]
+A
 
-A D
+D
 
-G D
+A
+
+D
+
+G
+
+D
 
 A
 
 [Verse 3 - A string, palm mute]
 9
-Hey, don't write yourself off y
+    Hey, don't write yourself off y
 5
 et.
 
@@ -130,7 +138,7 @@ itter hearts
 5
 say.
 
-[Chorus]
+[Chorus - open D A G]
 It just t
 D
 akes some time, little girl you're in the middle o
@@ -143,7 +151,5 @@ be just fine, everything, everything will
 D
 be all right (all right)
 
-END on D
-
-Chorus open chords: D = xx0232, A = x02220, G = 320003.
-Verse/Intro frets = A-string palm-mute riff (one chip per bar).
+[Outro - cold on D]
+D
