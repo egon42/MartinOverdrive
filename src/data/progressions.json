@@ -1125,43 +1125,52 @@
   "27-fat-bottomed-girls": {
     "sections": [
       {
-        "section": "Verse",
-        "chords": "(D A D) G (D A D)",
-        "shapes": "--0232 -02220 --0232 320003 --0232 -02220 --0232",
-        "hint": "Big open chords in Standard; leave space for the fill runs"
-      },
-      {
         "section": "Chorus",
         "chords": "(D C G/B D C A D) (G D A D)",
         "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232",
-        "hint": "1st one opens sparse; band crashes in after"
+        "hint": "Open: vocal-only, single hook; mid/final: double the (G D A D) hook"
+      },
+      {
+        "section": "Intro",
+        "chords": "D",
+        "shapes": "--0232",
+        "hint": "D vamp after open chorus; volume up; Hey! into V1"
+      },
+      {
+        "section": "Verse",
+        "chords": "(D A D) G (D A D)",
+        "shapes": "--0232 -02220 --0232 320003 --0232 -02220 --0232",
+        "hint": "Big open chords; leave space for the fill runs"
+      },
+      {
+        "section": "Break",
+        "chords": "D",
+        "shapes": "--0232",
+        "hint": "Long D vamp after V1 Hey hey!; into V2"
       },
       {
         "section": "Interlude",
         "chords": "G G D D A A G",
         "shapes": "320003 320003 --0232 --0232 -02220 -02220 320003",
-        "hint": "Hey-listen-here lead-in between verses (cut from the single)"
-      },
-      {
-        "section": "Solo",
-        "chords": "(D A D) G (D A D)",
-        "shapes": "--0232 -02220 --0232 320003 --0232 -02220 --0232",
-        "hint": "Under the lead: verse-type changes"
+        "hint": "Hey-listen-here; album plays this twice (single cuts it)"
       },
       {
         "section": "Outro",
-        "chords": "(D C G/B D C A D) (G D A D)",
-        "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232",
-        "hint": "Double hook, bikes tag; cold ending"
+        "chords": "D",
+        "shapes": "--0232",
+        "hint": "After bikes tag; D vamp ad-libs; cold end (no fade)"
       }
     ],
     "form": [
       "Chorus",
+      "Intro ×8",
       "Verse",
-      "Interlude",
+      "Break ×10",
       "Verse",
       "Chorus",
-      "Solo",
+      "Interlude ×2",
+      "Verse",
+      "Chorus",
       "Outro"
     ]
   },

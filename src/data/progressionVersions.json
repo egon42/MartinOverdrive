@@ -1146,6 +1146,50 @@
   ],
   "27-fat-bottomed-girls": [
     {
+      "label": "pre album-form research fix 2026-07-23",
+      "sections": [
+        {
+          "section": "Verse",
+          "chords": "(D A D) G (D A D)",
+          "shapes": "--0232 -02220 --0232 320003 --0232 -02220 --0232",
+          "hint": "Big open chords in Standard; leave space for the fill runs"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(D C G/B D C A D) (G D A D)",
+          "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232",
+          "hint": "1st one opens sparse; band crashes in after"
+        },
+        {
+          "section": "Interlude",
+          "chords": "G G D D A A G",
+          "shapes": "320003 320003 --0232 --0232 -02220 -02220 320003",
+          "hint": "Hey-listen-here lead-in between verses (cut from the single)"
+        },
+        {
+          "section": "Solo",
+          "chords": "(D A D) G (D A D)",
+          "shapes": "--0232 -02220 --0232 320003 --0232 -02220 --0232",
+          "hint": "Under the lead: verse-type changes"
+        },
+        {
+          "section": "Outro",
+          "chords": "(D C G/B D C A D) (G D A D)",
+          "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232",
+          "hint": "Double hook, bikes tag; cold ending"
+        }
+      ],
+      "form": [
+        "Chorus",
+        "Verse",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Solo",
+        "Outro"
+      ]
+    },
+    {
       "label": "Drop D arrangement (pre standard switch)",
       "sections": [
         {

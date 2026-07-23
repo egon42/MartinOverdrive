@@ -121,7 +121,7 @@ control and is not stored.
 | 24 | Mary Jane's Last Dance | **5** | |
 | 25 | Valerie | **3** | |
 | 26 | Voodoo Child (Slight Return) | **15** | Touch wah responds to pick attack |
-| 27 | Fat Bottomed Girls | **10** | Intro: guitar volume down |
+| 27 | Fat Bottomed Girls | **10** | Vocal-only open; volume up on Intro D vamp |
 | 28 | Mama, I'm Coming Home | **23 ↔ 24** | Verses 23, chorus/solo 24 |
 | 29 | Ain't Goin' Down ('Til the Sun Comes Up) | **6** | Don't fall behind |
 | 30 | Pink Pony Club | **19 ↔ 20** | Verse 19, chorus 20 |
