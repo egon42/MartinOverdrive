@@ -1,6 +1,6 @@
 Standard (EADGBE)
 
-[Intro - quiet; count last bar]
+[Intro - quiet Am F#m7b5 Fmaj7; count last bar aloud]
 [Amp: 5Red]
 
 Am
@@ -22,7 +22,7 @@ Fmaj7
 an
 
 [Amp: 6Red]
-[Verse 1 - explode; nail entrance with drums]
+[Verse 1 - slam with drums; do not jump early]
 
 Am
   Send in your skeletons
@@ -151,7 +151,7 @@ F
 What if I say that I'll never surrender?
 D
 
-[Bridge]
+[Bridge - palm-muted A5]
 
 A5
 I'm the voice inside your head
@@ -190,7 +190,7 @@ A5
 Yeah, who are you?
 
 [Amp: 5Red]
-[Interlude]
+[Interlude - quiet return]
 
 Am
 Keep you in the dark
@@ -202,7 +202,7 @@ Fmaj7
 end
 
 [Amp: 6Red]
-[Chorus]
+[Chorus - final]
 
 Am
 What if I say I'm not like the others?
@@ -253,7 +253,7 @@ F
 What if I say that I'll never surrender?
 D
 
-[Outro - cold]
+[Outro - cold stop]
 
 A5
 So who are you?
