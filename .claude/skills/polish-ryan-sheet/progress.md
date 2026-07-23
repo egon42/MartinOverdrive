@@ -36,7 +36,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 20-when-i-come-around — **done (2026-07-23):** all powers; Intro×3; Solo×2; Outro rotated D#5 B5 F#5 C#5 ×3 cold; orphan When stripped; scroll **11** + leadIn **9**.
 - [x] 21-the-middle — **done (2026-07-23):** A-string PM frets; open D/A/G chorus; Solo expanded; cold D; Amp 3Green; skip low E; scroll **7** + leadIn **14**.
 - [ ] 22-dream-on — **drafted (2026-07-23 polish):** high-low arpeggio note; form headers + mid Sing-with-me before Climax; Build/Outro Amadd9; no ^N; scroll **7** + leadIn **13.7**. **Open:** research high-low pattern → add stage tab glance (cheat Fills has verse climb / chorus sig / pre walk / climax trill). Landmark: "Half my life's".
-- [ ] 23-lola-montez — **drafted (2026-07-23 polish):** cold V1; post-V1 palm riff ×4 then open Interlude D-G-A-D ×2; Bridge instr×2 then vocals (Em); chorus endings D/F#m/D; cut Outro; scroll **9** + leadIn **10.7**. Device dial. Landmark: C2 F#m.
+- [x] 23-lola-montez — **done (2026-07-23):** cold V1; post-V1 palm riff ×4 then open Interlude D-G-A-D ×2; Bridge instr×2 then vocals (Em); chorus endings D/F#m/D; cut Outro; scroll **9** + leadIn **10.7**.
 - [ ] 24-mary-jane-s-last-dance — **drafted (history pass):** relaxed; fills later. Device dial.
 - [ ] 25-valerie — **drafted (history pass):** pocket stabs; key still shaky. Device dial.
 - [ ] 26-voodoo-child-slight-return — **drafted (history pass):** wah support under other lead. Device dial.
@@ -49,7 +49,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 ## Last done
 
 **Locked (2026-07-22):** 01-welcome-home, 02-all-the-small-things, 03-a-little-less-conversation, 07-tribute, 08-while-my-guitar-gently-weeps, 09-pride-and-joy, 10-zombie, 11-hunger-strike, 12-s-o-b, 13-save-a-horse-ride-a-cowboy.
-**Locked (2026-07-23):** 15-dani-california, 16-teenage-dirtbag, 17-the-pretender, 18-here-it-goes-again, 20-when-i-come-around, 21-the-middle.
+**Locked (2026-07-23):** 15-dani-california, 16-teenage-dirtbag, 17-the-pretender, 18-here-it-goes-again, 20-when-i-come-around, 21-the-middle, 23-lola-montez.
 
 **Drafted (not locked):** 04–06, 14, 19, 22–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
