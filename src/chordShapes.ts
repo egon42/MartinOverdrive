@@ -34,6 +34,8 @@ const QUALITY: Record<string, { e: ChordShape; a?: ChordShape }> = {
   madd9: { e: [0, 2, 4, 0, 0, 0], a: ['x', 0, 2, 4, 1, 0] },
   '7sus4': { e: [0, 2, 0, 2, 0, 0], a: ['x', 0, 2, 0, 3, 0] },
   '7#9': { e: [0, 2, 0, 1, 3, 3] }, // no clean 5th-string form; always the E-shape
+  // Half-diminished: A-shape grip is the standard movable form (Bm7b5 = x2323x).
+  m7b5: { e: [0, 1, 2, 0, 3, 'x'], a: ['x', 0, 1, 0, 1, 'x'] },
   '5': { e: [0, 2, 2, 'x', 'x', 'x'], a: ['x', 0, 2, 2, 'x', 'x'] },
 }
 
@@ -44,6 +46,8 @@ const OPEN: Record<string, ChordShape> = {
   Dsus2: ['x', 'x', 0, 2, 3, 0], Dsus4: ['x', 'x', 0, 2, 3, 3], D5: ['x', 'x', 0, 2, 3, 'x'], D6: ['x', 'x', 0, 2, 0, 2], D7sus4: ['x', 'x', 0, 2, 1, 3],
   G: [3, 2, 0, 0, 0, 3], G7: [3, 2, 0, 0, 0, 1], Gmaj7: [3, 2, 0, 0, 0, 2], G6: [3, 2, 0, 0, 0, 0], Gadd9: [3, 2, 0, 2, 0, 3],
   F: [1, 3, 3, 2, 1, 1], Fmaj7: ['x', 'x', 3, 2, 1, 0],
+  // Gently Weeps / Pretender walkdown (UG 2x2210) — friendlier than a barre.
+  'F#m7b5': [2, 'x', 2, 2, 1, 0],
   B7: ['x', 2, 1, 2, 0, 2],
 }
 
@@ -55,6 +59,7 @@ const SUFFIX: [RegExp, string][] = [
   [/^(7sus4|7sus)$/i, '7sus4'],
   [/^(7#9|7\+9)$/, '7#9'],
   [/^(m6|min6)$/i, 'm6'],
+  [/^(m7b5|min7b5|m7-5|ø7?|hdim7?)$/i, 'm7b5'],
   [/^(m7|min7|-7)$/i, 'm7'],
   [/^(sus2|2)$/i, 'sus2'],
   [/^(sus4|sus)$/i, 'sus4'],
