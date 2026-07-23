@@ -24,7 +24,7 @@ eyes with her spider
 D5
 dance
 
-[Interlude - D5 G5 A5 D5 ×2; lead solos; let ring 2nd]
+[Riff - palm mute D5 G5 A5 D5]
 D5
 
 G5
@@ -33,13 +33,22 @@ A5
 
 D5
 
-D5
+[Interlude - open D G A D ×2; lead solos; let ring 2nd]
+D
 
-G5
+G
 
-A5
+A
 
-D5
+D
+
+D
+
+G
+
+A
+
+D
 
 [Verse 2]
 
@@ -121,22 +130,22 @@ life, yeah-
 D
 eah
 
-[Interlude - D5 G5 A5 D5 ×2; lead solos; let ring 2nd]
-D5
+[Interlude - open D G A D ×2; lead solos; let ring 2nd]
+D
 
-G5
+G
 
-A5
+A
 
-D5
+D
 
-D5
+D
 
-G5
+G
 
-A5
+A
 
-D5
+D
 
 [Verse 3]
 
