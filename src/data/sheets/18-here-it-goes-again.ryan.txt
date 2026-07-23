@@ -53,6 +53,7 @@ Bb5
    
 F5
 
+[Pre-Chorus]
 Em
    Just when you think you're 
 Am
@@ -106,6 +107,7 @@ Oh, here it
 G5
 goes again.
 
+[Verse 2 - roll guitar volume]
 C5
 
 C5
@@ -138,6 +140,7 @@ Bb5
    
 F5
 
+[Pre-Chorus]
 Em
    Just when you think you're 
 Am
@@ -205,6 +208,7 @@ again.
 
 Oh, here it goes again.
 
+[Bridge]
 Eb
 Oh, 
 Bb
@@ -232,6 +236,7 @@ goes,
 Ab
 all right!
 
+[Instrumental - verse cycle into V3]
 C5
    
 G5
@@ -240,6 +245,7 @@ Bb5
    
 F5
 
+[Verse 3 - roll guitar volume]
 C5
   I guess there's got to be a 
 G5
@@ -262,6 +268,7 @@ leave me, yeah, you
 F5
 leave me.
 
+[Outro]
 C5
  Here it 
 G5
@@ -328,20 +335,18 @@ here it goes
 C5
 again.
 
-IMPROVISED LYRICS:
-
+[Outro vamp - C G Bb F A G ×3]
 C5
- - 
+
 G5
- - 
+
 Bb5
- - 
+
 F5
- - 
+
 A5
- - 
+
 G5
- x3
 
 A5
      Oh, here it g
