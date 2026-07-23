@@ -45,7 +45,7 @@ function clearFrac(inner: HTMLElement | null) {
 }
 
 // Must match the CSS expand duration on .show-mode chrome (not the .18s collapse).
-const CHROME_EXPAND_MS = 3600
+const CHROME_EXPAND_MS = 10800
 
 function pinScrollToBottom(el: HTMLElement) {
   clearFrac(autoscrollInner(el))

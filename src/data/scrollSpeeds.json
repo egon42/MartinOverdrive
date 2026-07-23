@@ -46,8 +46,8 @@
   },
   "10-zombie": {
     "speed": 7,
-    "leadInSec": 23,
-    "note": "Estimate 2026-07-22. Studio 5:06; ~0.90× Tribute non-empty (154). speed≈7. leadInSec=23 covers unwritten Intro ×2 of ×3. Fill^1 on last 2 of final intro + clean prepare after dirt post. Dial on device."
+    "leadInSec": 13.7,
+    "note": "Estimate 2026-07-22. Studio 5:06; ~0.92× Tribute non-empty (159). speed≈7. leadInSec=13.7 (formula). Intro1 clean; Intro2-3 dirt; Intro4 Em ring + Fill^1; post = Em ring + fill. Dial on device."
   },
   "11-hunger-strike": {
     "speed": 15,

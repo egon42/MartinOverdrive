@@ -23,7 +23,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 07-tribute — **done (2026-07-22):** fills ^1/^2/^3, ghosts, 4Amber→5Amber, scroll **10** + **11.6**.
 - [x] 08-while-my-guitar-gently-weeps — **done (2026-07-22):** chords only (improv fills OK); ring verses; Solo+Outro vamp; scroll **6** + leadIn **17.6**.
 - [x] 09-pride-and-joy — **done (2026-07-22):** shuffle rhythm only; V3/V4 one-strum until dig-in; 12-bar Intro/Solo; scroll **8** + leadIn **24.6**.
-- [ ] 10-zombie — **drafted (polish 2026-07-22):** Intro×3 + final Em/C with Fill^1 last 2; post-chorus dirt then clean prepare+fill; scroll **7** + leadIn **23**. Device dial.
+- [ ] 10-zombie — **drafted (polish 2026-07-22):** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = Em ring+fill; scroll **7** + leadIn **13.7**. Device dial.
 - [ ] 11-hunger-strike — **drafted (history pass):** sit under vocals; FS dirt lift. Device dial.
 - [ ] 12-s-o-b — **drafted (history pass):** ghost sit-out intro/outro stomp-clap; leadIn **18**. Device dial.
 - [ ] 13-save-a-horse-ride-a-cowboy — **drafted (history pass):** land the stops; country chucks. Device dial.

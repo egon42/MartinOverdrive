@@ -345,11 +345,11 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .show-mode .show-counter{padding:.35rem .7rem;font-size:.7rem}
 .show-song-head{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;margin:0 0 2px;min-width:0}
 .show-song-head .eyebrow{margin:0;font-size:.52rem;line-height:1.1;flex:0 0 auto}
-.show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0;transition:font-size 3.6s ease}
+.show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0;transition:font-size 10.8s ease}
 /* Autoscroll playing (incl. lead-in): collapse artist / view tabs+Pin / stage strip / Up next /
    zoom-reset. Keeps × exit, compact title, page-turner ‹ n/N ›, Live chip, AutoScrollBar +
    home-fret chips. Max-height (not display:none) so the collapse can animate.
-   Expand after crawl end is slow (3.6s) so the last lines stay readable while chrome
+   Expand after crawl end is slow (10.8s) so the last lines stay readable while chrome
    grows back; collapse on ▶ stays snappy (.18s). Keep in sync with CHROME_EXPAND_MS. */
 .show-mode .show-song-head .eyebrow,
 .show-mode .show-view-bar,
@@ -358,7 +358,7 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
   overflow:hidden;
   opacity:1;
   max-height:6rem;
-  transition:opacity 3.6s ease,max-height 3.6s ease,margin 3.6s ease,padding 3.6s ease,border-width 3.6s ease
+  transition:opacity 10.8s ease,max-height 10.8s ease,margin 10.8s ease,padding 10.8s ease,border-width 10.8s ease
 }
 .show-mode--crawling .show-song-head .eyebrow,
 .show-mode--crawling .show-view-bar,
