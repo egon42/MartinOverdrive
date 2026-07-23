@@ -39,7 +39,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 23-lola-montez — **done (2026-07-23):** cold V1; post-V1 palm riff ×4 then open Interlude D-G-A-D ×2; Bridge instr×2 then vocals (Em); chorus endings D/F#m/D; cut Outro; scroll **9** + leadIn **10.7**.
 - [ ] 24-mary-jane-s-last-dance — **drafted (good enough 2026-07-23):** Intro×4; Interlude×2; Solo×4; pigeons×4; V2 tag + instrumental before chorus; Outro fade+harmonica; `eighteen`; Em7 on cheat hint; no ^N; scroll **9** + leadIn **10.7**. Lock later if crawl dials clean.
 - [x] 25-valerie — **done (2026-07-23):** Intro E vamp; Verse/Pre/Chorus headers; quiet ~E ~F#m ghosts; Outro E tag; Amp 3Amber (Green TBD); no ^N; scroll **8** + leadIn **12**.
-- [ ] 26-voodoo-child-slight-return — **drafted (2026-07-23 polish):** backing rhythm under lead; Amp 7Green (slot 15); drop 2nd Pre; Solo1×4 / Solo2×12 written E-G-A; Outro hard stop; plain E; no ^N; scroll **6** + leadIn **16** (SRV 7:59). Device dial.
+- [ ] 26-voodoo-child-slight-return — **drafted (2026-07-23 polish; revisit later):** backing rhythm under lead; Amp 7Green (slot 15); drop 2nd Pre; Solo1×4 / Solo2×12 written E-G-A; Outro hard stop; plain E; no ^N; scroll **6** + leadIn **16** (SRV 7:59). Dial / Solo×N / cut length open.
 - [ ] 27-fat-bottomed-girls — **drafted (history pass):** Drop D; volume-down intro; cold bikes tag. Device dial.
 - [ ] 28-mama-i-m-coming-home — **drafted (history pass):** 7Red verse / 8Red chorus-solo lift. Device dial.
 - [ ] 29-ain-t-goin-down-til-the-sun-comes-up — **drafted (history pass):** fast country; skip fills if needed. Device dial.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted (not locked):** 04–06, 14, 19, 22, 24, 26–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 27… (04/05/06/19/24 good-enough; 14/22 polish dial pending; 22 high-low tab glance after research; 26 polish shipped — dial). Still thin: Ain't Goin' Down.
+**Next review queue (handoff):** 27… (04/05/06/19/24 good-enough; 14/22 polish dial pending; 22 high-low tab glance after research; 26 revisit later). Still thin: Ain't Goin' Down.
 
 ## Skill audit (2026-07-23) — second-half prep
 
