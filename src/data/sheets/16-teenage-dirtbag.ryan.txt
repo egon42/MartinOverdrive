@@ -236,17 +236,12 @@ B
 
 [Bridge]
 E
-  
 Asus2
-
 E
 Oh yeah
-
 Asus2
-
 E
 Dirtbag
-
 Asus2
 
 No, 
@@ -260,17 +255,12 @@ B
 issing.
 
 E
-  
 Asus2
-
 E
 Oh yeah
-
 Asus2
-
 E
 Dirtbag
-
 Asus2
 
 No, 
@@ -395,17 +385,12 @@ B
 
 [Bridge]
 E
-  
 Asus2
-
 E
 Oh yeah
-
 Asus2
-
 E
 Dirtbag
-
 Asus2
 
 No, 
@@ -419,17 +404,12 @@ B
 issing.
 
 E
-  
 Asus2
-
 E
 Oh yeah
-
 Asus2
-
 E
 Dirtbag
-
 Asus2
 
 No, 
