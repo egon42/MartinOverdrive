@@ -2,34 +2,47 @@ Standard (EADGBE)
 
 [Amp: 3Green]
 
-[Verse - palm mute; don't rush; power chords fine]
+[Intro - palm mute ×3]
 F#5
-  
+
 C#5
-  
-D#m
-  
-B
 
-G#m
-When
-B
+D#5
 
+B5
+
+F#5
+
+C#5
+
+D#5
+
+B5
+
+F#5
+
+C#5
+
+D#5
+
+B5
+
+[Verse - palm mute; don't rush]
 F#5
    I h
 C#5
 eard you crying lo
-D#m
+D#5
 ud     
-B
+B5
 
 F#5
   all the wa
 C#5
 y across to
-D#m
+D#5
 wn     
-B
+B5
 
 You've been 
 F#5
@@ -38,9 +51,9 @@ C#5
 omeone
 
 and it's 
-D#m
+D#5
 me out on the pr
-B
+B5
 owl
 
 As y
@@ -48,26 +61,26 @@ F#5
 ou sit around 
 C#5
 feeling sor
-D#m
+D#5
 ry for yourse
-B
+B5
 lf
 
 F#5
   Well D
 C#5
 on't get lonely no
-D#m
+D#5
 w     
-B
+B5
 
 F#5
   And D
 C#5
 ry your whining e
-D#m
+D#5
 yes    
-B
+B5
 
 I'm just 
 F#5
@@ -76,71 +89,73 @@ C#5
 oment
 
 Sleazin' 
-D#m
+D#5
 my back yard so don't g
-B
+B5
 et
 
 F#5
 so uptight you be
 C#5
 en thinking about dit
-D#m
+D#5
 ching me  
-B
+B5
 
-G#m
+[Chorus]
+G#5
     No time to search the w
-B
+B5
 orld around.
 
-G#m
+G#5
     Cause you know where I'll be f
-B
+B5
 ound
 
     When I come around
 
 F#5
-  
+
 C#5
-  
-D#m
-  
-B
+
+D#5
+
+B5
 
 F#5
-  
-C#5
-  
-D#m
-  
-B
 
+C#5
+
+D#5
+
+B5
+
+[Verse]
 F#5
   I he
 C#5
 ard it all befo
-D#m
+D#5
 re     
-B
+B5
 
 F#5
   So do
 C#5
 n't knock down my doo
-D#m
+D#5
 r      
-B
+B5
 
 I'm a l
 F#5
 oser and a us
 C#5
 er so I don
-D#m
+D#5
 't need no acc
-B
+B5
 user
 
 to t
@@ -148,26 +163,26 @@ F#5
 ry and slag me do
 C#5
 wn because I kno
-D#m
+D#5
 w you're rig
-B
+B5
 ht
 
 F#5
   So g
 C#5
 o do what you li
-D#m
+D#5
 ke    
-B
+B5
 
 F#5
   Make su
 C#5
 re you do it wi
-D#m
+D#5
 se   
-B
+B5
 
 You may f
 F#5
@@ -176,9 +191,9 @@ C#5
 lfdoubt
 
 means no
-D#m
+D#5
 thing was ever 
-B
+B5
 there
 
 You c
@@ -188,91 +203,75 @@ C#5
 mething
 
 if it's j
-D#m
+D#5
 ust not r
-B
+B5
 ight
 
-G#m
+[Chorus]
+G#5
     No time to search the w
-B
+B5
 orld around.
 
-G#m
+G#5
     Cause you know where I'll be f
-B
+B5
 ound
 
     When I come around
 
+[Solo - verse vamp ×2]
 F#5
-  
+
 C#5
-  
-D#m
-  
-B
+
+D#5
+
+B5
 
 F#5
-  
-C#5
-  
-D#m
-  
-B
 
-G#m
+C#5
+
+D#5
+
+B5
+
+[Chorus]
+G#5
     No time to search the w
-B
+B5
 orld around.
 
-G#m
+G#5
     Cause you know where I'll be f
-B
+B5
 ound
 
     When I come around
 
-F#5
-  
-C#5
-  
-D#m
-  
-B
+[Outro - rotated D#5 B5 F#5 C#5 ×3; cold]
+D#5
+
+B5
 
 F#5
-  
-C#5
-  
-D#m
-  
-B
 
-When I come around
+C#5
+
+D#5
+
+B5
 
 F#5
-When
+
 C#5
- I c
-D#m
-ome 
-B
-around
+
+D#5
+
+B5
 
 F#5
-When
-C#5
- I c
-D#m
-ome 
-B
-around
 
-F#5
-  
 C#5
-  
-D#m
-  
-B
