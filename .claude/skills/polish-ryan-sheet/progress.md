@@ -31,7 +31,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 15-dani-california — **done (2026-07-23):** Intro+Interlude chords ×2 (no riff); Bridge/V3/Chorus headers; Solo/Outro ×8; lyrics cleaned; scroll **9** + lead-in **6**.
 - [x] 16-teenage-dirtbag — **done (2026-07-23):** Intro/reprise, Pre, Bridge (Oh yeah/Dirtbag), V1–V3; 3Red↔4Red; final chorus ghost then open walk-up; scroll **11** + lead-in **14**.
 - [x] 17-the-pretender — **done (2026-07-23):** ghost intro + pre-slam Am×4 + interlude; slam-only 6Red; A5×2 before V2; palm A5 bridge; cold outro ×3; scroll **9** + leadIn **11**.
-- [ ] 18-here-it-goes-again — **drafted (2026-07-23 polish):** all powers (pre E5/A5, bridge Eb5/Bb5/G5/C5/Ab5); Link = full chorus loop after bridge; V3×2 then Chorus×2 + Outro×5; scroll re-estimate. Device dial.
+- [x] 18-here-it-goes-again — **done (2026-07-23):** all powers (pre E5/A5, bridge Eb5/Bb5/G5/C5/Ab5); Link = full chorus loop after bridge; V3×2 then Chorus×2 + Outro×5; scroll **12** + leadIn **8**.
 - [ ] 19-purple-rain — **drafted (history pass):** capo 3; less-is-more (short vs 8:41). Expand + dial.
 - [ ] 20-when-i-come-around — **drafted (history pass):** palm mute; stripped fingering aside. Device dial.
 - [ ] 21-the-middle — **drafted (legacy):** A-string frets; needs role card + scroll seed.
@@ -49,12 +49,12 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 ## Last done
 
 **Locked (2026-07-22):** 01-welcome-home, 02-all-the-small-things, 03-a-little-less-conversation, 07-tribute, 08-while-my-guitar-gently-weeps, 09-pride-and-joy, 10-zombie, 11-hunger-strike, 12-s-o-b, 13-save-a-horse-ride-a-cowboy.
-**Locked (2026-07-23):** 15-dani-california, 16-teenage-dirtbag, 17-the-pretender.
+**Locked (2026-07-23):** 15-dani-california, 16-teenage-dirtbag, 17-the-pretender, 18-here-it-goes-again.
 
-**Drafted (not locked):** 04–06, 14, 18–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
+**Drafted (not locked):** 04–06, 14, 19–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 19… (04/05/06 good-enough; 14 polished dial pending; 18 polished dial pending). Still thin: Purple Rain, Ain't Goin' Down. The Middle needs role card + scroll seed.
+**Next review queue (handoff):** 19… (04/05/06 good-enough; 14 polished dial pending). Still thin: Purple Rain, Ain't Goin' Down. The Middle needs role card + scroll seed.
 
 ## Skill audit (2026-07-23) — second-half prep
 
-Locked **12** · good-enough **3** · drafted **16**. Biggest miss: scroll estimates from **non-empty line** ratios ran ~2× fast on dense UG sheets (Dani 17→9, Dirtbag 22→11). Skill now uses blank-separated **rows** + `scripts/estimate-scroll.mjs`, soft-cap ≤12, lead-in tree, peer anchors. On polish: re-estimate history-pass seeds before dialing.
+Locked **13** · good-enough **3** · drafted **15**. Biggest miss: scroll estimates from **non-empty line** ratios ran ~2× fast on dense UG sheets (Dani 17→9, Dirtbag 22→11). Skill now uses blank-separated **rows** + `scripts/estimate-scroll.mjs`, soft-cap ≤12, lead-in tree, peer anchors. On polish: re-estimate history-pass seeds before dialing.
