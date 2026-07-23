@@ -11,7 +11,7 @@ run from the repo root.
 
 | Change touches…                                              | Required steps |
 |--------------------------------------------------------------|----------------|
-| Song data: `src/data/sheets/`, `src/data/setlist.json`, `src/data/progressions.json`, `src/data/tab-links.json`, `src/chords.ts`, `scripts/ug-chords-to-sheet.mjs` | 1, 2 |
+| Song data: `src/data/sheets/`, `src/data/setlist.json`, `src/data/progressions.json`, `src/data/tab-links.json`, `src/data/amp-presets.json`, `src/data/scrollSpeeds.json`, `src/chords.ts`, `scripts/ug-chords-to-sheet.mjs` | 1, 2 |
 | Any `.ts`/`.tsx` or other app source                          | 2 |
 | Anything the live site must reflect                           | 2, 3 |
 | Show-mode / touch / scroll / phone-facing UI behavior         | 2, 3, 4 |

@@ -262,6 +262,9 @@ Before validate: spot-check that chorded lyric stretches still mid-split like th
 
 ```bash
 npm run validate
+# validate now parses amp-presets.json (setlist coverage + shape). When editing a
+# song's amp notes, replace the WHOLE song object — a too-short StrReplace on
+# "notes" twice ate the next song and failed Pages tsc while validate still passed.
 # commit ryan sheet (+ scrollSpeeds.json / amp / docs / skill edits)
 # then ALWAYS bare git push on dev — never stop after commit, never ask
 git push

@@ -17,6 +17,7 @@ const PROGRESSIONS = 'src/data/progressions.json'
 const PROG_VERSIONS = 'src/data/progressionVersions.json'
 const TAB_LINKS = 'src/data/tab-links.json'
 const SCROLL_SPEEDS = 'src/data/scrollSpeeds.json'
+const AMP_PRESETS = 'src/data/amp-presets.json'
 const CHORDS_TS = 'src/chords.ts'
 const UG_SCRIPT = 'scripts/ug-chords-to-sheet.mjs'
 
@@ -127,6 +128,7 @@ const progressions = readJson(PROGRESSIONS)
 const progressionVersions = readJson(PROG_VERSIONS)
 const tabLinks = readJson(TAB_LINKS)
 const scrollSpeeds = readJson(SCROLL_SPEEDS)
+const ampPresets = readJson(AMP_PRESETS)
 
 // If core inputs are missing/unparseable, report blockers and bail (exit 1).
 if (blockers.length && (!setlist || !progressions || !tabLinks || !META_RE)) {
@@ -282,6 +284,35 @@ if (scrollSpeeds && typeof scrollSpeeds === 'object') {
   }
 }
 
+// --- Check 7: amp-presets.json (imported by tsc — broken JSON fails Pages build) ---
+// Learned 2026-07-23: two Ryan polish pushes ate the next song's entry when editing
+// "notes" via a too-short StrReplace; validate passed because it never read this file.
+const AMP_JOINERS = new Set(['', '→', '↔'])
+let ampPresetCount = 0
+if (ampPresets && typeof ampPresets === 'object') {
+  for (const songId of songIds) {
+    if (!(songId in ampPresets)) fail(songId, `amp-presets.json missing entry for setlist song.`)
+  }
+  for (const [songId, entry] of Object.entries(ampPresets)) {
+    if (!songIds.has(songId)) fail(songId, `amp-presets.json entry keys to a song not in the setlist.`)
+    ampPresetCount += 1
+    if (!entry || typeof entry !== 'object') {
+      fail(songId, `amp-presets.json entry must be an object.`)
+      continue
+    }
+    const { presets, joiner, notes } = entry
+    if (!Array.isArray(presets) || !presets.length || !presets.every((n) => typeof n === 'number' && n >= 1 && n <= 24)) {
+      fail(songId, `amp-presets.json "presets" must be a non-empty array of slots 1–24 (got ${JSON.stringify(presets)}).`)
+    }
+    if (!AMP_JOINERS.has(joiner)) {
+      fail(songId, `amp-presets.json "joiner" must be "" | "→" | "↔" (got ${JSON.stringify(joiner)}).`)
+    }
+    if (typeof notes !== 'string') {
+      fail(songId, `amp-presets.json "notes" must be a string (got ${JSON.stringify(notes)}).`)
+    }
+  }
+}
+
 // --- Report ---------------------------------------------------------------------
 for (const blocker of blockers) console.error(`BLOCKER: ${blocker}`)
 
@@ -309,5 +340,6 @@ if (blockers.length || findings.size) {
 
 console.log(`Song-data validation passed: ${songs.length} songs, ${sheetEntries.length} sheet files, ` +
   `${Object.keys(progressions).length} cheat cards (+${archivedVersionCount} archived versions), ` +
-  `${Object.keys(tabLinks).length} tab-link entries, ${scrollSpeedCount} scroll-speed seeds. ` +
+  `${Object.keys(tabLinks).length} tab-link entries, ${scrollSpeedCount} scroll-speed seeds, ` +
+  `${ampPresetCount} amp-preset entries. ` +
   `CHORD_RE in sync across ${CHORDS_TS} and ${UG_SCRIPT}.`)
