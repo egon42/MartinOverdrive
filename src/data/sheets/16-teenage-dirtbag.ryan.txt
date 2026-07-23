@@ -2,7 +2,7 @@ Standard (EADGBE)
 
 [Amp: 3Red]
 
-[Verse - quiet / palm mute; prefer full chords]
+[Intro - E B E A ×2; quiet / palm mute]
 E
  
 B
@@ -19,6 +19,7 @@ E
  
 A
 
+[Verse 1 - quiet / palm mute; prefer full chords]
 Her 
 E
 name is Noe
@@ -52,6 +53,7 @@ Keds and tube s
 A
 ocks,
 
+[Pre-Chorus]
 But 
 C#m
 she doesn't k
@@ -117,6 +119,7 @@ A
 B
 
 [Amp: 3Red]
+[Intro reprise - E B E A]
 E
  
 B
@@ -133,6 +136,7 @@ E
  
 A
 
+[Verse 2 - quiet / palm mute; prefer full chords]
 Her 
 E
 boyfriend's a d
@@ -165,6 +169,7 @@ And he drives an I
 A
 roc
 
+[Pre-Chorus]
 But 
 C#m
 he doesn't k
@@ -229,6 +234,7 @@ A
                      
 B
 
+[Bridge]
 E
   
 Asus2
@@ -272,16 +278,17 @@ A
 what she's m
 B
 issing.
-
-E
- 
-B
- 
-E
- 
-A
 
 [Amp: 3Red]
+[Verse 3 - girl; quiet / palm mute; prefer full chords]
+E
+ 
+B
+ 
+E
+ 
+A
+
 E
 Man, i feel like m
 B
@@ -315,6 +322,7 @@ lip starts to sh
 A
 ake.
 
+[Pre-Chorus]
 How 
 C#m
 does she k
@@ -332,6 +340,7 @@ B
 amn about me?
 
 [Amp: 4Red]
+[Chorus - big / open]
 I've 
 E
 got two tickets to 
@@ -378,6 +387,7 @@ A
                      
 B
 
+[Bridge]
 E
   
 Asus2
@@ -426,8 +436,7 @@ mis -
 B
 sing.
 
-Outro:
-
+[Outro]
 E
  
 B

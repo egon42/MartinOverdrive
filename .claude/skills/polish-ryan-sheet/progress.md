@@ -29,7 +29,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 13-save-a-horse-ride-a-cowboy — **done (2026-07-22):** chucks; chorus land stops + E G A hook; solo E A E A×2 (intro layout); palm-muted bridge; N.C. outro; scroll **10** + leadIn **18**.
 - [ ] 14-sweet-home-alabama — **drafted (2026-07-22 polish):** Intro D-C-G x4 join on 3rd (ghost 1–2); D-C-G on all verses/choruses; Interlude + Solos keep D-C-G; F C chorus tags; no ^N; scroll **8** + leadIn **20**. Device dial.
 - [x] 15-dani-california — **done (2026-07-23):** Intro+Interlude chords ×2 (no riff); Bridge/V3/Chorus headers; Solo/Outro ×8; lyrics cleaned; scroll **9** + lead-in **6**.
-- [ ] 16-teenage-dirtbag — **drafted (history pass):** quiet verse / big chorus Amp labels. Device dial.
+- [ ] 16-teenage-dirtbag — **drafted (2026-07-23 polish):** Intro/reprise, Pre, Bridge, V1–V3, Outro headers; 3Red↔4Red; scroll Estimate. Device dial.
 - [ ] 17-the-pretender — **drafted (history pass):** quiet count-in; explode with drums; cold outro. Device dial.
 - [ ] 18-here-it-goes-again — **drafted (history pass):** volume-roll intro/verse; chorus labels. Device dial.
 - [ ] 19-purple-rain — **drafted (history pass):** capo 3; less-is-more (short vs 8:41). Expand + dial.
@@ -53,4 +53,4 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted (not locked):** 04–06, 14, 16–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 16… (04/05/06 good-enough; 14 polished, dial pending). Still thin: Purple Rain, Ain't Goin' Down. The Middle needs role card + scroll seed.
+**Next review queue (handoff):** 17… (04/05/06 good-enough; 14 polished, dial pending). Still thin: Purple Rain, Ain't Goin' Down. The Middle needs role card + scroll seed.
