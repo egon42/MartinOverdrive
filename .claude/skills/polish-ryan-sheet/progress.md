@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted (not locked):** 04–06, 14, 19, 22, 24–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 25… (04/05/06/19 good-enough; 14/22/24 polish dial pending; 22 high-low tab glance after research). Still thin: Ain't Goin' Down.
+**Next review queue (handoff):** 25… (04/05/06/19/24 good-enough; 14/22 polish dial pending; 22 high-low tab glance after research). Still thin: Ain't Goin' Down.
 
 ## Skill audit (2026-07-23) — second-half prep
 
