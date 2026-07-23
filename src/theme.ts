@@ -23,6 +23,8 @@ export type ThemePresetId =
   | 'midnight'
   | 'high-contrast'
   | 'amber-amp'
+  | 'synthwave'
+  | 'cyberpunk'
 
 export const THEME_COLOR_META: { key: ThemeColorKey; label: string; hint: string }[] = [
   { key: 'bg', label: 'Page background', hint: 'Main app backdrop' },
@@ -140,6 +142,40 @@ export const THEME_PRESETS: Record<ThemePresetId, { label: string; colors: Theme
       topbar: '#0c0906',
       showBg: '#0a0805',
       input: '#100c08',
+    },
+  },
+  synthwave: {
+    label: 'Synthwave',
+    colors: {
+      bg: '#0c0518',
+      ink: '#f8e8ff',
+      muted: '#a88bb8',
+      paper: '#160a28',
+      line: '#3d1f5c',
+      acid: '#ff2d95',
+      onAcid: '#1a0410',
+      orange: '#ff6b35',
+      blue: '#00d4ff',
+      topbar: '#080312',
+      showBg: '#060210',
+      input: '#0e061c',
+    },
+  },
+  cyberpunk: {
+    label: 'Cyberpunk',
+    colors: {
+      bg: '#070b10',
+      ink: '#e6f7ff',
+      muted: '#7a93a8',
+      paper: '#0d141c',
+      line: '#1e3a4a',
+      acid: '#00f0c8',
+      onAcid: '#031210',
+      orange: '#ff2a6d',
+      blue: '#05d9e8',
+      topbar: '#040608',
+      showBg: '#020406',
+      input: '#080c12',
     },
   },
 }
