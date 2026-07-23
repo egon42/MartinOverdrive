@@ -25,7 +25,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 09-pride-and-joy — **done (2026-07-22):** shuffle rhythm only; V3/V4 one-strum until dig-in; 12-bar Intro/Solo; scroll **8** + leadIn **24.6**.
 - [x] 10-zombie — **done (2026-07-22):** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = dirt EmCGD then Em ring+fill; scroll **11** + leadIn **8.7**.
 - [x] 11-hunger-strike — **done (2026-07-22):** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; Bridge grips x00x x22x; scroll **10** + leadIn **12**.
-- [ ] 12-s-o-b — **drafted (polish 2026-07-22):** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**. Device dial.
+- [x] 12-s-o-b — **done (2026-07-22):** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**.
 - [ ] 13-save-a-horse-ride-a-cowboy — **drafted (history pass):** land the stops; country chucks. Device dial.
 - [ ] 14-sweet-home-alabama — **drafted (history pass):** D-C-G; fills later (short sheet). Device dial / expand.
 - [ ] 15-dani-california — **drafted (history pass):** verse volume roll / open chorus. Device dial.
@@ -48,8 +48,8 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 ## Last done
 
-**Locked (2026-07-22):** 01-welcome-home, 02-all-the-small-things, 03-a-little-less-conversation, 07-tribute, 08-while-my-guitar-gently-weeps, 09-pride-and-joy, 10-zombie, 11-hunger-strike.
+**Locked (2026-07-22):** 01-welcome-home, 02-all-the-small-things, 03-a-little-less-conversation, 07-tribute, 08-while-my-guitar-gently-weeps, 09-pride-and-joy, 10-zombie, 11-hunger-strike, 12-s-o-b.
 
-**Drafted (not locked):** 04–06, 12–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
+**Drafted (not locked):** 04–06, 13–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 12… (04/05/06 good-enough). Still thin: Purple Rain, Sweet Home, Ain't Goin' Down. The Middle needs role card + scroll seed.
+**Next review queue (handoff):** 13… (04/05/06 good-enough). Still thin: Purple Rain, Sweet Home, Ain't Goin' Down. The Middle needs role card + scroll seed.
