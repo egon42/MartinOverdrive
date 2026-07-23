@@ -8,18 +8,18 @@ Standard (EADGBE)
 
 (stomp-clap, vocals only)
 
-[Verse 1]
+[Verse 1 - ghost]
 
-F#
+~F#
 I'm gonna need someone to help me
 
 I'm gonna need somebody's hand
 
 I'm gonna need someone to 
-B
+~B
 hold me down
 
-F#
+~F#
 I'm gonna need someone to care
 
 I'm gonna writhe and shake my body
@@ -27,12 +27,12 @@ I'm gonna writhe and shake my body
 I'll start pulling out my hair
 
 I'm going to cover myself with the 
-B
+~B
 ashes of you 
-F#
+~F#
 and nobody's gonna give a damn
 
-[Chorus]
+[Chorus - muted stabs]
 
 F#
 Son of a bitch
@@ -59,26 +59,26 @@ nk my lif
 F#
 e away
 
-[Verse 2]
+[Verse 2 - ghost]
 
-F#
+~F#
 (Whoa oh, whoa oh, whoa oh oh oh) x2
 
 Now for seventeen years I've been throwing them back
 
 Seventeen more will 
-C#
+~C#
 bury me
 
-F#
+~F#
 Can somebody please just tie me 
-B
+~B
 down?
 
-F#
+~F#
 Or somebody give me a goddamn drink
 
-[Chorus]
+[Chorus - muted stabs]
 
 F#
 Son of a bitch
@@ -105,20 +105,15 @@ nk my lif
 F#
 e away
 
-[Verse 3]
+[Verse 3 - ghost; heart line ×4]
 
-F#
+~F#
 (Mmmm hmm, mmmm hmm, mmmm hmm hmm hmm) x2
 
 My heart was breaking, hands are shaking, bugs are crawling all over me.
+ ×4
 
-My heart was breaking, hands are shaking, bugs are crawling all over me.
-
-My heart was breaking, hands are shaking, bugs are crawling all over me.
-
-My heart was breaking, hands are shaking, bugs are crawling all over me.
-
-[Chorus]
+[Chorus - muted stabs]
 
 F#
 Son of a bitch

@@ -25,7 +25,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 09-pride-and-joy — **done (2026-07-22):** shuffle rhythm only; V3/V4 one-strum until dig-in; 12-bar Intro/Solo; scroll **8** + leadIn **24.6**.
 - [x] 10-zombie — **done (2026-07-22):** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = dirt EmCGD then Em ring+fill; scroll **11** + leadIn **8.7**.
 - [x] 11-hunger-strike — **done (2026-07-22):** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; Bridge grips x00x x22x; scroll **10** + leadIn **12**.
-- [ ] 12-s-o-b — **drafted (history pass):** ghost sit-out intro/outro stomp-clap; leadIn **18**. Device dial.
+- [ ] 12-s-o-b — **drafted (polish 2026-07-22):** chorus muted stabs only; intro/verses/outro ghost; V3 ×4; scroll **6** + leadIn **18**. Device dial.
 - [ ] 13-save-a-horse-ride-a-cowboy — **drafted (history pass):** land the stops; country chucks. Device dial.
 - [ ] 14-sweet-home-alabama — **drafted (history pass):** D-C-G; fills later (short sheet). Device dial / expand.
 - [ ] 15-dani-california — **drafted (history pass):** verse volume roll / open chorus. Device dial.
