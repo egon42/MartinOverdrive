@@ -1,7 +1,7 @@
 Standard (EADGBE)
 
 [Amp: 6Red]
-[Intro - ghost; count last bar aloud]
+[Intro - sit out; count last bar aloud]
 
 ~Am
 Keep you in the dark
@@ -21,7 +21,7 @@ all beg
 ~Fmaj7
 an
 
-[Instrumental - ghost Am ×4]
+[Instrumental - sit out Am ×4]
 
 ~Am
 
@@ -204,7 +204,7 @@ Yeah, who are you?
 A5
 Yeah, who are you?
 
-[Interlude - ghost]
+[Interlude - sit out]
 
 ~Am
 Keep you in the dark
