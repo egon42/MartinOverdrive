@@ -33,7 +33,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 17-the-pretender — **done (2026-07-23):** ghost intro + pre-slam Am×4 + interlude; slam-only 6Red; A5×2 before V2; palm A5 bridge; cold outro ×3; scroll **9** + leadIn **11**.
 - [x] 18-here-it-goes-again — **done (2026-07-23):** all powers (pre E5/A5, bridge Eb5/Bb5/G5/C5/Ab5); Link = full chorus loop after bridge; V3×2 then Chorus×2 + Outro×5; scroll **12** + leadIn **8**.
 - [ ] 19-purple-rain — **drafted (good enough 2026-07-23):** full album; Intro ring; V1–V3 + choruses; Solo ×6 / Outro ×10 vamp; Slow-down; no ^N; scroll **6** + leadIn **16**. Lock later if crawl dials clean.
-- [ ] 20-when-i-come-around — **drafted (2026-07-23 polish):** all powers; Intro×3; Solo×2; Outro rotated D#5 B5 F#5 C#5 ×3 cold; orphan When stripped; scroll **11** + leadIn **9**. Device dial.
+- [x] 20-when-i-come-around — **done (2026-07-23):** all powers; Intro×3; Solo×2; Outro rotated D#5 B5 F#5 C#5 ×3 cold; orphan When stripped; scroll **11** + leadIn **9**.
 - [ ] 21-the-middle — **drafted (legacy):** A-string frets; needs role card + scroll seed.
 - [ ] 22-dream-on — **drafted (history pass):** arpeggio intro; 8Red outro screamer. Device dial.
 - [ ] 23-lola-montez — **drafted (history pass):** power intro; Em bridge note. Device dial.
@@ -49,11 +49,11 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 ## Last done
 
 **Locked (2026-07-22):** 01-welcome-home, 02-all-the-small-things, 03-a-little-less-conversation, 07-tribute, 08-while-my-guitar-gently-weeps, 09-pride-and-joy, 10-zombie, 11-hunger-strike, 12-s-o-b, 13-save-a-horse-ride-a-cowboy.
-**Locked (2026-07-23):** 15-dani-california, 16-teenage-dirtbag, 17-the-pretender, 18-here-it-goes-again.
+**Locked (2026-07-23):** 15-dani-california, 16-teenage-dirtbag, 17-the-pretender, 18-here-it-goes-again, 20-when-i-come-around.
 
-**Drafted (not locked):** 04–06, 14, 19–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
+**Drafted (not locked):** 04–06, 14, 19, 21–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 21… (04/05/06/19 good-enough; 14/20 polish dial pending). Still thin: Ain't Goin' Down. The Middle needs role card + scroll seed.
+**Next review queue (handoff):** 21… (04/05/06/19 good-enough; 14 polish dial pending). Still thin: Ain't Goin' Down. The Middle needs role card + scroll seed.
 
 ## Skill audit (2026-07-23) — second-half prep
 
