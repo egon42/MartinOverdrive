@@ -19,7 +19,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 03-a-little-less-conversation — **done (2026-07-22):** lead vocal / chords while singing / no fills / hard stop on single; scroll **14** + `leadInSec` **10**.
 - [ ] 04-i-believe-in-a-thing-called-love — **drafted (good enough 2026-07-22):** power `*5`; Intro ×2; Verse-in `~A5`; Bridge−B played B; Clap staccato E A F# B (double B); Solo×4 / outro labels; scroll **15** + leadIn **13.2**. Lock later if crawl dials clean.
 - [ ] 05-thunderstruck — **drafted (good enough 2026-07-22):** between-line vs on-vocal; scroll **10** + leadIn **50**. End/guitar pass deferred.
-- [ ] 06-don-t-stop-believin — **drafted (2026-07-22):** intro `~` ghosts ×2; V1/V2/V3 + Pre headers; Interlude×2 + short fill; Solo×2; Chorus×3; scroll **12** + leadIn **12**. Device dial.
+- [ ] 06-don-t-stop-believin — **drafted (2026-07-22):** intro `~` ghosts ×2; V1/V2/V3 + Pre headers; Interlude×2 + short fill; Solo×2; Chorus×3; scroll **8** + leadIn **18** (slowed — was ahead by first interlude). Device dial.
 - [x] 07-tribute — **done (2026-07-22):** fills ^1/^2/^3, ghosts, 4Amber→5Amber, scroll **10** + **11.6**.
 - [ ] 08-while-my-guitar-gently-weeps — **drafted (history pass):** ring verses; 8Red = fills with space. Device dial.
 - [ ] 09-pride-and-joy — **drafted (history pass):** Texas shuffle first; sparse solo. Device dial.
