@@ -17,8 +17,8 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 01-welcome-home — **done (2026-07-22):** sit-out intro + ringing Em; bridge syncopated→verse-chug; SOLO/OUTRO one Em-C-D-Em cycle; scroll **6** + `leadInSec` **48**.
 - [x] 02-all-the-small-things — **done (2026-07-22):** power `*5`; ringing early pre / full late pre; instrumental ×2; interlude prepare ghosts + (C C C B)×3; scroll **11** + `leadInSec` **8**.
 - [x] 03-a-little-less-conversation — **done (2026-07-22):** lead vocal / chords while singing / no fills / hard stop on single; scroll **14** + `leadInSec` **10**.
-- [ ] 04-i-believe-in-a-thing-called-love — **drafted (2026-07-22):** power `*5`; Intro ×2; Verse-in `~A5`; Bridge−B played B; Clap staccato E A F# B (double B); Solo×4 / outro labels; scroll **15** + leadIn **13.2**. Device dial.
-- [ ] 05-thunderstruck — **drafted (2026-07-22):** between-line vs on-vocal; scroll **10** + leadIn **50**. End/guitar pass open.
+- [ ] 04-i-believe-in-a-thing-called-love — **drafted (good enough 2026-07-22):** power `*5`; Intro ×2; Verse-in `~A5`; Bridge−B played B; Clap staccato E A F# B (double B); Solo×4 / outro labels; scroll **15** + leadIn **13.2**. Lock later if crawl dials clean.
+- [ ] 05-thunderstruck — **drafted (good enough 2026-07-22):** between-line vs on-vocal; scroll **10** + leadIn **50**. End/guitar pass deferred.
 - [ ] 06-don-t-stop-believin — **drafted (history pass):** keys-only intro sit-out; guitar in on verse; leadIn **12**. Device dial.
 - [x] 07-tribute — **done (2026-07-22):** fills ^1/^2/^3, ghosts, 4Amber→5Amber, scroll **10** + **11.6**.
 - [ ] 08-while-my-guitar-gently-weeps — **drafted (history pass):** ring verses; 8Red = fills with space. Device dial.
@@ -52,4 +52,4 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted (not locked):** 04–06, 08–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
-**Next review queue (handoff):** 04 → 05 → 06 → 08… Still thin: Purple Rain, Sweet Home, Ain't Goin' Down. Thunderstruck end/guitar pass open. The Middle needs role card + scroll seed.
+**Next review queue (handoff):** 06 → 08… (04/05 good-enough, lock later). Still thin: Purple Rain, Sweet Home, Ain't Goin' Down. The Middle needs role card + scroll seed.
