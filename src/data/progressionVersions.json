@@ -927,6 +927,60 @@
   ],
   "24-mary-jane-s-last-dance": [
     {
+      "label": "pre Ryan form count fix 2026-07-23",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am G Dsus2 Am",
+          "hint": "Am hammer riff"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am G Dsus2 Am",
+          "hint": "Keep it sparse: the Am hammer riff is the song"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(Em7 A) ×2 G"
+        },
+        {
+          "section": "Interlude",
+          "chords": "Am G Dsus2 Am",
+          "hint": "Harmonica over the intro riff"
+        },
+        {
+          "section": "Solo",
+          "chords": "Am G Dsus2 Am",
+          "hint": "Same cycle: double-stop lead"
+        },
+        {
+          "section": "Outro",
+          "chords": "Am G Dsus2 Am",
+          "hint": "Intro riff: solo out, fade"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Am riff (main fill)\ne|----------0h2-0-0-----|\nB|------1-1-3-----1-1-1-|\nG|0h2---2-2-2-----------|\nD|0h2---2-2-0-----------|\nA|0---------------------|\nE|--------------3-------|\n\nInto next Am\ne|---------0h2-0-0-0----|\nB|0h3-x---3------1-1----|\nG|0h2-x---2-------------|\nD|0---------------------|\nA|------------------0---|\nE|----------------------|",
+          "tabMore": "After G back to Am\ne|-------3---------------|\nB|-------1-1---------0-0-|\nG|0h2---2---2-0-0---0-0-|\nD|0h2---------------0-0-|\nA|0----------------------|\nE|-----------------3-----|\n\nD walk into Am\ne|---------0h2-0-0-0----|\nB|0h3-x---3------1-1----|\nG|0h2-x---2-------------|\nD|2-2-2-0---------------|\nA|0-0-0-----------------|\nE|----------------------|"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×4",
+        "Interlude",
+        "Verse ×4",
+        "Chorus",
+        "Interlude",
+        "Verse ×4",
+        "Chorus",
+        "Solo ×2",
+        "Verse ×2",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "Pre positional-UG-alignment (2026-07-20)",
       "sections": [
         {

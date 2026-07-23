@@ -1019,16 +1019,16 @@
       }
     ],
     "form": [
-      "Intro ×2",
-      "Verse ×4",
-      "Interlude",
-      "Verse ×4",
-      "Chorus",
-      "Interlude",
-      "Verse ×4",
-      "Chorus",
-      "Solo ×2",
+      "Intro ×4",
       "Verse ×2",
+      "Interlude ×2",
+      "Verse ×2",
+      "Chorus",
+      "Interlude ×2",
+      "Verse ×4",
+      "Chorus",
+      "Solo ×4",
+      "Verse ×4",
       "Chorus",
       "Outro"
     ]

@@ -2,7 +2,7 @@ Standard (EADGBE)
 
 [Amp: 5Amber]
 
-[Intro - Am G Dsus2 Am ×2; Am hammer]
+[Intro - Am G Dsus2 Am ×4; Am hammer]
 Am
 
 G
@@ -35,7 +35,7 @@ boys on an Indiana
 Am
 night
 
-[Interlude - harmonica over intro riff]
+[Interlude - harmonica over intro riff ×2]
 Am
 
 G
@@ -48,7 +48,7 @@ Am
 Am
 Well she moved down here at the age of 
 G
-18
+eighteen
 
 She blew the boys 
 Dsus2
@@ -91,7 +91,7 @@ G
 
 (Em7 = open Em plus ring finger on the B string, 3rd fret. On the A: lift the 3rd finger, add the D note on the B string, back to A, and end on G.)
 
-[Interlude - harmonica over intro riff]
+[Interlude - harmonica over intro riff ×2]
 Am
 
 G
@@ -159,7 +159,7 @@ A
 Tired of this town again 
 G
 
-[Solo - Am pent ×2 over verse cycle]
+[Solo - Am pent ×4 over verse cycle]
 Am
 
 G
@@ -168,7 +168,7 @@ Dsus2
 
 Am
 
-[Verse - pigeons / hotel]
+[Verse - pigeons / hotel ×4]
 Am
 There's pigeons down in 
 G
@@ -226,7 +226,7 @@ A
 Tired of this town again 
 G
 
-[Outro - intro riff, solo out, fade]
+[Outro - intro riff, harmonica + solo, fade]
 Am
 
 G
