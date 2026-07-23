@@ -236,16 +236,17 @@ B
 
 [Bridge]
 E
-Oh yeah, dir
-Asus2
-tbag
-
-E
   
 Asus2
-    
+
 E
-    
+Oh yeah
+
+Asus2
+
+E
+Dirtbag
+
 Asus2
 
 No, 
@@ -259,16 +260,17 @@ B
 issing.
 
 E
-Oh yeah, dir
-Asus2
-tbag
-
-E
   
 Asus2
-    
+
 E
-    
+Oh yeah
+
+Asus2
+
+E
+Dirtbag
+
 Asus2
 
 No, 
@@ -393,16 +395,17 @@ B
 
 [Bridge]
 E
-Oh yeah, dir
-Asus2
-tbag
-
-E
   
 Asus2
-    
+
 E
-    
+Oh yeah
+
+Asus2
+
+E
+Dirtbag
+
 Asus2
 
 No, 
@@ -416,16 +419,17 @@ B
 issing.
 
 E
-Oh yeah, dir
-Asus2
-tbag
-
-E
   
 Asus2
-    
+
 E
-    
+Oh yeah
+
+Asus2
+
+E
+Dirtbag
+
 Asus2
 
 No, 
