@@ -3,8 +3,13 @@ Standard (EADGBE)
 [Amp: 5Green]
 
 [Intro - heavy rhythm; power chips]
+D5
 
-D5 G5 A5 D5
+G5
+
+A5
+
+D5
 
 [Verse 1]
 
@@ -29,9 +34,14 @@ eyes with her spider
 D5
 dance
 
-[Interlude]
+[Interlude - D5 G5 A5 D5; lead solos over]
+D5
 
-D G A D
+G5
+
+A5
+
+D5
 
 [Verse 2]
 
@@ -68,8 +78,7 @@ dancing and showing her
 D5
 skin
 
-[Chorus]
-
+[Chorus - end D]
 Wherever she w
 G
 alks
@@ -114,9 +123,14 @@ life, yeah-
 D
 eah
 
-[Interlude]
+[Interlude - D5 G5 A5 D5; lead solos over]
+D5
 
-D G A D
+G5
+
+A5
+
+D5
 
 [Verse 3]
 
@@ -161,8 +175,7 @@ see any words you
 D5
 print
 
-[Chorus]
-
+[Chorus - end F#m]
 Wherever she w
 G
 alks
@@ -207,8 +220,24 @@ life, yeah-
 F#m
 eah
 
-[Bridge - Em landing]
+[Bridge - instrumental (D A Bm G) ×2]
+D
 
+A
+
+Bm
+
+G
+
+D
+
+A
+
+Bm
+
+G
+
+[Bridge - vocals; watch Em]
 A
 Oh Lola I'm sure that the love would have been
 D
@@ -243,8 +272,7 @@ Bm
 ohhhh
 G
 
-[Chorus]
-
+[Chorus - from don't look; end D]
 don't look in her 
 A
 eyes
@@ -275,7 +303,3 @@ A
 life, yeah-
 D
 eah
-
-[Outro]
-
-D G A D
