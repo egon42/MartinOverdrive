@@ -26,7 +26,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 10-zombie — **done (2026-07-22):** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = dirt EmCGD then Em ring+fill; scroll **11** + leadIn **8.7**.
 - [x] 11-hunger-strike — **done (2026-07-22):** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; Bridge grips x00x x22x; scroll **10** + leadIn **12**.
 - [x] 12-s-o-b — **done (2026-07-22):** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**.
-- [ ] 13-save-a-horse-ride-a-cowboy — **drafted (polish 2026-07-22):** chucks; chorus land stops + E G A hook; guitar/fiddle E A ×2 play along; N.C. outro; scroll **14** + leadIn **21.6**. Device dial.
+- [ ] 13-save-a-horse-ride-a-cowboy — **drafted (polish 2026-07-22):** chucks; chorus land stops + E G A hook; spaced solo E/A ×2 play along; palm-muted bridge; N.C. outro; scroll **10** + leadIn **18**. Device dial.
 - [ ] 14-sweet-home-alabama — **drafted (history pass):** D-C-G; fills later (short sheet). Device dial / expand.
 - [ ] 15-dani-california — **drafted (history pass):** verse volume roll / open chorus. Device dial.
 - [ ] 16-teenage-dirtbag — **drafted (history pass):** quiet verse / big chorus Amp labels. Device dial.

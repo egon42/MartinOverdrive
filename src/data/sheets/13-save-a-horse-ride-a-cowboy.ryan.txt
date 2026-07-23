@@ -136,15 +136,27 @@ cowboy
 
 [Guitar Solo - E A ×2]
 
-E A E A
+E
+
+A
+
+E
+
+A
  ×2
 
 [Fiddle Solo - E A ×2; play along]
 
-E A E A
+E
+
+A
+
+E
+
+A
  ×2
 
-[Bridge]
+[Bridge - palm muted]
 
 I'm a
 E
