@@ -46,7 +46,12 @@ function clearFrac(inner: HTMLElement | null) {
 
 function pinScrollToBottom(el: HTMLElement) {
   clearFrac(autoscrollInner(el))
-  el.scrollTop = Math.max(0, el.scrollHeight - el.clientHeight)
+  const max = Math.max(0, el.scrollHeight - el.clientHeight)
+  // Chrome re-expand after crawl end only moves max a little; snap felt like a hitch.
+  // Smooth that small catch-up. Large jumps (rewind, song change) stay instant.
+  const delta = Math.abs(max - el.scrollTop)
+  if (delta > 0 && delta < 160) el.scrollTo({ top: max, behavior: 'smooth' })
+  else el.scrollTop = max
 }
 
 function applyFrac(inner: HTMLElement | null, pos: number) {

@@ -11,6 +11,14 @@
 
 ~A
 
+~E
+
+~B
+
+~C#m
+
+~A
+
 [Verse 1 - guitar in with vocal]
 E
 Just a 
@@ -49,6 +57,14 @@ A
 re
 
 [Interlude ×2 - arpeggios E B C#m A]
+E
+
+B
+
+C#m
+
+A
+
 E
 
 B
@@ -101,7 +117,31 @@ B
 E
 A
 
-[Interlude - short fill E B C#m A]
+[Interlude - piano break E B C#m A ×4]
+E
+
+B
+
+C#m
+
+A
+
+E
+
+B
+
+C#m
+
+A
+
+E
+
+B
+
+C#m
+
+A
+
 E
 
 B
@@ -174,6 +214,22 @@ E
 A
 
 [Solo ×2 - chorus changes under lead]
+E
+
+B
+
+C#m
+
+A
+
+E
+
+B
+
+G#m
+
+A
+
 E
 
 B
