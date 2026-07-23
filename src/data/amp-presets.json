@@ -120,11 +120,10 @@
   },
   "17-the-pretender": {
     "presets": [
-      21,
       22
     ],
-    "joiner": "↔",
-    "notes": "Nail the entrance click with the drum hit"
+    "joiner": "",
+    "notes": "Slam only (6Red); sit-out quiet intro/interlude"
   },
   "18-here-it-goes-again": {
     "presets": [

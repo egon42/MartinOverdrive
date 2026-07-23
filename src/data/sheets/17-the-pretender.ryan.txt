@@ -1,7 +1,7 @@
 Standard (EADGBE)
 
+[Amp: 6Red]
 [Intro - ghost; count last bar aloud]
-[Amp: 5Red]
 
 ~Am
 Keep you in the dark
@@ -21,7 +21,6 @@ all beg
 ~Fmaj7
 an
 
-[Amp: 6Red]
 [Verse 1 - slam with drums; do not jump early]
 
 Am
@@ -96,6 +95,12 @@ You're the pretender
 
 F
 What if I say that I'll never surrender?
+
+[Instrumental - A5 ×2]
+
+A5
+
+A5
 
 [Verse 2]
 
@@ -189,19 +194,17 @@ Yeah, who are you?
 A5
 Yeah, who are you?
 
-[Amp: 5Red]
-[Interlude - quiet return]
+[Interlude - ghost]
 
-Am
+~Am
 Keep you in the dark
 
 You know they 
-F#m7b5
+~F#m7b5
 all pret
-Fmaj7
+~Fmaj7
 end
 
-[Amp: 6Red]
 [Chorus - final]
 
 Am

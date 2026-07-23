@@ -111,7 +111,7 @@ control and is not stored.
 | 14 | Sweet Home Alabama | **5** | |
 | 15 | Dani California | **10** | Verse: roll guitar volume down |
 | 16 | Teenage Dirtbag | **19 ↔ 20** | Verse 19, chorus 20 |
-| 17 | The Pretender | **21 ↔ 22** | Nail the entrance click with the drum hit |
+| 17 | The Pretender | **22** | Slam only; sit-out quiet intro/interlude |
 | 18 | Here It Goes Again | **11** | Verses: roll guitar volume |
 | 19 | Purple Rain | **8** | Solo: stay on 8, dig in (it's a clean-ish solo) |
 | 20 | When I Come Around | **11** | |
