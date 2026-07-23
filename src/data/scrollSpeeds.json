@@ -55,9 +55,9 @@
     "note": "Locked 2026-07-22. Studio 4:03; speed 10, leadInSec 12. Intro/Bridge/Interlude/cold end; sit under; FS dirt lift; Bridge grips x00x x22x."
   },
   "12-s-o-b": {
-    "speed": 6,
+    "speed": 10,
     "leadInSec": 18,
-    "note": "Estimate 2026-07-22 (polish). Studio 4:07; ~0.58× Tribute non-empty (100). speed 6 (clamped). leadInSec=18 sit-out intro. Play chorus muted stabs only; verses/intro/outro ghost. Dial on device."
+    "note": "Estimate 2026-07-22 (polish). Studio 4:07; device nudge: speed 10, leadInSec 18. Play chorus muted stabs only; verses/intro/outro ~chips. Dial on device."
   },
   "13-save-a-horse-ride-a-cowboy": {
     "speed": 14,

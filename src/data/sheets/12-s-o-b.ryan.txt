@@ -8,7 +8,7 @@ Standard (EADGBE)
 
 (stomp-clap, vocals only)
 
-[Verse 1 - ghost]
+[Verse 1]
 
 ~F#
 I'm gonna need someone to help me
@@ -59,7 +59,7 @@ nk my lif
 F#
 e away
 
-[Verse 2 - ghost]
+[Verse 2]
 
 ~F#
 (Whoa oh, whoa oh, whoa oh oh oh) x2
@@ -105,7 +105,7 @@ nk my lif
 F#
 e away
 
-[Verse 3 - ghost; heart line ×4]
+[Verse 3 - heart line ×4]
 
 ~F#
 (Mmmm hmm, mmmm hmm, mmmm hmm hmm hmm) x2
