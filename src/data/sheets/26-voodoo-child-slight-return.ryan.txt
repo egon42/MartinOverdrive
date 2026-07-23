@@ -1,13 +1,13 @@
 Standard (EADGBE)
 
-[Amp: 7Green]
+[Amp: 15]
 
-[Intro - wah riff; touch wah on pick attack]
+[Intro - backing E pocket under lead]
+E
 
 E
 
-[Verse 1 - support riff, not full SRV]
-
+[Verse 1 - backing E G A under lead]
 Well, I 
 E
 stand up next to a mountain
@@ -41,7 +41,6 @@ G
 E
 
 [Pre-Chorus]
-
 Well, I 
 E
 pick up all the pieces and make an island, might even raise a little
@@ -55,7 +54,6 @@ G
 E
 
 [Chorus]
-
 'Cause I'm a 
 C7
 voodoo child, 
@@ -69,12 +67,32 @@ E
 G
 E
 
-[Solo - support under other lead; E7#9 / G-A]
+[Solo 1 - backing E G A under lead ×4]
+E
 
-E G A
+G
 
-[Verse 2]
+A
 
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+[Verse 2 - backing E G A under lead]
 E
 I want to say one more last thing
 
@@ -118,23 +136,7 @@ se
 E
  days
 
-[Pre-Chorus]
-
-If I don
-E
-'t meet you no more in this world then uh, I'll meet ya on the next
-
-one and don't be l
-E
-ate
-G
-A
-E
-G
-E
-
 [Chorus]
-
 'Cause I'm a 
 C7
 voodoo child, 
@@ -148,6 +150,84 @@ E
 G
 E
 
-[Outro]
+[Solo 2 - backing E G A under lead ×12; long]
+E
 
-E G A E
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+E
+
+G
+
+A
+
+[Outro - hard stop; E G A E]
+E
+
+G
+
+A
+
+E
