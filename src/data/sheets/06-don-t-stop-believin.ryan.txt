@@ -2,7 +2,14 @@
 
 [Amp: 1Amber]
 
-[Intro - keys only; sit out]
+[Intro ×2 - keys only; sit out]
+~E
+
+~B
+
+~C#m
+
+~A
 
 [Verse 1 - guitar in with vocal]
 E
@@ -41,6 +48,16 @@ anywhe
 A
 re
 
+[Interlude ×2 - arpeggios E B C#m A]
+E
+
+B
+
+C#m
+
+A
+
+[Verse 2]
 E
 A singer in a 
 B
@@ -59,6 +76,7 @@ on and on and
 A
 on and on
 
+[Pre-Chorus]
 A
 Strangers waiting 
 E
@@ -83,6 +101,16 @@ B
 E
 A
 
+[Interlude - short fill E B C#m A]
+E
+
+B
+
+C#m
+
+A
+
+[Verse 3]
 E
 Working hard to 
 B
@@ -120,6 +148,7 @@ on and on and
 A
 on and on
 
+[Pre-Chorus]
 A
 Strangers waitin
 E
@@ -144,6 +173,24 @@ B
 E
 A
 
+[Solo ×2 - chorus changes under lead]
+E
+
+B
+
+C#m
+
+A
+
+E
+
+B
+
+G#m
+
+A
+
+[Chorus ×3]
 E
 Don't stop bel
 B
@@ -191,4 +238,3 @@ B
  people     
 G#m
 A
-
