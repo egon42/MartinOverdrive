@@ -1,0 +1,30 @@
+---
+description: Always commit and push finished work to the dev branch for phone testing
+alwaysApply: true
+---
+
+# Auto-push to `dev`
+
+Mobile testing is the live `/MartinOverdrive/dev/` PWA. Unpushed work is invisible on the phone.
+
+## Default after finishing work on `dev`
+
+1. Commit the relevant changes (skip junk like `fill_page.html`, secrets, local-only notes).
+2. Push with bare `git push` (never `git push origin main`).
+3. Confirm the Pages deploy for that commit (`gh run list --workflow deploy-pages.yml --limit 3`) when the user needs it live, or when verifying the change.
+
+Do this **without waiting to be asked**, unless a strong reason below applies.
+
+## Strong reasons to NOT push (ask first)
+
+- Build / validate fails
+- Secrets or credentials in the diff
+- User explicitly said not to commit or push
+- Destructive git ops (force push, reset, amend of pushed commits)
+- Change belongs only on `main` or another branch, or would break the linear `dev` → `main` ff-only promote
+- You're mid-task and the tree is intentionally half-done (push when the slice is usable on phone)
+
+## Notes
+
+- Prefer small, phone-testable pushes over holding a large local stack.
+- The SW update banner only helps after this feature itself is deployed; until then, hard-refresh once after the first push of banner-related work.

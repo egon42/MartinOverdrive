@@ -48,6 +48,11 @@ npm run import-setlist -- "path\to\martin_overdrive_setlist_prep.xlsx"
 
 ## Git
 
+- **Always commit + push finished work on `dev` without waiting to be asked.** Phone
+  testing is the live `/MartinOverdrive/dev/` PWA — unpushed work is invisible there.
+  Skip only for strong reasons (broken build/validate, secrets in the diff, user said
+  not to, destructive git ops, or an intentionally half-done tree). Prefer small
+  phone-testable pushes over holding a large local stack.
 - **Use bare `git push`** (upstream tracking is set), never `git push origin main` — the
   auto-mode safety classifier blocks pushes that explicitly name the default branch.
   The user has standing approval to commit and push directly to `main` on this project.

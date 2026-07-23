@@ -2,6 +2,10 @@ const BASE = new URL('.', self.location).pathname
 // Cache is namespaced by base path so the /app/ and /dev/ deployments
 // (same origin) never delete each other's entries on activate.
 const CACHE = `overdrive-v6:${BASE}`
+// Build stamp only — Vite replaces this on every production build so the SW
+// byte-diff changes even when this file's logic does not. That is what makes
+// registration.update() notice a deploy (browsers compare SW script bytes).
+const BUILD_ID = 'dev'
 const shellPath = (path = '') => `${BASE}${path.replace(/^\//, '')}`
 
 // How long a navigation waits on the network before serving the cached app. A dead

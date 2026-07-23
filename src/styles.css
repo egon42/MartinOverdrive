@@ -265,6 +265,11 @@ button.autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter
 .show-zoom-reset{position:fixed;left:14px;bottom:max(16px,env(safe-area-inset-bottom));z-index:115;border:1px solid var(--line);background:#000000cc;color:#dfe6e1;border-radius:999px;padding:.5rem .85rem;font:inherit;font-size:.7rem;font-weight:800;letter-spacing:.04em;font-variant-numeric:tabular-nums;-webkit-user-select:none;user-select:none;touch-action:manipulation;backdrop-filter:blur(4px)}
 .show-zoom-reset:active{background:#000000e6}
 
+/* Deploy update prompt — dark so it reads in show mode and on the light shell.
+   Centered above the safe area; above show overlays so it isn't buried mid-set. */
+.sw-update-banner{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:200;border:1px solid #3a3f37;background:#1b1d18f2;color:#f3f0e8;border-radius:999px;padding:.7rem 1.15rem;font:inherit;font-size:.82rem;font-weight:750;letter-spacing:.01em;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.35);-webkit-user-select:none;user-select:none;touch-action:manipulation;backdrop-filter:blur(6px)}
+.sw-update-banner:active{background:#10120ff2}
+
 /* Verbatim ASCII tab text (practice panel and show mode) */
 .tab-text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82rem;line-height:1.5;margin:0;overflow-x:auto;color:inherit}
 .show-tabs .tab-text{font-size:calc(var(--sheet-fit,1)*.9rem);line-height:1.45}

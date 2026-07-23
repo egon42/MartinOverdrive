@@ -1,6 +1,6 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
-import { writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 /** Give /app/ and /dev/ distinct PWA identities so both can be installed on
@@ -49,6 +49,17 @@ function deployIdentity(): Plugin {
         }],
       }
       writeFileSync(join(outDir, 'manifest.webmanifest'), `${JSON.stringify(manifest, null, 2)}\n`)
+      // Stamp sw.js so every deploy byte-diffs the worker (see BUILD_ID in public/sw.js).
+      const swPath = join(outDir, 'sw.js')
+      try {
+        const stamped = readFileSync(swPath, 'utf8').replace(
+          "const BUILD_ID = 'dev'",
+          `const BUILD_ID = '${Date.now().toString(36)}'`,
+        )
+        writeFileSync(swPath, stamped)
+      } catch {
+        // sw.js missing (e.g. unexpected outDir) — leave the build alone
+      }
     },
   }
 }
