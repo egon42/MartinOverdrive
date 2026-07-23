@@ -345,10 +345,12 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .show-mode .show-counter{padding:.35rem .7rem;font-size:.7rem}
 .show-song-head{display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap;margin:0 0 2px;min-width:0}
 .show-song-head .eyebrow{margin:0;font-size:.52rem;line-height:1.1;flex:0 0 auto}
-.show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0;transition:font-size .18s ease}
+.show-song-head h1{margin:0;font-size:.92rem;line-height:1.15;font-weight:800;min-width:0;transition:font-size 1.2s ease}
 /* Autoscroll playing (incl. lead-in): collapse artist / view tabs+Pin / stage strip / Up next /
    zoom-reset. Keeps × exit, compact title, page-turner ‹ n/N ›, Live chip, AutoScrollBar +
-   home-fret chips. Max-height (not display:none) so the collapse can animate. */
+   home-fret chips. Max-height (not display:none) so the collapse can animate.
+   Expand after crawl end is slow (1.2s) so the last lines stay readable while chrome
+   grows back; collapse on ▶ stays snappy (.18s). Keep in sync with CHROME_EXPAND_MS. */
 .show-mode .show-song-head .eyebrow,
 .show-mode .show-view-bar,
 .show-mode .show-stage-strip,
@@ -356,7 +358,7 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
   overflow:hidden;
   opacity:1;
   max-height:6rem;
-  transition:opacity .18s ease,max-height .18s ease,margin .18s ease,padding .18s ease,border-width .18s ease
+  transition:opacity 1.2s ease,max-height 1.2s ease,margin 1.2s ease,padding 1.2s ease,border-width 1.2s ease
 }
 .show-mode--crawling .show-song-head .eyebrow,
 .show-mode--crawling .show-view-bar,
@@ -369,11 +371,12 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
   padding-top:0;
   padding-bottom:0;
   border-width:0;
-  pointer-events:none
+  pointer-events:none;
+  transition-duration:.18s
 }
 .show-mode--crawling .show-zoom-reset{display:none}
 .show-mode--crawling .show-song-head{margin:0}
-.show-mode--crawling .show-song-head h1{font-size:.78rem}
+.show-mode--crawling .show-song-head h1{font-size:.78rem;transition-duration:.18s}
 .show-song .show-view-bar{margin:0 0 4px;gap:6px}
 .show-song .fretboard-toggle{gap:4px}
 .show-song .fretboard-toggle button,.show-song .show-pin{padding:.28rem .58rem;font-size:.62rem}

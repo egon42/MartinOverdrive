@@ -44,14 +44,14 @@ function clearFrac(inner: HTMLElement | null) {
   if (inner) inner.style.transform = ''
 }
 
+// Must match the CSS expand duration on .show-mode chrome (not the .18s collapse).
+const CHROME_EXPAND_MS = 1200
+
 function pinScrollToBottom(el: HTMLElement) {
   clearFrac(autoscrollInner(el))
-  const max = Math.max(0, el.scrollHeight - el.clientHeight)
-  // Chrome re-expand after crawl end only moves max a little; snap felt like a hitch.
-  // Smooth that small catch-up. Large jumps (rewind, song change) stay instant.
-  const delta = Math.abs(max - el.scrollTop)
-  if (delta > 0 && delta < 160) el.scrollTo({ top: max, behavior: 'smooth' })
-  else el.scrollTop = max
+  // Instant pin — the slow chrome expand (CHROME_EXPAND_MS) is the visual; ResizeObserver
+  // fires many times during it, and stacking smooth scrolls would fight each other.
+  el.scrollTop = Math.max(0, el.scrollHeight - el.clientHeight)
 }
 
 function applyFrac(inner: HTMLElement | null, pos: number) {
@@ -223,8 +223,8 @@ export function useAutoScrollControls(
       ro = new ResizeObserver(() => { if (stickBottomRef.current) pinBottom() })
       ro.observe(el)
     }
-    // Collapse animation is ~180ms; one extra pin after it settles.
-    const t = window.setTimeout(pinBottom, 220)
+    // One extra pin after the slow chrome expand settles.
+    const t = window.setTimeout(pinBottom, CHROME_EXPAND_MS + 80)
     return () => { ro?.disconnect(); window.clearTimeout(t) }
   }, [playing, target, pinBottom])
   // Tick the lead-in countdown while a deadline is armed.
