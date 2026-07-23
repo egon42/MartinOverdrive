@@ -1247,6 +1247,12 @@
         "hint": "Verse changes: fiddle/harmonica breaks on the record"
       },
       {
+        "section": "Outro",
+        "chords": "G C G D G",
+        "shapes": "320003 -32010 320003 --0232 320003",
+        "hint": "Fake ending: drops down, fiddle/harmonica trade, then band hits the final chord together"
+      },
+      {
         "section": "Fills",
         "chords": "",
         "tab": "Verse walk (over G)\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|5-5-7---8---7-5-|\nE|3-3-3---3---3-3-|\n\nSame shape up (over C / D)\ne|----------------|\nB|----------------|\nG|----------------|\nD|5-5-7-5-5-5-7-5-|\nA|3-3-3-3-3-3-3-3-|\nE|----------------|",
@@ -1263,7 +1269,8 @@
       "Chorus",
       "Verse",
       "Solo",
-      "Chorus"
+      "Chorus",
+      "Outro"
     ]
   },
   "30-pink-pony-club": {

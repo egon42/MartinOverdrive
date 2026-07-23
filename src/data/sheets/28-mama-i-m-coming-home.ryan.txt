@@ -1,5 +1,7 @@
 Standard (EADGBE)
 
+[Intro - clean/acoustic vamp on E, ~17s; sit-out/follow along unless covering the intro figure]
+
 [Amp: 7Red]
 [Verse - clean/edge rhythm]
 E
@@ -24,6 +26,7 @@ A
 Mama, Im coming home   
 E
 
+[Pre-Chorus]
 C#m
 You took me in and you d
 A
@@ -40,8 +43,9 @@ turned around
 B
 By the fire in your eyes
 
+[Verse 2]
 E
-You made me cry, you told me lies
+You made me cry, you told me lies   
 
 E
 But I cant stand to say goodbye   
@@ -61,7 +65,7 @@ E
 Mama, Im coming home
 
 [Amp: 8Red]
-[Chorus/solo - lift]
+[Chorus - lift]
 (Distortion)
 
 (Power Chords)
@@ -85,28 +89,27 @@ G#5
 I just got to have it all
 
 [Amp: 7Red]
-(Little Acoustic Thingy)
+[Bridge - acoustic transition (Little Acoustic Thingy), instrumental x3]
 
 [Amp: 8Red]
-(Solo Chords)
+[Solo]
+(Lead-in walk-up)
 
-(Lead in)
-
-    
+ 
 B
-      
+ 
 A
-   
+ 
 E
-   
+ 
 A
-   
+ 
 E
-   
+ 
 A
-  
+ 
 B
-  
+ 
 C#
  
 B
@@ -115,6 +118,7 @@ A
  
 B
 
+[Pre-Chorus - repeat]
 C#m
 You took me in and you 
 A
@@ -133,6 +137,7 @@ F#5
 G#5
 By the fire in your eyes
 
+[Chorus 2]
 A
 I've seen your face a thousand times
 E
@@ -147,22 +152,13 @@ E
 A
 And I don't care about the sunshine, yeah
 
+[Outro - Asus2 Bsus4 C D E vamp, x3 more (same C D E); ritardando to a stop per tab (68 to 60 to 30 bpm), no fade]
 Asus2
 Bsus4
 C
 D
 E
 'cause mama, mama, I'm coming home
-
-C
-D
-E
-I'm coming home
-
-C
-D
-E
-I'm coming home
 
 C
 D

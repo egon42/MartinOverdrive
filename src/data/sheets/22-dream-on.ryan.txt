@@ -3,6 +3,22 @@ Capo 1 (shapes below are Em; with the capo it sounds F minor, the record/band ke
 
 (High-low arpeggio through the song — not full chord strums)
 
+[Glance - verse climb (high-low)]
+e|3---5---7---5-3-5-|
+B|5---5---5---5-5-5-|
+G|--4---4---4-----4-|
+D|------------------|
+A|------------------|
+E|------------------|
+
+[Glance - chorus sig between hits]
+e|----|----|----|----|
+B|----|----|----|----|
+G|4-2-|0-2-|4-2-|0-2-|
+D|----|----|----|----|
+A|----|----|----|----|
+E|----|----|----|----|
+
 [Amp: 7Red]
 
 [Intro - high-low arpeggio ×2]

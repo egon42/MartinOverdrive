@@ -65,9 +65,9 @@
     "note": "Locked 2026-07-22. Studio 3:22; speed 10, leadInSec 18. Chucks; land stops; solo E A E A×2 intro layout; palm-muted bridge; N.C. outro."
   },
   "14-sweet-home-alabama": {
-    "speed": 8,
-    "leadInSec": 20,
-    "note": "Estimate 2026-07-22. Studio 4:43; Intro D-C-G x4 join on 3rd. speed=8. leadInSec=20 (user dial). Role: D-C-G whole song; improv fills; no ^N. Dial on device."
+    "speed": 10,
+    "leadInSec": 9.6,
+    "note": "Estimate 2026-07-23. Studio 4:43; 1.52× Tribute rows (100). Solo1×2 / Solo2×8 + return Interlude×2 before V4. Landmark: Well I heard mister Young. Dial on device."
   },
   "15-dani-california": {
     "speed": 9,
@@ -105,9 +105,9 @@
     "note": "Locked 2026-07-23. Studio 2:46; 0.48× Tribute rows (32). speed=7 leadInSec=14. Role: A-string PM verses; open D/A/G chorus; skip low E."
   },
   "22-dream-on": {
-    "speed": 7,
-    "leadInSec": 13.7,
-    "note": "Estimate 2026-07-23 polish. Studio 4:28; 0.83× Tribute rows (55). speed≈7. leadInSec=13.7 (formula). Landmark: Half my life's. Dial on device."
+    "speed": 8,
+    "leadInSec": 12,
+    "note": "Estimate 2026-07-23. Studio 4:28; 0.86× Tribute rows (57). speed≈8. leadInSec=12. High-low glance added. Landmark: Half my life's. Dial on device."
   },
   "23-lola-montez": {
     "speed": 9,
@@ -136,22 +136,22 @@
   },
   "28-mama-i-m-coming-home": {
     "speed": 6,
-    "leadInSec": 16,
-    "note": "Estimate 2026-07-22 (history pass). Studio 4:11; ~0.70× Tribute non-empty (121). speed≈6. leadInSec=16. Role: 7Red verse / 8Red chorus-solo lift. Dial on device."
+    "leadInSec": 17,
+    "note": "Estimate 2026-07-23. Studio 4:11; 0.71× Tribute rows (47). speed≈6. leadInSec=17 (Intro sit-out). Landmark: Selfish love. Dial on device."
   },
   "29-ain-t-goin-down-til-the-sun-comes-up": {
-    "speed": 6,
-    "leadInSec": 16,
-    "note": "Estimate 2026-07-22 (history pass). Studio 4:32; ~0.52× Tribute non-empty (89). speed≈6 (clamped from 4). leadInSec=16. Role: fast country; skip fills if needed. Dial on device."
+    "speed": 7,
+    "leadInSec": 13.7,
+    "note": "Estimate 2026-07-23. Studio 4:32; 0.85× Tribute rows (56). Expanded solos + fake-ending Outro. Landmark: Local country station. Dial on device."
   },
   "30-pink-pony-club": {
-    "speed": 13,
-    "leadInSec": 7.5,
-    "note": "Estimate 2026-07-22 (history pass). Studio 4:18; ~1.31× Tribute non-empty (226). speed≈13. leadInSec=7.5. Role: quiet verse / big chorus Amp. Dial on device."
+    "speed": 9,
+    "leadInSec": 10.7,
+    "note": "Estimate 2026-07-23. Studio 4:18; 1.33× Tribute rows (88). speed≈9. leadInSec=10.7. Quiet 3Red / big 4Red. Landmark: first Pre-Chorus. Dial on device."
   },
   "31-banditos": {
-    "speed": 8,
-    "leadInSec": 13.3,
-    "note": "Estimate 2026-07-22 (history pass). Studio 3:30; ~0.72× Tribute non-empty (123). speed≈8. leadInSec=13.3. Role: bar-band groove; fills later. Dial on device."
+    "speed": 7,
+    "leadInSec": 13.7,
+    "note": "Estimate 2026-07-23. Studio 4:17 (was wrong 3:30); 0.79× Tribute rows (52). speed≈7. leadInSec=13.7. Landmark: Verse 2 open. Dial on device."
   }
 }

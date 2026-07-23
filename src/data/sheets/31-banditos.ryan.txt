@@ -2,7 +2,7 @@ Standard (EADGBE)
 
 [Amp: 5Amber]
 
-[Verse - bar-band groove; simple fills later]
+[Intro/Verse 1 - cold-open riff; hook doubles as intro]
 E
 So just how far down do you want to go
 
@@ -25,6 +25,7 @@ A
  
 E
 
+[Verse 2]
 Well it's 
 E
 you and me baby, no-one else we can trust
@@ -39,8 +40,7 @@ rack a smile, or flinch, or cry for n
 E
 obody, uh huh
 
-         (CHORUS)
-
+[Chorus]
 Well give your 
 E
 I.D. card to the 
@@ -116,6 +116,7 @@ A
       
 E
 
+[Verse 3]
 So put the 
 E
 sugar in the tank of the sheriffs car
@@ -130,9 +131,9 @@ finally get the word that there's been a h
 E
 old-up, uh huh
 
-           (to CHORUS)
+[Chorus - repeat]
 
-           (to SOLO – 
+[Solo ×2 - E D A E]
 E
  
 D
@@ -148,10 +149,8 @@ D
 A
  
 E
-)
 
-           (to CHORUS)
-
+[Chorus - repeat, tag]
              
 D
                
@@ -161,6 +160,7 @@ E
 
 that seems fair, that seems fair, well that seems fai-ee-ai-ee-ai-ee-air
 
+[Outro ×2 - E D A E, cold end]
 E
  
 D
