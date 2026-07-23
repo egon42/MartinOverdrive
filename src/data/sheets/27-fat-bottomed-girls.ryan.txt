@@ -2,9 +2,7 @@ Drop D (DADGBE)
 
 [Amp: 2Green]
 
-[Intro - guitar volume down; follow along]
-
-[Chorus]
+[Chorus - sparse / guitar volume down; band crashes after]
 D
 Are you gonna t
 C
@@ -81,47 +79,19 @@ ladies every ti
 D
 me
 
-[Chorus]
-D
-Oh won't you ta
-C
-ke me home to
-G/B
-night?, 
-D
-Oh down be
-C
-side that red firel
-A
-ight?
-
-D
-Oh and give
+[Interlude - Hey listen here]
 G
- it all you got
-
-Fat bottomed g
-D
-irls You make the r
-A
-ockin' world go ro
-D
-und
-
-Fat bottomed g
-D
-irls You make the r
-A
-ockin' world go ro
-D
-und
 
 G
-G
+
 D
+
 D
+
 A
+
 A
+
 G
 Hey listen here
 
@@ -177,7 +147,30 @@ A
 ockin' world go ro
 D
 und
+
+[Solo - under lead; verse cycle ×4]
+D
+
+A
+
+D
+
 G
+
+D
+
+A
+
+D
+
+[Outro - COLD; double hook + bikes]
+Fat bottomed g
+D
+irls You make the r
+A
+ockin' world go ro
+D
+und
 
 Fat bottomed g
 D
@@ -187,5 +180,4 @@ ockin' world go ro
 D
 und
 
-[Outro - COLD; bikes tag]
 GET ON YOUR BIKES AND RIDE!
