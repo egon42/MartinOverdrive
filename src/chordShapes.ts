@@ -45,8 +45,11 @@ const OPEN: Record<string, ChordShape> = {
   D: ['x', 'x', 0, 2, 3, 2], Dm: ['x', 'x', 0, 2, 3, 1], D7: ['x', 'x', 0, 2, 1, 2], Dmaj7: ['x', 'x', 0, 2, 2, 2], Dm7: ['x', 'x', 0, 2, 1, 1],
   Dsus2: ['x', 'x', 0, 2, 3, 0], Dsus4: ['x', 'x', 0, 2, 3, 3], D5: ['x', 'x', 0, 2, 3, 'x'], D6: ['x', 'x', 0, 2, 0, 2], D7sus4: ['x', 'x', 0, 2, 1, 3],
   G: [3, 2, 0, 0, 0, 3], G7: [3, 2, 0, 0, 0, 1], Gmaj7: [3, 2, 0, 0, 0, 2], G6: [3, 2, 0, 0, 0, 0], Gadd9: [3, 2, 0, 2, 0, 3],
-  F: [1, 3, 3, 2, 1, 1], Fmaj7: ['x', 'x', 3, 2, 1, 0],
-  // Gently Weeps / Pretender walkdown (UG 2x2210) — friendlier than a barre.
+  F: [1, 3, 3, 2, 1, 1],
+  // Gently Weeps / Pretender walkdown family (UG): Am x02210 → Am/G 3x2210 →
+  // F#m7b5 2x2210 → Fmaj7 1x2210. Same upper grip; bass walks down the low E.
+  Fmaj7: [1, 'x', 2, 2, 1, 0],
+  'Am/G': [3, 'x', 2, 2, 1, 0],
   'F#m7b5': [2, 'x', 2, 2, 1, 0],
   B7: ['x', 2, 1, 2, 0, 2],
 }
@@ -72,7 +75,8 @@ const SUFFIX: [RegExp, string][] = [
 ]
 
 // Parse a chord token ("F#m7", "Cadd9", "G/B") into { root, quality }. Slash-bass is
-// dropped — the diagram shows the chord shape, not the specific bass inversion.
+// dropped for generation — prefer an OPEN entry keyed by the full name (e.g. Am/G)
+// when the bass note is the whole point of the voicing.
 function parseChord(name: string): { root: string; quality: string } | null {
   const match = name.trim().match(/^([A-G][#b]?)(.*)$/)
   if (!match) return null
@@ -100,7 +104,10 @@ function generate(rootNote: number, quality: string): ChordShape | null {
 // be voiced (unknown quality like dim/aug, or an unparseable token) — the caller shows
 // the name without a diagram in that case.
 export function chordShape(name: string): ChordShape | null {
-  const bare = name.trim().split('/')[0]
+  const trimmed = name.trim()
+  // Full token first so slash chords (Am/G) can have their own open voicing.
+  if (OPEN[trimmed]) return OPEN[trimmed]
+  const bare = trimmed.split('/')[0]
   if (OPEN[bare]) return OPEN[bare]
   const parsed = parseChord(name)
   if (!parsed) return null
