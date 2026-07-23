@@ -88,7 +88,7 @@ Per song:
 2. Copy band `.chords.txt` body → Ryan layers only (amp, sections, obvious sit-outs,
    strip stage noise). Do **not** invent fill cue words or between-line riff maps
    without tab/recording evidence.
-3. UG spine gate → Tribute-calibrated scroll **estimate** (`note` starts with `Estimate`)
+3. UG spine gate → row-based scroll **estimate** via helper (`note` starts with `Estimate`)
 4. `npm run validate` → commit → bare `git push`
 5. Mark progress as **drafted** (not `[x]`). Offer a device pass list when the wave ends.
 
@@ -98,12 +98,28 @@ verified, invent cleaned lyric spines, retune shared amp slots, or invent new ch
 **Safe to auto-draft vs human-gated:** see [reference.md](reference.md) § Bulk draft
 boundaries.
 
+## Second-half lessons (audit 2026-07-23)
+
+Half the set is locked or good-enough; the rest is mostly **history-pass drafted**. What
+bit us and what to do differently:
+
+| Lesson | Do this |
+|---|---|
+| Non-empty scroll math runs ~2× fast on dense UG sheets | Use **rows** + `estimate-scroll.mjs`; soft-cap ≤12 |
+| Bulk/history scroll seeds are often wrong | Re-estimate on every polish pass before dial |
+| Lead-in ≠ "song has an intro" | Longer lead-in only when the **sheet** is sparse at top |
+| Role card drives everything | Ask/state cut · role · end before editing |
+| Device dial is one checkpoint, not end-of-sheet math | Landmark lyric + upper-middle; expect one slow-down |
+| Thin sheets (Purple Rain, Ain't Goin' Down, The Middle) | Expand content before trusting any seed |
+| Skip "good enough" (04–06) unless asked | Continue setlist order at first real unchecked polish target |
+
 ## One song per polish turn
 
 For polish (non-bulk), do **not** batch-edit the whole setlist. For each song:
 
 1. Load context → propose deltas → wait for confirm (unless they already stated the fix)
-2. Apply → `npm run validate` → **commit + bare `git push` to `dev`** in the same turn
+2. Apply → re-estimate scroll with the helper → `npm run validate` → **commit + bare
+   `git push` to `dev`** in the same turn
 3. Mark progress → point them at live `/MartinOverdrive/dev/` Ryan tab → offer the **next**
    unchecked song
 
@@ -183,28 +199,33 @@ Fresh installs and devices with no override pick up the polished seed.
 7. When the user says the crawl feels right ("perfect" / "lock this in"), check off
    [progress.md](progress.md) and stop tweaking that song's seed unless content changes.
 
-**Estimating a starting seed (before device dial):** calibrate against locked **Tribute**
-rather than re-deriving px/line from CSS. Full recipe in [reference.md](reference.md)
-§ Scroll seed estimate. Short version:
+**Estimating a starting seed (before device dial):** run the helper — do **not** hand-count
+non-empty lines (that recipe shipped Dani at 17 and Dirtbag at 22; device locked ~half):
 
-1. **Anchor** — `07-tribute`: `speed` **10**, `leadInSec` **11.6**, studio **4:08** (248s).
-   Crawl time ≈ `248 − 11.6` → scroll distance ≈ `10 × 236.4` ≈ **2364px**.
-   Assume collapsed viewport **V ≈ 600** → Tribute sheet height **H_t ≈ 2964px**.
-2. **Ratio** — count lines (prefer **non-empty**) in the new `.ryan.txt` vs Tribute’s.
-   `H ≈ H_t × (nonEmpty_new / nonEmpty_tribute)`.
-3. **leadInSec** — start from formula `96 / speed` once you have a speed guess. **Override
-   longer** when the first played chips sit after a long sit-out / sparse intro (Welcome
-   Home: ~48s so ringing Em holds through the lead riff). Sparse→dense sheets need this
-   more than pure end-of-sheet math.
-4. **speed** — `round((H − V) / (studioSec − leadInSec))`. Clamp to validator bounds
-   **6–120** (`SCROLL_MIN` / `SCROLL_MAX` in `scripts/validate-song-data.mjs`). Welcome
-   Home raw ≈5 → stored **6**.
-5. **Write** the seed with `note: "Estimate YYYY-MM-DD. …"` (anchor, duration, any
-   lead-in rationale). Ship for on-device dial; prefer **upper-middle at the first played
-   section** over end-aligned timing when density is uneven. Only drop “Estimate” / lock
-   in progress when the user confirms the crawl.
-6. **After any structural edit**, re-run the estimate (or device-dial) before shipping —
-   row count changes invalidate the prior seed.
+```bash
+node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs <songId> M:SS
+# long sit-out: add --lead=SEC --sit-out
+```
+
+Full recipe + lead-in tree + peer anchors in [reference.md](reference.md) § Scroll seed
+estimate. Short version:
+
+1. **Metric** — blank-separated **rows** (not non-empty lines). Tribute ≈ **66** rows,
+   `H_t ≈ 2964`. UG splits inflate line counts without inflating height.
+2. **speed** — `round((H − V) / (studioSec − leadInSec))`, clamp 6–120. Soft-cap first
+   seeds at **12** for studio ≥ 3:00 (locked chord sheets cluster 8–11). Prefer slightly
+   slow — device feedback was almost always "too fast".
+3. **leadInSec** — formula `96 / speed` unless the sheet top is sparse while music plays
+   (sit-out → time to first *played* chips). Do **not** lengthen lead-in just because the
+   recording has an intro if those chips are already on the sheet.
+4. **Peer** — match a locked role peer when possible (Tribute / ATS / Dani / Welcome Home);
+   see reference table.
+5. **Landmark** — name a lyric ~¼–⅓ down the sheet in the ship note so device dial has a
+   checkpoint (Dani: "Black bandana").
+6. **History-pass / bulk seeds** that mention "non-empty" are untrusted — **re-estimate on
+   polish** before asking the user to dial.
+7. **Device correction** — if a mid-verse line is already past, first cut is ~half speed
+   (17→9, 22→11), then −/+. Write `note: "Estimate …"` until the user locks.
 
 Chrome while crawling (product, already wired in `Show`): keep × exit, compact title,
 ‹ n/N ›, Live chip, AutoScrollBar, home-fret scale chips (sheet views park them to the
@@ -263,4 +284,7 @@ unchecked song (prefer existing `.ryan.txt`, else setlist order).
 - Collapsing repeats to ×N before confirming form order/count
 - Truncated tab glances that omit bars of a repeating riff
 - Shipping a scroll seed without re-estimating after structural edits
+- Estimating scroll from **non-empty line** ratios (Dani/Dirtbag regression) — use blank-separated rows / the helper
+- Lengthening `leadInSec` for a studio intro when those chips are already written on the sheet
+- Trusting history-pass / bulk `scrollSpeeds.json` Estimates without re-running the helper on polish
 - Inventing `^N` fills when the role is chords-while-singing / no fills

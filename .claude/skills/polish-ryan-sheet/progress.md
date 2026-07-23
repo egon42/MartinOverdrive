@@ -54,3 +54,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 **Drafted (not locked):** 04–06, 14, 16–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
 **Next review queue (handoff):** 17… (04/05/06 good-enough; 14 polished, dial pending). Still thin: Purple Rain, Ain't Goin' Down. The Middle needs role card + scroll seed.
+
+## Skill audit (2026-07-23) — second-half prep
+
+Locked **11** · good-enough **3** · drafted **17**. Biggest miss: scroll estimates from **non-empty line** ratios ran ~2× fast on dense UG sheets (Dani 17→9, Dirtbag 22→11). Skill now uses blank-separated **rows** + `scripts/estimate-scroll.mjs`, soft-cap ≤12, lead-in tree, peer anchors. On polish: re-estimate history-pass seeds before dialing.
