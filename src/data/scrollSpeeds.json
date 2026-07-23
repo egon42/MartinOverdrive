@@ -46,8 +46,8 @@
   },
   "10-zombie": {
     "speed": 7,
-    "leadInSec": 34,
-    "note": "Estimate 2026-07-22. Studio 5:06; ~0.84× Tribute non-empty (144). speed≈7. leadInSec=34 covers unwritten Intro ×3 so crawl starts on written cycle 4. Role: Intro×4, Fill^1 on Another, clean Pre, dirt chorus Stomp, Solo/Outro vamp. Dial on device."
+    "leadInSec": 23,
+    "note": "Estimate 2026-07-22. Studio 5:06; ~0.90× Tribute non-empty (154). speed≈7. leadInSec=23 covers unwritten Intro ×2 of ×3. Fill^1 on last 2 of final intro + clean prepare after dirt post. Dial on device."
   },
   "11-hunger-strike": {
     "speed": 15,

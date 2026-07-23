@@ -2,7 +2,7 @@ Standard (EADGBE)
 
 [Amp: 1Red]
 
-[Intro - Em C G D ×4]
+[Intro - Em C G D ×3]
 Em
 
 C
@@ -10,6 +10,11 @@ C
 G
 
 D
+
+[Intro final - Em C, fill last 2]
+Em
+
+C
 
 [Fill ^1]
 e|7h-8---5h-7---3h-5-|
@@ -27,7 +32,6 @@ A|---------------|
 E|---------------|
 
 [Verse 1 - clean / quiet]
-^1
 Em
 Another h
 C
@@ -93,9 +97,24 @@ G
 D
 e
 
+[Post - dirt Em C G D]
+Em
+
+C
+
+G
+
+D
+
 [Stomp: 1Red]
+[Prepare - clean Em C, fill last 2]
+Em
+
+C
+
+[Fill ^1]
+
 [Verse 2 - clean / quiet]
-^1
 Em
 Another m
 C
