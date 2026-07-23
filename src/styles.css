@@ -159,8 +159,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
   2. Never tweak `--chip-pull` / margin-bottom to "raise" a custom chip — that shifts
      every lyric baseline.
   3. Name chips: `align-items: flex-end` (default) so they tuck against the lyric.
-  4. Tall / pointed custom chips (cues, power fingerings): `align-items: flex-start` on
-     the slot so extra height grows UP into the pull gap, not down into the text.
+  4. Tall / pointed custom chips (cues, power fingerings, A-string frets): `align-items:
+     flex-start` on the slot so extra height grows UP into the pull gap, not down into
+     the text.
   5. Kill the `.chord-chip-wrap` line-box strut (`line-height: 0` + flex) for those
      custom types — otherwise inherited sheet line-height makes a tall wrap and
      `vertical-align: middle` parks the chip halfway down the slot (looks "too low"
@@ -169,9 +170,12 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 */
 .sheet-line--above .chord-chip--cue,.sheet-line--above-chords .chord-chip--cue{padding:.22em 0 0;border-radius:0;width:1.5em;min-width:1.5em;height:1.15em;font-size:.7em;line-height:1}
 .sheet-above-col:has(.chord-chip--cue) .sheet-above-chord,
-.sheet-above-col:has(.chord-chip--power) .sheet-above-chord{align-items:flex-start}
-.sheet-above-chord .chord-chip-wrap:has(.chord-chip--power){display:flex;align-items:flex-start;line-height:0}
-.sheet-above-chord .chord-chip-wrap:has(.chord-chip--power) .chord-chip--power{line-height:1.2}
+.sheet-above-col:has(.chord-chip--power) .sheet-above-chord,
+.sheet-above-col:has(.chord-chip--fret) .sheet-above-chord{align-items:flex-start}
+.sheet-above-chord .chord-chip-wrap:has(.chord-chip--power),
+.sheet-above-chord .chord-chip-wrap:has(.chord-chip--fret){display:flex;align-items:flex-start;line-height:0}
+.sheet-above-chord .chord-chip-wrap:has(.chord-chip--power) .chord-chip--power,
+.sheet-above-chord .chord-chip-wrap:has(.chord-chip--fret) .chord-chip--fret{line-height:1.2}
 .sheet-line--above-chords{margin:0 0 5px}
 /* Zebra tint on Lyrics-sheet lines, honoring the "Alternate section tone" toggle
    (same var(--ink) 5.5% wash as the cheat-card rows). Text is inset with padding and

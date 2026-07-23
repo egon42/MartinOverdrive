@@ -124,7 +124,7 @@ every new chip kind:
    `height: auto` to fit a taller chip (that pushes the lyric row down).
 2. **Do not touch `--chip-pull`** to raise a chip — it shifts every lyric baseline.
 3. **Name chips** stay `align-items: flex-end` (tucked to the lyric).
-4. **Custom / tall chips** (cues, power, …): set
+4. **Custom / tall chips** (cues, power, A-string frets, …): set
    `.sheet-above-col:has(.chord-chip--YOURTYPE) .sheet-above-chord { align-items: flex-start }`
    so overflow grows up into the pull gap.
 5. **Kill the wrap strut** if the chip is inside `.chord-chip-wrap` (most are; cues are
