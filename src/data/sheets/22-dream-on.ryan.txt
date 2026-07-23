@@ -1,9 +1,11 @@
 Standard (EADGBE)
 Capo 1 (shapes below are Em; with the capo it sounds F minor, the record/band key)
 
+(High-low arpeggio through the song — not full chord strums)
+
 [Amp: 7Red]
 
-[Intro - clean arpeggios ×2]
+[Intro - high-low arpeggio ×2]
   
 Em
    
@@ -21,7 +23,7 @@ B7
 Em
 
  
-[Verse 1]
+[Verse 1 - high-low]
 Em
   Every t
 Em7
@@ -118,7 +120,7 @@ B7
 Em
 
  
-[Verse 2]
+[Verse 2 - high-low]
 Em
   Half my l
 Em7
@@ -179,9 +181,32 @@ Cmaj7
 good Lord will take you away
 
  
-[Build - Am6 add9 ×8]
-Am6
+[Build - Am6/add9 pulse ×8]
+Amadd9
 
+[Chorus]
+Em
+Sing with me, s
+D
+ing for the years
+
+C
+Sing for laughter 'n' si
+D
+ng for the tears
+
+Em
+Sing with me if it's ju
+D
+st for today
+
+ 
+Em/C#
+ Maybe tomorrow the
+Cmaj7
+good Lord will take you away
+
+ 
 [Amp: 8Red]
 [Climax - dig in; save lead for here]
 Am
@@ -256,5 +281,5 @@ Cmaj7
 good Lord will take you away
 
  
-[Outro - Am6 fade]
-Am6
+[Outro - Amadd9 fade]
+Amadd9
