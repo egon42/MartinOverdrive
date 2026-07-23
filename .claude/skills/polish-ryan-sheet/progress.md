@@ -51,7 +51,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 **Locked (2026-07-22):** 01-welcome-home, 02-all-the-small-things, 03-a-little-less-conversation, 07-tribute, 08-while-my-guitar-gently-weeps, 09-pride-and-joy, 10-zombie, 11-hunger-strike, 12-s-o-b, 13-save-a-horse-ride-a-cowboy.
 **Locked (2026-07-23):** 15-dani-california, 16-teenage-dirtbag, 17-the-pretender, 18-here-it-goes-again, 20-when-i-come-around, 21-the-middle, 23-lola-montez.
 
-**Drafted (not locked):** 04–06, 14, 19, 22–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
+**Drafted (not locked):** 04–06, 14, 19, 22, 24–31. Bulk + history pass applied; no invented `^N` fill words. Scroll seeds are Estimates until device lock.
 
 **Next review queue (handoff):** 24… (04/05/06/19 good-enough; 14/22 polish dial pending; 22 high-low tab glance after research). Still thin: Ain't Goin' Down.
 
