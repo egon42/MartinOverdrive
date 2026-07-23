@@ -2,7 +2,12 @@ Standard (EADGBE)
 
 [Amp: 3Amber]
 
-[Verse - pocket stabs; don't overplay (key still shaky)]
+[Intro - E vamp; pocket stabs]
+E
+
+E
+
+[Verse]
 Well some
 E
 times I go out, by myself
@@ -19,6 +24,7 @@ And in my head I make a
 F#m
 picture
 
+[Pre-Chorus]
 Cos s
 A
 ince I've come on home,
@@ -44,6 +50,7 @@ Stop making a fool out of
 B
  me...
 
+[Chorus]
 Why won't you come on over Val
 E
 erie?
@@ -51,8 +58,7 @@ erie?
 F#m
 Valerie?
 
-2nd Verse
-
+[Verse 2 - back-to-back]
 Did you h
 E
 ave to go to jail,
@@ -85,6 +91,7 @@ You were dodging all the
 F#m
  time, are you still dizzy?
 
+[Pre-Chorus]
 Cos s
 A
 ince I've come on home,
@@ -110,6 +117,7 @@ Stop making a fool out of
 B
  me...
 
+[Chorus]
 Why won't you come on over Val
 E
 erie?
@@ -123,20 +131,24 @@ Valerie?
 F#m
 Valerie?
 
-Vocal Section:
+[Verse - quiet breakdown; ghost]
+Well some
+~E
+times I go out by myself
 
-Well sometimes I go out by myself
+And I look across the wa
+~F#m
+ter
 
-And I look across the water
+And I thi
+~E
+nk of all the things, what you're doing
 
-And I think of all the things, what you're doing
+And in my head I make a 
+~F#m
+picture
 
-And in my head I make a picture
-
- (you can play the verse chords for this in a simple single strum pattern)
-
-Hope this is all very easy for you, it is good for jamming and playing along.
-
+[Pre-Chorus]
 Cos s
 A
 ince I've come on home,
@@ -162,6 +174,7 @@ Stop making a fool out of
 B
  me...
 
+[Chorus]
 Why won't you come on over Val
 E
 erie?
@@ -175,5 +188,6 @@ Valerie?
 F#m
 Valerie?
 
+[Outro - E tag]
 E
 Yeah Valerie
