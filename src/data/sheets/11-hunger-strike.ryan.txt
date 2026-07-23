@@ -208,7 +208,7 @@ Hungry...
 Cadd9
 Yeah)
 
-[Bridge - D5 E5 Emadd9; Standard x577 / 022]
+[Bridge - D5 E5 Emadd9; Standard x00x x22x]
 D5
 -
 E5
@@ -250,7 +250,7 @@ Hungry...
 Cadd9
 Yeah)
 
-[Bridge - D5 E5 Emadd9; Standard x577 / 022]
+[Bridge - D5 E5 Emadd9; Standard x00x x22x]
 D5
 -
 E5
@@ -317,7 +317,7 @@ Hungry...
 Cadd9
 Yeah)
 
-[Bridge - cold end]
+[Bridge - cold end; Standard x00x x22x]
 D5
  
 E5
