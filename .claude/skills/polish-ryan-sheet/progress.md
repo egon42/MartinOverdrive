@@ -43,7 +43,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [ ] 27-fat-bottomed-girls — **drafted (good enough 2026-07-23; layout+measure 2026-07-24):** vocal-only open; Intro sit-out until bass riff into Hey; Break D×10 as 5+5; interlude 4-across; verse/chorus pickups under chords; scroll **10** + leadIn **20**; measure **9** + leadIn **20**. Lock later if crawl feels final.
 - [ ] 28-mama-i-m-coming-home — **drafted (form research 2026-07-24; parked for guitar):** studio form + Mama under A+E; Pre `C#m A E` / `C#m A B`; Face ×2. scroll **6** + leadIn **17**; measure Estimate **6** + **17**. Re-dial on guitar pass.
 - [ ] 29-ain-t-goin-down-til-the-sun-comes-up — **drafted (good enough 2026-07-23; layout 2026-07-24):** long G holds; couplets under one G; Intro 4+4; solos `G C G D G`; scroll **7** + leadIn **13.7**; measure Estimate **6** + **13.7**. Dial when ready.
-- [ ] 30-pink-pony-club — **drafted (good enough 2026-07-23; layout 2026-07-24):** F# G#m D#m B 4-across; pre mid-word kept; end solo ×4 rows; 3Red/4Red; scroll **9** + leadIn **10.7**; measure Estimate **8** + **10.7**. Layout-check then dial.
+- [ ] 30-pink-pony-club — **drafted (good enough 2026-07-23; layout 2026-07-24):** power `*5` (F#5 G#5 D#5 B5; bridge B5 C#5 D#5 G#5) matching cheat shapes; 4-across; pre mid-word kept; end solo ×4; 3Red/4Red; scroll **9** + leadIn **10.7**; measure Estimate **8** + **10.7**. Layout-check then dial.
 - [ ] 31-banditos — **drafted (good enough 2026-07-23):** form confirmed; headers; Solo×2 / Outro×2; no fills yet; scroll **7** + leadIn **13.7** (studio 4:17). Lock later if crawl dials clean.
 
 ## Last done

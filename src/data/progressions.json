@@ -1278,37 +1278,37 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "C#",
+        "chords": "C#5",
         "shapes": "-46---"
       },
       {
         "section": "Verse",
-        "chords": "F# G#m D#m B",
+        "chords": "F#5 G#5 D#5 B5",
         "shapes": "244--- 466--- -11--- -24---"
       },
       {
         "section": "Refrain",
-        "chords": "F# G#m D#m B",
+        "chords": "F#5 G#5 D#5 B5",
         "shapes": "244--- 466--- -11--- -24---"
       },
       {
         "section": "Pre-Chorus",
-        "chords": "F# G#m D#m B",
+        "chords": "F#5 G#5 D#5 B5",
         "shapes": "244--- 466--- -11--- -24---"
       },
       {
         "section": "Chorus",
-        "chords": "F# G#m D#m B",
+        "chords": "F#5 G#5 D#5 B5",
         "shapes": "244--- 466--- -11--- -24---"
       },
       {
         "section": "Bridge",
-        "chords": "B C# D#m G#m",
+        "chords": "B5 C#5 D#5 G#5",
         "shapes": "-24--- -46--- -11--- 466---"
       },
       {
         "section": "Solo",
-        "chords": "F# G#m D#m B",
+        "chords": "F#5 G#5 D#5 B5",
         "shapes": "244--- 466--- -11--- -24---"
       }
     ],
