@@ -24,8 +24,8 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 08-while-my-guitar-gently-weeps — **done (2026-07-22); Wave B measure 2026-07-24:** chords only (improv fills OK); ring verses; Solo+Outro vamp 4-across; scroll **6** + leadIn **17.6**; measure **6** + **17.6**.
 - [x] 09-pride-and-joy — **done (2026-07-22); Wave B measure 2026-07-24:** shuffle rhythm only; V3/V4 one-strum until dig-in; 12-bar Intro/Solo 4+4+4; scroll **8** + leadIn **24.6**; measure **6** + **24.6** (good enough).
 - [x] 10-zombie — **done (2026-07-22); Wave B measure 2026-07-24:** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = dirt EmCGD then Em ring+fill; scroll **11** + leadIn **8.7**; measure **7** + **8.7**.
-- [x] 11-hunger-strike — **done (2026-07-22); Wave B measure layout 2026-07-24:** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; Bridge grips x00x x22x; scroll **10** + leadIn **12**; measure Estimate **6** + **12** (orphans cleared — dial on device).
-- [x] 12-s-o-b — **done (2026-07-22):** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**.
+- [x] 11-hunger-strike — **done (2026-07-22); Wave B measure 2026-07-24:** Intro / Bridge / Interlude / cold end; sit under; FS dirt lift; Bridge D5/E5 x00x x22x; scroll **10** + leadIn **12**; measure **6** + **12** (good enough). **Amp revisit at guitar.**
+- [x] 12-s-o-b — **done (2026-07-22); Wave B measure layout 2026-07-24:** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**; measure Estimate **7** + **18** (orphans cleared — dial on device).
 - [x] 13-save-a-horse-ride-a-cowboy — **done (2026-07-22):** chucks; chorus land stops + E G A hook; solo E A E A×2 (intro layout); palm-muted bridge; N.C. outro; scroll **10** + leadIn **18**.
 - [ ] 14-sweet-home-alabama — **drafted (good enough 2026-07-23; layout 2026-07-24):** Intro sit×2 join×2 (2nd-guitar fill TBD); `D C G` cycle rows; F C tag only on first chorus (into Solo×2), not chorus→Solo×8; verse tags under last G; scroll **10** + leadIn **9.6**; measure **9** + leadIn **9.6**. Lock later if crawl feels final.
 - [x] 15-dani-california — **done (2026-07-23):** Intro+Interlude chords ×2 (no riff); Bridge/V3/Chorus headers; Solo/Outro ×8; lyrics cleaned; scroll **9** + lead-in **6**.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted good-enough (tonight full-set dial):** 04–06, 14, 19, 22, 24, 26–31. Scroll seeds are Estimates until you lock on device.
 
-**Next review queue (handoff):** **Wave B** — **11 Hunger Strike** layout shipped; awaiting measure dial (seed 6/12). Then 12–13, 15–18, 20–21, 23, 25. Done: 01 (6/56), 02 (6/12), 03 (11/10), 07 (10/11.6), 08 (6/17.6), 09 (6/24.6), 10 (7/8.7). Parked: Dream On / Mama / Voodoo / Purple Rain V3.
+**Next review queue (handoff):** **Wave B** — **12 S.O.B.** layout shipped; awaiting measure dial (seed 7/18). Then 13, 15–18, 20–21, 23, 25. Done: 01 (6/56), 02 (6/12), 03 (11/10), 07 (10/11.6), 08 (6/17.6), 09 (6/24.6), 10 (7/8.7), 11 (6/12; amp revisit at guitar). Parked: Dream On / Mama / Voodoo / Purple Rain V3.
 
 ## Skill audit (2026-07-23) — second-half prep
 

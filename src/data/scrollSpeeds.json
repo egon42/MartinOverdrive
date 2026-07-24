@@ -72,15 +72,15 @@
   "11-hunger-strike": {
     "speed": 10,
     "leadInSec": 12,
-    "note": "Lyric Locked 2026-07-22. Studio 4:03; speed 10, leadIn 12. Wave B 2026-07-24: hang pickups; pack G A7sus4 G Cadd9 / bridge D5 E5. Measure densified → measureSpeed 6 + measureLeadInSec 12. Landmark: But I'm going hungry. Dial on device.",
+    "note": "Lyric Locked 2026-07-22. Studio 4:03; speed 10, leadIn 12. Wave B 2026-07-24: hang pickups; pack vamps; Bridge D5/E5 curated x00x x22x. Measure dialed measureSpeed 6 + measureLeadInSec 12 (good enough). Amp revisit at guitar.",
     "measureSpeed": 6,
     "measureLeadInSec": 12
   },
   "12-s-o-b": {
     "speed": 10,
     "leadInSec": 18,
-    "note": "Locked 2026-07-22. Studio 4:07; speed 10, leadInSec 18. Chorus muted stabs only; intro/verses/outro ~chips; V3 ×4. Measure Estimate 2026-07-24: 50 measure / 50 lyric rows; studio 247s (note); raw≈7 densify→9; leadIn kept 18. Dial on device.",
-    "measureSpeed": 9,
+    "note": "Lyric Locked 2026-07-22. speed 10 leadIn 18. Wave B 2026-07-24: hang verse orphans; chorus 4-across muted stabs. Measure Estimate measureSpeed 7 + measureLeadInSec 18. Landmark: Son of a bitch. Dial on device.",
+    "measureSpeed": 7,
     "measureLeadInSec": 18
   },
   "13-save-a-horse-ride-a-cowboy": {
