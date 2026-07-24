@@ -9,9 +9,9 @@
   "02-all-the-small-things": {
     "speed": 8,
     "leadInSec": 12,
-    "measureSpeed": 7,
+    "measureSpeed": 6,
     "measureLeadInSec": 12,
-    "note": "Lyric Estimate 2026-07-24 after verse 4-chord rows (speed 8 / leadIn 12). Measure Estimate 2026-07-24: 42 measure / 42 lyric rows; studio 173s (invert-lyric); raw≈8 densify→7; leadIn kept 12. Dial on device."
+    "note": "Lyric Estimate 2026-07-24 after verse 4-chord rows (speed 8 / leadIn 12). Wave B 2026-07-24: hang pre/bridge/outro orphans; intro C5 F5 G5 G5 ×2; instrumental C5 G5 F5 ×2; prepare 4-across. Measure rows densified → measureSpeed 6 + measureLeadInSec 12 (prefer slow). Landmark: Late night come home. Dial on device."
   },
   "03-a-little-less-conversation": {
     "speed": 14,

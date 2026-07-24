@@ -3,21 +3,9 @@ Standard (EADGBE)
 [Amp: 3Green]
 
 [Intro - very fast ×2]
-C5
+C5 F5 G5 G5
 
-F5
-
-G5
-
-G5
-
-C5
-
-F5
-
-G5
-
-G5
+C5 F5 G5 G5
 
 [Verse]
 C5
@@ -60,7 +48,6 @@ ng
 C5
 Say it ain't so, i will not g
 o
-
 Turn the lights 
 off, carry me hom
 e
@@ -75,11 +62,9 @@ F5
 nana na na
 
 [Instrumental ×2]
-C5
+C5 G5 F5
 
-G5
-
-F5
+C5 G5 F5
 
 [Verse]
 C5
@@ -104,7 +89,6 @@ cares
 C5
 Say it ain't so, i will not 
 go
-
 Turn the lights off, carry me 
 home
 
@@ -118,13 +102,7 @@ F5
 nana na na
 
 [Interlude - prepare]
-~C5
-
-~F5
-
-~G5
-
-~G5
+~C5 ~F5 ~G5 ~G5
 
 [Interlude - muted octaves (C C C B) ×3]
 e-|----------------|----------------|
@@ -146,7 +124,6 @@ C5
 Say it ain't so, i will not g
 G5
 o
-
 Turn the lights of
 F5
 f, carry me home
@@ -157,7 +134,6 @@ C5
 Keep your head still, I'll be your 
 G5
 thrill
-
 The night will go 
 F5
 on, my little windmill
@@ -166,7 +142,6 @@ on, my little windmill
 C5
 Say it ain't so, i will not go 
 G5
-
 Turn the lights off
 F5
 , carry me home
@@ -177,13 +152,11 @@ C5
 Keep your head still, i'll be your t
 G5
 hrill
-
 The night will go 
 F5
 on, the night w
 F5
 ill go on
-
 A lit
 F5
 tle bit lon
