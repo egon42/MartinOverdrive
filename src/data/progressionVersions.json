@@ -2244,6 +2244,46 @@
   ],
   "11-hunger-strike": [
     {
+      "label": "pre Standard x00x x22x bridge shapes",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "G A7sus4 G"
+        },
+        {
+          "section": "Verse 1",
+          "chords": "G A7sus4",
+          "hint": "Solo-verse blocks up top: no Cadd9 yet"
+        },
+        {
+          "section": "Verse 2 / Chorus",
+          "chords": "G Cadd9",
+          "hint": "Duet and refrain; turnaround runs G Cadd9 G/B Cadd9"
+        },
+        {
+          "section": "Interlude",
+          "chords": "G A7sus4 G/B Cadd9"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(D5 E5) ×2 Emadd9",
+          "hint": "Record riffs this low in Drop D; in Standard grab D5 x577xx and E5 022xxx"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse 1 ×8",
+        "Verse 2 / Chorus ×6",
+        "Verse 2 / Chorus ×4",
+        "Bridge ×4",
+        "Interlude ×2",
+        "Verse 2 / Chorus ×2",
+        "Bridge ×4",
+        "Verse 2 / Chorus ×4",
+        "Bridge"
+      ]
+    },
+    {
       "label": "Pre positional-UG-alignment (2026-07-20)",
       "sections": [
         {

@@ -475,7 +475,8 @@
       {
         "section": "Bridge",
         "chords": "(D5 E5) ×2 Emadd9",
-        "hint": "Record riffs this low in Drop D; in Standard grab D5 x577xx and E5 022xxx"
+        "shapes": "-00--- -22--- 022002",
+        "hint": "Standard grips D5 x00x and E5 x22x (Drop D plays these lower)"
       }
     ],
     "form": [
