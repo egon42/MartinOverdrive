@@ -44,7 +44,7 @@
   "06-don-t-stop-believin": {
     "speed": 8,
     "leadInSec": 18,
-    "note": "Good enough 2026-07-22. Studio 4:11; speed=8 leadIn=18. Expanded intro/interlude/solo cycles (piano break before V3). Lock when crawl feels final. Measure Estimate 2026-07-24: 76 measure / 74 lyric rows; studio 251s (note); raw≈12 densify→7; leadIn kept 18. Dial on device.",
+    "note": "Good enough 2026-07-22. Studio 4:11; speed=8 leadIn=18. Pre end: B under night then quick E B E A; post-pre interlude ×1; solo ×1; V3 E on Paying. Measure dial 2026-07-24: measureSpeed 7 + measureLeadInSec 18.",
     "measureSpeed": 7,
     "measureLeadInSec": 18
   },

@@ -112,36 +112,17 @@ A
 Hiding, somewhere in the 
 B
 night
-E
-B
-E
-A
 
-[Interlude - piano break E B C#m A ×4]
+[Quick - E B E A]
 E
 
 B
 
-C#m
-
-A
-
 E
 
-B
-
-C#m
-
 A
 
-E
-
-B
-
-C#m
-
-A
-
+[Interlude - piano break E B C#m A ×1]
 E
 
 B
@@ -160,9 +141,8 @@ l, everybody
 A
 wants a thrill
 
-Paying 
 E
-anything to 
+Paying anything to 
 B
 roll the dice, just 
 G#m
@@ -208,28 +188,17 @@ A
 Hiding, somewhere in the 
 B
 night
-E
-B
-E
-A
 
-[Solo ×2 - chorus changes under lead]
+[Quick - E B E A]
 E
 
 B
 
-C#m
-
-A
-
 E
 
-B
-
-G#m
-
 A
 
+[Solo ×1 - chorus changes under lead]
 E
 
 B
