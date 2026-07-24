@@ -35,6 +35,8 @@ const SOFT_CAP_STUDIO_SEC = 180
 const SOFT_CAP_SPEED = 12
 /** Same as MEASURE_COLS_PER_ROW in src/components.tsx. */
 const MEASURE_COLS = 4
+/** Same as MEASURE_COLS_CHORD_ONLY_MAX in src/components.tsx. */
+const MEASURE_COLS_CHORD_ONLY_MAX = 8
 
 // Keep in sync with src/chords.ts chord / fret / cue token rules (ryan frets opt-in).
 const CHORD_RE = /^[A-G][#b]?(?:maj|min|dim|aug|sus|add|m|M|\+|°)?\d*(?:(?:maj|min|sus|add|b|#)\d+)*(?:\/[A-G][#b]?)?$/
@@ -80,16 +82,21 @@ function isMeasureChordToken(trimmed) {
 }
 
 /**
- * Rendered measure-map rows: each blank-separated group becomes
- * max(1, ceil(chordOrFretOrCueCount / 4)), matching chunkMeasureSlots.
+ * Rendered measure-map rows: lyric groups chunk every 4 chords; lyricless runs of
+ * ≤8 chips stay on one row (matches measureChunkSize in src/components.tsx).
  */
 export function countMeasureRows(text) {
   let total = 0
   let chordCount = 0
   let groupHasContent = false
+  let groupHasLyric = false
 
   const flush = () => {
     if (!groupHasContent) return
+    if (!groupHasLyric && chordCount > 0 && chordCount <= MEASURE_COLS_CHORD_ONLY_MAX) {
+      total += 1
+      return
+    }
     total += Math.max(1, Math.ceil(chordCount / MEASURE_COLS))
   }
 
@@ -99,6 +106,7 @@ export function countMeasureRows(text) {
       flush()
       chordCount = 0
       groupHasContent = false
+      groupHasLyric = false
       continue
     }
     groupHasContent = true
@@ -106,7 +114,10 @@ export function countMeasureRows(text) {
     const tokens = trimmed.split(/\s+/)
     if (tokens.every((token) => token === '|' || isMeasureChordToken(token))) {
       chordCount += tokens.filter((token) => token !== '|').length
-    }  }
+    } else {
+      groupHasLyric = true
+    }
+  }
   flush()
   return total
 }

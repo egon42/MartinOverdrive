@@ -442,12 +442,21 @@ function LyricLineAbove({ parts, songId, forcePowerFingering = false }: { parts:
 
 /** Play-along map: equal-width columns per chord; lyric fragment sits under its chip. */
 const MEASURE_COLS_PER_ROW = 4
+/** Lyricless runs (Banditos A-E walk, FBG D×5, AGD solo) stay on one row up to this many chips. */
+const MEASURE_COLS_CHORD_ONLY_MAX = 8
 
 function chunkMeasureSlots<T>(items: T[], size: number): T[][] {
   if (items.length <= size) return [items]
   const rows: T[][] = []
   for (let i = 0; i < items.length; i += size) rows.push(items.slice(i, i + size))
   return rows
+}
+
+function measureChunkSize(slots: { text: string }[]): number {
+  const chordsOnly = slots.every((slot) => !slot.text.replace(/\s+/g, ' ').trim())
+  if (!chordsOnly) return MEASURE_COLS_PER_ROW
+  if (slots.length <= MEASURE_COLS_CHORD_ONLY_MAX) return slots.length
+  return MEASURE_COLS_PER_ROW
 }
 
 /** Split chord parts on `|` into measure groups (Dream On 2-bar fret lines). */
@@ -546,7 +555,7 @@ function LyricLineMeasures({ parts, songId, forcePowerFingering = false }: { par
       {slots.map((slot, i) => <span key={i}>{slot.text}</span>)}
     </p>
   }
-  const rows = chunkMeasureSlots(slots, MEASURE_COLS_PER_ROW)
+  const rows = chunkMeasureSlots(slots, measureChunkSize(slots))
   return <>
     {rows.map((row, ri) => {
       const lyrics = row.map((slot) => slot.text.replace(/\s+/g, ' ').trim())
