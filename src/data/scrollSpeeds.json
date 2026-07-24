@@ -79,15 +79,15 @@
   "12-s-o-b": {
     "speed": 10,
     "leadInSec": 18,
-    "note": "Lyric Locked 2026-07-22. speed 10 leadIn 18. Wave B 2026-07-24: hang verse orphans; chorus 4-across muted stabs. Measure densified → measureSpeed 6 + measureLeadInSec 18. Landmark: Son of a bitch. Dial on device.",
+    "note": "Lyric Locked 2026-07-22. speed 10 leadIn 18. Wave B 2026-07-24: hang verse orphans; chorus 4-across muted stabs. Measure dialed measureSpeed 6 + measureLeadInSec 18.",
     "measureSpeed": 6,
     "measureLeadInSec": 18
   },
   "13-save-a-horse-ride-a-cowboy": {
     "speed": 10,
     "leadInSec": 18,
-    "note": "Locked 2026-07-22. Studio 3:22; speed 10, leadInSec 18. Chucks; land stops; solo E A E A×2 intro layout; palm-muted bridge; N.C. outro. Measure Estimate 2026-07-24: 59 measure / 59 lyric rows; studio 202s (note); raw≈11 densify→9; leadIn kept 18. Dial on device.",
-    "measureSpeed": 9,
+    "note": "Lyric Locked 2026-07-22. speed 10 leadIn 18. Wave B 2026-07-24: hang pickups; Save a horse E G A hooks; solos E A E A. Measure densified → measureSpeed 6 + measureLeadInSec 18. Landmark: Save a horse. Dial on device.",
+    "measureSpeed": 6,
     "measureLeadInSec": 18
   },
   "14-sweet-home-alabama": {
