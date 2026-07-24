@@ -239,3 +239,28 @@ export function compactSheet(sheet: ParsedSheet, cueLength = 30): CompactLine[] 
     return { kind: 'lyric', chords, cue }
   })
 }
+
+/** True for `[Fill ^N]` / `[Fills]` style section headers (Ryan fill blocks). */
+export function isFillSectionLabel(raw: string): boolean {
+  return /^fills?\b/i.test(raw.trim())
+}
+
+/**
+ * Lanes view: same Ryan source, but drop fill cue chips (`^N`), Fill section headers,
+ * and ASCII-tab fill glances so the measure map stays chords + lyrics only.
+ */
+export function stripSheetFills(lines: SheetLine[]): SheetLine[] {
+  const out: SheetLine[] = []
+  for (const line of lines) {
+    if (line.kind === 'tab') continue
+    if (line.kind === 'section') {
+      if (isFillSectionLabel(line.raw)) continue
+      out.push(line)
+      continue
+    }
+    const parts = line.parts.filter((part) => !(part.chord && isCueToken(part.chord)))
+    if (!parts.some((part) => part.chord || part.text?.trim())) continue
+    out.push({ ...line, parts })
+  }
+  return out
+}

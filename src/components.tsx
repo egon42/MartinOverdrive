@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
-import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, isCueToken, isFretToken, measureSlots, parseChordSheet, type SheetPart } from './chords'
+import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, isCueToken, isFretToken, measureSlots, parseChordSheet, stripSheetFills, type SheetPart } from './chords'
 import { basicRowsFor, cheatRowsFor, curatedShapeForChord, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
@@ -585,7 +585,7 @@ function LyricLineMeasures({ parts, songId, forcePowerFingering = false }: { par
   </>
 }
 
-export function ChordSheetView({ text, songId, compact = false, frets = false, powerFingerings = false, layout = 'lyric' }: {
+export function ChordSheetView({ text, songId, compact = false, frets = false, powerFingerings = false, layout = 'lyric', omitFills = false }: {
   text: string
   songId?: string
   compact?: boolean
@@ -593,8 +593,14 @@ export function ChordSheetView({ text, songId, compact = false, frets = false, p
   powerFingerings?: boolean
   /** `measure` = equal columns (play-along); default keeps UG lyric-led layout. */
   layout?: 'lyric' | 'measure'
+  /** Lanes: drop `^N` cues, Fill headers, and ASCII-tab fill glances. */
+  omitFills?: boolean
 }) {
-  const sheet = useMemo(() => parseChordSheet(text, { frets }), [text, frets])
+  const sheet = useMemo(() => {
+    const parsed = parseChordSheet(text, { frets })
+    if (!omitFills) return parsed
+    return { ...parsed, lines: stripSheetFills(parsed.lines) }
+  }, [text, frets, omitFills])
   const { settings } = useSettings()
   const above = settings.lyricChordPlacement === 'above'
   const showAmp = settings.showAmpChips
@@ -826,12 +832,13 @@ function MoreFills({ tab, onToggle }: { tab: string, onToggle: () => void }) {
 // Practice-page sheet ids. 'cheat' and 'roadmap' are the two progression cards (labels
 // Cheat / Chords, matching show mode — 'roadmap' because the id 'chords' already means
 // the lyric sheet here, part of the 2026-07 label/internals split; see CLAUDE.md).
-// 'ryan' is the flag-gated personal sheet (only for songs with a .ryan.txt file).
-export type SheetKind = 'cheat' | 'roadmap' | 'chords' | 'tabs' | 'ryan'
+// 'lanes' is the production measure map (Ryan source, fills stripped). 'ryan' is the
+// flag-gated personal sheet (lyric ↔ measure retap) for songs with a .ryan.txt file.
+export type SheetKind = 'cheat' | 'roadmap' | 'chords' | 'tabs' | 'ryan' | 'lanes'
 
-// Sheet panel on the song (practice) page — the same views as show mode: Cheat
-// (building-blocks card), Chords (roadmap card), Lyrics (chord-over-lyric sheet), Tabs,
-// plus the flag-gated Ryan sheet in front when the song has one.
+// Sheet panel on the song (practice) page — the same views as show mode: Lanes
+// (measure map), Cheat (building-blocks card), Chords (roadmap card), Lyrics
+// (chord-over-lyric sheet), Tabs, plus the flag-gated Ryan sheet when enabled.
 // `view`/`onViewChange` keep the selection so the toggle can switch it.
 export function SheetPanel({ song, view, onViewChange }: { song: Song, view: SheetKind | null, onViewChange: (kind: SheetKind) => void }) {
   const { get } = usePractice(); const entry = get(song.id)
@@ -840,6 +847,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   // The cards render from a curated progression, or derive one from the chords sheet.
   const hasCard = !!progressionFor(song.id) || !!sheets.chords
   const available: SheetKind[] = [
+    ...(sheets.ryan ? (['lanes'] as SheetKind[]) : []),
     ...(sheets.ryan && settings.ryanTab ? (['ryan'] as SheetKind[]) : []),
     ...(hasCard ? (['cheat', 'roadmap'] as SheetKind[]) : []),
     ...(sheets.chords ? (['chords'] as SheetKind[]) : []),
@@ -854,12 +862,13 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   const cardShapes = isFingeringOnly(song.id, 'cheat')
   const chordsShapes = isFingeringOnly(song.id, 'chords')
   const ryanMeasure = isRyanMeasure(song.id)
-  // Autoscroll for the two text sheets, sharing show mode's per-song synced speed
+  // Autoscroll for the text sheets, sharing show mode's per-song synced speed
   // (PracticeEntry.scrollSpeed). The sheet scrolls inside a capped-height container
   // (.practice-sheet) so the crawl has a scrollport. Hooks stay above the early return.
   // chordsShapes / ryanMeasure are in the reset key: retaps re-lay-out height.
   const sheetRef = useRef<HTMLDivElement>(null)
-  const scroll = useAutoScrollControls(sheetRef, song.id, [song.id, active, chordsShapes, ryanMeasure], 1, active === 'ryan' && ryanMeasure ? 'measure' : 'lyric')
+  const scrollLayout = active === 'lanes' || (active === 'ryan' && ryanMeasure) ? 'measure' : 'lyric'
+  const scroll = useAutoScrollControls(sheetRef, song.id, [song.id, active, chordsShapes, ryanMeasure], 1, scrollLayout)
   if (!available.length) return <section className="panel chord-panel" id="song-sheet"><h2>Song sheets</h2><p className="launcher-hint">Nothing built in for this song yet.</p></section>
   const selectCard = (kind: 'cheat' | 'roadmap') => {
     if (active === kind) {
@@ -882,6 +891,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   return <section className="panel chord-panel" id="song-sheet">
     <div className="section-heading"><div><h2>Song sheets</h2></div>
       {available.length > 1 && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
+        {available.includes('lanes') && <button type="button" role="tab" aria-selected={active === 'lanes'} className={active === 'lanes' ? 'active' : ''} onClick={() => onViewChange('lanes')}>Lanes</button>}
         {available.includes('ryan') && <button type="button" role="tab" aria-selected={active === 'ryan'} aria-pressed={active === 'ryan' ? ryanMeasure : undefined}
           className={shapesTabClass(active === 'ryan', ryanMeasure, true)}
           title={active === 'ryan' ? (ryanMeasure ? 'Measure map on. Tap again for lyric layout' : 'Tap again for measure map') : undefined}
@@ -895,12 +905,13 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
         {available.includes('tabs') && <button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button>}
       </div>}
     </div>
-    {(active === 'chords' || active === 'tabs' || active === 'ryan') && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
+    {(active === 'chords' || active === 'tabs' || active === 'ryan' || active === 'lanes') && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}
     {active === 'cheat' || active === 'roadmap'
       ? <CheatCard song={song} variant={active === 'cheat' ? 'cheat' : 'chords'} withMore={false}/>
       : <div className="practice-sheet" ref={sheetRef}>
           <div className="autoscroll-inner">
-            {active === 'ryan' ? <ChordSheetView text={sheets.ryan!} songId={song.id} frets powerFingerings layout={ryanMeasure ? 'measure' : 'lyric'}/>
+            {active === 'lanes' ? <ChordSheetView text={sheets.ryan!} songId={song.id} frets powerFingerings layout="measure" omitFills/>
+              : active === 'ryan' ? <ChordSheetView text={sheets.ryan!} songId={song.id} frets powerFingerings layout={ryanMeasure ? 'measure' : 'lyric'}/>
               : active === 'chords' ? <ChordSheetView text={sheets.chords!} songId={song.id}/>
               : <TabText text={sheets.tabs!}/>}
           </div>
