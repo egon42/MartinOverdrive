@@ -8,23 +8,21 @@ E
 
 E
 Times have changed and times are strange
-
 E
 Here I come, but I aint the same
 A
 
-Mama, Im coming home
 E
+Mama, Im coming home
 
 E
 Times gone by seem to be
-
 E
 You could have been a better friend to me  
 A
 
-Mama, Im coming home   
 E
+Mama, Im coming home   
 
 [Pre-Chorus]
 C#m
@@ -46,7 +44,6 @@ By the fire in your eyes
 [Verse 2]
 E
 You made me cry, you told me lies   
-
 E
 But I cant stand to say goodbye   
 A
@@ -56,7 +53,6 @@ Mama, Im coming home
 
 E
 I could be right, I could be wrong
-
 E
 Hurts so bad, its been so long   
 A
@@ -66,10 +62,6 @@ Mama, Im coming home
 
 [Amp: 8Red]
 [Chorus - lift]
-(Distortion)
-
-(Power Chords)
-
 C#m
 Selfish love yeah 
 A
@@ -92,31 +84,12 @@ I just got to have it all
 [Bridge - acoustic transition (Little Acoustic Thingy), instrumental x3]
 
 [Amp: 8Red]
-[Solo]
-(Lead-in walk-up)
+[Solo - lead-in walk-up]
+B A E A
 
- 
-B
- 
-A
- 
-E
- 
-A
- 
-E
- 
-A
- 
-B
- 
-C#
- 
-B
- 
-A
- 
-B
+E A B C#
+
+B A B
 
 [Pre-Chorus - repeat]
 C#m
@@ -146,21 +119,14 @@ A
 Every day we've been apart
 E
 
-A
-B
-E
-A
+A B E A
 And I don't care about the sunshine, yeah
 
 [Outro - Asus2 Bsus4 C D E vamp, x3 more (same C D E); ritardando to a stop per tab (68 to 60 to 30 bpm), no fade]
-Asus2
-Bsus4
-C
-D
+Asus2 Bsus4 C D
 E
 'cause mama, mama, I'm coming home
 
-C
-D
+C D
 E
 I'm coming home
