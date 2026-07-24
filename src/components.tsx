@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
-import { chordProgression, compactSheet, cueNumber, isCueToken, isFretToken, measureSlots, parseChordSheet, type SheetPart } from './chords'
+import { chordProgression, compactSheet, cueNumber, dyadFrets, isCueToken, isFretToken, measureSlots, parseChordSheet, type SheetPart } from './chords'
 import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
@@ -118,7 +118,15 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     return <b className="chord-chip chord-chip--cue" aria-label={`Fill cue ${cue}`} title={`Fill cue ${cue}`}>{cue}</b>
   }
   if (isFretToken(name)) {
-    return <b className="chord-chip chord-chip--fret" aria-label={`A string fret ${name}`} title={`A string fret ${name}`}>{name}</b>
+    return <b className="chord-chip chord-chip--fret" aria-label={`Fret ${name}`} title={`Fret ${name}`}>{name}</b>
+  }
+  const dyad = dyadFrets(name)
+  if (dyad) {
+    const label = `B string fret ${dyad.b}, G string fret ${dyad.g}`
+    return <b className="chord-chip chord-chip--fret chord-chip--dyad" aria-label={label} title={label}>
+      <span className="chord-chip-dyad-b">{dyad.b}</span>
+      <span className="chord-chip-dyad-g">{dyad.g}</span>
+    </b>
   }
   // First render (box null) lays the popover out hidden so it can be measured; the effect
   // then pins it to the computed spot.

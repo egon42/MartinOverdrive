@@ -1,301 +1,265 @@
 Standard (EADGBE)
-Capo 1 (shapes below are Em; with the capo it sounds F minor, the record/band key)
 
-(High-low arpeggio through the song — not full chord strums)
-
-[Glance - verse climb (high-low)]
-e|3---5---7---5-3-5-|
-B|5---5---5---5-5-5-|
-G|--4---4---4-----4-|
-D|------------------|
-A|------------------|
-E|------------------|
-
-[Glance - chorus sig between hits]
-e|----|----|----|----|
-B|----|----|----|----|
-G|4-2-|0-2-|4-2-|0-2-|
-D|----|----|----|----|
-A|----|----|----|----|
-E|----|----|----|----|
+(B/G high-low through m70 from Songsterr Whitford rhythm; single frets after. No capo on this sheet — open-neck frets. Band chords/cheat still use Capo 1.)
 
 [Amp: 7Red]
 
-[Intro - high-low arpeggio ×2]
-  
-Em
-   
-Em7
-   
-Em6
-   
-Am6
+[Intro - B/G ×6]
 
-  
-Em
-   
-B7
-   
-Em
+6/5 6/5 4/5 4/5
 
- 
-[Verse 1 - high-low]
-Em
+3/5 3/5 2/5 2/5
+
+6/5 6/5 6/5 6/5
+
+6/5 6/5 6/5
+
+6/5 6/5 4/5 4/5
+
+3/5 3/5 2/5 2/5
+
+[Verse 1 - B/G]
+6/5
   Every t
-Em7
+6/5
 ime I l
-Em6
+4/5
 ook in the m
-Am6
+4/5
 irror
 
- 
-Em
+3/5
   All t
-Em7
+3/5
 hese lines on my f
-Em6
+2/5
 ace gettin' c
-Am6
+2/5
 learer
 
- 
-Em
-      
-Em7
- The past is g
-Em6
-one    
-Am6
+6/5 6/5 6/5 6/5
 
-Em
+6/5
+ The past is g
+6/5
+one
+6
+6/5
+
+9/7
 It went b
-Em7
+9/7
 y like d
-Em6
+8/5
 usk to d
-Am6
+6/5
 awn
 
- 
-[Pre-Chorus - only once]
-Em6
+2/5 2/5 2/5 2/5
+
+6/5
+
+6/5 6/5 4/5 4/5
+
+3/5 3/5 2/5 2/5
+
+6/5 6/5 4/5 4/5
+
+3/5 3/5 2/5 2/5
+
+6/5 6/5 4/5 4/5
+
+3/5 3/5 2/5 2/5
+
+[Pre / Bridge - B/G]
+6/5
    Isn't that the w
-B7sus4
-ay        
-B7
+6/5
+ay
+4/5 4/5
 
-Em6
+3/5
 Everybody's got their d
-B7sus4
+3/5
 ues in life to p
-B7
-ay?    
-Cmaj7
-           
-C#7
-                
-B7
+2/5
+ay?
+2/5
 
-[Bridge - Em D C D]
-I
-Em
- know n
-D
+6/5 6/5 5/5 5/5
+
+6/5
+ I know n
+6/5
 obody knows w
-C
+5/5
 here it comes and w
-D
+5/5
 here it goes
 
- 
-Em
- I know it's e
-D
-verybody's sin
+2/5 2/5 2/5 2/5
 
-C
-You got to lose to kn
-D
-ow how to w
-Em
-in
+[Chorus 1 - B/G; G-string fills]
+2/5 2/5 2/5 2/5
 
- 
-[Interlude - intro tag]
-Em7
-   
-Em6
-   
-Am6
-   
-Em
-   
-B7
-   
-Em
+5 3 1 3
 
- 
-[Verse 2 - high-low]
-Em
+5 3 1 3
+
+6/5
+Sing with me, s
+6/5
+ing for the years
+4/5 4/5
+
+3/5
+Sing for laughter 'n' si
+3/5
+ng for the tears
+2/5 2/5
+
+6/5
+Sing with me if it's ju
+6/5
+st for today
+6/5 6/5
+
+6/5
+ Maybe tomorrow the
+6/5
+good Lord will take you away
+6
+
+[Verse 2 - B/G]
+6/5
   Half my l
-Em7
+6/5
 ife's in b
-Em6
+4/5
 ooks' written p
-Am6
+4/5
 ages
 
- 
-Em
+3/5
   Lived and l
-Em7
+3/5
 earned from f
-Em6
+2/5
 ools and from s
-Am6
+2/5
 ages
 
- 
-Em
-      
-Em7
- You know its t
-Em6
-rue    
-Am6
+6/5 6/5 4/5 4/5
 
-Em
+3/5
+ You know its t
+3/5
+rue
+2/5 2/5
+
+6/5
 all those t
-Em7
+6/5
 hings come b
-Em6
+4/5
 ack to y
-Am6
+4/5
 ou
 
-[Chorus]
-Em
-Sing with me, s
-D
-ing for the years
+[Chorus 2 - B/G; G-string fills]
+3/5 3/5 2/5 2/5
 
-C
-Sing for laughter 'n' si
-D
-ng for the tears
+6/5 6/5 4/5 4/5
 
-Em
-Sing with me if it's ju
-D
-st for today
+3/5 3/5 2/5 2/5
 
- 
-Em/C#
- Maybe tomorrow the
-Cmaj7
-good Lord will take you away
+5 3 1 3
 
- 
-[Build - Am6/add9 pulse ×8]
-Amadd9
+5 3 1 3
 
-[Chorus]
-Em
-Sing with me, s
-D
-ing for the years
+2/5 2/5 2/5 2/5
 
-C
-Sing for laughter 'n' si
-D
-ng for the tears
+[Interlude - B/G]
+2/5 2/5 2/5 2/5
 
-Em
-Sing with me if it's ju
-D
-st for today
+6/5 5/5 5/5 5/5
 
- 
-Em/C#
- Maybe tomorrow the
-Cmaj7
-good Lord will take you away
+4/5 4/5 3/5
 
- 
+2/5 2/5 2/5 2/5
+
+1 1 6 8
+
+6/5 6/5 5/5 5/5
+
+[Chorus 3 - B/G; G-string fills]
+4/5 4/5 3/5
+
+2/5 2/5 2/5 2/5
+
+5 3 1 3
+
+5 3 1 3
+
+[Solo 1 - B/G]
+2/5 2/5 2/5 2/5
+
+2/5 2/5 2/5 2/5
+
+[Solo 2 - single frets]
+3 3 1 1
+
+2 2 4 4
+
+[Solo 3 - single frets / B/G hold]
+5 5 5 5
+
+5 5 5 5
+
+3 3 1 1
+
+2 2 4 4
+
+5 5 5 5
+
+[Scream - into m70; then singles]
+5 5 5 5
+
+3 3 1 1
+
+2 2 4 4
+
+0 0
+
+1 1 3 3
+
 [Amp: 8Red]
-[Climax - dig in; save lead for here]
-Am
-Dream on, dr
-B5
-eam on, d
-C
-ream on
+[Final Chorus - single frets]
+1 2 1 2
 
-Dream y
-D
-ourself a dream come t
-Em
-rue
+1 2 1 2
 
-Am
-Dream on, dr
-B5
-eam on, dr
-C
-eam on
+1 3
 
-Dream un
-D
-til your dream comes tr
-Em
-ue
+1 3
 
-Am
-Dream on, D
-B5
-ream on, Dr
-C
-eam on, Dr
-D
-eam on
+1 3
 
-Em
-Dream on, dr
-F#5
-eam on, Dr
-G
-eam on,
-A
-Ah
+1 3
 
-B7b9
-B
-Ah------
+1 3
 
-[Amp: 7Red]
-[Chorus - out]
-Em
-Sing with me, s
-D
-ing for the years
+1 3
 
-C
-Sing for laughter 'n' si
-D
-ng for the tears
+1 3
 
-Em
-Sing with me if it's ju
-D
-st for today
+4 3
 
- 
-Em/C#
- Maybe tomorrow the
-Cmaj7
-good Lord will take you away
+1 2 1 2
 
- 
-[Outro - Amadd9 fade]
-Amadd9
+1 2 1 2
+
+1
+
+[Outro]
+1

@@ -114,7 +114,9 @@ Use for a vocal-only measure that sits on the same vamp as the following solo/co
 
 ## Frets
 
-Bare `0`–`24` on a chord line → bordered fret chip (A-string cues). Band lyrics sheets must **not** pass `frets: true` (Mary Jane's "18" stays lyric text).
+Bare `0`–`24` on a chord line → bordered fret chip (The Middle A-string; also Dream On
+single-note runs). `6/5` → stacked B/G dyad chip (high string on top). Band lyrics
+sheets must **not** pass `frets: true` (Mary Jane's "18" stays lyric text).
 
 ## Power-fingering chips (Ryan)
 

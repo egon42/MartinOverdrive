@@ -39,6 +39,7 @@ const MEASURE_COLS = 4
 // Keep in sync with src/chords.ts chord / fret / cue token rules (ryan frets opt-in).
 const CHORD_RE = /^[A-G][#b]?(?:maj|min|dim|aug|sus|add|m|M|\+|°)?\d*(?:(?:maj|min|sus|add|b|#)\d+)*(?:\/[A-G][#b]?)?$/
 const FRET_RE = /^(?:[0-9]|1[0-9]|2[0-4])$/
+const DYAD_FRET_RE = /^(?:[0-9]|1[0-9]|2[0-4])\/(?:[0-9]|1[0-9]|2[0-4])$/
 const CUE_RE = /^\^([1-9][0-9]?)$/
 
 function parseStudio(arg) {
@@ -74,7 +75,7 @@ export function countNonEmpty(text) {
 
 function isMeasureChordToken(trimmed) {
   const name = trimmed.startsWith('~') ? trimmed.slice(1) : trimmed
-  return CHORD_RE.test(name) || FRET_RE.test(name) || CUE_RE.test(name)
+  return CHORD_RE.test(name) || FRET_RE.test(name) || DYAD_FRET_RE.test(name) || CUE_RE.test(name)
 }
 
 /**
@@ -100,8 +101,9 @@ export function countMeasureRows(text) {
       continue
     }
     groupHasContent = true
-    // Whole-line chord / fret / cue tokens (UG spine); section headers add 0 chords.
-    if (isMeasureChordToken(trimmed)) chordCount++
+    // Whole-line chord / fret / dyad / cue tokens (UG spine); section headers add 0.
+    const tokens = trimmed.split(/\s+/)
+    if (tokens.every((token) => isMeasureChordToken(token))) chordCount += tokens.length
   }
   flush()
   return total

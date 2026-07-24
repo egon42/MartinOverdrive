@@ -244,7 +244,7 @@ and § Stage patterns). Short version:
 - Section notes in the bracket title: `[Intro - spoken, follow along]`
 - Amp: `[Amp: 4Amber]` section lines (same as band)
 - Ghost / don't-play chips: prefix `~` (`~Am ~G ~D ~F`) — dashed strikethrough chip, keep the beat (same marker as cheat-card progressions)
-- Bare `0`–`24` = A-string fret chips (The Middle); never enable frets on band lyrics sheets
+- Bare `0`–`24` = fret chips (The Middle A-string; Dream On post-m70 singles); `B/G` dyads (`6/5` = B then G) for high-low play-along; never enable frets on band lyrics sheets
 - Power-chord Ryan songs: write `C5`/`G5`/… ; Ryan views pass `powerFingerings` so `*5`
   chips show horizontal 4-string EADG fingering always (see reference § Power-fingering chips)
 - Between-line riffs, ringing holds, prepare-ghosts + ×N, hard-stop cuts — see reference § Stage patterns

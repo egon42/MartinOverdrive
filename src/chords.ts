@@ -40,6 +40,13 @@ export const isChordToken = (token: string) => CHORD_RE.test(token)
 // legitimately sing a bare number ("18" in Mary Jane), which must stay lyric text.
 const FRET_RE = /^(?:[0-9]|1[0-9]|2[0-4])$/
 export const isFretToken = (token: string) => FRET_RE.test(token)
+// B/G dyad frets for high-low play-along (Dream On): `6/5` = B string 6, G string 5.
+const DYAD_FRET_RE = /^((?:[0-9]|1[0-9]|2[0-4]))\/((?:[0-9]|1[0-9]|2[0-4]))$/
+export const isDyadFretToken = (token: string) => DYAD_FRET_RE.test(token)
+export const dyadFrets = (token: string): { b: string; g: string } | null => {
+  const match = DYAD_FRET_RE.exec(token)
+  return match ? { b: match[1], g: match[2] } : null
+}
 // Numbered fill/join cues (`^1`, `^2`, … `^99`) — triangle chips that link a lyric word to
 // a matching fill block. Same ryan opt-in as frets (band sheets must not eat a caret).
 const CUE_RE = /^\^([1-9][0-9]?)$/
@@ -57,7 +64,7 @@ function splitGhostToken(token: string): { name: string, ghost: boolean } {
 
 function isRyanToken(token: string, frets: boolean) {
   const { name } = splitGhostToken(token)
-  return isChordToken(name) || (frets && (isFretToken(name) || isCueToken(name)))
+  return isChordToken(name) || (frets && (isFretToken(name) || isDyadFretToken(name) || isCueToken(name)))
 }
 
 function isChordLine(trimmed: string, frets: boolean) {
@@ -190,7 +197,7 @@ export function chordProgression(text: string): ProgressionRow[] | null {
     }
     if (line.kind !== 'lyric') continue
     if (!current) open('')
-    for (const part of line.parts) if (part.chord && !isCueToken(part.chord) && !isFretToken(part.chord)) current!.chords.push(part.chord)
+    for (const part of line.parts) if (part.chord && !isCueToken(part.chord) && !isFretToken(part.chord) && !isDyadFretToken(part.chord)) current!.chords.push(part.chord)
   }
   // Group by identical (deduped) chord sequence, preserving first-seen order.
   const groups: { seq: string; labels: string[]; chords: string[] }[] = []
