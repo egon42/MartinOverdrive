@@ -150,9 +150,9 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) }
     },
   }
-  // Underline G-rooted chips (G, Gm, G7, G/B…) so they don't read as C at distance.
-  // Skip G# / Gb. Fingering-only chips omit the letter, so no underline there.
-  const gRoot = /^G(?![#b])/.test(name)
+  // Underline any chip whose name starts with G (G, G#, Gb, Gm…) so the letter
+  // doesn't read as C at distance. Fingering-only chips omit the letter, so skip those.
+  const gRoot = /^G/.test(name)
   const chipClass = [
     'chord-chip',
     ghost && 'chord-chip--ghost',
