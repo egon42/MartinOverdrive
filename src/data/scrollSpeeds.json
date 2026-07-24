@@ -191,14 +191,14 @@
   "28-mama-i-m-coming-home": {
     "speed": 6,
     "leadInSec": 17,
-    "note": "Estimate 2026-07-23. Studio 4:11; lyric 6 / leadIn 17. Form research 2026-07-24: Selfish love=Pre2; Face chorus ×2 (hundred then thousand); Bridge G A E×3+B; Solo 7 bars; dual Face was the gap. Re-dial measure after form fix. Measure seed 6/17.",
+    "note": "Estimate 2026-07-23. Studio 4:11; lyric 6 / leadIn 17. Form research 2026-07-24 + layout (Mama under A+E cadence; Pre as C#m A E | C#m A B). Good enough until guitar pass — re-dial measure then. Measure seed 6/17.",
     "measureSpeed": 6,
     "measureLeadInSec": 17
   },
   "29-ain-t-goin-down-til-the-sun-comes-up": {
     "speed": 7,
     "leadInSec": 13.7,
-    "note": "Estimate 2026-07-23. Studio 4:32; 0.85× Tribute rows (56). Expanded solos + fake-ending Outro. Landmark: Local country station. Dial on device. Measure Estimate 2026-07-24: 56 measure / 56 lyric rows; studio 272s (note); raw≈7 densify→6; leadIn kept 13.7. Dial on device.",
+    "note": "Estimate 2026-07-23. Studio 4:32; lyric 7 leadIn 13.7. Layout 2026-07-24: verse pickups under G; chorus C Bb G Bb rows; solos 4+1. Measure Estimate measureSpeed 6 + measureLeadInSec 13.7. Dial on device.",
     "measureSpeed": 6,
     "measureLeadInSec": 13.7
   },
