@@ -23,7 +23,7 @@
   "05-thunderstruck": {
     "speed": 10,
     "leadInSec": 50,
-    "note": "Estimate 2026-07-22. Studio ~4:52; leadIn 50. Pre/la-la = B5 A5 E5 A5 (or B5 A5) BETWEEN lyric lines; chorus/bridge ON vocal. Dial on device. Measure Estimate 2026-07-24: 109 measure / 106 lyric rows; studio 292s (note); raw≈18 densify→9; leadIn kept 50. Dial on device.",
+    "note": "Estimate 2026-07-22. Studio ~4:52; leadIn 50. Pre/la-la between lines; chorus/bridge on vocal. V2 ringing B5 on Texas/girls/rules; first chug Thunder ghost. Measure dial 2026-07-24: measureSpeed 9 + measureLeadInSec 50.",
     "measureSpeed": 9,
     "measureLeadInSec": 50
   },
