@@ -123,10 +123,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const dyad = dyadFrets(name)
   if (dyad) {
     const label = `B string fret ${dyad.b}, G string fret ${dyad.g}`
-    return <b className="chord-chip chord-chip--fret chord-chip--dyad" aria-label={label} title={label}>
-      <span className="chord-chip-dyad-b">{dyad.b}</span>
-      <span className="chord-chip-dyad-g">{dyad.g}</span>
-    </b>
+    return <b className="chord-chip chord-chip--fret" aria-label={label} title={label}>{name}</b>
   }
   // First render (box null) lays the popover out hidden so it can be measured; the effect
   // then pins it to the computed spot.
