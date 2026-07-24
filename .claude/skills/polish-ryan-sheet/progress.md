@@ -22,8 +22,8 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [ ] 06-don-t-stop-believin — **drafted (good enough 2026-07-22; layout 2026-07-24):** intro/interlude cycles; pre B-night then quick E B E A; post-pre interlude ×1; solo ×1; V3 E on Paying (no orphan shift); scroll **8** + leadIn **18**; measure **6** + leadIn **18**. Lock later if crawl needs a final nudge.
 - [x] 07-tribute — **done (2026-07-22); Wave B measure 2026-07-24:** fills ^1/^2/^3, ghosts, 4Amber→5Amber; scroll **10** + **11.6**; measure **10** + **11.6** (ROCK Am G D F 4-across; extra Am G D F after ghosts).
 - [x] 08-while-my-guitar-gently-weeps — **done (2026-07-22); Wave B measure 2026-07-24:** chords only (improv fills OK); ring verses; Solo+Outro vamp 4-across; scroll **6** + leadIn **17.6**; measure **6** + **17.6**.
-- [x] 09-pride-and-joy — **done (2026-07-22); Wave B measure layout 2026-07-24:** shuffle rhythm only; V3/V4 one-strum until dig-in; 12-bar Intro/Solo 4+4+4; scroll **8** + leadIn **24.6**; measure Estimate **6** + **24.6** (She's my orphans cleared — dial on device).
-- [x] 10-zombie — **done (2026-07-22):** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = dirt EmCGD then Em ring+fill; scroll **11** + leadIn **8.7**.
+- [x] 09-pride-and-joy — **done (2026-07-22); Wave B measure 2026-07-24:** shuffle rhythm only; V3/V4 one-strum until dig-in; 12-bar Intro/Solo 4+4+4; scroll **8** + leadIn **24.6**; measure **6** + **24.6** (good enough).
+- [x] 10-zombie — **done (2026-07-22); Wave B measure layout 2026-07-24:** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = dirt EmCGD then Em ring+fill; scroll **11** + leadIn **8.7**; measure Estimate **6** + **8.7** (pre/chorus orphans cleared — dial on device).
 - [x] 11-hunger-strike — **done (2026-07-22):** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; Bridge grips x00x x22x; scroll **10** + leadIn **12**.
 - [x] 12-s-o-b — **done (2026-07-22):** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**.
 - [x] 13-save-a-horse-ride-a-cowboy — **done (2026-07-22):** chucks; chorus land stops + E G A hook; solo E A E A×2 (intro layout); palm-muted bridge; N.C. outro; scroll **10** + leadIn **18**.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted good-enough (tonight full-set dial):** 04–06, 14, 19, 22, 24, 26–31. Scroll seeds are Estimates until you lock on device.
 
-**Next review queue (handoff):** **Wave B** — **09 Pride and Joy** layout shipped; awaiting measure dial (seed 6/24.6). Then 10–13, 15–18, 20–21, 23, 25. Done: 01 (6/56), 02 (6/12), 03 (11/10), 07 (10/11.6), 08 (6/17.6). Parked: Dream On / Mama / Voodoo / Purple Rain V3.
+**Next review queue (handoff):** **Wave B** — **10 Zombie** layout shipped; awaiting measure dial (seed 6/8.7). Then 11–13, 15–18, 20–21, 23, 25. Done: 01 (6/56), 02 (6/12), 03 (11/10), 07 (10/11.6), 08 (6/17.6), 09 (6/24.6). Parked: Dream On / Mama / Voodoo / Purple Rain V3.
 
 ## Skill audit (2026-07-23) — second-half prep
 

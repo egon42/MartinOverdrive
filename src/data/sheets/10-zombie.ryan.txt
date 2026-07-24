@@ -3,32 +3,14 @@ Standard (EADGBE)
 [Amp: 1Red]
 
 [Intro 1 - clean Em C G D]
-Em
-
-C
-
-G
-
-D
+Em C G D
 
 [Stomp: 2Red]
 [Intro 2 - dirt Em C G D]
-Em
-
-C
-
-G
-
-D
+Em C G D
 
 [Intro 3 - dirt Em C G D]
-Em
-
-C
-
-G
-
-D
+Em C G D
 
 [Intro 4 - dirt; one strum Em ring, then fill]
 Em
@@ -69,24 +51,21 @@ D
 ken
 
 [Pre - clean]
-But you 
 Em
+But you 
 see it's not me, it's not 
 C
 my family,
-
 In your 
 G
 head, in your head, they are fig
 D
 hting
-
 With their 
 Em
 tanks and their bombs and their bombs and their 
 C
 guns,
-
 In your 
 G
 head, in your head, they are c
@@ -95,8 +74,8 @@ rying.
 
 [Stomp: 2Red]
 [Chorus - dirt]
-In your 
 Em
+In your 
 head, in your 
 C
 head, zombie,
@@ -104,7 +83,6 @@ G
  zombie, zombi
 D
 e
-
 What's in your 
 Em
 head, in your 
@@ -116,13 +94,7 @@ D
 e
 
 [Post - dirt Em C G D]
-Em
-
-C
-
-G
-
-D
+Em C G D
 
 [Post - dirt; Em ring, then fill]
 Em
@@ -150,24 +122,21 @@ D
 staken.
 
 [Pre - clean]
-It's the 
 Em
+It's the 
 same old theme since 
 C
 1916,
-
 in your 
 G
 head, in your head, they're still f
 D
 ighting
-
 With their 
 Em
 tanks and their bombs and their bombs and their 
 C
 guns,
-
 In your 
 G
 head, in your head, they are d
@@ -176,8 +145,8 @@ ying.
 
 [Stomp: 2Red]
 [Chorus - dirt]
-In your 
 Em
+In your 
 head, in your 
 C
 head, zombie,
@@ -185,7 +154,6 @@ G
  zombie, zombi
 D
 e
-
 What's in your 
 Em
 head, in your 
@@ -197,10 +165,4 @@ D
 e
 
 [SOLO/OUTRO - Em C G D vamp; cold on Em]
-Em
-
-C
-
-G
-
-D
+Em C G D
