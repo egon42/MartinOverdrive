@@ -71,15 +71,19 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .settings-surface h3{margin:0 0 12px;font-size:1.05rem;font-weight:800}
 .settings-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:640px}.settings-fields label{display:flex;flex-direction:column;gap:7px}.settings-fields label>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}.settings-fields select{width:100%}
 @media(max-width:760px){.settings-fields{grid-template-columns:1fr}}
-/* Chord-overlap slider + live sample (above-mode Lyrics). Spans both columns. */
-.chip-pull-field{grid-column:1/-1;display:flex;flex-direction:column;gap:8px}
-.chip-pull-head{display:flex;justify-content:space-between;align-items:baseline}
-.chip-pull-head>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
-.chip-pull-val{font-variant-numeric:tabular-nums;font-weight:800;font-size:.82rem;color:var(--acid)}
-.chip-pull-example{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px 14px 12px;overflow:hidden;font-size:1rem}
+/* Chord-overlap / row-stripe sliders + live samples. */
+.chip-pull-field,.row-stripe-field{display:flex;flex-direction:column;gap:8px}
+.chip-pull-field{grid-column:1/-1}
+.row-stripe-field{margin:0 0 18px;max-width:720px}
+.chip-pull-head,.row-stripe-head{display:flex;justify-content:space-between;align-items:baseline}
+.chip-pull-head>span,.row-stripe-head>span{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}
+.chip-pull-val,.row-stripe-val{font-variant-numeric:tabular-nums;font-weight:800;font-size:.82rem;color:var(--acid)}
+.chip-pull-example,.row-stripe-example{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:16px 14px 12px;overflow:hidden;font-size:1rem}
 .chip-pull-example .sheet-line--above{margin:0}
-.chip-pull-field input[type=range]{width:100%;accent-color:var(--acid)}
-.chip-pull-hint{color:var(--muted);font-size:.72rem;line-height:1.35}
+.row-stripe-example .cheat-progression{margin:0}
+.row-stripe-example .cheat-prog-chords{font-weight:750;letter-spacing:.02em}
+.chip-pull-field input[type=range],.row-stripe-field input[type=range]{width:100%;accent-color:var(--acid)}
+.chip-pull-hint,.row-stripe-hint{color:var(--muted);font-size:.72rem;line-height:1.35}
 .settings-colors-disclosure>summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .settings-colors-disclosure>summary::-webkit-details-marker{display:none}
 .settings-colors-disclosure>summary:after{content:"+";margin-left:auto;color:var(--muted);font-weight:800}
@@ -199,11 +203,11 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-measure-chord .chord-chip-wrap:has(.chord-chip--fret) .chord-chip--fret{line-height:1.2}
 .sheet-line--above-chords{margin:0 0 5px}
 /* Zebra tint on Lyrics-sheet lines, honoring the "Alternate section tone" toggle
-   (same var(--ink) 5.5% wash as the cheat-card rows). Text is inset with padding and
+   (ink % from Settings via --row-stripe; default 5.5%). Text is inset with padding and
    the tint fills the full line width — no negative margins, so it can't overflow the
    .practice-sheet scroll container. Vertical spacing untouched: the sheet stays condensed. */
 html[data-row-stripe] .sheet-full .sheet-line{padding:1px 7px}
-html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-mix(in srgb,var(--ink) 5.5%,transparent);border-radius:6px}
+html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-mix(in srgb,var(--ink) var(--row-stripe,5.5%),transparent);border-radius:6px}
 .sheet-section{text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:.7rem;color:var(--acid);margin:12px 0 5px}
 .sheet-section.amp-marker{display:inline-flex;align-items:center;gap:6px;text-transform:none;letter-spacing:normal}
 .sheet-section--cue{display:flex;align-items:center;gap:8px}
@@ -329,7 +333,7 @@ button.autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter
 /* Section label above chips — full width for the chord row on a phone */
 .cheat-prog-row{display:flex;flex-direction:column;gap:3px;align-items:stretch}
 /* Optional zebra: one tint per section row, so `|` visual wraps stay the same tone */
-html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(even){background:color-mix(in srgb,var(--ink) 5.5%,transparent);border-radius:8px;padding:5px 7px;margin:0 -7px}
+html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(even){background:color-mix(in srgb,var(--ink) var(--row-stripe,5.5%),transparent);border-radius:8px;padding:5px 7px;margin:0 -7px}
 html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:5px 7px;margin:0 -7px}
 .cheat-prog-label{font-size:.55em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800;line-height:1.2}
 .cheat-prog-label-times{color:#fff;font-size:1.25em;letter-spacing:.04em}

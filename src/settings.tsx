@@ -41,6 +41,8 @@ export interface ThemePrefs {
   colors: ThemeColors
   /** Subtle zebra tone on cheat-card section rows and Lyrics-sheet lines. */
   rowStripe: boolean
+  /** Ink % mixed into even rows when rowStripe is on (CSS `--row-stripe`). */
+  rowStripeStrength: number
 }
 
 export interface AppSettings {
@@ -66,13 +68,21 @@ export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, b
 export type RyanMeasureMap = Record<string, true>
 
 const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
-const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: true }
+const DEFAULT_THEME: ThemePrefs = {
+  preset: 'martin-drive',
+  colors: { ...MARTIN_DRIVE },
+  rowStripe: true,
+  rowStripeStrength: 5.5,
+}
 const DEFAULT_LYRIC_CHORD_PLACEMENT: LyricChordPlacement = 'inline'
 const DEFAULT_LYRIC_CHIP_PULL = -0.5
 const DEFAULT_SHOW_AMP_CHIPS = false
 /** Clamp the range the slider offers, so a stored/edited value can't hide chips or blow up layout. */
 export const CHIP_PULL_MIN = -0.9
 export const CHIP_PULL_MAX = 0.1
+/** Alternate-section tone strength (% of --ink mixed into even rows). 5.5 matched the old hard-coded wash. */
+export const ROW_STRIPE_MIN = 0
+export const ROW_STRIPE_MAX = 18
 
 const isScope = (v: unknown): v is FingeringScope => v === 'power' || v === 'all' || v === 'none'
 const isPosition = (v: unknown): v is FingeringPosition =>
@@ -81,6 +91,10 @@ const isLyricChordPlacement = (v: unknown): v is LyricChordPlacement =>
   v === 'inline' || v === 'above'
 const readChipPull = (v: unknown): number =>
   typeof v === 'number' && Number.isFinite(v) ? Math.min(CHIP_PULL_MAX, Math.max(CHIP_PULL_MIN, v)) : DEFAULT_LYRIC_CHIP_PULL
+const readRowStripeStrength = (v: unknown): number =>
+  typeof v === 'number' && Number.isFinite(v)
+    ? Math.min(ROW_STRIPE_MAX, Math.max(ROW_STRIPE_MIN, v))
+    : DEFAULT_THEME.rowStripeStrength
 
 function readPrefs(raw: unknown, fallback: FingeringPrefs): FingeringPrefs {
   if (!raw || typeof raw !== 'object') return { ...fallback }
@@ -97,13 +111,14 @@ function readTheme(raw: unknown): ThemePrefs {
   const o = raw as Record<string, unknown>
   const colors = normalizeColors(o.colors, MARTIN_DRIVE)
   const rowStripe = o.rowStripe !== false
+  const rowStripeStrength = readRowStripeStrength(o.rowStripeStrength)
   if (isThemePresetId(o.preset)) {
     // Prefer the live preset palette so shipping a palette tweak updates saved presets.
-    return { preset: o.preset, colors: { ...THEME_PRESETS[o.preset].colors }, rowStripe }
+    return { preset: o.preset, colors: { ...THEME_PRESETS[o.preset].colors }, rowStripe, rowStripeStrength }
   }
-  if (o.preset === 'custom') return { preset: 'custom', colors, rowStripe }
+  if (o.preset === 'custom') return { preset: 'custom', colors, rowStripe, rowStripeStrength }
   // Older saves without a preset id — match if possible.
-  return { preset: matchPreset(colors), colors, rowStripe }
+  return { preset: matchPreset(colors), colors, rowStripe, rowStripeStrength }
 }
 
 function readSettings(): AppSettings {
@@ -176,6 +191,7 @@ interface SettingsStore {
   setThemePreset: (preset: ThemePresetId) => void
   patchThemeColor: (key: ThemeColorKey, value: string) => void
   setRowStripe: (on: boolean) => void
+  setRowStripeStrength: (pct: number) => void
   resetTheme: () => void
   isFingeringOnly: (songId: string, surface: FingeringSurface) => boolean
   toggleFingeringOnly: (songId: string, surface: FingeringSurface) => void
@@ -188,6 +204,10 @@ const SettingsContext = createContext<SettingsStore | null>(null)
 function applyRowStripe(on: boolean) {
   if (on) document.documentElement.dataset.rowStripe = '1'
   else delete document.documentElement.dataset.rowStripe
+}
+
+function applyRowStripeStrength(pct: number) {
+  document.documentElement.style.setProperty('--row-stripe', `${pct}%`)
 }
 
 function applyChipPull(em: number) {
@@ -203,6 +223,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => { localStorage.setItem(RYAN_MEASURE_KEY, JSON.stringify(ryanMeasure)) }, [ryanMeasure])
   useEffect(() => { applyTheme(settings.theme.colors) }, [settings.theme.colors])
   useEffect(() => { applyRowStripe(settings.theme.rowStripe) }, [settings.theme.rowStripe])
+  useEffect(() => { applyRowStripeStrength(settings.theme.rowStripeStrength) }, [settings.theme.rowStripeStrength])
   useEffect(() => { applyChipPull(settings.lyricChipPull) }, [settings.lyricChipPull])
   const patchFingering = (surface: FingeringSurface, update: Partial<FingeringPrefs>) =>
     setSettings((old) => ({ ...old, [surface]: { ...old[surface], ...update } }))
@@ -228,10 +249,23 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     })
   const setRowStripe = (on: boolean) =>
     setSettings((old) => ({ ...old, theme: { ...old.theme, rowStripe: on } }))
+  const setRowStripeStrength = (pct: number) =>
+    setSettings((old) => ({
+      ...old,
+      theme: {
+        ...old.theme,
+        rowStripeStrength: Math.min(ROW_STRIPE_MAX, Math.max(ROW_STRIPE_MIN, pct)),
+      },
+    }))
   const resetTheme = () =>
     setSettings((old) => ({
       ...old,
-      theme: { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: old.theme.rowStripe },
+      theme: {
+        preset: 'martin-drive',
+        colors: { ...MARTIN_DRIVE },
+        rowStripe: old.theme.rowStripe,
+        rowStripeStrength: old.theme.rowStripeStrength,
+      },
     }))
   const isFingeringOnly = (songId: string, surface: FingeringSurface) => !!fingeringOnly[songId]?.[surface]
   const toggleFingeringOnly = (songId: string, surface: FingeringSurface) => setFingeringOnly((old) => {
@@ -251,7 +285,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return next
   })
   const value = useMemo(
-    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setDevMode, setRyanTab, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly, isRyanMeasure, toggleRyanMeasure }),
+    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setDevMode, setRyanTab, setThemePreset, patchThemeColor, setRowStripe, setRowStripeStrength, resetTheme, isFingeringOnly, toggleFingeringOnly, isRyanMeasure, toggleRyanMeasure }),
     [settings, fingeringOnly, ryanMeasure],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
@@ -406,8 +440,30 @@ function FingeringFields({ surface, label }: { surface: FingeringSurface; label:
   </div>
 }
 
+/** Live sample of alternate-section tone — real cheat-row classes so it tracks `--row-stripe`. */
+function RowStripeExample() {
+  const rows = [
+    { label: 'Verse', chords: 'Em  C  G  D' },
+    { label: 'Chorus', chords: 'C  G  D  Em' },
+    { label: 'Bridge', chords: 'Am  Em  F  C' },
+    { label: 'Solo', chords: 'Em  G  D  A' },
+  ]
+  return <div className="row-stripe-example" aria-hidden="true">
+    <div className="cheat-progression">
+      {rows.map((row) => (
+        <div className="cheat-prog-row" key={row.label}>
+          <span className="cheat-prog-label">{row.label}</span>
+          <div className="cheat-prog-body">
+            <span className="cheat-prog-chords">{row.chords}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+}
+
 function ThemeFields() {
-  const { settings, setThemePreset, patchThemeColor, setRowStripe, resetTheme } = useSettings()
+  const { settings, setThemePreset, patchThemeColor, setRowStripe, setRowStripeStrength, resetTheme } = useSettings()
   const { theme } = settings
   return <div className="settings-theme">
     <label className="theme-stripe-toggle">
@@ -421,6 +477,23 @@ function ThemeFields() {
         <small>Soft tint on every other cheat-card section and lyric line.</small>
       </span>
     </label>
+    {theme.rowStripe && <div className="row-stripe-field">
+      <div className="row-stripe-head">
+        <span>Tone strength</span>
+        <b className="row-stripe-val">{theme.rowStripeStrength.toFixed(1)}%</b>
+      </div>
+      <RowStripeExample />
+      <input
+        type="range"
+        aria-label="Alternate section tone strength"
+        min={ROW_STRIPE_MIN}
+        max={ROW_STRIPE_MAX}
+        step={0.5}
+        value={theme.rowStripeStrength}
+        onChange={(e) => setRowStripeStrength(Number(e.target.value))}
+      />
+      <small className="row-stripe-hint">How strong the tint is on even rows. 5.5% is the original default.</small>
+    </div>}
     <div className="theme-presets" role="group" aria-label="Color presets">
       {(Object.keys(THEME_PRESETS) as ThemePresetId[]).map((id) => {
         const preset = THEME_PRESETS[id]
