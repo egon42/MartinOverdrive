@@ -15,7 +15,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 ## Status
 
 - [x] 01-welcome-home — **done (2026-07-22):** sit-out intro + ringing Em; bridge syncopated→verse-chug; SOLO/OUTRO one Em-C-D-Em cycle; scroll **6** + `leadInSec` **48**.
-- [x] 02-all-the-small-things — **done (2026-07-22):** power `*5`; ringing early pre / full late pre; instrumental ×2; interlude prepare ghosts + (C C C B)×3; scroll **11** + `leadInSec` **8**.
+- [x] 02-all-the-small-things — **done (2026-07-22; verse rows 2026-07-24):** power `*5`; ringing early pre / full late pre; instrumental ×2; interlude prepare ghosts + (C C C B)×3; verse rows = 4 chips (C5 G5 F5 G5); scroll **8** + `leadInSec` **12** (re-dial after row merge).
 - [x] 03-a-little-less-conversation — **done (2026-07-22):** lead vocal / chords while singing / no fills / hard stop on single; scroll **14** + `leadInSec` **10**.
 - [ ] 04-i-believe-in-a-thing-called-love — **drafted (good enough 2026-07-22):** power `*5`; Intro ×2; Verse-in `~A5`; Bridge−B played B; Clap staccato E A F# B (double B); Solo×4 / outro labels; scroll **15** + leadIn **13.2**. Lock later if crawl dials clean.
 - [ ] 05-thunderstruck — **drafted (good enough 2026-07-22):** between-line vs on-vocal; scroll **10** + leadIn **50**. End/guitar pass deferred.
