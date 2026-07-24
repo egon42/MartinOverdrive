@@ -166,7 +166,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 /* Same chip-slot + --chip-pull as .sheet-above-chord so Settings "chip pull" matches lyric mode. */
 .sheet-measure-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;justify-content:flex-start;margin-bottom:var(--chip-pull,-0.5em)}
 .sheet-measure-chord .chord-chip,.sheet-measure-chord .chord-chip-wrap{margin:0}
-.sheet-measure-lyric{position:relative;z-index:1;font-size:.78em;line-height:1.1;text-align:left;overflow-wrap:break-word;word-break:normal;hyphens:none}
+.sheet-measure-lyric{position:relative;z-index:1;font-size:.78em;font-weight:700;line-height:1.1;text-align:left;overflow-wrap:break-word;word-break:normal;hyphens:none;-webkit-text-stroke:.02em currentColor}
 .sheet-line--measures .chord-chip{font-size:.7em;padding:.09em .5em;line-height:1.2;border-radius:.45em}
 .sheet-line--measures .chord-chip--cue{padding:.22em 0 0;border-radius:0;width:1.5em;min-width:1.5em;height:1.15em;font-size:.7em;line-height:1}
 .sheet-line--measures .chord-chip--power{font-size:.8em;padding:.09em .5em}
