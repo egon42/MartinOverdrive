@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
-import { chordProgression, compactSheet, cueNumber, isCueToken, isFretToken, joinMeasureLyrics, measureSlots, parseChordSheet, type SheetPart } from './chords'
+import { chordProgression, compactSheet, cueNumber, isCueToken, isFretToken, measureSlots, parseChordSheet, type SheetPart } from './chords'
 import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
@@ -427,8 +427,6 @@ function LyricLineAbove({ parts, songId, forcePowerFingering = false }: { parts:
 
 /** Play-along map: equal-width columns per chord; lyric fragment sits under its chip. */
 const MEASURE_COLS_PER_ROW = 4
-/** Easy rollback: set false to restore per-column UG fragment lyrics under each chip. */
-const MEASURE_JOIN_LYRICS = true
 
 function chunkMeasureSlots<T>(items: T[], size: number): T[][] {
   if (items.length <= size) return [items]
@@ -448,31 +446,20 @@ function LyricLineMeasures({ parts, songId, forcePowerFingering = false }: { par
   const rows = chunkMeasureSlots(slots, MEASURE_COLS_PER_ROW)
   return <>
     {rows.map((row, ri) => {
-      // Keep raw slot text for join (leading spaces mark word breaks); trim only for empty checks.
-      const rawLyrics = row.map((slot) => slot.text)
-      const trimmed = rawLyrics.map((t) => t.replace(/\s+/g, ' ').trim())
-      const chordsOnly = trimmed.every((t) => !t)
-      const joined = !chordsOnly && MEASURE_JOIN_LYRICS ? joinMeasureLyrics(rawLyrics) : ''
+      const lyrics = row.map((slot) => slot.text.replace(/\s+/g, ' ').trim())
+      const chordsOnly = lyrics.every((t) => !t)
       return (
-        <div
-          className={`sheet-line sheet-line--measures${chordsOnly ? ' sheet-line--measures-chords' : ''}${joined ? ' sheet-line--measures-joined' : ''}`}
-          key={ri}
-        >
-          <div className="sheet-measure-cols">
-            {row.map((slot, i) => (
-              <div className="sheet-measure-col" key={i}>
-                <div className="sheet-measure-chord">
-                  {slot.chord
-                    ? <ChordChip name={slot.chord} ghost={slot.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} />
-                    : null}
-                </div>
-                {!chordsOnly && !MEASURE_JOIN_LYRICS && trimmed[i]
-                  ? <div className="sheet-measure-lyric">{trimmed[i]}</div>
+        <div className={`sheet-line sheet-line--measures${chordsOnly ? ' sheet-line--measures-chords' : ''}`} key={ri}>
+          {row.map((slot, i) => (
+            <div className="sheet-measure-col" key={i}>
+              <div className="sheet-measure-chord">
+                {slot.chord
+                  ? <ChordChip name={slot.chord} ghost={slot.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} />
                   : null}
               </div>
-            ))}
-          </div>
-          {joined ? <div className="sheet-measure-lyric sheet-measure-lyric--joined">{joined}</div> : null}
+              {!chordsOnly && lyrics[i] ? <div className="sheet-measure-lyric">{lyrics[i]}</div> : null}
+            </div>
+          ))}
         </div>
       )
     })}
