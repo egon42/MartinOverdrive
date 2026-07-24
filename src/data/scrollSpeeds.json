@@ -93,7 +93,7 @@
   "14-sweet-home-alabama": {
     "speed": 10,
     "leadInSec": 9.6,
-    "note": "Estimate 2026-07-23. Studio 4:43; 1.52× Tribute rows (100). Solo1×2 / Solo2×8 + return Interlude×2 before V4. Landmark: Well I heard mister Young. Dial on device. Measure Estimate 2026-07-24: 102 measure / 100 lyric rows; studio 283s (note); raw≈11 densify→9; leadIn kept 9.6. Dial on device.",
+    "note": "Estimate 2026-07-23. Studio 4:43; lyric speed 10 leadIn 9.6. Layout 2026-07-24: intro fill ^1; DCG measure rows; F C own line; verse tags under G. Measure Estimate still 9 / 9.6 — re-dial after layout check.",
     "measureSpeed": 9,
     "measureLeadInSec": 9.6
   },

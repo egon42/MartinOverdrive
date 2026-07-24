@@ -2,31 +2,28 @@ Standard (EADGBE)
 
 [Amp: 5Amber]
 
-[Intro - D C G x4; join on 3rd]
+[Intro - D C G ×4; sit ×2, join on 3rd; try fill ^1]
 
-~D
+~D ~C ~G
 
-~C
+·
 
-~G
+~D ~C ~G
 
-~D
+·
 
-~C
+D C G
+^1
 
-~G
+[Fill ^1]
+e|------------------------|
+B|------------------------|
+G|----0-2p0-0-4p0-0-5b----|
+D|------------------------|
+A|------------------------|
+E|------------------------|
 
-D
-
-C
-
-G
-
-D
-
-C
-
-G
+D C G
 
 [Verse 1 - D C G; improv fills between lines OK]
 D
@@ -56,22 +53,15 @@ C
 Alabamy once 
 G
 again
-
 And I think its a sin, yes
 
-[Interlude - climb; keep D C G]
+[Interlude - D C G ×2]
 
-D
+D C G
 
-C
+·
 
-G
-
-D
-
-C
-
-G
+D C G
 
 [Verse 2 - Neil Young]
 D
@@ -102,7 +92,7 @@ man don't need him around any
 G
 how
 
-[Chorus - F C tag]
+[Chorus - F C tag on own line]
 D
 Sweet h
 C
@@ -130,22 +120,16 @@ C
 coming home to 
 G
 you
-F
-C
 
-[Solo - keep D C G]
+F C
 
-D
+[Solo - D C G ×2]
 
-C
+D C G
 
-G
+·
 
-D
-
-C
-
-G
+D C G
 
 [Verse 3 - Birmingham]
 D
@@ -175,10 +159,9 @@ C
 conscience bother 
 G
 you?
-
 Tell the truth
 
-[Chorus - F C tag]
+[Chorus - F C tag on own line]
 D
 Sweet h
 C
@@ -206,74 +189,49 @@ C
 coming home to 
 G
 you
-F
-C
 
+F C
 Here I come Alabama
 
-[Solo - keep D C G]
+[Solo - D C G ×8]
 
-D
+D C G
 
-C
+·
 
-G
+D C G
 
-D
+·
 
-C
+D C G
 
-G
+·
 
-D
+D C G
 
-C
+·
 
-G
+D C G
 
-D
+·
 
-C
+D C G
 
-G
+·
 
-D
+D C G
 
-C
+·
 
-G
+D C G
 
-D
+[Interlude - D C G ×2]
 
-C
+D C G
 
-G
+·
 
-D
-
-C
-
-G
-
-D
-
-C
-
-G
-
-[Interlude - keep D C G]
-
-D
-
-C
-
-G
-
-D
-
-C
-
-G
+D C G
 
 [Verse 4 - Muscle Shoals]
 D
@@ -303,7 +261,6 @@ C
 me up when I'm feeling 
 G
 blue
-
 Now how about you?
 
 [Chorus]

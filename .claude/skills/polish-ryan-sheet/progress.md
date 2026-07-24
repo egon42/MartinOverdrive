@@ -27,7 +27,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 11-hunger-strike — **done (2026-07-22):** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; Bridge grips x00x x22x; scroll **10** + leadIn **12**.
 - [x] 12-s-o-b — **done (2026-07-22):** chorus muted stabs only; intro/verses/outro ~chips; V3 ×4; scroll **10** + leadIn **18**.
 - [x] 13-save-a-horse-ride-a-cowboy — **done (2026-07-22):** chucks; chorus land stops + E G A hook; solo E A E A×2 (intro layout); palm-muted bridge; N.C. outro; scroll **10** + leadIn **18**.
-- [ ] 14-sweet-home-alabama — **drafted (good enough 2026-07-23):** Intro D-C-G x4 join on 3rd; Solo1×2 / Solo2×8 + return Interlude×2 before V4; F C tags; no ^N; scroll **10** + leadIn **9.6**. Lock later if crawl dials clean.
+- [ ] 14-sweet-home-alabama — **drafted (good enough 2026-07-23; layout 2026-07-24):** Intro sit×2 join×2 + fill ^1 (G-string); D C G cycles broken for measure (no 4-pack); F C tags own line; verse tags under last G; scroll **10** + leadIn **9.6**. Fix layout before dialing measure.
 - [x] 15-dani-california — **done (2026-07-23):** Intro+Interlude chords ×2 (no riff); Bridge/V3/Chorus headers; Solo/Outro ×8; lyrics cleaned; scroll **9** + lead-in **6**.
 - [x] 16-teenage-dirtbag — **done (2026-07-23):** Intro/reprise, Pre, Bridge (Oh yeah/Dirtbag), V1–V3; 3Red↔4Red; final chorus ghost then open walk-up; scroll **11** + lead-in **14**.
 - [x] 17-the-pretender — **done (2026-07-23):** ghost intro + pre-slam Am×4 + interlude; slam-only 6Red; A5×2 before V2; palm A5 bridge; cold outro ×3; scroll **9** + leadIn **11**.
