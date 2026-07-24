@@ -198,14 +198,14 @@
   "29-ain-t-goin-down-til-the-sun-comes-up": {
     "speed": 7,
     "leadInSec": 13.7,
-    "note": "Estimate 2026-07-23. Studio 4:32; lyric 7 leadIn 13.7. Layout 2026-07-24: verse pickups under G; chorus C Bb G Bb rows; solos 4+1. Measure Estimate measureSpeed 6 + measureLeadInSec 13.7. Dial on device.",
+    "note": "Estimate 2026-07-23. Studio 4:32; lyric 7 leadIn 13.7. Layout 2026-07-24: long G holds; Intro 4+4; solos G C G D G. Measure Estimate measureSpeed 6 + measureLeadInSec 13.7. Dial on device.",
     "measureSpeed": 6,
     "measureLeadInSec": 13.7
   },
   "30-pink-pony-club": {
     "speed": 9,
     "leadInSec": 10.7,
-    "note": "Estimate 2026-07-23. Studio 4:18; 1.33× Tribute rows (88). speed≈9. leadInSec=10.7. Quiet 3Red / big 4Red. Landmark: first Pre-Chorus. Dial on device. Measure Estimate 2026-07-24: 88 measure / 88 lyric rows; studio 258s (note); raw≈9 densify→8; leadIn kept 10.7. Dial on device.",
+    "note": "Estimate 2026-07-23. Studio 4:18; lyric 9 leadIn 10.7. Layout 2026-07-24: F# G#m D#m B 4-across; pre mid-word kept; end solo ×4. Measure Estimate measureSpeed 8 + measureLeadInSec 10.7. Dial on device.",
     "measureSpeed": 8,
     "measureLeadInSec": 10.7
   },
