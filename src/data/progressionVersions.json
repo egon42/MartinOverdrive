@@ -1435,6 +1435,57 @@
   ],
   "28-mama-i-m-coming-home": [
     {
+      "label": "Jul 24 pre prechorus regroup",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E"
+        },
+        {
+          "section": "Verse",
+          "chords": "E A E"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(C#m A) E (C#m A) B",
+          "hint": "Second pre is Selfish love lift (B F#5 G#5)"
+        },
+        {
+          "section": "Chorus",
+          "chords": "A E",
+          "hint": "Face block. First: hundred + short C D B tag. Second: thousand into outro"
+        },
+        {
+          "section": "Bridge",
+          "chords": "G A E",
+          "hint": "G A E ×3 then B into solo"
+        },
+        {
+          "section": "Solo",
+          "chords": "A E A E A B C#m B A B",
+          "hint": "7 bars after Bridge B"
+        },
+        {
+          "section": "Outro",
+          "chords": "Asus2 Bsus4 C D E",
+          "hint": "After Chorus 2; C D E three times to end"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse",
+        "Pre-Chorus",
+        "Verse",
+        "Pre-Chorus",
+        "Chorus",
+        "Bridge ×3",
+        "Solo",
+        "Pre-Chorus",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre batch polish research 2026-07-23",
       "sections": [
         {
