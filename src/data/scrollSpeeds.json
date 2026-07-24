@@ -128,7 +128,7 @@
   "19-purple-rain": {
     "speed": 6,
     "leadInSec": 16,
-    "note": "Good enough 2026-07-23. Studio 8:41; 0.65× Tribute rows (43). speed=6 leadInSec=16. Role: full album; capo 3; chords while singing; sparse Solo/Outro lead. Lock later if crawl needs a nudge. Measure Estimate 2026-07-24: 43 measure / 43 lyric rows; studio 521s (note); raw≈6 densify→6; leadIn kept 16. Dial on device.",
+    "note": "Good enough 2026-07-23. Studio 8:41; lyric speed 6 leadIn 16. Layout 2026-07-24: V1 I under D; chorus hang D before bathing line. Revisit V3 chords/layout with guitar. Measure dial 2026-07-24: measureSpeed 6 + measureLeadInSec 16.",
     "measureSpeed": 6,
     "measureLeadInSec": 16
   },
