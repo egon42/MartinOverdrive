@@ -93,7 +93,7 @@
   "14-sweet-home-alabama": {
     "speed": 10,
     "leadInSec": 9.6,
-    "note": "Estimate 2026-07-23. Studio 4:43; lyric speed 10 leadIn 9.6. Layout 2026-07-24: DCG cycle rows; F C own line; verse tags under G; intro fill TBD. Measure Estimate still 9 / 9.6 — re-dial after layout check.",
+    "note": "Estimate 2026-07-23. Studio 4:43; lyric speed 10 leadIn 9.6. Layout 2026-07-24: DCG cycle rows; F C only on first chorus (into Solo×2); verse tags under G; intro fill TBD. Measure dial 2026-07-24: measureSpeed 9 + measureLeadInSec 9.6.",
     "measureSpeed": 9,
     "measureLeadInSec": 9.6
   },

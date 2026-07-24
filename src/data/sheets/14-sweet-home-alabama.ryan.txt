@@ -144,7 +144,7 @@ G
 you?
 Tell the truth
 
-[Chorus - F C tag on own line]
+[Chorus]
 D
 Sweet h
 C
@@ -172,8 +172,6 @@ C
 coming home to 
 G
 you
-
-F C
 Here I come Alabama
 
 [Solo - D C G ×8]
