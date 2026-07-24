@@ -1,6 +1,6 @@
 Standard (EADGBE)
 
-(B/G high-low through m70 from Songsterr Whitford rhythm; singles after. Two measures per line with `|`. Chips on changes only. No capo — open-neck frets. Band chords/cheat still Capo 1.)
+(B/G high-low through m70 from Songsterr Whitford rhythm; singles after. Two measures per line with `|`. Chips on changes only. Lyrics under each measure (use ` | ` between lines). No capo — open-neck frets. Band chords/cheat still Capo 1.)
 
 [Amp: 7Red]
 
@@ -14,8 +14,7 @@ Standard (EADGBE)
 
 [Verse 1 - B/G]
 6/5 4/5 | 3/5 2/5
-Every time I look in the mirror
-All these lines on my face gettin' clearer
+Every time I look in the mirror | All these lines on my face gettin' clearer
 
 6/5 | 6/5 6 6/5
 The past is gone
@@ -33,8 +32,7 @@ It went by like dusk to dawn
 
 [Pre / Bridge - B/G]
 6/5 4/5 | 3/5 2/5
-Isn't that the way
-Everybody's got their dues in life to pay?
+Isn't that the way | Everybody's got their dues in life to pay?
 
 6/5 5/5 | 6/5 5/5
 I know nobody knows where it comes and where it goes
@@ -50,20 +48,17 @@ I know nobody knows where it comes and where it goes
 Sing with me, sing for the years
 
 3/5 2/5 | 6/5
-Sing for laughter 'n' sing for the tears
-Sing with me if it's just for today
+Sing for laughter 'n' sing for the tears | Sing with me if it's just for today
 
 6/5 6 |
 Maybe tomorrow the good Lord will take you away
 
 [Verse 2 - B/G]
 6/5 4/5 | 3/5 2/5
-Half my life's in books' written pages
-Lived and learned from fools and from sages
+Half my life's in books' written pages | Lived and learned from fools and from sages
 
 6/5 4/5 | 3/5 2/5
-You know its true
-all those things come back to you
+You know its true | all those things come back to you
 
 [Chorus 2 - B/G; G fills]
 3/5 2/5 | 6/5 4/5

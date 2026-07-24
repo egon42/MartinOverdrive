@@ -482,6 +482,21 @@ function MeasureBarChips({ parts, songId, forcePowerFingering = false }: {
   </>
 }
 
+/** Lyric lines after a fret/barline row; ` | ` splits under each measure when counts match. */
+function barLyricSegments(parts: SheetPart[]): string[] {
+  const chunks: string[] = []
+  for (const part of parts) {
+    if (part.chord) continue
+    const text = part.text?.replace(/\s+/g, ' ').trim()
+    if (text) chunks.push(text)
+  }
+  if (chunks.length > 1) return chunks
+  if (chunks.length === 1 && chunks[0].includes('|')) {
+    return chunks[0].split(/\s*\|\s*/).map((part) => part.trim()).filter(Boolean)
+  }
+  return chunks
+}
+
 function LyricLineMeasureBars({ parts, songId, forcePowerFingering = false }: {
   parts: SheetPart[]
   songId?: string
@@ -489,16 +504,26 @@ function LyricLineMeasureBars({ parts, songId, forcePowerFingering = false }: {
 }) {
   const measures = splitBarMeasures(parts)
   if (!measures.length) return null
+  const lyrics = barLyricSegments(parts)
+  const perMeasure = lyrics.length > 0 && lyrics.length === measures.length
   return (
-    <div className="sheet-line sheet-line--measure-bars">
-      {measures.map((measure, mi) => (
-        <div className="sheet-measure-bar-wrap" key={mi}>
-          {mi > 0 ? <span className="sheet-measure-barline" aria-hidden>|</span> : null}
-          <div className="sheet-measure-bar">
-            <MeasureBarChips parts={measure} songId={songId} forcePowerFingering={forcePowerFingering} />
+    <div className={`sheet-line sheet-line--measure-bars-block${lyrics.length ? '' : ' sheet-line--measure-bars-block--chords'}`}>
+      <div className="sheet-line sheet-line--measure-bars">
+        {measures.map((measure, mi) => (
+          <div className="sheet-measure-bar-wrap" key={mi}>
+            {mi > 0 ? <span className="sheet-measure-barline" aria-hidden>|</span> : null}
+            <div className="sheet-measure-bar-col">
+              <div className="sheet-measure-bar">
+                <MeasureBarChips parts={measure} songId={songId} forcePowerFingering={forcePowerFingering} />
+              </div>
+              {perMeasure ? <div className="sheet-measure-bar-lyric">{lyrics[mi]}</div> : null}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      {!perMeasure && lyrics.length > 0 ? (
+        <div className="sheet-measure-bars-lyric">{lyrics.join(' ')}</div>
+      ) : null}
     </div>
   )
 }
