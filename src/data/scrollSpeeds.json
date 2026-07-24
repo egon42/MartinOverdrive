@@ -135,7 +135,7 @@
   "20-when-i-come-around": {
     "speed": 11,
     "leadInSec": 9,
-    "note": "Locked 2026-07-23. Studio 2:58; 1.08× Tribute rows (71). speed=11 leadInSec=9. Role: all powers; palm mute; Solo×2; Outro rotated cold. Measure Estimate 2026-07-24: 71 measure / 71 lyric rows; studio 178s (note); raw≈15 densify→10; leadIn kept 9. Dial on device.",
+    "note": "Lyric Locked 2026-07-23. Studio 2:58. speed=11 leadInSec=9. Wave B 2026-07-24: hang verse pickups + When on B5; Intro/Solo/Outro packed. Measure rows 71→30; seed measureSpeed 10 + measureLeadInSec 9 (densify from lyric; raw≈6). Dial on device. Landmark: When I come around.",
     "measureSpeed": 10,
     "measureLeadInSec": 9
   },
