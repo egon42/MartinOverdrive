@@ -149,21 +149,9 @@ The greatest song in the
 F
 world.
 
-~Am
-   
-~G
-   
-~D
-   
-~F
+~Am ~G ~D ~F
 
-Am
-   
-G
-   
-D
-   
-F
+Am G D F
 
 Am
 And the peculiar 
@@ -182,7 +170,6 @@ anything like this
 D
 song.  
 F
-
 This is just a 
 Am
 tribute! You 
@@ -191,7 +178,6 @@ gotta' belie
 D
 ve me! 
 F
-
 And I wish you were 
 Am
 there! J
@@ -200,7 +186,6 @@ ust a matter of op
 D
 inion. 
 F
-
 Ah, fuck! 
 Am
 Good God, 
@@ -212,26 +197,12 @@ So surprised to find
 F
 you can't stop it.
 
-Am
-   
-G
-   
-D
-   
-F
+Am G D F
 
-E
-      
-F
-      
-G
+E F G
 All right!
-E
-      
-F
+E F
     All right!
-E
-      
-F
+E F
 
 Am

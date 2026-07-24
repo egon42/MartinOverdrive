@@ -16,8 +16,8 @@
   "03-a-little-less-conversation": {
     "speed": 14,
     "leadInSec": 10,
-    "note": "Lyric Locked 2026-07-22. Lead vocal + chords, no fills, hard stop. Speed 14, leadIn 10. Wave B 2026-07-24: hang Satisfy orphans; intro E7 A7 packed. Measure Estimate measureSpeed 7 + measureLeadInSec 10. Landmark: Baby close your eyes. Dial on device.",
-    "measureSpeed": 7,
+    "note": "Lyric Locked 2026-07-22. Lead vocal + chords, no fills, hard stop. Speed 14, leadIn 10. Wave B 2026-07-24: hang Satisfy orphans; intro E7 A7 packed. Measure dialed measureSpeed 11 + measureLeadInSec 10.",
+    "measureSpeed": 11,
     "measureLeadInSec": 10
   },
   "05-thunderstruck": {
@@ -30,8 +30,8 @@
   "07-tribute": {
     "speed": 10,
     "leadInSec": 11.6,
-    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed; upper-middle at ROCK. leadInSec = 96/10 + 2s. Includes ghost vocal bar before Am-G-D-F solo. Measure Estimate 2026-07-24: 66 measure / 66 lyric rows; studio 248s (invert-lyric); raw≈10 densify→9; leadIn kept 11.6. Dial on device.",
-    "measureSpeed": 9,
+    "note": "Lyric Locked 2026-07-22. Ryan 0.75×; upper-middle at ROCK; leadInSec 11.6. Wave B 2026-07-24: hang ROCK pickups; pack ghost/solo Am G D F and E F runs. Spoken/fill intro stays chordless (sit-out). Measure Estimate measureSpeed 8 + measureLeadInSec 11.6. Landmark: This is not The Greatest. Dial on device.",
+    "measureSpeed": 8,
     "measureLeadInSec": 11.6
   },
   "04-i-believe-in-a-thing-called-love": {
