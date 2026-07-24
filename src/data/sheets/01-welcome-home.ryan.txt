@@ -3,9 +3,7 @@ Standard (EADGBE)
 [Amp: 5Green]
 
 [Intro - sit out lead riff; ringing Em]
-Em
-
-Em
+Em Em
 
 [Verse]
 Em
@@ -13,55 +11,37 @@ Em
 C
 een all I wanted
 
-
-But 
 D
+But 
 you weren't honest
 
-
-Now 
 Em
+Now 
 get in the ground
-
-
 You choked off the 
 C
 surest of favors
-
-
 But if y
 D
 ou really loved me
-
-
 You 
 Em
 would've endured my world
-
-
 Well you're just as 
 C
 I presumed
-
-
 A wh
 D
 ore in sheep's clothing
 
 Em
 Fucking up all I do
-
-
 And if so 
 C
 here we stop
-
-
 Then n
 D
 ever again
-
-
 Will y
 Em
 ou see this in your life
@@ -71,8 +51,6 @@ F
 Hang on to the glory at my right h
 Am
 and
-
-
 Here laid to r
 C
 est is our love ever longed
@@ -80,8 +58,6 @@ est is our love ever longed
 F
 With truth on the shores of compassion
 Am
-
-
 You seem to take pr
 C
 emise to all of these songs
@@ -91,47 +67,31 @@ Em
     You stormed off to s
 C
 car the armada
-
-
 Like J
 D
 esus played letter,
-
-
 I'll d
 Em
 rill through your hands
-
-
 The stone for the 
 C
 curse you have blamed me
-
-
 With lo
 D
 ve and devotion, I'll d
 Em
 ie as you sleep
-
-
 But if you could just w
 C
 rite me out
-
-
 To ne
 D
 verless wonder...
 Em
 happy will I become
-
-
 Be true that t
 C
 his is no option,
-
-
 So with s
 D
 in I condemn you
@@ -143,8 +103,6 @@ Demon play, demon out!
 F
 Hang on to the glory at my right hand
 Am
-
-
 Here laid to re
 C
 st is our love ever longed
@@ -152,8 +110,6 @@ st is our love ever longed
 F
 With truth on the shores of compassion
 Am
-
-
 You seem to take pr
 C
 emise to all of these songs
@@ -169,7 +125,6 @@ G
 Please make up your m
 F
 ind girl...
-
 I'd do anything for you
 
 [Bridge - verse chug]
@@ -183,16 +138,8 @@ G
 Please make up your mind gi
 F
 rl...
-
 Before I hope you die
 
 [SOLO/OUTRO - Em C D Em repeats till end; Oh... oh... oh... after solo]
-Em
-
-C
-
-D
-
-Em
-
+Em C D Em
 Oh... oh... oh...
