@@ -79,8 +79,8 @@
   "12-s-o-b": {
     "speed": 10,
     "leadInSec": 18,
-    "note": "Lyric Locked 2026-07-22. speed 10 leadIn 18. Wave B 2026-07-24: hang verse orphans; chorus 4-across muted stabs. Measure Estimate measureSpeed 7 + measureLeadInSec 18. Landmark: Son of a bitch. Dial on device.",
-    "measureSpeed": 7,
+    "note": "Lyric Locked 2026-07-22. speed 10 leadIn 18. Wave B 2026-07-24: hang verse orphans; chorus 4-across muted stabs. Measure densified → measureSpeed 6 + measureLeadInSec 18. Landmark: Son of a bitch. Dial on device.",
+    "measureSpeed": 6,
     "measureLeadInSec": 18
   },
   "13-save-a-horse-ride-a-cowboy": {
