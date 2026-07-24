@@ -48,10 +48,10 @@ shape, not a cleaned rewrite. Spoken/fill-only stretches may omit chords; when c
 return, they return in UG split form.
 
 **Measure map (retap Ryan, 2026-07-24):** same `.ryan.txt` file. Retapping the Ryan tab
-toggles equal-width play-along columns (`layout: 'measure'` via `measureSlots`) — chip on
-top, that chord’s lyric fragment under it. Blank-line row breaks still define how many
-chords share a row (ATS: four per row). No second file format; do not “prettify” the
-source to look measure-aligned.
+toggles equal-width play-along columns (`layout: 'measure'` via `measureSlots`) — chip at
+bar start, lyric left under it; soft column rules; max 4 slots/row (phone wraps to 2).
+Blank-line row breaks still define how many chords share a system. No second file format;
+do not “prettify” the source to look measure-aligned.
 
 ## Fill cues
 

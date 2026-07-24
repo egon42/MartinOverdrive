@@ -426,6 +426,15 @@ function LyricLineAbove({ parts, songId, forcePowerFingering = false }: { parts:
 }
 
 /** Play-along map: equal-width columns per chord; lyric fragment sits under its chip. */
+const MEASURE_COLS_PER_ROW = 4
+
+function chunkMeasureSlots<T>(items: T[], size: number): T[][] {
+  if (items.length <= size) return [items]
+  const rows: T[][] = []
+  for (let i = 0; i < items.length; i += size) rows.push(items.slice(i, i + size))
+  return rows
+}
+
 function LyricLineMeasures({ parts, songId, forcePowerFingering = false }: { parts: SheetPart[]; songId?: string; forcePowerFingering?: boolean }) {
   const slots = measureSlots(parts)
   if (!slots.length) return null
@@ -434,18 +443,26 @@ function LyricLineMeasures({ parts, songId, forcePowerFingering = false }: { par
       {slots.map((slot, i) => <span key={i}>{slot.text}</span>)}
     </p>
   }
-  return <div className="sheet-line sheet-line--measures">
-    {slots.map((slot, i) => (
-      <div className="sheet-measure-col" key={i}>
-        <div className="sheet-measure-chord">
-          {slot.chord
-            ? <ChordChip name={slot.chord} ghost={slot.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} />
-            : null}
-        </div>
-        {slot.text.trim() ? <div className="sheet-measure-lyric">{slot.text}</div> : null}
+  const rows = chunkMeasureSlots(slots, MEASURE_COLS_PER_ROW)
+  return <>
+    {rows.map((row, ri) => (
+      <div className="sheet-line sheet-line--measures" key={ri}>
+        {row.map((slot, i) => {
+          const lyric = slot.text.replace(/\s+/g, ' ').trim()
+          return (
+            <div className="sheet-measure-col" key={i}>
+              <div className="sheet-measure-chord">
+                {slot.chord
+                  ? <ChordChip name={slot.chord} ghost={slot.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} />
+                  : null}
+              </div>
+              {lyric ? <div className="sheet-measure-lyric">{lyric}</div> : null}
+            </div>
+          )
+        })}
       </div>
     ))}
-  </div>
+  </>
 }
 
 export function ChordSheetView({ text, songId, compact = false, frets = false, powerFingerings = false, layout = 'lyric' }: {
