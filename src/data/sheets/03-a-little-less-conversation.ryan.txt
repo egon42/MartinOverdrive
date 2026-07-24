@@ -3,19 +3,9 @@ Standard (EADGBE)
 [Amp: 3]
 
 [Intro - vamp, vocal after 3]
-E7
-  
-A7
-  
-E7
-  
-A7
-  
-E7
-  
-A7
-  
-E7
+E7 A7 E7 A7
+
+E7 A7 E7
 
 [Verse 1 - in on "A little less"]
 E7
@@ -54,7 +44,6 @@ heart and baby satis
 E7
 fy me  
 A7
-
 Satis
 E7
 fy me baby 
@@ -116,7 +105,6 @@ heart and baby satis
 E7
 fy me  
 A7
-
 (Satisfy me) Satis
 E7
 fy me baby 
@@ -181,7 +169,6 @@ heart and baby satis
 E7
 fy me  
 A7
-
 (Satisfy me) Satis
 E7
 fy me baby 
