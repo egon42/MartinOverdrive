@@ -349,7 +349,7 @@ export function Show() {
     if (next[song.id] === effective) delete next[song.id]; else next[song.id] = effective
     return next
   })
-  const views = [...(lanesOn ? ['lanes'] : []), ...(ryanOn ? ['ryan'] : []), 'cheat', 'chords', ...(sheets.chords ? ['lyrics'] : []), ...(sheets.tabs ? ['tabs'] : [])]
+  const views = [...(ryanOn ? ['ryan'] : []), ...(lanesOn ? ['lanes'] : []), 'cheat', 'chords', ...(sheets.chords ? ['lyrics'] : []), ...(sheets.tabs ? ['tabs'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
   // Tapping the already-active card tab re-taps into fingering chips (both cards share
   // the 'cheat' surface); same retap on the Lyrics tab flips its own 'chords' surface.
@@ -518,11 +518,11 @@ export function Show() {
     <article ref={zoomElRef as RefObject<HTMLElement>} style={{ ['--zoom' as string]: zoom } as React.CSSProperties} className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}${effective !== 'tabs' ? ' show-zoomable' : ''}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
-        {lanesOn && <button type="button" role="tab" aria-selected={effective === 'lanes'} className={effective === 'lanes' ? 'active' : ''} onClick={() => setView('lanes')}>Lanes</button>}
         {ryanOn && <button type="button" role="tab" aria-selected={effective === 'ryan'} aria-pressed={effective === 'ryan' ? ryanMeasure : undefined}
           className={shapesTabClass(effective === 'ryan', ryanMeasure, true)}
           title={effective === 'ryan' ? (ryanMeasure ? 'Measure map on. Tap again for lyric layout' : 'Tap again for measure map') : undefined}
           onClick={selectRyan}>Ryan</button>}
+        {lanesOn && <button type="button" role="tab" aria-selected={effective === 'lanes'} className={effective === 'lanes' ? 'active' : ''} onClick={() => setView('lanes')}>Lanes</button>}
         <button type="button" role="tab" aria-selected={effective === 'cheat'} aria-pressed={effective === 'cheat' ? cardShapes : undefined}
           className={shapesTabClass(effective === 'cheat', cardShapes, settings.cheat.scope !== 'none')}
           title={effective === 'cheat' && settings.cheat.scope !== 'none' ? (cardShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}

@@ -836,9 +836,8 @@ function MoreFills({ tab, onToggle }: { tab: string, onToggle: () => void }) {
 // flag-gated personal sheet (lyric ↔ measure retap) for songs with a .ryan.txt file.
 export type SheetKind = 'cheat' | 'roadmap' | 'chords' | 'tabs' | 'ryan' | 'lanes'
 
-// Sheet panel on the song (practice) page — the same views as show mode: Lanes
-// (measure map), Cheat (building-blocks card), Chords (roadmap card), Lyrics
-// (chord-over-lyric sheet), Tabs, plus the flag-gated Ryan sheet when enabled.
+// Sheet panel on the song (practice) page — the same views as show mode: Ryan
+// (flag-gated), Lanes (measure map), Cheat, Chords, Lyrics, Tabs.
 // `view`/`onViewChange` keep the selection so the toggle can switch it.
 export function SheetPanel({ song, view, onViewChange }: { song: Song, view: SheetKind | null, onViewChange: (kind: SheetKind) => void }) {
   const { get } = usePractice(); const entry = get(song.id)
@@ -847,8 +846,8 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   // The cards render from a curated progression, or derive one from the chords sheet.
   const hasCard = !!progressionFor(song.id) || !!sheets.chords
   const available: SheetKind[] = [
-    ...(sheets.ryan ? (['lanes'] as SheetKind[]) : []),
     ...(sheets.ryan && settings.ryanTab ? (['ryan'] as SheetKind[]) : []),
+    ...(sheets.ryan ? (['lanes'] as SheetKind[]) : []),
     ...(hasCard ? (['cheat', 'roadmap'] as SheetKind[]) : []),
     ...(sheets.chords ? (['chords'] as SheetKind[]) : []),
     ...(sheets.tabs ? (['tabs'] as SheetKind[]) : []),
@@ -891,11 +890,11 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   return <section className="panel chord-panel" id="song-sheet">
     <div className="section-heading"><div><h2>Song sheets</h2></div>
       {available.length > 1 && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
-        {available.includes('lanes') && <button type="button" role="tab" aria-selected={active === 'lanes'} className={active === 'lanes' ? 'active' : ''} onClick={() => onViewChange('lanes')}>Lanes</button>}
         {available.includes('ryan') && <button type="button" role="tab" aria-selected={active === 'ryan'} aria-pressed={active === 'ryan' ? ryanMeasure : undefined}
           className={shapesTabClass(active === 'ryan', ryanMeasure, true)}
           title={active === 'ryan' ? (ryanMeasure ? 'Measure map on. Tap again for lyric layout' : 'Tap again for measure map') : undefined}
           onClick={selectRyan}>Ryan</button>}
+        {available.includes('lanes') && <button type="button" role="tab" aria-selected={active === 'lanes'} className={active === 'lanes' ? 'active' : ''} onClick={() => onViewChange('lanes')}>Lanes</button>}
         {hasCard && cardTab('cheat', 'Cheat')}
         {hasCard && cardTab('roadmap', 'Chords')}
         {available.includes('chords') && <button type="button" role="tab" aria-selected={active === 'chords'} aria-pressed={active === 'chords' ? chordsShapes : undefined}
