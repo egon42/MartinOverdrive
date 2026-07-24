@@ -21,6 +21,8 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.resolve(__dirname, '../../../..')
+const isMain = process.argv[1] != null
+  && path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1])
 
 const TRIBUTE_ID = '07-tribute'
 const H_T = 2964 // locked: speed 10 * (248 - 11.6) + V600
@@ -234,4 +236,4 @@ Examples:
   }
 }
 
-main()
+if (isMain) main()

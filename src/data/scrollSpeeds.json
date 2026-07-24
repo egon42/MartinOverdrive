@@ -2,158 +2,218 @@
   "01-welcome-home": {
     "speed": 6,
     "leadInSec": 48,
-    "note": "Locked 2026-07-22. Sit-out lead-in 48s; speed 6. Dense verses then short Em-C-D-Em vamp tail."
+    "note": "Locked 2026-07-22. Sit-out lead-in 48s; speed 6. Dense verses then short Em-C-D-Em vamp tail. Measure Estimate 2026-07-24: 47 measure / 47 lyric rows; studio 300s (invert-lyric); raw≈6 densify→6; leadIn kept 48. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 48
   },
   "02-all-the-small-things": {
     "speed": 8,
     "leadInSec": 12,
     "measureSpeed": 7,
     "measureLeadInSec": 12,
-    "note": "Lyric Estimate 2026-07-24 after verse 4-chord rows (speed 8 / leadIn 12). Measure Estimate 2026-07-24 after density pack: same 42 rows but shorter CSS → measureSpeed 7 (was twin of 8); measureLeadInSec 12. Landmark: Always i know. Dial measure on device at Ryan 0.75×."
+    "note": "Lyric Estimate 2026-07-24 after verse 4-chord rows (speed 8 / leadIn 12). Measure Estimate 2026-07-24: 42 measure / 42 lyric rows; studio 173s (invert-lyric); raw≈8 densify→7; leadIn kept 12. Dial on device."
   },
   "03-a-little-less-conversation": {
     "speed": 14,
     "leadInSec": 10,
-    "note": "Locked 2026-07-22. Lead vocal + chords, no fills, hard stop on single. Speed 14, leadIn 10."
+    "note": "Locked 2026-07-22. Lead vocal + chords, no fills, hard stop on single. Speed 14, leadIn 10. Measure Estimate 2026-07-24: 38 measure / 38 lyric rows; studio 89s (invert-lyric); raw≈14 densify→13; leadIn kept 10. Dial on device.",
+    "measureSpeed": 13,
+    "measureLeadInSec": 10
   },
   "05-thunderstruck": {
     "speed": 10,
     "leadInSec": 50,
-    "note": "Estimate 2026-07-22. Studio ~4:52; leadIn 50. Pre/la-la = B5 A5 E5 A5 (or B5 A5) BETWEEN lyric lines; chorus/bridge ON vocal. Dial on device."
+    "note": "Estimate 2026-07-22. Studio ~4:52; leadIn 50. Pre/la-la = B5 A5 E5 A5 (or B5 A5) BETWEEN lyric lines; chorus/bridge ON vocal. Dial on device. Measure Estimate 2026-07-24: 109 measure / 106 lyric rows; studio 292s (note); raw≈18 densify→9; leadIn kept 50. Dial on device.",
+    "measureSpeed": 9,
+    "measureLeadInSec": 50
   },
   "07-tribute": {
     "speed": 10,
     "leadInSec": 11.6,
-    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed; upper-middle at ROCK. leadInSec = 96/10 + 2s. Includes ghost vocal bar before Am-G-D-F solo."
+    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed; upper-middle at ROCK. leadInSec = 96/10 + 2s. Includes ghost vocal bar before Am-G-D-F solo. Measure Estimate 2026-07-24: 66 measure / 66 lyric rows; studio 248s (invert-lyric); raw≈10 densify→9; leadIn kept 11.6. Dial on device.",
+    "measureSpeed": 9,
+    "measureLeadInSec": 11.6
   },
   "04-i-believe-in-a-thing-called-love": {
     "speed": 15,
     "leadInSec": 13.2,
-    "note": "Estimate 2026-07-22. Studio 3:38; ~1.23× Tribute non-empty (211). speed≈15. leadInSec=13.2. Power *5; Clap staccato E A F# B double-B. Dial on device."
+    "note": "Estimate 2026-07-22. Studio 3:38; ~1.23× Tribute non-empty (211). speed≈15. leadInSec=13.2. Power *5; Clap staccato E A F# B double-B. Dial on device. Measure Estimate 2026-07-24: 84 measure / 81 lyric rows; studio 218s (note); raw≈11 densify→14; leadIn kept 13.2. Dial on device.",
+    "measureSpeed": 14,
+    "measureLeadInSec": 13.2
   },
   "06-don-t-stop-believin": {
     "speed": 8,
     "leadInSec": 18,
-    "note": "Good enough 2026-07-22. Studio 4:11; speed=8 leadIn=18. Expanded intro/interlude/solo cycles (piano break before V3). Lock when crawl feels final."
+    "note": "Good enough 2026-07-22. Studio 4:11; speed=8 leadIn=18. Expanded intro/interlude/solo cycles (piano break before V3). Lock when crawl feels final. Measure Estimate 2026-07-24: 76 measure / 74 lyric rows; studio 251s (note); raw≈12 densify→7; leadIn kept 18. Dial on device.",
+    "measureSpeed": 7,
+    "measureLeadInSec": 18
   },
   "08-while-my-guitar-gently-weeps": {
     "speed": 6,
     "leadInSec": 17.6,
-    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed. speed=6 leadInSec=17.6. Chords only; improvise fills if space; Solo+Outro vamp rows."
+    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed. speed=6 leadInSec=17.6. Chords only; improvise fills if space; Solo+Outro vamp rows. Measure Estimate 2026-07-24: 53 measure / 53 lyric rows; studio 314s (invert-lyric); raw≈6 densify→6; leadIn kept 17.6. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 17.6
   },
   "09-pride-and-joy": {
     "speed": 8,
     "leadInSec": 24.6,
-    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed. speed=8 leadInSec=24.6. Shuffle rhythm; V3/V4 one-strum until dig-in; 12-bar Intro/Solo."
+    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed. speed=8 leadInSec=24.6. Shuffle rhythm; V3/V4 one-strum until dig-in; 12-bar Intro/Solo. Measure Estimate 2026-07-24: 71 measure / 66 lyric rows; studio 320s (invert-lyric); raw≈8 densify→7; leadIn kept 24.6. Dial on device.",
+    "measureSpeed": 7,
+    "measureLeadInSec": 24.6
   },
   "10-zombie": {
     "speed": 11,
     "leadInSec": 8.7,
-    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed. speed=11 leadInSec=8.7. Intro1 clean; Intro2-3 dirt; Intro4 Em ring + Fill^1; post = dirt EmCGD then Em ring + fill."
+    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed. speed=11 leadInSec=8.7. Intro1 clean; Intro2-3 dirt; Intro4 Em ring + Fill^1; post = dirt EmCGD then Em ring + fill. Measure Estimate 2026-07-24: 43 measure / 43 lyric rows; studio 130s (invert-lyric); raw≈11 densify→10; leadIn kept 8.7. Dial on device.",
+    "measureSpeed": 10,
+    "measureLeadInSec": 8.7
   },
   "11-hunger-strike": {
     "speed": 10,
     "leadInSec": 12,
-    "note": "Locked 2026-07-22. Studio 4:03; speed 10, leadInSec 12. Intro/Bridge/Interlude/cold end; sit under; FS dirt lift; Bridge grips x00x x22x."
+    "note": "Locked 2026-07-22. Studio 4:03; speed 10, leadInSec 12. Intro/Bridge/Interlude/cold end; sit under; FS dirt lift; Bridge grips x00x x22x. Measure Estimate 2026-07-24: 78 measure / 78 lyric rows; studio 243s (note); raw≈12 densify→9; leadIn kept 12. Dial on device.",
+    "measureSpeed": 9,
+    "measureLeadInSec": 12
   },
   "12-s-o-b": {
     "speed": 10,
     "leadInSec": 18,
-    "note": "Locked 2026-07-22. Studio 4:07; speed 10, leadInSec 18. Chorus muted stabs only; intro/verses/outro ~chips; V3 ×4."
+    "note": "Locked 2026-07-22. Studio 4:07; speed 10, leadInSec 18. Chorus muted stabs only; intro/verses/outro ~chips; V3 ×4. Measure Estimate 2026-07-24: 50 measure / 50 lyric rows; studio 247s (note); raw≈7 densify→9; leadIn kept 18. Dial on device.",
+    "measureSpeed": 9,
+    "measureLeadInSec": 18
   },
   "13-save-a-horse-ride-a-cowboy": {
     "speed": 10,
     "leadInSec": 18,
-    "note": "Locked 2026-07-22. Studio 3:22; speed 10, leadInSec 18. Chucks; land stops; solo E A E A×2 intro layout; palm-muted bridge; N.C. outro."
+    "note": "Locked 2026-07-22. Studio 3:22; speed 10, leadInSec 18. Chucks; land stops; solo E A E A×2 intro layout; palm-muted bridge; N.C. outro. Measure Estimate 2026-07-24: 59 measure / 59 lyric rows; studio 202s (note); raw≈11 densify→9; leadIn kept 18. Dial on device.",
+    "measureSpeed": 9,
+    "measureLeadInSec": 18
   },
   "14-sweet-home-alabama": {
     "speed": 10,
     "leadInSec": 9.6,
-    "note": "Estimate 2026-07-23. Studio 4:43; 1.52× Tribute rows (100). Solo1×2 / Solo2×8 + return Interlude×2 before V4. Landmark: Well I heard mister Young. Dial on device."
+    "note": "Estimate 2026-07-23. Studio 4:43; 1.52× Tribute rows (100). Solo1×2 / Solo2×8 + return Interlude×2 before V4. Landmark: Well I heard mister Young. Dial on device. Measure Estimate 2026-07-24: 102 measure / 100 lyric rows; studio 283s (note); raw≈11 densify→9; leadIn kept 9.6. Dial on device.",
+    "measureSpeed": 9,
+    "measureLeadInSec": 9.6
   },
   "15-dani-california": {
     "speed": 9,
     "leadInSec": 6,
-    "note": "Locked 2026-07-23. Studio 4:42. speed=9 leadInSec=6. Role: chords only (no riff); verse volume roll; open chorus; Intro+Interlude ×2; Solo/Outro ×8."
+    "note": "Locked 2026-07-23. Studio 4:42. speed=9 leadInSec=6. Role: chords only (no riff); verse volume roll; open chorus; Intro+Interlude ×2; Solo/Outro ×8. Measure Estimate 2026-07-24: 64 measure / 64 lyric rows; studio 282s (note); raw≈8 densify→8; leadIn kept 6. Dial on device.",
+    "measureSpeed": 8,
+    "measureLeadInSec": 6
   },
   "16-teenage-dirtbag": {
     "speed": 11,
     "leadInSec": 14,
-    "note": "Locked 2026-07-23. Studio 4:02. speed=11 leadInSec=14. Role: quiet palm-mute verse / big chorus 3Red↔4Red; final chorus ghost then open walk-up; bridge Oh yeah/Dirtbag."
+    "note": "Locked 2026-07-23. Studio 4:02. speed=11 leadInSec=14. Role: quiet palm-mute verse / big chorus 3Red↔4Red; final chorus ghost then open walk-up; bridge Oh yeah/Dirtbag. Measure Estimate 2026-07-24: 100 measure / 86 lyric rows; studio 242s (note); raw≈12 densify→10; leadIn kept 14. Dial on device.",
+    "measureSpeed": 10,
+    "measureLeadInSec": 14
   },
   "17-the-pretender": {
     "speed": 9,
     "leadInSec": 11,
-    "note": "Locked 2026-07-23. Studio 4:29. speed=9 leadInSec=11. Role: ghost intro + pre-slam Am×4 + interlude; slam-only 6Red; A5×2 before V2; palm A5 bridge; cold outro ×3."
+    "note": "Locked 2026-07-23. Studio 4:29. speed=9 leadInSec=11. Role: ghost intro + pre-slam Am×4 + interlude; slam-only 6Red; A5×2 before V2; palm A5 bridge; cold outro ×3. Measure Estimate 2026-07-24: 89 measure / 89 lyric rows; studio 269s (note); raw≈9 densify→8; leadIn kept 11. Dial on device.",
+    "measureSpeed": 8,
+    "measureLeadInSec": 11
   },
   "18-here-it-goes-again": {
     "speed": 12,
     "leadInSec": 8,
-    "note": "Locked 2026-07-23. Studio 2:59. speed=12 leadInSec=8. Role: all powers; vol-roll verses; Link after bridge; Outro ×5."
+    "note": "Locked 2026-07-23. Studio 2:59. speed=12 leadInSec=8. Role: all powers; vol-roll verses; Link after bridge; Outro ×5. Measure Estimate 2026-07-24: 78 measure / 74 lyric rows; studio 179s (note); raw≈17 densify→11; leadIn kept 8. Dial on device.",
+    "measureSpeed": 11,
+    "measureLeadInSec": 8
   },
   "19-purple-rain": {
     "speed": 6,
     "leadInSec": 16,
-    "note": "Good enough 2026-07-23. Studio 8:41; 0.65× Tribute rows (43). speed=6 leadInSec=16. Role: full album; capo 3; chords while singing; sparse Solo/Outro lead. Lock later if crawl needs a nudge."
+    "note": "Good enough 2026-07-23. Studio 8:41; 0.65× Tribute rows (43). speed=6 leadInSec=16. Role: full album; capo 3; chords while singing; sparse Solo/Outro lead. Lock later if crawl needs a nudge. Measure Estimate 2026-07-24: 43 measure / 43 lyric rows; studio 521s (note); raw≈6 densify→6; leadIn kept 16. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 16
   },
   "20-when-i-come-around": {
     "speed": 11,
     "leadInSec": 9,
-    "note": "Locked 2026-07-23. Studio 2:58; 1.08× Tribute rows (71). speed=11 leadInSec=9. Role: all powers; palm mute; Solo×2; Outro rotated cold."
+    "note": "Locked 2026-07-23. Studio 2:58; 1.08× Tribute rows (71). speed=11 leadInSec=9. Role: all powers; palm mute; Solo×2; Outro rotated cold. Measure Estimate 2026-07-24: 71 measure / 71 lyric rows; studio 178s (note); raw≈15 densify→10; leadIn kept 9. Dial on device.",
+    "measureSpeed": 10,
+    "measureLeadInSec": 9
   },
   "21-the-middle": {
     "speed": 6,
     "leadInSec": 16,
-    "note": "Estimate 2026-07-24 after UG A-string 9 fix. Studio 2:46; 0.53× Tribute rows (35). Was locked 7/14; re-dial. Landmark: Just try your best."
+    "note": "Estimate 2026-07-24 after UG A-string 9 fix. Studio 2:46; 0.53× Tribute rows (35). Was locked 7/14; re-dial. Landmark: Just try your best. Measure Estimate 2026-07-24: 35 measure / 35 lyric rows; studio 166s (note); raw≈6 densify→6; leadIn kept 16. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 16
   },
   "22-dream-on": {
     "speed": 8,
     "leadInSec": 12,
-    "note": "Estimate 2026-07-23. Studio 4:28; 0.86× Tribute rows (57). speed≈8. leadInSec=12. High-low glance added. Landmark: Half my life's. Dial on device."
+    "note": "Estimate 2026-07-23. Studio 4:28; 0.86× Tribute rows (57). speed≈8. leadInSec=12. High-low glance added. Landmark: Half my life's. Dial on device. Measure Estimate 2026-07-24: 57 measure / 57 lyric rows; studio 268s (note); raw≈8 densify→7; leadIn kept 12. Dial on device.",
+    "measureSpeed": 7,
+    "measureLeadInSec": 12
   },
   "23-lola-montez": {
     "speed": 9,
     "leadInSec": 10.7,
-    "note": "Locked 2026-07-23. Cold V1; palm riff ×4 then open Interlude×2; Bridge instr×2 + Em vocals; chorus ends D/F#m/D; no Outro. speed 9 + leadInSec 10.7."
+    "note": "Locked 2026-07-23. Cold V1; palm riff ×4 then open Interlude×2; Bridge instr×2 + Em vocals; chorus ends D/F#m/D; no Outro. speed 9 + leadInSec 10.7. Measure Estimate 2026-07-24: 85 measure / 82 lyric rows; studio 353s (invert-lyric); raw≈9 densify→8; leadIn kept 10.7. Dial on device.",
+    "measureSpeed": 8,
+    "measureLeadInSec": 10.7
   },
   "24-mary-jane-s-last-dance": {
     "speed": 9,
     "leadInSec": 10.7,
-    "note": "Estimate 2026-07-23 polish. Studio 4:34; 0.97× Tribute rows (64). Intro×4 Interlude×2 Solo×4; V2 tag + instrumental before chorus. speed≈9. leadInSec=10.7. Landmark: Well she moved down here. Dial on device."
+    "note": "Estimate 2026-07-23 polish. Studio 4:34; 0.97× Tribute rows (64). Intro×4 Interlude×2 Solo×4; V2 tag + instrumental before chorus. speed≈9. leadInSec=10.7. Landmark: Well she moved down here. Dial on device. Measure Estimate 2026-07-24: 64 measure / 64 lyric rows; studio 274s (note); raw≈9 densify→8; leadIn kept 10.7. Dial on device.",
+    "measureSpeed": 8,
+    "measureLeadInSec": 10.7
   },
   "25-valerie": {
     "speed": 8,
     "leadInSec": 12,
-    "note": "Locked 2026-07-23. Device dial: tiny bump from Estimate 7→8; leadInSec 12 (formula). Intro E vamp; quiet ghosts; form headers."
+    "note": "Locked 2026-07-23. Device dial: tiny bump from Estimate 7→8; leadInSec 12 (formula). Intro E vamp; quiet ghosts; form headers. Measure Estimate 2026-07-24: 49 measure / 49 lyric rows; studio 212s (invert-lyric); raw≈8 densify→7; leadIn kept 12. Dial on device.",
+    "measureSpeed": 7,
+    "measureLeadInSec": 12
   },
   "26-voodoo-child-slight-return": {
     "speed": 6,
     "leadInSec": 16,
-    "note": "Estimate 2026-07-23 polish. Studio 7:59 SRV; 1.05× Tribute rows (69). Backing E-G-A; Solo1×4 Solo2×12 written. speed 6 (raw≈5.3 floor). leadInSec=16. Landmark: I want to say one more last thing. Dial on device."
+    "note": "Estimate 2026-07-23 polish. Studio 7:59 SRV; 1.05× Tribute rows (69). Backing E-G-A; Solo1×4 Solo2×12 written. speed 6 (raw≈5.3 floor). leadInSec=16. Landmark: I want to say one more last thing. Dial on device. Measure Estimate 2026-07-24: 76 measure / 69 lyric rows; studio 479s (note); raw≈6 densify→6; leadIn kept 16. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 16
   },
   "27-fat-bottomed-girls": {
     "speed": 10,
     "leadInSec": 20,
-    "note": "Estimate 2026-07-23. Studio 4:16; 0.97× Tribute rows (64). speed≈10. leadInSec=20 (vocal-only open). Landmark: Hey hey! / Break. Dial on device."
+    "note": "Estimate 2026-07-23. Studio 4:16; 0.97× Tribute rows (64). speed≈10. leadInSec=20 (vocal-only open). Landmark: Hey hey! / Break. Dial on device. Measure Estimate 2026-07-24: 68 measure / 64 lyric rows; studio 256s (note); raw≈10 densify→9; leadIn kept 20. Dial on device.",
+    "measureSpeed": 9,
+    "measureLeadInSec": 20
   },
   "28-mama-i-m-coming-home": {
     "speed": 6,
     "leadInSec": 17,
-    "note": "Estimate 2026-07-23. Studio 4:11; 0.71× Tribute rows (47). speed≈6. leadInSec=17 (Intro sit-out). Landmark: Selfish love. Dial on device."
+    "note": "Estimate 2026-07-23. Studio 4:11; 0.71× Tribute rows (47). speed≈6. leadInSec=17 (Intro sit-out). Landmark: Selfish love. Dial on device. Measure Estimate 2026-07-24: 48 measure / 47 lyric rows; studio 251s (note); raw≈6 densify→6; leadIn kept 17. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 17
   },
   "29-ain-t-goin-down-til-the-sun-comes-up": {
     "speed": 7,
     "leadInSec": 13.7,
-    "note": "Estimate 2026-07-23. Studio 4:32; 0.85× Tribute rows (56). Expanded solos + fake-ending Outro. Landmark: Local country station. Dial on device."
+    "note": "Estimate 2026-07-23. Studio 4:32; 0.85× Tribute rows (56). Expanded solos + fake-ending Outro. Landmark: Local country station. Dial on device. Measure Estimate 2026-07-24: 56 measure / 56 lyric rows; studio 272s (note); raw≈7 densify→6; leadIn kept 13.7. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 13.7
   },
   "30-pink-pony-club": {
     "speed": 9,
     "leadInSec": 10.7,
-    "note": "Estimate 2026-07-23. Studio 4:18; 1.33× Tribute rows (88). speed≈9. leadInSec=10.7. Quiet 3Red / big 4Red. Landmark: first Pre-Chorus. Dial on device."
+    "note": "Estimate 2026-07-23. Studio 4:18; 1.33× Tribute rows (88). speed≈9. leadInSec=10.7. Quiet 3Red / big 4Red. Landmark: first Pre-Chorus. Dial on device. Measure Estimate 2026-07-24: 88 measure / 88 lyric rows; studio 258s (note); raw≈9 densify→8; leadIn kept 10.7. Dial on device.",
+    "measureSpeed": 8,
+    "measureLeadInSec": 10.7
   },
   "31-banditos": {
     "speed": 7,
     "leadInSec": 13.7,
-    "note": "Estimate 2026-07-23. Studio 4:17 (was wrong 3:30); 0.79× Tribute rows (52). speed≈7. leadInSec=13.7. Landmark: Verse 2 open. Dial on device."
+    "note": "Estimate 2026-07-23. Studio 4:17 (was wrong 3:30); 0.79× Tribute rows (52). speed≈7. leadInSec=13.7. Landmark: Verse 2 open. Dial on device. Measure Estimate 2026-07-24: 52 measure / 52 lyric rows; studio 257s (note); raw≈7 densify→6; leadIn kept 13.7. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 13.7
   }
 }

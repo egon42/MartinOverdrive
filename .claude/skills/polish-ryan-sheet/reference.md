@@ -182,10 +182,13 @@ node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs 02-all-the-sma
 Lyric layout keeps `speed` / `leadInSec`. When locking **measure map** (retap Ryan), set
 optional `measureSpeed` / `measureLeadInSec` after a device pass at show Ryan **0.75×**
 (chrome collapsed). Use `--measure` on the helper: it counts rendered rows as
-`max(1, ceil(chordsPerBlankGroup / 4))` (same chunking as `chunkMeasureSlots`). Until those
-fields exist, autoscroll falls back to the lyric seed (crawl may drift if heights differ).
-Do not mass-rewrite other songs' measure fields until denser measure CSS is confirmed on
-device (ATS is the pilot).
+`max(1, ceil(chordsPerBlankGroup / 4))` (same chunking as `chunkMeasureSlots`).
+
+**Batch densify policy (2026-07-24):** after raw `--measure` estimate, set
+`measureSpeed = clamp(max(raw, lyricSpeed - 1), 6, lyricSpeed)` when densifying from the
+dialed lyric seed (dense measure CSS overshoots Tribute `H_t`; ATS was 8→7). Keep
+`measureLeadInSec = leadInSec` (music-timed). Until fields exist, autoscroll falls back to
+the lyric seed. Dial on device; do not treat batch values as locked.
 
 ### Why the old recipe failed (half-set audit)
 
