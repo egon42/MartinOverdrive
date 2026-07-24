@@ -177,14 +177,14 @@
   "26-voodoo-child-slight-return": {
     "speed": 6,
     "leadInSec": 16,
-    "note": "Estimate 2026-07-23 polish. Studio 7:59 SRV; lyric speed 6 leadIn 16. Layout 2026-07-24: verse/chorus pickups hang on prior chord (UG mid-word kept). Measure Estimate measureSpeed 6 + measureLeadInSec 16. Dial on device.",
+    "note": "Estimate 2026-07-23 polish. Studio 7:59 SRV; lyric speed 6 leadIn 16. Sit-out 2026-07-24 — skip measure dial unless role changes. Measure seed still 6/16 if revisited.",
     "measureSpeed": 6,
     "measureLeadInSec": 16
   },
   "27-fat-bottomed-girls": {
     "speed": 10,
     "leadInSec": 20,
-    "note": "Estimate 2026-07-23. Studio 4:16; 0.97× Tribute rows (64). speed≈10. leadInSec=20 (vocal-only open). Landmark: Hey hey! / Break. Dial on device. Measure Estimate 2026-07-24: 68 measure / 64 lyric rows; studio 256s (note); raw≈10 densify→9; leadIn kept 20. Dial on device.",
+    "note": "Estimate 2026-07-23. Studio 4:16; lyric speed 10 leadIn 20 (vocal-only open). Layout 2026-07-24: V1/end pickups under chords. Measure Estimate measureSpeed 9 + measureLeadInSec 20. Dial on device.",
     "measureSpeed": 9,
     "measureLeadInSec": 20
   },
