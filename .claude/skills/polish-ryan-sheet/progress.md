@@ -34,7 +34,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 18-here-it-goes-again — **done (2026-07-23); Wave B measure layout 2026-07-24:** hang verse/pre/chorus pickups; Intro/Link/Outro packed; scroll **12** + leadIn **8**; measure **11** + **8** (dial pending).
 - [ ] 19-purple-rain — **drafted (good enough 2026-07-23; layout 2026-07-24):** full album; Intro ring; V1 “I” under D; chorus hang D before bathing/underneath lines; Solo ×6 / Outro ×10 vamp; Slow-down; no ^N; scroll **6** + leadIn **16**; measure **6** + leadIn **16**. **Revisit V3 with guitar** (chords/layout TBD). Lock later.
 - [x] 20-when-i-come-around — **done (2026-07-23); Wave B measure layout 2026-07-24:** F# C# D# B phrase breaks restored (first hang pass glued cycles); chord-first pickups; Intro/Solo/Outro packed; scroll **11** + leadIn **9**; measure **10** + **9** (re-dial).
-- [x] 21-the-middle — **done (2026-07-23; frets fixed 2026-07-24):** A-string PM `9 5 9 7 4 5 4 5 5` (UG); open D/A/G chorus; Solo expanded; cold D; Amp 3Green; skip low E; scroll **6** + leadIn **16** (re-dial after missing-9 fix).
+- [x] 21-the-middle — **done (2026-07-23; frets fixed 2026-07-24); Wave B measure layout 2026-07-24:** verses map to intro `9 5 9 7 4` / `5 4 5 5`; solo packed; chorus D A G D; scroll **6** + leadIn **16**; measure **6** + **16** (dial pending).
 - [ ] 22-dream-on — **drafted (2026-07-24 B/G map):** Songsterr s286t2; two measures/line with `|`; `6/5` change chips + `2/4-5` pulls; singles after ~m70; no capo on Ryan; measure Estimate **12** + **12**. Layout-check before dial.
 - [x] 23-lola-montez — **done (2026-07-23):** cold V1; post-V1 palm riff ×4 then open Interlude D-G-A-D ×2; Bridge instr×2 then vocals (Em); chorus endings D/F#m/D; cut Outro; scroll **9** + leadIn **10.7**.
 - [ ] 24-mary-jane-s-last-dance — **drafted (good enough 2026-07-23; layout+measure 2026-07-24):** Intro×4; Interlude×2; Solo×4; pigeons×4; V2 tag + instrumental before chorus; verse pickups hang on prior chord; chorus second phrase under Em7; scroll **9** + leadIn **10.7**; measure **8** + leadIn **10.7**. Lock later if crawl feels final.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted good-enough (tonight full-set dial):** 04–06, 14, 19, 22, 24, 26–31. Scroll seeds are Estimates until you lock on device.
 
-**Next review queue:** **Wave B batch 2** — Dani / Pretender / HIGA / WICA layouts shipped; Dirtbag measure **locked 12/14**. Next orphan→dial: **21-the-middle**, then 23, 25. Parked: Dream On / Mama / Voodoo / Purple Rain V3. Hunger amp at guitar.
+**Next review queue:** **Wave B batch 2** — Middle layout shipped; WICA phrase fix pending guitar eval. Dirtbag measure **locked 12/14**. Next orphan→dial: **23-lola-montez**, then 25. Dial pending: Dani / Pretender / HIGA / WICA / Middle. Parked: Dream On / Mama / Voodoo / Purple Rain V3. Hunger amp at guitar.
 
 ## Skill audit (2026-07-23) — second-half prep
 
