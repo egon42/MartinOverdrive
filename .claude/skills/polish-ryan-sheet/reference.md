@@ -49,9 +49,10 @@ return, they return in UG split form.
 
 **Measure map (retap Ryan, 2026-07-24):** same `.ryan.txt` file. Retapping the Ryan tab
 toggles equal-width play-along columns (`layout: 'measure'` via `measureSlots`) — chip at
-bar start, lyric left under it; soft column rules; max 4 slots/row (phone wraps to 2).
-Blank-line row breaks still define how many chords share a system. No second file format;
-do not “prettify” the source to look measure-aligned.
+bar start, lyric left under it; soft column rules; long instrumental runs chunk at 4
+slots/row. Blank-line row breaks still define verse grouping (ATS: four per row, kept on
+one line even on phone). No second file format; do not “prettify” the source to look
+measure-aligned.
 
 ## Fill cues
 

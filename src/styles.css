@@ -152,8 +152,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    the live sheet disagree. em keeps them identical at any size. */
 .sheet-line--above .chord-chip,.sheet-line--above-chords .chord-chip{font-size:.7em;padding:.09em .5em;line-height:1.2;border-radius:.45em}
 /* Ryan measure map (retap Ryan): equal-width bar columns — chip at bar start, lyric
-   under (left). Soft rules = measure feel. Max 4 slots/row in JS; phone wraps to 2. */
-.sheet-line--measures{display:flex;flex-wrap:wrap;align-items:flex-start;gap:0;width:100%;margin:0 0 10px;box-sizing:border-box}
+   under (left). Soft rules = measure feel. Max 4 slots/row in JS (sheet blank lines
+   still own coarser grouping; do not wrap a 4-chord row down to 2 on phone). */
+.sheet-line--measures{display:flex;flex-wrap:nowrap;align-items:flex-start;gap:0;width:100%;margin:0 0 10px;box-sizing:border-box}
 .sheet-measure-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:stretch;text-align:left;padding:0 7px;box-sizing:border-box}
 .sheet-measure-col + .sheet-measure-col{box-shadow:inset 1px 0 0 color-mix(in srgb,var(--line) 85%,transparent)}
 .sheet-measure-chord{box-sizing:border-box;min-height:1.35em;display:flex;align-items:flex-start;justify-content:flex-start;margin-bottom:3px}
@@ -163,12 +164,6 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-line--measures .chord-chip--cue{padding:.22em 0 0;border-radius:0;width:1.5em;min-width:1.5em;height:1.15em;font-size:.7em;line-height:1}
 .sheet-line--measures .chord-chip--power{font-size:.8em;padding:.09em .5em}
 .sheet-full--measures .sheet-line--measures + .sheet-line--measures{margin-top:4px}
-@media(max-width:520px){
-  .sheet-measure-col{flex:1 1 42%;max-width:50%}
-  /* First col of a wrapped pair shouldn't inherit a left rule from the previous row's last col. */
-  .sheet-measure-col:nth-child(2n+1){box-shadow:none}
-  .sheet-measure-col:nth-child(2n+1) + .sheet-measure-col{box-shadow:inset 1px 0 0 color-mix(in srgb,var(--line) 85%,transparent)}
-}
 /*
   Above-slot chip alignment (learned 2026-07-22 on fill cues, then power chips):
 
