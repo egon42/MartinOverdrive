@@ -86,7 +86,7 @@
   "13-save-a-horse-ride-a-cowboy": {
     "speed": 10,
     "leadInSec": 18,
-    "note": "Lyric Locked 2026-07-22. speed 10 leadIn 18. Wave B 2026-07-24: hang pickups; Save a horse E G A hooks; solos E A E A. Measure densified → measureSpeed 6 + measureLeadInSec 18. Landmark: Save a horse. Dial on device.",
+    "note": "Lyric Locked 2026-07-22. speed 10 leadIn 18. Wave B 2026-07-24: hang pickups; Save a horse E G A hooks; solos E A E A. Measure dialed measureSpeed 6 + measureLeadInSec 18.",
     "measureSpeed": 6,
     "measureLeadInSec": 18
   },
