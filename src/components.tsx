@@ -150,12 +150,19 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) }
     },
   }
-  const chipClass = ghost ? 'chord-chip chord-chip--ghost' : 'chord-chip'
+  // Underline G-rooted chips (G, Gm, G7, G/B…) so they don't read as C at distance.
+  // Skip G# / Gb. Fingering-only chips omit the letter, so no underline there.
+  const gRoot = /^G(?![#b])/.test(name)
+  const chipClass = [
+    'chord-chip',
+    ghost && 'chord-chip--ghost',
+    gRoot && 'chord-chip--g',
+  ].filter(Boolean).join(' ')
   // Ryan power chips / Shapes retap: replace the chord name with a fingering chip (still tappable).
   if (fingering && (fingeringOnly || powerChip)) {
     const body = powerChip ? formatPowerFingering(fingering) : formatVerticalFingering(fingering)
     return <span className="chord-chip-wrap" ref={ref}>
-      <b className={`${chipClass} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}`} role="button" tabIndex={0} aria-expanded={open}
+      <b className={`${ghost ? 'chord-chip chord-chip--ghost' : 'chord-chip'} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}`} role="button" tabIndex={0} aria-expanded={open}
         aria-label={label} title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}>
         {/* Power chips: × mute stays on-acid (same color as frets). Shapes mode greys mutes. */}
         {powerChip ? body : <FingeringText text={body} />}
