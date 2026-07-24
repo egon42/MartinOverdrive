@@ -6,6 +6,23 @@
 export interface SheetPart { chord?: string; ghost?: boolean; text?: string }
 export interface SheetLine { kind: 'lyric' | 'tab' | 'section'; parts: SheetPart[]; raw: string }
 export interface ParsedSheet { meta: string[]; lines: SheetLine[] }
+/** One equal-width play-along column: chord (optional) + the lyric that follows it. */
+export interface MeasureSlot { chord?: string; ghost?: boolean; text: string }
+
+/** Regroup UG mid-word parts into measure columns — lyrics follow each chord, not the reverse. */
+export function measureSlots(parts: SheetPart[]): MeasureSlot[] {
+  const slots: MeasureSlot[] = []
+  for (const part of parts) {
+    if (part.chord) {
+      slots.push({ chord: part.chord, ghost: part.ghost, text: '' })
+      continue
+    }
+    if (part.text == null) continue
+    if (slots.length === 0) slots.push({ text: part.text })
+    else slots[slots.length - 1].text += part.text
+  }
+  return slots.filter((slot) => slot.chord || !!slot.text.trim())
+}
 
 // A-G root, optional accidental, common qualities/extensions, optional slash bass.
 // Known ambiguity, accepted: a lyric line that is entirely one chord-shaped word

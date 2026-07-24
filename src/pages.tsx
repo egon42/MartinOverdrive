@@ -316,7 +316,7 @@ export function Show() {
     navigate(`/show/${id}`, { replace })
   }
   const sheets = sheetsFor(song.id)
-  const { settings, isFingeringOnly, toggleFingeringOnly } = useSettings()
+  const { settings, isFingeringOnly, toggleFingeringOnly, isRyanMeasure, toggleRyanMeasure } = useSettings()
   // Fingering surfaces predate the tab rename: 'cheat' governs chips on BOTH progression
   // cards (Cheat and Chords tabs share one toggle per song); 'chords' governs the Lyrics sheet.
   const cardShapes = isFingeringOnly(song.id, 'cheat')
@@ -362,6 +362,12 @@ export function Show() {
       if (settings.chords.scope !== 'none') toggleFingeringOnly(song.id, 'chords')
     } else setView('lyrics')
   }
+  // Retap Ryan: lyric-led UG layout ↔ equal-width measure (play-along) columns.
+  const selectRyan = () => {
+    if (effective === 'ryan') toggleRyanMeasure(song.id)
+    else setView('ryan')
+  }
+  const ryanMeasure = isRyanMeasure(song.id)
   // Pinch-zoom the three text sheets (not the fit-to-width Tabs). Cards can't shrink below
   // their fitted 1× baseline (min 1); the lyric sheet can shrink a little to show more.
   // Ryan sheets start at 0.75× so fills + follow-along fit the phone without a pinch first;
@@ -380,7 +386,7 @@ export function Show() {
   // Pass show-mode pinch --zoom so the crawl scales with content height (set-and-forget
   // speed survives zoom). Tabs aren't pinch-zoomable (fit-to-width); still pass zoom for
   // consistency when the user was mid-gesture on another view.
-  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs, sheets.ryan], zoom)
+  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs, sheets.ryan, ryanMeasure], zoom)
   useEffect(() => { localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   // Live show sync: report every displayed song (only a leading device broadcasts it),
   // and snap to the leader's song when following. `live.leader` changes identity only
@@ -509,7 +515,10 @@ export function Show() {
     <article ref={zoomElRef as RefObject<HTMLElement>} style={{ ['--zoom' as string]: zoom } as React.CSSProperties} className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}${effective !== 'tabs' ? ' show-zoomable' : ''}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
-        {ryanOn && <button type="button" role="tab" aria-selected={effective === 'ryan'} className={effective === 'ryan' ? 'active' : ''} onClick={() => setView('ryan')}>Ryan</button>}
+        {ryanOn && <button type="button" role="tab" aria-selected={effective === 'ryan'} aria-pressed={effective === 'ryan' ? ryanMeasure : undefined}
+          className={shapesTabClass(effective === 'ryan', ryanMeasure, true)}
+          title={effective === 'ryan' ? (ryanMeasure ? 'Measure map on. Tap again for lyric layout' : 'Tap again for measure map') : undefined}
+          onClick={selectRyan}>Ryan</button>}
         <button type="button" role="tab" aria-selected={effective === 'cheat'} aria-pressed={effective === 'cheat' ? cardShapes : undefined}
           className={shapesTabClass(effective === 'cheat', cardShapes, settings.cheat.scope !== 'none')}
           title={effective === 'cheat' && settings.cheat.scope !== 'none' ? (cardShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
@@ -532,7 +541,7 @@ export function Show() {
       <HomeFretBadges song={song} />
     </div>}
     {effective === 'ryan'
-      ? <div className="show-sheet" ref={ryanRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.ryan!} songId={song.id} frets powerFingerings/></div></div>
+      ? <div className="show-sheet" ref={ryanRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.ryan!} songId={song.id} frets powerFingerings layout={ryanMeasure ? 'measure' : 'lyric'}/></div></div>
       : effective === 'lyrics'
         ? <div className="show-sheet" ref={lyricsRef}><div className="autoscroll-inner"><ChordSheetView text={sheets.chords!} songId={song.id}/></div></div>
         : effective === 'tabs'

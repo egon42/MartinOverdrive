@@ -18,6 +18,7 @@ import {
 const KEY_SUFFIX = import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''
 const SETTINGS_KEY = `overdrive-settings${KEY_SUFFIX}`
 const FINGERING_ONLY_KEY = `overdrive-fingering-only${KEY_SUFFIX}`
+const RYAN_MEASURE_KEY = `overdrive-ryan-measure${KEY_SUFFIX}`
 // A briefly-deployed build (2026-07-13, reverted same day) migrated settings to this key
 // with scope forced to 'all'. Clear it so a future key bump can't resurrect stale values.
 try { localStorage.removeItem(`overdrive-settings2${KEY_SUFFIX}`) } catch { /* storage unavailable */ }
@@ -61,6 +62,8 @@ export interface AppSettings {
 
 /** Per-song, per-surface: when true, chord chips are replaced by vertical fingering chips. */
 export type FingeringOnlyMap = Record<string, Partial<Record<FingeringSurface, boolean>>>
+/** Per-song Ryan play-along map (equal measure columns). Retap the Ryan tab to toggle. */
+export type RyanMeasureMap = Record<string, true>
 
 const DEFAULT_PREFS: FingeringPrefs = { scope: 'power', position: 'under' }
 const DEFAULT_THEME: ThemePrefs = { preset: 'martin-drive', colors: { ...MARTIN_DRIVE }, rowStripe: true }
@@ -148,6 +151,20 @@ function readFingeringOnly(): FingeringOnlyMap {
   }
 }
 
+function readRyanMeasure(): RyanMeasureMap {
+  try {
+    const raw = JSON.parse(localStorage.getItem(RYAN_MEASURE_KEY) || '{}')
+    if (!raw || typeof raw !== 'object') return {}
+    const out: RyanMeasureMap = {}
+    for (const [id, on] of Object.entries(raw as Record<string, unknown>)) {
+      if (on) out[id] = true
+    }
+    return out
+  } catch {
+    return {}
+  }
+}
+
 interface SettingsStore {
   settings: AppSettings
   patchFingering: (surface: FingeringSurface, update: Partial<FingeringPrefs>) => void
@@ -162,6 +179,8 @@ interface SettingsStore {
   resetTheme: () => void
   isFingeringOnly: (songId: string, surface: FingeringSurface) => boolean
   toggleFingeringOnly: (songId: string, surface: FingeringSurface) => void
+  isRyanMeasure: (songId: string) => boolean
+  toggleRyanMeasure: (songId: string) => void
 }
 
 const SettingsContext = createContext<SettingsStore | null>(null)
@@ -178,8 +197,10 @@ function applyChipPull(em: number) {
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(readSettings)
   const [fingeringOnly, setFingeringOnly] = useState<FingeringOnlyMap>(readFingeringOnly)
+  const [ryanMeasure, setRyanMeasure] = useState<RyanMeasureMap>(readRyanMeasure)
   useEffect(() => { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)) }, [settings])
   useEffect(() => { localStorage.setItem(FINGERING_ONLY_KEY, JSON.stringify(fingeringOnly)) }, [fingeringOnly])
+  useEffect(() => { localStorage.setItem(RYAN_MEASURE_KEY, JSON.stringify(ryanMeasure)) }, [ryanMeasure])
   useEffect(() => { applyTheme(settings.theme.colors) }, [settings.theme.colors])
   useEffect(() => { applyRowStripe(settings.theme.rowStripe) }, [settings.theme.rowStripe])
   useEffect(() => { applyChipPull(settings.lyricChipPull) }, [settings.lyricChipPull])
@@ -222,9 +243,16 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     else next[songId] = entry
     return next
   })
+  const isRyanMeasure = (songId: string) => !!ryanMeasure[songId]
+  const toggleRyanMeasure = (songId: string) => setRyanMeasure((old) => {
+    const next = { ...old }
+    if (next[songId]) delete next[songId]
+    else next[songId] = true
+    return next
+  })
   const value = useMemo(
-    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setDevMode, setRyanTab, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly }),
-    [settings, fingeringOnly],
+    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setDevMode, setRyanTab, setThemePreset, patchThemeColor, setRowStripe, resetTheme, isFingeringOnly, toggleFingeringOnly, isRyanMeasure, toggleRyanMeasure }),
+    [settings, fingeringOnly, ryanMeasure],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
 }
