@@ -3,7 +3,7 @@ Standard (EADGBE)
 [Intro - clean/acoustic vamp on E, ~17s; sit-out/follow along unless covering the intro figure]
 
 [Amp: 7Red]
-[Verse - clean/edge rhythm]
+[Verse 1 - clean/edge rhythm]
 E
 
 E
@@ -24,7 +24,7 @@ A
 E
 Mama, Im coming home   
 
-[Pre-Chorus]
+[Pre-Chorus 1]
 C#m
 You took me in and you d
 A
@@ -61,7 +61,7 @@ E
 Mama, Im coming home
 
 [Amp: 8Red]
-[Chorus - lift]
+[Pre-Chorus 2 - lift]
 C#m
 Selfish love yeah 
 A
@@ -80,7 +80,7 @@ F#5
 G#5
 I just got to have it all
 
-[Chorus 2]
+[Chorus 1]
 A
 I've seen your face a hundred times
 E
@@ -88,22 +88,40 @@ E
 A
 Every day we've been apart
 E
+F#5
+G#5
 
 A B E A
 And I don't care about the sunshine, yeah
+A B C D
+E
+'cause mama, mama, I'm coming home
+C D
+B
+I'm coming home
 
 [Amp: 7Red]
-[Bridge - acoustic transition (Little Acoustic Thingy), instrumental x3]
+[Bridge - G A E ×3 then B into solo]
+G A E
+
+G A E
+
+G A E
+
+B
 
 [Amp: 8Red]
-[Solo - lead-in walk-up]
-B A E A
+[Solo]
+A E
 
-E A B C#
+A E
 
-B A B
+A B
+C#m B A
 
-[Pre-Chorus - repeat]
+B
+
+[Pre-Chorus 3]
 C#m
 You took me in and you 
 A
@@ -122,10 +140,29 @@ F#5
 G#5
 By the fire in your eyes
 
-[Outro - Asus2 Bsus4 C D E vamp, x3 more (same C D E); ritardando to a stop per tab (68 to 60 to 30 bpm), no fade]
+[Chorus 2]
+A
+I've seen your face a thousand times
+E
+
+A
+Every day we've been apart
+E
+
+A B E A
+And I don't care about the sunshine, yeah
 Asus2 Bsus4 C D
 E
 'cause mama, mama, I'm coming home
+
+[Outro - C D E tags ×3; ritard to stop]
+C D
+E
+I'm coming home
+
+C D
+E
+I'm coming home
 
 C D
 E

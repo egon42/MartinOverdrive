@@ -1186,27 +1186,28 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "(C#m A) E (C#m A) B"
+        "chords": "(C#m A) E (C#m A) B",
+        "hint": "Second pre is Selfish love lift (B F#5 G#5)"
       },
       {
         "section": "Chorus",
         "chords": "A E",
-        "hint": "Final one runs extended"
+        "hint": "Face block. First: hundred + short C D B tag. Second: thousand into outro"
       },
       {
         "section": "Bridge",
         "chords": "G A E",
-        "hint": "Acoustic bridge: last pass walks B into the solo"
+        "hint": "G A E ×3 then B into solo"
       },
       {
         "section": "Solo",
-        "chords": "A B",
-        "hint": "Sits on A, walks up to B at the end"
+        "chords": "A E A E A B C#m B A B",
+        "hint": "7 bars after Bridge B"
       },
       {
         "section": "Outro",
         "chords": "Asus2 Bsus4 C D E",
-        "hint": "Closing run after the last chorus; C D E three times to end"
+        "hint": "After Chorus 2; C D E three times to end"
       }
     ],
     "form": [
