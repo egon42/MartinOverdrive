@@ -157,7 +157,8 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-line--measures{display:flex;flex-wrap:nowrap;align-items:flex-start;gap:0;width:100%;margin:0 0 10px;box-sizing:border-box}
 .sheet-measure-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:stretch;text-align:left;padding:0 7px;box-sizing:border-box}
 .sheet-measure-col + .sheet-measure-col{box-shadow:inset 1px 0 0 color-mix(in srgb,var(--line) 85%,transparent)}
-.sheet-measure-chord{box-sizing:border-box;min-height:1.35em;display:flex;align-items:flex-start;justify-content:flex-start;margin-bottom:3px}
+/* Same chip-slot + --chip-pull as .sheet-above-chord so Settings "chip pull" matches lyric mode. */
+.sheet-measure-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;justify-content:flex-start;margin-bottom:var(--chip-pull,-0.5em)}
 .sheet-measure-chord .chord-chip,.sheet-measure-chord .chord-chip-wrap{margin:0}
 .sheet-measure-lyric{position:relative;z-index:1;font-size:.82em;line-height:1.25;text-align:left;overflow-wrap:break-word;word-break:normal;hyphens:none}
 .sheet-line--measures .chord-chip{font-size:.7em;padding:.09em .5em;line-height:1.2;border-radius:.45em}
@@ -167,10 +168,10 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 /*
   Above-slot chip alignment (learned 2026-07-22 on fill cues, then power chips):
 
-  1. Keep `.sheet-above-chord` at FIXED `height: 1.35em` — never `height: auto`. Growing
-     the slot pushes the lyric row down.
+  1. Keep `.sheet-above-chord` / `.sheet-measure-chord` at FIXED `height: 1.35em` — never
+     `height: auto`. Growing the slot pushes the lyric row down.
   2. Never tweak `--chip-pull` / margin-bottom to "raise" a custom chip — that shifts
-     every lyric baseline.
+     every lyric baseline. Measure map must use the same var as lyric above-mode.
   3. Name chips: `align-items: flex-end` (default) so they tuck against the lyric.
   4. Tall / pointed custom chips (cues, power fingerings, A-string frets): `align-items:
      flex-start` on the slot so extra height grows UP into the pull gap, not down into
@@ -184,11 +185,18 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-line--above .chord-chip--cue,.sheet-line--above-chords .chord-chip--cue{padding:.22em 0 0;border-radius:0;width:1.5em;min-width:1.5em;height:1.15em;font-size:.7em;line-height:1}
 .sheet-above-col:has(.chord-chip--cue) .sheet-above-chord,
 .sheet-above-col:has(.chord-chip--power) .sheet-above-chord,
-.sheet-above-col:has(.chord-chip--fret) .sheet-above-chord{align-items:flex-start}
+.sheet-above-col:has(.chord-chip--fret) .sheet-above-chord,
+.sheet-measure-col:has(.chord-chip--cue) .sheet-measure-chord,
+.sheet-measure-col:has(.chord-chip--power) .sheet-measure-chord,
+.sheet-measure-col:has(.chord-chip--fret) .sheet-measure-chord{align-items:flex-start}
 .sheet-above-chord .chord-chip-wrap:has(.chord-chip--power),
-.sheet-above-chord .chord-chip-wrap:has(.chord-chip--fret){display:flex;align-items:flex-start;line-height:0}
+.sheet-above-chord .chord-chip-wrap:has(.chord-chip--fret),
+.sheet-measure-chord .chord-chip-wrap:has(.chord-chip--power),
+.sheet-measure-chord .chord-chip-wrap:has(.chord-chip--fret){display:flex;align-items:flex-start;line-height:0}
 .sheet-above-chord .chord-chip-wrap:has(.chord-chip--power) .chord-chip--power,
-.sheet-above-chord .chord-chip-wrap:has(.chord-chip--fret) .chord-chip--fret{line-height:1.2}
+.sheet-above-chord .chord-chip-wrap:has(.chord-chip--fret) .chord-chip--fret,
+.sheet-measure-chord .chord-chip-wrap:has(.chord-chip--power) .chord-chip--power,
+.sheet-measure-chord .chord-chip-wrap:has(.chord-chip--fret) .chord-chip--fret{line-height:1.2}
 .sheet-line--above-chords{margin:0 0 5px}
 /* Zebra tint on Lyrics-sheet lines, honoring the "Alternate section tone" toggle
    (same var(--ink) 5.5% wash as the cheat-card rows). Text is inset with padding and
