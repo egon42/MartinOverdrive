@@ -3,12 +3,9 @@ Standard (EADGBE)
 [Amp: 1Red]
 
 [Intro - G A7sus4 G ×2]
-G
+G A7sus4 G
 
-A7sus4
-
-G
- x2
+G A7sus4 G
 
 [Verse - sit under trading vocals; clean]
 G
@@ -21,39 +18,25 @@ From the mouths of
 G
 decadence
 
-G
- 
-A7sus4
- 
-G
- 
-Cadd9
+G A7sus4 G Cadd9
 
-But 
 G
+But 
 I can't feed on the 
 A7sus4
 powerless
-
 When my 
 G
 cup's already 
 G
 overfilled
 
-G
- 
-A7sus4
- 
-G
- 
-Cadd9
+G A7sus4 G Cadd9
 
 G
 But it's 
 A7sus4
 on the table
-
 The 
 G
 fire is cook
@@ -64,7 +47,6 @@ G
 And they're 
 A7sus4
 farming babies
-
 While s
 G
 laves are 
@@ -75,7 +57,6 @@ G
 Blood is 
 A7sus4
 on the table
-
 And the 
 G
 mouths are 
@@ -84,14 +65,12 @@ choking
 
 [Stomp: 2Red]
 [Chorus - dirt lift]
-But 
 G
+But 
 I'm going 
 A7sus4
 hungry  
-G
-      
-Cadd9
+G Cadd9
 
 G
 I don't mind 
@@ -103,39 +82,25 @@ From the mouths of
 Cadd9
 decadence
 
+G Cadd9 G/B Cadd9
+
 G
-
-Cadd9
-
-G/B
-
-Cadd9
-
 But 
-G
 I can't feed on the 
 Cadd9
 powerless
-
 When my 
 G
 cup's already 
 Cadd9
 overfilled
 
-G
-
-Cadd9
-
-G/B
-
-Cadd9
+G Cadd9 G/B Cadd9
 
 G
 But it's 
 Cadd9
 on the table
-
 The 
 G
 fire is cook
@@ -146,7 +111,6 @@ G
 And they're 
 Cadd9
 farming babies
-
 While s
 G
 laves are 
@@ -157,7 +121,6 @@ G
 And is 
 A7sus4
 on the table
-
 And the 
 G
 mouths are 
@@ -168,7 +131,6 @@ G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
@@ -179,7 +141,6 @@ G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
@@ -190,7 +151,6 @@ G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
@@ -201,38 +161,26 @@ G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
 Cadd9
 Yeah)
 
-[Bridge - D5 E5 Emadd9; Standard x00x x22x]
-D5
--
-E5
- 
-D5
--
-E5
-  Emadd9  x4
+[Bridge - D5 E5 Emadd9; Standard x00x x22x ×4]
+D5 E5 D5 E5
+
+Emadd9
 
 [Interlude - G A7sus4 G/B Cadd9 ×2]
-G
+G A7sus4 G/B Cadd9
 
-A7sus4
-
-G/B
-
-Cadd9
- x2
+G A7sus4 G/B Cadd9
 
 G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
@@ -243,41 +191,33 @@ G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
 Cadd9
 Yeah)
 
-[Bridge - D5 E5 Emadd9; Standard x00x x22x]
-D5
--
-E5
- 
-D5
--
-E5
-  Emadd9 x4
+[Bridge - D5 E5 Emadd9; Standard x00x x22x ×4]
+D5 E5 D5 E5
 
+Emadd9
+
+G
 Yeah 
-G
 I don't mind s
 A7sus4
 tealing bread
-
     (
 G
 Ooh           
 Cadd9
 I don't mind)
 
-Yeah 
 G
+Yeah 
 I don't mind s
 A7sus4
 tealing bread
-
     (
 G
 Ooh           
@@ -288,7 +228,6 @@ G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
@@ -299,7 +238,6 @@ G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
@@ -310,7 +248,6 @@ G
    But I'm going 
 A7sus4
 hungry
-
    (Growing 
 G
 Hungry...
@@ -318,12 +255,6 @@ Cadd9
 Yeah)
 
 [Bridge - cold end; Standard x00x x22x]
-D5
- 
-E5
- 
-D5
- 
-E5
-  
+D5 E5 D5 E5
+
 Emadd9
