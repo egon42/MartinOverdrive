@@ -135,7 +135,7 @@
   "20-when-i-come-around": {
     "speed": 11,
     "leadInSec": 9,
-    "note": "Lyric Locked 2026-07-23. Studio 2:58. speed=11 leadInSec=9. Wave B 2026-07-24: hang verse pickups + When on B5; Intro/Solo/Outro packed. Measure rows 71→30; seed measureSpeed 10 + measureLeadInSec 9 (densify from lyric; raw≈6). Dial on device. Landmark: When I come around.",
+    "note": "Lyric Locked 2026-07-23. Studio 2:58. speed=11 leadInSec=9. Wave B 2026-07-24: keep F# C# D# B phrase breaks (hang pass had glued cycles); chord-first whole-word pickups; Intro/Solo/Outro packed. Measure rows→31; seed measureSpeed 10 + measureLeadInSec 9. Dial on device. Landmark: When I come around.",
     "measureSpeed": 10,
     "measureLeadInSec": 9
   },
