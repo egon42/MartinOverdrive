@@ -80,6 +80,18 @@ F#5
 G#5
 I just got to have it all
 
+[Chorus 2]
+A
+I've seen your face a hundred times
+E
+
+A
+Every day we've been apart
+E
+
+A B E A
+And I don't care about the sunshine, yeah
+
 [Amp: 7Red]
 [Bridge - acoustic transition (Little Acoustic Thingy), instrumental x3]
 
@@ -109,18 +121,6 @@ B
 F#5
 G#5
 By the fire in your eyes
-
-[Chorus 2]
-A
-I've seen your face a thousand times
-E
-
-A
-Every day we've been apart
-E
-
-A B E A
-And I don't care about the sunshine, yeah
 
 [Outro - Asus2 Bsus4 C D E vamp, x3 more (same C D E); ritardando to a stop per tab (68 to 60 to 30 bpm), no fade]
 Asus2 Bsus4 C D
