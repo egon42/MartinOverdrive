@@ -44,8 +44,8 @@
   "06-don-t-stop-believin": {
     "speed": 8,
     "leadInSec": 18,
-    "note": "Good enough 2026-07-22. Studio 4:11; speed=8 leadIn=18. Pre end: B under night then quick E B E A; post-pre interlude ×1; solo ×1; V3 E on Paying. Measure dial 2026-07-24: measureSpeed 7 + measureLeadInSec 18.",
-    "measureSpeed": 7,
+    "note": "Good enough 2026-07-22. Studio 4:11; lyric speed=8 leadIn=18. Pre end: B under night then quick E B E A; post-pre interlude ×1; solo ×1; V3 E on Paying. Measure dial 2026-07-24 after layout trim: measureSpeed 6 + measureLeadInSec 18.",
+    "measureSpeed": 6,
     "measureLeadInSec": 18
   },
   "08-while-my-guitar-gently-weeps": {
