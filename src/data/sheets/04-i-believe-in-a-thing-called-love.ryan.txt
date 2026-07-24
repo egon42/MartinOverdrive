@@ -229,43 +229,43 @@ uching
 B5
 me, ahhhhhh!
 
-[Clap - staccato E A F# B, double on B ×3]
+[Clap - ghost barres E A F# B, double on B ×3; clap don't play]
 
-E5
+~E
 I believe in a t
-A5
+~A
 hing called love
 
-F#5
+~F#
 Just listen to the r
-B5
-B5
+~B
+~B
 hythm of my heart
 
-E5
+~E
 There's a chance we could m
-A5
+~A
 ake it now
 
-F#5
+~F#
 We'll be rocking 'til the s
-B5
-B5
+~B
+~B
 un goes down
 
-E5
+~E
 I believe in a 
-A5
+~A
 thing call
-F#5
+~F#
 ed 
-B5
-B5
+~B
+~B
 love
 
-C#5
+~C#m
 OoOOOO
-D5
+~D
 Oh! Huh!
 
 [Solo - into outro; optional jump 6Green]

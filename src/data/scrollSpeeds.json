@@ -37,8 +37,8 @@
   "04-i-believe-in-a-thing-called-love": {
     "speed": 15,
     "leadInSec": 13.2,
-    "note": "Estimate 2026-07-22. Studio 3:38; ~1.23× Tribute non-empty (211). speed≈15. leadInSec=13.2. Power *5; Clap staccato E A F# B double-B. Dial on device. Measure Estimate 2026-07-24: 84 measure / 81 lyric rows; studio 218s (note); raw≈11 densify→14; leadIn kept 13.2. Dial on device.",
-    "measureSpeed": 14,
+    "note": "Estimate 2026-07-22. Studio 3:38; speed≈15 leadInSec=13.2. Power *5; Clap ghost barres ~E ~A ~F# ~B (double B) + ~C#m ~D. Measure dial 2026-07-24: measureSpeed 10 + measureLeadInSec 13.2.",
+    "measureSpeed": 10,
     "measureLeadInSec": 13.2
   },
   "06-don-t-stop-believin": {
