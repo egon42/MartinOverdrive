@@ -231,7 +231,10 @@ html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-m
 .sheet-section--cue .chord-chip--cue{font-size:.85em;width:1.5em;min-width:1.5em;height:1.15em;padding:.22em 0 0;flex:0 0 auto}
 .sheet-tab{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.78rem;line-height:1.45;margin:0 0 7px;overflow-x:auto}
 .chord-panel textarea{min-height:220px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem;margin-bottom:12px}
-.chord-panel .section-heading{margin-bottom:14px}
+.chord-panel .section-heading{margin-bottom:14px;flex-direction:column;align-items:stretch;gap:10px}
+.chord-panel .fretboard-toggle{margin:0;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%}
+.chord-panel .fretboard-toggle::-webkit-scrollbar{display:none}
+.chord-panel .fretboard-toggle button{flex:0 0 auto;white-space:nowrap;padding:.4rem .7rem;font-size:.68rem}
 /* Practice-page sheet panel. The progression cards render at natural height there —
    .cheat-screen's flex-basis:100% only means "one screen" inside show mode's
    fixed-height column, so neutralize the flex sizing under .chord-panel. The lyric/tab
@@ -255,8 +258,10 @@ html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-m
 .compact-chords{display:inline-flex;gap:.3em;flex:0 0 auto;min-width:5.2em}
 .compact-cue{color:#aab5b0;font-size:.85em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .sheet-compact .sheet-section{margin:.5em 0 .2em}.sheet-compact .sheet-tab{font-size:.72em}
-.show-view-bar{display:flex;align-items:center;gap:10px;margin:0 0 12px;flex-wrap:wrap}
-.show-view-toggle{margin:0}
+.show-view-bar{display:flex;align-items:center;gap:10px;margin:0 0 12px;flex-wrap:nowrap;min-width:0}
+.show-view-toggle{margin:0;flex:1 1 auto;min-width:0;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.show-view-toggle::-webkit-scrollbar{display:none}
+.show-view-toggle button{flex:0 0 auto;white-space:nowrap}
 /* Retap Cheat/Chords toggles fingering chips. Hollow mark = tap again available; solid = on. */
 .fretboard-toggle button.shapes-hint::after,.fretboard-toggle button.shapes::after{content:"";display:inline-block;box-sizing:border-box;width:.34em;height:.72em;margin-left:.38em;vertical-align:-.06em;border-radius:1px}
 .fretboard-toggle button.shapes-hint::after{border:1.5px solid currentColor;background:transparent;opacity:.55}
@@ -264,7 +269,7 @@ html[data-row-stripe] .sheet-full .sheet-line:nth-child(even){background:color-m
 /* "Pin" pill: pins the current view as this song's default. Styled like the view-toggle
    pills; green (acid) when the current view is the pinned one, dimmed/outlined otherwise.
    Per-device rehearsal preference. */
-.show-pin{border:1px solid var(--line);background:transparent;color:inherit;border-radius:999px;padding:.45rem .85rem;font-size:.72rem;font-weight:750;line-height:1;cursor:pointer;opacity:.5;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+.show-pin{border:1px solid var(--line);background:transparent;color:inherit;border-radius:999px;padding:.45rem .85rem;font-size:.72rem;font-weight:750;line-height:1;cursor:pointer;opacity:.5;-webkit-user-select:none;user-select:none;touch-action:manipulation;flex:0 0 auto;white-space:nowrap}
 .show-pin.pinned{background:var(--acid);border-color:var(--acid);color:var(--on-acid);opacity:1}
 /* Show-mode autoscroll bar (teleprompter): play/pause + −/+ speed steppers, big tap targets */
 .show-autoscroll{display:flex;align-items:center;gap:10px;margin:0}
@@ -319,7 +324,6 @@ button.autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter
 /* Verbatim ASCII tab text (practice panel and show mode) */
 .tab-text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82rem;line-height:1.5;margin:0;overflow-x:auto;color:inherit}
 .show-tabs .tab-text{font-size:calc(var(--sheet-fit,1)*.9rem);line-height:1.45}
-.chord-panel .fretboard-toggle{margin:0}
 .show-tabs .tab-text{overflow-x:visible;width:max-content;min-width:100%}
 
 /* Live cheat card (default show-mode view). --sheet-fit scales progression only
@@ -435,9 +439,9 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
   transition-duration:10.8s
 }
 .show-mode--chrome-settle .show-song-head h1{transition-duration:10.8s}
-.show-song .show-view-bar{margin:0 0 4px;gap:6px}
-.show-song .fretboard-toggle{gap:4px}
-.show-song .fretboard-toggle button,.show-song .show-pin{padding:.28rem .58rem;font-size:.62rem}
+.show-song .show-view-bar{margin:0 0 4px;gap:4px}
+.show-song .fretboard-toggle{gap:3px}
+.show-song .fretboard-toggle button,.show-song .show-pin{padding:.22rem .42rem;font-size:.58rem}
 .show-stage-strip{display:flex;flex-wrap:wrap;gap:5px;row-gap:2px;align-items:center;margin:0 0 4px}
 .show-stage-strip .preset-badges{gap:5px}
 .show-stage-strip .preset-chip{font-size:.68rem;width:1.65em;height:1.65em}
