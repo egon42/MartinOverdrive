@@ -3,7 +3,7 @@ Standard (EADGBE) — skip low E (Drop D without retuning)
 [Amp: 3Green]
 
 [Intro - A string, palm mute]
-9 5 7 4
+9 5 9 7 4
 
 5 4 5 5
 
@@ -12,6 +12,8 @@ Standard (EADGBE) — skip low E (Drop D without retuning)
     Hey, don't write yourself off y
 5
 et.
+
+9
 
 It's only in your head you f
 7
@@ -51,6 +53,8 @@ be all right (all right)
     Hey, you know they're all the
 5
 same.
+
+9
 
 You know you're doing better
 7
@@ -117,6 +121,8 @@ A
     Hey, don't write yourself off y
 5
 et.
+
+9
 
 It's only in your head you f
 7
