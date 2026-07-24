@@ -107,8 +107,8 @@
   "16-teenage-dirtbag": {
     "speed": 11,
     "leadInSec": 14,
-    "note": "Lyric Locked 2026-07-23. Studio 4:02. speed=11 leadInSec=14. Wave B 2026-07-24: hang verse/pre/chorus pickups; Intro E B E A packed; walk-ups packed. Measure rows 100→59; seed measureSpeed 10 + measureLeadInSec 14 (densify from lyric; raw≈9). Dial on device. Landmark: Iron Maiden.",
-    "measureSpeed": 10,
+    "note": "Lyric Locked 2026-07-23. Studio 4:02. speed=11 leadInSec=14. Wave B 2026-07-24: hang verse/pre/chorus pickups; Intro E B E A packed; walk-ups packed. Measure dialed measureSpeed 12 + measureLeadInSec 14.",
+    "measureSpeed": 12,
     "measureLeadInSec": 14
   },
   "17-the-pretender": {
