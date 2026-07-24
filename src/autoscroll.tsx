@@ -15,23 +15,44 @@ export const DEFAULT_SCROLL_SPEED = 24, MIN_SCROLL_SPEED = 6, MAX_SCROLL_SPEED =
 // speed * zoom), so the wait stays constant across pinch levels.
 const SCROLL_LEAD_IN_PX = 96
 
-type ScrollSpeedSeed = { speed: number, leadInSec?: number, note?: string }
+type ScrollSpeedSeed = {
+  speed: number
+  leadInSec?: number
+  /** Optional crawl when Ryan measure map is on; falls back to `speed`. */
+  measureSpeed?: number
+  /** Optional top lead-in for measure map; falls back to `leadInSec` then formula. */
+  measureLeadInSec?: number
+  note?: string
+}
 const scrollSpeedSeeds = scrollSpeedData as Record<string, ScrollSpeedSeed>
 
+export type RyanScrollLayout = 'lyric' | 'measure'
+
 /** Polished per-song default from src/data/scrollSpeeds.json, or undefined if unset. */
-export function scrollSpeedSeed(songId: string): number | undefined {
-  const speed = scrollSpeedSeeds[songId]?.speed
+export function scrollSpeedSeed(songId: string, layout: RyanScrollLayout = 'lyric'): number | undefined {
+  const entry = scrollSpeedSeeds[songId]
+  if (!entry) return undefined
+  if (layout === 'measure') {
+    const measure = entry.measureSpeed
+    if (typeof measure === 'number' && measure > 0) return measure
+  }
+  const speed = entry.speed
   return typeof speed === 'number' && speed > 0 ? speed : undefined
 }
 
 /** Effective 1×-normalized crawl speed: practice override → song seed → global default. */
-export function scrollSpeedFor(songId: string, practiceSpeed: number): number {
-  return practiceSpeed || scrollSpeedSeed(songId) || DEFAULT_SCROLL_SPEED
+export function scrollSpeedFor(songId: string, practiceSpeed: number, layout: RyanScrollLayout = 'lyric'): number {
+  return practiceSpeed || scrollSpeedSeed(songId, layout) || DEFAULT_SCROLL_SPEED
 }
 
 /** Top-of-sheet lead-in seconds: optional per-song seed, else SCROLL_LEAD_IN_PX / speed. */
-export function scrollLeadInSec(songId: string, speed: number): number {
-  const seeded = scrollSpeedSeeds[songId]?.leadInSec
+export function scrollLeadInSec(songId: string, speed: number, layout: RyanScrollLayout = 'lyric'): number {
+  const entry = scrollSpeedSeeds[songId]
+  if (layout === 'measure') {
+    const measureLead = entry?.measureLeadInSec
+    if (typeof measureLead === 'number' && Number.isFinite(measureLead) && measureLead >= 0) return measureLead
+  }
+  const seeded = entry?.leadInSec
   if (typeof seeded === 'number' && Number.isFinite(seeded) && seeded >= 0) return seeded
   return SCROLL_LEAD_IN_PX / Math.max(speed, 1)
 }
@@ -187,10 +208,12 @@ export function useAutoScrollControls(
   songId: string,
   resetKey: readonly unknown[],
   zoom = 1,
+  /** Ryan measure map uses optional measureSpeed / measureLeadInSec seeds. */
+  layout: RyanScrollLayout = 'lyric',
 ): AutoScrollControls {
   const { get, patch } = usePractice()
   const practiceSpeed = get(songId).scrollSpeed
-  const speed = scrollSpeedFor(songId, practiceSpeed)
+  const speed = scrollSpeedFor(songId, practiceSpeed, layout)
   const overridden = practiceSpeed > 0
   const [playing, setPlaying] = useState(false)
   // Lead-in when ▶ is pressed at the top: `delayUntil` is a performance.now() deadline
@@ -314,7 +337,7 @@ export function useAutoScrollControls(
     }
     const atTop = !el || el.scrollTop <= 1
     if (atTop) {
-      const secs = scrollLeadInSec(songId, speed)
+      const secs = scrollLeadInSec(songId, speed, layout)
       setDelayUntil(performance.now() + secs * 1000)
       setDelayLeft(secs)
     } else {

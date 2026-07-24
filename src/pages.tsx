@@ -386,7 +386,7 @@ export function Show() {
   // Pass show-mode pinch --zoom so the crawl scales with content height (set-and-forget
   // speed survives zoom). Tabs aren't pinch-zoomable (fit-to-width); still pass zoom for
   // consistency when the user was mid-gesture on another view.
-  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs, sheets.ryan, ryanMeasure], zoom)
+  const scroll = useAutoScrollControls(scrollTarget, song.id, [index, effective, sheets.chords, sheets.tabs, sheets.ryan, ryanMeasure], zoom, effective === 'ryan' && ryanMeasure ? 'measure' : 'lyric')
   useEffect(() => { localStorage.setItem(SHOW_INDEX_KEY, song.id) }, [song.id])
   // Live show sync: report every displayed song (only a leading device broadcasts it),
   // and snap to the leader's song when following. `live.leader` changes identity only

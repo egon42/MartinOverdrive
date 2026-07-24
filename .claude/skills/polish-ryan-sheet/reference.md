@@ -50,8 +50,10 @@ return, they return in UG split form.
 **Measure map (retap Ryan, 2026-07-24):** same `.ryan.txt` file. Retapping the Ryan tab
 toggles equal-width play-along columns (`layout: 'measure'` via `measureSlots`) — chip at
 bar start, lyric left under it; soft column rules; long instrumental runs chunk at 4
-slots/row. Blank-line row breaks still define verse grouping (ATS: four per row, kept on
-one line even on phone). No second file format; do not “prettify” the source to look
+slots/row; chord-only chunks use a tighter row class. Dense CSS by default (hands-free).
+Blank-line row breaks still define verse grouping (ATS: four per row, kept on one line
+even on phone). Optional `measureSpeed` / `measureLeadInSec` in scrollSpeeds.json (see
+§ Measure map seeds). No second file format; do not “prettify” the source to look
 measure-aligned.
 
 ## Fill cues
@@ -157,7 +159,9 @@ every new chip kind:
 - Ryan pinch zoom starts at **0.75×** (`useZoom` initialZoom; min **0.6×**); Reset restores 0.75×
 - Autoscroll advances at `scrollSpeed * zoom` (1×-normalized dial)
 - Polished defaults live in `src/data/scrollSpeeds.json` (`speed`, optional `leadInSec`;
-  practice override wins when set; tap the acid px/s readout to clear an override)
+  optional `measureSpeed` / `measureLeadInSec` when Ryan **measure map** is on — fall back to
+  lyric `speed` / `leadInSec` until set; practice override wins when set; tap the acid px/s
+  readout to clear an override)
 - Dial with chrome collapsed; aim upper-middle on the section being played. Home-fret chips
   sit beside AutoScrollBar so they survive collapse. Crawl-end pins to true bottom after
   chrome re-expands.
@@ -170,7 +174,18 @@ and device-dial. **Run the helper** instead of hand math when possible:
 ```bash
 node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs <songId> M:SS
 node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs 01-welcome-home 6:15 --lead=48 --sit-out
+node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs 02-all-the-small-things 2:48 --measure
 ```
+
+### Measure map seeds
+
+Lyric layout keeps `speed` / `leadInSec`. When locking **measure map** (retap Ryan), set
+optional `measureSpeed` / `measureLeadInSec` after a device pass at show Ryan **0.75×**
+(chrome collapsed). Use `--measure` on the helper: it counts rendered rows as
+`max(1, ceil(chordsPerBlankGroup / 4))` (same chunking as `chunkMeasureSlots`). Until those
+fields exist, autoscroll falls back to the lyric seed (crawl may drift if heights differ).
+Do not mass-rewrite other songs' measure fields until denser measure CSS is confirmed on
+device (ATS is the pilot).
 
 ### Why the old recipe failed (half-set audit)
 

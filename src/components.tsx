@@ -445,23 +445,24 @@ function LyricLineMeasures({ parts, songId, forcePowerFingering = false }: { par
   }
   const rows = chunkMeasureSlots(slots, MEASURE_COLS_PER_ROW)
   return <>
-    {rows.map((row, ri) => (
-      <div className="sheet-line sheet-line--measures" key={ri}>
-        {row.map((slot, i) => {
-          const lyric = slot.text.replace(/\s+/g, ' ').trim()
-          return (
+    {rows.map((row, ri) => {
+      const lyrics = row.map((slot) => slot.text.replace(/\s+/g, ' ').trim())
+      const chordsOnly = lyrics.every((t) => !t)
+      return (
+        <div className={`sheet-line sheet-line--measures${chordsOnly ? ' sheet-line--measures-chords' : ''}`} key={ri}>
+          {row.map((slot, i) => (
             <div className="sheet-measure-col" key={i}>
               <div className="sheet-measure-chord">
                 {slot.chord
                   ? <ChordChip name={slot.chord} ghost={slot.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} />
                   : null}
               </div>
-              {lyric ? <div className="sheet-measure-lyric">{lyric}</div> : null}
+              {!chordsOnly && lyrics[i] ? <div className="sheet-measure-lyric">{lyrics[i]}</div> : null}
             </div>
-          )
-        })}
-      </div>
-    ))}
+          ))}
+        </div>
+      )
+    })}
   </>
 }
 
@@ -739,7 +740,7 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   // (.practice-sheet) so the crawl has a scrollport. Hooks stay above the early return.
   // chordsShapes / ryanMeasure are in the reset key: retaps re-lay-out height.
   const sheetRef = useRef<HTMLDivElement>(null)
-  const scroll = useAutoScrollControls(sheetRef, song.id, [song.id, active, chordsShapes, ryanMeasure])
+  const scroll = useAutoScrollControls(sheetRef, song.id, [song.id, active, chordsShapes, ryanMeasure], 1, active === 'ryan' && ryanMeasure ? 'measure' : 'lyric')
   if (!available.length) return <section className="panel chord-panel" id="song-sheet"><h2>Song sheets</h2><p className="launcher-hint">Nothing built in for this song yet.</p></section>
   const selectCard = (kind: 'cheat' | 'roadmap') => {
     if (active === kind) {

@@ -6,9 +6,14 @@
  *   node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs <songId> [studioSec]
  *   node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs 15-dani-california 282
  *   node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs 15-dani-california 4:42
+ *   node .claude/skills/polish-ryan-sheet/scripts/estimate-scroll.mjs 02-all-the-small-things 2:48 --measure
  *
  * Counts blank-separated rows (NOT non-empty lines). Non-empty line ratios overestimate
  * dense UG sheets (Dani 17→9, Dirtbag 22→11 on device). See reference.md § Scroll seed.
+ *
+ * `--measure`: count rendered measure-map rows (chunk chords every 4 per blank group,
+ * matching MEASURE_COLS_PER_ROW / chunkMeasureSlots). Prints measureSpeed /
+ * measureLeadInSec for scrollSpeeds.json.
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -26,6 +31,13 @@ const SCROLL_MAX = 120
 /** Soft prior: locked chord-while-singing seeds cluster ~6–11; first seeds >12 on ≥3:00 tracks were usually too fast. */
 const SOFT_CAP_STUDIO_SEC = 180
 const SOFT_CAP_SPEED = 12
+/** Same as MEASURE_COLS_PER_ROW in src/components.tsx. */
+const MEASURE_COLS = 4
+
+// Keep in sync with src/chords.ts chord / fret / cue token rules (ryan frets opt-in).
+const CHORD_RE = /^[A-G][#b]?(?:maj|min|dim|aug|sus|add|m|M|\+|°)?\d*(?:(?:maj|min|sus|add|b|#)\d+)*(?:\/[A-G][#b]?)?$/
+const FRET_RE = /^(?:[0-9]|1[0-9]|2[0-4])$/
+const CUE_RE = /^\^([1-9][0-9]?)$/
 
 function parseStudio(arg) {
   if (arg == null || arg === '') return null
@@ -56,6 +68,41 @@ export function countRows(text) {
 
 export function countNonEmpty(text) {
   return text.split(/\r?\n/).filter((l) => l.trim() !== '').length
+}
+
+function isMeasureChordToken(trimmed) {
+  const name = trimmed.startsWith('~') ? trimmed.slice(1) : trimmed
+  return CHORD_RE.test(name) || FRET_RE.test(name) || CUE_RE.test(name)
+}
+
+/**
+ * Rendered measure-map rows: each blank-separated group becomes
+ * max(1, ceil(chordOrFretOrCueCount / 4)), matching chunkMeasureSlots.
+ */
+export function countMeasureRows(text) {
+  let total = 0
+  let chordCount = 0
+  let groupHasContent = false
+
+  const flush = () => {
+    if (!groupHasContent) return
+    total += Math.max(1, Math.ceil(chordCount / MEASURE_COLS))
+  }
+
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim()
+    if (trimmed === '') {
+      flush()
+      chordCount = 0
+      groupHasContent = false
+      continue
+    }
+    groupHasContent = true
+    // Whole-line chord / fret / cue tokens (UG spine); section headers add 0 chords.
+    if (isMeasureChordToken(trimmed)) chordCount++
+  }
+  flush()
+  return total
 }
 
 /**
@@ -116,11 +163,12 @@ function readRyan(songId) {
 function main() {
   const songId = process.argv[2]
   if (!songId || songId === '-h' || songId === '--help') {
-    console.log(`Usage: node estimate-scroll.mjs <songId> [studioSec|M:SS] [--lead=SEC] [--sit-out]
+    console.log(`Usage: node estimate-scroll.mjs <songId> [studioSec|M:SS] [--lead=SEC] [--sit-out] [--measure]
 
 Examples:
   node estimate-scroll.mjs 15-dani-california 4:42
   node estimate-scroll.mjs 01-welcome-home 6:15 --lead=48 --sit-out
+  node estimate-scroll.mjs 02-all-the-small-things 2:48 --measure
 `)
     process.exit(songId ? 0 : 1)
   }
@@ -128,8 +176,10 @@ Examples:
   let studioArg = null
   let leadInSec = null
   let longSitOut = false
+  let measure = false
   for (const a of process.argv.slice(3)) {
     if (a === '--sit-out') longSitOut = true
+    else if (a === '--measure') measure = true
     else if (a.startsWith('--lead=')) leadInSec = Number(a.slice('--lead='.length))
     else studioArg = a
   }
@@ -141,7 +191,9 @@ Examples:
   }
 
   const text = readRyan(songId)
-  const rows = countRows(text)
+  const lyricRows = countRows(text)
+  const measureRows = countMeasureRows(text)
+  const rows = measure ? measureRows : lyricRows
   const nonEmpty = countNonEmpty(text)
   const tributeText = readRyan(TRIBUTE_ID)
   const tributeRows = countRows(tributeText)
@@ -157,15 +209,24 @@ Examples:
     Math.round((neH - V) / Math.max(studioSec - (leadInSec ?? 9.6), 1)),
   )
 
-  console.log(`Song: ${songId}`)
+  console.log(`Song: ${songId}${measure ? ' (measure map)' : ''}`)
   console.log(`Studio: ${studioSec}s`)
-  console.log(`Rows (blank-separated): ${rows}  (Tribute ${tributeRows}; ratio ${est.ratio}×)`)
+  console.log(`Lyric rows (blank-separated): ${lyricRows}`)
+  console.log(`Measure rows (ceil chords/4 per group): ${measureRows}`)
+  console.log(`Using: ${rows}  (Tribute lyric ${tributeRows}; ratio ${est.ratio}×)`)
   console.log(`Non-empty (do NOT use): ${nonEmpty}  (Tribute ${tributeNE}; would guess speed≈${neSpeed} — often too fast)`)
   console.log(`H≈${est.H}px  raw≈${est.raw}`)
-  console.log(`→ speed ${est.speed}  leadInSec ${est.leadInSec}`)
-  console.log(
-    `note: "Estimate ${new Date().toISOString().slice(0, 10)}. Studio ${studioArg ?? studioSec}s; ${est.ratio}× Tribute rows (${rows}). speed≈${est.speed}. leadInSec=${est.leadInSec}. Dial on device."`,
-  )
+  if (measure) {
+    console.log(`→ measureSpeed ${est.speed}  measureLeadInSec ${est.leadInSec}`)
+    console.log(
+      `note: "Estimate ${new Date().toISOString().slice(0, 10)} measure. Studio ${studioArg ?? studioSec}s; ${est.ratio}× Tribute rows (${rows} measure). measureSpeed≈${est.speed}. measureLeadInSec=${est.leadInSec}. Dial on device at Ryan 0.75×."`,
+    )
+  } else {
+    console.log(`→ speed ${est.speed}  leadInSec ${est.leadInSec}`)
+    console.log(
+      `note: "Estimate ${new Date().toISOString().slice(0, 10)}. Studio ${studioArg ?? studioSec}s; ${est.ratio}× Tribute rows (${rows}). speed≈${est.speed}. leadInSec=${est.leadInSec}. Dial on device."`,
+    )
+  }
   if (neSpeed >= est.speed + 4) {
     console.log(
       `(row-based is ${neSpeed - est.speed} slower than non-empty — prefer rows; device corrections were almost always "too fast")`,

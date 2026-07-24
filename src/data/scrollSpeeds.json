@@ -7,7 +7,9 @@
   "02-all-the-small-things": {
     "speed": 8,
     "leadInSec": 12,
-    "note": "Estimate 2026-07-24 after verse 4-chord rows. Studio 2:48; 0.64× Tribute rows (42). Was locked 11/8; re-dial. Landmark: Always i know."
+    "measureSpeed": 7,
+    "measureLeadInSec": 12,
+    "note": "Lyric Estimate 2026-07-24 after verse 4-chord rows (speed 8 / leadIn 12). Measure Estimate 2026-07-24 after density pack: same 42 rows but shorter CSS → measureSpeed 7 (was twin of 8); measureLeadInSec 12. Landmark: Always i know. Dial measure on device at Ryan 0.75×."
   },
   "03-a-little-less-conversation": {
     "speed": 14,
