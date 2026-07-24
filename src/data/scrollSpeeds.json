@@ -170,7 +170,7 @@
   "25-valerie": {
     "speed": 8,
     "leadInSec": 12,
-    "note": "Locked 2026-07-23. Device dial: tiny bump from Estimate 7→8; leadInSec 12 (formula). Intro E vamp; quiet ghosts; form headers. Measure Estimate 2026-07-24: 49 measure / 49 lyric rows; studio 212s (invert-lyric); raw≈8 densify→7; leadIn kept 12. Dial on device.",
+    "note": "Lyric Locked 2026-07-23. speed=8 leadInSec=12. Wave B 2026-07-24: E F#m verse pairs; pre A G#m phrases; chorus E F#m; intro E E. Measure rows 49→21; seed measureSpeed 7 + measureLeadInSec 12. Dial on device (or good enough). Landmark: Why won't you come on over.",
     "measureSpeed": 7,
     "measureLeadInSec": 12
   },

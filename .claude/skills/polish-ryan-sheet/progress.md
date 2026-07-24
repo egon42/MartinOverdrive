@@ -36,9 +36,9 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 20-when-i-come-around — **done (2026-07-23); Wave B measure layout 2026-07-24:** F# C# D# B phrase breaks restored (first hang pass glued cycles); chord-first pickups; Intro/Solo/Outro packed; scroll **11** + leadIn **9**; measure **10** + **9** (re-dial).
 - [x] 21-the-middle — **done (2026-07-23; frets fixed 2026-07-24); Wave B measure layout 2026-07-24:** verses map to intro `9 5 9 7 4` / `5 4 5 5`; solo packed; chorus D A G D; scroll **6** + leadIn **16**; measure **6** + **16** (dial pending).
 - [ ] 22-dream-on — **drafted (2026-07-24 B/G map):** Songsterr s286t2; two measures/line with `|`; `6/5` change chips + `2/4-5` pulls; singles after ~m70; no capo on Ryan; measure Estimate **12** + **12**. Layout-check before dial.
-- [x] 23-lola-montez — **done (2026-07-23); Wave B measure layout 2026-07-24:** verse D5 G5 A5 D5 phrases; riff/interlude/bridge packed; chorus chord-first pickups; scroll **9** + leadIn **10.7**; measure **8** + **10.7** (dial pending).
+- [x] 23-lola-montez — **done (2026-07-23); Wave B measure layout 2026-07-24:** verse D5 G5 A5 D5 phrases; riff/interlude/bridge packed; chorus chord-first pickups; scroll **9** + leadIn **10.7**; measure **8** + **10.7** (good enough).
 - [ ] 24-mary-jane-s-last-dance — **drafted (good enough 2026-07-23; layout+measure 2026-07-24):** Intro×4; Interlude×2; Solo×4; pigeons×4; V2 tag + instrumental before chorus; verse pickups hang on prior chord; chorus second phrase under Em7; scroll **9** + leadIn **10.7**; measure **8** + leadIn **10.7**. Lock later if crawl feels final.
-- [x] 25-valerie — **done (2026-07-23):** Intro E vamp; Verse/Pre/Chorus headers; quiet ~E ~F#m ghosts; Outro E tag; Amp 3Amber (Green TBD); no ^N; scroll **8** + leadIn **12**.
+- [x] 25-valerie — **done (2026-07-23); Wave B measure layout 2026-07-24:** E F#m verse pairs; pre A G#m phrases; chorus E F#m; scroll **8** + leadIn **12**; measure **7** + **12** (dial pending).
 - [ ] 26-voodoo-child-slight-return — **drafted (sit-out 2026-07-24):** SRV sheet kept; user plans to sit out — skip measure dial. Revisit only if role changes.
 - [ ] 27-fat-bottomed-girls — **drafted (good enough 2026-07-23; layout+measure 2026-07-24):** vocal-only open; Intro sit-out until bass riff into Hey; Break D×10 as 5+5; interlude 4-across; verse/chorus pickups under chords; scroll **10** + leadIn **20**; measure **9** + leadIn **20**. Lock later if crawl feels final.
 - [ ] 28-mama-i-m-coming-home — **drafted (form research 2026-07-24; parked for guitar):** studio form + Mama under A+E; Pre `C#m A E` / `C#m A B`; Face ×2. scroll **6** + leadIn **17**; measure Estimate **6** + **17**. Re-dial on guitar pass.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted good-enough (tonight full-set dial):** 04–06, 14, 19, 22, 24, 26–31. Scroll seeds are Estimates until you lock on device.
 
-**Next review queue:** **Wave B batch 2** — Lola layout shipped; Middle + WICA pending guitar eval. Dirtbag measure **locked 12/14**. Next orphan→dial: **25-valerie** (last of batch 2). Dial pending: Dani / Pretender / HIGA / WICA / Middle / Lola. Parked: Dream On / Mama / Voodoo / Purple Rain V3. Hunger amp at guitar.
+**Next review queue:** **Wave B batch 2 layouts complete** (15–18, 20–21, 23, 25). Dirtbag measure **locked 12/14**; Lola good enough 8/10.7. Dial/guitar pending: Dani / Pretender / HIGA / WICA / Middle / Valerie. Optional Wave A dial leftovers 29/30. Parked: Dream On / Mama / Voodoo / Purple Rain V3. Hunger amp at guitar.
 
 ## Skill audit (2026-07-23) — second-half prep
 
