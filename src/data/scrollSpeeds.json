@@ -156,7 +156,7 @@
   "23-lola-montez": {
     "speed": 9,
     "leadInSec": 10.7,
-    "note": "Locked 2026-07-23. Cold V1; palm riff ×4 then open Interlude×2; Bridge instr×2 + Em vocals; chorus ends D/F#m/D; no Outro. speed 9 + leadInSec 10.7. Measure Estimate 2026-07-24: 85 measure / 82 lyric rows; studio 353s (invert-lyric); raw≈9 densify→8; leadIn kept 10.7. Dial on device.",
+    "note": "Lyric Locked 2026-07-23. Cold V1; palm riff ×4; Interlude×2; Bridge Em; chorus ends D/F#m/D. speed 9 + leadInSec 10.7. Wave B 2026-07-24: verse D5 G5 A5 D5 phrases; pack riff/interlude/bridge; chorus chord-first pickups. Measure rows 85→44; seed measureSpeed 8 + measureLeadInSec 10.7. Dial on device. Landmark: Wherever she walks.",
     "measureSpeed": 8,
     "measureLeadInSec": 10.7
   },
