@@ -44,7 +44,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [ ] 28-mama-i-m-coming-home — **drafted (form research 2026-07-24; parked for guitar):** studio form + Mama under A+E; Pre `C#m A E` / `C#m A B`; Face ×2. scroll **6** + leadIn **17**; measure Estimate **6** + **17**. Re-dial on guitar pass.
 - [ ] 29-ain-t-goin-down-til-the-sun-comes-up — **drafted (good enough 2026-07-23; layout 2026-07-24):** long G holds; couplets under one G; Intro 4+4; solos `G C G D G`; scroll **7** + leadIn **13.7**; measure Estimate **6** + **13.7**. Dial when ready.
 - [ ] 30-pink-pony-club — **drafted (good enough 2026-07-23; layout 2026-07-24):** power `*5` (F#5 G#5 D#5 B5; bridge B5 C#5 D#5 G#5) matching cheat shapes; 4-across; pre mid-word kept; end solo ×4; 3Red/4Red; scroll **9** + leadIn **10.7**; measure Estimate **8** + **10.7**. Layout-check then dial.
-- [ ] 31-banditos — **drafted (good enough 2026-07-23):** form confirmed; headers; Solo×2 / Outro×2; no fills yet; scroll **7** + leadIn **13.7** (studio 4:17). Lock later if crawl dials clean.
+- [ ] 31-banditos — **drafted (good enough 2026-07-23; layout 2026-07-24):** hang pickups / mid-word kept; E D A E 4-across; chorus ×2 written; Solo/Outro packed; no fills; scroll **6** + leadIn **16**; measure Estimate **6** + **16**. Dial on device.
 
 ## Last done
 
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted good-enough (tonight full-set dial):** 04–06, 14, 19, 22, 24, 26–31. Scroll seeds are Estimates until you lock on device.
 
-**Next review queue (handoff):** device dial tonight across drafted songs; lock when crawl feels right. No more polish queue until after the set pass.
+**Next review queue (handoff):** dial Banditos measure (then 29/30 if still Estimate); Mama/Dream On/Purple Rain V3 guitar; Wave B locked measure-only.
 
 ## Skill audit (2026-07-23) — second-half prep
 

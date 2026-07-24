@@ -210,10 +210,10 @@
     "measureLeadInSec": 10.7
   },
   "31-banditos": {
-    "speed": 7,
-    "leadInSec": 13.7,
-    "note": "Estimate 2026-07-23. Studio 4:17 (was wrong 3:30); 0.79× Tribute rows (52). speed≈7. leadInSec=13.7. Landmark: Verse 2 open. Dial on device. Measure Estimate 2026-07-24: 52 measure / 52 lyric rows; studio 257s (note); raw≈7 densify→6; leadIn kept 13.7. Dial on device.",
+    "speed": 6,
+    "leadInSec": 16,
+    "note": "Estimate 2026-07-24 layout. Studio 4:17; hang pickups / mid-word kept; E D A E 4-across; chorus written ×2; Solo/Outro packed. Lyric 20 rows→6 leadIn 16. Measure 26 rows→measureSpeed 6 + measureLeadInSec 16. Landmark: Verse 2 Well it's. Dial on device.",
     "measureSpeed": 6,
-    "measureLeadInSec": 13.7
+    "measureLeadInSec": 16
   }
 }
