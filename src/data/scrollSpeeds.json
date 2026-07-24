@@ -2,9 +2,9 @@
   "01-welcome-home": {
     "speed": 6,
     "leadInSec": 48,
-    "note": "Lyric Locked 2026-07-22 (speed 6 / leadIn 48). Wave B 2026-07-24: hang measure orphans; intro Em Em; Solo Em C D Em + Oh under last. Lyric rows dropped 47→20 — re-dial lyric if crawl feels early. Measure Estimate measureSpeed 6 + measureLeadInSec 48. Landmark: Fucking up all I do. Dial measure on device.",
+    "note": "Lyric Locked 2026-07-22 (speed 6 / leadIn 48). Wave B 2026-07-24: hang measure orphans; intro Em Em; Solo Em C D Em + Oh under last. Lyric rows dropped 47→20 — re-dial lyric if crawl feels early. Measure dial: measureSpeed 6 + measureLeadInSec 56 (+8 from sit-out 48).",
     "measureSpeed": 6,
-    "measureLeadInSec": 48
+    "measureLeadInSec": 56
   },
   "02-all-the-small-things": {
     "speed": 8,

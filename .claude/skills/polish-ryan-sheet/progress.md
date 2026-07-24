@@ -14,7 +14,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 ## Status
 
-- [x] 01-welcome-home — **done (2026-07-22); Wave B measure layout 2026-07-24:** sit-out intro + ringing Em; bridge syncopated→verse-chug; SOLO/OUTRO Em C D Em + Oh; scroll **6** + `leadInSec` **48**; measure Estimate **6** + **48** (orphans cleared — dial on device). Lyric row count dropped after hang-pass — re-dial lyric if needed.
+- [x] 01-welcome-home — **done (2026-07-22); Wave B measure 2026-07-24:** sit-out intro + ringing Em; bridge syncopated→verse-chug; SOLO/OUTRO Em C D Em + Oh; scroll **6** + `leadInSec` **48**; measure **6** + **56** (+8 lead-in). Lyric row count dropped after hang-pass — re-dial lyric if needed.
 - [x] 02-all-the-small-things — **done (2026-07-22; verse rows 2026-07-24):** power `*5`; ringing early pre / full late pre; instrumental ×2; interlude prepare ghosts + (C C C B)×3; verse rows = 4 chips (C5 G5 F5 G5); scroll **8** + `leadInSec` **12**; measure map **measureSpeed 7** + **measureLeadInSec 12** (density Estimate 2026-07-24 — dial on device).
 - [x] 03-a-little-less-conversation — **done (2026-07-22):** lead vocal / chords while singing / no fills / hard stop on single; scroll **14** + `leadInSec` **10**.
 - [ ] 04-i-believe-in-a-thing-called-love — **drafted (good enough 2026-07-22; clap ghosts 2026-07-24):** power `*5`; Intro ×2; Verse-in `~A5`; Bridge−B played B; Clap ghost barres `~E ~A ~F# ~B` (double B) + `~C#m ~D`; Solo×4 / outro labels; scroll **15** + leadIn **13.2**; measure **10** + leadIn **13.2**. Lock later if crawl dials clean.
