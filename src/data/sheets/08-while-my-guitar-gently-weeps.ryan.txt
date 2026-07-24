@@ -2,25 +2,13 @@ Standard (EADGBE)
 
 [Intro - ring]
 [Amp: 7Red]
-Am
+Am Am/G F#m7b5 Fmaj7
 
-Am/G
-
-F#m7b5
-
-Fmaj7
-
-Am
-
-G
-
-D
-
-E
+Am G D E
 
 [Verse 1 - let chords ring]
-I 
 Am
+I 
 look at you 
 Am/G
 all see the 
@@ -37,8 +25,8 @@ D
 weeps 
 E
 
-I 
 Am
+I 
 look at the 
 Am/G
 floor and I 
@@ -93,8 +81,8 @@ E
 
 [Amp: 7Red]
 [Verse 2 - let chords ring]
-I 
 Am
+I 
 look at the world 
 Am/G
 and I notice 
@@ -111,8 +99,8 @@ D
 weeps 
 E
 
-With 
 Am
+With 
 every mistake 
 Am/G
 we must surely 
@@ -131,37 +119,13 @@ E
 
 [Amp: 8Red]
 [Solo - chords under lead; verse pair once]
-Am
+Am Am/G F#m7b5 Fmaj7
 
-Am/G
+Am G D E
 
-F#m7b5
+Am Am/G F#m7b5 Fmaj7
 
-Fmaj7
-
-Am
-
-G
-
-D
-
-E
-
-Am
-
-Am/G
-
-F#m7b5
-
-Fmaj7
-
-Am
-
-G
-
-C
-
-E
+Am G C E
 
 [Amp: 8Red]
 [Bridge 2 - chords; improvise fills if space]
@@ -201,8 +165,8 @@ E
 
 [Amp: 7Red]
 [Verse 3 - let chords ring]
-I 
 Am
+I 
 look at you 
 Am/G
 all see the 
@@ -238,18 +202,6 @@ E
 
 [Amp: 8Red]
 [Outro - verse vamp ×4 fade; chords]
-Am
+Am Am/G F#m7b5 Fmaj7
 
-Am/G
-
-F#m7b5
-
-Fmaj7
-
-Am
-
-G
-
-D
-
-E
+Am G D E

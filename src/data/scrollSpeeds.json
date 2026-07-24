@@ -30,7 +30,7 @@
   "07-tribute": {
     "speed": 10,
     "leadInSec": 11.6,
-    "note": "Lyric Locked 2026-07-22. Ryan 0.75×; upper-middle at ROCK; leadInSec 11.6. Wave B 2026-07-24: hang ROCK pickups; Am G D F 4-across (no lone Am); pack ghost/solo runs. Spoken/fill intro chordless. Measure dialed measureSpeed 10 + measureLeadInSec 11.6.",
+    "note": "Lyric Locked 2026-07-22. Ryan 0.75×; upper-middle at ROCK; leadInSec 11.6. Wave B 2026-07-24: hang ROCK pickups; Am G D F 4-across; extra Am G D F after ghosts. Spoken/fill intro chordless. Measure dialed measureSpeed 10 + measureLeadInSec 11.6.",
     "measureSpeed": 10,
     "measureLeadInSec": 11.6
   },
@@ -51,7 +51,7 @@
   "08-while-my-guitar-gently-weeps": {
     "speed": 6,
     "leadInSec": 17.6,
-    "note": "Locked 2026-07-22. Ryan 0.75×, chrome collapsed. speed=6 leadInSec=17.6. Chords only; improvise fills if space; Solo+Outro vamp rows. Measure Estimate 2026-07-24: 53 measure / 53 lyric rows; studio 314s (invert-lyric); raw≈6 densify→6; leadIn kept 17.6. Dial on device.",
+    "note": "Lyric Locked 2026-07-22. speed 6 leadIn 17.6. Wave B 2026-07-24: hang I/With pickups; pack intro/solo/outro 4-across. Measure Estimate measureSpeed 6 + measureLeadInSec 17.6. Landmark: Still my guitar. Dial on device.",
     "measureSpeed": 6,
     "measureLeadInSec": 17.6
   },

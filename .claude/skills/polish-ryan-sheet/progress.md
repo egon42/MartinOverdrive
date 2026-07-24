@@ -20,8 +20,8 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [ ] 04-i-believe-in-a-thing-called-love — **drafted (good enough 2026-07-22; clap ghosts 2026-07-24):** power `*5`; Intro ×2; Verse-in `~A5`; Bridge−B played B; Clap ghost barres `~E ~A ~F# ~B` (double B) + `~C#m ~D`; Solo×4 / outro labels; scroll **15** + leadIn **13.2**; measure **10** + leadIn **13.2**. Lock later if crawl dials clean.
 - [ ] 05-thunderstruck — **drafted (good enough 2026-07-22; V2 ring 2026-07-24):** between-line vs on-vocal; first chug Thunder ghost; V2 ringing B5 on Texas/girls/rules (not palm); scroll **10** + leadIn **50**; measure **9** + leadIn **50**. End/guitar pass deferred.
 - [ ] 06-don-t-stop-believin — **drafted (good enough 2026-07-22; layout 2026-07-24):** intro/interlude cycles; pre B-night then quick E B E A; post-pre interlude ×1; solo ×1; V3 E on Paying (no orphan shift); scroll **8** + leadIn **18**; measure **6** + leadIn **18**. Lock later if crawl needs a final nudge.
-- [x] 07-tribute — **done (2026-07-22); Wave B measure 2026-07-24:** fills ^1/^2/^3, ghosts, 4Amber→5Amber; scroll **10** + **11.6**; measure **10** + **11.6** (ROCK Am G D F 4-across).
-- [x] 08-while-my-guitar-gently-weeps — **done (2026-07-22):** chords only (improv fills OK); ring verses; Solo+Outro vamp; scroll **6** + leadIn **17.6**.
+- [x] 07-tribute — **done (2026-07-22); Wave B measure 2026-07-24:** fills ^1/^2/^3, ghosts, 4Amber→5Amber; scroll **10** + **11.6**; measure **10** + **11.6** (ROCK Am G D F 4-across; extra Am G D F after ghosts).
+- [x] 08-while-my-guitar-gently-weeps — **done (2026-07-22); Wave B measure layout 2026-07-24:** chords only (improv fills OK); ring verses; Solo+Outro vamp 4-across; scroll **6** + leadIn **17.6**; measure Estimate **6** + **17.6** (I/With orphans cleared — dial on device).
 - [x] 09-pride-and-joy — **done (2026-07-22):** shuffle rhythm only; V3/V4 one-strum until dig-in; 12-bar Intro/Solo; scroll **8** + leadIn **24.6**.
 - [x] 10-zombie — **done (2026-07-22):** Intro1 clean / Intro2-3 dirt / Intro4 Em-ring+Fill^1; post = dirt EmCGD then Em ring+fill; scroll **11** + leadIn **8.7**.
 - [x] 11-hunger-strike — **done (2026-07-22):** Intro / Bridge / Interlude / cold end labeled; sit under; FS dirt lift; Bridge grips x00x x22x; scroll **10** + leadIn **12**.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted good-enough (tonight full-set dial):** 04–06, 14, 19, 22, 24, 26–31. Scroll seeds are Estimates until you lock on device.
 
-**Next review queue (handoff):** **Wave B** — **07 Tribute** layout shipped; awaiting measure dial (seed 8/11.6). Then 08–13, 15–18, 20–21, 23, 25. Done: 01 (6/56), 02 (6/12), 03 (11/10). Parked: Dream On / Mama / Voodoo / Purple Rain V3.
+**Next review queue (handoff):** **Wave B** — **08 WMGGW** layout shipped; awaiting measure dial (seed 6/17.6). Then 09–13, 15–18, 20–21, 23, 25. Done: 01 (6/56), 02 (6/12), 03 (11/10), 07 (10/11.6). Parked: Dream On / Mama / Voodoo / Purple Rain V3.
 
 ## Skill audit (2026-07-23) — second-half prep
 
