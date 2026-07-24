@@ -3,20 +3,15 @@ Standard (EADGBE)
 [Amp: 2Green]
 
 [Intro - Am G Dm Am ×2; chords only, no riff]
-Am
+Am G Dm Am
 
-G
-
-Dm
-
-Am
+Am G Dm Am
 
 [Verse 1 - roll guitar volume down]
 Am
 Getting born in the st
 G
 ate of Mississippi,
-
 Dm
 Her Poppa was a copper and her M
 Am
@@ -26,7 +21,6 @@ Am
 In Alabama sh
 G
 e would swing a hammer,
-
 Dm
 Price you gotta pay wh
 Am
@@ -54,7 +48,6 @@ Am
 Black bandana, sw
 G
 eet Louisiana,
-
 Dm
 Robbin' on a bank in the st
 Am
@@ -64,13 +57,11 @@ Am
 She's a runner, rebe
 G
 l and a stunner,
-
 Dm
 On her merry way sayin' "Ba
 Am
 by, what you gonna?",
 
- 
 Am
    Lookin' d
 G
@@ -79,24 +70,21 @@ Dm
 ot metal .
 Am
 45,
-
- 
 Am
   Just another w
 G
 ay to survi
 Dm
 ve
+Calif
 
 [Chorus - open volume]
-Calif
 F
 ornia, Re
 C
 st In Pe
 Dm
 ace,
-
 G
 Simul
 F
@@ -114,7 +102,6 @@ C
 how your t
 Dm
 eeth,
-
 G
 She's my pri
 F
@@ -128,21 +115,16 @@ Dm
 Yeah, yeah
 
 [Interlude - Am G Dm Am ×2; chords only, no riff; roll volume]
-Am
+Am G Dm Am
 
-G
-
-Dm
-
-Am
+Am G Dm Am
+She's a lo
 
 [Verse 2 - roll guitar volume down]
-She's a lo
 Am
 ver, Bab
 G
 y and a fighter,
-
 Shou
 Dm
 lda seen her comin' when i
@@ -153,7 +135,6 @@ Am
     With a name like "Da
 G
 ni California",
-
 Dm
 Day was gonna come when 
 Am
@@ -163,26 +144,23 @@ Am
     A little lo
 G
 aded,
-
 she was ste
 Dm
 aling another br
 Am
 eath,
-
 I 
 Am
 love my baby to death
+Calif
 
 [Chorus - open volume]
-Calif
 F
 ornia, Re
 C
 st In Pe
 Dm
 ace,
-
 G
 Simul
 F
@@ -200,7 +178,6 @@ C
 how your t
 Dm
 eeth,
-
 G
 She's my pri
 F
@@ -243,14 +220,13 @@ bye to you
 
 Bm
 Too true to say, say, say
+Pus
 
 [Verse 3 - roll guitar volume down]
-Pus
 Am
 hed the fader, Gi
 G
 fted animator,
-
 Dm
 One for the now, And e
 Am
@@ -260,7 +236,6 @@ Am
 Never made it 
 G
 up to Minnesota,
-
 Dm
 North Dakota man was a-
 Am
@@ -277,20 +252,18 @@ best for last,
 
 Am
 It only hurts when I laugh,
-
 Gone too f
 G
 ast
+Calif
 
 [Chorus - open volume]
-Calif
 F
 ornia, Re
 C
 st In Pe
 Dm
 ace,
-
 G
 Simul
 F
@@ -308,7 +281,6 @@ C
 how your t
 Dm
 eeth,
-
 G
 She's my pri
 F
@@ -320,16 +292,15 @@ st,
 
 Dm
 Yeah, yeah
+Calif
 
 [Chorus - open volume]
-Calif
 F
 ornia, Re
 C
 st In Pe
 Dm
 ace,
-
 G
 Simul
 F
@@ -347,7 +318,6 @@ C
 how your t
 Dm
 eeth,
-
 G
 She's my pri
 F
@@ -361,10 +331,4 @@ Dm
 Yeah, yeah
 
 [Solo/Outro - F C Dm G; lead optional, rides fade ×8]
-F
-
-C
-
-Dm
-
-G
+F C Dm G

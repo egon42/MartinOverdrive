@@ -100,7 +100,7 @@
   "15-dani-california": {
     "speed": 9,
     "leadInSec": 6,
-    "note": "Locked 2026-07-23. Studio 4:42. speed=9 leadInSec=6. Role: chords only (no riff); verse volume roll; open chorus; Intro+Interlude ×2; Solo/Outro ×8. Measure Estimate 2026-07-24: 64 measure / 64 lyric rows; studio 282s (note); raw≈8 densify→8; leadIn kept 6. Dial on device.",
+    "note": "Lyric Locked 2026-07-23. Studio 4:42. speed=9 leadInSec=6. Wave B 2026-07-24: hang Calif/She's/Pus mid-word pickups; verse couplets 4-across; Intro/Interlude/Solo packed AmGDmAm / F C Dm G. Measure rows 64→47; seed measureSpeed 8 + measureLeadInSec 6 (densify from lyric; raw≈6). Dial on device. Landmark: Black bandana.",
     "measureSpeed": 8,
     "measureLeadInSec": 6
   },
