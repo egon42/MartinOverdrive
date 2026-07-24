@@ -30,8 +30,8 @@
   "07-tribute": {
     "speed": 10,
     "leadInSec": 11.6,
-    "note": "Lyric Locked 2026-07-22. Ryan 0.75×; upper-middle at ROCK; leadInSec 11.6. Wave B 2026-07-24: hang ROCK pickups; pack ghost/solo Am G D F and E F runs. Spoken/fill intro stays chordless (sit-out). Measure Estimate measureSpeed 8 + measureLeadInSec 11.6. Landmark: This is not The Greatest. Dial on device.",
-    "measureSpeed": 8,
+    "note": "Lyric Locked 2026-07-22. Ryan 0.75×; upper-middle at ROCK; leadInSec 11.6. Wave B 2026-07-24: hang ROCK pickups; Am G D F 4-across (no lone Am); pack ghost/solo runs. Spoken/fill intro chordless. Measure dialed measureSpeed 10 + measureLeadInSec 11.6.",
+    "measureSpeed": 10,
     "measureLeadInSec": 11.6
   },
   "04-i-believe-in-a-thing-called-love": {
