@@ -3,31 +3,15 @@ Standard (EADGBE)
 [Amp: 3Green]
 
 [Intro - roll guitar volume]
+C5 C5 G5 C5
 
-C5
-
-C5
-   
-G5
-   
-C5
-
-C5
-
-C5
-   
-G5
-   
-Bb5
-   
-F5
+C5 C5 G5 Bb5 F5
 
 [Verse - roll guitar volume]
 C5
   It could be ten, but then
 G5
  again,
-
 I can't remember half an 
 Bb5
 hour since a quarter to 
@@ -38,31 +22,22 @@ C5
    Throw on your clothes, the second 
 G5
 side of Surfer Rosa,
-
 and you 
 Bb5
 leave me with my jaw on the 
 F5
 floor.
 
-C5
-   
-G5
-   
-Bb5
-   
-F5
+C5 G5 Bb5 F5
 
 [Pre-Chorus]
 E5
    Just when you think you're 
 A5
 in control,
-
 just when you 
 E5
 think you've got a hold,
-
 just 
 A5
 when you get 
@@ -78,31 +53,25 @@ Bb5
 goes, here it 
 F5
 goes again.
-
 A5
 Oh, h
 G5
 ere it goes again.
-
- 
 C5
 I should have 
 G5
 known, should have 
 Bb5
 known,
-
 should have 
 F5
 known again, 
 A5
-
 but 
 G5
 here it goes 
 Ab5
 again.
-
 Oh, here it 
 G5
 goes again.
@@ -114,7 +83,6 @@ C5
 It starts out easy, something s
 G5
 imple, something sleazy,
-
 something 
 Bb5
 inching past the edge of the re
@@ -125,31 +93,22 @@ C5
    Now through lines of the c
 G5
 heap venetian blinds
-
 your car is 
 Bb5
 pulling off of the 
 F5
 curb.
 
-C5
-   
-G5
-   
-Bb5
-   
-F5
+C5 G5 Bb5 F5
 
 [Pre-Chorus]
 E5
    Just when you think you're 
 A5
 in control,
-
 just when you 
 E5
 think you've got a hold,
-
 just 
 A5
 when you get 
@@ -165,31 +124,25 @@ Bb5
 goes, here it 
 F5
 goes again.
-
 A5
 Oh, h
 G5
 ere it goes again.
-
- 
 C5
 I should have 
 G5
 known, should have 
 Bb5
 known,
-
 should have 
 F5
 known again, 
 A5
-
 but 
 G5
 here it goes 
 C5
 again.
-
 C5
 Here it g
 G5
@@ -199,13 +152,11 @@ ere it g
 F5
 oes,   
 A5
-
 but 
 G5
 here it goes 
 Ab5
 again.
-
 Oh, here it goes again.
 
 [Bridge - powers]
@@ -213,7 +164,6 @@ Eb5
 Oh, 
 Bb5
 oh!
-
 G5
 Oh, here it goes, 
 C5
@@ -224,7 +174,6 @@ Ab5
 here it goes 
 Eb5
 again.
-
 Bb5
 Hey, 
 G5
@@ -237,24 +186,13 @@ Ab5
 all right!
 
 [Link - full chorus loop into V3]
-C5
-
-G5
-
-Bb5
-
-F5
-
-A5
-
-G5
+C5 G5 Bb5 F5 A5 G5
 
 [Verse 3 - roll guitar volume]
 C5
   I guess there's got to be a 
 G5
 break in the monotony,
-
 but 
 Bb5
 Jesus, when it rains how it 
@@ -265,7 +203,6 @@ C5
   Throw on your clothes, the second s
 G5
 ide of Surfer Rosa,
-
 and you 
 Bb5
 leave me, yeah, you 
@@ -281,25 +218,20 @@ Bb5
 goes, here it 
 F5
 goes again.
-
 A5
 Oh, h
 G5
 ere it goes again.
-
- 
 C5
 I should have 
 G5
 known, should have 
 Bb5
 known,
-
 should have 
 F5
 known again, 
 A5
-
 but 
 G5
 here it goes 
@@ -307,17 +239,15 @@ C5
 again.
 
 [Outro - C G Bb F A G ×5]
-C5
+C5 G5 Bb5 F5 A5 G5
 
-G5
+C5 G5 Bb5 F5 A5 G5
 
-Bb5
+C5 G5 Bb5 F5 A5 G5
 
-F5
+C5 G5 Bb5 F5 A5 G5
 
-A5
-
-G5
+C5 G5 Bb5 F5 A5 G5
 
 A5
      Oh, here it g

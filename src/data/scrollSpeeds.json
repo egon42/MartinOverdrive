@@ -121,7 +121,7 @@
   "18-here-it-goes-again": {
     "speed": 12,
     "leadInSec": 8,
-    "note": "Locked 2026-07-23. Studio 2:59. speed=12 leadInSec=8. Role: all powers; vol-roll verses; Link after bridge; Outro ×5. Measure Estimate 2026-07-24: 78 measure / 74 lyric rows; studio 179s (note); raw≈17 densify→11; leadIn kept 8. Dial on device.",
+    "note": "Lyric Locked 2026-07-23. Studio 2:59. speed=12 leadInSec=8. Wave B 2026-07-24: hang verse/pre/chorus pickups; Intro/Link/Outro packed. Measure rows 78→43; seed measureSpeed 11 + measureLeadInSec 8 (densify from lyric; raw≈8). Dial on device. Landmark: Surfer Rosa.",
     "measureSpeed": 11,
     "measureLeadInSec": 8
   },
