@@ -53,8 +53,10 @@ bar start, lyric left under it; soft column rules; long instrumental runs chunk 
 slots/row; chord-only chunks use a tighter row class. Dense CSS by default (hands-free).
 Blank-line row breaks still define verse grouping (ATS: four per row, kept on one line
 even on phone). Optional `measureSpeed` / `measureLeadInSec` in scrollSpeeds.json (see
-§ Measure map seeds). No second file format; do not “prettify” the source to look
-measure-aligned.
+§ Measure map seeds). Display-only lyric join (`MEASURE_JOIN_LYRICS` in `components.tsx`
++ `joinMeasureLyrics` in `chords.ts`): one strip under the chip row so UG mid-word splits
+read as words — flip the flag false or revert the join commit to roll back; never rewrite
+the UG spine. No second file format; do not “prettify” the source to look measure-aligned.
 
 ## Fill cues
 

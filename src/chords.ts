@@ -24,6 +24,32 @@ export function measureSlots(parts: SheetPart[]): MeasureSlot[] {
   return slots.filter((slot) => slot.chord || !!slot.text.trim())
 }
 
+/**
+ * Display-only: join UG mid-word slot fragments into one lyric strip for measure map.
+ * Does not change parse / .ryan.txt. Leading space on a fragment = word break already;
+ * lowercase after a word char = mid-word glue; otherwise insert a space.
+ */
+export function joinMeasureLyrics(texts: string[]): string {
+  let out = ''
+  for (const raw of texts) {
+    if (!raw) continue
+    if (!out) {
+      out = raw
+      continue
+    }
+    if (/^\s/.test(raw)) {
+      out += raw
+      continue
+    }
+    const prev = out[out.length - 1] ?? ''
+    const next = raw[0] ?? ''
+    if (/[\w']/.test(prev) && /[a-z]/.test(next)) out += raw
+    else if (/[\w']/.test(prev) && /[\w']/.test(next)) out += ` ${raw}`
+    else out += raw
+  }
+  return out.replace(/\s+/g, ' ').trim()
+}
+
 // A-G root, optional accidental, common qualities/extensions, optional slash bass.
 // Known ambiguity, accepted: a lyric line that is entirely one chord-shaped word
 // ("A", "Am", "Em") classifies as a chord — inherent to this format, rare in practice.
