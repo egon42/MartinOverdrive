@@ -52,7 +52,10 @@ toggles equal-width play-along columns (`layout: 'measure'` via `measureSlots`) 
 bar start, lyric left under it; soft column rules; long instrumental runs chunk at 4
 slots/row; chord-only chunks use a tighter row class. Dense CSS by default (hands-free).
 Blank-line row breaks still define verse grouping (ATS: four per row, kept on one line
-even on phone). Optional `measureSpeed` / `measureLeadInSec` in scrollSpeeds.json (see
+even on phone). For 3-chord loops (Sweet Home `D C G`), write each cycle as one
+multi-chord line (`D C G` then blank then `D C G`) — parser only auto-merges
+*single*-chord instrumental lines, so authored cycles stay separate rows (no `·`
+spacer lyrics). Optional `measureSpeed` / `measureLeadInSec` in scrollSpeeds.json (see
 § Measure map seeds). No second file format; do not “prettify” the source to look
 measure-aligned.
 

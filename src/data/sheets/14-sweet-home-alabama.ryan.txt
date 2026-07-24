@@ -2,26 +2,13 @@ Standard (EADGBE)
 
 [Amp: 5Amber]
 
-[Intro - D C G ×4; sit ×2, join on 3rd; try fill ^1]
+[Intro - D C G ×4; sit ×2, join on 3rd; 2nd-guitar fill TBD]
 
 ~D ~C ~G
 
-·
-
 ~D ~C ~G
-
-·
 
 D C G
-^1
-
-[Fill ^1]
-e|------------------------|
-B|------------------------|
-G|----0-2p0-0-4p0-0-5b----|
-D|------------------------|
-A|------------------------|
-E|------------------------|
 
 D C G
 
@@ -58,8 +45,6 @@ And I think its a sin, yes
 [Interlude - D C G ×2]
 
 D C G
-
-·
 
 D C G
 
@@ -126,8 +111,6 @@ F C
 [Solo - D C G ×2]
 
 D C G
-
-·
 
 D C G
 
@@ -197,39 +180,23 @@ Here I come Alabama
 
 D C G
 
-·
+D C G
 
 D C G
 
-·
+D C G
 
 D C G
 
-·
-
 D C G
 
-·
-
 D C G
-
-·
-
-D C G
-
-·
-
-D C G
-
-·
 
 D C G
 
 [Interlude - D C G ×2]
 
 D C G
-
-·
 
 D C G
 

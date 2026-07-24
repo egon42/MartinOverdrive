@@ -102,8 +102,10 @@ export function parseChordSheet(text: string, { frets = false }: { frets?: boole
   }
   flush()
   // Instrumental runs often arrive as one chord per blank-separated "line"
-  // (Songsterr imports, UG pastes). Merge consecutive chord-only lyric lines so
-  // chips sit on one row instead of wasting a full row per chord.
+  // (Songsterr imports, UG pastes). Merge consecutive *single-chord* chord-only
+  // lines so chips sit on one row instead of wasting a full row per chord.
+  // Do not merge authored multi-chord rows (`D C G` / `E B C#m A`) — those stay
+  // as separate cycles so measure map does not 4-pack a 3-chord loop into DCGD|CG.
   // Consecutive ASCII-tab string rows become one block so a 6-string fill stays
   // tight in the Lyrics view (each row alone would get .sheet-tab's per-line margin).
   return { meta, lines: mergeTabRuns(mergeChordOnlyRuns(lines)) }
@@ -117,7 +119,13 @@ function mergeChordOnlyRuns(lines: SheetLine[]): SheetLine[] {
   const out: SheetLine[] = []
   for (const line of lines) {
     const prev = out[out.length - 1]
-    if (isChordOnlyLine(line) && prev && isChordOnlyLine(prev)) {
+    if (
+      isChordOnlyLine(line) &&
+      prev &&
+      isChordOnlyLine(prev) &&
+      prev.parts.length === 1 &&
+      line.parts.length === 1
+    ) {
       prev.parts.push(...line.parts)
       continue
     }
