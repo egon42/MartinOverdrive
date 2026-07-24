@@ -3,7 +3,9 @@ Standard (EADGBE)
 [Amp: 6Amber]
 
 [Intro - count in, ~8-bar fiddle/guitar lick; do not fall behind]
-G G
+G G G G
+
+G G G G
 
 [Verse - fast country; skip fills if tempo eats you]
 G
@@ -51,9 +53,7 @@ G
 Ain't going down 'til the sun comes up
 
 [Solo - fiddle/harmonica break, verse changes]
-G C G D
-
-G
+G C G D G
 
 [Verse]
 G
@@ -66,14 +66,11 @@ two is comin' still no stopping
 
 D
 Break to check the clock at three they're right on where they wanna be
-
 G
 And four o'clock get up get going Five o'clock that rooster's crowing
 
 [Solo - fiddle/harmonica break, verse changes]
-G C G D
-
-G
+G C G D G
 
 [Chorus]
 C
@@ -91,19 +88,15 @@ Ain't going down 'til the sun comes up
 [Verse]
 G
 Six o'clock on Saturday her folks don't know he's on his way
-G
 The stalls are clean the horses fed they say she's grounded 'til she's dead
 
 D
 And here he comes around the bend slowing down she's jumping in
-
 G
 Hey mom your daughter's gone and there they go again
 
 [Solo - fiddle/harmonica break, verse changes]
-G C G D
-
-G
+G C G D G
 
 [Chorus]
 C
@@ -119,6 +112,4 @@ G
 Ain't going down 'til the sun comes up
 
 [Outro - fake ending: drops down, fiddle/harmonica trade, then builds to a final hit together]
-G C G D
-
-G
+G C G D G
