@@ -29,7 +29,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [x] 13-save-a-horse-ride-a-cowboy — **done (2026-07-22); Wave B measure 2026-07-24:** chucks; chorus land stops + E G A hook; solo E A E A×2; palm-muted bridge; N.C. outro; scroll **10** + leadIn **18**; measure **6** + **18**.
 - [ ] 14-sweet-home-alabama — **drafted (good enough 2026-07-23; layout 2026-07-24):** Intro sit×2 join×2 (2nd-guitar fill TBD); `D C G` cycle rows; F C tag only on first chorus (into Solo×2), not chorus→Solo×8; verse tags under last G; scroll **10** + leadIn **9.6**; measure **9** + leadIn **9.6**. Lock later if crawl feels final.
 - [x] 15-dani-california — **done (2026-07-23); Wave B measure layout 2026-07-24:** Intro+Interlude ×2 packed; verse couplets 4-across; hang Calif/She's/Pus pickups; Solo F C Dm G; scroll **9** + lead-in **6**; measure **8** + **6** (dial pending).
-- [x] 16-teenage-dirtbag — **done (2026-07-23):** Intro/reprise, Pre, Bridge (Oh yeah/Dirtbag), V1–V3; 3Red↔4Red; final chorus ghost then open walk-up; scroll **11** + lead-in **14**.
+- [x] 16-teenage-dirtbag — **done (2026-07-23); Wave B measure layout 2026-07-24:** Intro/reprise E B E A packed; hang verse/pre/chorus pickups; walk-ups packed; scroll **11** + lead-in **14**; measure **10** + **14** (dial pending).
 - [x] 17-the-pretender — **done (2026-07-23):** ghost intro + pre-slam Am×4 + interlude; slam-only 6Red; A5×2 before V2; palm A5 bridge; cold outro ×3; scroll **9** + leadIn **11**.
 - [x] 18-here-it-goes-again — **done (2026-07-23):** all powers (pre E5/A5, bridge Eb5/Bb5/G5/C5/Ab5); Link = full chorus loop after bridge; V3×2 then Chorus×2 + Outro×5; scroll **12** + leadIn **8**.
 - [ ] 19-purple-rain — **drafted (good enough 2026-07-23; layout 2026-07-24):** full album; Intro ring; V1 “I” under D; chorus hang D before bathing/underneath lines; Solo ×6 / Outro ×10 vamp; Slow-down; no ^N; scroll **6** + leadIn **16**; measure **6** + leadIn **16**. **Revisit V3 with guitar** (chords/layout TBD). Lock later.
@@ -53,7 +53,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 
 **Drafted good-enough (tonight full-set dial):** 04–06, 14, 19, 22, 24, 26–31. Scroll seeds are Estimates until you lock on device.
 
-**Next review queue:** **Wave B batch 2** — **15-dani-california** layout shipped; **user dials measure** on `/dev/` (seed 8/6). Then orphan→dial: 16, 17, 18, 20, 21, 23, 25 (7 after Dani locks). Batch 1 done: 01–03, 07–13. Skip 14 (Wave A). Parked: Dream On / Mama / Voodoo / Purple Rain V3. Hunger Strike amp revisit at guitar.
+**Next review queue:** **Wave B batch 2** — Dani + Dirtbag layouts shipped (dial both when ready). Next orphan→dial: **17-the-pretender**, then 18, 20, 21, 23, 25. Batch 1 done: 01–03, 07–13. Parked: Dream On / Mama / Voodoo / Purple Rain V3. Hunger amp at guitar.
 
 ## Skill audit (2026-07-23) — second-half prep
 

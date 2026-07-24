@@ -3,29 +3,16 @@ Standard (EADGBE)
 [Amp: 3Red]
 
 [Intro - E B E A ×2; quiet / palm mute]
-E
- 
-B
- 
-E
- 
-A
-             
-E
- 
-B
- 
-E
- 
-A
+E B E A
+
+E B E A
 
 [Verse 1 - quiet / palm mute; prefer full chords]
-Her 
 E
+Her 
 name is Noe
 B
 lle,
-
 E
 I have a drea
 A
@@ -35,9 +22,8 @@ E
 She rings my b
 B
 ell.
-
-I got 
 E
+I got 
 gym class in ha
 A
 lf an hour.
@@ -46,24 +32,22 @@ E
 Oh, how she r
 B
 ocks,
-
-In 
 E
+In 
 Keds and tube s
 A
 ocks,
 
 [Pre-Chorus]
-But 
 C#m
+But 
 she doesn't k
 A
 now who i a
 B
 m,
-
-And 
 C#m
+And 
 she doesn't g
 A
 ive a d
@@ -72,8 +56,8 @@ amn about me.
 
 [Amp: 4Red]
 [Chorus - big / open]
-'Cause 
 E
+'Cause 
 I'm just a 
 A
 teenage di
@@ -83,8 +67,8 @@ C#m
 baby.  
 G#m
 
-Yeah 
 E
+Yeah 
 I'm just a 
 A
 teenage di
@@ -106,43 +90,20 @@ G#m
 with m
 E
 e. 
-A
-         
-B
-           
-C#m
-               
-G#m
-                   
-A
-                     
-B
+A B C#m G#m A B
 
 [Amp: 3Red]
 [Intro reprise - E B E A]
-E
- 
-B
- 
-E
- 
-A
-             
-E
- 
-B
- 
-E
- 
-A
+E B E A
+
+E B E A
 
 [Verse 2 - quiet / palm mute; prefer full chords]
-Her 
 E
+Her 
 boyfriend's a d
 B
 ick
-
 E
 and he brings a g
 A
@@ -152,9 +113,8 @@ E
 And he'd simply k
 B
 ick
-
-My 
 E
+My 
 ass if he knew the t
 A
 ruth.
@@ -163,23 +123,21 @@ E
 He lives on my b
 B
 lock
-
 E
 And he drives an I
 A
 roc
 
 [Pre-Chorus]
-But 
 C#m
+But 
 he doesn't k
 A
 now who i a
 B
 m,
-
-And 
 C#m
+And 
 he doesn't g
 A
 ive a d
@@ -188,8 +146,8 @@ amn about me.
 
 [Amp: 4Red]
 [Chorus - big / open]
-'Cause 
 E
+'Cause 
 I'm just a 
 A
 teenage di
@@ -199,8 +157,8 @@ C#m
 baby.  
 G#m
 
-Yeah 
 E
+Yeah 
 I'm just a 
 A
 teenage di
@@ -222,17 +180,7 @@ G#m
 with m
 E
 e. 
-A
-         
-B
-           
-C#m
-               
-G#m
-                   
-A
-                     
-B
+A B C#m G#m A B
 
 [Bridge]
 E
@@ -248,8 +196,8 @@ Dirtbag
 Asus2
 ⠀⠀⠀⠀
 
-No, 
 C#m
+No, 
 She doesn
 G#m
 't know 
@@ -271,8 +219,8 @@ Dirtbag
 Asus2
 ⠀⠀⠀⠀
 
-No, 
 C#m
+No, 
 She doesn
 G#m
 't know 
@@ -283,21 +231,14 @@ issing.
 
 [Amp: 3Red]
 [Verse 3 - girl; quiet / palm mute; prefer full chords]
-E
- 
-B
- 
-E
- 
-A
+E B E A
 
 E
 Man, i feel like m
 B
 old,
-
-It's 
 E
+It's 
 prom night and i am l
 A
 onely.
@@ -306,9 +247,8 @@ E
 Lo and beh
 B
 old:
-
-She's 
 E
+She's 
 walking over to m
 A
 e.
@@ -317,24 +257,22 @@ E
 This must be f
 B
 ake,
-
-My 
 E
+My 
 lip starts to sh
 A
 ake.
 
 [Pre-Chorus]
-How 
 C#m
+How 
 does she k
 A
 now who i a
 B
 m?
-
-And 
 C#m
+And 
 why does she g
 A
 ive a d
@@ -343,8 +281,8 @@ amn about me?
 
 [Amp: 4Red]
 [Chorus - heavily muted on lyrics; sit out]
-I've 
 ~E
+I've 
 got two tickets to 
 ~A
 iron mai
@@ -354,8 +292,8 @@ den,
 baby.  
 ~G#m
 
-Come 
 ~E
+Come 
 with me 
 ~A
 friday, don't 
@@ -379,17 +317,7 @@ like y
 ou.
 
 [Chorus walk-up - open]
-A
-         
-B
-           
-C#m
-               
-G#m
-                   
-A
-                     
-B
+A B C#m G#m A B
 
 [Bridge]
 E
@@ -405,8 +333,8 @@ Dirtbag
 Asus2
 ⠀⠀⠀⠀
 
-No, 
 C#m
+No, 
 She doesn
 G#m
 't know 
@@ -428,8 +356,8 @@ Dirtbag
 Asus2
 ⠀⠀⠀⠀
 
-No, 
 C#m
+No, 
 She doesn
 G#m
 't know 
@@ -443,16 +371,6 @@ B
 sing.
 
 [Outro]
-E
- 
-B
- 
-E
-    
-A
-  
-G#m
-   
-F#m
-  
-E
+E B E A
+
+G#m F#m E

@@ -107,7 +107,7 @@
   "16-teenage-dirtbag": {
     "speed": 11,
     "leadInSec": 14,
-    "note": "Locked 2026-07-23. Studio 4:02. speed=11 leadInSec=14. Role: quiet palm-mute verse / big chorus 3Red↔4Red; final chorus ghost then open walk-up; bridge Oh yeah/Dirtbag. Measure Estimate 2026-07-24: 100 measure / 86 lyric rows; studio 242s (note); raw≈12 densify→10; leadIn kept 14. Dial on device.",
+    "note": "Lyric Locked 2026-07-23. Studio 4:02. speed=11 leadInSec=14. Wave B 2026-07-24: hang verse/pre/chorus pickups; Intro E B E A packed; walk-ups packed. Measure rows 100→59; seed measureSpeed 10 + measureLeadInSec 14 (densify from lyric; raw≈9). Dial on device. Landmark: Iron Maiden.",
     "measureSpeed": 10,
     "measureLeadInSec": 14
   },
