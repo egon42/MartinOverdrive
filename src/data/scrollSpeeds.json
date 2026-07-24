@@ -163,7 +163,7 @@
   "24-mary-jane-s-last-dance": {
     "speed": 9,
     "leadInSec": 10.7,
-    "note": "Estimate 2026-07-23 polish. Studio 4:34; 0.97× Tribute rows (64). Intro×4 Interlude×2 Solo×4; V2 tag + instrumental before chorus. speed≈9. leadInSec=10.7. Landmark: Well she moved down here. Dial on device. Measure Estimate 2026-07-24: 64 measure / 64 lyric rows; studio 274s (note); raw≈9 densify→8; leadIn kept 10.7. Dial on device.",
+    "note": "Estimate 2026-07-23 polish. Studio 4:34; lyric speed 9 leadIn 10.7. Layout 2026-07-24: verse pickups hang on prior chord; chorus second phrase under Em7. Measure dial 2026-07-24: measureSpeed 8 + measureLeadInSec 10.7.",
     "measureSpeed": 8,
     "measureLeadInSec": 10.7
   },
@@ -177,7 +177,7 @@
   "26-voodoo-child-slight-return": {
     "speed": 6,
     "leadInSec": 16,
-    "note": "Estimate 2026-07-23 polish. Studio 7:59 SRV; 1.05× Tribute rows (69). Backing E-G-A; Solo1×4 Solo2×12 written. speed 6 (raw≈5.3 floor). leadInSec=16. Landmark: I want to say one more last thing. Dial on device. Measure Estimate 2026-07-24: 76 measure / 69 lyric rows; studio 479s (note); raw≈6 densify→6; leadIn kept 16. Dial on device.",
+    "note": "Estimate 2026-07-23 polish. Studio 7:59 SRV; lyric speed 6 leadIn 16. Layout 2026-07-24: verse/chorus pickups hang on prior chord (UG mid-word kept). Measure Estimate measureSpeed 6 + measureLeadInSec 16. Dial on device.",
     "measureSpeed": 6,
     "measureLeadInSec": 16
   },
