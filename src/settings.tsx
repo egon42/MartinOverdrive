@@ -309,6 +309,17 @@ function shapeToTab(shape: ChordShape): string {
 
 const TAB_SHAPE_RE = /^[0-9A-FxX-]{6}$/
 
+/** Decode a 6-char cheat fingering (low-E → high-e) back to a ChordShape. */
+export function tabToShape(tab: string): ChordShape | null {
+  if (!TAB_SHAPE_RE.test(tab)) return null
+  return [...tab].map((ch) => {
+    if (ch === '-' || ch === 'x' || ch === 'X') return 'x'
+    if (ch >= '0' && ch <= '9') return Number(ch)
+    const hex = 'ABCDEF'.indexOf(ch.toUpperCase())
+    return hex >= 0 ? hex + 10 : 'x'
+  })
+}
+
 /** Power-chord token (C5, F#5, Bb5) — slash bass ignored. */
 export function isPowerChord(name: string): boolean {
   return /^[A-G][#b]?5$/i.test(name.trim().split('/')[0])

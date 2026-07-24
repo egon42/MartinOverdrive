@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
 import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, isCueToken, isFretToken, measureSlots, parseChordSheet, type SheetPart } from './chords'
-import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
+import { basicRowsFor, cheatRowsFor, curatedShapeForChord, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
 import type { Song } from './types'
@@ -12,7 +12,7 @@ import { Metronome } from './metronome'
 import { ampPresets, parsePresetLabel, presetBank, presetLabel, presetPosition } from './presets'
 import { sheetsFor } from './sheets'
 import { transposeFor, transposeLabel, transposeHint } from './transpose'
-import { formatFingering, formatPowerFingering, formatVerticalFingering, isPowerChord, resolveFingering, shapesTabClass, useSettings, type FingeringSurface } from './settings'
+import { formatFingering, formatPowerFingering, formatVerticalFingering, isPowerChord, resolveFingering, shapesTabClass, tabToShape, useSettings, type FingeringSurface } from './settings'
 
 export const unknown = (value: string | number | null) => value === '' || value == null ? 'Not provided' : value
 
@@ -68,18 +68,25 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const prefs = settings[surface]
   const fingeringOnly = !!songId && isFingeringOnly(songId, surface)
   const powerChip = forcePowerFingering && isPowerChord(name)
+  // Ryan power chips pull curated fingerings from the cheat card when present so the
+  // chip matches Chords/Cheat (e.g. Pink Pony F#5 → 244×, not the generator's 688×).
+  const effectiveCurated = curatedShape
+    || (forcePowerFingering && songId ? curatedShapeForChord(songId, name) : undefined)
   // Ryan power chips always resolve shapes (ignore Settings scope). Shapes retap still
   // upgrades 'power' → 'all' so non-power chords get fingerings; scope 'none' disables retap.
   const fingering = resolveFingering(
     name,
-    curatedShape,
+    effectiveCurated,
     powerChip ? 'all' : fingeringOnly && prefs.scope === 'power' ? 'all' : prefs.scope,
   )
   const [open, setOpen] = useState(false)
   const [box, setBox] = useState<{ left: number; top: number; below: boolean; arrow: number } | null>(null)
   const ref = useRef<HTMLSpanElement>(null)
   const popRef = useRef<HTMLSpanElement>(null)
-  const shape = useMemo(() => chordShape(name), [name])
+  const shape = useMemo(
+    () => (effectiveCurated ? tabToShape(effectiveCurated) : null) ?? chordShape(name),
+    [name, effectiveCurated],
+  )
   useEffect(() => {
     if (!open) return
     const close = () => setOpen(false)

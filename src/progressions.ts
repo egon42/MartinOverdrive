@@ -54,6 +54,42 @@ export function progressionFor(songId: string): SongProgression | null {
   return entry && entry.sections.length ? entry : null
 }
 
+/** First curated 6-char fingering per chord name from the song's cheat card (section order). */
+const curatedShapeCache = new Map<string, Map<string, string>>()
+
+export function curatedShapesForSong(songId: string): Map<string, string> {
+  const cached = curatedShapeCache.get(songId)
+  if (cached) return cached
+  const map = new Map<string, string>()
+  const prog = progressionFor(songId)
+  if (prog) {
+    for (const section of prog.sections) {
+      if (!section.chords?.trim() || !section.shapes?.trim()) continue
+      try {
+        for (const span of parseChordSpans(section.chords, section.shapes)) {
+          for (let i = 0; i < span.chords.length; i++) {
+            const shape = span.shapes[i]
+            if (shape && !map.has(span.chords[i])) map.set(span.chords[i], shape)
+          }
+        }
+      } catch {
+        const names = section.chords.trim().split(/\s+/).filter(Boolean)
+        const shapes = section.shapes.trim().split(/\s+/).filter(Boolean)
+        names.forEach((raw, i) => {
+          const name = raw.startsWith('~') ? raw.slice(1) : raw
+          if (name && shapes[i] && !map.has(name)) map.set(name, shapes[i])
+        })
+      }
+    }
+  }
+  curatedShapeCache.set(songId, map)
+  return map
+}
+
+export function curatedShapeForChord(songId: string, chord: string): string | undefined {
+  return curatedShapesForSong(songId).get(chord)
+}
+
 // Archived cheat-card versions (progressionVersions.json): every time a song's live
 // entry gets rewritten (research pass, live correction), the previous entry is
 // snapshotted there (scripts/snapshot-progression.mjs) so nothing right is lost.
