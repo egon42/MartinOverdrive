@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
-import { chordProgression, compactSheet, cueNumber, dyadFrets, isCueToken, isFretToken, measureSlots, parseChordSheet, type SheetPart } from './chords'
+import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, isCueToken, isFretToken, measureSlots, parseChordSheet, type SheetPart } from './chords'
 import { basicRowsFor, cheatRowsFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
@@ -116,6 +116,9 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const cue = cueNumber(name)
   if (cue != null) {
     return <b className="chord-chip chord-chip--cue" aria-label={`Fill cue ${cue}`} title={`Fill cue ${cue}`}>{cue}</b>
+  }
+  if (isBarlineToken(name)) {
+    return <span className="sheet-measure-barline" aria-hidden>|</span>
   }
   if (isFretToken(name)) {
     return <b className="chord-chip chord-chip--fret" aria-label={`Fret ${name}`} title={`Fret ${name}`}>{name}</b>
@@ -440,7 +443,70 @@ function chunkMeasureSlots<T>(items: T[], size: number): T[][] {
   return rows
 }
 
+/** Split chord parts on `|` into measure groups (Dream On 2-bar fret lines). */
+function splitBarMeasures(parts: SheetPart[]): SheetPart[][] {
+  const measures: SheetPart[][] = [[]]
+  for (const part of parts) {
+    if (part.chord && isBarlineToken(part.chord)) {
+      measures.push([])
+      continue
+    }
+    measures[measures.length - 1].push(part)
+  }
+  return measures.filter((measure) => measure.some((part) => part.chord || part.text?.trim()))
+}
+
+function MeasureBarChips({ parts, songId, forcePowerFingering = false }: {
+  parts: SheetPart[]
+  songId?: string
+  forcePowerFingering?: boolean
+}) {
+  const chips = parts.filter((part) => part.chord)
+  if (!chips.length) return null
+  // 3+ events: first on the left, remaining clustered on the right (e.g. 3/5 … 2/5 2/4-5).
+  if (chips.length >= 3) {
+    const [first, ...rest] = chips
+    return <>
+      <ChordChip name={first.chord!} ghost={first.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} />
+      <span className="sheet-measure-bar-cluster">
+        {rest.map((part, i) => (
+          <ChordChip name={part.chord!} ghost={part.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} key={i} />
+        ))}
+      </span>
+    </>
+  }
+  return <>
+    {chips.map((part, i) => (
+      <ChordChip name={part.chord!} ghost={part.ghost} songId={songId} bare forcePowerFingering={forcePowerFingering} key={i} />
+    ))}
+  </>
+}
+
+function LyricLineMeasureBars({ parts, songId, forcePowerFingering = false }: {
+  parts: SheetPart[]
+  songId?: string
+  forcePowerFingering?: boolean
+}) {
+  const measures = splitBarMeasures(parts)
+  if (!measures.length) return null
+  return (
+    <div className="sheet-line sheet-line--measure-bars">
+      {measures.map((measure, mi) => (
+        <div className="sheet-measure-bar-wrap" key={mi}>
+          {mi > 0 ? <span className="sheet-measure-barline" aria-hidden>|</span> : null}
+          <div className="sheet-measure-bar">
+            <MeasureBarChips parts={measure} songId={songId} forcePowerFingering={forcePowerFingering} />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function LyricLineMeasures({ parts, songId, forcePowerFingering = false }: { parts: SheetPart[]; songId?: string; forcePowerFingering?: boolean }) {
+  if (parts.some((part) => part.chord && isBarlineToken(part.chord))) {
+    return <LyricLineMeasureBars parts={parts} songId={songId} forcePowerFingering={forcePowerFingering} />
+  }
   const slots = measureSlots(parts)
   if (!slots.length) return null
   if (slots.every((slot) => !slot.chord)) {

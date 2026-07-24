@@ -163,6 +163,13 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .sheet-line--measures-chords{margin:0 0 3px}
 .sheet-measure-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:stretch;text-align:left;padding:0 4px;box-sizing:border-box}
 .sheet-measure-col + .sheet-measure-col{box-shadow:inset 1px 0 0 color-mix(in srgb,var(--line) 85%,transparent)}
+/* Dream On: two Songsterr measures per line, `|` barline, spaced change chips */
+.sheet-line--measure-bars{display:flex;flex-wrap:nowrap;align-items:center;width:100%;margin:0 0 5px;box-sizing:border-box;gap:0}
+.sheet-measure-bar-wrap{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:6px}
+.sheet-measure-bar{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 4px}
+.sheet-measure-bar-cluster{display:inline-flex;align-items:center;gap:2px}
+.sheet-measure-barline{flex:0 0 auto;color:var(--muted);font-weight:700;font-size:.85em;line-height:1;user-select:none;padding:0 2px}
+.sheet-line--measure-bars .chord-chip{font-size:.7em;padding:.09em .5em;line-height:1.2;border-radius:.45em;margin:0}
 /* Same chip-slot + --chip-pull as .sheet-above-chord so Settings "chip pull" matches lyric mode. */
 .sheet-measure-chord{box-sizing:border-box;height:1.35em;display:flex;align-items:flex-end;justify-content:flex-start;margin-bottom:var(--chip-pull,-0.5em)}
 .sheet-measure-chord .chord-chip,.sheet-measure-chord .chord-chip-wrap{margin:0}

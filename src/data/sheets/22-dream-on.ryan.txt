@@ -1,218 +1,128 @@
 Standard (EADGBE)
 
-(B/G high-low through m70 from Songsterr Whitford rhythm; single frets after. Chips only on changes. No capo on this sheet — open-neck frets. Band chords/cheat still use Capo 1.)
+(B/G high-low through m70 from Songsterr Whitford rhythm; singles after. Two measures per line with `|`. Chips on changes only. No capo — open-neck frets. Band chords/cheat still Capo 1.)
 
 [Amp: 7Red]
 
-[Intro - B/G ×6]
+[Intro - B/G]
 
-6/5 4/5
+6/5 4/5 | 3/5 2/5 2/4-5
 
-3/5 2/5
+6/5 | 6/5
 
-6/5
-
-6/5
-
-6/5 4/5
-
-3/5 2/5
+6/5 4/5 | 3/5 2/5
 
 [Verse 1 - B/G]
-6/5
-  Every time I l
-4/5
-ook in the mirror
+6/5 4/5 | 3/5 2/5
+Every time I look in the mirror
+All these lines on my face gettin' clearer
 
-3/5
-  All these lines on my f
-2/5
-ace gettin' clearer
+6/5 | 6/5 6 6/5
+The past is gone
 
-6/5
+9/7 8/5 | 6/5 2/5
+It went by like dusk to dawn
 
-6/5
- The past is gone
-6
+6/5 | 6/5 4/5
 
-9/7
-It went b
-8/5
-y like dusk to d
-6/5
-awn
+3/5 2/5 | 6/5 4/5
 
-2/5
+3/5 2/5 | 6/5 4/5
 
-6/5
-
-6/5 4/5
-
-3/5 2/5
-
-6/5 4/5
-
-3/5 2/5
-
-6/5 4/5
-
-3/5 2/5
+3/5 2/5 |
 
 [Pre / Bridge - B/G]
-6/5
-   Isn't that the way
-4/5
+6/5 4/5 | 3/5 2/5
+Isn't that the way
+Everybody's got their dues in life to pay?
 
-3/5
-Everybody's got their d
-2/5
-ues in life to pay?
+6/5 5/5 | 6/5 5/5
+I know nobody knows where it comes and where it goes
 
-6/5 5/5
+2/5 |
 
-6/5
- I know n
-5/5
-obody knows where it comes and where it goes
+[Chorus 1 - B/G; G fills]
+2/5 | 5 3
 
-2/5
+1 3 | 5 3
 
-[Chorus 1 - B/G; G-string fills]
-2/5
+1 3 | 6/5 4/5
+Sing with me, sing for the years
 
-5 3 1 3
-
-5 3 1 3
-
-6/5
-Sing with me, s
-4/5
-ing for the years
-
-3/5
-Sing for laughter 'n' si
-2/5
-ng for the tears
-
-6/5
+3/5 2/5 | 6/5
+Sing for laughter 'n' sing for the tears
 Sing with me if it's just for today
 
-6/5
- Maybe tomorrow the good Lord will take you away
-6
+6/5 6 |
+Maybe tomorrow the good Lord will take you away
 
 [Verse 2 - B/G]
-6/5
-  Half my l
-4/5
-ife's in books' written pages
+6/5 4/5 | 3/5 2/5
+Half my life's in books' written pages
+Lived and learned from fools and from sages
 
-3/5
-  Lived and l
-2/5
-earned from fools and from sages
+6/5 4/5 | 3/5 2/5
+You know its true
+all those things come back to you
 
-6/5 4/5
+[Chorus 2 - B/G; G fills]
+3/5 2/5 | 6/5 4/5
 
-3/5
- You know its true
-2/5
+3/5 2/5 | 5 3
 
-6/5
-all those t
-4/5
-hings come back to you
+1 3 | 5 3
 
-[Chorus 2 - B/G; G-string fills]
-3/5 2/5
-
-6/5 4/5
-
-3/5 2/5
-
-5 3 1 3
-
-5 3 1 3
-
-2/5
+1 3 | 2/5
 
 [Interlude - B/G]
-2/5
+2/5 | 6/5 5/5
 
-6/5 5/5
+4/5 3/5 | 2/5
 
-4/5 3/5
+1 6 8 | 6/5 5/5
 
-2/5
+[Chorus 3 - B/G; G fills]
+4/5 3/5 | 2/5
 
-1 6 8
+5 3 | 1 3
 
-6/5 5/5
-
-[Chorus 3 - B/G; G-string fills]
-4/5 3/5
-
-2/5
-
-5 3 1 3
-
-5 3 1 3
+5 3 | 1 3
 
 [Solo 1 - B/G]
-2/5
+2/5 | 2/5
 
-[Solo 2 - single frets]
-3 1
+[Solo 2 - singles]
+3 1 | 2 4
 
-2 4
+[Solo 3 - singles]
+5 | 5
 
-[Solo 3 - single frets]
-5
+3 1 | 2 4
 
-3 1
+5 |
 
-2 4
+[Scream - into m70; singles]
+5 | 3 1
 
-5
+2 4 | 0
 
-[Scream - into m70; then singles]
-5
-
-3 1
-
-2 4
-
-0
-
-1 3
+1 3 |
 
 [Amp: 8Red]
-[Final Chorus - single frets]
-1 2 1 2
+[Final Chorus - singles]
+1 2 1 2 | 1 2 1 2
 
-1 2 1 2
+1 3 | 1 3
 
-1 3
+1 3 | 1 3
 
-1 3
+1 3 | 1 3
 
-1 3
+1 3 | 4 3
 
-1 3
+1 2 1 2 | 1 2 1 2
 
-1 3
-
-1 3
-
-1 3
-
-4 3
-
-1 2 1 2
-
-1 2 1 2
-
-1
+1 |
 
 [Outro]
 1
