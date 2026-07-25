@@ -562,14 +562,21 @@ function LyricLineMeasures({ parts, songId, forcePowerFingering = false }: { par
       {slots.map((slot, i) => <span key={i}>{slot.text}</span>)}
     </p>
   }
-  const rows = chunkMeasureSlots(slots, measureChunkSize(slots))
+  const chunkSize = measureChunkSize(slots)
+  const rows = chunkMeasureSlots(slots, chunkSize)
   return <>
     {rows.map((row, ri) => {
       const lyrics = row.map((slot) => slot.text.replace(/\s+/g, ' ').trim())
       const chordsOnly = lyrics.every((t) => !t)
+      // Short lyric leftovers (HIGA A5 G5 tag) pad to 4 so chips left-justify in the grid
+      // instead of stretching two cols across the full row.
+      const displayRow: { chord?: string; ghost?: boolean; text: string }[] =
+        (!chordsOnly && chunkSize === MEASURE_COLS_PER_ROW && row.length < MEASURE_COLS_PER_ROW)
+          ? [...row, ...Array.from({ length: MEASURE_COLS_PER_ROW - row.length }, () => ({ text: '' }))]
+          : row
       return (
         <div className={`sheet-line sheet-line--measures${chordsOnly ? ' sheet-line--measures-chords' : ''}`} key={ri}>
-          {row.map((slot, i) => (
+          {displayRow.map((slot, i) => (
             <div className="sheet-measure-col" key={i}>
               <div className="sheet-measure-chord">
                 {slot.chord
