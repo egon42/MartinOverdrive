@@ -121,7 +121,7 @@
   "18-here-it-goes-again": {
     "speed": 12,
     "leadInSec": 8,
-    "note": "Lyric Locked 2026-07-23. Studio 2:59. speed=12 leadInSec=8. Wave B 2026-07-24: hang verse/pre/chorus pickups; Intro/Link/Outro packed. Measure rows 78→43; seed measureSpeed 11 + measureLeadInSec 8 (densify from lyric; raw≈8). Dial on device. Landmark: Surfer Rosa.",
+    "note": "Lyric Locked 2026-07-23. Studio 2:59. speed=12 leadInSec=8. Wave B 2026-07-24: hang verse/pre/chorus pickups; Intro/Link/Outro packed. Guitar: chorus phrase breaks; bridge Eb5 Bb5 G5/B C5 Eb5/G Ab5. Measure measureSpeed 11 + measureLeadInSec 8 (good enough). Landmark: Surfer Rosa.",
     "measureSpeed": 11,
     "measureLeadInSec": 8
   },
