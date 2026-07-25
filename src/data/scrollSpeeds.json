@@ -114,7 +114,7 @@
   "17-the-pretender": {
     "speed": 9,
     "leadInSec": 11,
-    "note": "Lyric Locked 2026-07-23. Studio 4:29. speed=9 leadInSec=11. Wave B 2026-07-24: hang intro/verse/chorus lyric rows; pack Am×4 and bridge A5 4-across. Measure rows 89→35; seed measureSpeed 8 + measureLeadInSec 11 (densify from lyric; raw≈6). Dial on device. Landmark: Same old story.",
+    "note": "Lyric Locked 2026-07-23. Studio 4:29. speed=9 leadInSec=11. Wave B 2026-07-24: hang intro/verse/chorus lyric rows; pack bridge A5 4-across. Pre-verse instrumental one Am sit-out (guitar). Measure seed measureSpeed 8 + measureLeadInSec 11 (good enough). Landmark: Same old story.",
     "measureSpeed": 8,
     "measureLeadInSec": 11
   },
