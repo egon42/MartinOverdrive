@@ -142,7 +142,7 @@
   "21-the-middle": {
     "speed": 6,
     "leadInSec": 16,
-    "note": "Lyric Estimate 2026-07-24 after UG A-string 9 fix. Studio 2:46; speed=6 leadInSec=16. Wave B 2026-07-24: map verses to intro riff cycles 9 5 9 7 4 / 5 4 5 5; pack solo; hang chorus to D A G D. Measure rows 35→21; seed measureSpeed 6 + measureLeadInSec 16. Dial on device. Landmark: Just try your best.",
+    "note": "Lyric Estimate 2026-07-24 after UG A-string 9 fix. Studio 2:46; speed=6 leadInSec=16. Wave B 2026-07-24: map verses to intro riff cycles 9 5 9 7 4 / 5 4 5 5; pack solo; hang chorus to D A G D. Measure measureSpeed 6 + measureLeadInSec 16 (good enough guitar). Landmark: Just try your best.",
     "measureSpeed": 6,
     "measureLeadInSec": 16
   },
