@@ -223,22 +223,22 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "B5 | A5 | E5 | A5",
+        "chords": "B5 A5 E5 A5",
         "shapes": "-244-- -022-- 022--- -022--"
       },
       {
         "section": "Chorus",
-        "chords": "B5 | A5 E5 | A5 A5 | E5",
+        "chords": "B5 A5 E5 A5 A5 E5",
         "shapes": "-244-- -022-- 022--- -022-- -022-- 022---"
       },
       {
         "section": "Solo",
-        "chords": "E5 | B5 | A5 | E5",
+        "chords": "E5 B5 A5 E5",
         "shapes": "022--- -244-- -022-- 022---"
       },
       {
         "section": "Outro",
-        "chords": "B5 | A5 E5 | A5 A5 | E5",
+        "chords": "B5 A5 E5 A5 A5 E5",
         "shapes": "-244-- -022-- 022--- -022-- -022-- 022---"
       }
     ],
