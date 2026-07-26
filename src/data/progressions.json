@@ -929,69 +929,32 @@
     "sections": [
       {
         "section": "Sit",
-        "chords": "~Em ~Em7 ~Em6 ~Am6",
-        "hint": "Sit out Intro, V1, and dues tag (dyads not working)"
-      },
-      {
-        "section": "Enter",
-        "chords": "(Em D) (C D) (Em D) (C D Em)",
-        "shapes": "022000 --0232 -32010 --0232 022000 --0232 -32010 --0232 022000",
-        "hint": "Join on I know / nobody knows; chords from here"
-      },
-      {
-        "section": "Interlude",
-        "chords": "Em7 Em6 Am6 Em B7 Em",
-        "shapes": "022030 022020 -02212 022000 -21202 022000",
-        "hint": "Intro tag into V2"
-      },
-      {
-        "section": "Verse",
-        "chords": "Em Em7 Em6 Am6",
-        "shapes": "022000 022030 022020 -02212",
-        "hint": "V2 only, one pass"
+        "chords": "~Em",
+        "hint": "Sit until Dream on; sit again after the Tag"
       },
       {
         "section": "Chorus",
-        "chords": "(Em D) (C D) (Em D) (Em/C# Cmaj7)",
-        "shapes": "022000 --0232 -32010 --0232 022000 --0232 -42200 -32000",
-        "hint": "Sing with me"
-      },
-      {
-        "section": "Build",
-        "chords": "Am6",
-        "shapes": "-02212",
-        "hint": "Am6/add9 pulse: 8 swells into next chorus"
-      },
-      {
-        "section": "Climax",
         "chords": "(Am B5 C) (D Em)",
         "shapes": "-02210 -24--- -35--- --0232 022000",
-        "hint": "Each pass: one chord set, then walk-up fill ^1. 3rd pass add Em F#5 G A B7b9"
+        "hint": "One chord set, then walk-up Fill ^1 (×3)"
       },
       {
-        "section": "Outro",
-        "chords": "Am6",
-        "shapes": "-02212",
-        "hint": "Am add-6/9 fade"
+        "section": "Tag",
+        "chords": "Em F#5 G A B7b9",
+        "shapes": "022000 24---- 355--- 577--- -2121-",
+        "hint": "Little run into final chorus; then sit"
       },
       {
         "section": "Fills",
         "chords": "",
-        "tab": "Walk-up ^1 (×3; after each Climax chord set)\ne|----------------|----------------|----------------|----------------|\nB|5---------------|5---------------|5---------------|5---------------|\nG|--3---3---3-----|--5---5---5-----|--6---6---6-----|--8---8---8-----|\nD|----------------|----------------|----------------|----------------|\nA|----------------|----------------|----------------|----------------|\nE|----------------|----------------|----------------|----------------|\n\nPattern: 5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8",
-        "tabMore": "Chorus signature (between hits)\ne|----|----|----|----|\nB|----|----|----|----|\nG|4-2-|0-2-|4-2-|0-2-|\nD|----|----|----|----|\nA|----|----|----|----|\nE|----|----|----|----|\n\n3rd climax ascent\nEm F#5 G A B7b9"
+        "tab": "Walk-up ^1 (×3; after each Chorus chord set)\ne|----------------|----------------|----------------|----------------|\nB|5---------------|5---------------|5---------------|5---------------|\nG|--3---3---3-----|--5---5---5-----|--6---6---6-----|--8---8---8-----|\nD|----------------|----------------|----------------|----------------|\nA|----------------|----------------|----------------|----------------|\nE|----------------|----------------|----------------|----------------|\n\nPattern: 5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8"
       }
     ],
     "form": [
       "Sit",
-      "Enter",
-      "Interlude",
-      "Verse",
-      "Chorus",
-      "Build ×8",
-      "Chorus",
-      "Climax ×3",
-      "Chorus",
-      "Outro"
+      "Chorus ×3",
+      "Tag",
+      "Sit"
     ],
     "capo": "Capo 1"
   },
