@@ -3,7 +3,7 @@
 - Rehearsal: most-of-band practice (dictated 2026-07-26)
 - Show: 2026-08-01
 - Branch: `dev` → live `/MartinOverdrive/dev/`
-- Status: **in progress** (5 app items done; next = Dream On)
+- Status: **in progress** (6 app items done; next = Banditos)
 
 Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
@@ -37,15 +37,14 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 - Done when: pre-solo Em–C is on the card and sheet.
 - Session notes: research med-high; hang/outro ×N softest — ear-check if counts feel off.
 
-### 5. #11 — Dream On (`22-dream-on`) — BOTH — **NEXT**
-- [ ] Status: not started
+### 5. #11 — Dream On (`22-dream-on`) — BOTH
+- [x] **DONE 2026-07-26** (`1193508`)
 - Rehearsal note: dyads not working → sit out until “I know / nobody knows”, then chords; learn walk-up `5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8`; lyrics/shape may be wrong.
-- Research: Capo-1 Em (chords/card) vs no-capo B/G dyads (ryan/tabs); form order disagrees around nobody-knows. Walk-up ≈ pedal-5 rising dyads. Biggest item.
-- Proposed: band override — no early dyads; enter at nobody-knows with chords; add walk-up as fills/ryan cues; reconcile form. Skills: `research-song-form` + ryan polish.
+- Shipped: band-role card **Sit → Enter (nobody-knows) → …**; inserted missing Enter bridge; Walk-up on roadmap + Fills tab + Ryan fret chips; Ryan converted to capo-1 chords (no early dyads). Full form still archived.
 - Done when: show role matches sit-out → chords + walk-up is learnable from the app.
-- Session notes:
+- Session notes: walk-up placement (after 2nd chorus, before climax) is med conf — ear-check; tabs.txt still has the old dyad transcription for reference.
 
-### 6. #31 — Banditos (`31-banditos`) — APP
+### 6. #31 — Banditos (`31-banditos`) — APP — **NEXT**
 - [ ] Status: not started
 - Rehearsal note: structure/lyrics near the end may be wrong.
 - Research: local already has Solo×2 → fair-tag D–A–E → Outro×2. Likely lyric/count mismatch, not wrong progression. Verify vs recording/band before rewrite.
@@ -110,8 +109,8 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 ## Handoff — next session
 
-1. Start at **queue #5 Dream On** unless user picks another.
+1. Start at **queue #6 Banditos** unless user picks another.
 2. Stay on **`dev`**; validate → commit → bare `git push` → watch Pages.
 3. Snapshot before rewriting cheat cards (`node scripts/snapshot-progression.mjs <id> "<label>"`).
 4. Practice-only items (9–11) can fold into `/practice` or `/coach` rather than app edits.
-5. Dream On is the largest remaining app item — budget a full turn.
+5. Dream On walk-up placement may need an ear-check tweak after phone test.

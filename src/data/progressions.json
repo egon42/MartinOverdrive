@@ -928,60 +928,74 @@
   "22-dream-on": {
     "sections": [
       {
-        "section": "Intro",
-        "chords": "(Em Em7 Em6 Am6) (Em B7 Em)"
+        "section": "Sit",
+        "chords": "~Em ~Em7 ~Em6 ~Am6",
+        "hint": "Sit out Intro, V1, and dues tag (dyads not working)"
+      },
+      {
+        "section": "Enter",
+        "chords": "(Em D) (C D) (Em D) (C D Em)",
+        "shapes": "022000 --0232 -32010 --0232 022000 --0232 -32010 --0232 022000",
+        "hint": "Join on I know / nobody knows; chords from here"
+      },
+      {
+        "section": "Interlude",
+        "chords": "Em7 Em6 Am6 Em B7 Em",
+        "shapes": "022030 022020 -02212 022000 -21202 022000",
+        "hint": "Intro tag into V2"
       },
       {
         "section": "Verse",
         "chords": "Em Em7 Em6 Am6",
-        "hint": "V1 two passes, V2 one"
-      },
-      {
-        "section": "Pre-Chorus",
-        "chords": "Em6 B7sus4 B7 Cmaj7 C#7 B7",
-        "hint": "Only once, after V1"
-      },
-      {
-        "section": "Interlude",
-        "chords": "Em B7 Em",
-        "hint": "Intro tag, into V2"
+        "shapes": "022000 022030 022020 -02212",
+        "hint": "V2 only, one pass"
       },
       {
         "section": "Chorus",
         "chords": "(Em D) (C D) (Em D) (Em/C# Cmaj7)",
-        "hint": "\"Sing with me\"; last line Em/C#->Cmaj7, then B7b9/B tag"
+        "shapes": "022000 --0232 -32010 --0232 022000 --0232 -42200 -32000",
+        "hint": "Sing with me"
       },
       {
         "section": "Build",
         "chords": "Am6",
-        "hint": "Am6/add9 pulse: 8 swells into Chorus 2"
+        "shapes": "-02212",
+        "hint": "Am6/add9 pulse: 8 swells into next chorus"
+      },
+      {
+        "section": "Walk-up",
+        "chords": "",
+        "tab": "Walk-up (learn this; pedal 5, rising)\ne|----------------|----------------|----------------|----------------|\nB|5---------------|5---------------|5---------------|5---------------|\nG|--3---3---3-----|--5---5---5-----|--6---6---6-----|--8---8---8-----|\nD|----------------|----------------|----------------|----------------|\nA|----------------|----------------|----------------|----------------|\nE|----------------|----------------|----------------|----------------|\n\nPattern: 5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8",
+        "hint": "Between build/chorus and climax; ear-check placement"
       },
       {
         "section": "Climax",
         "chords": "(Am B5 C) (D Em) (Am B5 C D) (Em F#5 G A) B7b9",
+        "shapes": "-02210 -24--- -35--- --0232 022000 -02210 -24--- -35--- --0232 022000 24---- 355--- 577--- -2121-",
         "hint": "3rd pass ascends Em-F#5-G-A into the scream, then B7b9/B tag"
       },
       {
         "section": "Outro",
         "chords": "Am6",
+        "shapes": "-02212",
         "hint": "Am add-6/9 fade"
       },
       {
         "section": "Fills",
         "chords": "",
         "tab": "Chorus signature (between hits)\ne|----|----|----|----|\nB|----|----|----|----|\nG|4-2-|0-2-|4-2-|0-2-|\nD|----|----|----|----|\nA|----|----|----|----|\nE|----|----|----|----|\n\nVerse climb\ne|3---5---7---5-3-5-|\nB|5---5---5---5-5-5-|\nG|--4---4---4-----4-|\nD|------------------|\nA|------------------|\nE|------------------|",
-        "tabMore": "Pre-chorus walk\ne|7---7---5-3-3-|\nB|8---8---7-5-5-|\nG|--6---6-----4-|\nD|--------------|\nA|--------------|\nE|--------------|\n\nClimax trill\ne|2---2---2---2---|\nB|0-1-0-1-0-1-0-1-|\nG|--4---4---4---4-|\nD|----------------|\nA|----------------|\nE|----------------|"
+        "tabMore": "Climax trill\ne|2---2---2---2---|\nB|0-1-0-1-0-1-0-1-|\nG|--4---4---4---4-|\nD|----------------|\nA|----------------|\nE|----------------|"
       }
     ],
     "form": [
-      "Intro ×2",
-      "Verse ×2",
-      "Pre-Chorus",
+      "Sit",
+      "Enter",
       "Interlude",
       "Verse",
       "Chorus",
       "Build ×8",
       "Chorus",
+      "Walk-up",
       "Climax ×3",
       "Chorus",
       "Outro"

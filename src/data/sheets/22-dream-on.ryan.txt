@@ -1,123 +1,254 @@
 Standard (EADGBE)
-
-No capo for this layout
+Capo 1 (Em shapes; sounds Fm)
 
 [Amp: 7Red]
 
-[Intro - B/G]
+[Sit - Intro + V1 + dues tag; dyads not working]
+~Em ~Em7 ~Em6 ~Am6
+~Em ~B7 ~Em
 
-6/5 4/5 | 3/5 2/5 2/4-5
+~Em
+  Every t
+~Em7
+ime I l
+~Em6
+ook in the m
+~Am6
+irror
 
-6/5 | 6/5
+ 
+~Em
+  All t
+~Em7
+hese lines on my f
+~Em6
+ace gettin' c
+~Am6
+learer
 
-6/5 4/5 | 3/5 2/5
+ 
+~Em
+      
+~Em7
+ The past is g
+~Em6
+one    
+~Am6
 
-[Verse 1 - B/G]
-6/5 4/5 | 3/5 2/5
-Every time I look in the mirror | All these lines on my face gettin' clearer
+~Em
+It went b
+~Em7
+y like d
+~Em6
+usk to d
+~Am6
+awn
 
-6/5 | 6/5 6 6/5
-The past is gone
+ 
+~Em6
+   Isn't that the w
+~B7sus4
+ay        
+~B7
 
-9/7 8/5 | 6/5 2/5
-It went by like dusk to dawn
+~Em6
+Everybody's got their d
+~B7sus4
+ues in life to p
+~B7
+ay?    
+~Cmaj7
+           
+~C#7
+                
+~B7
 
-6/5 | 6/5 4/5
+[Enter - join here; chords]
+I
+Em
+ know n
+D
+obody knows w
+C
+here it comes and w
+D
+here it goes
 
-3/5 2/5 | 6/5 4/5
+ 
+Em
+ I know it's e
+D
+verybody's sin
 
-3/5 2/5 | 6/5 4/5
+C
+You got to lose to kn
+D
+ow how to w
+Em
+in
 
-3/5 2/5 |
+[Interlude - intro tag into V2]
+Em7
+   
+Em6
+   
+Am6
+   
+Em
+   
+B7
+   
+Em
 
-[Pre / Bridge - B/G]
-6/5 4/5 | 3/5 2/5
-Isn't that the way | Everybody's got their dues in life to pay?
+[Verse 2]
+Em
+  Half my l
+Em7
+ife's in b
+Em6
+ooks' written p
+Am6
+ages
 
-6/5 5/5 | 6/5 5/5
-I know nobody knows where it comes and where it goes
+ 
+Em
+  Lived and l
+Em7
+earned from f
+Em6
+ools and from s
+Am6
+ages
 
-2/5 |
+ 
+Em
+      
+Em7
+ You know its t
+Em6
+rue    
+Am6
 
-[Chorus 1 - B/G; G fills]
-2/5 | 5 3
+Em
+all those t
+Em7
+hings come b
+Em6
+ack to y
+Am6
+ou
 
-1 3 | 5 3
+[Chorus - Sing with me]
+Em
+Sing with me, s
+D
+ing for the years
 
-1 3 | 6/5 4/5
-Sing with me, sing for the years
+C
+Sing for laughter 'n' si
+D
+ng for the tears
 
-3/5 2/5 | 6/5
-Sing for laughter 'n' sing for the tears | Sing with me if it's just for today
+Em
+Sing with me if it's ju
+D
+st for today
 
-6/5 6 |
-Maybe tomorrow the good Lord will take you away
+ 
+Em/C#
+ Maybe tomorrow the
+Cmaj7
+good Lord will take you away
 
-[Verse 2 - B/G]
-6/5 4/5 | 3/5 2/5
-Half my life's in books' written pages | Lived and learned from fools and from sages
+ 
+[Build - Am6 ×8]
+Am6
+ (
+Am
+ add 6/9) x 8
 
-6/5 4/5 | 3/5 2/5
-You know its true | all those things come back to you
-
-[Chorus 2 - B/G; G fills]
-3/5 2/5 | 6/5 4/5
-
-3/5 2/5 | 5 3
-
-1 3 | 5 3
-
-1 3 | 2/5
-
-[Interlude - B/G]
-2/5 | 6/5 5/5
-
-4/5 3/5 | 2/5
-
-1 6 8 | 6/5 5/5
-
-[Chorus 3 - B/G; G fills]
-4/5 3/5 | 2/5
-
-5 3 | 1 3
-
-5 3 | 1 3
-
-[Solo 1 - B/G]
-2/5 | 2/5
-
-[Solo 2 - singles]
-3 1 | 2 4
-
-[Solo 3 - singles]
-5 | 5
-
-3 1 | 2 4
-
-5 |
-
-[Scream - into m70; singles]
-5 | 3 1
-
-2 4 | 0
-
-1 3 |
+[Walk-up ^1 - pedal 5 rising; learn this]
+5 3 3 3
+5 5 5 5
+5 6 6 6
+5 8 8 8
 
 [Amp: 8Red]
-[Final Chorus - singles]
-1 2 1 2 | 1 2 1 2
+[Climax - Dream on]
+Am
+Dream on, dr
+B5
+eam on, d
+C
+ream on
 
-1 3 | 1 3
+Dream y
+D
+ourself a dream come t
+Em
+rue
 
-1 3 | 1 3
+Am
+Dream on, dr
+B5
+eam on, dr
+C
+eam on
 
-1 3 | 1 3
+Dream un
+D
+til your dream comes tr
+Em
+ue
 
-1 3 | 4 3
+Am
+Dream on, D
+B5
+ream on, Dr
+C
+eam on, Dr
+D
+eam on
 
-1 2 1 2 | 1 2 1 2
+Em
+Dream on, dr
+F#5
+eam on, Dr
+G
+eam on,
+A
+Ah
 
-1 |
+B7b9
+B
+Ah------
 
+[Amp: 7Red]
+[Chorus - Sing with me]
+Em
+Sing with me, s
+D
+ing for the years
+
+C
+Sing for laughter 'n' si
+D
+ng for the tears
+
+Em
+Sing with me if it's ju
+D
+st for today
+
+ 
+Em/C#
+ Maybe tomorrow the
+Cmaj7
+good Lord will take you away
+
+ 
 [Outro]
-1
+Am6
+  (
+Am
+ add 6/9)-fade out
