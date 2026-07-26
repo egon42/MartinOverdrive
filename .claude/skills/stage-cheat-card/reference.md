@@ -80,13 +80,13 @@ hint: "Well give your I.D. card"
 hint: "Everybody knows"
 ```
 
-Applied (one section, one hint — app limit):
+Applied (one section, one hint — app limit; keep lyric quotes for blue highlight):
 
 ```json
 {
   "section": "Chorus",
   "chords": "(E A E B A B) (E C#m A B E) | (A E A E A E) | (A B E C#m A B E)",
-  "hint": "Well give your I.D. card; after vamp: Everybody knows"
+  "hint": "\"Well give your I.D. card\"; after vamp: \"Everybody knows\""
 }
 ```
 

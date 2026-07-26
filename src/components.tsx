@@ -694,6 +694,27 @@ function renderProgLabel(label: string) {
       : part)
 }
 
+/**
+ * Lyric cues in cheat hints are written in quotes ("Same old story"). Render those
+ * spans in a distinct color so they read apart from plain stage notes. Matches
+ * straight/curly double quotes, and single quotes only when the body has a space
+ * (so don't / can't / I'm stay plain text).
+ */
+function renderCheatHint(hint: string): ReactNode {
+  const re = /"([^"]+)"|“([^”]+)”|'([^'\s][^']*\s[^']*)'|‘([^’]*\s[^’]*)’/g
+  const out: ReactNode[] = []
+  let last = 0
+  let m: RegExpExecArray | null
+  let key = 0
+  while ((m = re.exec(hint)) !== null) {
+    if (m.index > last) out.push(hint.slice(last, m.index))
+    out.push(<span className="cheat-prog-hint-lyric" key={key++}>{m[0]}</span>)
+    last = m.index + m[0].length
+  }
+  if (last < hint.length) out.push(hint.slice(last))
+  return out.length ? out : hint
+}
+
 // The two progression cards, one component — show mode's Cheat and Chords tabs, and the
 // same cards on the practice page's sheet panel. `variant` 'chords' is the full roadmap
 // card (form order + repeats — the original "cheat card", now the Chords tab); 'cheat'
@@ -781,7 +802,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
                     <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
                   {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
                 </span>)}</span>
-              {row.hint && <span className="cheat-prog-hint">{row.hint}</span>}
+              {row.hint && <span className="cheat-prog-hint">{renderCheatHint(row.hint)}</span>}
               {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
               {row.tabMore && <MoreFills tab={row.tabMore} onToggle={refitCheat} />}
             </div>

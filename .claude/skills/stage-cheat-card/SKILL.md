@@ -85,7 +85,7 @@ Full notation in [reference.md](reference.md). Short version:
 | Whole section N times in the song | `form` label `Verse ×4`; chords stay one cycle |
 | Mixed tiles inside one section | `(E A) ×3 (E G A) ×2` |
 | Force a new chip row | `\|` between spans (parens alone do **not** stack) |
-| Lyric landmark | `hint: …` — **one hint per section** (under all that section's rows) |
+| Lyric landmark | `hint: "quoted lyric"` — **one hint per section**; keep the quotes so show mode highlights them |
 | Cue under a mid-section row | Split into two section names **or** combine into one hint |
 | Don't-play beat chip | `~Am` |
 | Fills | Cheat tab only; never in `form` |
@@ -93,7 +93,8 @@ Full notation in [reference.md](reference.md). Short version:
 Copy rules:
 
 - No em-dashes in hints / UI strings
-- Hints are stage cues ("Everybody knows"), not essays
+- Hints are stage cues, not essays. Put **lyric landmarks in straight double quotes**
+  (`"Same old story"`) so the app paints them blue; leave plain how-to notes unquoted
 - Prefer content cues over CSS / auto-fit surgery. Tall cards shrink in show mode —
   lean the layout before fighting `--sheet-fit`
 
@@ -108,7 +109,8 @@ neighbor shapes for the same name or leave `shapes` short (chips still render).
    ```
 2. Translate mock → that song's `sections` / `form` in `src/data/progressions.json`
    - Blank line / `---` between chord lines in the mock → `|` in `chords`
-   - Strip quotes around hints
+   - Keep straight double quotes around lyric landmarks in hints (UI highlights them);
+     do not strip those quotes. Plain instructional notes stay unquoted.
    - Section names in **Roadmap** must match building-block labels (`formStepBase`)
 3. `npm run validate` (fix if shape/`(…) ×N` errors)
 4. Commit + bare `git push` (never ask). One song per commit when practical.
