@@ -31,7 +31,7 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 - Session notes: first pass wrongly put C-D only on outro; corrected to chorus, then pre-chorus too.
 
 ### 4. #18 — Zombie (`10-zombie`) — APP
-- [x] **DONE 2026-07-26** ($hash)
+- [x] **DONE 2026-07-26** (`d254c93`)
 - Rehearsal note: “Em C section missing.”
 - Shipped: real roadmap (was whole-song loop); **Hang Em C ×4** before Solo; Outro Em C cold on Em. Whole-song card archived as `whole-song Em C G D loop (pre Em-C hang 2026-07-26)`. Ryan/chords labeled.
 - Done when: pre-solo Em–C is on the card and sheet.
