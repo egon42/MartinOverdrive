@@ -2707,6 +2707,22 @@
   ],
   "10-zombie": [
     {
+      "label": "whole-song Em C G D loop (pre Em-C hang 2026-07-26)",
+      "sections": [
+        {
+          "section": "Whole song",
+          "chords": "Em C G D",
+          "hint": "Verses: quiet clean arpeggio over the same loop; chorus: big open strums (let the top strings ring)"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Pre-verse riff (easy)\ne|7h-8---5h-7---3h-5-|\nB|-------------------|\nG|-------------------|\nD|-------------------|\nA|-------------------|\nE|-------------------|\n\nTail onto B string\ne|--2h-3h-2------|\nB|----------3-3h-|\nG|---------------|\nD|---------------|\nA|---------------|\nE|---------------|",
+          "tabMore": "Solo hook (low box)\ne|7/-8-(8)-5/-7---|\nB|7/-8-(8)-5/-7---|\nG|----------------|\nD|----------------|\nA|----------------|\nE|----------------|\n\nSame lick up (high box)\ne|10/-12-(12)----10---|\nB|10/-12-(12)-10-(10)-|\nG|--------------------|\nD|--------------------|\nA|--------------------|\nE|--------------------|"
+        }
+      ]
+    },
+    {
       "label": "pre fills",
       "sections": [
         {

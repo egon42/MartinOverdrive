@@ -128,10 +128,22 @@ G
 D
 e
 
+[Hang - quiet Em C only; into solo]
+
 Em
- 
 C
- 
+Em
+C
+
+[Solo]
+
+Em
+C
 G
- 
 D
+
+[Outro - Em C; cold on Em]
+
+Em
+C
+Em

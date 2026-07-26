@@ -443,9 +443,46 @@
   "10-zombie": {
     "sections": [
       {
-        "section": "Whole song",
+        "section": "Intro",
         "chords": "Em C G D",
-        "hint": "Verses: quiet clean arpeggio over the same loop; chorus: big open strums (let the top strings ring)"
+        "shapes": "022000 -32010 320003 --0232",
+        "hint": "Clean arpeggio, builds"
+      },
+      {
+        "section": "Verse",
+        "chords": "Em C G D",
+        "shapes": "022000 -32010 320003 --0232",
+        "hint": "Quiet/palm-muted; includes the pre-chorus tanks/bombs lines"
+      },
+      {
+        "section": "Chorus",
+        "chords": "Em C G D",
+        "shapes": "022000 -32010 320003 --0232",
+        "hint": "Big open strums, full volume"
+      },
+      {
+        "section": "Interlude",
+        "chords": "Em C G D",
+        "shapes": "022000 -32010 320003 --0232",
+        "hint": "Instrumental verse riff"
+      },
+      {
+        "section": "Hang",
+        "chords": "Em C",
+        "shapes": "022000 -32010",
+        "hint": "Quiet Em-C only (drop G D); into the solo"
+      },
+      {
+        "section": "Solo",
+        "chords": "Em C G D",
+        "shapes": "022000 -32010 320003 --0232",
+        "hint": "Lead over full progression"
+      },
+      {
+        "section": "Outro",
+        "chords": "Em C",
+        "shapes": "022000 -32010",
+        "hint": "Em-C only; cold end on Em, no fade"
       },
       {
         "section": "Fills",
@@ -453,6 +490,18 @@
         "tab": "Pre-verse riff (easy)\ne|7h-8---5h-7---3h-5-|\nB|-------------------|\nG|-------------------|\nD|-------------------|\nA|-------------------|\nE|-------------------|\n\nTail onto B string\ne|--2h-3h-2------|\nB|----------3-3h-|\nG|---------------|\nD|---------------|\nA|---------------|\nE|---------------|",
         "tabMore": "Solo hook (low box)\ne|7/-8-(8)-5/-7---|\nB|7/-8-(8)-5/-7---|\nG|----------------|\nD|----------------|\nA|----------------|\nE|----------------|\n\nSame lick up (high box)\ne|10/-12-(12)----10---|\nB|10/-12-(12)-10-(10)-|\nG|--------------------|\nD|--------------------|\nA|--------------------|\nE|--------------------|"
       }
+    ],
+    "form": [
+      "Intro ×4",
+      "Verse ×4",
+      "Chorus ×2",
+      "Interlude ×2",
+      "Verse ×4",
+      "Chorus ×2",
+      "Interlude ×2",
+      "Hang ×4",
+      "Solo ×3",
+      "Outro ×3"
     ]
   },
   "11-hunger-strike": {

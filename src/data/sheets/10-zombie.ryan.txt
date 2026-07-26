@@ -93,7 +93,8 @@ G
 D
 e
 
-[Post - dirt Em C G D]
+[Post - dirt Em C G D ×2 = Interlude]
+Em C G D
 Em C G D
 
 [Post - dirt; Em ring, then fill]
@@ -164,5 +165,22 @@ G
 D
 e
 
-[SOLO/OUTRO - Em C G D vamp; cold on Em]
+[Interlude - dirt Em C G D ×2]
 Em C G D
+Em C G D
+
+[Hang - quiet Em C only ×4; drop G D]
+Em C
+Em C
+Em C
+Em C
+
+[Solo - full Em C G D ×3]
+Em C G D
+Em C G D
+Em C G D
+
+[Outro - Em C only; cold on Em]
+Em C
+Em C
+Em

@@ -3,7 +3,7 @@
 - Rehearsal: most-of-band practice (dictated 2026-07-26)
 - Show: 2026-08-01
 - Branch: `dev` → live `/MartinOverdrive/dev/`
-- Status: **in progress** (4 app items done; next = Zombie)
+- Status: **in progress** (5 app items done; next = Dream On)
 
 Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
@@ -30,15 +30,14 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 - Done when: show card matches the simple band chart.
 - Session notes: first pass wrongly put C-D only on outro; corrected to chorus, then pre-chorus too.
 
-### 4. #18 — Zombie (`10-zombie`) — APP — **NEXT**
-- [ ] Status: not started
+### 4. #18 — Zombie (`10-zombie`) — APP
+- [x] **DONE 2026-07-26** ($hash)
 - Rehearsal note: “Em C section missing.”
-- Research: local card is one **Em C G D** loop forever. Studio charts insert quiet **Em–C** hang before solo / outro-heavy Em–C. High confidence.
-- Proposed: snapshot → `research-song-form` / hand form with Interlude Em–C + real roadmap; update ryan/chords labels.
+- Shipped: real roadmap (was whole-song loop); **Hang Em C ×4** before Solo; Outro Em C cold on Em. Whole-song card archived as `whole-song Em C G D loop (pre Em-C hang 2026-07-26)`. Ryan/chords labeled.
 - Done when: pre-solo Em–C is on the card and sheet.
-- Session notes:
+- Session notes: research med-high; hang/outro ×N softest — ear-check if counts feel off.
 
-### 5. #11 — Dream On (`22-dream-on`) — BOTH
+### 5. #11 — Dream On (`22-dream-on`) — BOTH — **NEXT**
 - [ ] Status: not started
 - Rehearsal note: dyads not working → sit out until “I know / nobody knows”, then chords; learn walk-up `5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8`; lyrics/shape may be wrong.
 - Research: Capo-1 Em (chords/card) vs no-capo B/G dyads (ryan/tabs); form order disagrees around nobody-knows. Walk-up ≈ pedal-5 rising dyads. Biggest item.
@@ -111,7 +110,7 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 ## Handoff — next session
 
-1. Start at **queue #4 Zombie** unless user picks another.
+1. Start at **queue #5 Dream On** unless user picks another.
 2. Stay on **`dev`**; validate → commit → bare `git push` → watch Pages.
 3. Snapshot before rewriting cheat cards (`node scripts/snapshot-progression.mjs <id> "<label>"`).
 4. Practice-only items (9–11) can fold into `/practice` or `/coach` rather than app edits.
