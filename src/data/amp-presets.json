@@ -225,5 +225,13 @@
     ],
     "joiner": "",
     "notes": "Or 6Amber for more twang"
+  },
+  "32-free-bird": {
+    "presets": [
+      1,
+      10
+    ],
+    "joiner": "→",
+    "notes": "Ballad 1Amber clean → outro 2Green classic rock"
   }
 }

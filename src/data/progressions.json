@@ -1378,5 +1378,48 @@
       "Chorus",
       "Outro ×2"
     ]
+  },
+  "32-free-bird": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "(G D Em Em) (F C D D)",
+        "shapes": "320003 --0232 022000 022000 133211 -32010 --0232 --0232",
+        "hint": "Arpeggiate A-string down and back; Em gets two passes"
+      },
+      {
+        "section": "Verse",
+        "chords": "(G D Em) (F C D)",
+        "shapes": "320003 --0232 022000 133211 -32010 --0232",
+        "hint": "Same cycle under the vocal"
+      },
+      {
+        "section": "Refrain",
+        "chords": "(F C D) ×4",
+        "shapes": "133211 -32010 --0232",
+        "hint": "Cannot change / can't change tags"
+      },
+      {
+        "section": "Break",
+        "chords": "(G D Em Em) (F C D D)",
+        "shapes": "320003 --0232 022000 022000 133211 -32010 --0232 --0232",
+        "hint": "Intro cycle again between verses"
+      },
+      {
+        "section": "Outro",
+        "chords": "G5 Bb5 C5 C5",
+        "shapes": "355--- 688--- 8AA--- 8AA---",
+        "hint": "Double time; ride until band cues out. Amp → 2Green"
+      }
+    ],
+    "form": [
+      "Intro ×2",
+      "Verse ×4",
+      "Refrain",
+      "Break ×2",
+      "Verse ×4",
+      "Refrain",
+      "Outro"
+    ]
   }
 }

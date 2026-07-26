@@ -118,5 +118,10 @@
   },
   "31-banditos": {
     "bpm": 147
+  },
+  "32-free-bird": {
+    "bpm": 74,
+    "note": "Ballad pulse ~74; outro roughly doubles — click the outro at ~148 if practicing that section alone",
+    "confidence": "medium"
   }
 }

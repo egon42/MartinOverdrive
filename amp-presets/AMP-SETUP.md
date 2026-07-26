@@ -126,6 +126,7 @@ control and is not stored.
 | 29 | Ain't Goin' Down ('Til the Sun Comes Up) | **6** | Don't fall behind |
 | 30 | Pink Pony Club | **19 ↔ 20** | Verse 19, chorus 20 |
 | 31 | Banditos | **5** | Or 6 for more twang |
+| 32 | Free Bird | **1 → 10** | Encore/request; ballad clean → outro classic rock |
 
 Turning the PRESET knob steps one preset at a time (…8 → 9 crosses AMBER→GREEN,
 16 → 17 crosses GREEN→RED), so every ↔ pair above is a single click. Fender's

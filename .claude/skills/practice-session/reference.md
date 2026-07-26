@@ -35,6 +35,7 @@
 | 29 | Ain't Goin' Down ('Til the Sun Comes Up) | fills / speed |
 | 30 | Pink Pony Club | cool-down OK |
 | 31 | Banditos | **fills** |
+| 32 | Free Bird | **encore/request** — skip unless called; ballad G–D–Em / F–C–D → G–Bb–C outro |
 
 ### Changeover pairs (always worth a paired drill)
 

@@ -3,7 +3,7 @@
     "sourceFile": "martin_overdrive_setlist_prep.xlsx",
     "sourceSheet": "Set List Prep",
     "importedAt": "2026-06-29T15:18:45.170Z",
-    "songCount": 31
+    "songCount": 32
   },
   "songs": [
     {
@@ -1118,6 +1118,42 @@
         "Must Know": "Bar-band groove and simple lead fills.",
         "Fallback": "Open chords + twangy pentatonic fills.",
         "Rehearsal Question": "Do they want the solo/fills or just rhythm?"
+      },
+      "recordingNote": "",
+      "pentatonicBoxStandard": ""
+    },
+    {
+      "id": "32-free-bird",
+      "order": 32,
+      "title": "Free Bird",
+      "artist": "Lynyrd Skynyrd",
+      "difficulty": 3,
+      "tuning": "Standard",
+      "role": "Ballad rhythm + outro power chords",
+      "practiceStyle": "Mostly chords/riffs/arrangement",
+      "backingTrackUrl": "https://www.youtube.com/results?search_query=Free+Bird+Lynyrd+Skynyrd+guitar+backing+track",
+      "songsterrUrl": "https://www.songsterr.com/a/wsa/lynyrd-skynyrd-free-bird-tab-s21t1",
+      "linkQuality": "Songsterr acoustic rhythm track",
+      "scaleHint": "G major / E minor pentatonic for the ballad; G minor pentatonic / blues works over the G–Bb–C outro.",
+      "pentatonicBox": "E minor box 1 open/12th for ballad color: 0-3 / 0-2 / 0-2 / 0-2 / 0-3 / 0-3; outro: G minor box 1 at 3rd: 3-6 / 3-5 / 3-5 / 3-5 / 3-6 / 3-6",
+      "mustKnow": "G–D–Em / F–C–D ballad cycle; cue into the G–Bb–C outro vamp.",
+      "fallback": "Open G D Em F C D for the ballad; power-chord G5 Bb5 C5 for the outro.",
+      "firstCue": "",
+      "rehearsalNotes": "Request/encore bonus — skip by default in Tonight's set unless called. Lean rhythm chart; not a full dual-lead transcription.",
+      "source": {
+        "Track": "Free Bird",
+        "Artist": "Lynyrd Skynyrd",
+        "Difficulty": "3",
+        "Tuning": "Standard",
+        "Role": "Ballad rhythm + outro power chords",
+        "Practice Bucket": "Mostly chords/riffs/arrangement",
+        "Backing Track URL": "https://www.youtube.com/results?search_query=Free+Bird+Lynyrd+Skynyrd+guitar+backing+track",
+        "Link Quality": "Songsterr acoustic rhythm track",
+        "Scale Hint": "G major / E minor pentatonic for the ballad; G minor pentatonic / blues works over the G–Bb–C outro.",
+        "Pentatonic Box": "E minor box 1 open/12th for ballad color: 0-3 / 0-2 / 0-2 / 0-2 / 0-3 / 0-3; outro: G minor box 1 at 3rd: 3-6 / 3-5 / 3-5 / 3-5 / 3-6 / 3-6",
+        "Must Know": "G–D–Em / F–C–D ballad cycle; cue into the G–Bb–C outro vamp.",
+        "Fallback": "Open G D Em F C D for the ballad; power-chord G5 Bb5 C5 for the outro.",
+        "Rehearsal Question": "Request/encore — how long does the band ride the outro?"
       },
       "recordingNote": "",
       "pentatonicBoxStandard": ""
