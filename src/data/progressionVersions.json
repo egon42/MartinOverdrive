@@ -60,6 +60,65 @@
   ],
   "05-thunderstruck": [
     {
+      "label": "pre strum-as-chips stage layout (coach 2026-07-26)",
+      "sections": [
+        {
+          "section": "Riff",
+          "chords": "~B5",
+          "shapes": "-244--",
+          "hint": "Rest; lead has the one-string riff"
+        },
+        {
+          "section": "Chug",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Ringing chords under Thunder! chant. Start the palm-mute rhythm on the first lyric."
+        },
+        {
+          "section": "Verse",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Vocal entrance: \"I was caught in the middle of a railroad track.\" Palm-mute under vocal: V1 long (~26 bars), V2 ~16, V3 short"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "B5 E5 B5 A5 E5",
+          "shapes": "-244-- 022--- -244-- -022-- 022---",
+          "hint": "2nd time just a 2-bar hit"
+        },
+        {
+          "section": "Chorus",
+          "chords": "B5 (A5 E5) ×2",
+          "shapes": "-244-- -022-- 022---"
+        },
+        {
+          "section": "Solo",
+          "chords": "E5 B5 A5",
+          "shapes": "022--- -244-- -022--",
+          "hint": "Under the lead"
+        },
+        {
+          "section": "Outro",
+          "chords": "B5 (A5 E5) ×2",
+          "shapes": "-244-- -022-- 022---",
+          "hint": "2nd ad-lib solo, ritard to close"
+        }
+      ],
+      "form": [
+        "Riff",
+        "Chug",
+        "Verse",
+        "Verse",
+        "Pre-Chorus",
+        "Chorus",
+        "Verse",
+        "Solo",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre vocal-enter hint",
       "sections": [
         {
