@@ -3,7 +3,7 @@
 - Rehearsal: most-of-band practice (dictated 2026-07-26)
 - Show: 2026-08-01
 - Branch: `dev` → live `/MartinOverdrive/dev/`
-- Status: **in progress** (7 app items done; next = Gently Weeps)
+- Status: **in progress** (Banditos stage card: chorus-half cue in; iterate until stage-ready, then Gently Weeps)
 
 Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
@@ -112,14 +112,13 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 Goal: make the **Cheat / Chords roadmap card** the primary stage surface — big, readable at arm’s length on phone, play along with the track. Ryan / Lyrics / Tabs stay for learning; stage play leans on the card.
 
-Banditos (`31-banditos`) is the pilot. Current end form is good (`bd7e624`): Intro → Verse×2 → Chorus → Verse → Chorus → Solo×2 → Chorus → **Fair-Tag** → Outro×2.
+Banditos (`31-banditos`) is the pilot. End form good (`bd7e624`). Chorus second half cued (`|` line break + hint “2nd line: everybody knows / stupid people”).
 
 Next iteration asks:
-1. Keep section identity clear (Intro vs Chorus vs Fair-Tag) — already mostly there.
-2. Add a **lyric hint** on Chorus marking the **second half** (“everybody knows… / stupid people” repeat / that-seems-fair half) so the two chorus halves are obvious on the card.
-3. Iterate readability (hints, maybe split Chorus into two labeled halves, font/fit is show-mode auto-fit — prefer content cues over CSS hacks unless needed).
-4. When the Banditos card feels stage-ready, **extract a skill** (e.g. `stage-cheat-card` / polish-cheat-for-stage) and apply it song-by-song.
-5. Then resume backlog at **Gently Weeps** (hold last E).
+1. Play-test on phone: is the chorus half-split obvious enough, or split into labeled halves (`Chorus` / `Everybody`)?
+2. Broader stage readability (section identity, hint density, auto-fit) until the card feels stage-ready.
+3. When ready, **extract a skill** (e.g. `stage-cheat-card`) and apply song-by-song.
+4. Then resume backlog at **Gently Weeps** (hold last E).
 
 Stay on `dev`; snapshot before rewriting cards; validate → commit → bare `git push`.
 
