@@ -205,7 +205,7 @@
   "30-pink-pony-club": {
     "speed": 9,
     "leadInSec": 10.7,
-    "note": "Estimate 2026-07-23. Studio 4:18; lyric 9 leadIn 10.7. Layout 2026-07-24: F# G#m D#m B 4-across; pre mid-word kept; end solo ×4. Measure Estimate measureSpeed 8 + measureLeadInSec 10.7. Dial on device.",
+    "note": "Estimate 2026-07-23; band +1→G 2026-07-26. Studio 4:18; G5 A5 E5 C5 4-across; Bridge ×2 C5 D5 E5 A5 (different cycle). speed 9 leadIn 10.7; measure 8 + 10.7. Re-dial if needed.",
     "measureSpeed": 8,
     "measureLeadInSec": 10.7
   },

@@ -3,307 +3,307 @@ Standard (EADGBE)
 [Intro]
 [Amp: 3Red]
 
-C#
+D
 
 [Verse 1]
 
-F#
+G
 I know you 
-G#m
+Am
 wanted me to stay
 
 But I 
-D#m
+Em
 can't ignore the crazy visions 
-B
+C
 of me in LA and
 
-F#
+G
 I heard that 
-G#m
+Am
 there's a special place
 
 Where 
-D#m
+Em
 boys and girls can all be queens
-B
+C
  every single day
 
 [Refrain]
 
-F#
+G
   I'm having wicked dreams
 
-G#m
+Am
   of leaving Tennessee
 
-D#m
+Em
   Oh, Santa Monica
 
-B
+C
   I swear it's calling me
 
-F#
+G
   Won't make my mama proud
 
-G#m
+Am
   It's gonna cause a scene
 
-D#m
+Em
   She sees her baby girl
 
-B
+C
   I know she's gonna scream
 
 [Pre-Chorus]
 
-F#
+G
 God, what have you 
-G#m
+Am
 done
 
 You're a pink pony g
-D#m
+Em
 irl
 
 And you dance at the c
-B
+C
 lub
 
 Oh mama, 
-F#
+G
 I'm just having 
-G#m
+Am
 fun
 
 On the stage in my h
-D#m
+Em
 eels
 
 It's where I be
-B
+C
 long down at the
 
 [Amp: 4Red]
 [Chorus]
 
-F#
+G
 Pink Pony Club
 
-G#m
+Am
 I'm gonna keep on dancing
 
-D#m
+Em
 at the Pink Pony Club
 
-B
+C
 I'm gonna keep on dancing down in
 
-F#
+G
 West Hollywood
 
-G#m
+Am
 I'm gonna keep on dancing
 
 at the 
-D#m
+Em
 Pink Pony Club
 
-B
+C
 Pink Pony Club
 
 [Amp: 3Red]
 [Verse 2]
 
-F#
+G
 I'm up and 
-G#m
+Am
 jaws are on the floor
 
-D#m
+Em
 Lovers in the bathroom and a 
-B
+C
 line outside the door
 
-F#
+G
 Black lights and a 
-G#m
+Am
 mirror disco ball
 
-D#m
+Em
 Every night's another reason 
-B
+C
 why I left it all
 
 [Refrain]
 
-F#
+G
   I thank my wicked dreams
 
-G#m
+Am
   a year from Tennessee
 
-D#m
+Em
   Oh, Santa Monica
 
-B
+C
   You've been too good to me
 
-F#
+G
   Won't make my mama proud
 
-G#m
+Am
   It's gonna cause a scene
 
-D#m
+Em
   She sees her baby girl
 
-B
+C
   I know she's gonna scream
 
 [Pre-Chorus]
 
-F#
+G
 God, what have you 
-G#m
+Am
 done
 
 You're a pink pony g
-D#m
+Em
 irl
 
 and you dance at the c
-B
+C
 lub
 
 Oh mama, 
-F#
+G
 I'm just having 
-G#m
+Am
 fun
 
 On the stage in my h
-D#m
+Em
 eels
 
 It's where I be
-B
+C
 long down at the
 
 [Amp: 4Red]
 [Chorus]
 
-F#
+G
 Pink Pony Club
 
-G#m
+Am
 I'm gonna keep on dancing
 
 at the 
-D#m
+Em
 Pink Pony Club
 
-B
+C
 I'm gonna keep on dancing down in
 
-F#
+G
 West Hollywood
 
-G#m
+Am
 I'm gonna keep on dancing
 
 at the 
-D#m
+Em
 Pink Pony Club
 
-B
+C
 Pink Pony Club
 
 [Amp: 4Red]
 [Solo]
 
-F# G#m D#m B
+G Am Em C
 
 [Amp: 3Red]
-[Bridge]
+[Bridge - different cycle C D Em Am; not the verse loop]
 
-B
+C
 Don't think I've 
-C#
+D
 left you all behind
 
-D#m
+Em
 Still love you and Tennessee you're 
-G#m
+Am
 always on my mind
 
 And m
-B
+C
 ama, 
-C#
+D
 every Saturday
 
-D#m
+Em
 I can hear your Southern drawl a 
-G#m
+Am
 thousand miles away, sayin'
 
 [Pre-Chorus]
 
-F#
+G
 God,  what have you 
-G#m
+Am
 done
 
 You're a pink pony g
-D#m
+Em
 irl
 
 And you dance at the c
-B
+C
 lub
 
 Oh mama, 
-F#
+G
 I'm just having 
-G#m
+Am
 fun
 
 On the stage in my h
-D#m
+Em
 eels
 
 It's where I be
-B
+C
 long down at the
 
 [Amp: 4Red]
 [Chorus]
 
-F#
+G
 Pink Pony Club
 
-G#m
+Am
 I'm gonna keep on dancing
 
 at the 
-D#m
+Em
 Pink Pony Club
 
-B
+C
 I'm gonna keep on dancing down in
 
-F#
+G
 West Hollywood
 
-G#m
+Am
 I'm gonna keep on dancing
 
 at the 
-D#m
+Em
 Pink Pony Club
 
-B
+C
 Pink Pony Club
 
 [Amp: 4Red]

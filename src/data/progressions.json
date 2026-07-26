@@ -1282,38 +1282,40 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "C#5",
-        "shapes": "-46---"
+        "chords": "D5",
+        "shapes": "-57---",
+        "hint": "Band +1 from record (sounds G)"
       },
       {
         "section": "Verse",
-        "chords": "F#5 G#5 D#5 B5",
-        "shapes": "244--- 466--- -11--- -24---"
+        "chords": "G5 A5 E5 C5",
+        "shapes": "355--- 577--- -22--- -35---"
       },
       {
         "section": "Refrain",
-        "chords": "F#5 G#5 D#5 B5",
-        "shapes": "244--- 466--- -11--- -24---"
+        "chords": "G5 A5 E5 C5",
+        "shapes": "355--- 577--- -22--- -35---"
       },
       {
         "section": "Pre-Chorus",
-        "chords": "F#5 G#5 D#5 B5",
-        "shapes": "244--- 466--- -11--- -24---"
+        "chords": "G5 A5 E5 C5",
+        "shapes": "355--- 577--- -22--- -35---"
       },
       {
         "section": "Chorus",
-        "chords": "F#5 G#5 D#5 B5",
-        "shapes": "244--- 466--- -11--- -24---"
+        "chords": "G5 A5 E5 C5",
+        "shapes": "355--- 577--- -22--- -35---"
       },
       {
         "section": "Bridge",
-        "chords": "B5 C#5 D#5 G#5",
-        "shapes": "-24--- -46--- -11--- 466---"
+        "chords": "C5 D5 E5 A5",
+        "shapes": "-35--- -57--- -22--- 577---",
+        "hint": "Different cycle — not the verse loop (Tennessee / mama)"
       },
       {
         "section": "Solo",
-        "chords": "F#5 G#5 D#5 B5",
-        "shapes": "244--- 466--- -11--- -24---"
+        "chords": "G5 A5 E5 C5",
+        "shapes": "355--- 577--- -22--- -35---"
       }
     ],
     "form": [
@@ -1327,7 +1329,7 @@
       "Pre-Chorus ×2",
       "Chorus ×2",
       "Solo",
-      "Bridge",
+      "Bridge ×2",
       "Pre-Chorus ×2",
       "Chorus ×2",
       "Solo ×4"

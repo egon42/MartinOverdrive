@@ -33,7 +33,7 @@
 | 27 | Fat Bottomed Girls | **Drop D** |
 | 28 | Mama, I'm Coming Home | section transitions |
 | 29 | Ain't Goin' Down ('Til the Sun Comes Up) | fills / speed |
-| 30 | Pink Pony Club | cool-down OK |
+| 30 | Pink Pony Club | cool-down OK · band **G** (+1 from record) · bridge **C5 D5 E5 A5** |
 | 31 | Banditos | **fills** |
 | 32 | Free Bird | **encore/request** — skip unless called; ballad G–D–Em / F–C–D → G–Bb–C outro |
 
