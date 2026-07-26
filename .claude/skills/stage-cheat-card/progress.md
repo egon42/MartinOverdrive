@@ -9,7 +9,7 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 - [ ] 02-all-the-small-things
 - [ ] 03-a-little-less-conversation
 - [ ] 04-i-believe-in-a-thing-called-love
-- [ ] 05-thunderstruck
+- [ ] 05-thunderstruck — **research rebuild 2026-07-26:** Hit/Link/La-la/Bridge/Walk added; Knees `A5 B5 A5 E5`; Chorus stamp `B5 A5 E5 A5 A5 E5`; form matches Malcolm rhythm roadmap. Mock: `practice-sessions/05-thunderstruck-stage-card-mock.md`. Ear-check Drums pre vs Knees if still fuzzy.
 - [ ] 06-don-t-stop-believin
 - [ ] 07-tribute
 - [ ] 08-while-my-guitar-gently-weeps
