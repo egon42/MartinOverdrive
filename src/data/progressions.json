@@ -1100,8 +1100,9 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "E G",
-        "shapes": "022100 320003"
+        "chords": "C D E G",
+        "shapes": "-32010 --0232 022100 320003",
+        "hint": "Same C-D then E-G as chorus"
       },
       {
         "section": "Chorus",

@@ -25,10 +25,10 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 ### 3. #6 — Voodoo Child (`26-voodoo-child-slight-return`) — APP
 - [x] **DONE 2026-07-26**
-- Rehearsal note: was going to sit out; now play simple **E–G** through the song + **C–D** on the "I'm a voodoo child" chorus.
-- Shipped: lean card **E G** body; **C D E G** on chorus (C-D under "I'm a voodoo child"); outro E G. Full Hendrix card archived as `pre batch polish research 2026-07-23`.
+- Rehearsal note: was going to sit out; now play simple **E–G** through the song + **C–D** on pre-chorus and "I'm a voodoo child" chorus.
+- Shipped: lean card **E G** body; **C D E G** on pre-chorus + chorus (C-D under those lyrics); outro E G. Full Hendrix card archived as `pre batch polish research 2026-07-23`.
 - Done when: show card matches the simple band chart.
-- Session notes: first pass wrongly put C-D only on outro; corrected same day to chorus lyric section.
+- Session notes: first pass wrongly put C-D only on outro; corrected to chorus, then pre-chorus too.
 
 ### 4. #18 — Zombie (`10-zombie`) — APP — **NEXT**
 - [ ] Status: not started
