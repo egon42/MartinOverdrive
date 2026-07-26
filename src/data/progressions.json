@@ -209,22 +209,26 @@
       {
         "section": "Riff",
         "chords": "~B5",
-        "shapes": "-244--"
+        "shapes": "-244--",
+        "hint": "Sit — lead riff; \"A-ha, ha, ha\""
       },
       {
         "section": "Chug",
         "chords": "B5",
-        "shapes": "-244--"
+        "shapes": "-244--",
+        "hint": "\"Thunder!\""
       },
       {
         "section": "Verse",
         "chords": "B5",
-        "shapes": "-244--"
+        "shapes": "-244--",
+        "hint": "\"I was caught in the middle of a railroad track\""
       },
       {
         "section": "Pre-Chorus",
         "chords": "B5 A5 E5 A5",
-        "shapes": "-244-- -022-- 022--- -022--"
+        "shapes": "-244-- -022-- 022--- -022--",
+        "hint": "\"Sound of the drums\""
       },
       {
         "section": "Knees",
@@ -235,17 +239,20 @@
       {
         "section": "Chorus",
         "chords": "B5 A5 E5 A5 A5 E5",
-        "shapes": "-244-- -022-- 022--- -022-- -022-- 022---"
+        "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
+        "hint": "\"You've been thunderstruck\""
       },
       {
         "section": "Solo",
         "chords": "E5 B5 A5 E5",
-        "shapes": "022--- -244-- -022-- 022---"
+        "shapes": "022--- -244-- -022-- 022---",
+        "hint": "Under the lead; \"la la\" break after"
       },
       {
         "section": "Outro",
         "chords": "B5 A5 E5 A5 A5 E5",
-        "shapes": "-244-- -022-- 022--- -022-- -022-- 022---"
+        "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
+        "hint": "\"Thunderstruck\" — close"
       }
     ],
     "form": [

@@ -60,6 +60,67 @@
   ],
   "05-thunderstruck": [
     {
+      "label": "pre lyric hints on all sections (coach 2026-07-26)",
+      "sections": [
+        {
+          "section": "Riff",
+          "chords": "~B5",
+          "shapes": "-244--"
+        },
+        {
+          "section": "Chug",
+          "chords": "B5",
+          "shapes": "-244--"
+        },
+        {
+          "section": "Verse",
+          "chords": "B5",
+          "shapes": "-244--"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "B5 A5 E5 A5",
+          "shapes": "-244-- -022-- 022--- -022--"
+        },
+        {
+          "section": "Knees",
+          "chords": "A5 E5 A5 B5",
+          "shapes": "-022-- 022--- -022-- -244--",
+          "hint": "\"I was shaking at the knees\""
+        },
+        {
+          "section": "Chorus",
+          "chords": "B5 A5 E5 A5 A5 E5",
+          "shapes": "-244-- -022-- 022--- -022-- -022-- 022---"
+        },
+        {
+          "section": "Solo",
+          "chords": "E5 B5 A5 E5",
+          "shapes": "022--- -244-- -022-- 022---"
+        },
+        {
+          "section": "Outro",
+          "chords": "B5 A5 E5 A5 A5 E5",
+          "shapes": "-244-- -022-- 022--- -022-- -022-- 022---"
+        }
+      ],
+      "form": [
+        "Riff",
+        "Chug",
+        "Verse",
+        "Verse",
+        "Pre-Chorus",
+        "Chorus",
+        "Verse",
+        "Knees",
+        "Chorus",
+        "Solo",
+        "Knees",
+        "Chorus ×2",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre undo vertical | rows (coach 2026-07-26)",
       "sections": [
         {
