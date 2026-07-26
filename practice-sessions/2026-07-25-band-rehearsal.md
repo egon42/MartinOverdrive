@@ -38,7 +38,7 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 - Session notes: research med-high; hang/outro ×N softest — ear-check if counts feel off.
 
 ### 5. #11 — Dream On (`22-dream-on`) — BOTH
-- [x] **DONE 2026-07-26** (`1193508`)
+- [x] **DONE 2026-07-26** (`210b3eb`)
 - Rehearsal note: dyads not working → sit out until “I know / nobody knows”, then chords; learn walk-up `5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8`; lyrics/shape may be wrong.
 - Shipped: band-role card **Sit → Enter (nobody-knows) → …**; inserted missing Enter bridge; Walk-up on roadmap + Fills tab + Ryan fret chips; Ryan converted to capo-1 chords (no early dyads). Full form still archived.
 - Done when: show role matches sit-out → chords + walk-up is learnable from the app.
