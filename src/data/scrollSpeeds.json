@@ -215,5 +215,12 @@
     "note": "Estimate 2026-07-24 layout. Studio 4:17; hang pickups / mid-word kept; E D A E 4-across; chorus written ×2; Solo/Outro packed. Lyric 20 rows→6 leadIn 16. Measure 26 rows→measureSpeed 6 + measureLeadInSec 16. Landmark: Verse 2 Well it's. Dial on device.",
     "measureSpeed": 6,
     "measureLeadInSec": 16
+  },
+  "32-free-bird": {
+    "speed": 6,
+    "leadInSec": 12,
+    "note": "Estimate 2026-07-26 lean encore draft. Sheet covers ballad + outro vamp start (~4:40), not full 9:08 dual-lead; pause/hold when band rides the vamp. Lyric 37 rows→6 leadIn 12. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 12
   }
 }

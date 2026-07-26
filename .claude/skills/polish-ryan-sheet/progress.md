@@ -45,6 +45,7 @@ Bulk draft marks **drafted** only. Only the user saying lock / perfect / locked 
 - [ ] 29-ain-t-goin-down-til-the-sun-comes-up — **drafted (good enough 2026-07-23; layout 2026-07-24):** long G holds; couplets under one G; Intro 4+4; solos `G C G D G`; scroll **7** + leadIn **13.7**; measure Estimate **6** + **13.7**. Dial when ready.
 - [ ] 30-pink-pony-club — **drafted (good enough 2026-07-23; layout 2026-07-24):** power `*5` (F#5 G#5 D#5 B5; bridge B5 C#5 D#5 G#5) matching cheat shapes; 4-across; pre mid-word kept; end solo ×4; 3Red/4Red; scroll **9** + leadIn **10.7**; measure Estimate **8** + **10.7**. Layout-check then dial.
 - [ ] 31-banditos — **drafted (good enough 2026-07-23; layout 2026-07-24):** hang pickups / mid-word kept; E D A E 4-across; chorus ×2 written; Solo/Outro packed; no fills; scroll **6** + leadIn **16**; measure Estimate **6** + **16**. Dial on device.
+- [ ] 32-free-bird — **drafted (2026-07-26 lean encore):** sit intro ×1 join ×2; open G D Em / F C D ballad; power G5 Bb5 C5 outro vamp ×8; 1Amber→2Green; scroll **6** + leadIn **12**; measure **6** + **12**. Sheet stops at vamp (not full 9:08 dual-lead). Dial on device.
 
 ## Last done
 
