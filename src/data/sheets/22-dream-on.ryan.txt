@@ -2,10 +2,33 @@ Standard (EADGBE)
 Capo 1 (Em shapes; sounds Fm)
 
 [Amp: 7Red]
-[Sit - everything until Dream on]
+[Sit - until Sing with me / Dream on]
 
+[Chorus - Sing with me]
+Em
+Sing with me, s
+D
+ing for the years
+
+C
+Sing for laughter 'n' si
+D
+ng for the tears
+
+Em
+Sing with me if it's ju
+D
+st for today
+
+ 
+Em/C#
+ Maybe tomorrow the
+Cmaj7
+good Lord will take you away
+
+ 
 [Amp: 8Red]
-[Chorus - one chord set, then Fill ^1] 
+[Climax ×3 - one chord set, then Fill ^1]
 Am
 Dream on, dr
 B5
@@ -27,7 +50,6 @@ D-|----------------|----------------|----------------|----------------|
 A-|----------------|----------------|----------------|----------------|
 E-|----------------|----------------|----------------|----------------|
 
-[Chorus - one chord set, then Fill ^1]
 Am
 Dream on, dr
 B5
@@ -43,7 +65,6 @@ ue
 
 [Fill ^1]
 
-[Chorus - one chord set, then Fill ^1]
 Am
 Dream on, D
 B5
@@ -53,11 +74,6 @@ eam on, Dr
 D
 eam on
 
-Dream on
-
-[Fill ^1]
-
-[Tag - little chords into final chorus]
 Em
 Dream on, dr
 F#5
@@ -70,6 +86,8 @@ Ah
 B7b9
 B
 Ah------
+
+[Fill ^1]
 
 [Amp: 7Red]
 [Sit - final Sing with me + outro]

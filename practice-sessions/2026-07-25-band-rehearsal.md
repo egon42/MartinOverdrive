@@ -40,9 +40,9 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 ### 5. #11 — Dream On (`22-dream-on`) — BOTH
 - [x] **DONE 2026-07-26** (`210b3eb`)
 - Rehearsal note: dyads not working → sit out until “I know / nobody knows”, then chords; learn walk-up `5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8`; lyrics/shape may be wrong.
-- Shipped: bare band role — **Sit** → **Chorus ×3** (`Am B5 C / D Em` + Fill ^1) → **Tag** (`Em F#5 G A B7b9` into final) → Sit. Full form still archived.
+- Shipped: bare band role — **Sit** → **Chorus** (Sing with me) → **Climax ×3** + Fill ^1 → Sit. Nothing else.
 - Done when: show role matches sit-out → chords + walk-up is learnable from the app.
-- Session notes: Lyrics sheet still has full chart for follow-along; Ryan/card are play-only lean.
+- Session notes: Lyrics sheet still has full chart; Ryan/card are play-only.
 
 ### 6. #31 — Banditos (`31-banditos`) — APP — **NEXT**
 - [ ] Status: not started
