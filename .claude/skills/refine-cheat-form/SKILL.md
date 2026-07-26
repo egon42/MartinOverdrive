@@ -134,3 +134,4 @@ If they come back with a tweak (“Pre ends on B”, “Chorus ×3”), apply �
 | import-song-sheet | Need better source chords/tabs first |
 | deploy-check | "Did it deploy?" after push |
 | verify | Broader prove-it-works before a big promote |
+| stage-cheat-card | Stage readability / lyric landmarks on Cheat+Chords (mock → apply) |

@@ -118,4 +118,8 @@ If you split Chorus into two named parts (e.g. `Chorus` + `Everybody`), list bot
 
 ## Done?
 
-Say something like: “use the mock” / “apply banditos-stage-card-mock” and I’ll snapshot the live card, then match this file.
+Say "use the mock" when this matches what you want on the phone.
+
+Applied 2026-07-26 (`18f0c18`): three-line Chorus with combined hint. Further edits here → say use the mock again.
+
+Skill for other songs: `.claude/skills/stage-cheat-card/` ("stage pass" / "next stage card").
