@@ -326,9 +326,9 @@ button.autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter
 .show-tabs .tab-text{font-size:calc(var(--sheet-fit,1)*.9rem);line-height:1.45}
 .show-tabs .tab-text{overflow-x:visible;width:max-content;min-width:100%}
 
-/* Live cheat card (default show-mode view). --sheet-fit scales progression only
-   (`.cheat-fit`); `.cheat-screen` pins the chord rows to exactly one card-height so the
-   `.cheat-more` reference block scrolls in below the fold instead of shrinking chips. */
+/* Live cheat card (default show-mode view). Stage cards keep --sheet-fit at 1× (no height
+   shrink); tall progressions scroll inside `.cheat-fit`. `.cheat-screen` pins the chord
+   rows to one card-height so `.cheat-more` sits below the fold. */
 .show-song.cheat-view{flex:1;display:flex;flex-direction:column;min-height:0;margin:0 auto;width:100%}
 .cheat-card{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px}
 /* flex-basis 100% + no shrink = one screen exactly; .cheat-card (definite height) is the

@@ -737,19 +737,16 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
         tab: undefined as string | undefined,
         tabMore: undefined as string | undefined,
       }))
-  // Re-run height auto-fit after More fills opens/closes — otherwise the newly
-  // revealed tabs overflow (or leave empty space) until the next resize. The
-  // secondary "More" details (fretboard/fields) does NOT refit — chips keep size.
-  // Suspended while pinch-zoomed: the user owns --sheet-fit's baseline then, and a
-  // refit here would divide the zoom back out (same fight useFitScale's `frozen` avoids).
-  // No-op without an innerRef (practice page): natural height, nothing to fit.
+  // Re-measure after More fills opens/closes. Floor is 1× (same as show-mode cheatRef):
+  // never shrink chip font; overflow scrolls inside `.cheat-fit`. Suspended while
+  // pinch-zoomed so auto-fit and --zoom don't fight. No-op without innerRef (practice).
   const refitCheat = () => {
     const el = innerRef?.current
     if (!el || zoomFrozen) return
     requestAnimationFrame(() => {
       el.style.setProperty('--sheet-fit', '1')
       const ratio = el.clientHeight / el.scrollHeight
-      el.style.setProperty('--sheet-fit', String(ratio < 1 ? Math.max(0.7, ratio * 0.97) : 1))
+      el.style.setProperty('--sheet-fit', String(ratio < 1 ? Math.max(1, ratio * 0.97) : 1))
     })
   }
   // Switching card versions changes row count without changing song — refit or the
