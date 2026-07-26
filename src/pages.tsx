@@ -173,9 +173,9 @@ export function SongDetail() {
     {picker && <SongPicker list={songs} currentId={song.id} onPick={(_, i) => goTo(i)} onClose={() => setPicker(false)}/>}<section className="song-title"><div><h1>{song.title}</h1><p>{song.artist}</p></div><Link className="button secondary song-show-link" to={`/show/${song.id}`}>Stage view ↗</Link></section><PracticeLauncher song={song}/><SongLinks song={song} showBackingTrack={false}/><section className="detail-grid"><div className="panel"><h2>Song info</h2><dl><AmpPresetField songId={song.id}/><Field label="Band tuning" value={song.tuning}/>{transpose && <Field label="Transpose recording" value={transposeHint(transpose)}/>}{song.recordingNote && <Field label="Tab / recording note" value={song.recordingNote}/>}<Field label="Role" value={song.role}/><Field label="Practice style" value={song.practiceStyle}/><Field label="Link quality" value={song.linkQuality}/></dl></div><div className="panel"><h2>Fretboard</h2><FretboardPanel song={song}/><dl><Field label="Scale hint" value={song.scaleHint}/></dl></div><div className="panel wide"><h2>Performance plan</h2><dl><Field label="Must-know part" value={song.mustKnow}/><Field label="Fallback part" value={song.fallback}/>{song.rehearsalNotes && <Field label="Ask the band" value={song.rehearsalNotes}/>}</dl></div></section><SheetPanel song={song} view={sheetView} onViewChange={setSheetView}/><PracticeControls song={song}/></div>
 }
 
-// Shrinks the sheet's font until it fits the container (height for compact chords /
-// lyrics, width for monospace tab lines). Floored — extreme songs scroll instead.
-// Cheat/roadmap cards pass floor 1 (never shrink; scroll inside `.cheat-fit`).
+// Shrinks the sheet's font until it fits the container (height for compact chords,
+// width for monospace tab lines), so a phone in show mode sees as much of the song
+// as possible without scrolling. Floored — extreme songs scroll a little instead.
 // `frozen` suspends fitting: while the user has pinch-zoomed the card, --sheet-fit is
 // left at its last fitted value (the 1× baseline) and --zoom multiplies from there, so
 // auto-fit and the user's zoom don't fight over the same font-size on the same element.
@@ -378,9 +378,7 @@ export function Show() {
   const zoomInitial = measureScroll || effective === 'ryan' ? 0.75 : 1
   const { zoom, setZoom, elRef: zoomElRef, initialZoom } = useZoom(`${song.id}:${effective}`, zoomMin, effective !== 'tabs', zoomInitial)
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
-  // Stage cards stay at 1× (no height shrink). Tall progressions scroll inside `.cheat-fit`
-  // instead of crushing chip size — Banditos-length choruses must stay arm-length readable.
-  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 1, zoom !== 1)
+  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1)
   const lyricsRef = useRef<HTMLDivElement>(null)
   const ryanRef = useRef<HTMLDivElement>(null)
   const lanesRef = useRef<HTMLDivElement>(null)
