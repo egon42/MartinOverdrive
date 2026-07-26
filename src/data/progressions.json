@@ -1389,10 +1389,16 @@
         "hint": "Verse changes under the solo"
       },
       {
+        "section": "Fair-Tag",
+        "chords": "D A E",
+        "shapes": "-577-- 577--- 022---",
+        "hint": "That seems fair; starts on D (not the E D A E vamp)"
+      },
+      {
         "section": "Outro",
         "chords": "E D A E",
         "shapes": "022--- -577-- 577--- 022---",
-        "hint": "Solo riff rides out"
+        "hint": "Solo riff rides out; cold end"
       },
       {
         "section": "Fills",
@@ -1409,6 +1415,7 @@
       "Chorus",
       "Solo ×2",
       "Chorus",
+      "Fair-Tag",
       "Outro ×2"
     ]
   },

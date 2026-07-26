@@ -3,7 +3,7 @@
 - Rehearsal: most-of-band practice (dictated 2026-07-26)
 - Show: 2026-08-01
 - Branch: `dev` → live `/MartinOverdrive/dev/`
-- Status: **in progress** (6 app items done; next = Banditos)
+- Status: **in progress** (7 app items done; next = Gently Weeps)
 
 Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
@@ -44,15 +44,14 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 - Done when: show role matches sit-out → chords + walk-up is learnable from the app.
 - Session notes: Lyrics sheet still has full chart; Ryan/card are play-only.
 
-### 6. #31 — Banditos (`31-banditos`) — APP — **NEXT**
-- [ ] Status: not started
+### 6. #31 — Banditos (`31-banditos`) — APP
+- [x] **DONE 2026-07-26**
 - Rehearsal note: structure/lyrics near the end may be wrong.
-- Research: local already has Solo×2 → fair-tag D–A–E → Outro×2. Likely lyric/count mismatch, not wrong progression. Verify vs recording/band before rewrite.
-- Proposed: listen-pass last 45s; adjust repeats/lines only where they diverge.
+- Shipped: end is Solo×2 → Chorus → **Fair-Tag D A E** → Outro×2 (card was missing Fair-Tag; Ryan had tag mislabeled as Chorus).
 - Done when: end matches what the band plays.
-- Session notes:
+- Session notes: high conf on Fair-Tag; cold vs fade on last chord soft.
 
-### 7. #23 — While My Guitar Gently Weeps (`08-while-my-guitar-gently-weeps`) — BOTH
+### 7. #23 — While My Guitar Gently Weeps (`08-while-my-guitar-gently-weeps`) — BOTH — **NEXT**
 - [ ] Status: not started
 - Rehearsal note: “hold the last E.”
 - Research: verse ends `(Am G D E)` — single E slot; likely cutting E short.
@@ -109,8 +108,8 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 ## Handoff — next session
 
-1. Start at **queue #6 Banditos** unless user picks another.
+1. Start at **queue #7 Gently Weeps** unless user picks another.
 2. Stay on **`dev`**; validate → commit → bare `git push` → watch Pages.
 3. Snapshot before rewriting cheat cards (`node scripts/snapshot-progression.mjs <id> "<label>"`).
 4. Practice-only items (9–11) can fold into `/practice` or `/coach` rather than app edits.
-5. Dream On walk-up placement may need an ear-check tweak after phone test.
+5. Dream On fill cue sits on 2nd Sing with me of first chorus — ear-check remaining Dream On soft spots if needed.
