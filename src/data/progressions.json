@@ -735,7 +735,8 @@
       },
       {
         "section": "Verse",
-        "chords": "Am D/F# F G D"
+        "chords": "Am D/F# F",
+        "hint": "Loop; later lines tag G; D on \"Same old story\""
       },
       {
         "section": "Chorus",

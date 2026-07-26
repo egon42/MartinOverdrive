@@ -2314,6 +2314,50 @@
   ],
   "17-the-pretender": [
     {
+      "label": "pre verse Am D/F# F fix (coach 2026-07-26)",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am F#m7b5 Fmaj7",
+          "hint": "Quiet: picked Am arpeggio; F#m7b5->Fmaj7 answer"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am D/F# F G D"
+        },
+        {
+          "section": "Chorus",
+          "chords": "Am D/F# F",
+          "hint": "\"What if I say\"; last pass tags a D"
+        },
+        {
+          "section": "Bridge",
+          "chords": "A5",
+          "hint": "Palm-muted A5 drive: \"I'm the voice inside your head\""
+        },
+        {
+          "section": "Interlude",
+          "chords": "Am F#m7b5 Fmaj7"
+        },
+        {
+          "section": "Outro",
+          "chords": "A5",
+          "hint": "Cold ending on \"So who are you?\""
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse",
+        "Chorus",
+        "Verse",
+        "Chorus",
+        "Bridge",
+        "Interlude",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "Heavy power-chord arrangement (pre leader-chart)",
       "sections": [
         {
