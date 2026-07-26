@@ -1105,9 +1105,9 @@
       },
       {
         "section": "Chorus",
-        "chords": "E G",
-        "shapes": "022100 320003",
-        "hint": "Still E-G; C-D only at the end"
+        "chords": "C D E G",
+        "shapes": "-32010 --0232 022100 320003",
+        "hint": "C-D under I'm a voodoo child; then E-G"
       },
       {
         "section": "Solo",
@@ -1117,9 +1117,9 @@
       },
       {
         "section": "Outro",
-        "chords": "C D",
-        "shapes": "-32010 --0232",
-        "hint": "Little C-D tag then out"
+        "chords": "E G",
+        "shapes": "022100 320003",
+        "hint": "Hard stop"
       }
     ],
     "form": [

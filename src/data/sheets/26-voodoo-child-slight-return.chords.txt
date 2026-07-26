@@ -48,9 +48,9 @@ E
 [Chorus]
 
 'Cause I'm a 
-E
+C
 voodoo child, 
-G
+D
 lord knows I'm a voodoo child bab
 E
 y
@@ -121,9 +121,9 @@ E
 [Chorus]
 
 'Cause I'm a 
-E
+C
 voodoo child, 
-G
+D
 lord knows I'm a voodoo child bab
 E
 y
@@ -134,4 +134,4 @@ E
 
 [Outro]
 
-C D
+E G
