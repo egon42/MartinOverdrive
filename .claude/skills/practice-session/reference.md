@@ -6,7 +6,7 @@
 |---|------|--------|
 | 1 | Welcome Home | |
 | 2 | All The Small Things | cool-down OK |
-| 3 | A Little Less Conversation | vocals timing (band key **E**) |
+| 3 | A Little Less Conversation | vocals timing (band key **A**) |
 | 4 | I Believe in a Thing Called Love | **Priority A** |
 | 5 | Thunderstruck | form / role |
 | 6 | Don't Stop Believin' | form |

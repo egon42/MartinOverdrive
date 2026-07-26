@@ -2449,6 +2449,37 @@
   ],
   "03-a-little-less-conversation": [
     {
+      "label": "band key E (pre A restore 2026-07-26)",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E7 A7"
+        },
+        {
+          "section": "Verse",
+          "chords": "E7 A7"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(E G) (A D) (E B7 E7 A7) (E7 A7)"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(E) ×3 G A B7"
+        }
+      ],
+      "form": [
+        "Intro ×3",
+        "Verse ×4",
+        "Chorus",
+        "Verse ×4",
+        "Chorus",
+        "Bridge",
+        "Verse ×2",
+        "Chorus"
+      ]
+    },
+    {
       "label": "Songsterr-derived plain E/A (pre UG 7ths fix)",
       "sections": [
         {

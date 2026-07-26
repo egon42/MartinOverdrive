@@ -89,7 +89,7 @@ Fill this out as you run songs. Leave anything blank you haven't hit yet. When y
 - Trouble spots (section / what fails):
 - Amp / tone notes: Slot 3 muted funk 16ths
 - Open questions:
-- Ryan (2026-07-22): 1968 single form, hard stop after last chorus (no second bridge / fade tags). Band key E. Lyric nudge: "please" after action; satisfy echoes on chorus 2 + out. Sections labeled for vocal entrances.
+- Ryan (2026-07-26): restored **A** (A7–D7) from band-key-E era; 1968 single form, hard stop after last chorus. Lyric nudge: "please" after action; satisfy echoes on chorus 2 + out.
 
 ---
 

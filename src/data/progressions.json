@@ -101,19 +101,22 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "E7 A7"
+        "chords": "A7 D7",
+        "hint": "Muted funk 16ths; vocal after 3"
       },
       {
         "section": "Verse",
-        "chords": "E7 A7"
+        "chords": "A7 D7"
       },
       {
         "section": "Chorus",
-        "chords": "(E G) (A D) (E B7 E7 A7) (E7 A7)"
+        "chords": "(A C) (D G) (A E7 A7 D7) (A7 D7)",
+        "hint": "Bite/bark → fight/spark"
       },
       {
         "section": "Bridge",
-        "chords": "(E) ×3 G A B7"
+        "chords": "(A) ×3 C D E7",
+        "hint": "Come on walk-up"
       }
     ],
     "form": [
