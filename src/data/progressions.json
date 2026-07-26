@@ -736,7 +736,12 @@
       {
         "section": "Verse",
         "chords": "Am D/F# F",
-        "hint": "Loop; later lines tag G; D on \"Same old story\""
+        "hint": "Loop; later lines tag G"
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "D",
+        "hint": "\"Same old story\" into chorus"
       },
       {
         "section": "Chorus",
@@ -761,8 +766,10 @@
     "form": [
       "Intro ×2",
       "Verse",
+      "Pre-Chorus",
       "Chorus",
       "Verse",
+      "Pre-Chorus",
       "Chorus",
       "Bridge",
       "Interlude",
