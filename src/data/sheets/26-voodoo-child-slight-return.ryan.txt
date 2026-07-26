@@ -1,38 +1,33 @@
 Standard (EADGBE)
 
 [Amp: 7Green]
+[Band lean: E G through; C D only at end]
 
-[Intro - backing E pocket under lead]
+[Intro - sit on E]
 E
 
 E
 
-[Verse 1 - backing E G A under lead]
+[Verse 1 - E G]
 E
 Well, I stand up next to a mountain
 G
-A
 And I chop it down with the
 G
  edge of my
 E
  hand
 G
-A
-G
 E
 
 E
 Well, I stand up next to a mountain
 G
-A
 And I chop it down with the
 G
  edge of my
 E
  hand
-G
-A
 G
 E
 
@@ -42,57 +37,46 @@ Well, I pick up all the pieces and make an island, might even raise a little
 sand
 E
 G
-A
 E
 G
 E
 
-[Chorus]
-C7
+[Chorus - still E G]
+E
 'Cause I'm a voodoo child, 
-D7
+G
 lord knows I'm a voodoo child bab
 E
 y
 G
-A
 E
 G
 E
 
-[Solo 1 - backing E G A under lead ×4]
+[Solo 1 - E G under lead ×4]
 E
 
 G
-
-A
 
 E
 
 G
 
-A
+E
+
+G
 
 E
 
 G
 
-A
-
-E
-
-G
-
-A
-
-[Verse 2 - backing E G A under lead]
+[Verse 2 - E G]
 E
 I want to say one more last thing
 
 E
 I didn't mean to take up all your sweet time
 G
-A
 I'll give it r
 G
 ight back to y
@@ -100,7 +84,6 @@ E
 a one
 G
  o
-A
 f the
 G
 se
@@ -110,7 +93,6 @@ E
 E
 I didn't mean to take up all your sweet time
 G
-A
 I'll give it r
 G
 ight back to y
@@ -118,104 +100,74 @@ E
 a one
 G
  o
-A
 f the
 G
 se
 E
  days
 
-[Chorus]
-C7
+[Chorus - still E G]
+E
 'Cause I'm a voodoo child, 
-D7
+G
 lord knows I'm a voodoo child bab
 E
 y
 G
-A
 E
 G
 E
 
-[Solo 2 - backing E G A under lead ×12; long]
+[Solo 2 - E G under lead ×12; long]
 E
 
 G
-
-A
 
 E
 
 G
 
-A
+E
+
+G
 
 E
 
 G
 
-A
+E
+
+G
 
 E
 
 G
 
-A
+E
+
+G
 
 E
 
 G
 
-A
+E
+
+G
 
 E
 
 G
 
-A
+E
+
+G
 
 E
 
 G
 
-A
+[Outro - little C D tag then out]
+C
 
-E
-
-G
-
-A
-
-E
-
-G
-
-A
-
-E
-
-G
-
-A
-
-E
-
-G
-
-A
-
-E
-
-G
-
-A
-
-[Outro - hard stop; E G A E]
-E
-
-G
-
-A
-
-E
+D

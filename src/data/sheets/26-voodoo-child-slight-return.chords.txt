@@ -10,15 +10,12 @@ Well, I
 E
 stand up next to a mountain
 G
-A
 
 And I chop it down with the
 G
  edge of my
 E
  hand
-G
-A
 G
 E
 
@@ -26,15 +23,12 @@ Well, I
 E
 stand up next to a mountain
 G
-A
 
 And I chop it down with the
 G
  edge of my
 E
  hand
-G
-A
 G
 E
 
@@ -47,7 +41,6 @@ pick up all the pieces and make an island, might even raise a little
 sand
 E
 G
-A
 E
 G
 E
@@ -55,21 +48,20 @@ E
 [Chorus]
 
 'Cause I'm a 
-C7
+E
 voodoo child, 
-D7
+G
 lord knows I'm a voodoo child bab
 E
 y
 G
-A
 E
 G
 E
 
 [Solo]
 
-E G A
+E G
 
 [Verse 2]
 
@@ -80,7 +72,6 @@ I didn't
 E
 mean to take up all your sweet time
 G
-A
 
 I'll give it r
 G
@@ -89,7 +80,6 @@ E
 a one
 G
  o
-A
 f the
 G
 se
@@ -100,7 +90,6 @@ I didn't
 E
 mean to take up all your sweet time
 G
-A
 
 I'll give it r
 G
@@ -109,7 +98,6 @@ E
 a one
 G
  o
-A
 f the
 G
 se
@@ -126,7 +114,6 @@ one and don't be l
 E
 ate
 G
-A
 E
 G
 E
@@ -134,18 +121,17 @@ E
 [Chorus]
 
 'Cause I'm a 
-C7
+E
 voodoo child, 
-D7
+G
 lord knows I'm a voodoo child bab
 E
 y
 G
-A
 E
 G
 E
 
 [Outro]
 
-E G A E
+C D

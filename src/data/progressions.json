@@ -1088,30 +1088,38 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "E"
+        "chords": "E",
+        "shapes": "022100",
+        "hint": "Band lean: sit on E"
       },
       {
         "section": "Verse",
-        "chords": "E7#9 G A",
-        "hint": "It's all the E7#9 riff: open low E, 3fr bend, D-str 0h2, G-to-A moves filling every line"
+        "chords": "E G",
+        "shapes": "022100 320003",
+        "hint": "Simple E-G through the song (no A / no E7#9)"
       },
       {
         "section": "Pre-Chorus",
-        "chords": "E G A E G E"
+        "chords": "E G",
+        "shapes": "022100 320003"
       },
       {
         "section": "Chorus",
-        "chords": "C7 D7 E G A E G E"
+        "chords": "E G",
+        "shapes": "022100 320003",
+        "hint": "Still E-G; C-D only at the end"
       },
       {
         "section": "Solo",
-        "chords": "E7#9 G A",
-        "hint": "Verse riff under the lead; 2nd solo runs long"
+        "chords": "E G",
+        "shapes": "022100 320003",
+        "hint": "Same E-G under the lead; 2nd solo runs long"
       },
       {
         "section": "Outro",
-        "chords": "E G A E",
-        "hint": "Hard ending: no fade"
+        "chords": "C D",
+        "shapes": "-32010 --0232",
+        "hint": "Little C-D tag then out"
       }
     ],
     "form": [

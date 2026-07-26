@@ -3,7 +3,7 @@
 - Rehearsal: most-of-band practice (dictated 2026-07-26)
 - Show: 2026-08-01
 - Branch: `dev` → live `/MartinOverdrive/dev/`
-- Status: **in progress** (3 app items done; next = Voodoo Child)
+- Status: **in progress** (4 app items done; next = Zombie)
 
 Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
@@ -23,15 +23,14 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 - Shipped: restored **A7–D7** (was band E); E card archived as `band key E (pre A restore 2026-07-26)`; tab reimported native A.
 - Done when: sings/plays in A with the band.
 
-### 3. #6 — Voodoo Child (`26-voodoo-child-slight-return`) — APP — **NEXT**
-- [ ] Status: not started
+### 3. #6 — Voodoo Child (`26-voodoo-child-slight-return`) — APP
+- [x] **DONE 2026-07-26**
 - Rehearsal note: was going to sit out; now play simple **E–G** through the song + little **C–D** at the end.
-- Research: live card is still full Hendrix-ish (`E7#9 G A`, etc.). Snapshot → rewrite lean chart.
-- Proposed: snapshot current → sections/form = E–G body, C–D tag/end; trim ryan/chords must-play riff if it fights the lean role.
+- Shipped: lean card **E G** body / **C D** outro (full Hendrix card already archived as `pre batch polish research 2026-07-23`); ryan + chords trimmed to match (no A / no mid-song C7–D7).
 - Done when: show card matches the simple band chart.
-- Session notes:
+- Session notes: snapshot was identical-content no-op (already archived).
 
-### 4. #18 — Zombie (`10-zombie`) — APP
+### 4. #18 — Zombie (`10-zombie`) — APP — **NEXT**
 - [ ] Status: not started
 - Rehearsal note: “Em C section missing.”
 - Research: local card is one **Em C G D** loop forever. Studio charts insert quiet **Em–C** hang before solo / outro-heavy Em–C. High confidence.
@@ -112,7 +111,7 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 ## Handoff — next session
 
-1. Start at **queue #3 Voodoo Child** unless user picks another.
+1. Start at **queue #4 Zombie** unless user picks another.
 2. Stay on **`dev`**; validate → commit → bare `git push` → watch Pages.
 3. Snapshot before rewriting cheat cards (`node scripts/snapshot-progression.mjs <id> "<label>"`).
 4. Practice-only items (9–11) can fold into `/practice` or `/coach` rather than app edits.
