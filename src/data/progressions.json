@@ -1379,9 +1379,9 @@
       },
       {
         "section": "Chorus",
-        "chords": "(E A E B A B) | (E C#m A B E)",
-        "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022---",
-        "hint": "2nd line: everybody knows / stupid people"
+        "chords": "(E E7 A E B) | (A B E C#m A B E) | (A E) ×3 A | (A B E C#m A B E)",
+        "shapes": "022--- 020100 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022--- 577--- 022--- 577--- 577--- 799--- 022--- -466-- 577--- 799--- 022---",
+        "hint": "Pass 1: ID/Picard then everybody. E-A vamp. Pass 2: everybody / pistols"
       },
       {
         "section": "Solo",

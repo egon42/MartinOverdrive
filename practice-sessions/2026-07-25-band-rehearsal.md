@@ -3,7 +3,7 @@
 - Rehearsal: most-of-band practice (dictated 2026-07-26)
 - Show: 2026-08-01
 - Branch: `dev` → live `/MartinOverdrive/dev/`
-- Status: **in progress** (Banditos stage card: chorus-half cue in; iterate until stage-ready, then Gently Weeps)
+- Status: **in progress** (Banditos stage card: chorus double-pass rewrite in; iterate until stage-ready, then Gently Weeps)
 
 Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
@@ -112,11 +112,11 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 Goal: make the **Cheat / Chords roadmap card** the primary stage surface — big, readable at arm’s length on phone, play along with the track. Ryan / Lyrics / Tabs stay for learning; stage play leans on the card.
 
-Banditos (`31-banditos`) is the pilot. End form good (`bd7e624`). Chorus second half cued (`|` line break + hint “2nd line: everybody knows / stupid people”).
+Banditos (`31-banditos`) is the pilot. End form good (`bd7e624`). Chorus rewritten as **double pass** (not two unrelated halves): ID/Picard opener → everybody-knows → E–A vamp → everybody-knows again (A on Everybody, B on knows).
 
 Next iteration asks:
-1. Play-test on phone: is the chorus half-split obvious enough, or split into labeled halves (`Chorus` / `Everybody`)?
-2. Broader stage readability (section identity, hint density, auto-fit) until the card feels stage-ready.
+1. Play-test on phone: does the 4-line Chorus read at arm’s length, or too dense (maybe drop E7 / shorten vamp notation)?
+2. Broader stage readability until the card feels stage-ready.
 3. When ready, **extract a skill** (e.g. `stage-cheat-card`) and apply song-by-song.
 4. Then resume backlog at **Gently Weeps** (hold last E).
 
