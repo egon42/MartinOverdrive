@@ -3,7 +3,7 @@
 - Rehearsal: most-of-band practice (dictated 2026-07-26)
 - Show: 2026-08-01
 - Branch: `dev` → live `/MartinOverdrive/dev/`
-- Status: **in progress** (Banditos stage card: chorus experiments reverted; edit `banditos-stage-card-mock.md`, then Gently Weeps)
+- Status: **in progress** (Banditos stage card: mock Chorus applied; iterate until stage-ready, then Gently Weeps)
 
 Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
@@ -112,13 +112,12 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 Goal: make the **Cheat / Chords roadmap card** the primary stage surface — big, readable at arm’s length on phone, play along with the track. Ryan / Lyrics / Tabs stay for learning; stage play leans on the card.
 
-Banditos (`31-banditos`) is the pilot. End form good (`bd7e624`). Chorus experiments from this thread **reverted** to the pre-thread card; draft the desired layout in `practice-sessions/banditos-stage-card-mock.md`, then apply.
+Banditos (`31-banditos`) is the pilot. End form good (`bd7e624`). Mock Chorus applied: 3-line stack (ID-card pass, E–A vamp, Everybody knows) with combined lyric hint.
 
 Next iteration asks:
-1. User edits the mock until Chorus (and anything else) reads the way they want on stage.
-2. Apply mock → live card; iterate until stage-ready.
-3. When ready, **extract a skill** (e.g. `stage-cheat-card`) and apply song-by-song.
-4. Then resume backlog at **Gently Weeps** (hold last E).
+1. Play-test on phone; tweak mock → re-apply until stage-ready.
+2. When ready, **extract a skill** (e.g. `stage-cheat-card`) and apply song-by-song.
+3. Then resume backlog at **Gently Weeps** (hold last E).
 
 Stay on `dev`; snapshot before rewriting cards; validate → commit → bare `git push`.
 

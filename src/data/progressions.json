@@ -1379,8 +1379,9 @@
       },
       {
         "section": "Chorus",
-        "chords": "(E A E B A B) (E C#m A B E)",
-        "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022---"
+        "chords": "(E A E B A B) (E C#m A B E) | (A E A E A E) | (A B E C#m A B E)",
+        "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022--- 577--- 022--- 577--- 022--- 577--- 022--- 577--- 799--- 022--- -466-- 577--- 799--- 022---",
+        "hint": "Well give your I.D. card; after vamp: Everybody knows"
       },
       {
         "section": "Solo",
