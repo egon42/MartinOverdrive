@@ -227,6 +227,12 @@
         "shapes": "-244-- -022-- 022--- -022--"
       },
       {
+        "section": "Knees",
+        "chords": "A5 E5 A5 B5",
+        "shapes": "-022-- 022--- -022-- -244--",
+        "hint": "\"I was shaking at the knees\""
+      },
+      {
         "section": "Chorus",
         "chords": "B5 A5 E5 A5 A5 E5",
         "shapes": "-244-- -022-- 022--- -022-- -022-- 022---"
@@ -250,8 +256,10 @@
       "Pre-Chorus",
       "Chorus",
       "Verse",
+      "Knees",
+      "Chorus",
       "Solo",
-      "Pre-Chorus",
+      "Knees",
       "Chorus ×2",
       "Outro"
     ]
