@@ -167,14 +167,31 @@ Am6
 Am
  add 6/9) x 8
 
-[Walk-up ^1 - pedal 5 rising; learn this]
-5 3 3 3
-5 5 5 5
-5 6 6 6
-5 8 8 8
+[Chorus - Sing with me]
+Em
+Sing with me, s
+D
+ing for the years
 
+C
+Sing for laughter 'n' si
+D
+ng for the tears
+
+Em
+Sing with me if it's ju
+D
+st for today
+
+ 
+Em/C#
+ Maybe tomorrow the
+Cmaj7
+good Lord will take you away
+
+ 
 [Amp: 8Red]
-[Climax - Dream on]
+[Climax ×3 - each pass: one chord set, then fill ^1]
 Am
 Dream on, dr
 B5
@@ -188,6 +205,14 @@ ourself a dream come t
 Em
 rue
 
+[Fill ^1]
+E-|----------------|----------------|----------------|----------------|
+B-|5---------------|5---------------|5---------------|5---------------|
+G-|--3---3---3-----|--5---5---5-----|--6---6---6-----|--8---8---8-----|
+D-|----------------|----------------|----------------|----------------|
+A-|----------------|----------------|----------------|----------------|
+E-|----------------|----------------|----------------|----------------|
+
 Am
 Dream on, dr
 B5
@@ -200,6 +225,8 @@ D
 til your dream comes tr
 Em
 ue
+
+[Fill ^1]
 
 Am
 Dream on, D
@@ -222,6 +249,8 @@ Ah
 B7b9
 B
 Ah------
+
+[Fill ^1]
 
 [Amp: 7Red]
 [Chorus - Sing with me]

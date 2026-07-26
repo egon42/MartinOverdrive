@@ -40,9 +40,9 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 ### 5. #11 — Dream On (`22-dream-on`) — BOTH
 - [x] **DONE 2026-07-26** (`210b3eb`)
 - Rehearsal note: dyads not working → sit out until “I know / nobody knows”, then chords; learn walk-up `5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8`; lyrics/shape may be wrong.
-- Shipped: band-role card **Sit → Enter (nobody-knows) → …**; inserted missing Enter bridge; Walk-up on roadmap + Fills tab + Ryan fret chips; Ryan converted to capo-1 chords (no early dyads). Full form still archived.
+- Shipped: band-role card **Sit → Enter (nobody-knows) → …**; Walk-up as **Fill ^1** ×3 after each Climax chord set (not a roadmap section); Ryan capo-1 chords.
 - Done when: show role matches sit-out → chords + walk-up is learnable from the app.
-- Session notes: walk-up placement (after 2nd chorus, before climax) is med conf — ear-check; tabs.txt still has the old dyad transcription for reference.
+- Session notes: fill placement on Climax ×3 — correct if those are the three spots; say if they sit elsewhere.
 
 ### 6. #31 — Banditos (`31-banditos`) — APP — **NEXT**
 - [ ] Status: not started
