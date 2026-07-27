@@ -40,6 +40,7 @@
 ### Changeover pairs (always worth a paired drill)
 
 - 3 → **4** Darkness  
+- 5 → **Thunderstruck** (or post-ALLC into Thunderstruck) — **never-skip** with Darkness + Pretender  
 - 16 → **17** Pretender  
 - 20 → **21** Middle (retune Drop D)  
 - 24 → **25** Valerie  
@@ -49,7 +50,7 @@
 
 **A — Rescue (comfort 1–2):** Darkness, Pretender, Lola Montez, Valerie, Voodoo Child  
 
-**B — Form (comfort ~3):** Thunderstruck, Don't Stop Believin', Hunger Strike, Teenage Dirtbag, Fat Bottomed Girls, Mama, Ain't Goin' Down  
+**B — Form (comfort ~3):** Thunderstruck (**never-skip Harden**), Don't Stop Believin', Hunger Strike, Teenage Dirtbag, Fat Bottomed Girls, Mama, Ain't Goin' Down  
 
 **C — Fills (use cheat Fills / More fills):** Sweet Home, Purple Rain, Dream On, Mary Jane, Banditos, Zombie, Ain't Goin' Down  
 
@@ -69,12 +70,14 @@
 
 ### Phase 3 (Jul 27–31) — Harden
 
-- **Priority (45):** weakest from notes + changeover pairs.
+- **Never skip in Priority (or dedicated flash):** Darkness + Pretender + **Thunderstruck** (when/where).
+- **Priority (45):** weakest from notes + changeover pairs (see final-week calendar).
 - **Slice (50):** alternate `1–16` and `17–31`; Jul 30 = abbreviated full set (V+C on ≥4, full on ≤3, real Drop D retunes).
+- **Body:** Pre before Priority; Break includes 2–3 min body micro; Post after cool-down (see Body block in template + `final-week-2026-08-01.md`).
 
 ### Show day (Aug 1)
 
-- ~25 min: songs 1–4, Pretender entrance, Middle + Fat Bottomed tuning check. No learning.
+- Body Pre → ~25 min: songs 1–4, Pretender entrance, Thunderstruck when/where flash, Middle + Fat Bottomed tuning check. No learning. Easy Body Post after show if possible.
 
 ## Worksheet template
 
@@ -87,6 +90,7 @@ Write this file to `practice-sessions/YYYY-MM-DD.md`. Replace bracketed plan fie
 - Phase: 1 Rescue | 2 Form+fills | 3 Harden | Show day
 - Planned duration: 2 hours
 - Source: baseline worksheet + prior session YYYY-MM-DD (or none)
+- Week plan: practice-sessions/final-week-2026-08-01.md
 
 ## Today's focus (agent)
 
@@ -94,9 +98,27 @@ Write this file to `practice-sessions/YYYY-MM-DD.md`. Replace bracketed plan fie
 - Set slice:
 - Why this plan: (1–2 lines from prior notes / phase)
 
+## Body
+
+Not medical advice. Stop sharp/radiating pain. Details: final-week Body section.
+
+### Pre-guitar (5–7 min) — before Priority
+
+Done? ___  Note:
+
+### Break micro (2–3 min) — with timed Break
+
+Done? ___  Note:
+
+### Post-guitar (8–10 min) — after cool-down, before session log
+
+Done? ___  What flared (back/neck/shoulders/forearms):
+
 ## Timed plan
 
 ### 1) Priority drill — 45 min
+
+**Glance mode:** Cheat only. Eyes mostly off phone.
 
 | Min | Song | Drill |
 |-----|------|-------|
@@ -109,7 +131,7 @@ Notes while practicing:
 
 ### 2) Break — 5–10 min
 
-Retune / stretch. Drop D needed later? ___
+Retune / stretch **and** body micro (2–3 min). Drop D needed later? ___
 
 ### 3) Ordered set slice — 50 min
 
@@ -143,6 +165,8 @@ Felt:
 - Biggest win:
 - Biggest frustration:
 - Comfort changes (song → old → new):
+- Cheat landmarks that worked / missing:
+- Body note:
 - Must do next session:
 
 ## Carry-forward (agent fills on close-out, or leave blank)
@@ -155,6 +179,7 @@ Felt:
 
 Include when the session has chord-shape work, or when building away-from-guitar habits.
 **practice-coach ignores it on `/coach`**; use a separate desk-board pass when asked.
+After each micro-block: one **desk body micro** (chin tuck / pec / wrists / stand).
 
 3D-printed fake fretboard, **5 frets**, silent — meetings / away from guitar.
 Full **C#m / G#m / D#m** at fret 6+: same Am/Em barre family on frets that fit;
@@ -178,7 +203,7 @@ confirm on real guitar later.
 
 ### Desk log (optional)
 
-Date / which micro-block / note:
+Date / which micro-block / body micro? / note:
 
 -
 ```
@@ -188,6 +213,8 @@ Date / which micro-block / note:
 Compress user notes into 3–6 bullets the next run cannot miss, e.g.:
 
 - `Darkness still 2 — measure ends; keep daily`
+- `Thunderstruck when/where — never skip`
 - `Slice 17–22: Pretender entrance OK, Middle retune slow`
 - `Next slice: 1–16`
+- `Body: forearms pumped — more wrist stretches mid-Priority`
 - `Pretender: live Am chart (not archived power wall); Capo 3 Purple Rain / Capo 1 Dream On`

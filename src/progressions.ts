@@ -26,7 +26,16 @@ import versionsData from './data/progressionVersions.json'
 // Prefix a chord with + for a short tag hit, not a full measure ("E F +G").
 // Use `|` to force a line break before the next span ("(C G Bb F Am G C) | (C G Bb F Am G Ab)").
 // Parentheses alone do NOT stack lines — only `|` (or natural wrap) does.
-export interface ProgSection { section: string; chords: string; shapes?: string; hint?: string; tab?: string; tabMore?: string }
+export interface ProgSection {
+  section: string
+  chords: string
+  shapes?: string
+  hint?: string
+  tab?: string
+  tabMore?: string
+  /** Omit from Cheat (building-blocks) tab; still available on Chords roadmap via form. */
+  cheatHide?: boolean
+}
 export interface SongProgression { sections: ProgSection[]; form?: string[]; capo?: string }
 
 /** One display unit on the cheat chord row: chord chips, optionally with a ×N badge. */
@@ -287,5 +296,5 @@ export function cheatRowsFor(prog: SongProgression): CheatRow[] {
  * stored order, with its cycle, hint, and fills. The `form` roadmap is deliberately
  * ignored: this view trusts the player to know the song's shape. */
 export function basicRowsFor(prog: SongProgression): CheatRow[] {
-  return prog.sections.map((s) => sectionToRow(s.section, s))
+  return prog.sections.filter((s) => !s.cheatHide).map((s) => sectionToRow(s.section, s))
 }

@@ -51,13 +51,10 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 - Done when: end matches what the band plays.
 - Session notes: high conf on Fair-Tag; cold vs fade on last chord soft.
 
-### 7. #23 — While My Guitar Gently Weeps (`08-while-my-guitar-gently-weeps`) — BOTH — **NEXT**
-- [ ] Status: not started
-- Rehearsal note: “hold the last E.”
-- Research: verse ends `(Am G D E)` — single E slot; likely cutting E short.
-- Proposed: card hint and/or double E; practice the hold.
-- Done when: E rings through before next Am.
-- Session notes:
+### 7. #23 — While My Guitar Gently Weeps (`08-while-my-guitar-gently-weeps`) — BOTH
+- [x] Hold-E note: **skip** — user play-through 2026-07-26, E placement fine (no double E).
+- [ ] Stage-cheat-card pass (mock seeded) — still in final-week kill-zone.
+- Session notes: Bm two-bar hold shipped `3c52aa2`; mock at `practice-sessions/08-while-my-guitar-gently-weeps-stage-card-mock.md`.
 
 ### 8. Free Bird (`32-free-bird`) — APP
 - [x] **DONE 2026-07-26** (`dcaa80d` + Ryan `d9d8fe7`)
@@ -65,23 +62,23 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 - Shipped: order 32 encore; lean chords/tabs/card; Ryan drafted; amp 1→10; scroll Estimate 6/12. Skill extracted: `add-song`.
 - Done when: usable if requested (already).
 
-### 9. #4 — Valerie (`25-valerie`) — PRACTICE
-- [ ] Status: not started
+### 9. #4 — Valerie (`25-valerie`) — PRACTICE + APP
+- [x] Practice 2026-07-26: comfort **5** — solid; **2nd verse longer** (jumps to pre early) → stage cue
+- [ ] Stage landmarks still open (final-week kill-zone)
 - Rehearsal note: practice section transitions.
-- Proposed: personal practice / next `/practice` slice; no known data bug.
-- Session notes:
+- Session notes: Cheat-only; card work Mon–Tue.
 
-### 10. #8 — Mama, I'm Coming Home (`28-mama-i-m-coming-home`) — PRACTICE
-- [ ] Status: not started
+### 10. #8 — Mama, I'm Coming Home (`28-mama-i-m-coming-home`) — PRACTICE + APP
+- [ ] Practice: Harden Priority (Mon+)
+- [ ] Stage landmarks: pre / chorus / Face / bridge (kill-zone)
 - Rehearsal note: work on chord progressions.
-- Proposed: personal practice; Mama still parked for guitar on ryan progress.
 - Session notes:
 
 ### 11. #24 — Thunderstruck (`05-thunderstruck`) — PRACTICE
-- [ ] Status: not started
-- Rehearsal note: know the chords; lock the couple of patterns and when to use each.
-- Proposed: personal practice / pattern cues on card only if still confusing after play.
-- Session notes:
+- [x] Card research rebuild 2026-07-26; comfort **3** (6/10) — parts OK; gap is **when/where**
+- [ ] **Never-skip** maintenance every Harden day (with Darkness + Pretender)
+- Rehearsal note: know the chords; lock patterns and when to use each.
+- Session notes: lyric landmarks on card; practice form memory from Cheat.
 
 ---
 
@@ -106,19 +103,12 @@ Say **"next backlog item"** or name a song. App fixes first, then practice-only.
 
 ---
 
-## Handoff — next session
+## Handoff — final week (2026-07-27+)
 
-### PRIORITY: stage cheat-card pass (skill extracted)
+**Resume:** `/continue` → [`HANDOFF.md`](HANDOFF.md) + [`final-week-2026-08-01.md`](final-week-2026-08-01.md).
 
-Skill: `.claude/skills/stage-cheat-card/` — mock → apply → `/dev/` phone check, one song at a time.
-Pilot **Banditos** marked done in skill `progress.md` (still tweakable). Say **"stage pass"** / **"next stage card"** or a song name.
+**Stage screen:** **Cheat tab only**. Kill-zone stage-cheat-card queue in final-week doc. Never-skip practice: Darkness + Pretender + Thunderstruck.
 
-Then resume backlog at **Gently Weeps** (hold last E) unless still iterating Banditos / stage queue.
+Practice-only remaining → `/practice` or `/coach` **from Cheat** with Body Pre/Post.
 
 Stay on `dev`; snapshot before rewriting cards; validate → commit → bare `git push`.
-
-### After that
-
-1. Queue #7 Gently Weeps unless user picks another.
-2. Practice-only items (9–11) → `/practice` or `/coach`.
-3. Dream On soft spots still ear-checkable (Fill ^1 on 2nd Sing with me of first chorus).

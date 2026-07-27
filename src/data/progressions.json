@@ -141,7 +141,8 @@
       {
         "section": "Verse",
         "chords": "F# A B E B A",
-        "shapes": "244--- -022-- -244-- 022--- -244-- -022--"
+        "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+        "hint": "Land the measure ends — last two chords (B A) are the catch-up"
       },
       {
         "section": "Verse (in)",
@@ -168,7 +169,7 @@
         "section": "Clap",
         "chords": "(~E ~A ~F# ~B) ×3 C#m D",
         "shapes": "022--- -022-- 244--- -244-- -466-- -577--",
-        "hint": "Claps under the changes; single-string lead over the claps (C#m box at 9th). See Fills."
+        "hint": "Clap section — hands on changes; single-string lead over claps (C#m box @ 9). See Fills."
       },
       {
         "section": "Solo",
@@ -234,25 +235,25 @@
         "section": "Hit",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "One-liner; \"You've been thunderstruck\""
+        "hint": "One-liner; \"You've been thunderstruck\" — NOT the full stamp yet"
       },
       {
         "section": "Verse 2",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "Ring; \"Rode down the highway\""
+        "hint": "Ring (not palm); \"Rode down the highway\""
       },
       {
         "section": "Knees",
         "chords": "A5 B5 A5 E5",
         "shapes": "-022-- -244-- -022-- 022---",
-        "hint": "\"I was shaking at the knees\" (Malcolm pre: A B A E)"
+        "hint": "\"I was shaking at the knees\" — A B A E (different from drums pre)"
       },
       {
         "section": "Chorus",
         "chords": "B5 A5 E5 A5 A5 E5",
         "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
-        "hint": "Stamp B·AE·AA·E; \"Thunderstruck\""
+        "hint": "Full stamp B·AE·AA·E; \"Thunderstruck\""
       },
       {
         "section": "Link",
@@ -321,7 +322,8 @@
       {
         "section": "Verse",
         "chords": "(E B C#m A) (E B G#m A)",
-        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--"
+        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
+        "hint": "Story verses — not the big ending yet"
       },
       {
         "section": "Interlude",
@@ -332,19 +334,20 @@
       {
         "section": "Pre-Chorus",
         "chords": "(A E) ×3 (A B E B E A)",
-        "shapes": "-022-- 022--- -022-- -244-- 022--- -244-- 022--- -022--"
+        "shapes": "-022-- 022--- -022-- -244-- 022--- -244-- 022--- -022--",
+        "hint": "\"Strangers waiting\" — A-E climb; this is NOT the final chorus"
       },
       {
         "section": "Solo",
         "chords": "(E B C#m A) (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
-        "hint": "Chorus changes under the solo"
+        "hint": "Same cycle as verse under the solo"
       },
       {
         "section": "Chorus",
         "chords": "(E B C#m A) (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
-        "hint": "Only at the very end, rides to fade"
+        "hint": "\"Don't stop believin'\" — ONLY at the very end; rides to fade"
       }
     ],
     "form": [
@@ -413,20 +416,23 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E)"
+        "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
+        "hint": "Walk-down then turnaround"
       },
       {
         "section": "Verse",
-        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E)"
+        "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
+        "hint": "D ending — \"look at you\""
       },
       {
         "section": "Verse (2nd ending)",
-        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G C E)"
+        "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G C E)",
+        "hint": "C ending — \"Still my guitar\""
       },
       {
         "section": "Bridge",
         "chords": "A C#m F#m C#m Bm E Esus4 E",
-        "hint": "Bm two full bars — don't jump to E"
+        "hint": "\"I don't know why\"; Bm two full bars — don't jump to E"
       },
       {
         "section": "Solo",
@@ -435,7 +441,7 @@
       },
       {
         "section": "Outro",
-        "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E)",
+        "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
         "hint": "Lead + ad-lib vocal over verse changes, fade"
       }
     ],
@@ -543,17 +549,18 @@
       },
       {
         "section": "Verse",
-        "chords": "G A7sus4 G G | G A7sus4 G Cadd9",
+        "chords": "(G A7sus4 G G) | (G A7sus4 G Cadd9)",
         "hint": "Clean; odd cycle ends G, even ends Cadd9"
       },
       {
         "section": "Chorus",
-        "chords": "G A7sus4 G Cadd9 | G Cadd9 G/B Cadd9",
+        "chords": "(G A7sus4 G Cadd9) | (G Cadd9 G/B Cadd9)",
         "hint": "\"I'm going hungry\"; duet lines answer Cadd9"
       },
       {
         "section": "Interlude",
-        "chords": "G A7sus4 G/B Cadd9"
+        "chords": "G A7sus4 G/B Cadd9",
+        "hint": "Amp swap if you use one — back before Bridge"
       },
       {
         "section": "Bridge",
@@ -767,12 +774,13 @@
       {
         "section": "Intro",
         "chords": "Am F#m7b5 Fmaj7",
-        "hint": "Quiet: picked Am arpeggio; F#m7b5->Fmaj7 answer"
+        "hint": "Quiet: picked Am arpeggio; F#m7b5->Fmaj7 answer",
+        "cheatHide": true
       },
       {
         "section": "Verse",
         "chords": "Am D/F# F",
-        "hint": "Loop; later lines tag G"
+        "hint": "Loop; later lines tag G. Count last quiet bar (Intro shapes) then heavy — don't jump early"
       },
       {
         "section": "Pre-Chorus",
@@ -791,7 +799,8 @@
       },
       {
         "section": "Interlude",
-        "chords": "Am F#m7b5 Fmaj7"
+        "chords": "Am F#m7b5 Fmaj7",
+        "cheatHide": true
       },
       {
         "section": "Outro",
@@ -963,10 +972,46 @@
   "21-the-middle": {
     "sections": [
       {
-        "section": "Whole song",
+        "section": "Intro",
+        "chords": "",
+        "tab": "A-string PM (skip low E)\n9 5 9 7 4\n5 4 5 5",
+        "hint": "Palm mute; Drop D without retuning"
+      },
+      {
+        "section": "Verse",
+        "chords": "",
+        "tab": "A-string PM\n9 5 9 7 4\n5 4 5 5",
+        "hint": "Same riff under vocal"
+      },
+      {
+        "section": "Chorus",
         "chords": "D A G",
-        "shapes": "--0232 -02220 320003"
+        "shapes": "--0232 -02220 320003",
+        "hint": "Open D A G — \"It just takes some time\""
+      },
+      {
+        "section": "Solo",
+        "chords": "A D A D G D A",
+        "shapes": "-02220 --0232 -02220 --0232 320003 --0232 -02220",
+        "hint": "Open chords under solo; amp 6Green if wanted"
+      },
+      {
+        "section": "Outro",
+        "chords": "D",
+        "shapes": "--0232",
+        "hint": "Cold on D"
       }
+    ],
+    "form": [
+      "Intro",
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus ×2",
+      "Solo",
+      "Verse",
+      "Chorus",
+      "Outro"
     ]
   },
   "22-dream-on": {
@@ -1110,15 +1155,22 @@
         "hint": "Two-bar vamp, riff enters"
       },
       {
-        "section": "Verse / Chorus",
+        "section": "Verse",
         "chords": "E F#m",
-        "shapes": "022100 244222"
+        "shapes": "022100 244222",
+        "hint": "2nd verse runs longer — stay on E F#m; do not jump to pre early"
       },
       {
         "section": "Pre-Chorus",
         "chords": "(A G#m) ×2 (A G#m B)",
         "shapes": "577655 466444 577655 466444 799877",
         "hint": "Hang the B into the chorus"
+      },
+      {
+        "section": "Chorus",
+        "chords": "E F#m",
+        "shapes": "022100 244222",
+        "hint": "\"Valerie\" — same E F#m as verse; bigger feel"
       },
       {
         "section": "Verse (quiet)",
@@ -1135,15 +1187,15 @@
     ],
     "form": [
       "Intro",
-      "Verse / Chorus ×2",
+      "Verse ×2",
       "Pre-Chorus",
-      "Verse / Chorus",
-      "Verse / Chorus ×2",
+      "Chorus",
+      "Verse ×2",
       "Pre-Chorus",
-      "Verse / Chorus",
+      "Chorus",
       "Verse (quiet)",
       "Pre-Chorus",
-      "Verse / Chorus ×2",
+      "Chorus ×2",
       "Outro"
     ]
   },
@@ -1262,18 +1314,18 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "C#m A E | C#m A B",
-        "hint": "Two rows. Second pre / Pre3 add F#5 G#5 after B (Selfish love lift)"
+        "chords": "(C#m A E) | (C#m A B)",
+        "hint": "Two rows into Face. Second pre / Pre3 add F#5 G#5 after B (\"Selfish love\" lift)"
       },
       {
         "section": "Chorus",
         "chords": "A E",
-        "hint": "Face block. First: hundred + short C D B tag. Second: thousand into outro"
+        "hint": "Face — \"Mama I'm coming home\". First: hundred + short C D B tag. Second: thousand into outro"
       },
       {
         "section": "Bridge",
         "chords": "G A E",
-        "hint": "G A E ×3 then B into solo"
+        "hint": "Bridge not Face: G A E ×3 then B into solo"
       },
       {
         "section": "Solo",

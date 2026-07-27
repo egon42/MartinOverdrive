@@ -63,15 +63,18 @@ from the latest session.
 
 ### Selection rules
 
-- **Darkness + Pretender** appear in Priority A at least **4 days per week** until both
-  are ≥3 (then maintenance 10–15 min).
+- **Darkness + Pretender + Thunderstruck** appear in Priority (or a dedicated flash) at least
+  **every Harden day** until all three are solid (Thunderstruck = when/where, not just shapes).
+  Through Form+fills, Darkness + Pretender at least **4 days per week** until both are ≥3.
 - Prefer songs marked shaky / "need fills" / form memory in baseline or last session.
 - For set slices: comfort ≥4 → verse+chorus once; ≤3 → fuller play. At Drop D songs
   (**The Middle #21**, **Fat Bottomed Girls #27**) note **actually retune**.
 - Do **not** spend the Priority block on Pink Pony / Small Things / Save a Horse alone —
   those are cool-down or set glue only.
-- On **2026-08-01**: Priority = openers 1–4 + Pretender entrance + Drop D tuning check;
-  skip long set slice; total ~25–30 min.
+- **Body block** on every Harden / show worksheet (Pre / Break micro / Post) — copy from
+  reference template; details live in `practice-sessions/final-week-2026-08-01.md`.
+- On **2026-08-01**: Body Pre + Priority = openers 1–4 + Pretender entrance + Thunderstruck
+  flash + Drop D tuning check; skip long set slice; total ~25–30 min.
 
 Rotate set slices so over a week they cover **1–16** and **17–31**. If the last session
 did first half, do second half (and vice versa), unless notes demand revisiting a kill zone

@@ -24,6 +24,7 @@ user's real feedback.
 |---|---|
 | "practice coach" / "coach me" / "start practicing" / "/coach" | Load today's sheet (or ask which date) and begin / resume **guitar timed plan only** |
 | "desk board" / "desk coach" / "fake fretboard" / "meeting practice" | **Desk-board pass** only (see below) — do not mix with timed-plan steps |
+| "body" / "stretch" / "body micro" | Desk body micro only (final-week protocol) — or jump to Body Pre/Post on today’s sheet |
 | "next" / "done" / "ready" | Advance after writing the current step's feedback |
 | "skip" | Mark step skipped in the sheet; advance |
 | "pause" / "stop for now" | Save what's written; summarize where to resume |
@@ -35,11 +36,16 @@ user's real feedback.
 1. Today's date from user_info. Prefer `practice-sessions/YYYY-MM-DD.md`.
 2. If missing: offer to run **practice-session** first (do not invent a plan here).
 3. If multiple sheets or they name a date: use that file.
-4. Read the whole worksheet. Build an ordered **step queue** from `## Timed plan`
-   only (see [reference.md](reference.md)). **Never** enqueue `## Desk board` (or
-   similarly titled appendix) into the main `/coach` pass.
+4. Read the whole worksheet. Build an ordered **step queue** from `## Body` (if present)
+   then `## Timed plan` (see [reference.md](reference.md)). **Never** enqueue `## Desk board`
+   into the main `/coach` pass.
 5. Tell them: sheet path, which step you're on, total steps left. Then run **one**
    step — stop and wait.
+
+Body steps (when `## Body` exists): **Pre-guitar** before Priority; on **Break** include
+the Break micro checkbox; **Post-guitar** after cool-down and **before** session log.
+If Body section is missing on a Harden sheet, prompt Pre from
+`practice-sessions/final-week-2026-08-01.md` once, then continue.
 
 ## Desk-board pass (separate)
 
@@ -50,7 +56,9 @@ When they ask for desk / fake fretboard / meeting practice:
 2. Build a queue of **one step per micro-block** (Isolate, Neighbor, Power walk,
    Blues 7ths) — or only today’s rotation day if they want the weekly schedule.
 3. Same one-step loop; write into the appendix **Desk log**, not Timed plan notes.
-4. Do not continue into Priority / slice / session log unless they switch to `/coach`.
+4. After each micro-block, prompt a **desk body micro** (2–3 min from final-week protocol)
+   unless they skip.
+5. Do not continue into Priority / slice / session log unless they switch to `/coach`.
 
 ## One-step loop (strict)
 

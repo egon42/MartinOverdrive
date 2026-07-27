@@ -84,7 +84,8 @@ Full notation in [reference.md](reference.md). Short version:
 |---|---|
 | Whole section N times in the song | `form` label `Verse ×4`; chords stay one cycle |
 | Mixed tiles inside one section | `(E A) ×3 (E G A) ×2` |
-| Force a new chip row | `\|` between spans (parens alone do **not** stack) |
+| Force a new chip row | `\|` between **grouped** spans — prefer `(row1) \| (row2)` so each line is one span (bare `A B \| C D` only breaks before the next single chord) |
+| Hide from Cheat only | `"cheatHide": true` on a section — still on Chords roadmap via `form` |
 | Lyric landmark | `hint: "quoted lyric"` — **one hint per section**; keep the quotes so show mode highlights them |
 | Cue under a mid-section row | Split into two section names **or** combine into one hint |
 | Don't-play beat chip | `~Am` |

@@ -3,43 +3,56 @@
 Polish show-mode **Cheat / Chords** cards for stage play (Banditos pilot workflow).
 One song at a time. Status: unchecked · done · skipped · blocked · iterating
 
+**Final week (through 2026-08-01):** kill-zone first. **Card freeze after Thu 7/30 evening** unless broken.
+
+## Kill-zone queue (priority order)
+
+- [x] 17-the-pretender — `cheatHide` Intro + Interlude; quiet→heavy cue on Verse (2026-07-27)
+- [x] 25-valerie — Verse / Pre / Chorus split; 2nd verse longer cue (2026-07-27)
+- [x] 28-mama-i-m-coming-home — Face / Bridge landmarks; Pre rows grouped (2026-07-27)
+- [x] 06-don-t-stop-believin — Pre vs end Chorus identity (2026-07-27)
+- [x] 04-i-believe-in-a-thing-called-love — measure-end + clap landmarks (2026-07-27)
+- [x] 08-while-my-guitar-gently-weeps — stacked walk-down rows + lyric ending cues (2026-07-27)
+- [x] 05-thunderstruck — when/where Hit vs stamp / Knees vs drums pre (2026-07-27)
+- [x] 21-the-middle — Ryan→Cheat A-string PM lift (2026-07-27)
+
 ## Queue (setlist order)
 
 - [ ] 01-welcome-home
 - [ ] 02-all-the-small-things
-- [ ] 03-a-little-less-conversation
-- [ ] 04-i-believe-in-a-thing-called-love
-- [ ] 05-thunderstruck — **research rebuild 2026-07-26:** Hit/Link/La-la/Bridge/Walk added; Knees `A5 B5 A5 E5`; Chorus stamp `B5 A5 E5 A5 A5 E5`; form matches Malcolm rhythm roadmap. Mock: `practice-sessions/05-thunderstruck-stage-card-mock.md`. Ear-check Drums pre vs Knees if still fuzzy.
-- [ ] 06-don-t-stop-believin
-- [ ] 07-tribute
-- [ ] 08-while-my-guitar-gently-weeps
-- [ ] 09-pride-and-joy
-- [ ] 10-zombie
-- [ ] 11-hunger-strike
+- [x] 03-a-little-less-conversation — band A restore 2026-07-26
+- [x] 04-i-believe-in-a-thing-called-love — measure-end / clap 2026-07-27
+- [x] 05-thunderstruck — research rebuild + when/where pass
+- [x] 06-don-t-stop-believin — pre vs chorus 2026-07-27
+- [x] 07-tribute — fills top, ROCK loops, outro +G tags 2026-07-26
+- [x] 08-while-my-guitar-gently-weeps — stage pass 2026-07-27
+- [x] 09-pride-and-joy — shuffle / +B7 2026-07-26
+- [x] 10-zombie — Hang Em–C 2026-07-26
+- [x] 11-hunger-strike — odd/even + `(…) | (…)` row groups 2026-07-27
 - [ ] 12-s-o-b
 - [ ] 13-save-a-horse-ride-a-cowboy
-- [ ] 14-sweet-home-alabama
-- [ ] 15-dani-california
+- [x] 14-sweet-home-alabama — F C tag 2026-07-26
+- [x] 15-dani-california — Dm hangs 2026-07-26
 - [ ] 16-teenage-dirtbag
-- [ ] 17-the-pretender
+- [x] 17-the-pretender — hide Intro/Interlude on Cheat 2026-07-27
 - [ ] 18-here-it-goes-again
 - [ ] 19-purple-rain
 - [ ] 20-when-i-come-around
-- [ ] 21-the-middle
-- [ ] 22-dream-on
+- [x] 21-the-middle — A-string PM + Chorus D A G 2026-07-27
+- [x] 22-dream-on — sit → climax 2026-07-26
 - [ ] 23-lola-montez
 - [ ] 24-mary-jane-s-last-dance
-- [ ] 25-valerie
-- [ ] 26-voodoo-child-slight-return
+- [x] 25-valerie — verse/pre/chorus 2026-07-27
+- [x] 26-voodoo-child-slight-return — lean chart 2026-07-26
 - [ ] 27-fat-bottomed-girls
-- [ ] 28-mama-i-m-coming-home
+- [x] 28-mama-i-m-coming-home — landmarks 2026-07-27
 - [ ] 29-ain-t-goin-down-til-the-sun-comes-up
-- [ ] 30-pink-pony-club
-- [x] 31-banditos — pilot; mock Chorus 3-line stack (ID-card / vamp / Everybody) 2026-07-26
-- [ ] 32-free-bird
+- [x] 30-pink-pony-club — band G + bridge 2026-07-26
+- [x] 31-banditos — pilot 2026-07-26
+- [x] 32-free-bird — encore 2026-07-26
 
 ## Done notes
 
-- **31-banditos** — Stage pilot. User mock → applied `18f0c18`. Still open to tweaks
-  (split Chorus/Everybody for per-row hints, density, etc.). Mock:
-  `practice-sessions/banditos-stage-card-mock.md`.
+- **cheatHide** — optional section flag; Cheat tab omits; Chords roadmap still uses form.
+- **Hunger row-split** — bare `A B | C D` only breaks before the next single chord; use `(row1) | (row2)`.
+- Kill-zone complete 2026-07-27 morning. Phone-check `/MartinOverdrive/dev/` Cheat tabs; freeze still Thu night for any tweaks from evening play.

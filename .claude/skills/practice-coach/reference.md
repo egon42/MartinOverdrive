@@ -14,12 +14,14 @@ Each `###` heading is a **block**. Inside a block, split into atomic steps —
 
 | Block pattern | Atomic steps |
 |---|---|
+| `## Body` Pre-guitar | One step (before Priority) |
 | Chord front-load / chord shapes | **One step per numbered drill** under each lettered subsection (e.g. A1 Isolate, A2 Neighbor changes, A3 Fret-2 flash — not all of A at once). If a subsection has no numbered list, that subsection is one step. Letter labels (A/B/C) are groups only. |
 | Priority drill table | **One step per table row** (song) |
-| Break | One step |
+| Break (+ Body Break micro) | One step (include body micro checkbox) |
 | Ordered set slice table | **One step per song row** |
 | Worst-fail replay | One step (three fields) |
 | Cool-down | One step |
+| `## Body` Post-guitar | One step (after cool-down, before session log) |
 | Session log | One step (multi-prompt ok: energy first, then text fields) |
 
 **Example** from a typical chord front-load:
@@ -137,11 +139,21 @@ songs share one notes section:
 
 ### Break
 
-**Instruct:** Stretch / water / retune reminder from the sheet.
+**Instruct:** Stretch / water / retune from the sheet **plus** 2–3 min body micro
+(chin tuck, pec opener, wrist stretches, stand — see final-week Body desk micro).
 
-**Collect:** `ready` / `more time` only.
+**Collect:** `ready` / `more time`; optional what they stretched.
 
-**Write:** Only if they mention tuning or something to remember (`Drop D later? Yes — done`).
+**Write:** Break note if useful; tick Body **Break micro** Done? when present.
+
+### Body Pre / Post
+
+**Instruct:** Short checklist from the sheet / final-week protocol (do not dump every
+exercise if they already know it — name the slot + 3–4 anchors).
+
+**Collect:** Done? + optional flare note (Post: what flared).
+
+**Write:** Body Done? / Note / What flared fields.
 
 ### Slice song row
 
@@ -185,15 +197,17 @@ Ask in this order (separate messages ok):
 2. Biggest win — text/speak
 3. Biggest frustration — text/speak
 4. Comfort changes — text ("song old→new"); skip if none
-5. Chord report — only shapes still blank; buttons shaky/usable/automatic
+5. Cheat landmarks / body note — text; skip if none
 6. Must do next session — text/speak
 
 **Write:** each field as they answer.
 
 ### Carry-forward
 
-Agent writes 3–6 bullets from the filled sheet. Show them; ask `looks good?` before
-treating close-out as final. Then offer baseline worksheet patches.
+Agent writes 3–6 bullets from the filled sheet (include never-skip trio + body if
+relevant). Show them; ask `looks good?` before treating close-out as final. Then offer
+baseline worksheet patches. Also refresh `practice-sessions/HANDOFF.md` if this was a
+final-week Harden session.
 
 ## Mapping spoken / loose replies
 
