@@ -11,7 +11,7 @@
 
 ## Last completed
 
-- Lola Montez Cheat cues shipped (council-verified vs sheets): chorus hint now names F#m ONLY on the chorus into the bridge; bridge vocal rows were rotated one chord (started on Em) — fixed to start "Oh Lola" on A with the Em phrase on its own row landing on "pain". Mock at `practice-sessions/23-lola-montez-stage-card-mock.md`; old card in version dropdown.
+- Lola Montez Cheat cues shipped (council-verified vs sheets): chorus re-phrased from Ryan's listening pass into four G A D rows with +Bm / +A +Bm +A tag chips (same 17 chords, timing now visible); hint names F#m ONLY on the chorus into the bridge; bridge vocal rows were rotated one chord (started on Em), fixed to start "Oh Lola" on A with the Em phrase landing on "pain". Mock at `practice-sessions/23-lola-montez-stage-card-mock.md`; prior cards in version dropdown.
 
 ## Next desk
 

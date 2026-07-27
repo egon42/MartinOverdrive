@@ -1068,7 +1068,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "(G A D Bm G A D) | (A Bm A) | (G A D Bm G A D)",
+        "chords": "(G A D +Bm) | (G A D +A +Bm +A) | (G A D +Bm) | (G A D)",
         "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--",
         "hint": "\"yeah-eah\" lands D; F#m ONLY on the chorus into the bridge"
       },
