@@ -1,6 +1,63 @@
 {
   "02-all-the-small-things": [
     {
+      "label": "pre stage card intro-bridge fix 2026-07-27",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "C G F G",
+          "shapes": "-355-- 355--- 133--- 355---"
+        },
+        {
+          "section": "Verse",
+          "chords": "C G F G",
+          "shapes": "-355-- 355--- 133--- 355---"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "C",
+          "shapes": "-355--",
+          "hint": "Ringing C"
+        },
+        {
+          "section": "Chorus",
+          "chords": "C G F",
+          "shapes": "-355-- 355--- 133---"
+        },
+        {
+          "section": "Interlude",
+          "chords": "C F G",
+          "shapes": "-355-- 133--- 355---",
+          "hint": "Single strums, then muted"
+        },
+        {
+          "section": "Bridge",
+          "chords": "C F G C",
+          "shapes": "-355-- 133--- 355--- -355--"
+        },
+        {
+          "section": "Outro",
+          "chords": "C G F C",
+          "shapes": "-355-- 355--- 133--- -355--",
+          "hint": "Hang F: night will go on"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×4",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Interlude ×2",
+        "Pre-Chorus",
+        "Bridge",
+        "Pre-Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "Jul 15 pass (pre-research)",
       "sections": [
         {
