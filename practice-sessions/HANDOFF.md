@@ -16,15 +16,18 @@
   chorus line + A B tags, lyric hints on pre-chorus/bridge, intro reprise ×2, bridge turn
   as tags, outro expanded to 3 rows from the record tab (G#m stab, extra E B + held E,
   walk-down from A) — **outro tabled pending Ryan's ear at guitar** (see Next guitar).
-- Fat Bottomed Girls Stops section: G F D "Hey hey!" punch after V1 (F was missing from
-  the card); form step between Verse and Break. Mocks for both songs in
-  `practice-sessions/`. Neither phone-verified yet.
+- Fat Bottomed Girls: Stops section (G F D "Hey hey!" punch after V1), then full stage
+  reorg (counts/ghosts in chips, 3 chorus rows + blue double-hook row, interlude
+  phantom-G fix, lyric anchors).
+- Dani California: hangs inlined via new stacked grammar (*Dm hang + *~ skip-marked
+  chips, offset dashed ring style per Ryan); bridge Bm hang added.
+- **Dirtbag, FBG, and Dani all phone-verified on `/dev/` 2026-07-27** (incl. the new
+  chip styles). Mocks in `practice-sessions/`.
 
 ## Next desk
 
-Phone-verify Dirtbag + Fat Bottomed on `/dev/` Cheat, then UI/CSS leftovers (em-dash
-purge on kill-zone hints if touching those cards). Card queue is otherwise done through
-the nice-if-time list.
+Em-dash purge on kill-zone hints (Valerie etc.) — last UI/copy leftover. Card queue is
+done through the nice-if-time list and phone-verified.
 
 ## Next guitar
 
@@ -47,11 +50,12 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 
 ## Card / UI TODOs
 
-Kill-zone **verified** live; Lola complete and phone-verified. Dirtbag done, needs a
-phone glance on `/dev/`. Nice-if-time: Fat Bottomed stops. Minor: a few kill-zone hints
-still use em-dashes (Valerie etc.) — purge if touching those cards. Optional low-sev
-note from Dirtbag council: final bridge's 2nd round tags E B into the outro (not on the
-card; add a Bridge hint only if it trips anyone in practice). Freeze after **Thu evening**.
+Kill-zone **verified** live; Lola, Dirtbag, FBG, Dani complete and phone-verified.
+Minor: a few kill-zone hints still use em-dashes (Valerie etc.) — purge if touching
+those cards. Optional low-sev note from Dirtbag council: final bridge's 2nd round tags
+E B into the outro (not on the card; add a Bridge hint only if it trips anyone in
+practice). Dirtbag outro 3-row expansion still tabled for Ryan's ear at the guitar.
+Freeze after **Thu evening**.
 
 ## Standing decisions
 
