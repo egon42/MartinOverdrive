@@ -653,7 +653,12 @@
       {
         "section": "Whole song",
         "chords": "D C G",
-        "hint": "Picked D–C–G groove; keep the top strings ringing; chorus tags F C into the next verse"
+        "hint": "Picked D C G groove; keep the top strings ringing"
+      },
+      {
+        "section": "F C tag",
+        "chords": "F C",
+        "hint": "After \"Lord, I'm coming home to you\"; into next verse or solo"
       },
       {
         "section": "Fills",
