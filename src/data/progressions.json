@@ -729,18 +729,19 @@
         "section": "Verse",
         "chords": "E B E A",
         "shapes": "022100 -24442 022100 -02220",
-        "hint": "Quiet palm mute, full chords"
+        "hint": "Quiet palm mute, full chords; \"Noelle\" / \"boyfriend\" / \"mold\""
       },
       {
         "section": "Pre-Chorus",
         "chords": "C#m A B",
-        "shapes": "-46654 -02220 -24442"
+        "shapes": "-46654 -02220 -24442",
+        "hint": "\"know who I am\""
       },
       {
         "section": "Chorus",
         "chords": "E A B C#m G#m",
         "shapes": "022100 -02220 -24442 -46654 466444",
-        "hint": "Big open. Last chorus: sit out, muted"
+        "hint": "Big open. Sit out muted at \"two tickets\""
       },
       {
         "section": "Walk-up",
@@ -751,7 +752,8 @@
       {
         "section": "Bridge",
         "chords": "(E Asus2) ×3 C#m G#m A B",
-        "shapes": "022100 -02200 -46654 466444 -02220 -24442"
+        "shapes": "022100 -02200 -46654 466444 -02220 -24442",
+        "hint": "\"Oh yeah, Dirtbag\" vamp; C#m at \"what she's missing\""
       },
       {
         "section": "Outro",

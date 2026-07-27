@@ -16,20 +16,23 @@ E B E A
 
 VERSE
 E B E A
-hint: Quiet palm mute, full chords
+hint: Quiet palm mute, full chords; "Noelle" / "boyfriend" / "mold"
 
 PRE-CHORUS
 C#m A B
+hint: "know who I am"
 
 CHORUS
 E A B C#m G#m
-hint: Walk-up after 3rd cycle. Last chorus: sit out, muted
+hint: Big open. Sit out muted at "two tickets"
 
 WALK-UP
 A B C#m G#m A B
+hint: After the 3rd chorus cycle
 
 BRIDGE
 (E Asus2) ×3 C#m G#m A B
+hint: "Oh yeah, Dirtbag" vamp; C#m at "what she's missing"
 
 OUTRO
 E B E A G#m F#m E
