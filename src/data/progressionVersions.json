@@ -2652,6 +2652,50 @@
   ],
   "15-dani-california": [
     {
+      "label": "Pre Dm-hold cues 2026-07-26",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am G Dm Am"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am G Dm Am",
+          "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr); mute between hits"
+        },
+        {
+          "section": "Chorus",
+          "chords": "F C Dm G",
+          "hint": "Full barre shapes with slides into each change (F 1fr, C A-shape 3fr, Dm 5fr, G 3fr)"
+        },
+        {
+          "section": "Interlude",
+          "chords": "Am G Dm Am"
+        },
+        {
+          "section": "Bridge",
+          "chords": "Bm G D F#"
+        },
+        {
+          "section": "Solo / Outro",
+          "chords": "F C Dm G",
+          "hint": "Lead over the chorus loop, rides the fade"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×8",
+        "Chorus ×4",
+        "Interlude ×2",
+        "Verse ×4",
+        "Chorus ×4",
+        "Bridge ×4",
+        "Verse ×4",
+        "Chorus ×2",
+        "Solo / Outro ×8"
+      ]
+    },
+    {
       "label": "pre chorus hint",
       "sections": [
         {

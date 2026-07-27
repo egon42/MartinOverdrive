@@ -676,13 +676,13 @@
       },
       {
         "section": "Verse",
-        "chords": "Am G Dm Am",
-        "hint": "16th-note funk scratch on the barres (Am 5fr, G 3fr, Dm 5fr); mute between hits"
+        "chords": "Am G Dm Am | Am G Dm",
+        "hint": "Funk scratch on barres. Into chorus: hang Dm (\"survive\" / \"death\" / \"Gone too fast\"); skip closing Am"
       },
       {
         "section": "Chorus",
-        "chords": "F C Dm G",
-        "hint": "Full barre shapes with slides into each change (F 1fr, C A-shape 3fr, Dm 5fr, G 3fr)"
+        "chords": "F C Dm G | Dm",
+        "hint": "Slides into barres. End hang Dm \"Yeah, yeah\"; skip the G"
       },
       {
         "section": "Interlude",
