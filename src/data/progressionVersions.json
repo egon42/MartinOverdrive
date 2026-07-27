@@ -2974,6 +2974,47 @@
   ],
   "11-hunger-strike": [
     {
+      "label": "Pre verse/chorus ending flip 2026-07-26",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "G A7sus4 G"
+        },
+        {
+          "section": "Verse 1",
+          "chords": "G A7sus4",
+          "hint": "Solo-verse blocks up top: no Cadd9 yet"
+        },
+        {
+          "section": "Verse 2 / Chorus",
+          "chords": "G Cadd9",
+          "hint": "Duet and refrain; turnaround runs G Cadd9 G/B Cadd9"
+        },
+        {
+          "section": "Interlude",
+          "chords": "G A7sus4 G/B Cadd9"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(D5 E5) ×2 Emadd9",
+          "shapes": "-00--- -22--- 022002",
+          "hint": "Standard grips D5 x00x and E5 x22x (Drop D plays these lower)"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse 1 ×8",
+        "Verse 2 / Chorus ×6",
+        "Verse 2 / Chorus ×4",
+        "Bridge ×4",
+        "Interlude ×2",
+        "Verse 2 / Chorus ×2",
+        "Bridge ×4",
+        "Verse 2 / Chorus ×4",
+        "Bridge"
+      ]
+    },
+    {
       "label": "pre Standard x00x x22x bridge shapes",
       "sections": [
         {

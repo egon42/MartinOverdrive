@@ -538,17 +538,18 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "G A7sus4 G"
+        "chords": "G A7sus4 G",
+        "hint": "×2"
       },
       {
-        "section": "Verse 1",
-        "chords": "G A7sus4",
-        "hint": "Solo-verse blocks up top: no Cadd9 yet"
+        "section": "Verse",
+        "chords": "G A7sus4 G G | G A7sus4 G Cadd9",
+        "hint": "Clean; odd cycle ends G, even ends Cadd9"
       },
       {
-        "section": "Verse 2 / Chorus",
-        "chords": "G Cadd9",
-        "hint": "Duet and refrain; turnaround runs G Cadd9 G/B Cadd9"
+        "section": "Chorus",
+        "chords": "G A7sus4 G Cadd9 | G Cadd9 G Cadd9 | G Cadd9 G/B Cadd9",
+        "hint": "\"I'm going hungry\"; duet answer is Cadd9; turnaround G Cadd9 G/B Cadd9"
       },
       {
         "section": "Interlude",
@@ -563,14 +564,14 @@
     ],
     "form": [
       "Intro ×2",
-      "Verse 1 ×8",
-      "Verse 2 / Chorus ×6",
-      "Verse 2 / Chorus ×4",
+      "Verse ×8",
+      "Chorus ×6",
+      "Chorus ×4",
       "Bridge ×4",
       "Interlude ×2",
-      "Verse 2 / Chorus ×2",
+      "Chorus ×2",
       "Bridge ×4",
-      "Verse 2 / Chorus ×4",
+      "Chorus ×4",
       "Bridge"
     ]
   },
