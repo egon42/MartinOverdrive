@@ -365,74 +365,47 @@
       {
         "section": "Intro",
         "chords": "Am",
-        "hint": "Spoken over the Am vamp. First fill starts at Long and lonesome road (see Fills)."
+        "hint": "Spoken Am vamp (4Amber). Fills: \"long\" ^1, \"looked\" ^2, \"men\" ^3 — then ROCK"
       },
       {
-        "section": "Verse",
-        "chords": "Am G F"
-      },
-      {
-        "section": "Rock part",
+        "section": "Rock",
         "chords": "D F C G F",
-        "hint": "2nd pass is one short stab"
+        "hint": "\"ROCK!\" — ahhh line; 2nd pass one short stab (5Amber)"
       },
       {
-        "section": "Spoken",
-        "chords": "Am",
-        "hint": "Story time: hold the Am vamp"
-      },
-      {
-        "section": "Tribute refrain",
-        "chords": "Am G Am"
+        "section": "Tribute",
+        "chords": "Am G Am",
+        "hint": "\"This is just a tribute\""
       },
       {
         "section": "Chorus",
-        "chords": "Am G D F"
+        "chords": "Am G D F",
+        "hint": "Main loop after ROCK — repeats for chorus / solo / spoken / climax"
       },
       {
-        "section": "Scat break",
+        "section": "Scat",
         "chords": "Am",
-        "hint": "Vocal gibberish + band stabs, then back in"
-      },
-      {
-        "section": "Solo",
-        "chords": "Am G D F",
-        "hint": "Chorus changes under the lead"
-      },
-      {
-        "section": "Spoken bridge",
-        "chords": "Am G D F",
-        "hint": "Spoken over the changes"
-      },
-      {
-        "section": "Climax",
-        "chords": "Am G D F",
-        "hint": "Big final verse on the chorus changes"
+        "hint": "Vocal gibberish + band stabs, then back to Chorus loop"
       },
       {
         "section": "Outro",
         "chords": "E F G E F",
-        "hint": "Picked ending tag into F; ritard and land the final hit clean."
+        "hint": "Picked tag into F; ritard and land clean"
       },
       {
         "section": "Fills",
         "chords": "",
-        "tab": "Am vamp fill (Long and lonesome road)\ne|----0-0-0-0-0-0-0----0----|\nB|----1-1-1-1-1-1-1h-3-0h-1-|\nG|----2-2-2-2-2-2-2----2----|\nD|--2-2-2-2-2-2-2-2----2----|\nA|0---0-0-0-0-0-0-0----0----|\nE|--------------------------|\n\nAnswer bar\ne|----0-0-0-0-0-0-----------|\nB|----1-1-1-1-1-1-----------|\nG|----2-2-2-2-2-2------0h-2-|\nD|--2-2-2-2-2-2-2-0h-2------|\nA|0---0-0-0-0-0-0-----------|\nE|--------------------------|",
-        "tabMore": "Outro climb (into F tag)\ne|--------------------|----------------------------|\nB|--------------------|----------------------------|\nG|1-1-1-1-1-1-1-1-1-1-|2-x-2-x-x-2-x-2-2-2-2-4-4-4-|\nD|2-2-2-2-2-2-2-2-2-2-|3-x-3-x-x-3-x-3-3-3-3-5-5-5-|\nA|2-2-2-2-2-2-2-2-2-2-|3-x-3-x-x-3-x-3-3-3-3-5-5-5-|\nE|0-0-0-0-0-0-0-0-0-0-|1-x-1-x-x-1-x-1-1-1-1-3-3-3-|"
+        "hint": "^1 \"long\" · ^2 \"looked\" · ^3 \"men\" (into ROCK)",
+        "tab": "Fill ^1 — \"long and lonesome road\"\nE-|-------|-------|--0-------|--------|\nB-|5--(5)-|-------|--0-0-(0)-|(0)-----|\nG-|7b-(7)-|-------|--5-------|--------|\nD-|-------|6b-(6)-|----------|--------|\nA-|-------|-------|----------|--------|\nE-|-------|-------|----------|--------|\n\nFill ^2 — \"looked\"\nE-|-------------|-------------|---------|-------------|--------|\nB-|-------------|-------------|---------|----3-0---3-3-|1-------|\nG-|----12-12-14-|14-----12----|12h-14---|14--2--------|--------|\nD-|-------------|--12/-14--14-|---------|--------3-----|--------|\nA-|-------------|-------------|---------|-------------|--------|\nE-|-------------|-------------|-----15/-|-------------|--------|\n\nFill ^3 — \"men\" (into ROCK)\nE-|--------|--------|-------------|-------------|\nB-|--------|--------|-------------|-------------|\nG-|--------|------7-|7b-(7)-----5-|-------------|\nD-|--------|--------|----------7-|----5-7------|\nA-|----3h5-|-5------|------------|--5h7---7----|\nE-|-5------|--------|-------------|-------------|"
       }
     ],
     "form": [
       "Intro",
-      "Verse",
-      "Rock part ×2",
-      "Spoken",
-      "Rock part",
-      "Tribute refrain ×2",
+      "Rock ×2",
+      "Tribute ×2",
       "Chorus ×2",
-      "Scat break",
-      "Solo ×2",
-      "Spoken bridge",
-      "Climax ×2",
+      "Scat",
+      "Chorus ×4",
       "Outro ×2"
     ]
   },
