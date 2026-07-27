@@ -151,9 +151,10 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`} onClick={strum}>
     {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
   </span>
+  // "Show chord diagram" off: chip taps are sound-only, the popover never opens.
   const toggleOpen = () => {
     strum()
-    setOpen(!open)
+    setOpen(settings.showChordDiagram && !open)
   }
   const openHandlers = {
     onClick: toggleOpen,
