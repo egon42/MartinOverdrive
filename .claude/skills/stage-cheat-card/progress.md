@@ -40,7 +40,7 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 - [ ] 20-when-i-come-around
 - [x] 21-the-middle — A-string PM + Chorus D A G 2026-07-27
 - [x] 22-dream-on — sit → climax 2026-07-26
-- [ ] 23-lola-montez
+- [x] 23-lola-montez — chorus F#m-into-bridge hint; bridge vocal rows fixed to land Em on "pain" 2026-07-27
 - [ ] 24-mary-jane-s-last-dance
 - [x] 25-valerie — verse/pre/chorus 2026-07-27
 - [x] 26-voodoo-child-slight-return — lean chart 2026-07-26
