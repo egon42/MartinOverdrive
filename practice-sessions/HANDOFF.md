@@ -11,23 +11,27 @@
 
 ## Last completed
 
-- Teenage Dirtbag stage card (council-verified vs sheets): shapes switched from power
-  voicings to full chords (matches Ryan sheet "prefer full chords"); Verse hint
-  "Quiet palm mute, full chords"; new Walk-up section (A B C#m G#m A B) after every
-  Chorus ×3 in the form (was only a vague turnaround hint); Chorus hint now flags the
-  final chorus sit-out/mute; intro reprise corrected to ×2 (council caught it, both
-  sheets show two cycles). Mock at `practice-sessions/16-teenage-dirtbag-stage-card-mock.md`;
-  old card in version dropdown. Not yet phone-verified on `/dev/`.
+- Teenage Dirtbag stage card, full pass with Ryan (council + record research): full-chord
+  shapes, quiet-PM verse cue with verse-ID lyrics, tagged chorus (+C#m +G#m), Walk-up as
+  chorus line + A B tags, lyric hints on pre-chorus/bridge, intro reprise ×2, bridge turn
+  as tags, outro expanded to 3 rows from the record tab (G#m stab, extra E B + held E,
+  walk-down from A) — **outro tabled pending Ryan's ear at guitar** (see Next guitar).
+- Fat Bottomed Girls Stops section: G F D "Hey hey!" punch after V1 (F was missing from
+  the card); form step between Verse and Break. Mocks for both songs in
+  `practice-sessions/`. Neither phone-verified yet.
 
 ## Next desk
 
-**Fat Bottomed Girls stops** on Cheat (last nice-if-time card item), or phone-verify
-Dirtbag on `/dev/` first if at the phone. Then UI/CSS leftovers (em-dash purge on
-kill-zone hints if touching those cards).
+Phone-verify Dirtbag + Fat Bottomed on `/dev/` Cheat, then UI/CSS leftovers (em-dash
+purge on kill-zone hints if touching those cards). Card queue is otherwise done through
+the nice-if-time list.
 
 ## Next guitar
 
-Body Pre → `/coach` on [`2026-07-27.md`](2026-07-27.md) Priority (Lola first — new cues are live)
+Body Pre → `/coach` on [`2026-07-27.md`](2026-07-27.md) Priority (Lola first — new cues are live).
+Also: play the Dirtbag outro vs the record — the expanded 3-row card (G#m stab, extra
+E B + held E, walk-down from A) is tabled pending Ryan's ear; revert via version
+dropdown if the band plays the old compressed ending.
 
 ## Recommended desk
 

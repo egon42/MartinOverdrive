@@ -1285,6 +1285,12 @@
         "hint": "Big open chords; leave space for the fill runs"
       },
       {
+        "section": "Stops",
+        "chords": "G F D",
+        "shapes": "320003 133211 --0232",
+        "hint": "Stop hits on \"Hey hey!\" after V1 only, into the Break"
+      },
+      {
         "section": "Break",
         "chords": "D",
         "shapes": "--0232",
@@ -1307,6 +1313,7 @@
       "Chorus",
       "Intro ×8",
       "Verse",
+      "Stops",
       "Break ×10",
       "Verse",
       "Chorus",

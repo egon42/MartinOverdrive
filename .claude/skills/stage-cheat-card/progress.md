@@ -44,7 +44,7 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 - [ ] 24-mary-jane-s-last-dance
 - [x] 25-valerie — verse/pre/chorus 2026-07-27
 - [x] 26-voodoo-child-slight-return — lean chart 2026-07-26
-- [ ] 27-fat-bottomed-girls
+- [x] 27-fat-bottomed-girls — Stops section 2026-07-27: G F D "Hey hey!" punch after V1 (F was missing from the card); form step between Verse and Break
 - [x] 28-mama-i-m-coming-home — landmarks 2026-07-27
 - [ ] 29-ain-t-goin-down-til-the-sun-comes-up
 - [x] 30-pink-pony-club — band G + bridge 2026-07-26
