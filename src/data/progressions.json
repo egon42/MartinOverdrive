@@ -1051,9 +1051,9 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "(D5 G5 A5) ×2 D5",
+        "chords": "D5 G5 A5 D5",
         "shapes": "-577-- 355--- 577--- -577--",
-        "hint": "Power-chord verse; longer verses keep walking the same D5–G5–A5 loop"
+        "hint": "Hold the D5 the second time through"
       },
       {
         "section": "Interlude",
@@ -1072,6 +1072,12 @@
         "chords": "(D A Bm G) ×2 | (A D G Em) | (A D G A) | (G A D Bm G)",
         "shapes": "-577-- 577--- -244-- 355--- 577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
         "hint": "Instrumental ×2; vocals \"Oh Lola\" on A, land Em on \"pain\""
+      },
+      {
+        "section": "Outro",
+        "chords": "(G A D +Bm) | (G A D)",
+        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577--",
+        "hint": "Second half of the chorus; ends on D"
       }
     ],
     "form": [
@@ -1083,7 +1089,7 @@
       "Verse",
       "Chorus",
       "Bridge",
-      "Chorus"
+      "Outro"
     ]
   },
   "24-mary-jane-s-last-dance": {
