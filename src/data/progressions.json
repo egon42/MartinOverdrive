@@ -457,13 +457,8 @@
     "sections": [
       {
         "section": "Shuffle",
-        "chords": "E E E E7 | A7 A7 E E | B7 A7 E B7",
-        "hint": "Texas shuffle; E7 tags at line ends"
-      },
-      {
-        "section": "Sparse",
-        "chords": "E E E E7 | A7 A7 E E | B7 A7 E B7",
-        "hint": "V3 + V4 only: one hit per chord until dig-in; after \"long and lean\" / \"finest wine\" then shuffle"
+        "chords": "E E E E7 | A7 A7 E E | B7 A7 E +B7",
+        "hint": "Texas shuffle; E7 tags at line ends. V3 + V4: one hit per chord until dig-in; after \"long and lean\" / \"finest wine\" then shuffle"
       },
       {
         "section": "Outro",
@@ -476,14 +471,7 @@
       }
     ],
     "form": [
-      "Shuffle",
-      "Shuffle",
-      "Shuffle",
-      "Sparse",
-      "Shuffle",
-      "Sparse",
-      "Shuffle",
-      "Shuffle",
+      "Shuffle ×8",
       "Outro"
     ]
   },
