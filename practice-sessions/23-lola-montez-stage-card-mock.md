@@ -20,9 +20,8 @@ CHORUS
 (G A D +Bm)
 (G A D +A +Bm +A)
 (G A D +Bm)
-(G A D)
-(G A F#m)
-hint: "yeah-eah" ends D; 2nd time F#m into the Break
+(G A D *F#m)
+hint: "yeah-eah" ends D; 2nd time play the blue F#m instead, into the Break
 
 BREAK
 (D A Bm G) ×2
@@ -44,7 +43,8 @@ Notes:
 
 - Chorus timing (Ryan 2026-07-27): four phrases all anchored G A D; the Bm and
   the A-Bm-A run are short + tags, not full measures. Same 17 chords as the
-  sheets. Last two rows are the 1st/2nd endings: D normally, F#m into the Break.
+  sheets. `*F#m` is the new alternate chip: blue like the hint lyrics, meaning
+  play it instead of the D on the pass the hint names (2nd time, into Break).
 - Bridge already uses the chorus trick (rows anchored A D G, landing chord
   differs); + tags do not fit here because Em on "pain" and the closing A are
   held landings, not short hits.

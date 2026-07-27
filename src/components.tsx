@@ -788,7 +788,9 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
   // No-op without an innerRef (practice page): natural height, nothing to fit.
   const refitCheat = () => {
     const el = innerRef?.current
-    if (!el || zoomFrozen) return
+    // Cheat variant flows into the page scroll (no one-screen fit), so never shrink it —
+    // expanding More fills just makes the page taller. Only the roadmap card refits.
+    if (!el || zoomFrozen || variant === 'cheat') return
     requestAnimationFrame(() => {
       el.style.setProperty('--sheet-fit', '1')
       const ratio = el.clientHeight / el.scrollHeight

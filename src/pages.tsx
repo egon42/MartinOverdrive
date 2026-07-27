@@ -378,7 +378,10 @@ export function Show() {
   const zoomInitial = measureScroll || effective === 'ryan' ? 0.75 : 1
   const { zoom, setZoom, elRef: zoomElRef, initialZoom } = useZoom(`${song.id}:${effective}`, zoomMin, effective !== 'tabs', zoomInitial)
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
-  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1)
+  // The Cheat tab flows into the page scroll (no one-screen shrink) — freeze the height
+  // auto-fit there so --sheet-fit stays 1 and chord rows render at natural size. The Chords
+  // (roadmap) card still auto-fits to one screen.
+  const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1 || effective === 'cheat')
   const lyricsRef = useRef<HTMLDivElement>(null)
   const ryanRef = useRef<HTMLDivElement>(null)
   const lanesRef = useRef<HTMLDivElement>(null)
@@ -515,7 +518,7 @@ export function Show() {
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => goTo(index + 1)} aria-label="Next song">›</button>
     </div>
     <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCardView={effective !== 'chords' ? () => setView('chords') : () => setView('cheat')} cardLabel={effective !== 'chords' ? 'Open the chords card instead' : 'Open the cheat card instead'}>
-    <article ref={zoomElRef as RefObject<HTMLElement>} style={{ ['--zoom' as string]: zoom } as React.CSSProperties} className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}${effective !== 'tabs' ? ' show-zoomable' : ''}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
+    <article ref={zoomElRef as RefObject<HTMLElement>} style={{ ['--zoom' as string]: zoom } as React.CSSProperties} className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}${effective === 'cheat' ? ' cheat-view--flow' : ''}${effective !== 'tabs' ? ' show-zoomable' : ''}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
         {ryanOn && <button type="button" role="tab" aria-selected={effective === 'ryan'} aria-pressed={effective === 'ryan' ? ryanMeasure : undefined}
