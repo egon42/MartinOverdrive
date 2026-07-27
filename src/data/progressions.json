@@ -142,7 +142,7 @@
         "section": "Verse",
         "chords": "F# A B E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
-        "hint": "Land the measure ends — last two chords (B A) are the catch-up"
+        "hint": "Land the measure ends - last two chords (B A) are the catch-up"
       },
       {
         "section": "Verse (in)",
@@ -169,7 +169,7 @@
         "section": "Clap",
         "chords": "(~E ~A ~F# ~B) ×3 C#m D",
         "shapes": "022--- -022-- 244--- -244-- -466-- -577--",
-        "hint": "Clap section — hands on changes; single-string lead over claps (C#m box @ 9). See Fills."
+        "hint": "Clap section - hands on changes; single-string lead over claps (C#m box @ 9). See Fills."
       },
       {
         "section": "Solo",
@@ -211,13 +211,13 @@
         "section": "Riff",
         "chords": "~B5",
         "shapes": "-244--",
-        "hint": "Sit — lead riff; \"A-ha, ha, ha\""
+        "hint": "Sit - lead riff; \"A-ha, ha, ha\""
       },
       {
         "section": "Chug",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "\"Thunder!\" — palm B5"
+        "hint": "\"Thunder!\" - palm B5"
       },
       {
         "section": "Verse",
@@ -235,7 +235,7 @@
         "section": "Hit",
         "chords": "B5",
         "shapes": "-244--",
-        "hint": "One-liner; \"You've been thunderstruck\" — NOT the full stamp yet"
+        "hint": "One-liner; \"You've been thunderstruck\" - NOT the full stamp yet"
       },
       {
         "section": "Verse 2",
@@ -247,7 +247,7 @@
         "section": "Knees",
         "chords": "A5 B5 A5 E5",
         "shapes": "-022-- -244-- -022-- 022---",
-        "hint": "\"I was shaking at the knees\" — A B A E (different from drums pre)"
+        "hint": "\"I was shaking at the knees\" - A B A E (different from drums pre)"
       },
       {
         "section": "Chorus",
@@ -289,7 +289,7 @@
         "section": "Outro",
         "chords": "B5 A5 E5 A5 A5 E5",
         "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
-        "hint": "Stamp; \"Thunderstruck\" — close"
+        "hint": "Stamp; \"Thunderstruck\" - close"
       }
     ],
     "form": [
@@ -323,7 +323,7 @@
         "section": "Verse",
         "chords": "(E B C#m A) (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
-        "hint": "Story verses — not the big ending yet"
+        "hint": "Story verses - not the big ending yet"
       },
       {
         "section": "Interlude",
@@ -335,7 +335,7 @@
         "section": "Pre-Chorus",
         "chords": "(A E) ×3 (A B E B E A)",
         "shapes": "-022-- 022--- -022-- -244-- 022--- -244-- 022--- -022--",
-        "hint": "\"Strangers waiting\" — A-E climb; this is NOT the final chorus"
+        "hint": "\"Strangers waiting\" - A-E climb; this is NOT the final chorus"
       },
       {
         "section": "Solo",
@@ -347,7 +347,7 @@
         "section": "Chorus",
         "chords": "(E B C#m A) (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
-        "hint": "\"Don't stop believin'\" — ONLY at the very end; rides to fade"
+        "hint": "\"Don't stop believin'\" - ONLY at the very end; rides to fade"
       }
     ],
     "form": [
@@ -369,7 +369,7 @@
         "section": "Fills",
         "chords": "",
         "hint": "^1 \"long\" · ^2 \"looked\" · ^3 \"men\" (into ROCK)",
-        "tab": "Fill ^1 — \"long and lonesome road\"\nE-|-------|-------|--0-------|--------|\nB-|5--(5)-|-------|--0-0-(0)-|(0)-----|\nG-|7b-(7)-|-------|--5-------|--------|\nD-|-------|6b-(6)-|----------|--------|\nA-|-------|-------|----------|--------|\nE-|-------|-------|----------|--------|\n\nFill ^2 — \"looked\"\nE-|-------------|-------------|---------|-------------|--------|\nB-|-------------|-------------|---------|----3-0---3-3-|1-------|\nG-|----12-12-14-|14-----12----|12h-14---|14--2--------|--------|\nD-|-------------|--12/-14--14-|---------|--------3-----|--------|\nA-|-------------|-------------|---------|-------------|--------|\nE-|-------------|-------------|-----15/-|-------------|--------|\n\nFill ^3 — \"men\" (into ROCK)\nE-|--------|--------|-------------|-------------|\nB-|--------|--------|-------------|-------------|\nG-|--------|------7-|7b-(7)-----5-|-------------|\nD-|--------|--------|----------7-|----5-7------|\nA-|----3h5-|-5------|------------|--5h7---7----|\nE-|-5------|--------|-------------|-------------|"
+        "tab": "Fill ^1 - \"long and lonesome road\"\nE-|-------|-------|--0-------|--------|\nB-|5--(5)-|-------|--0-0-(0)-|(0)-----|\nG-|7b-(7)-|-------|--5-------|--------|\nD-|-------|6b-(6)-|----------|--------|\nA-|-------|-------|----------|--------|\nE-|-------|-------|----------|--------|\n\nFill ^2 - \"looked\"\nE-|-------------|-------------|---------|-------------|--------|\nB-|-------------|-------------|---------|----3-0---3-3-|1-------|\nG-|----12-12-14-|14-----12----|12h-14---|14--2--------|--------|\nD-|-------------|--12/-14--14-|---------|--------3-----|--------|\nA-|-------------|-------------|---------|-------------|--------|\nE-|-------------|-------------|-----15/-|-------------|--------|\n\nFill ^3 - \"men\" (into ROCK)\nE-|--------|--------|-------------|-------------|\nB-|--------|--------|-------------|-------------|\nG-|--------|------7-|7b-(7)-----5-|-------------|\nD-|--------|--------|----------7-|----5-7------|\nA-|----3h5-|-5------|------------|--5h7---7----|\nE-|-5------|--------|-------------|-------------|"
       },
       {
         "section": "Intro",
@@ -379,7 +379,7 @@
       {
         "section": "Rock",
         "chords": "D F C G F",
-        "hint": "\"ROCK!\" — ahhh line; 2nd pass one short stab (5Amber)"
+        "hint": "\"ROCK!\" - ahhh line; 2nd pass one short stab (5Amber)"
       },
       {
         "section": "Tribute",
@@ -389,7 +389,7 @@
       {
         "section": "Chorus",
         "chords": "Am G D F",
-        "hint": "\"To The Greatest Song in the World\" · \"All right!\" — loops for solo / spoken / climax too"
+        "hint": "\"To The Greatest Song in the World\" · \"All right!\" - loops for solo / spoken / climax too"
       },
       {
         "section": "Scat",
@@ -399,7 +399,7 @@
       {
         "section": "Outro",
         "chords": "E F +G E F +G E F",
-        "hint": "\"All right!\" — E F +G tag, twice; plain E F to close"
+        "hint": "\"All right!\" - E F +G tag, twice; plain E F to close"
       }
     ],
     "form": [
@@ -422,17 +422,17 @@
       {
         "section": "Verse",
         "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
-        "hint": "D ending — \"look at you\""
+        "hint": "D ending - \"look at you\""
       },
       {
         "section": "Verse (2nd ending)",
         "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G C E)",
-        "hint": "C ending — \"Still my guitar\""
+        "hint": "C ending - \"Still my guitar\""
       },
       {
         "section": "Bridge",
         "chords": "A C#m F#m C#m Bm E Esus4 E",
-        "hint": "\"I don't know why\"; Bm two full bars — don't jump to E"
+        "hint": "\"I don't know why\"; Bm two full bars - don't jump to E"
       },
       {
         "section": "Solo",
@@ -560,7 +560,7 @@
       {
         "section": "Interlude",
         "chords": "G A7sus4 G/B Cadd9",
-        "hint": "Amp swap if you use one — back before Bridge"
+        "hint": "Amp swap if you use one - back before Bridge"
       },
       {
         "section": "Bridge",
@@ -670,7 +670,7 @@
       {
         "section": "Fills",
         "chords": "",
-        "tab": "Turnaround (D–C–G)\ne|------------------------|\nB|----3-3-----3-3----3-3--|\nG|----2-2-----0-0----0-0--|\nD|0-0-0---------0----0-0--|\nA|--------3-3------0h2----|\nE|----------------3-3-----|\n\nChorus stabs\ne|------------------|\nB|------------------|\nG|------------------|\nD|--7-9-7---5-7-5-5-|\nA|5-5-5-5-3-3-3-3-3-|\nE|------------------|",
+        "tab": "Turnaround (D-C-G)\ne|------------------------|\nB|----3-3-----3-3----3-3--|\nG|----2-2-----0-0----0-0--|\nD|0-0-0---------0----0-0--|\nA|--------3-3------0h2----|\nE|----------------3-3-----|\n\nChorus stabs\ne|------------------|\nB|------------------|\nG|------------------|\nD|--7-9-7---5-7-5-5-|\nA|5-5-5-5-3-3-3-3-3-|\nE|------------------|",
         "tabMore": "Interlude climb\ne|-------------------------------|\nB|-------------------------------|\nG|--------7-(7)-7---------5-5----|\nD|--------7-(7)-7---------5-5----|\nA|7h-8h-9---------9/-5h-7-----7/-|\nE|-------------------------------|\n\nG pull into next cycle\ne|----------------|\nB|----3-3-----3---|\nG|----0-0-----0---|\nD|----0-0-----0---|\nA|----------------|\nE|3-3-----3-3-----|"
       }
     ]
@@ -794,7 +794,7 @@
       {
         "section": "Verse",
         "chords": "Am D/F# F",
-        "hint": "Loop; later lines tag G. Count last quiet bar (Intro shapes) then heavy — don't jump early"
+        "hint": "Loop; later lines tag G. Count last quiet bar (Intro shapes) then heavy - don't jump early"
       },
       {
         "section": "Pre-Chorus",
@@ -842,7 +842,7 @@
         "section": "Intro",
         "chords": "C",
         "shapes": "-355--",
-        "hint": "Chug; C–G–C then one verse cycle into V1"
+        "hint": "Chug; C-G-C then one verse cycle into V1"
       },
       {
         "section": "Verse",
@@ -1001,7 +1001,7 @@
         "section": "Chorus",
         "chords": "D A G",
         "shapes": "--0232 -02220 320003",
-        "hint": "Open D A G — \"It just takes some time\""
+        "hint": "Open D A G - \"It just takes some time\""
       },
       {
         "section": "Solo",
@@ -1173,7 +1173,7 @@
         "section": "Verse",
         "chords": "E F#m",
         "shapes": "022100 244222",
-        "hint": "2nd verse runs longer — stay on E F#m; do not jump to pre early"
+        "hint": "2nd verse runs longer - stay on E F#m; do not jump to pre early"
       },
       {
         "section": "Pre-Chorus",
@@ -1185,7 +1185,7 @@
         "section": "Chorus",
         "chords": "E F#m",
         "shapes": "022100 244222",
-        "hint": "\"Valerie\" — same E F#m as verse; bigger feel"
+        "hint": "\"Valerie\" - same E F#m as verse; bigger feel"
       },
       {
         "section": "Verse (quiet)",
@@ -1342,7 +1342,7 @@
       {
         "section": "Chorus",
         "chords": "A E",
-        "hint": "Face — \"Mama I'm coming home\". First: hundred + short C D B tag. Second: thousand into outro"
+        "hint": "Face - \"Mama I'm coming home\". First: hundred + short C D B tag. Second: thousand into outro"
       },
       {
         "section": "Bridge",
@@ -1456,7 +1456,7 @@
         "section": "Bridge",
         "chords": "C5 D5 E5 A5",
         "shapes": "-35--- -57--- -22--- 577---",
-        "hint": "Different cycle — not the verse loop (Tennessee / mama)"
+        "hint": "Different cycle - not the verse loop (Tennessee / mama)"
       },
       {
         "section": "Solo",
