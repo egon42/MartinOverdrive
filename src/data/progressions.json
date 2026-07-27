@@ -71,9 +71,9 @@
       },
       {
         "section": "Interlude",
-        "chords": "(C F G G) | (C ~F ~G ~G)",
-        "shapes": "-355-- 133--- 355--- 355--- -355-- 133--- 355--- 355---",
-        "hint": "Pass 1 single strums; pass 2 just the C, muted octaves in on the last G:",
+        "chords": "*C *~F *~G *~G",
+        "shapes": "-355-- 133--- 355--- 355---",
+        "hint": "Single strums. 2nd pass: just the C, muted octaves in on the last G:",
         "tab": "G-|5---5---5---5---|5---5---5---5---|5---5---5---5---|4---4---4---4---|\nD-|--5---5---5---5-|--5---5---5---5-|--5---5---5---5-|--5---5---5---5-|"
       },
       {
@@ -97,7 +97,7 @@
       "Verse ×2",
       "Pre-Chorus",
       "Chorus ×2",
-      "Interlude",
+      "Interlude ×2",
       "Pre-Chorus",
       "Bridge",
       "Pre-Chorus",
