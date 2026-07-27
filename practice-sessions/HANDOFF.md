@@ -58,5 +58,6 @@ card; add a Bridge hint only if it trips anyone in practice). Freeze after **Thu
 - Stage = **Cheat only**
 - Desk continue = app (not fingering coach); fingering = downtime only (`desk board` if wanted)
 - Quoted lyric hints = blue; `+Chord` = tag; `~Chord` = ghost; `*Chord` = blue alternate;
-  distinct markers stack (`*+G` = blue alternate tag, FBG chorus); `cheatHide` = omit from Cheat
+  distinct markers stack (`*+G` = blue alternate tag, FBG chorus; `*~Am` = blue ghost,
+  skipped only on the cued pass, Dani hangs); `cheatHide` = omit from Cheat
 - Auto commit + bare `git push` on `dev` for app/data (not `fill_page.html`)

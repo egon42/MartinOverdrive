@@ -3240,6 +3240,50 @@
   ],
   "15-dani-california": [
     {
+      "label": "pre blue-ghost hangs 2026-07-27",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am G Dm Am"
+        },
+        {
+          "section": "Verse",
+          "chords": "Am G Dm Am | Am G Dm",
+          "hint": "Funk scratch on barres. Into chorus: hang Dm (\"survive\" / \"death\" / \"Gone too fast\"); skip closing Am"
+        },
+        {
+          "section": "Chorus",
+          "chords": "F C Dm G | Dm",
+          "hint": "Slides into barres. End hang Dm \"Yeah, yeah\"; skip the G"
+        },
+        {
+          "section": "Interlude",
+          "chords": "Am G Dm Am"
+        },
+        {
+          "section": "Bridge",
+          "chords": "Bm G D F#"
+        },
+        {
+          "section": "Solo / Outro",
+          "chords": "F C Dm G",
+          "hint": "Lead over the chorus loop, rides the fade"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×8",
+        "Chorus ×4",
+        "Interlude ×2",
+        "Verse ×4",
+        "Chorus ×4",
+        "Bridge ×4",
+        "Verse ×4",
+        "Chorus ×2",
+        "Solo / Outro ×8"
+      ]
+    },
+    {
       "label": "Pre Dm-hold cues 2026-07-26",
       "sections": [
         {

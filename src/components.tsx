@@ -145,7 +145,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const style: CSSProperties = box
     ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
     : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
-  const label = ghost ? `${name} (don't play)` : tag && alt ? `${name} alternate tag (short hit on the pass the hint names)` : tag ? `${name} tag (short hit)` : alt ? `${name} alternate (play instead on the pass the hint names)` : name
+  const label = ghost && alt ? `${name} (skip on the pass the hint names)` : ghost ? `${name} (don't play)` : tag && alt ? `${name} alternate tag (short hit on the pass the hint names)` : tag ? `${name} tag (short hit)` : alt ? `${name} alternate (play instead on the pass the hint names)` : name
   // With the "Play chord on tap" setting on, any tap on the chip strums the shape
   // (opening or closing), and tapping the open diagram replays it (the outside-
   // pointerdown closer already ignores taps inside popRef, so a replay tap can't
@@ -176,15 +176,15 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     'chord-chip',
     ghost && 'chord-chip--ghost',
     tag && !ghost && 'chord-chip--tag',
-    alt && !ghost && 'chord-chip--alt',
+    alt && 'chord-chip--alt',
     gRoot && 'chord-chip--g',
   ].filter(Boolean).join(' ') + flashClass
-  const chipTitle = ghost ? "Don't play; keep the beat" : tag && alt ? 'Alternate tag: short hit, played on the pass the hint names' : tag ? 'Tag: short hit, not a full measure' : alt ? 'Alternate: play this instead on the pass the hint names' : undefined
+  const chipTitle = ghost && alt ? 'Blue ghost: skip this one on the pass the hint names' : ghost ? "Don't play; keep the beat" : tag && alt ? 'Alternate tag: short hit, played on the pass the hint names' : tag ? 'Tag: short hit, not a full measure' : alt ? 'Alternate: play this instead on the pass the hint names' : undefined
   // Ryan power chips / Shapes retap: replace the chord name with a fingering chip (still tappable).
   if (fingering && (fingeringOnly || powerChip)) {
     const body = powerChip ? formatPowerFingering(fingering) : formatVerticalFingering(fingering)
     return <span className="chord-chip-wrap" ref={ref}>
-      <b className={`chord-chip${ghost ? ' chord-chip--ghost' : ''}${tag && !ghost ? ' chord-chip--tag' : ''}${alt && !ghost ? ' chord-chip--alt' : ''} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}${flashClass}`} role="button" tabIndex={0} aria-expanded={open}
+      <b className={`chord-chip${ghost ? ' chord-chip--ghost' : ''}${tag && !ghost ? ' chord-chip--tag' : ''}${alt ? ' chord-chip--alt' : ''} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}${flashClass}`} role="button" tabIndex={0} aria-expanded={open}
         aria-label={label} title={chipTitle} {...openHandlers}>
         {/* Power chips: × mute stays on-acid (same color as frets). Shapes mode greys mutes. */}
         {powerChip ? body : <FingeringText text={body} />}

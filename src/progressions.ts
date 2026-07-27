@@ -26,7 +26,8 @@ import versionsData from './data/progressionVersions.json'
 // Prefix a chord with + for a short tag hit, not a full measure ("E F +G").
 // Prefix a chord with * for an alternate chip ("G A D *F#m"): rendered in the hint blue,
 // meaning play it instead of its neighbor on the pass the section hint names.
-// Distinct markers stack on one chip ("*+G" = blue alternate tag).
+// Distinct markers stack on one chip ("*+G" = blue alternate tag; "*~Am" = blue ghost,
+// played normally but skipped on the pass the section hint names).
 // Use `|` to force a line break before the next span ("(C G Bb F Am G C) | (C G Bb F Am G Ab)").
 // Parentheses alone do NOT stack lines — only `|` (or natural wrap) does.
 export interface ProgSection {
@@ -137,7 +138,8 @@ export function formStepBase(label: string): string {
  * - "~A" / "(E ~A)" → ghost chip (shown for beat, don't play)
  * - "+G" / "(E F +G)" → tag chip (short hit, not a full measure)
  * - "*F#m" / "(G A D *F#m)" → alternate chip (hint blue; played instead on the pass the hint names)
- * - Distinct markers stack on one chip: "*+G" = blue alternate tag (duplicates throw)
+ * - Distinct markers stack on one chip (duplicates throw): "*+G" = blue alternate tag;
+ *   "*~Am" = blue ghost (played normally, skipped on the pass the hint names)
  * Throws on unbalanced parens, empty groups, or ×N not attached to a group.
  */
 export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
