@@ -739,15 +739,15 @@
       },
       {
         "section": "Chorus",
-        "chords": "E A B C#m G#m",
+        "chords": "E A B +C#m +G#m",
         "shapes": "022100 -02220 -24442 -46654 466444",
         "hint": "Big open. Sit out muted at \"two tickets\""
       },
       {
         "section": "Walk-up",
-        "chords": "A B C#m G#m A B",
-        "shapes": "-02220 -24442 -46654 466444 -02220 -24442",
-        "hint": "After the 3rd chorus cycle"
+        "chords": "E A B +C#m +G#m +A +B",
+        "shapes": "022100 -02220 -24442 -46654 466444 -02220 -24442",
+        "hint": "Chorus line again off \"with me\", A B on the end"
       },
       {
         "section": "Bridge",
@@ -758,7 +758,8 @@
       {
         "section": "Outro",
         "chords": "E B E A G#m F#m E",
-        "shapes": "022100 -24442 022100 -02220 466444 244222 022100"
+        "shapes": "022100 -24442 022100 -02220 466444 244222 022100",
+        "hint": "Slow the G#m F#m walk-down, end big on E"
       }
     ],
     "form": [

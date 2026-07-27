@@ -23,12 +23,12 @@ C#m A B
 hint: "know who I am"
 
 CHORUS
-E A B C#m G#m
+E A B +C#m +G#m
 hint: Big open. Sit out muted at "two tickets"
 
 WALK-UP
-A B C#m G#m A B
-hint: After the 3rd chorus cycle
+E A B +C#m +G#m +A +B
+hint: Chorus line again off "with me", A B on the end
 
 BRIDGE
 (E Asus2) ×3 C#m G#m A B
@@ -36,7 +36,13 @@ hint: "Oh yeah, Dirtbag" vamp; C#m at "what she's missing"
 
 OUTRO
 E B E A G#m F#m E
+hint: Slow the G#m F#m walk-down, end big on E
 ```
+
+Outro verified vs record 2026-07-27 (3 chart sources agree): one riff cycle after the
+final bridge, then a slowing walk-down to a clean big E, no fade. On the record the
+walk-down is a bass-note descent (A G# F# into E); G#m F#m E is the band chart's
+harmonization of it. Kept as chords per the leader chart + Ryan sheet.
 
 ## Chords tab (roadmap)
 
