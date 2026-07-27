@@ -55,4 +55,4 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 
 - **cheatHide** — optional section flag; Cheat tab omits; Chords roadmap still uses form.
 - **Hunger row-split** — bare `A B | C D` only breaks before the next single chord; use `(row1) | (row2)`.
-- Kill-zone complete 2026-07-27 morning. Phone-check `/MartinOverdrive/dev/` Cheat tabs; freeze still Thu night for any tweaks from evening play.
+- Kill-zone complete 2026-07-27 morning. **Verified live on `/dev/` Cheat** same day (browser pass). Freeze still Thu night for any tweaks from evening play.
