@@ -59,9 +59,9 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "(C) | (C G F C)",
-        "shapes": "-355-- -355-- 355--- 133--- -355--",
-        "hint": "\"Say it ain't so\": ring C the first two; walk C G F C after Interlude and Bridge"
+        "chords": "C",
+        "shapes": "-355--",
+        "hint": "\"Say it ain't so\": ring C"
       },
       {
         "section": "Chorus",
@@ -71,9 +71,10 @@
       },
       {
         "section": "Interlude",
-        "chords": "~C ~F ~G ~G",
+        "chords": "C F G G",
         "shapes": "-355-- 133--- 355--- 355---",
-        "hint": "Single strums, then muted octaves C C C B"
+        "hint": "Single strums, then your muted octave line:",
+        "tab": "G-|5---5---5---5---|5---5---5---5---|4---4---4---4---|5---5---5---5---|5---5---5---5---|\nD-|--5---5---5---5-|--5---5---5---5-|--5---5---5---5-|--5---5---5---5-|--5---5---5---5-|"
       },
       {
         "section": "Bridge",
