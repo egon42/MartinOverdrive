@@ -558,7 +558,7 @@ export function Show() {
             : <CheatCard song={song} innerRef={cheatRef} variant={effective === 'cheat' ? 'cheat' : 'chords'} zoomFrozen={zoom !== 1}/>}</article>
     </ShowSongBoundary>
     {effective !== 'tabs' && zoom !== initialZoom && <button type="button" className="show-zoom-reset" onClick={() => setZoom(initialZoom)} aria-label="Reset zoom to fit">{zoom.toFixed(1)}× · Reset</button>}
-    {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className={`show-upnext${effective === 'cheat' ? ' show-upnext--sticky' : ''}`} onClick={() => goTo(index + 1)} aria-label={`Next song: ${next.title}`}>
+    {index < setSongs.length - 1 && (() => { const next = setSongs[index + 1]; return <button type="button" className="show-upnext" onClick={() => goTo(index + 1)} aria-label={`Next song: ${next.title}`}>
       <span className="show-upnext-label">Up next</span><b>{next.title}</b> {next.artist}{next.tuning !== 'Standard' ? <span className="cheat-chip cheat-tuning">{next.tuning}</span> : null}<PresetBadges songId={next.id}/>
     </button> })()}
     {liveOpen && <LiveOverlay onClose={() => setLiveOpen(false)} onJump={(songId) => { const at = setSongs.findIndex((item) => item.id === songId); if (at >= 0) goTo(at) }} />}
