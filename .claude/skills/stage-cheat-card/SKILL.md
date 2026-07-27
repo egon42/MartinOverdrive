@@ -88,6 +88,7 @@ Full notation in [reference.md](reference.md). Short version:
 | Lyric landmark | `hint: "quoted lyric"` — **one hint per section**; keep the quotes so show mode highlights them |
 | Cue under a mid-section row | Split into two section names **or** combine into one hint |
 | Don't-play beat chip | `~Am` |
+| Short tag (not a full bar) | `+G` |
 | Fills | Cheat tab only; never in `form` |
 
 Copy rules:

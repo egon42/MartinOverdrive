@@ -63,7 +63,7 @@ function ChordDiagram({ name, shape }: { name: string; shape: ChordShape }) {
 // `songId` enables the per-song "Shapes" toggle (fingering-only chips).
 // `forcePowerFingering`: Ryan opt-in — power chords (*5) always render as 4-string
 // fingering chips (EADG) with no Shapes retap required.
-export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghost = false, bare = false, forcePowerFingering = false }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string; ghost?: boolean; bare?: boolean; forcePowerFingering?: boolean }) {
+export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghost = false, tag = false, bare = false, forcePowerFingering = false }: { name: string; curatedShape?: string; surface?: FingeringSurface; songId?: string; ghost?: boolean; tag?: boolean; bare?: boolean; forcePowerFingering?: boolean }) {
   const { settings, isFingeringOnly } = useSettings()
   const prefs = settings[surface]
   const fingeringOnly = !!songId && isFingeringOnly(songId, surface)
@@ -140,7 +140,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const style: CSSProperties = box
     ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
     : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
-  const label = ghost ? `${name} (don't play)` : name
+  const label = ghost ? `${name} (don't play)` : tag ? `${name} tag (short hit)` : name
   const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`}>
     {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
   </span>
@@ -156,14 +156,16 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const chipClass = [
     'chord-chip',
     ghost && 'chord-chip--ghost',
+    tag && !ghost && 'chord-chip--tag',
     gRoot && 'chord-chip--g',
   ].filter(Boolean).join(' ')
+  const chipTitle = ghost ? "Don't play; keep the beat" : tag ? 'Tag — short hit, not a full measure' : undefined
   // Ryan power chips / Shapes retap: replace the chord name with a fingering chip (still tappable).
   if (fingering && (fingeringOnly || powerChip)) {
     const body = powerChip ? formatPowerFingering(fingering) : formatVerticalFingering(fingering)
     return <span className="chord-chip-wrap" ref={ref}>
-      <b className={`${ghost ? 'chord-chip chord-chip--ghost' : 'chord-chip'} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}`} role="button" tabIndex={0} aria-expanded={open}
-        aria-label={label} title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}>
+      <b className={`${ghost ? 'chord-chip chord-chip--ghost' : tag ? 'chord-chip chord-chip--tag' : 'chord-chip'} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}`} role="button" tabIndex={0} aria-expanded={open}
+        aria-label={label} title={chipTitle} {...openHandlers}>
         {/* Power chips: × mute stays on-acid (same color as frets). Shapes mode greys mutes. */}
         {powerChip ? body : <FingeringText text={body} />}
       </b>
@@ -172,7 +174,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   }
   const chip = <>
     <b className={chipClass} role="button" tabIndex={0} aria-expanded={open} aria-label={label}
-      title={ghost ? "Don't play; keep the beat" : undefined} {...openHandlers}>{name}</b>
+      title={chipTitle} {...openHandlers}>{tag && !ghost ? <><span className="chord-chip-tag-mark" aria-hidden>+</span>{name}</> : name}</b>
     {pop}
   </>
   // Ref stays on the chip-only wrap so the popover aims at the name, not the fingering.
@@ -753,7 +755,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
     ? (variant === 'chords' ? cheatRowsFor(custom) : basicRowsFor(custom))
     : derived?.map((row) => ({
         label: row.label,
-        spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], shapes: [], times: 1 })),
+        spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], tags: [false], shapes: [], times: 1 })),
         hint: undefined as string | undefined,
         tab: undefined as string | undefined,
         tabMore: undefined as string | undefined,
@@ -799,7 +801,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
               <span className="cheat-prog-chords">{row.spans.map((span, s) =>
                 <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
                   {span.chords.map((chord, j) =>
-                    <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} surface="cheat" songId={song.id} key={j} />)}
+                    <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} tag={span.tags[j]} surface="cheat" songId={song.id} key={j} />)}
                   {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
                 </span>)}</span>
               {row.hint && <span className="cheat-prog-hint">{renderCheatHint(row.hint)}</span>}

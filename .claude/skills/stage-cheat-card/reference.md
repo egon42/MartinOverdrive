@@ -105,6 +105,7 @@ Same grammar as `src/progressions.ts` header comments:
 - `Verse ×4` on **form** when the whole section repeats
 - `|` — force line break before next span
 - `~Chord` — ghost / don't-play chip
+- `+Chord` — **tag** chip (short hit, not a full measure), e.g. `E F +G`
 - `shapes` — 6-char tokens aligned 1:1 with chord **names as written** (one pass per group)
 
 ## Density vs auto-fit
