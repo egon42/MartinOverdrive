@@ -4,20 +4,22 @@
       {
         "section": "Intro",
         "chords": "Em",
-        "hint": "Instrumental riff only. Wait for the vocal, then start the muted chug."
+        "hint": "Sit out the lead riff, ringing Em. Start the muted chug on the vocal."
       },
       {
         "section": "Verse",
-        "chords": "Em C D"
+        "chords": "Em C D",
+        "hint": "V1 \"You could've been\", V2 \"You stormed off\""
       },
       {
         "section": "Chorus",
-        "chords": "F Am C"
+        "chords": "F Am C",
+        "hint": "\"Hang on to the glory\" then \"With truth on the shores\""
       },
       {
         "section": "Bridge",
         "chords": "F Am G F",
-        "hint": "1st pass (first One last kiss): syncopated. 2nd pass (second One last kiss): same straight chug as the verses."
+        "hint": "Both passes start \"One last kiss\": 1st syncopated, 2nd straight verse chug"
       },
       {
         "section": "Solo",
@@ -27,7 +29,7 @@
       {
         "section": "Outro",
         "chords": "Em C D",
-        "hint": "Verse pattern: oh’s + strings, fades out"
+        "hint": "\"Oh oh oh\" + strings over the verse pattern, ride it out"
       }
     ],
     "form": [
