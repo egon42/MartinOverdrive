@@ -253,7 +253,7 @@ function ShowStageStrip({ song, includeHomeFrets = false }: { song: Song, includ
   const capo = progressionFor(song.id)?.capo
   return <div className="show-stage-strip">
     {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
-    {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>Transpose {transposeLabel(transpose.semitones)}</span>}
+    {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>T {transposeLabel(transpose.semitones)}</span>}
     {capo && <span className="cheat-chip cheat-capo">{capo}</span>}
     <PresetBadges songId={song.id} showNotes />
     {/* Sheet views park home-fret chips next to AutoScrollBar so they survive chrome collapse. */}
