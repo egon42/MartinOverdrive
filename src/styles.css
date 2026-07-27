@@ -126,8 +126,11 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-chip--ghost.chord-chip--g{text-decoration:underline line-through;text-underline-offset:.12em;text-decoration-thickness:.09em}
 /* Short tag hit (not a full measure) — outline + leading +; still played */
 .chord-chip--tag{background:transparent;color:var(--acid);border:1px solid var(--acid);font-weight:750;padding:1px 6px;font-size:.92em}
-/* Alternate chip: hint-lyric blue fill = play this instead on the pass the hint names */
-.chord-chip--alt{background:var(--blue);color:#f2f6fa}
+/* Alternate chip: hint-lyric blue fill = play this instead on the pass the hint names.
+   Black outline on the white text: at chip size the mid-tone blue washed the letters out.
+   paint-order draws the stroke behind the fill so the glyphs keep their weight instead of
+   being eaten from both sides (browsers without paint-order still get a centered stroke). */
+.chord-chip--alt{background:var(--blue);color:#f2f6fa;-webkit-text-stroke:.06em #000;paint-order:stroke fill}
 /* Stacked markers: an alternate tag keeps tag sizing but goes blue all over */
 .chord-chip--tag.chord-chip--alt{color:#f2f6fa;border-color:var(--blue)}
 /* Skip-marked chip (*~Am): normal filled chip with a dashed blue ring floating just
@@ -135,7 +138,7 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    skipped only on the pass the hint names. Deliberately NOT ghost-styled: it is played
    most passes, so it must read as a normal chord at a glance. A border touching the
    acid fill was too hard to see (Ryan 2026-07-27). */
-.chord-chip--ghost.chord-chip--alt{background:var(--acid);color:var(--on-acid);border:0;outline:2px dashed var(--blue);outline-offset:2px;text-decoration:none;font-weight:850;opacity:1}
+.chord-chip--ghost.chord-chip--alt{background:var(--acid);color:var(--on-acid);border:0;outline:2px dashed var(--blue);outline-offset:2px;text-decoration:none;font-weight:850;opacity:1;-webkit-text-stroke-width:0}
 .chord-chip--ghost.chord-chip--alt.chord-chip--g{text-decoration:underline;text-underline-offset:.12em;text-decoration-thickness:.09em}
 .chord-chip-tag-mark{opacity:.75;font-weight:800;margin-right:.12em}
 .chord-chip--fret{background:transparent;color:var(--acid);border:1px solid var(--acid);font-variant-numeric:tabular-nums;min-width:1.4em;text-align:center}
@@ -155,6 +158,9 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-chip--fingering{white-space:pre;line-height:1.1;letter-spacing:0;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:4px 6px;vertical-align:middle}
 /* Power fingering (Ryan): same box metrics as name chips in above-mode; bold; × mute. */
 .chord-chip--power{white-space:nowrap;letter-spacing:.06em;font-weight:900;vertical-align:baseline;-webkit-text-stroke:.045em currentColor}
+/* Power fingering on an alternate chip: keep the alt chip's black outline, not the
+   currentColor bolden (this rule has to sit after --power to win the cascade). */
+.chord-chip--power.chord-chip--alt:not(.chord-chip--ghost){-webkit-text-stroke:.06em #000}
 .sheet-line--above .chord-chip--power,.sheet-line--above-chords .chord-chip--power{font-size:.8em;padding:.09em .5em;line-height:1.2;border-radius:.45em}
 .sheet-full{max-width:820px}.sheet-meta{color:var(--muted);font-size:.78rem;margin:0 0 8px}.sheet-line{margin:0 0 5px;line-height:1.75}.sheet-line .chord-chip{margin:0 2px}
 /* Instrumental/chord-only rows: pack chips horizontally instead of one tall row each */
