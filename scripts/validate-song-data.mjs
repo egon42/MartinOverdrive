@@ -197,9 +197,25 @@ if (PATTERN_RE) {
       const trimmed = line.trim()
       if (!trimmed.startsWith('@')) return
       for (const token of trimmed.split(/\s+/)) {
-        if (token.startsWith('@') && !PATTERN_RE.test(token)) {
+        if (!token.startsWith('@')) continue
+        const match = PATTERN_RE.exec(token)
+        if (!match) {
           fail('Pattern chips', `${entry}:${index + 1} "${token}" starts with @ but fails PATTERN_RE — ` +
             `it will render as literal lyric text, not a pattern chip (letters/digits/hyphen, max 16 chars).`)
+          continue
+        }
+        // The chip's whole job is to name a figure the cheat card also names. If it
+        // resolves to nothing, the two surfaces have drifted and tapping it is silent.
+        const songId = entry.replace(/\.(chords|ryan)\.txt$/, '')
+        const sections = progressions?.[songId]?.sections
+        if (!Array.isArray(sections)) continue
+        const wanted = match[1].toLowerCase()
+        const known = sections.some((s) =>
+          String(s.pattern ?? '').toLowerCase() === wanted || String(s.section ?? '').toLowerCase() === wanted)
+        if (!known) {
+          const names = [...new Set(sections.map((s) => s.pattern ?? s.section).filter(Boolean))]
+          fail('Pattern chips', `${entry}:${index + 1} "${token}" matches no pattern or section on ${songId}'s cheat card — ` +
+            `tapping it plays nothing. Known: ${names.join(', ')}.`)
         }
       }
     })
@@ -243,7 +259,49 @@ function validateCard(songId, entry, where) {
           fail(songId, `${label}: shapes must be exactly 6 chars — offending: ${badShapes.join(', ')}.`)
         }
       }
+      // `beats` drives pattern tap-to-play and follows the same as-written alignment as
+      // shapes; a short array would silently retime the tail of the progression.
+      if (section.beats != null) {
+        if (!Array.isArray(section.beats) || section.beats.some((n) => typeof n !== 'number' || !(n > 0))) {
+          fail(songId, `${label}: "beats" must be an array of positive numbers.`)
+        } else if (section.beats.length !== writtenChordCount) {
+          fail(songId, `${label}: ${section.beats.length} beats for ${writtenChordCount} written chords — must be 1:1 with names as written (group contents once).`)
+        }
+      }
+      if (section.pattern != null && (typeof section.pattern !== 'string' || !section.pattern.trim())) {
+        fail(songId, `${label}: "pattern" must be a non-empty string.`)
+      }
     })
+    // Section ids are the `form` lookup key and must stay unique even when several
+    // sections share one display `pattern` (five bare-B5 spots all labelled CHUG).
+    const ids = sections.map((s) => (typeof s.section === 'string' ? s.section.trim() : '')).filter(Boolean)
+    const dupeIds = ids.filter((id, i) => ids.indexOf(id) !== i)
+    if (dupeIds.length) fail(songId, `${where}: duplicate section ids: ${[...new Set(dupeIds)].join(', ')} — form lookups would resolve to the first only.`)
+    // Sections sharing a `pattern` collapse to ONE Cheat row and ONE tap-to-play figure —
+    // the first one wins. If they don't actually play the same chords, the merge hides a
+    // different figure behind a shared name, so it has to be declared with patternVariant.
+    const byPattern = new Map()
+    for (const s of sections) {
+      const name = typeof s.pattern === 'string' ? s.pattern.trim().toLowerCase() : ''
+      if (!name) continue
+      const chords = String(s.chords ?? '').trim().replace(/\s+/g, ' ')
+      const first = byPattern.get(name)
+      if (!first) { byPattern.set(name, { chords, id: s.section }); continue }
+      if (first.chords !== chords && !s.patternVariant) {
+        fail(songId, `${where}: sections "${first.id}" and "${s.section}" share pattern "${s.pattern}" but play ` +
+          `different chords ("${first.chords}" vs "${chords}"). The Cheat card shows only the first and tapping ` +
+          `the chip strums only the first — set "patternVariant": true to accept that, or give them separate patterns.`)
+      }
+    }
+    // Case-variant spellings render two Cheat rows but resolve to one playback.
+    const patternCases = new Map()
+    for (const s of sections) {
+      const raw = typeof s.pattern === 'string' ? s.pattern.trim() : ''
+      if (!raw) continue
+      const seen = patternCases.get(raw.toLowerCase())
+      if (seen && seen !== raw) fail(songId, `${where}: pattern spelled both "${seen}" and "${raw}" — pick one casing.`)
+      else patternCases.set(raw.toLowerCase(), raw)
+    }
     if (Array.isArray(entry.form)) {
       const names = new Set(sections.map((s) => s.section))
       entry.form.forEach((step, index) => {

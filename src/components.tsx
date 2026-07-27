@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
 import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, isCueToken, isFretToken, measureSlots, parseChordSheet, patternName, stripSheetFills, type SheetPart } from './chords'
-import { basicRowsFor, cheatRowsFor, curatedShapeForChord, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
+import { basicRowsFor, cheatRowsFor, curatedShapeForChord, patternPlaybackFor, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
-import { playChord } from './chordAudio'
+import { endSequence, getSequenceToken, playChord, playSequence, stopSequence, subscribeSequence, type SequenceStep } from './chordAudio'
+import { songBpm } from './metronome'
 import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, homeFretsFor, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
@@ -125,12 +126,11 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   // no diagram popover. Cue tokens (`^1`) are numbered triangle chips linking a lyric word
   // to a matching fill block. Both returns sit below every hook call so a token that flips
   // between kinds at the same tree position can't change the hook order.
-  // Named chord pattern (`@Hook`) — a signpost for the run that follows, not a chord to
-  // play, so no diagram and no strum on tap.
+  // Named chord pattern (`@Hook`) — a signpost for the run that follows, not a chord, so
+  // no fingering diagram. Tapping strums the whole progression instead (PatternChip).
   const pattern = patternName(name)
-  if (pattern) {
-    return <b className="chord-chip chord-chip--pattern" aria-label={`${pattern} pattern`} title={`${pattern} pattern`}>{pattern}</b>
-  }
+  if (pattern) return <PatternChip name={pattern} songId={songId} />
+
   const cue = cueNumber(name)
   if (cue != null) {
     return <b className="chord-chip chord-chip--cue" aria-label={`Fill cue ${cue}`} title={`Fill cue ${cue}`}>{cue}</b>
@@ -210,6 +210,66 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     <span className="chord-chip-wrap" ref={ref}>{chip}</span>
     <span className="chord-fingering"><FingeringText text={formatFingering(fingering, prefs.position)} /></span>
   </span>
+}
+
+/**
+ * A `@Name` pattern chip on a lyric sheet: names the chord figure the run it opens plays,
+ * and strums that figure when tapped so you can hear the timing instead of decoding it.
+ *
+ * The chords come from the song's cheat card (matched on `pattern`, so the sheet and the
+ * card can't drift), the tempo from the metronome's, and the per-chord lengths from the
+ * card's `beats` — defaulting to half a bar each when the card doesn't say. Without a
+ * song id, a resolvable pattern, or the "Play chord on tap" setting, the chip is inert
+ * and stays a plain label.
+ */
+function PatternChip({ name, songId }: { name: string; songId?: string }) {
+  const { settings } = useSettings()
+  const { get } = usePractice()
+  // Which chip is lit comes from the audio engine, not local state: the engine is a
+  // singleton, so tapping a second chip kills the first one's sound and its highlight
+  // has to go out with it rather than stay orange over silence.
+  const token = useSyncExternalStore(subscribeSequence, getSequenceToken)
+  const mine = useRef(0)
+  const playing = mine.current !== 0 && mine.current === token
+  const stopTimer = useRef<number | undefined>(undefined)
+  useEffect(() => () => {
+    window.clearTimeout(stopTimer.current)
+    // Turning to the next song mid-progression must not leave it strumming over it.
+    if (mine.current && mine.current === getSequenceToken()) stopSequence()
+  }, [])
+  const steps = useMemo<SequenceStep[] | null>(() => {
+    if (!songId) return null
+    const playback = patternPlaybackFor(songId, name)
+    if (!playback) return null
+    const secondsPerBeat = 60 / songBpm(songId, get(songId).bpm)
+    const out: SequenceStep[] = []
+    for (let i = 0; i < playback.chords.length; i++) {
+      const curated = playback.shapes[i]
+      const shape = (curated ? tabToShape(curated) : null) ?? chordShape(playback.chords[i])
+      const seconds = playback.beats[i] * secondsPerBeat
+      // A chord with no resolvable fingering still has to take up its time, or every
+      // chord after it lands early and the figure is silently retimed, not just thinned.
+      if (!shape) { if (out.length) out[out.length - 1].seconds += seconds; continue }
+      out.push({ shape, seconds })
+    }
+    return out.length ? out : null
+    // `get` is stable per practice-state change; re-reading it keeps a retapped tempo live.
+  }, [songId, name, get])
+  const playable = !!steps && settings.chordAudio
+  const label = playable ? `${name} pattern, tap to play` : `${name} pattern`
+  const chipClass = `chord-chip chord-chip--pattern${playing ? ' chord-chip--pattern-playing' : ''}`
+  if (!playable) return <b className={chipClass} aria-label={label} title={label}>{name}</b>
+  const play = () => {
+    mine.current = playSequence(steps)
+    window.clearTimeout(stopTimer.current)
+    const totalMs = steps.reduce((sum, step) => sum + step.seconds, 0) * 1000
+    stopTimer.current = window.setTimeout(() => endSequence(mine.current), Math.max(400, totalMs))
+  }
+  return <b className={chipClass} role="button" tabIndex={0} aria-label={label} title={label}
+    onClick={play}
+    onKeyDown={(event: ReactKeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); play() }
+    }}>{name}</b>
 }
 
 export function Difficulty({ value }: { value: number | null }) {

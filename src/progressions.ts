@@ -32,6 +32,7 @@ import versionsData from './data/progressionVersions.json'
 // Use `|` to force a line break before the next span ("(C G Bb F Am G C) | (C G Bb F Am G Ab)").
 // Parentheses alone do NOT stack lines — only `|` (or natural wrap) does.
 export interface ProgSection {
+  /** Unique id within the song; `form` entries reference it. Not shown when `pattern` is set. */
   section: string
   chords: string
   shapes?: string
@@ -40,6 +41,28 @@ export interface ProgSection {
   tabMore?: string
   /** Omit from Cheat (building-blocks) tab; still available on Chords roadmap via form. */
   cheatHide?: boolean
+  /**
+   * Display label: the name of the chord PATTERN this spot plays, shared with the
+   * `@Name` chips on the Lyrics sheet so both surfaces use one vocabulary. Several
+   * spots can name the same pattern (Thunderstruck plays a bare B5 in five of them);
+   * the Cheat tab then shows that pattern once, while the Chords roadmap still walks
+   * every spot and keeps its own hint, so verse 1 and verse 2 stay tellable apart.
+   * `section` stays unique and stays the `form` key.
+   */
+  pattern?: string
+  /**
+   * Opt in to sharing a `pattern` with a spot that plays it DIFFERENTLY (Thunderstruck's
+   * solo is the Knees figure entered on E5 instead of A5). Without this the validator
+   * rejects same-pattern sections whose chords disagree, so a merge can't quietly hide a
+   * different figure behind a shared name. The Cheat card still collapses to one row and
+   * tap-to-play still strums the first spelling — the roadmap is where the variant shows.
+   */
+  patternVariant?: boolean
+  /**
+   * Beats per chord for tap-to-play, aligned 1:1 with `chords` as written (one pass of
+   * each group, same rule as `shapes`). Omitted chords get DEFAULT_PATTERN_BEATS.
+   */
+  beats?: number[]
 }
 export interface SongProgression { sections: ProgSection[]; form?: string[]; capo?: string }
 
@@ -125,9 +148,55 @@ export function progressionVersionsFor(songId: string): ProgressionVersion[] {
   return list.filter((v) => v && typeof v.label === 'string' && v.label.trim() !== '' && Array.isArray(v.sections) && v.sections.length > 0)
 }
 
+const REPEAT_SUFFIX_RE = /\s*[×xX]\s*\d+\s*$/u
+
 /** "Verse ×4" / "Verse x2" → "Verse"; unchanged if no repeat suffix. */
 export function formStepBase(label: string): string {
-  return label.replace(/\s*[×xX]\s*\d+\s*$/u, '').trim()
+  return label.replace(REPEAT_SUFFIX_RE, '').trim()
+}
+
+/** What a row is labelled on the cards: the pattern name when set, else the section id. */
+export function sectionLabel(section: ProgSection | undefined, formLabel?: string): string {
+  const fallback = formLabel ?? section?.section ?? ''
+  if (!section?.pattern) return fallback
+  // Keep the roadmap's repeat badge: "Chorus ×2" under pattern "Hook" reads "Hook ×2".
+  return section.pattern + (fallback.match(REPEAT_SUFFIX_RE)?.[0] ?? '')
+}
+
+/** Beats a pattern chord gets when the card doesn't say — half a bar of 4/4. */
+export const DEFAULT_PATTERN_BEATS = 2
+
+/** A pattern's sounded chords with their curated shapes and beat lengths, for tap-to-play. */
+export interface PatternPlayback { chords: string[]; shapes: (string | undefined)[]; beats: number[] }
+
+/**
+ * Look a Lyrics-sheet `@Name` chip up against the song's cheat card. Matches the pattern
+ * label first, then the raw section id, so a sheet can chip a song whose card has no
+ * pattern names yet. Ghost chords are dropped: the chip means "don't play" there too.
+ */
+export function patternPlaybackFor(songId: string, name: string): PatternPlayback | null {
+  const prog = progressionFor(songId)
+  if (!prog) return null
+  const wanted = name.trim().toLowerCase()
+  const section = prog.sections.find((s) => (s.pattern ?? '').toLowerCase() === wanted)
+    ?? prog.sections.find((s) => s.section.toLowerCase() === wanted)
+  if (!section?.chords?.trim()) return null
+  let spans: CheatChordSpan[]
+  try { spans = parseChordSpans(section.chords, section.shapes ?? '') } catch { return null }
+  const out: PatternPlayback = { chords: [], shapes: [], beats: [] }
+  let written = 0 // index into `beats`, which follows the written chords, not the expansion
+  for (const span of spans) {
+    for (let t = 0; t < span.times; t++) {
+      for (let j = 0; j < span.chords.length; j++) {
+        if (span.ghosts[j]) continue
+        out.chords.push(span.chords[j])
+        out.shapes.push(span.shapes[j])
+        out.beats.push(section.beats?.[written + j] ?? DEFAULT_PATTERN_BEATS)
+      }
+    }
+    written += span.chords.length
+  }
+  return out.chords.length ? out : null
 }
 
 /**
@@ -289,7 +358,7 @@ export function cheatRowsFor(prog: SongProgression): CheatRow[] {
     return prog.form.map((label) => {
       const base = formStepBase(label)
       const section = byName.get(base) ?? byName.get(label)
-      const row = sectionToRow(label, section)
+      const row = sectionToRow(sectionLabel(section, label), section)
       if (row.hint) {
         if (seenHints.has(base)) row.hint = undefined
         else seenHints.add(base)
@@ -298,12 +367,28 @@ export function cheatRowsFor(prog: SongProgression): CheatRow[] {
     })
   }
 
-  return bank.map((s) => sectionToRow(s.section, s))
+  return bank.map((s) => sectionToRow(sectionLabel(s), s))
 }
 
 /** Rows for the Cheat card: the song's building blocks only — each section once, in
  * stored order, with its cycle, hint, and fills. The `form` roadmap is deliberately
- * ignored: this view trusts the player to know the song's shape. */
+ * ignored: this view trusts the player to know the song's shape. Sections that name the
+ * same `pattern` collapse to one row here (five bare-B5 spots are one building block);
+ * sections without a pattern always keep their own row, their ids being unique already. */
 export function basicRowsFor(prog: SongProgression): CheatRow[] {
-  return prog.sections.filter((s) => !s.cheatHide).map((s) => sectionToRow(s.section, s))
+  const seenPatterns = new Set<string>()
+  const rows: CheatRow[] = []
+  for (const s of prog.sections) {
+    if (s.cheatHide) continue
+    if (s.pattern) {
+      // Case-folded, so "Chug"/"chug" can't render two rows yet resolve to one playback.
+      const key = s.pattern.toLowerCase()
+      // Never collapse away an ASCII fill: the Chords roadmap drops tabs entirely, so a
+      // deduped tab-carrying section would be unreachable on every surface.
+      if (seenPatterns.has(key) && !s.tab && !s.tabMore) continue
+      seenPatterns.add(key)
+    }
+    rows.push(sectionToRow(sectionLabel(s), s))
+  }
+  return rows
 }

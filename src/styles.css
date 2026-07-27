@@ -155,6 +155,10 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    It therefore needs none of the flex-start / chip-pull handling a genuinely taller custom
    chip does (the `^N` cue triangle) — see polish-ryan-sheet reference, new-chip checklist. */
 .chord-chip--pattern{background:transparent;color:var(--orange);border:1px solid var(--orange);text-transform:uppercase;letter-spacing:.09em;font-weight:800}
+/* Tapping a pattern strums it; fill the chip while it plays so you can see which one is
+   sounding on a stage-lit phone. No animation — the progression's own length is the cue. */
+.chord-chip--pattern[role=button]{cursor:pointer}
+.chord-chip--pattern-playing{background:var(--orange);color:var(--paper)}
 .chord-chip--fingering{white-space:pre;line-height:1.1;letter-spacing:0;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:4px 6px;vertical-align:middle}
 /* Power fingering (Ryan): same box metrics as name chips in above-mode; bold; × mute. */
 .chord-chip--power{white-space:nowrap;letter-spacing:.06em;font-weight:900;vertical-align:baseline;-webkit-text-stroke:.045em currentColor}

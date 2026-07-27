@@ -52,13 +52,13 @@ E5
        The thunder of guns tore me a-part.
 
              
-@Hit
+@Chug
 B5
 
 You've been thunderstruck.
 
              
-@Ring
+@Chug
 B5
 
 Rode down the highway, broke the limit, we hit the town.
@@ -162,7 +162,7 @@ A5
 E5
 
  
-@Ring
+@Chug
 B5
     
 B5
@@ -172,7 +172,7 @@ B5
 B5
 
              
-@Knees
+@Lift
 B5
  
 A5
