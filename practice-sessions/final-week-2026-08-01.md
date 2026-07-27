@@ -99,12 +99,15 @@ Nice-if-time: Lola F#m/Em; Hunger amp; Dirtbag full chords cue; Fat Bottomed sto
 
 ## Model routing
 
+`/continue` **confirms** the recommended model/tool before starting (see continue-final-week skill). Override with `run here anyway`.
+
 | Job | Model |
 | --- | --- |
 | Stage-card judgment / form research | Claude Fable 5 |
 | Apply mock → validate → push | Fast Cursor / Composer |
-| `/coach` / `/practice` | Whichever chat is at the guitar |
-| `gig preflight` / deploy | Fast shell agent |
+| `/coach` / `/practice` / desk / body | Either (guitar chat wins for coach) |
+| `gig preflight` / deploy | Fast Cursor shell agent |
+
 
 ## Parked until after the show
 

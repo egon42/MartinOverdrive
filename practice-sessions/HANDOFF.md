@@ -17,9 +17,13 @@
 
 ## Next (exactly one)
 
-1. If desk: Fret-2 (B Bm F# F#m) + body micro
-2. If evening: Body Pre → `/coach` on [`2026-07-27.md`](2026-07-27.md) from first blank Body/Priority step
-3. After play: note any glance fails → tiny card tweak before Thu freeze
+Body Pre → `/coach` on [`2026-07-27.md`](2026-07-27.md) from first blank Body/Priority step
+
+(If still in meetings: desk Fret-2 + body micro instead.)
+
+## Recommended
+
+**Either** (Cursor or Claude) — `/coach` / desk / body; use whichever chat is at the guitar or desk
 
 ## Never skip
 
