@@ -15,7 +15,7 @@
 
 ## Next desk
 
-**Teenage Dirtbag** full-chords cue on Cheat (nice-if-time queue; then Fat Bottomed stops). Quick first: phone-verify Lola on `/dev/` Cheat (also exercises Cursor's new scrolling Cheat view, landed in d54b69f).
+**Teenage Dirtbag** full-chords cue on Cheat (nice-if-time queue; then Fat Bottomed stops). Lola phone-verified on `/dev/` 2026-07-27 including Cursor's scrolling Cheat view.
 
 ## Next guitar
 
@@ -35,7 +35,7 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 
 ## Card / UI TODOs
 
-Kill-zone **verified** live; Lola complete (phone-verify pending). Nice-if-time: Dirtbag full-chords cue, Fat Bottomed stops. Cursor's Cheat page-scroll flow + fixed exit button rode along in d54b69f; check it on the phone. Minor: a few kill-zone hints still use em-dashes (Valerie etc.) — purge if touching those cards. Freeze after **Thu evening**.
+Kill-zone **verified** live; Lola complete and phone-verified (incl. Cursor's Cheat page-scroll flow from d54b69f). Nice-if-time: Dirtbag full-chords cue, Fat Bottomed stops. Minor: a few kill-zone hints still use em-dashes (Valerie etc.) — purge if touching those cards. Freeze after **Thu evening**.
 
 ## Standing decisions
 
