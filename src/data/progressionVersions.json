@@ -3274,6 +3274,16 @@
   ],
   "09-pride-and-joy": [
     {
+      "label": "Pre stage shuffle+sparse+fills 2026-07-26",
+      "sections": [
+        {
+          "section": "12-bar shuffle in E",
+          "chords": "E A7 B7",
+          "hint": "Swung open-position boogie: alternate 5th/6th (E: A-str 2-4, A: D-str 2-4, B7 barre); b3-to-3 hammer turnaround; quick E7 tags at line ends"
+        }
+      ]
+    },
+    {
       "label": "Pre positional-UG-alignment (2026-07-20)",
       "sections": [
         {

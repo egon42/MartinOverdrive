@@ -456,10 +456,35 @@
   "09-pride-and-joy": {
     "sections": [
       {
-        "section": "12-bar shuffle in E",
-        "chords": "E A7 B7",
-        "hint": "Swung open-position boogie: alternate 5th/6th (E: A-str 2-4, A: D-str 2-4, B7 barre); b3-to-3 hammer turnaround; quick E7 tags at line ends"
+        "section": "Shuffle",
+        "chords": "E E E E7 | A7 A7 E E | B7 A7 E B7",
+        "hint": "Texas shuffle; E7 tags at line ends"
+      },
+      {
+        "section": "Sparse",
+        "chords": "E E E E7 | A7 A7 E E | B7 A7 E B7",
+        "hint": "V3 + V4 only: one hit per chord until dig-in; after \"long and lean\" / \"finest wine\" then shuffle"
+      },
+      {
+        "section": "Outro",
+        "chords": "E B7 E"
+      },
+      {
+        "section": "Fills",
+        "chords": "",
+        "tab": "Boogie over E\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|------2-----4---|\nE|0--3h4--0-------|\n\nSame shape over A7 (root on A)\ne|----------------|\nB|----------------|\nG|----------------|\nD|------2-----4---|\nA|0--3h4--0-------|\nE|----------------|"
       }
+    ],
+    "form": [
+      "Shuffle",
+      "Shuffle",
+      "Shuffle",
+      "Sparse",
+      "Shuffle",
+      "Sparse",
+      "Shuffle",
+      "Shuffle",
+      "Outro"
     ]
   },
   "10-zombie": {
