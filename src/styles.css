@@ -574,6 +574,11 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 
 /* Show mode: next-song footer (title + tuning + amp preset, for the changeover) */
 .show-upnext{margin:6px auto 0;padding:6px 0 0;border:0;border-top:1px solid #1f2622;background:transparent;color:#9aa59f;font:inherit;font-size:.72rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:1000px;width:100%;text-align:left;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+/* Cheat tab flows into .show-mode's page scroll, so the "Up next" footer no longer stays
+   pinned by a flex:1 article above it. margin-top:auto drops it to the bottom on short cards;
+   position:sticky;bottom:0 keeps it visible while a tall card scrolls. Opaque bg so scrolling
+   chord rows don't show through. Only the cheat-flow view scrolls .show-mode. */
+.show-upnext--sticky{position:sticky;bottom:0;margin-top:auto;background:var(--show-bg,#0c1110);padding-bottom:max(4px,env(safe-area-inset-bottom))}
 .show-upnext:active{color:#c5cec9}
 .show-upnext-label{text-transform:uppercase;letter-spacing:.12em;font-size:.58rem;font-weight:800;color:var(--acid)}
 .show-upnext b{color:#c5cec9}
