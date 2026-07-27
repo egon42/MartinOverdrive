@@ -130,8 +130,11 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-chip--alt{background:var(--blue);color:#f2f6fa}
 /* Stacked markers: an alternate tag keeps tag sizing but goes blue all over */
 .chord-chip--tag.chord-chip--alt{color:#f2f6fa;border-color:var(--blue)}
-/* Blue ghost (*~Am): played normally, skipped on the pass the hint names */
-.chord-chip--ghost.chord-chip--alt{background:transparent;color:var(--blue);border-color:var(--blue)}
+/* Skip-marked chip (*~Am): normal filled chip, dashed blue border = played normally,
+   skipped only on the pass the hint names. Deliberately NOT ghost-styled: it is played
+   most passes, so it must read as a normal chord at a glance. */
+.chord-chip--ghost.chord-chip--alt{background:var(--acid);color:var(--on-acid);border:1px dashed var(--blue);text-decoration:none;font-weight:850;opacity:1}
+.chord-chip--ghost.chord-chip--alt.chord-chip--g{text-decoration:underline;text-underline-offset:.12em;text-decoration-thickness:.09em}
 .chord-chip-tag-mark{opacity:.75;font-weight:800;margin-right:.12em}
 .chord-chip--fret{background:transparent;color:var(--acid);border:1px solid var(--acid);font-variant-numeric:tabular-nums;min-width:1.4em;text-align:center}
 /* Numbered fill cue (`^1`): acid triangle with the index — pairs a lyric word to its

@@ -1,10 +1,15 @@
 # Dani California stage-card mock
 
 Song: `15-dani-california`  
-Updated 2026-07-27: hang endings collapsed into their parent rows via the NEW blue-ghost
-grammar. `*Dm` = blue chip, the cued change lives here (hang); `*~Am` = blue ghost,
-played normally but SKIPPED on the pass the hint names. No more variant rows
-(`| Am G Dm`, `| Dm`) per hang. Old card in version dropdown.
+Updated 2026-07-27: hang endings collapsed into their parent rows via the NEW
+stacked-marker grammar. `*Dm` = blue chip, the cued change lives here (hang); `*~Am` =
+skip-marked chip, played normally but SKIPPED on the pass the hint names. No more
+variant rows (`| Am G Dm`, `| Dm`) per hang. Old card in version dropdown.
+
+Render note (same day, Ryan feedback): skip-marked chips deliberately look like a
+NORMAL filled chip with a dashed blue border, not ghosted. A ghost look invited
+omitting them on regular passes; the dashed blue border alone carries the
+"skipped on the cued pass" warning.
 
 Sheet-verified hang spots (ryan.txt):
 
