@@ -209,9 +209,10 @@
     "sections": [
       {
         "section": "Riff",
-        "chords": "~B5",
+        "chords": "B5",
         "shapes": "-244--",
-        "hint": "Sit - lead riff; \"A-ha, ha, ha\""
+        "hint": "Hybrid pick under the first verse, over a held B5; lift the fingers between hits for the staccato",
+        "tab": "Pick the A string; middle + ring take D and G together\ne|------------------------------------|\nB|------------------------------------|\nG|-4-----4--4-----4--4-----4-----4----|\nD|-4-----4--4-----4--4-----4-----4----|\nA|----2--------2--------2-----2-----2-|\nE|------------------------------------|"
       },
       {
         "section": "Chug",
@@ -224,6 +225,12 @@
         "chords": "B5",
         "shapes": "-244--",
         "hint": "Palm; \"I was caught in the middle of a railroad track\""
+      },
+      {
+        "section": "Big riff",
+        "chords": "B5 A5 E5 A5 A5 E5",
+        "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
+        "hint": "Heavy riff over the first verse; A to E quickly, back to A and hit it twice, then down to E"
       },
       {
         "section": "Pre-Chorus",
@@ -251,9 +258,9 @@
       },
       {
         "section": "Chorus",
-        "chords": "B5 A5 E5 A5 A5 E5",
-        "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
-        "hint": "Full stamp B·AE·AA·E; \"Thunderstruck\""
+        "chords": "B5 A5 A5 E5 A5 E5",
+        "shapes": "-244-- -022-- -022-- 022--- -022-- 022---",
+        "hint": "B, A twice, down to E, back to A, end on E; thumb over to mute the low string on the A"
       },
       {
         "section": "Link",
@@ -281,9 +288,9 @@
       },
       {
         "section": "Bridge",
-        "chords": "B5 E5",
-        "shapes": "-244-- 022---",
-        "hint": "\"Yeah it's alright, we're doing fine\""
+        "chords": "B5 E5 B5",
+        "shapes": "-244-- 022--- -244--",
+        "hint": "\"Yeah it's alright, we're doing fine\"; walk 2 to 4 on the low string between B5 and E5"
       },
       {
         "section": "Walk",
@@ -293,15 +300,16 @@
       },
       {
         "section": "Outro",
-        "chords": "B5 A5 E5 A5 A5 E5",
-        "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
-        "hint": "Stamp; \"Thunderstruck\" - close"
+        "chords": "B5 A5 A5 E5 A5 E5",
+        "shapes": "-244-- -022-- -022-- 022--- -022-- 022---",
+        "hint": "Same stamp under the outro solo; close on B5"
       }
     ],
     "form": [
       "Riff",
       "Chug",
       "Verse",
+      "Big riff",
       "Pre-Chorus",
       "Hit",
       "Verse 2",
@@ -312,7 +320,7 @@
       "Solo",
       "La-la",
       "Chorus",
-      "Bridge",
+      "Bridge ×4",
       "Walk",
       "Chorus ×2",
       "Outro"
