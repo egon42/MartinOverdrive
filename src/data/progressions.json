@@ -1075,15 +1075,9 @@
       },
       {
         "section": "Bridge",
-        "chords": "(A D G Em) | (A D G A) | (G A D Bm G)",
-        "shapes": "577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
-        "hint": "Vocals \"Oh Lola\" on A; land Em on \"pain\""
-      },
-      {
-        "section": "Outro",
-        "chords": "(G A D +Bm) | (G A D)",
-        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577--",
-        "hint": "Second half of the chorus; ends on D"
+        "chords": "(A D G Em) | (A D G A)",
+        "shapes": "577--- -577-- 355--- 022--- 577--- -577-- 355--- 577---",
+        "hint": "Vocals \"Oh Lola\" on A, land Em on \"pain\"; chorus rejoins at \"spider dance\""
       }
     ],
     "form": [
@@ -1096,7 +1090,7 @@
       "Chorus",
       "Break",
       "Bridge",
-      "Outro"
+      "Chorus"
     ]
   },
   "24-mary-jane-s-last-dance": {

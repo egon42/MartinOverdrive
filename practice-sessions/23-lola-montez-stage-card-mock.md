@@ -30,13 +30,7 @@ hint: Off the F#m ending; lead riffs over it
 BRIDGE
 (A D G Em)
 (A D G A)
-(G A D Bm G)
-hint: Vocals "Oh Lola" on A; land Em on "pain"
-
-OUTRO
-(G A D +Bm)
-(G A D)
-hint: Second half of the chorus; ends on D
+hint: Vocals "Oh Lola" on A, land Em on "pain"; chorus rejoins at "spider dance"
 ```
 
 Notes:
@@ -49,7 +43,9 @@ Notes:
   differs); + tags do not fit here because Em on "pain" and the closing A are
   held landings, not short hits.
 - Bridge row guide: row 1 = "Oh Lola ... pain" (ends Em), row 2 = "no words ...
-  forget", row 3 = "spider dance" + oo/ohh tag into the Outro.
+  forget". Then the chorus takes over: "the lola spider dance / oo / ohhh" IS
+  chorus row 1 with alternate words, "don't look" is row 2, through "yeah-eah"
+  ending on the plain D (blue F#m is 2nd chorus only).
 
 ## Chords tab (roadmap — song order)
 
@@ -63,10 +59,9 @@ Verse
 Chorus
 Break
 Bridge
-Outro
+Chorus
 ```
 
-Ending is the Outro (second half of the chorus, ends D). Per the sheets the last
-sung section starts one row earlier at "don't look"; say the word if the Outro
-should include that row too. The chords sheet also still has an instrumental
-[Outro] D G A D at its very end (Lyrics tab only); flag it if that should go.
+No Outro: the song ends on the final chorus (which begins mid-bridge at "spider
+dance") and stops on the "yeah-eah" D. The UG chart's instrumental [Outro]
+D G A D is not played; trimmed from the chords sheet 2026-07-27.

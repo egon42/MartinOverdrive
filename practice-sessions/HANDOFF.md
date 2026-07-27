@@ -11,7 +11,7 @@
 
 ## Last completed
 
-- Lola Montez stage card rebuilt with Ryan (council-verified vs sheets): no Intro (song starts Verse 1); verse D5 G5 A5 D5 with hold-the-D5 hint; chorus is four G A D rows with + tag chips ending (G A D *F#m); Break section (D A Bm G) ×2 between chorus and bridge; bridge vocals land Em on "pain" (was rotated a chord); Outro = second half of chorus. NEW GRAMMAR: `*Chord` = blue alternate chip (hint-blue fill, play instead on the pass the hint names) — parser/chip/CSS shipped same day. Mock at `practice-sessions/23-lola-montez-stage-card-mock.md`; prior cards in version dropdown.
+- Lola Montez stage card rebuilt with Ryan (council-verified vs sheets): no Intro (song starts Verse 1); verse D5 G5 A5 D5 with hold-the-D5 hint; chorus is four G A D rows with + tag chips ending (G A D *F#m); Break section (D A Bm G) ×2 between chorus and bridge; bridge is two vocal lines landing Em on "pain" (was rotated a chord), then the final chorus rejoins at "spider dance" (form ends Break, Bridge, Chorus; no outro, ends on the "yeah-eah" D). NEW GRAMMAR: `*Chord` = blue alternate chip (hint-blue fill, play instead on the pass the hint names) — parser/chip/CSS shipped same day. Mock at `practice-sessions/23-lola-montez-stage-card-mock.md`; prior cards in version dropdown.
 
 ## Next desk
 
