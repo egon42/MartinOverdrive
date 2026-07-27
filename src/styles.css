@@ -482,6 +482,13 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 /* Clickable chord chips: tap a chord to pop up its fingering diagram */
 .chord-chip[role=button]{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .chord-chip[role=button]:focus-visible{outline:2px solid var(--acid);outline-offset:2px}
+/* Tap-confirmation pulse: orange ring + brightness pop, fading over the pulse. Two
+   identical animations under different names — the a/b class swap (ChordChip) is what
+   lets a re-tap restart the pulse. Reads on solid, ghost, and outline chip variants. */
+.chord-chip--flash-a{animation:chip-flash-a .45s ease-out}
+.chord-chip--flash-b{animation:chip-flash-b .45s ease-out}
+@keyframes chip-flash-a{0%{box-shadow:0 0 0 3px var(--orange);filter:brightness(1.5)}100%{box-shadow:0 0 0 3px transparent;filter:brightness(1)}}
+@keyframes chip-flash-b{0%{box-shadow:0 0 0 3px var(--orange);filter:brightness(1.5)}100%{box-shadow:0 0 0 3px transparent;filter:brightness(1)}}
 .chord-chip-wrap{position:relative;display:inline-block}
 .compact-chords .chord-chip-wrap,.cheat-prog-chords .chord-chip-wrap{display:inline-flex}
 .chord-pop{position:fixed;z-index:130;background:#1b1d18;border:1px solid #3a3f37;border-radius:12px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.5);white-space:nowrap;font-style:normal}

@@ -82,6 +82,10 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   )
   const [open, setOpen] = useState(false)
   const [box, setBox] = useState<{ left: number; top: number; below: boolean; arrow: number } | null>(null)
+  // Tap-confirmation pulse. A counter with two alternating animation classes: the
+  // class swap restarts the CSS animation on every tap, which a single re-added
+  // class can't do (same class in the same frame = no restart).
+  const [flashCount, setFlashCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
   const popRef = useRef<HTMLSpanElement>(null)
   const shape = useMemo(
@@ -148,12 +152,15 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   // dismiss the popover). Dismissals that aren't chip taps — tapping elsewhere,
   // Escape, scroll — go through setOpen directly and stay silent.
   const strum = () => { if (settings.chordAudio && shape) playChord(shape) }
-  const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`} onClick={strum}>
+  const flashChip = () => setFlashCount((count) => count + 1)
+  const flashClass = flashCount ? (flashCount % 2 ? ' chord-chip--flash-a' : ' chord-chip--flash-b') : ''
+  const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`} onClick={() => { strum(); flashChip() }}>
     {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
   </span>
   // "Show chord diagram" off: chip taps are sound-only, the popover never opens.
   const toggleOpen = () => {
     strum()
+    flashChip()
     setOpen(settings.showChordDiagram && !open)
   }
   const openHandlers = {
@@ -170,13 +177,13 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     ghost && 'chord-chip--ghost',
     tag && !ghost && 'chord-chip--tag',
     gRoot && 'chord-chip--g',
-  ].filter(Boolean).join(' ')
+  ].filter(Boolean).join(' ') + flashClass
   const chipTitle = ghost ? "Don't play; keep the beat" : tag ? 'Tag — short hit, not a full measure' : undefined
   // Ryan power chips / Shapes retap: replace the chord name with a fingering chip (still tappable).
   if (fingering && (fingeringOnly || powerChip)) {
     const body = powerChip ? formatPowerFingering(fingering) : formatVerticalFingering(fingering)
     return <span className="chord-chip-wrap" ref={ref}>
-      <b className={`${ghost ? 'chord-chip chord-chip--ghost' : tag ? 'chord-chip chord-chip--tag' : 'chord-chip'} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}`} role="button" tabIndex={0} aria-expanded={open}
+      <b className={`${ghost ? 'chord-chip chord-chip--ghost' : tag ? 'chord-chip chord-chip--tag' : 'chord-chip'} chord-chip--fingering${powerChip ? ' chord-chip--power' : ''}${flashClass}`} role="button" tabIndex={0} aria-expanded={open}
         aria-label={label} title={chipTitle} {...openHandlers}>
         {/* Power chips: × mute stays on-acid (same color as frets). Shapes mode greys mutes. */}
         {powerChip ? body : <FingeringText text={body} />}
