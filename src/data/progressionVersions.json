@@ -60,6 +60,113 @@
   ],
   "05-thunderstruck": [
     {
+      "label": "pre form fix: missing Chorus after La-la (2026-07-27)",
+      "sections": [
+        {
+          "section": "Riff",
+          "chords": "~B5",
+          "shapes": "-244--",
+          "hint": "Sit - lead riff; \"A-ha, ha, ha\""
+        },
+        {
+          "section": "Chug",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "\"Thunder!\" - palm B5"
+        },
+        {
+          "section": "Verse",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Palm; \"I was caught in the middle of a railroad track\""
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "B5 A5 E5 A5",
+          "shapes": "-244-- -022-- 022--- -022--",
+          "hint": "Between lines; \"Sound of the drums\""
+        },
+        {
+          "section": "Hit",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "One-liner; \"You've been thunderstruck\" - NOT the full stamp yet"
+        },
+        {
+          "section": "Verse 2",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Ring (not palm); \"Rode down the highway\""
+        },
+        {
+          "section": "Knees",
+          "chords": "A5 B5 A5 E5",
+          "shapes": "-022-- -244-- -022-- 022---",
+          "hint": "\"I was shaking at the knees\" - A B A E (different from drums pre)"
+        },
+        {
+          "section": "Chorus",
+          "chords": "B5 A5 E5 A5 A5 E5",
+          "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
+          "hint": "Full stamp B·AE·AA·E; \"Thunderstruck\""
+        },
+        {
+          "section": "Link",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Ring holds into next pre / solo"
+        },
+        {
+          "section": "Solo",
+          "chords": "E5 B5 A5 E5",
+          "shapes": "022--- -244-- -022-- 022---",
+          "hint": "Under the lead"
+        },
+        {
+          "section": "La-la",
+          "chords": "B5 A5",
+          "shapes": "-244-- -022--",
+          "hint": "\"La la\" / ah-ah interlude"
+        },
+        {
+          "section": "Bridge",
+          "chords": "B5 E5",
+          "shapes": "-244-- 022---",
+          "hint": "\"Yeah it's alright, we're doing fine\""
+        },
+        {
+          "section": "Walk",
+          "chords": "B5 A5 D5 E5",
+          "shapes": "-244-- -022-- -577-- 022---",
+          "hint": "Into final stamps"
+        },
+        {
+          "section": "Outro",
+          "chords": "B5 A5 E5 A5 A5 E5",
+          "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
+          "hint": "Stamp; \"Thunderstruck\" - close"
+        }
+      ],
+      "form": [
+        "Riff",
+        "Chug",
+        "Verse",
+        "Pre-Chorus",
+        "Hit",
+        "Verse 2",
+        "Knees",
+        "Chorus",
+        "Link",
+        "Knees",
+        "Solo",
+        "La-la",
+        "Bridge",
+        "Walk",
+        "Chorus ×2",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre when-where landmark pass 2026-07-27",
       "sections": [
         {

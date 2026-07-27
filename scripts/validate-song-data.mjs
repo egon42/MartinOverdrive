@@ -105,12 +105,16 @@ const ugSource = readText(UG_SCRIPT)
 const chordLiteralTs = chordsSource && extractLiteral(chordsSource, 'CHORD_RE')
 const chordLiteralUg = ugSource && extractLiteral(ugSource, 'CHORD_RE')
 const metaLiteral = chordsSource && extractLiteral(chordsSource, 'META_RE')
+const patternLiteral = chordsSource && extractLiteral(chordsSource, 'PATTERN_RE')
 
 if (chordsSource && !chordLiteralTs) blockers.push(`Could not locate CHORD_RE in ${CHORDS_TS}`)
 if (ugSource && !chordLiteralUg) blockers.push(`Could not locate CHORD_RE in ${UG_SCRIPT}`)
 if (chordsSource && !metaLiteral) blockers.push(`Could not locate META_RE in ${CHORDS_TS}`)
+if (chordsSource && !patternLiteral) blockers.push(`Could not locate PATTERN_RE in ${CHORDS_TS}`)
 
 const META_RE = metaLiteral ? toRegExp(metaLiteral) : null
+// Lifted from the live source rather than duplicated, so this check can never drift.
+const PATTERN_RE = patternLiteral ? toRegExp(patternLiteral) : null
 
 // --- Check 4 (most valuable): CHORD_RE drift between the two files ---------------
 // The literals must be byte-identical. If they diverge, the UG converter and the app
@@ -176,6 +180,29 @@ if (META_RE) {
       fail(song.id, `Chords sheet first line "${trimmed}" looks like tuning/meta but fails META_RE — ` +
         `it will render as a spurious first lyric line (e.g. use "Standard (EADGBE)").`)
     }
+  }
+}
+
+// --- Check 1c: malformed pattern chips (`@Hook`) across every sheet ----------------
+// A line meant to be a pattern chip that fails PATTERN_RE (too long, stray punctuation)
+// stops being a chord line and renders as literal lyric text reading "@Chorus-Turnaround1"
+// — silent and easy to miss on a phone. Any bare `@…` token has to be a valid chip.
+if (PATTERN_RE) {
+  for (const entry of sheetEntries) {
+    // .tabs.txt renders verbatim in monospace and never goes through parseChordSheet.
+    if (!/\.(chords|ryan)\.txt$/.test(entry)) continue
+    const text = readText(path.join(SHEETS_DIR, entry))
+    if (text == null) continue
+    text.split(/\r?\n/).forEach((line, index) => {
+      const trimmed = line.trim()
+      if (!trimmed.startsWith('@')) return
+      for (const token of trimmed.split(/\s+/)) {
+        if (token.startsWith('@') && !PATTERN_RE.test(token)) {
+          fail('Pattern chips', `${entry}:${index + 1} "${token}" starts with @ but fails PATTERN_RE — ` +
+            `it will render as literal lyric text, not a pattern chip (letters/digits/hyphen, max 16 chars).`)
+        }
+      }
+    })
   }
 }
 

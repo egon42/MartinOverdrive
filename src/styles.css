@@ -143,6 +143,15 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
    fill block (`[Fill ^1]`). Same visual weight as name chips; raised in the above-slot
    (flex-start) so the point clears the lyric without changing chip-pull / text position. */
 .chord-chip--cue{display:inline-grid;place-items:center;box-sizing:border-box;width:1.5em;height:1.15em;min-width:1.5em;padding:.22em 0 0;border-radius:0;background:var(--acid);color:var(--on-acid);font-variant-numeric:tabular-nums;font-size:.7em;line-height:1;clip-path:polygon(50% 0%,100% 100%,0% 100%);vertical-align:baseline}
+/* Named chord pattern (`@Hook`): a signpost saying which pattern the run that follows is,
+   not a chord to play. Orange outline + uppercase so it reads as a label at arm's length
+   without competing with the acid chord chips. Deliberately no font-size/padding override,
+   so it inherits a name chip's type metrics and only the 1px border makes it 2px taller.
+   That fits: .sheet-above-chord is a fixed 1.35em anchored with align-items:flex-end, and a
+   name chip is ~0.97em, so the extra grows up into the pull gap and never moves the lyric.
+   It therefore needs none of the flex-start / chip-pull handling a genuinely taller custom
+   chip does (the `^N` cue triangle) — see polish-ryan-sheet reference, new-chip checklist. */
+.chord-chip--pattern{background:transparent;color:var(--orange);border:1px solid var(--orange);text-transform:uppercase;letter-spacing:.09em;font-weight:800}
 .chord-chip--fingering{white-space:pre;line-height:1.1;letter-spacing:0;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:4px 6px;vertical-align:middle}
 /* Power fingering (Ryan): same box metrics as name chips in above-mode; bold; × mute. */
 .chord-chip--power{white-space:nowrap;letter-spacing:.06em;font-weight:900;vertical-align:baseline;-webkit-text-stroke:.045em currentColor}

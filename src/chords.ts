@@ -57,6 +57,17 @@ export const cueNumber = (token: string): number | null => {
   const match = CUE_RE.exec(token)
   return match ? Number(match[1]) : null
 }
+// Named chord patterns (`@Hook`, `@Knees`, `@Walk`) — a chip that says WHICH pattern the
+// run it opens is, so a lyric sheet carries the same vocabulary as the cheat card and you
+// can see where a pattern starts instead of decoding the chords. Letters/digits/hyphen.
+// Unlike frets and cues this needs no per-sheet opt-in: a leading `@` on an otherwise
+// chord-shaped token can't be sung lyric text.
+const PATTERN_RE = /^@([A-Za-z][A-Za-z0-9-]{0,15})$/
+export const isPatternToken = (token: string) => PATTERN_RE.test(token)
+export const patternName = (token: string): string | null => {
+  const match = PATTERN_RE.exec(token)
+  return match ? match[1] : null
+}
 
 /** Prefix `~` = ghost chip (shown for the beat, don't play) — same marker as cheat-card progressions. */
 function splitGhostToken(token: string): { name: string, ghost: boolean } {
@@ -64,7 +75,13 @@ function splitGhostToken(token: string): { name: string, ghost: boolean } {
   return { name: token, ghost: false }
 }
 
+// Pattern chips are not ryan-gated (see PATTERN_RE) — they ride along here because this is
+// the one place that decides whether a line is chords rather than lyric. Matched on the RAW
+// token, before the ghost prefix is stripped: a pattern is a label, so `~@Hook` is
+// meaningless and should fall through to lyric text where the typo is visible, rather than
+// render as a normal pattern chip with the `~` silently dropped.
 function isRyanToken(token: string, frets: boolean) {
+  if (isPatternToken(token)) return true
   const { name } = splitGhostToken(token)
   return isChordToken(name)
     || (frets && (isFretToken(name) || isDyadFretToken(name) || isCueToken(name) || isBarlineToken(name)))
@@ -125,16 +142,25 @@ function isChordOnlyLine(line: SheetLine) {
   return line.kind === 'lyric' && line.parts.length > 0 && line.parts.every((part) => part.chord)
 }
 
+// A pattern chip is a label riding along with the run it opens, not a chord in it — count
+// only real chords, or prefixing `@Hook` to a `B5` row would make it look like an authored
+// two-chord row and re-bracket every pair after it (B5 A5|E5 A5 -> @Hook B5|A5 E5).
+const chordPartCount = (line: SheetLine) =>
+  line.parts.filter((part) => part.chord && !isPatternToken(part.chord)).length
+
 function mergeChordOnlyRuns(lines: SheetLine[]): SheetLine[] {
   const out: SheetLine[] = []
   for (const line of lines) {
     const prev = out[out.length - 1]
     if (
       isChordOnlyLine(line) &&
+      // A pattern chip always opens its own row: merged onto the tail of the previous run
+      // it would read "… E5 [HOOK]", as if the pattern ended there instead of starting.
+      !isPatternToken(line.parts[0].chord!) &&
       prev &&
       isChordOnlyLine(prev) &&
-      prev.parts.length === 1 &&
-      line.parts.length === 1
+      chordPartCount(prev) === 1 &&
+      chordPartCount(line) === 1
     ) {
       prev.parts.push(...line.parts)
       continue
@@ -200,7 +226,7 @@ export function chordProgression(text: string): ProgressionRow[] | null {
     }
     if (line.kind !== 'lyric') continue
     if (!current) open('')
-    for (const part of line.parts) if (part.chord && !isCueToken(part.chord) && !isFretToken(part.chord) && !isDyadFretToken(part.chord) && !isBarlineToken(part.chord)) current!.chords.push(part.chord)
+    for (const part of line.parts) if (part.chord && !isCueToken(part.chord) && !isFretToken(part.chord) && !isDyadFretToken(part.chord) && !isBarlineToken(part.chord) && !isPatternToken(part.chord)) current!.chords.push(part.chord)
   }
   // Group by identical (deduped) chord sequence, preserving first-seen order.
   const groups: { seq: string; labels: string[]; chords: string[] }[] = []
@@ -246,8 +272,10 @@ export function isFillSectionLabel(raw: string): boolean {
 }
 
 /**
- * Lanes view: same Ryan source, but drop fill cue chips (`^N`), Fill section headers,
- * and ASCII-tab fill glances so the measure map stays chords + lyrics only.
+ * Lanes view: same Ryan source, but drop fill cue chips (`^N`), pattern chips (`@Hook`),
+ * Fill section headers, and ASCII-tab fill glances so the measure map stays chords +
+ * lyrics only. Patterns go too because the measure map is a strict bar grid — a label
+ * would take one of the four equal columns and shift that row's bars by one.
  */
 export function stripSheetFills(lines: SheetLine[]): SheetLine[] {
   const out: SheetLine[] = []
@@ -258,7 +286,7 @@ export function stripSheetFills(lines: SheetLine[]): SheetLine[] {
       out.push(line)
       continue
     }
-    const parts = line.parts.filter((part) => !(part.chord && isCueToken(part.chord)))
+    const parts = line.parts.filter((part) => !(part.chord && (isCueToken(part.chord) || isPatternToken(part.chord))))
     if (!parts.some((part) => part.chord || part.text?.trim())) continue
     out.push({ ...line, parts })
   }

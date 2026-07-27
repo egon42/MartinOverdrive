@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
-import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, isCueToken, isFretToken, measureSlots, parseChordSheet, stripSheetFills, type SheetPart } from './chords'
+import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, isCueToken, isFretToken, measureSlots, parseChordSheet, patternName, stripSheetFills, type SheetPart } from './chords'
 import { basicRowsFor, cheatRowsFor, curatedShapeForChord, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
@@ -125,6 +125,12 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   // no diagram popover. Cue tokens (`^1`) are numbered triangle chips linking a lyric word
   // to a matching fill block. Both returns sit below every hook call so a token that flips
   // between kinds at the same tree position can't change the hook order.
+  // Named chord pattern (`@Hook`) — a signpost for the run that follows, not a chord to
+  // play, so no diagram and no strum on tap.
+  const pattern = patternName(name)
+  if (pattern) {
+    return <b className="chord-chip chord-chip--pattern" aria-label={`${pattern} pattern`} title={`${pattern} pattern`}>{pattern}</b>
+  }
   const cue = cueNumber(name)
   if (cue != null) {
     return <b className="chord-chip chord-chip--cue" aria-label={`Fill cue ${cue}`} title={`Fill cue ${cue}`}>{cue}</b>

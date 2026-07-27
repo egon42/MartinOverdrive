@@ -157,7 +157,13 @@ see `VOLUME-BALANCING.md`) instead of manual front-panel saves.
   `[Fill ^N]` (`isCueToken`); ghost / don't-play chips use a `~` prefix (`~Am`, same as
   cheat-card progressions) — frets/cues are **opt-in per sheet** (`parseChordSheet`'s
   `frets` option, passed only at the ryan render sites): a band lyrics sheet can
-  legitimately sing a bare number (Mary Jane's "18"), which must stay lyric text. Polish
+  legitimately sing a bare number (Mary Jane's "18"), which must stay lyric text.
+  **Pattern chips** (`@Hook`, `@Knees`, added 2026-07-27) name the chord pattern a run
+  belongs to, so a sheet says what to play and not just which chords — orange outline,
+  `PATTERN_RE` in `chords.ts`, no per-sheet opt-in (a leading `@` can't be lyric) and no
+  `~` ghost form. A pattern part is not a chord: exclude it anywhere chord parts are
+  counted or consumed (`chordPartCount`, `chordProgression`, `stripSheetFills` already
+  do). Currently only `05-thunderstruck.chords.txt` uses them. Polish
   song-by-song with `.claude/skills/polish-ryan-sheet/`. Per-song autoscroll defaults
   (after dial-in) live in `src/data/scrollSpeeds.json` (`speed`, optional `leadInSec`);
   practice `scrollSpeed` overrides when set. Ryan sheets are optional per song; the
