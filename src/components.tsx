@@ -142,15 +142,17 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
     : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
   const label = ghost ? `${name} (don't play)` : tag ? `${name} tag (short hit)` : name
-  // With the "Play chord on tap" setting on, opening the popover strums the shape,
-  // and tapping the open diagram replays it (the outside-pointerdown closer already
-  // ignores taps inside popRef, so a replay tap can't dismiss the popover).
+  // With the "Play chord on tap" setting on, any tap on the chip strums the shape
+  // (opening or closing), and tapping the open diagram replays it (the outside-
+  // pointerdown closer already ignores taps inside popRef, so a replay tap can't
+  // dismiss the popover). Dismissals that aren't chip taps — tapping elsewhere,
+  // Escape, scroll — go through setOpen directly and stay silent.
   const strum = () => { if (settings.chordAudio && shape) playChord(shape) }
   const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`} onClick={strum}>
     {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
   </span>
   const toggleOpen = () => {
-    if (!open) strum()
+    strum()
     setOpen(!open)
   }
   const openHandlers = {
