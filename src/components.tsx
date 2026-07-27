@@ -4,6 +4,7 @@ import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, i
 import { basicRowsFor, cheatRowsFor, curatedShapeForChord, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
+import { playChord } from './chordAudio'
 import type { Song } from './types'
 import { statuses } from './types'
 import { fretboardForVersion, homeFretsFor, octaveUpVariant, resolveFretboards, scaleName, type FretboardVersion } from './fretboard'
@@ -141,13 +142,21 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
     ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
     : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
   const label = ghost ? `${name} (don't play)` : tag ? `${name} tag (short hit)` : name
-  const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`}>
+  // With the "Play chord on tap" setting on, opening the popover strums the shape,
+  // and tapping the open diagram replays it (the outside-pointerdown closer already
+  // ignores taps inside popRef, so a replay tap can't dismiss the popover).
+  const strum = () => { if (settings.chordAudio && shape) playChord(shape) }
+  const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`} onClick={strum}>
     {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
   </span>
+  const toggleOpen = () => {
+    if (!open) strum()
+    setOpen(!open)
+  }
   const openHandlers = {
-    onClick: () => setOpen((value) => !value),
+    onClick: toggleOpen,
     onKeyDown: (event: ReactKeyboardEvent) => {
-      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setOpen((value) => !value) }
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleOpen() }
     },
   }
   // Underline any chip whose name starts with G (G, G#, Gb, Gm…) so the letter

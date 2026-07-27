@@ -56,6 +56,8 @@ export interface AppSettings {
   lyricChipPull: number
   /** Bank chips in song headers + mid-song Amp/Stomp cues on Lyrics/Tabs. Off by default. */
   showAmpChips: boolean
+  /** Strum the chord out loud when a diagram popover opens. Off by default (stage safety). */
+  chordAudio: boolean
   /** Hidden Developer toggle: shows the Card version dropdown on the Chords card. */
   devMode: boolean
   /** Hidden Developer toggle: shows the personal Ryan tab (show mode + song pages). */
@@ -140,6 +142,7 @@ function readSettings(): AppSettings {
         : DEFAULT_LYRIC_CHORD_PLACEMENT,
       lyricChipPull: readChipPull(raw.lyricChipPull),
       showAmpChips: raw.showAmpChips === true,
+      chordAudio: raw.chordAudio === true,
       devMode: raw.devMode === true,
       ryanTab: raw.ryanTab === true,
     }
@@ -151,6 +154,7 @@ function readSettings(): AppSettings {
       lyricChordPlacement: DEFAULT_LYRIC_CHORD_PLACEMENT,
       lyricChipPull: DEFAULT_LYRIC_CHIP_PULL,
       showAmpChips: DEFAULT_SHOW_AMP_CHIPS,
+      chordAudio: false,
       devMode: false,
       ryanTab: false,
     }
@@ -186,6 +190,7 @@ interface SettingsStore {
   setLyricChordPlacement: (placement: LyricChordPlacement) => void
   setLyricChipPull: (em: number) => void
   setShowAmpChips: (on: boolean) => void
+  setChordAudio: (on: boolean) => void
   setDevMode: (on: boolean) => void
   setRyanTab: (on: boolean) => void
   setThemePreset: (preset: ThemePresetId) => void
@@ -233,6 +238,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setSettings((old) => ({ ...old, lyricChipPull: Math.min(CHIP_PULL_MAX, Math.max(CHIP_PULL_MIN, em)) }))
   const setShowAmpChips = (on: boolean) =>
     setSettings((old) => ({ ...old, showAmpChips: on }))
+  const setChordAudio = (on: boolean) =>
+    setSettings((old) => ({ ...old, chordAudio: on }))
   const setDevMode = (on: boolean) =>
     setSettings((old) => ({ ...old, devMode: on }))
   const setRyanTab = (on: boolean) =>
@@ -285,7 +292,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return next
   })
   const value = useMemo(
-    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setDevMode, setRyanTab, setThemePreset, patchThemeColor, setRowStripe, setRowStripeStrength, resetTheme, isFingeringOnly, toggleFingeringOnly, isRyanMeasure, toggleRyanMeasure }),
+    () => ({ settings, patchFingering, setLyricChordPlacement, setLyricChipPull, setShowAmpChips, setChordAudio, setDevMode, setRyanTab, setThemePreset, patchThemeColor, setRowStripe, setRowStripeStrength, resetTheme, isFingeringOnly, toggleFingeringOnly, isRyanMeasure, toggleRyanMeasure }),
     [settings, fingeringOnly, ryanMeasure],
   )
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>
@@ -553,7 +560,7 @@ function ThemeFields() {
 }
 
 export function SettingsPage() {
-  const { settings, setShowAmpChips, setDevMode, setRyanTab } = useSettings()
+  const { settings, setShowAmpChips, setChordAudio, setDevMode, setRyanTab } = useSettings()
   const presetLabel = settings.theme.preset === 'custom'
     ? 'Custom'
     : THEME_PRESETS[settings.theme.preset].label
@@ -581,6 +588,17 @@ export function SettingsPage() {
       <h2>Chord fingerings</h2>
       <FingeringFields surface="cheat" label="Cheat & Chords cards" />
       <FingeringFields surface="chords" label="Lyrics sheet" />
+      <label className="theme-stripe-toggle">
+        <input
+          type="checkbox"
+          checked={settings.chordAudio}
+          onChange={(e) => setChordAudio(e.target.checked)}
+        />
+        <span className="theme-stripe-meta">
+          <strong>Play chord on tap</strong>
+          <small>Strums the chord out loud when you open a chord diagram. Tap the open diagram to hear it again. Handy for checking shapes without a guitar in hand.</small>
+        </span>
+      </label>
     </section>
     <section className="panel settings-panel">
       <span className="eyebrow">Amp</span>
