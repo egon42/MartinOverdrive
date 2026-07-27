@@ -3274,6 +3274,29 @@
   ],
   "09-pride-and-joy": [
     {
+      "label": "Pre drop Fills 2026-07-26",
+      "sections": [
+        {
+          "section": "Shuffle",
+          "chords": "E E E E7 | A7 A7 E E | B7 A7 E +B7",
+          "hint": "Texas shuffle; E7 tags at line ends. V3 + V4: one hit per chord until dig-in; after \"long and lean\" / \"finest wine\" then shuffle"
+        },
+        {
+          "section": "Outro",
+          "chords": "E B7 E"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Boogie over E\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|------2-----4---|\nE|0--3h4--0-------|\n\nSame shape over A7 (root on A)\ne|----------------|\nB|----------------|\nG|----------------|\nD|------2-----4---|\nA|0--3h4--0-------|\nE|----------------|"
+        }
+      ],
+      "form": [
+        "Shuffle ×8",
+        "Outro"
+      ]
+    },
+    {
       "label": "Pre merge sparse into shuffle +B7 tag",
       "sections": [
         {
