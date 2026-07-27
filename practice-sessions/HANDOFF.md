@@ -1,21 +1,29 @@
 # HANDOFF — living bookmark (overwrite on pause)
 
-- Updated: **2026-07-27 afternoon** (Lola desk slice complete)
+- Updated: **2026-07-27 afternoon** (Dirtbag desk slice complete)
 - Show: 2026-08-01 · Phase: **Harden**
 - Week plan: [`final-week-2026-08-01.md`](final-week-2026-08-01.md)
 - Skill: `/continue desk` · `/continue guitar` → `.claude/skills/continue-final-week/`
 
 ## Track
 
-**desk** (last used — Lola stage cues)
+**desk** (last used — Dirtbag full-chords cue)
 
 ## Last completed
 
-- Lola Montez stage card rebuilt with Ryan (council-verified vs sheets): no Intro (song starts Verse 1); verse D5 G5 A5 D5 with hold-the-D5 hint; chorus is four G A D rows with + tag chips ending (G A D *F#m); Break section (D A Bm G) ×2 between chorus and bridge; bridge is two vocal lines landing Em on "pain" (was rotated a chord), then the final chorus rejoins at "spider dance" (form ends Break, Bridge, Chorus; no outro, ends on the "yeah-eah" D). NEW GRAMMAR: `*Chord` = blue alternate chip (hint-blue fill, play instead on the pass the hint names) — parser/chip/CSS shipped same day. Mock at `practice-sessions/23-lola-montez-stage-card-mock.md`; prior cards in version dropdown.
+- Teenage Dirtbag stage card (council-verified vs sheets): shapes switched from power
+  voicings to full chords (matches Ryan sheet "prefer full chords"); Verse hint
+  "Quiet palm mute, full chords"; new Walk-up section (A B C#m G#m A B) after every
+  Chorus ×3 in the form (was only a vague turnaround hint); Chorus hint now flags the
+  final chorus sit-out/mute; intro reprise corrected to ×2 (council caught it, both
+  sheets show two cycles). Mock at `practice-sessions/16-teenage-dirtbag-stage-card-mock.md`;
+  old card in version dropdown. Not yet phone-verified on `/dev/`.
 
 ## Next desk
 
-**Teenage Dirtbag** full-chords cue on Cheat (nice-if-time queue; then Fat Bottomed stops). Lola phone-verified on `/dev/` 2026-07-27 including Cursor's scrolling Cheat view.
+**Fat Bottomed Girls stops** on Cheat (last nice-if-time card item), or phone-verify
+Dirtbag on `/dev/` first if at the phone. Then UI/CSS leftovers (em-dash purge on
+kill-zone hints if touching those cards).
 
 ## Next guitar
 
@@ -23,7 +31,7 @@ Body Pre → `/coach` on [`2026-07-27.md`](2026-07-27.md) Priority (Lola first �
 
 ## Recommended desk
 
-**Claude Fable 5** (card judgment for Dirtbag cue)
+**Claude Fable 5** (card judgment for FBG stops)
 
 ## Recommended guitar
 
@@ -35,7 +43,11 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 
 ## Card / UI TODOs
 
-Kill-zone **verified** live; Lola complete and phone-verified (incl. Cursor's Cheat page-scroll flow from d54b69f). Nice-if-time: Dirtbag full-chords cue, Fat Bottomed stops. Minor: a few kill-zone hints still use em-dashes (Valerie etc.) — purge if touching those cards. Freeze after **Thu evening**.
+Kill-zone **verified** live; Lola complete and phone-verified. Dirtbag done, needs a
+phone glance on `/dev/`. Nice-if-time: Fat Bottomed stops. Minor: a few kill-zone hints
+still use em-dashes (Valerie etc.) — purge if touching those cards. Optional low-sev
+note from Dirtbag council: final bridge's 2nd round tags E B into the outro (not on the
+card; add a Bridge hint only if it trips anyone in practice). Freeze after **Thu evening**.
 
 ## Standing decisions
 

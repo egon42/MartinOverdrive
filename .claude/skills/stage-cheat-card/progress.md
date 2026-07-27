@@ -33,7 +33,7 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 - [ ] 13-save-a-horse-ride-a-cowboy
 - [x] 14-sweet-home-alabama — F C tag 2026-07-26
 - [x] 15-dani-california — Dm hangs 2026-07-26
-- [ ] 16-teenage-dirtbag
+- [x] 16-teenage-dirtbag — full-chords cue 2026-07-27: full-chord shapes, quiet-PM verse hint, Walk-up section after each chorus, last-chorus sit-out hint, intro reprise ×2
 - [x] 17-the-pretender — hide Intro/Interlude on Cheat 2026-07-27
 - [ ] 18-here-it-goes-again
 - [ ] 19-purple-rain

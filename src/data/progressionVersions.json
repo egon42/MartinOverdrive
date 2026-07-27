@@ -1020,6 +1020,58 @@
   ],
   "16-teenage-dirtbag": [
     {
+      "label": "pre stage card full-chords cue 2026-07-27",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E B E A",
+          "shapes": "022--- -244-- 022--- -022--"
+        },
+        {
+          "section": "Verse",
+          "chords": "E B E A",
+          "shapes": "022--- -244-- 022--- -022--"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "C#m A B",
+          "shapes": "-466-- -022-- -244--"
+        },
+        {
+          "section": "Chorus",
+          "chords": "E A B C#m G#m",
+          "shapes": "022--- -022-- -244-- -466-- 466---",
+          "hint": "Short turnaround tag after the 3rd cycle"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(E Asus2) ×3 C#m G#m A B",
+          "shapes": "022--- -02400 -466-- 466--- -022-- -244--"
+        },
+        {
+          "section": "Outro",
+          "chords": "E B E A G#m F#m E",
+          "shapes": "022--- -244-- 022--- -022-- 466--- 244--- 022---"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×3",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Intro",
+        "Verse ×3",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Bridge ×2",
+        "Verse ×4",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Bridge ×2",
+        "Outro"
+      ]
+    },
+    {
       "label": "Jul 15 pass (pre-research)",
       "sections": [
         {
