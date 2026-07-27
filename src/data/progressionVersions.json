@@ -1,6 +1,68 @@
 {
   "02-all-the-small-things": [
     {
+      "label": "pre interlude 2-pass split 2026-07-27",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "C F G G",
+          "shapes": "-355-- 133--- 355--- 355---",
+          "hint": "Very fast"
+        },
+        {
+          "section": "Verse",
+          "chords": "C G F G",
+          "shapes": "-355-- 355--- 133--- 355---",
+          "hint": "V1 \"All the small things\", V2 \"Late night, come home\""
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "C",
+          "shapes": "-355--",
+          "hint": "\"Say it ain't so\": ring C"
+        },
+        {
+          "section": "Chorus",
+          "chords": "C G F",
+          "shapes": "-355-- 355--- 133---",
+          "hint": "\"Nana nana\", fast"
+        },
+        {
+          "section": "Interlude",
+          "chords": "C F G G",
+          "shapes": "-355-- 133--- 355--- 355---",
+          "hint": "Single strums, then your muted octaves (C C C B) ×3:",
+          "tab": "G-|5---5---5---5---|5---5---5---5---|5---5---5---5---|4---4---4---4---|\nD-|--5---5---5---5-|--5---5---5---5-|--5---5---5---5-|--5---5---5---5-|"
+        },
+        {
+          "section": "Bridge",
+          "chords": "C G F",
+          "shapes": "-355-- 355--- 133---",
+          "hint": "\"Keep your head still\", night will go on"
+        },
+        {
+          "section": "Outro",
+          "chords": "C G F C",
+          "shapes": "-355-- 355--- 133--- -355--",
+          "hint": "Hang F: \"the night will go on\", land C on \"long\""
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×4",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Interlude ×2",
+        "Pre-Chorus",
+        "Bridge",
+        "Pre-Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre octave-tab tweak 2026-07-27",
       "sections": [
         {
