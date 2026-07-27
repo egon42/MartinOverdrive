@@ -34,15 +34,6 @@ const PATTERNS: Record<number, { kick: number[], snare: number[] }> = {
   6: { kick: [0], snare: [3] },
 }
 
-/**
- * The tempo to play a song at: the user's own tapped/stepped tempo when they've set one,
- * else the researched recording tempo, else a neutral default. Shared with pattern
- * tap-to-play so a chip strums at the same speed the metronome clicks.
- */
-export function songBpm(songId: string, override?: number | null): number {
-  return override || bpmDefaults[songId]?.bpm || DEFAULT_BPM
-}
-
 export function Metronome({ songId }: { songId: string }) {
   const { get, patch } = usePractice()
   const seed = bpmDefaults[songId]

@@ -2,17 +2,14 @@ Standard (EADGBE)
 
 (*)=optional
 
-@Aha
-A-ha,ha,ha.    A-ha,ha,ha.    A-ha,ha,ha.
+             A-ha,ha,ha.    A-ha,ha,ha.    A-ha,ha,ha.
 
              A-ha,ha,ha. A-ha,ha,ha. A-ha,ha,ha. A-ha,ha,ha.
 
-@Chug
-Thunder. (A-ha,ha,ha) [play 6 times]
+             Thunder. (A-ha,ha,ha) [play 6 times]
 
              Thunder. Thunder. Thunder. Thunder
 
-@Chug
 I was caught in the middle of a railroad track, (Thunder)
 
              I looked 'round and i knew there was no turning back. (Thunder)
@@ -21,8 +18,7 @@ I was caught in the middle of a railroad track, (Thunder)
 
              And i knew there was no help, no help from you. (Thunder)
 
-@Drums
-Sound of the drums
+             Sound of the drums
 B5
     
 E5
@@ -52,13 +48,11 @@ E5
        The thunder of guns tore me a-part.
 
              
-@Chug
 B5
 
 You've been thunderstruck.
 
              
-@Chug
 B5
 
 Rode down the highway, broke the limit, we hit the town.
@@ -85,7 +79,6 @@ E5
               
 E5
                          
-@Knees
 A5
  
 B5
@@ -117,7 +110,6 @@ E5
              You've been...
 
                      
-@Hook
 B5
      
 A5
@@ -162,7 +154,6 @@ A5
 E5
 
  
-@Chug
 B5
     
 B5
@@ -172,7 +163,6 @@ B5
 B5
 
              
-@Lift
 B5
  
 A5
@@ -189,7 +179,6 @@ Well i was shaking at the knees,
              Could i come again please?
 
  
-@Bed
 E5
  
 B5
@@ -206,7 +195,6 @@ A5
 E5
 
               
-@Lala
 B5
    
 A5
@@ -240,7 +228,6 @@ B5
 La,la,la,la,la,la,la,la.
 
                      
-@Hook
 B5
       
 A5
@@ -288,8 +275,7 @@ Yeah, yeah,
 E5
 yeah
 
-@Alright
-Said 
+             Said 
 B5
 yeah, its al-
 E5
@@ -310,7 +296,6 @@ E5
 fine, so fine.
 
 
-@Walk
 B5
 
 A5
@@ -323,7 +308,6 @@ A5
 
 E5
 
-@Hook
 Thunder-struck,
 
              

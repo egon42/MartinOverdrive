@@ -57,94 +57,18 @@ function pluckBuffer(audio: AudioContext, midi: number): AudioBuffer {
   return buffer
 }
 
-/** One chord in a progression: what to strum, and how long until the next one. */
-export interface SequenceStep { shape: ChordShape; seconds: number }
-
-// Sources still scheduled or ringing for the current tap. A pattern tap can schedule
-// seconds of audio ahead of the clock, so a second tap has to cancel the pending ones —
-// ducking the gain only silences what is already sounding.
-let activeSources: AudioBufferSourceNode[] = []
-
-// Which sequence is sounding right now, as a token the UI can compare against. The engine
-// is a singleton but pattern chips are many, so a chip can't track "am I playing?" in its
-// own state — tapping a second chip kills the first one's audio and its highlight has to
-// go out with it. 0 = nothing playing.
-let playToken = 0
-let tokenSeq = 0
-const listeners = new Set<() => void>()
-const notify = () => { for (const fn of [...listeners]) fn() }
-
-export function getSequenceToken() { return playToken }
-export function subscribeSequence(fn: () => void) { listeners.add(fn); return () => { listeners.delete(fn) } }
-/** Clear the highlight for a sequence that ran to its end, unless something newer started. */
-export function endSequence(token: number) { if (token && token === playToken) { playToken = 0; notify() } }
-
-const DUCK_S = 0.08
-// Chords inside a progression overlap slightly instead of hard-cutting: a re-strum on a
-// real guitar leaves the previous chord ringing under the new one for a moment.
-const CHORD_OVERLAP_S = 0.16
-
-/** Strum one shape into `out` at `at`; returns how many strings sounded. */
-function scheduleStrum(audio: AudioContext, out: GainNode, shape: ChordShape, at: number): number {
-  let sounded = 0
-  shape.forEach((fret, stringIndex) => {
-    if (fret === 'x') return
-    const src = audio.createBufferSource()
-    src.buffer = pluckBuffer(audio, OPEN_STRING_MIDI[stringIndex] + fret)
-    const gain = audio.createGain()
-    gain.gain.value = STRING_GAIN
-    src.connect(gain).connect(out)
-    src.start(at + sounded * STRUM_GAP_S)
-    activeSources.push(src)
-    sounded++
-  })
-  return sounded
-}
-
 export function playChord(shape: ChordShape) {
-  playSequence([{ shape, seconds: 0 }])
-}
-
-/**
- * Duck what's ringing and cancel what's merely scheduled. A pattern tap can queue ~7s of
- * chords plus a 3s ring-out, so leaving show mode or turning to the next song has to kill
- * it — otherwise the last song's progression strums over the new one.
- */
-function silence(audio: AudioContext) {
-  const now = audio.currentTime
-  window.clearTimeout(suspendTimer)
-  if (lastChord) {
-    const gain = lastChord.gain
-    gain.cancelScheduledValues(now)
-    gain.setValueAtTime(gain.value, now)
-    gain.linearRampToValueAtTime(0, now + DUCK_S)
-    lastChord = null
-  }
-  for (const src of activeSources) { try { src.stop(now + DUCK_S) } catch { /* already ended */ } }
-  activeSources = []
-  return now
-}
-
-/** Stop playback now (component unmount, leaving the sheet). Safe before any audio exists. */
-export function stopSequence() {
-  if (!ctx) { if (playToken) { playToken = 0; notify() } return }
-  const audio = ctx
-  silence(audio)
-  // silence() cleared the suspend timer; re-arm it so the context still parks itself.
-  suspendTimer = window.setTimeout(() => { audio.suspend().catch(() => {}) }, (DUCK_S + 0.2) * 1000)
-  if (playToken) { playToken = 0; notify() }
-}
-
-/**
- * Strum a progression on the audio clock. Scheduling every chord up front (rather than a
- * chain of setTimeouts) keeps the timing sample-accurate through main-thread jank and
- * background-tab throttling — the same reason the metronome schedules ahead.
- */
-export function playSequence(steps: SequenceStep[]): number {
-  if (!steps.length) return 0
   const audio = ctx ?? (ctx = new AudioContext())
   audio.resume().catch(() => {}) // also wakes iOS's non-standard 'interrupted' state
-  silence(audio)
+  window.clearTimeout(suspendTimer)
+  // Duck whatever chord is still ringing so quick A/B taps don't pile up into mud.
+  if (lastChord) {
+    const gain = lastChord.gain
+    gain.cancelScheduledValues(audio.currentTime)
+    gain.setValueAtTime(gain.value, audio.currentTime)
+    gain.linearRampToValueAtTime(0, audio.currentTime + 0.08)
+    lastChord = null
+  }
   // Mild compression tames the six-string sum without hand-balancing string gains.
   // One shared compressor: it's the priciest built-in node, so don't grow one per tap.
   if (!comp) {
@@ -153,47 +77,26 @@ export function playSequence(steps: SequenceStep[]): number {
   }
   const master = audio.createGain()
   master.connect(comp)
-  const now = audio.currentTime
-  const start = now + 0.03
-  let at = start
-  let sounded = 0
-  let lastStringAt = start // when the final chord's last string is plucked
-  for (let i = 0; i < steps.length; i++) {
-    const step = steps[i]
-    // A step always consumes its beats, sounding or not — computing `next` before the
-    // guard keeps a fully-muted shape from collapsing onto the following chord's onset.
-    const next = at + Math.max(0, step.seconds)
-    // Each chord gets its own gain so the one before it can be faded under it.
-    const voice = audio.createGain()
-    voice.connect(master)
-    const strings = scheduleStrum(audio, voice, step.shape, at)
-    if (!strings) { voice.disconnect(); at = next; continue }
-    sounded++
-    lastStringAt = at + (strings - 1) * STRUM_GAP_S
-    if (i < steps.length - 1 && step.seconds > 0) {
-      voice.gain.setValueAtTime(1, next)
-      voice.gain.linearRampToValueAtTime(0, next + CHORD_OVERLAP_S)
-    }
-    at = next
-  }
-  if (!sounded) {
-    // Nothing to hear, but the context is running — park it rather than hold the phone's
-    // audio session open forever (the caller's clearTimeout already killed the old timer).
-    master.disconnect()
-    suspendTimer = window.setTimeout(() => { audio.suspend().catch(() => {}) }, (DUCK_S + 0.2) * 1000)
-    return 0
-  }
+  const start = audio.currentTime + 0.03
+  const sources: AudioBufferSourceNode[] = []
+  shape.forEach((fret, stringIndex) => {
+    if (fret === 'x') return
+    const src = audio.createBufferSource()
+    src.buffer = pluckBuffer(audio, OPEN_STRING_MIDI[stringIndex] + fret)
+    const gain = audio.createGain()
+    gain.gain.value = STRING_GAIN
+    src.connect(gain).connect(master)
+    src.start(start + sources.length * STRUM_GAP_S)
+    sources.push(src)
+  })
+  if (!sources.length) return
   lastChord = master
-  playToken = ++tokenSeq
-  notify()
-  // Detach the chain once every string has rung out instead of leaving dead nodes on the
-  // graph (onended still fires for a source that was ducked or stopped early).
-  const owned = activeSources.slice()
-  let remaining = owned.length
-  for (const src of owned) src.onended = () => { if (--remaining === 0) master.disconnect() }
+  // Detach the chain once every string has rung out instead of leaving dead nodes
+  // on the graph (onended still fires for a chord that was ducked to silence).
+  let remaining = sources.length
+  for (const src of sources) src.onended = () => { if (--remaining === 0) master.disconnect() }
   // Park the context once the tail is done; the resume() above wakes it next tap.
-  // Only the newest tap holds the timer — clearTimeout above cancels older ones.
-  const tailMs = (lastStringAt - now + MAX_NOTE_SECONDS + 0.2) * 1000
+  // Only the newest chord holds the timer — clearTimeout above cancels older ones.
+  const tailMs = (start - audio.currentTime + sources.length * STRUM_GAP_S + MAX_NOTE_SECONDS + 0.2) * 1000
   suspendTimer = window.setTimeout(() => { audio.suspend().catch(() => {}) }, tailMs)
-  return playToken
 }
