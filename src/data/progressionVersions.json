@@ -3605,6 +3605,52 @@
   ],
   "23-lola-montez": [
     {
+      "label": "pre break section + F#m ending row 2026-07-27",
+      "sections": [
+        {
+          "section": "Verse",
+          "chords": "D5 G5 A5 D5",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Hold the D5 the second time through"
+        },
+        {
+          "section": "Interlude",
+          "chords": "D G A D",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Lead solos over this loop"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(G A D +Bm) | (G A D +A +Bm +A) | (G A D +Bm) | (G A D)",
+          "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--",
+          "hint": "\"yeah-eah\" lands D; F#m ONLY on the chorus into the bridge"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(D A Bm G) ×2 | (A D G Em) | (A D G A) | (G A D Bm G)",
+          "shapes": "-577-- 577--- -244-- 355--- 577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
+          "hint": "Instrumental ×2; vocals \"Oh Lola\" on A, land Em on \"pain\""
+        },
+        {
+          "section": "Outro",
+          "chords": "(G A D +Bm) | (G A D)",
+          "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577--",
+          "hint": "Second half of the chorus; ends on D"
+        }
+      ],
+      "form": [
+        "Verse",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Bridge",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre verse hold + outro 2026-07-27",
       "sections": [
         {

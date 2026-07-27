@@ -1063,15 +1063,21 @@
       },
       {
         "section": "Chorus",
-        "chords": "(G A D +Bm) | (G A D +A +Bm +A) | (G A D +Bm) | (G A D)",
-        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577--",
-        "hint": "\"yeah-eah\" lands D; F#m ONLY on the chorus into the bridge"
+        "chords": "(G A D +Bm) | (G A D +A +Bm +A) | (G A D +Bm) | (G A D) | (G A F#m)",
+        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577-- 355--- 577--- 244---",
+        "hint": "\"yeah-eah\" ends D; 2nd time F#m into the Break"
+      },
+      {
+        "section": "Break",
+        "chords": "(D A Bm G) ×2",
+        "shapes": "-577-- 577--- -244-- 355---",
+        "hint": "Off the F#m ending; lead riffs over it"
       },
       {
         "section": "Bridge",
-        "chords": "(D A Bm G) ×2 | (A D G Em) | (A D G A) | (G A D Bm G)",
-        "shapes": "-577-- 577--- -244-- 355--- 577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
-        "hint": "Instrumental ×2; vocals \"Oh Lola\" on A, land Em on \"pain\""
+        "chords": "(A D G Em) | (A D G A) | (G A D Bm G)",
+        "shapes": "577--- -577-- 355--- 022--- 577--- -577-- 355--- 577--- 355--- 577--- -577-- -244-- 355---",
+        "hint": "Vocals \"Oh Lola\" on A; land Em on \"pain\""
       },
       {
         "section": "Outro",
@@ -1088,6 +1094,7 @@
       "Interlude",
       "Verse",
       "Chorus",
+      "Break",
       "Bridge",
       "Outro"
     ]
