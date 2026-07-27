@@ -26,6 +26,7 @@ import versionsData from './data/progressionVersions.json'
 // Prefix a chord with + for a short tag hit, not a full measure ("E F +G").
 // Prefix a chord with * for an alternate chip ("G A D *F#m"): rendered in the hint blue,
 // meaning play it instead of its neighbor on the pass the section hint names.
+// Distinct markers stack on one chip ("*+G" = blue alternate tag).
 // Use `|` to force a line break before the next span ("(C G Bb F Am G C) | (C G Bb F Am G Ab)").
 // Parentheses alone do NOT stack lines — only `|` (or natural wrap) does.
 export interface ProgSection {
@@ -92,7 +93,7 @@ export function curatedShapesForSong(songId: string): Map<string, string> {
         const names = section.chords.trim().split(/\s+/).filter(Boolean)
         const shapes = section.shapes.trim().split(/\s+/).filter(Boolean)
         names.forEach((raw, i) => {
-          const name = raw.startsWith('~') || raw.startsWith('+') || raw.startsWith('*') ? raw.slice(1) : raw
+          const name = raw.replace(/^[~+*]+/u, '')
           if (name && shapes[i] && !map.has(name)) map.set(name, shapes[i])
         })
       }
@@ -136,6 +137,7 @@ export function formStepBase(label: string): string {
  * - "~A" / "(E ~A)" → ghost chip (shown for beat, don't play)
  * - "+G" / "(E F +G)" → tag chip (short hit, not a full measure)
  * - "*F#m" / "(G A D *F#m)" → alternate chip (hint blue; played instead on the pass the hint names)
+ * - Distinct markers stack on one chip: "*+G" = blue alternate tag (duplicates throw)
  * Throws on unbalanced parens, empty groups, or ×N not attached to a group.
  */
 export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
@@ -151,21 +153,18 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
     const altsOut: boolean[] = []
     const markerNames: Record<string, string> = { '~': 'ghost', '+': 'tag', '*': 'alternate' }
     for (const token of raw.trim().split(/\s+/).filter(Boolean)) {
-      const marker = markerNames[token[0]] ? token[0] : null
-      if (marker) {
-        const name = token.slice(1)
-        if (!name) throw new Error(`empty ${markerNames[marker]} chord in "${chords}"`)
-        if (markerNames[name[0]]) throw new Error(`bad chord marker in "${token}"`)
-        chordsOut.push(name)
-        ghostsOut.push(marker === '~')
-        tagsOut.push(marker === '+')
-        altsOut.push(marker === '*')
-      } else {
-        chordsOut.push(token)
-        ghostsOut.push(false)
-        tagsOut.push(false)
-        altsOut.push(false)
+      let name = token
+      const seen: string[] = []
+      while (name && markerNames[name[0]]) {
+        if (seen.includes(name[0])) throw new Error(`duplicate ${markerNames[name[0]]} marker in "${token}"`)
+        seen.push(name[0])
+        name = name.slice(1)
       }
+      if (seen.length && !name) throw new Error(`empty ${markerNames[seen[0]]} chord in "${chords}"`)
+      chordsOut.push(name)
+      ghostsOut.push(seen.includes('~'))
+      tagsOut.push(seen.includes('+'))
+      altsOut.push(seen.includes('*'))
     }
     return { chords: chordsOut, ghosts: ghostsOut, tags: tagsOut, alts: altsOut }
   }

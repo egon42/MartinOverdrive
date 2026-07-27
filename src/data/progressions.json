@@ -1268,9 +1268,9 @@
     "sections": [
       {
         "section": "Chorus",
-        "chords": "(D C G/B D C A) | (D G) | (D A D)",
-        "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232",
-        "hint": "Opening: sit out, single hook. Mid/final: double the \"Fat bottomed girls\" row"
+        "chords": "(D C G/B D C A) | (D G) | (D A D) | (*+G *D *A *D)",
+        "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232 320003 --0232 -02220 --0232",
+        "hint": "Opening: sit out, single hook. Blue row: mid/final double hook"
       },
       {
         "section": "Intro",

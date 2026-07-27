@@ -17,10 +17,15 @@ Correctness fixes this pass:
 
 ## Cheat tab (building blocks — each section once)
 
+Third pass (same day): double hook shown as its own BLUE row — `(*+G *D *A *D)`, a G
+tag pickup then D A D, all alternate-blue = played only on the passes the hint names
+(mid/final). NEW GRAMMAR: distinct markers now stack on one chip (`*+G` = blue
+alternate tag); parser/chip/CSS shipped with this card, duplicates still throw.
+
 ```
 CHORUS
-(D C G/B D C A) | (D G) | (D A D)
-hint: Opening: sit out, single hook. Mid/final: double the "Fat bottomed girls" row
+(D C G/B D C A) | (D G) | (D A D) | (*+G *D *A *D)
+hint: Opening: sit out, single hook. Blue row: mid/final double hook
 
 INTRO
 (~D) ×7 D
