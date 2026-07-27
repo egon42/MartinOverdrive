@@ -1050,11 +1050,6 @@
   "23-lola-montez": {
     "sections": [
       {
-        "section": "Intro",
-        "chords": "D5 G5 A5 D5",
-        "shapes": "-577-- 355--- 577--- -577--"
-      },
-      {
         "section": "Verse",
         "chords": "(D5 G5 A5) ×2 D5",
         "shapes": "-577-- 355--- 577--- -577--",
@@ -1080,7 +1075,6 @@
       }
     ],
     "form": [
-      "Intro",
       "Verse",
       "Interlude",
       "Verse",
