@@ -1063,9 +1063,9 @@
       },
       {
         "section": "Chorus",
-        "chords": "(G A D +Bm) | (G A D +A +Bm +A) | (G A D +Bm) | (G A D) | (G A F#m)",
-        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577-- 355--- 577--- 244---",
-        "hint": "\"yeah-eah\" ends D; 2nd time F#m into the Break"
+        "chords": "(G A D +Bm) | (G A D +A +Bm +A) | (G A D +Bm) | (G A D *F#m)",
+        "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577-- 244---",
+        "hint": "\"yeah-eah\" ends D; 2nd time play the blue F#m instead, into the Break"
       },
       {
         "section": "Break",

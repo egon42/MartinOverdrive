@@ -24,6 +24,8 @@ import versionsData from './data/progressionVersions.json'
 // ("Verse ×4" + chords "Em C D") — that reads clearer on stage than chord-chip ×N.
 // Prefix a chord with ~ to keep the beat chip visible but mark it "don't play" ("F# ~A B").
 // Prefix a chord with + for a short tag hit, not a full measure ("E F +G").
+// Prefix a chord with * for an alternate chip ("G A D *F#m"): rendered in the hint blue,
+// meaning play it instead of its neighbor on the pass the section hint names.
 // Use `|` to force a line break before the next span ("(C G Bb F Am G C) | (C G Bb F Am G Ab)").
 // Parentheses alone do NOT stack lines — only `|` (or natural wrap) does.
 export interface ProgSection {
@@ -45,6 +47,8 @@ export interface CheatChordSpan {
   ghosts: boolean[]
   /** Parallel to `chords`: true = short tag hit, not a full measure. */
   tags: boolean[]
+  /** Parallel to `chords`: true = alternate (blue) chip, played instead on the pass the hint names. */
+  alts: boolean[]
   shapes: string[]
   times: number
   /** Force this span onto a new row (from `|` in the chord string). */
@@ -88,7 +92,7 @@ export function curatedShapesForSong(songId: string): Map<string, string> {
         const names = section.chords.trim().split(/\s+/).filter(Boolean)
         const shapes = section.shapes.trim().split(/\s+/).filter(Boolean)
         names.forEach((raw, i) => {
-          const name = raw.startsWith('~') || raw.startsWith('+') ? raw.slice(1) : raw
+          const name = raw.startsWith('~') || raw.startsWith('+') || raw.startsWith('*') ? raw.slice(1) : raw
           if (name && shapes[i] && !map.has(name)) map.set(name, shapes[i])
         })
       }
@@ -131,11 +135,12 @@ export function formStepBase(label: string): string {
  * - Bare chords may mix with groups: "Am (E A) ×2 G"
  * - "~A" / "(E ~A)" → ghost chip (shown for beat, don't play)
  * - "+G" / "(E F +G)" → tag chip (short hit, not a full measure)
+ * - "*F#m" / "(G A D *F#m)" → alternate chip (hint blue; played instead on the pass the hint names)
  * Throws on unbalanced parens, empty groups, or ×N not attached to a group.
  */
 export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
   const shapeTokens = shapes.trim() ? shapes.trim().split(/\s+/).filter(Boolean) : []
-  const spans: { chords: string[]; ghosts: boolean[]; tags: boolean[]; times: number; breakBefore?: boolean }[] = []
+  const spans: { chords: string[]; ghosts: boolean[]; tags: boolean[]; alts: boolean[]; times: number; breakBefore?: boolean }[] = []
   const src = chords.trim()
   if (!src) return []
 
@@ -143,28 +148,26 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
     const chordsOut: string[] = []
     const ghostsOut: boolean[] = []
     const tagsOut: boolean[] = []
+    const altsOut: boolean[] = []
+    const markerNames: Record<string, string> = { '~': 'ghost', '+': 'tag', '*': 'alternate' }
     for (const token of raw.trim().split(/\s+/).filter(Boolean)) {
-      if (token.startsWith('~')) {
+      const marker = markerNames[token[0]] ? token[0] : null
+      if (marker) {
         const name = token.slice(1)
-        if (!name) throw new Error(`empty ghost chord in "${chords}"`)
-        if (name.startsWith('+') || name.startsWith('~')) throw new Error(`bad chord marker in "${token}"`)
+        if (!name) throw new Error(`empty ${markerNames[marker]} chord in "${chords}"`)
+        if (markerNames[name[0]]) throw new Error(`bad chord marker in "${token}"`)
         chordsOut.push(name)
-        ghostsOut.push(true)
-        tagsOut.push(false)
-      } else if (token.startsWith('+')) {
-        const name = token.slice(1)
-        if (!name) throw new Error(`empty tag chord in "${chords}"`)
-        if (name.startsWith('+') || name.startsWith('~')) throw new Error(`bad chord marker in "${token}"`)
-        chordsOut.push(name)
-        ghostsOut.push(false)
-        tagsOut.push(true)
+        ghostsOut.push(marker === '~')
+        tagsOut.push(marker === '+')
+        altsOut.push(marker === '*')
       } else {
         chordsOut.push(token)
         ghostsOut.push(false)
         tagsOut.push(false)
+        altsOut.push(false)
       }
     }
-    return { chords: chordsOut, ghosts: ghostsOut, tags: tagsOut }
+    return { chords: chordsOut, ghosts: ghostsOut, tags: tagsOut, alts: altsOut }
   }
 
   // Tokenize: "(...)", "×N"/"xN", "|", or a bare chord-ish token
@@ -216,6 +219,7 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
       chords: span.chords,
       ghosts: span.ghosts,
       tags: span.tags,
+      alts: span.alts,
       times: span.times,
       shapes: slice,
       ...(span.breakBefore ? { breakBefore: true } : {}),
@@ -249,11 +253,13 @@ function sectionToRow(label: string, section: ProgSection | undefined): CheatRow
       ? chords.trim().split(/\s+/).filter(Boolean).map((c, i) => {
           const ghost = c.startsWith('~')
           const tag = !ghost && c.startsWith('+')
-          const name = ghost || tag ? c.slice(1) : c
+          const alt = !ghost && !tag && c.startsWith('*')
+          const name = ghost || tag || alt ? c.slice(1) : c
           return {
             chords: [name || c],
             ghosts: [ghost && !!name],
             tags: [tag && !!name],
+            alts: [alt && !!name],
             times: 1,
             shapes: shapeTokens[i] ? [shapeTokens[i]] : [],
           }
