@@ -350,8 +350,8 @@ PRESETS = [
     tone("LEAD_SOLO",       "14 LEAD SOLO",       "lead-solo"),        # slot 13
     tone("VOODOO_WAH",      "15 VOODOO WAH",      "voodoo-wah"),       # slot 14
     tone("GLAM_ROCK",       "16 GLAM ROCK",       "glam-rock"),        # slot 15
-    tone("CHORUS_CLEAN",    "17 QUIET VERSE",     "pair-quiet-verse"),  # slot 16
-    tone("GRUNGE_BIG",      "18 BIG CHORUS",      "pair-big-chorus"),   # slot 17
+    tone("CHORUS_CLEAN",    "17 QUIET VERSE",     "pair-quiet-verse", vol=10),  # slot 16
+    tone("GRUNGE_BIG",      "18 BIG CHORUS",      "pair-big-chorus", vol=2.5),  # slot 17
     tone("MUTED_DRY_CLEAN", "19 MUTED VERSE",     "pair-muted-verse"),  # slot 18
     tone("POP_PUNK",        "20 PUNK CHORUS",     "pair-punk-chorus", vol=4.5),  # slot 19
     tone("CHORUS_CLEAN",    "21 PRETNDR INTRO",   "pair-pretender-intro"),  # slot 20
