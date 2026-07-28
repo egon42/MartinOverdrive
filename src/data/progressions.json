@@ -933,25 +933,27 @@
       {
         "section": "Intro",
         "chords": "G Em7 D C",
-        "hint": "Instrumental pickup: same cycle as Verse"
+        "hint": "Ring the cycle once, then straight into V1"
       },
       {
         "section": "Verse",
-        "chords": "G Em7 D C"
+        "chords": "(G Em7 D C) | (G Em7 D G)",
+        "hint": "V1 \"I never meant\" V2 \"weekend lover\" V3 \"Honey I know\"; lands G at \"purple rain\""
       },
       {
         "section": "Chorus",
-        "chords": "C G Em7 D G"
+        "chords": "C G Em7 D G",
+        "hint": "\"Purple rain purple rain\"; hold C and D; last time \"only want to see you\""
       },
       {
         "section": "Solo",
         "chords": "C G Em7 D G",
-        "hint": "Improvised trade over chorus changes. Less is more: slow bends, leave space."
+        "hint": "Sparse lead over the chorus vamp; less is more, slow bends, leave space"
       },
       {
         "section": "Outro",
-        "chords": "C G Em7 D G",
-        "hint": "Long coda: strings/ad-libs ride it out; slow-down tag in Fills"
+        "chords": "(C G Em7 D G) ×10 | (G)",
+        "hint": "Ride the vamp out, then slow-down tag on the last G"
       },
       {
         "section": "Fills",
@@ -968,7 +970,7 @@
       "Chorus",
       "Verse",
       "Chorus",
-      "Solo",
+      "Solo ×6",
       "Outro"
     ],
     "capo": "Capo 3"
