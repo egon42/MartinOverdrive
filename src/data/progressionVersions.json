@@ -1710,6 +1710,67 @@
   ],
   "18-here-it-goes-again": [
     {
+      "label": "stage pass pre blue Ab 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "C C G C",
+          "shapes": "-355-- -355-- 355--- -355--",
+          "hint": "Roll volume in; chug; then 1 verse cycle into V1"
+        },
+        {
+          "section": "Verse",
+          "chords": "C G Bb F",
+          "shapes": "-355-- 355--- -133-- 133---",
+          "hint": "\"It could be ten\"; roll volume; V1/V2 end 1 open cycle, V3 none"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(E A) ×2 G",
+          "shapes": "022--- -022-- 355---",
+          "hint": "\"Just when you think\""
+        },
+        {
+          "section": "Chorus",
+          "chords": "C G Bb F A G +Ab",
+          "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- 466xxx",
+          "hint": "\"Here it goes\" then \"should have known\"; Ab last pass only"
+        },
+        {
+          "section": "Bridge",
+          "chords": "Eb5 Bb5 G5/B C5 Eb5/G Ab5",
+          "hint": "High neck powers, frets 6-9; ends \"all right!\"",
+          "shapes": "x688xx x133xx x668xx x355xx 365xxx 466xxx"
+        },
+        {
+          "section": "Link",
+          "chords": "C G Bb F A G",
+          "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
+          "hint": "One instrumental chorus loop into V3"
+        },
+        {
+          "section": "Outro",
+          "chords": "C G Bb F A G",
+          "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
+          "hint": "Improvised vocals; ends A G Ab Bb Eb"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse ×3",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Verse ×3",
+        "Pre-Chorus",
+        "Chorus ×3",
+        "Bridge ×2",
+        "Link",
+        "Verse ×2",
+        "Chorus ×2",
+        "Outro ×5"
+      ]
+    },
+    {
       "label": "stage pass pre Ab chip 2026-07-28",
       "sections": [
         {
