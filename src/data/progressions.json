@@ -3,7 +3,7 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "Em",
+        "chords": "=Em",
         "hint": "Sit out the lead riff, ringing Em. Start the muted chug on the vocal."
       },
       {
@@ -59,7 +59,7 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "C",
+        "chords": "=C",
         "shapes": "-355--",
         "hint": "\"Say it ain't so\": ring C"
       },
@@ -84,7 +84,7 @@
       },
       {
         "section": "Outro",
-        "chords": "C G F C",
+        "chords": "C G =F C",
         "shapes": "-355-- 355--- 133--- -355--",
         "hint": "Hang F: \"the night will go on\", land C on \"long\""
       }
@@ -253,7 +253,7 @@
       },
       {
         "section": "Verse 2",
-        "chords": "B5",
+        "chords": "=B5",
         "shapes": "-244--",
         "hint": "Ring (not palm); \"Rode down the highway\""
       },
@@ -271,7 +271,7 @@
       },
       {
         "section": "Link",
-        "chords": "B5",
+        "chords": "=B5",
         "shapes": "-244--",
         "hint": "Ring holds into next pre / solo"
       },
@@ -796,7 +796,7 @@
       },
       {
         "section": "Outro",
-        "chords": "(E B E A +G#m) | (E B E) | (A G#m F#m E)",
+        "chords": "(E B E A +G#m) | (E B =E) | (A G#m F#m E)",
         "shapes": "022100 -24442 022100 -02220 466444 022100 -24442 022100 -02220 466444 244222 022100",
         "hint": "G#m stab after the A; hold the 3rd E, then slow the walk-down to a big E"
       }
@@ -1100,7 +1100,7 @@
     "sections": [
       {
         "section": "Verse",
-        "chords": "D5 G5 A5 D5",
+        "chords": "D5 G5 A5 =D5",
         "shapes": "-577-- 355--- 577--- -577--",
         "hint": "Hold the D5 the second time through"
       },
@@ -1212,7 +1212,7 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "(A G#m) ×2 (A G#m B)",
+        "chords": "(A G#m) ×2 (A G#m =B)",
         "shapes": "577655 466444 577655 466444 799877",
         "hint": "Hang the B into the chorus"
       },

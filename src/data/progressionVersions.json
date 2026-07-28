@@ -1,6 +1,68 @@
 {
   "02-all-the-small-things": [
     {
+      "label": "pre held-chip marks 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "C F G G",
+          "shapes": "-355-- 133--- 355--- 355---",
+          "hint": "Very fast"
+        },
+        {
+          "section": "Verse",
+          "chords": "C G F G",
+          "shapes": "-355-- 355--- 133--- 355---",
+          "hint": "V1 \"All the small things\", V2 \"Late night, come home\""
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "C",
+          "shapes": "-355--",
+          "hint": "\"Say it ain't so\": ring C"
+        },
+        {
+          "section": "Chorus",
+          "chords": "C G F",
+          "shapes": "-355-- 355--- 133---",
+          "hint": "\"Nana nana\", fast"
+        },
+        {
+          "section": "Interlude",
+          "chords": "C *~F *~G *~G",
+          "shapes": "-355-- 133--- 355--- 355---",
+          "hint": "Single strums. 2nd pass: just the C, muted octaves in on the last G:",
+          "tab": "G-|5---5---5---5---|5---5---5---5---|\nD-|--5---5---5---5-|--5---5---5---5-|\n\nG-|5---5---5---5---|4---4---4---4---|\nD-|--5---5---5---5-|--5---5---5---5-|"
+        },
+        {
+          "section": "Bridge",
+          "chords": "C G F",
+          "shapes": "-355-- 355--- 133---",
+          "hint": "\"Keep your head still\", night will go on"
+        },
+        {
+          "section": "Outro",
+          "chords": "C G F C",
+          "shapes": "-355-- 355--- 133--- -355--",
+          "hint": "Hang F: \"the night will go on\", land C on \"long\""
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×4",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Interlude ×2",
+        "Pre-Chorus",
+        "Bridge",
+        "Pre-Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "Interlude octave tab on one 4-bar line",
       "sections": [
         {
@@ -363,6 +425,128 @@
     }
   ],
   "05-thunderstruck": [
+    {
+      "label": "pre held-chip marks 2026-07-28",
+      "sections": [
+        {
+          "section": "Riff",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Hybrid pick under the first verse, over a held B5; lift the fingers between hits for the staccato",
+          "tab": "Pick the A string; middle + ring take D and G together\ne|------------------------------------|\nB|------------------------------------|\nG|-4-----4--4-----4--4-----4-----4----|\nD|-4-----4--4-----4--4-----4-----4----|\nA|----2--------2--------2-----2-----2-|\nE|------------------------------------|"
+        },
+        {
+          "section": "Chug",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "\"Thunder!\" - palm B5"
+        },
+        {
+          "section": "Verse",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Palm; \"I was caught in the middle of a railroad track\""
+        },
+        {
+          "section": "Big riff",
+          "chords": "B5 A5 E5 A5 A5 E5",
+          "shapes": "-244-- -022-- 022--- -022-- -022-- 022---",
+          "hint": "Heavy riff over the first verse; A to E quickly, back to A and hit it twice, then down to E"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "B5 A5 E5 A5",
+          "shapes": "-244-- -022-- 022--- -022--",
+          "hint": "Between lines; \"Sound of the drums\""
+        },
+        {
+          "section": "Hit",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "One-liner; \"You've been thunderstruck\" - NOT the full stamp yet"
+        },
+        {
+          "section": "Verse 2",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Ring (not palm); \"Rode down the highway\""
+        },
+        {
+          "section": "Knees",
+          "chords": "A5 B5 A5 E5",
+          "shapes": "-022-- -244-- -022-- 022---",
+          "hint": "\"I was shaking at the knees\" - A B A E (different from drums pre)"
+        },
+        {
+          "section": "Chorus",
+          "chords": "B5 A5 A5 E5 A5 E5",
+          "shapes": "-244-- -022-- -022-- 022--- -022-- 022---",
+          "hint": "B, A twice, down to E, back to A, end on E; thumb over to mute the low string on the A"
+        },
+        {
+          "section": "Link",
+          "chords": "B5",
+          "shapes": "-244--",
+          "hint": "Ring holds into next pre / solo"
+        },
+        {
+          "section": "Lift",
+          "chords": "B5 A5 B5",
+          "shapes": "-244-- -022-- -244--",
+          "hint": "Quick riff into the solo, twice; hybrid-pick the top two strings so the note rings"
+        },
+        {
+          "section": "Solo",
+          "chords": "E5 B5 A5 A5 E5",
+          "shapes": "022--- -244-- -022-- -022-- 022---",
+          "hint": "Under the lead; palm-muted E to G walk on the low string between B5 and A5"
+        },
+        {
+          "section": "La-la",
+          "chords": "B5 A5",
+          "shapes": "-244-- -022--",
+          "hint": "\"La la\" / ah-ah interlude"
+        },
+        {
+          "section": "Bridge",
+          "chords": "B5 E5 B5",
+          "shapes": "-244-- 022--- -244--",
+          "hint": "\"Yeah it's alright, we're doing fine\"; walk 2 to 4 on the low string between B5 and E5"
+        },
+        {
+          "section": "Walk",
+          "chords": "B5 A5 D5 E5",
+          "shapes": "-244-- -022-- -577-- 022---",
+          "hint": "Into final stamps"
+        },
+        {
+          "section": "Outro",
+          "chords": "B5 A5 A5 E5 A5 E5",
+          "shapes": "-244-- -022-- -022-- 022--- -022-- 022---",
+          "hint": "Same stamp under the outro solo; close on B5"
+        }
+      ],
+      "form": [
+        "Riff",
+        "Chug",
+        "Verse",
+        "Big riff",
+        "Pre-Chorus",
+        "Hit",
+        "Verse 2",
+        "Knees",
+        "Chorus",
+        "Link",
+        "Lift",
+        "Solo",
+        "La-la",
+        "Chorus",
+        "Bridge ×4",
+        "Walk",
+        "Chorus ×2",
+        "Outro"
+      ]
+    },
     {
       "label": "pre Carl pass: ghost intro, chorus B-AE-AA-E (2026-07-27)",
       "sections": [
@@ -1544,6 +1728,71 @@
     }
   ],
   "16-teenage-dirtbag": [
+    {
+      "label": "pre held-chip marks 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E B E A",
+          "shapes": "022100 -24442 022100 -02220"
+        },
+        {
+          "section": "Verse",
+          "chords": "E B E A",
+          "shapes": "022100 -24442 022100 -02220",
+          "hint": "Quiet palm mute, full chords; \"Noelle\" / \"boyfriend\" / \"mold\""
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "C#m A B",
+          "shapes": "-46654 -02220 -24442",
+          "hint": "\"know who I am\""
+        },
+        {
+          "section": "Chorus",
+          "chords": "E A B +C#m +G#m",
+          "shapes": "022100 -02220 -24442 -46654 466444",
+          "hint": "Big open. Sit out muted at \"two tickets\""
+        },
+        {
+          "section": "Walk-up",
+          "chords": "E A B +C#m +G#m +A +B",
+          "shapes": "022100 -02220 -24442 -46654 466444 -02220 -24442",
+          "hint": "Chorus line again off \"with me\", A B on the end"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(E Asus2) ×3 +C#m +G#m +A +B",
+          "shapes": "022100 -02200 -46654 466444 -02220 -24442",
+          "hint": "\"Oh yeah, Dirtbag\" vamp; C#m at \"what she's missing\""
+        },
+        {
+          "section": "Outro",
+          "chords": "(E B E A +G#m) | (E B E) | (A G#m F#m E)",
+          "shapes": "022100 -24442 022100 -02220 466444 022100 -24442 022100 -02220 466444 244222 022100",
+          "hint": "G#m stab after the A; hold the 3rd E, then slow the walk-down to a big E"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×3",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Walk-up",
+        "Intro ×2",
+        "Verse ×3",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Walk-up",
+        "Bridge ×2",
+        "Verse ×4",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Walk-up",
+        "Bridge ×2",
+        "Outro"
+      ]
+    },
     {
       "label": "pre lyric hints 2026-07-27",
       "sections": [
@@ -2846,6 +3095,60 @@
   ],
   "25-valerie": [
     {
+      "label": "pre held-chip marks 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E",
+          "shapes": "022100",
+          "hint": "Two-bar vamp, riff enters"
+        },
+        {
+          "section": "Verse",
+          "chords": "E F#m",
+          "shapes": "022100 244222",
+          "hint": "2nd verse runs longer - stay on E F#m; do not jump to pre early"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(A G#m) ×2 (A G#m B)",
+          "shapes": "577655 466444 577655 466444 799877",
+          "hint": "Hang the B into the chorus"
+        },
+        {
+          "section": "Chorus",
+          "chords": "E F#m",
+          "shapes": "022100 244222",
+          "hint": "\"Valerie\" - same E F#m as verse; bigger feel"
+        },
+        {
+          "section": "Verse (quiet)",
+          "chords": "E F#m",
+          "shapes": "022100 244222",
+          "hint": "Breakdown: drop the riff, near-silent"
+        },
+        {
+          "section": "Outro",
+          "chords": "E",
+          "shapes": "022100",
+          "hint": "Short tag on E"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Chorus",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Chorus",
+        "Verse (quiet)",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre verse-pre-chorus split 2026-07-27",
       "sections": [
         {
@@ -3961,6 +4264,51 @@
   ],
   "01-welcome-home": [
     {
+      "label": "pre held-chip marks 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Em",
+          "hint": "Sit out the lead riff, ringing Em. Start the muted chug on the vocal."
+        },
+        {
+          "section": "Verse",
+          "chords": "Em C D",
+          "hint": "V1 \"You could've been\", V2 \"You stormed off\""
+        },
+        {
+          "section": "Chorus",
+          "chords": "F Am C",
+          "hint": "\"Hang on to the glory\" then \"With truth on the shores\""
+        },
+        {
+          "section": "Bridge",
+          "chords": "F Am G F",
+          "hint": "Both passes start \"One last kiss\": 1st syncopated, 2nd straight verse chug"
+        },
+        {
+          "section": "Solo",
+          "chords": "Em C D",
+          "hint": "Twin-guitar leads over the verse cycle"
+        },
+        {
+          "section": "Outro",
+          "chords": "Em C D",
+          "hint": "\"Oh oh oh\" + strings over the verse pattern, ride it out"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse ×4",
+        "Chorus ×2",
+        "Verse ×4",
+        "Chorus ×2",
+        "Bridge ×2",
+        "Solo ×5",
+        "Outro ×5"
+      ]
+    },
+    {
       "label": "pre stage card landmarks 2026-07-27",
       "sections": [
         {
@@ -4985,6 +5333,53 @@
     }
   ],
   "23-lola-montez": [
+    {
+      "label": "pre held-chip marks 2026-07-28",
+      "sections": [
+        {
+          "section": "Verse",
+          "chords": "D5 G5 A5 D5",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Hold the D5 the second time through"
+        },
+        {
+          "section": "Interlude",
+          "chords": "D G A D",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Lead solos over this loop"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(G A D +Bm) | (G A D +A +Bm +A) | (G A D +Bm) | (G A D *F#m)",
+          "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577-- 244---",
+          "hint": "\"yeah-eah\" ends D; 2nd time play the blue F#m instead, into the Break"
+        },
+        {
+          "section": "Break",
+          "chords": "(D A Bm G) ×2",
+          "shapes": "-577-- 577--- -244-- 355---",
+          "hint": "Off the F#m ending; lead riffs over it"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(A D G Em) | (A D G A)",
+          "shapes": "577--- -577-- 355--- 022--- 577--- -577-- 355--- 577---",
+          "hint": "Vocals \"Oh Lola\" on A, land Em on \"pain\"; chorus rejoins at \"spider dance\""
+        }
+      ],
+      "form": [
+        "Verse",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Break",
+        "Bridge",
+        "Chorus"
+      ]
+    },
     {
       "label": "pre bridge-into-chorus ending 2026-07-27",
       "sections": [
