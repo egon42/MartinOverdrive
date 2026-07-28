@@ -2212,6 +2212,54 @@
   ],
   "19-purple-rain": [
     {
+      "label": "pre hold-hint restore 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "G Em7 D C",
+          "hint": "Ring the cycle once, then straight into V1"
+        },
+        {
+          "section": "Verse",
+          "chords": "(G Em7 D C) | (G Em7 D G)",
+          "hint": "V1 \"I never meant\" V2 \"weekend lover\" V3 \"Honey I know\"; lands G at \"purple rain\""
+        },
+        {
+          "section": "Chorus",
+          "chords": "=C G Em7 =D G",
+          "hint": "\"Purple rain purple rain\"; last time \"only want to see you\""
+        },
+        {
+          "section": "Solo",
+          "chords": "=C G Em7 =D G",
+          "hint": "Sparse lead over the chorus vamp; less is more, slow bends, leave space"
+        },
+        {
+          "section": "Outro",
+          "chords": "(=C G Em7 =D G) ×10 | (G)",
+          "hint": "Ride the vamp out, then slow-down tag on the last G"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Verse walk into D\ne|----------------|\nB|----------------|\nG|----2---2-------|\nD|----0---0-----2-|\nA|------------4---|\nE|2-2-2-2-2-2-----|\n\nG arp tail (into Em)\ne|3-----3-3---|\nB|3-(3)-3-3---|\nG|0-(0)---0-2-|\nD|0-------0-0-|\nA|------------|\nE|3-------3-3-|",
+          "tabMore": "Chorus C voicing (push)\ne|------3--(3)----3----|\nB|------5--(5)----5----|\nG|------7--(7)----7----|\nD|------5---------5----|\nA|3-3-3---------3------|\nE|---------------------|\n\nOutro / slow-down tag\ne|--------------|\nB|--------------|\nG|--------------|\nD|------5-------|\nA|--------------|\nE|3-0-2---------|"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse",
+        "Chorus",
+        "Verse",
+        "Chorus",
+        "Verse",
+        "Chorus",
+        "Solo ×6",
+        "Outro"
+      ],
+      "capo": "Capo 3"
+    },
+    {
       "label": "pre held-chip vamp 2026-07-28",
       "sections": [
         {
