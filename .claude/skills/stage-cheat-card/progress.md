@@ -35,18 +35,18 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 - [x] 15-dani-california — Dm hangs 2026-07-26; blue-ghost pass 2026-07-27: hangs inlined as *Dm + *~Am / *~G (new stacked grammar, no variant rows); bridge Bm hang added (was missing)
 - [x] 16-teenage-dirtbag — full-chords cue 2026-07-27: full-chord shapes, quiet-PM verse hint, Walk-up section after each chorus, last-chorus sit-out hint, intro reprise ×2
 - [x] 17-the-pretender — hide Intro/Interlude on Cheat 2026-07-27
-- [ ] 18-here-it-goes-again
-- [ ] 19-purple-rain
-- [ ] 20-when-i-come-around
+- [x] 18-here-it-goes-again — stage pass 2026-07-28: lyric landmarks (Verse "It could be ten", Pre "Just when you think", Chorus "Here it goes"/"should have known", Bridge ends "all right!"); Em Am / Am renamed to E A / A powers (shapes already were powers, per ryan.txt); intro spelled C C G C with verse-cycle hint (Ryan: keep one row, sheet is tall); chorus ends *+Ab blue tag chip (last pass only); Link section merged into Chorus (form step now Chorus, into-V3 cue on Bridge hint); outro = (C G Bb F A G) ×5 + close row (A G Ab Bb Eb), form label plain Outro, close lyric quoted; Cheat = 7 rows
+- [x] 19-purple-rain — stage pass 2026-07-28: Verse split into two rows (G Em7 D C) | (G Em7 D G), second half lands G at "purple rain"; which-verse landmarks (V1 "I never meant" V2 "weekend lover" V3 "Honey I know"); chorus hint holds C and D + last-chorus "only want to see you"; form Solo ×6 (ryan.txt sparse-lead count); outro (C G Em7 D G) ×10 with lone (G) slow-down close row (HIGA-style); Fills tabs + Capo 3 untouched
+- [x] 20-when-i-come-around — stage pass 2026-07-28: power names per ryan.txt (D#m/B/G#m renamed D#5/B5/G#5, shapes already powers, HIGA precedent); verse which-verse landmarks (V1 "I heard you crying loud" V2 "heard it all before") + PM don't-rush; chorus stacked (G#5 B5) ×2 | (F#5 C#5 D#5 B5) ×2 with "No time to search" + shortened walk-up + "When I come around" turnaround cue; intro hint says palm-mute; solo untouched. Outro corrected same day vs the Songsterr rhythm tab (Ryan picked recording over ryan.txt's "rotated ×3 cold"): NOT rotated; after the chorus-baked turnaround ×2 it's (F#5 C#5 D#5 B5) | (F#5 C#5 D#5 =B), held full B (x2444) rings out, form label plain Outro (was Outro ×3); ryan.txt outro block rewritten to match
 - [x] 21-the-middle — A-string PM + Chorus D A G 2026-07-27
 - [x] 22-dream-on — sit → climax 2026-07-26
 - [x] 23-lola-montez — full rebuild with Ryan 2026-07-27: no Intro; hold-D5 verse; tagged G A D chorus rows ending blue *F#m alt chip (new grammar); Break section; bridge lands Em on "pain" then the final chorus rejoins at "spider dance"; no outro
-- [ ] 24-mary-jane-s-last-dance
+- [x] 24-mary-jane-s-last-dance — stage pass 2026-07-28: which-verse landmarks (V1 "She grew up" V2 "moved down here" V3 "I've been told" V4 "There's pigeons"); chorus stays one row (Em7 A) ×2 G (Ryan flattened the stacked draft) with "Last dance with Mary Jane" cue + second-pass-ends-G (fingering essay retired from hint); form second Verse ×2 → ×4 per ryan.txt ("keep movin' on" + riff cycle before first chorus); intro/interlude/solo/outro hints + Fills untouched
 - [x] 25-valerie — verse/pre/chorus 2026-07-27
 - [x] 26-voodoo-child-slight-return — lean chart 2026-07-26
 - [x] 27-fat-bottomed-girls — Stops section + full stage reorg 2026-07-27: G F D "Hey hey!" punch after V1; bar counts and ghosts moved into chips ((~D) ×7 D intro, (D) ×10 break, (D) ×4 outro); chorus split into 3 sung rows; interlude fixed to (G G D D A A) ×2 +G (phantom G removed); lyric anchors on every section
 - [x] 28-mama-i-m-coming-home — landmarks 2026-07-27
-- [ ] 29-ain-t-goin-down-til-the-sun-comes-up
+- [x] 29-ain-t-goin-down-til-the-sun-comes-up — stage pass 2026-07-28: clock-time verse landmarks (V1 "Friday evening" V2 "Nine o'clock" V3 "Ten 'til twelve" V4 "Saturday" skips the C, both sheets show V4 as G G D G); Ryan's markers confirmed vs Songsterr rhythm tab: verse =G C G D =G (first G is 4 bars, last rides the turnaround), chorus C +Bb G +Bb =C G (Bbs are end-of-bar accent hits, "pickup truck" C stretches); chorus hook hint; intro do-not-fall-behind warning; solo/outro hints, form, Fills untouched. Same day: Solo mirrors verse helds (=G C G D =G), Outro final G held (band ring-out hit). Still open for Ryan's ear: held final chorus G (tab shows it ringing into the quiet re-entry)
 - [x] 30-pink-pony-club — band G + bridge 2026-07-26
 - [x] 31-banditos — pilot 2026-07-26
 - [x] 32-free-bird — encore 2026-07-26
