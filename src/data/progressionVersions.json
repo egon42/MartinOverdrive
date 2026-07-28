@@ -2696,6 +2696,50 @@
   ],
   "20-when-i-come-around": [
     {
+      "label": "pre stage card powers + chorus stack 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "F#5 C#5 D#m B",
+          "shapes": "244--- -466-- -688-- -244--",
+          "hint": "Riff intro: verse power-chord cycle"
+        },
+        {
+          "section": "Verse",
+          "chords": "F#5 C#5 D#m B",
+          "shapes": "244--- -466-- -688-- -244--"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(G#m B) ×2 (F#5 C#5 D#m B) ×2",
+          "shapes": "466--- -244-- 244--- -466-- -688-- -244--",
+          "hint": "Walk the roots up G#-A#-B (E-str 4, then A-str 1-2) into each chorus line (passing A#5 is in the tab)"
+        },
+        {
+          "section": "Solo",
+          "chords": "F#5 C#5 D#m B",
+          "shapes": "244--- -466-- -688-- -244--",
+          "hint": "Verse changes under the solo"
+        },
+        {
+          "section": "Outro",
+          "chords": "D#m B F#5 C#5",
+          "shapes": "-688-- -244-- 244--- -466--",
+          "hint": "Rotated cycle: 3rd pass runs long; cold ending"
+        }
+      ],
+      "form": [
+        "Intro ×3",
+        "Verse ×8",
+        "Chorus",
+        "Verse ×8",
+        "Chorus",
+        "Solo ×2",
+        "Chorus",
+        "Outro ×3"
+      ]
+    },
+    {
       "label": "Pre positional-UG-alignment (2026-07-20)",
       "sections": [
         {
