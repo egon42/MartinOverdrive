@@ -196,9 +196,11 @@ B5
 ound
     When I come around
 
-[Outro - rotated D#5 B5 F#5 C#5 ×3; cold]
-D#5 B5 F#5 C#5
+[Outro - "When I come around" over the verse cycle; last B full chord rings out]
+F#5 C#5 D#5 B5
 
-D#5 B5 F#5 C#5
+F#5 C#5 D#5 B5
 
-D#5 B5 F#5 C#5
+F#5 C#5 D#5 B5
+
+F#5 C#5 D#5 B

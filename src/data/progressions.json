@@ -1003,9 +1003,9 @@
       },
       {
         "section": "Outro",
-        "chords": "D#5 B5 F#5 C#5",
-        "shapes": "-688-- -244-- 244--- -466--",
-        "hint": "Rotated cycle: 3rd pass runs long; cold ending"
+        "chords": "(F#5 C#5 D#5 B5) | (F#5 C#5 D#5 =B)",
+        "shapes": "244--- -466-- -688-- -244-- 244--- -466-- -688-- -2444-",
+        "hint": "\"When I come around\" over the verse cycle; last B rings out"
       }
     ],
     "form": [
@@ -1016,7 +1016,7 @@
       "Chorus",
       "Solo ×2",
       "Chorus",
-      "Outro ×3"
+      "Outro"
     ]
   },
   "21-the-middle": {

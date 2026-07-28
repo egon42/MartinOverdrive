@@ -2696,6 +2696,51 @@
   ],
   "20-when-i-come-around": [
     {
+      "label": "pre outro recording fix 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "F#5 C#5 D#5 B5",
+          "shapes": "244--- -466-- -688-- -244--",
+          "hint": "Palm-mute riff on the verse cycle"
+        },
+        {
+          "section": "Verse",
+          "chords": "F#5 C#5 D#5 B5",
+          "shapes": "244--- -466-- -688-- -244--",
+          "hint": "V1 \"I heard you crying loud\" V2 \"heard it all before\"; PM, don't rush"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(G#5 B5) ×2 | (F#5 C#5 D#5 B5) ×2",
+          "shapes": "466--- -244-- 244--- -466-- -688-- -244--",
+          "hint": "\"No time to search\"; walk up G# A# B into each line; \"When I come around\" starts the turnaround"
+        },
+        {
+          "section": "Solo",
+          "chords": "F#5 C#5 D#5 B5",
+          "shapes": "244--- -466-- -688-- -244--",
+          "hint": "Verse changes under the solo"
+        },
+        {
+          "section": "Outro",
+          "chords": "D#5 B5 F#5 C#5",
+          "shapes": "-688-- -244-- 244--- -466--",
+          "hint": "Rotated cycle: 3rd pass runs long; cold ending"
+        }
+      ],
+      "form": [
+        "Intro ×3",
+        "Verse ×8",
+        "Chorus",
+        "Verse ×8",
+        "Chorus",
+        "Solo ×2",
+        "Chorus",
+        "Outro ×3"
+      ]
+    },
+    {
       "label": "pre stage card powers + chorus stack 2026-07-28",
       "sections": [
         {
