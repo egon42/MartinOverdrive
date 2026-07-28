@@ -18,8 +18,8 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 
 ## Queue (setlist order)
 
-- [ ] 01-welcome-home
-- [ ] 02-all-the-small-things
+- [x] 01-welcome-home — landmarks pass 2026-07-27: quoted lyric anchors on Verse (V1/V2 entries), Chorus, Bridge ("One last kiss"), Outro ("Oh oh oh"); chords/form unchanged
+- [x] 02-all-the-small-things — stage pass 2026-07-27: Intro fixed to C F G G, Bridge fixed to C G F (both sheets agreed vs card); quoted landmarks. Ryan revision same day: Pre-Chorus rings C only (no C G F C walk despite ryan.txt later passes showing it), Interlude in Dani skip-marker grammar, one row C *~F *~G *~G ×2 on form (plain C, played every pass): pass 1 all strums, pass 2 C only with octave picking entering on the last G slot; muted-octave tab (C C C B) from ryan.txt on the section (first non-Fills section tab)
 - [x] 03-a-little-less-conversation — band A restore 2026-07-26
 - [x] 04-i-believe-in-a-thing-called-love — measure-end / clap 2026-07-27
 - [x] 05-thunderstruck — research rebuild + when/where pass
@@ -29,7 +29,7 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 - [x] 09-pride-and-joy — shuffle / +B7 2026-07-26
 - [x] 10-zombie — Hang Em–C 2026-07-26
 - [x] 11-hunger-strike — odd/even + `(…) | (…)` row groups 2026-07-27
-- [ ] 12-s-o-b
+- [x] 12-s-o-b — stage pass 2026-07-28: Ryan plays chorus + outro only. Intro + Verses 1/2/3 split out as sit-out ghost sections with lyric landmarks (V1 B "hold me down"/"ashes of you", V2 C# "bury me", V3 heart line ×4); chorus stacked into two rows (second pass walk-down "drink my life away"); outro keeps the chorus figure over "Whoa oh" (ryan.txt's sit-out outro overridden by Ryan)
 - [ ] 13-save-a-horse-ride-a-cowboy
 - [x] 14-sweet-home-alabama — F C tag 2026-07-26
 - [x] 15-dani-california — Dm hangs 2026-07-26; blue-ghost pass 2026-07-27: hangs inlined as *Dm + *~Am / *~G (new stacked grammar, no variant rows); bridge Bm hang added (was missing)

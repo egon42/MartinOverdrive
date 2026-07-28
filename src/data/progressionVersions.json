@@ -5105,6 +5105,39 @@
   ],
   "12-s-o-b": [
     {
+      "label": "pre stage card sit-out verses 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "F#",
+          "hint": "Stomp-clap; vocals over F#"
+        },
+        {
+          "section": "Verse",
+          "chords": "F#",
+          "hint": "Mostly F#; short B walks on the punch words, C# waits for the chorus"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(F# B F# C#) (F# B C# B F#)"
+        },
+        {
+          "section": "Outro",
+          "chords": "(F# B F# C#) (F# B C# B F#)"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse",
+        "Chorus",
+        "Verse",
+        "Chorus",
+        "Verse",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "Pre positional-UG-alignment (2026-07-20)",
       "sections": [
         {
