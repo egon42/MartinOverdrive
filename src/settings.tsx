@@ -27,7 +27,7 @@ export type FingeringScope = 'power' | 'all' | 'none'
 export type FingeringPosition = 'under' | 'over' | 'left' | 'right'
 /** Lyrics sheet: chips in the lyric flow, or stacked above each lyric segment (UG-style). */
 export type LyricChordPlacement = 'inline' | 'above'
-// Storage keys predate the tab rename: 'cheat' governs chips on the Cheat & Chords cards; 'chords' governs the Lyrics sheet.
+// Storage keys predate the tab rename: 'cheat' governs chips on the Stage & Chords cards; 'chords' governs the Lyrics sheet.
 export type FingeringSurface = 'cheat' | 'chords'
 
 export interface FingeringPrefs {
@@ -593,7 +593,7 @@ export function SettingsPage() {
     <section className="panel settings-panel">
       <span className="eyebrow">Chord chips</span>
       <h2>Chord fingerings</h2>
-      <FingeringFields surface="cheat" label="Cheat & Chords cards" />
+      <FingeringFields surface="cheat" label="Stage & Chords cards" />
       <FingeringFields surface="chords" label="Lyrics sheet" />
       <label className="theme-stripe-toggle">
         <input

@@ -741,13 +741,13 @@ function renderCheatHint(hint: string): ReactNode {
   return out.length ? out : hint
 }
 
-// The two progression cards, one component — show mode's Cheat and Chords tabs, and the
+// The two progression cards, one component — show mode's Stage and Chords tabs, and the
 // same cards on the practice page's sheet panel. `variant` 'chords' is the full roadmap
 // card (form order + repeats — the original "cheat card", now the Chords tab); 'cheat'
-// is the building-blocks card (each section once, plus fills — trusts the player to know
-// the song's shape). `innerRef` is the height auto-fit ref from Show(), which pins the
+// is the Stage building-blocks card (each section once, plus fills — trusts the player to
+// know the song's shape). `innerRef` is the height auto-fit ref from Show(), which pins the
 // chord rows to one screen; omit it (practice page) and the card renders at natural
-// height. `withMore` gates the Cheat variant's below-fold fretboard/role/must-know block
+// height. `withMore` gates the Stage variant's below-fold fretboard/role/must-know block
 // — the practice page passes false because it already shows those in its own panels.
 export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMore = true }: { song: Song, innerRef?: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean, withMore?: boolean }) {
   const sheets = sheetsFor(song.id)
@@ -755,7 +755,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
   const { settings } = useSettings()
   // Dev-mode version picker (roadmap card only): choose an archived cheat-card version to
   // render instead of the live entry, so old and new forms can be A/B'd against the
-  // recording. The Cheat card always shows the CURRENT sections — the refined data is
+  // recording. The Stage card always shows the CURRENT sections — the refined data is
   // the source of truth, not the pre-research basic forms.
   const versionsUi = import.meta.env.DEV || settings.devMode
   const versions = variant === 'chords' && versionsUi ? progressionVersionsFor(song.id) : []
@@ -838,7 +838,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
         </div>}
       </div>
     </div>
-    {/* Cheat tab only: plain content past the fold rather than a disclosure — scroll the
+    {/* Stage tab only: plain content past the fold rather than a disclosure — scroll the
         card to reach it. The roadmap card doesn't carry it at all. */}
     {variant === 'cheat' && withMore && <div className="cheat-more">
       <div className="show-content">
@@ -886,14 +886,14 @@ function MoreFills({ tab, onToggle }: { tab: string, onToggle: () => void }) {
 }
 
 // Practice-page sheet ids. 'cheat' and 'roadmap' are the two progression cards (labels
-// Cheat / Chords, matching show mode — 'roadmap' because the id 'chords' already means
+// Stage / Chords, matching show mode — 'roadmap' because the id 'chords' already means
 // the lyric sheet here, part of the 2026-07 label/internals split; see CLAUDE.md).
 // 'lanes' is the production measure map (Ryan source, fills stripped). 'ryan' is the
 // flag-gated personal sheet (lyric ↔ measure retap) for songs with a .ryan.txt file.
 export type SheetKind = 'cheat' | 'roadmap' | 'chords' | 'tabs' | 'ryan' | 'lanes'
 
-// Sheet panel on the song (practice) page — the same views as show mode: Ryan
-// (flag-gated), Lanes (measure map), Cheat, Chords, Lyrics, Tabs.
+// Sheet panel on the song (practice) page — the same views as show mode: Stage, Chords,
+// Lyrics, Tabs, then Lanes (measure map) and Ryan (flag-gated).
 // `view`/`onViewChange` keep the selection so the toggle can switch it.
 export function SheetPanel({ song, view, onViewChange }: { song: Song, view: SheetKind | null, onViewChange: (kind: SheetKind) => void }) {
   const { get } = usePractice(); const entry = get(song.id)
@@ -902,15 +902,15 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   // The cards render from a curated progression, or derive one from the chords sheet.
   const hasCard = !!progressionFor(song.id) || !!sheets.chords
   const available: SheetKind[] = [
-    ...(sheets.ryan && settings.ryanTab ? (['ryan'] as SheetKind[]) : []),
-    ...(sheets.ryan ? (['lanes'] as SheetKind[]) : []),
     ...(hasCard ? (['cheat', 'roadmap'] as SheetKind[]) : []),
     ...(sheets.chords ? (['chords'] as SheetKind[]) : []),
     ...(sheets.tabs ? (['tabs'] as SheetKind[]) : []),
+    ...(sheets.ryan ? (['lanes'] as SheetKind[]) : []),
+    ...(sheets.ryan && settings.ryanTab ? (['ryan'] as SheetKind[]) : []),
   ]
-  // Default stays the lyric/tab sheet (the pre-cards behavior); the cards are a tap away.
+  // Prefer a saved lyric/tab source; otherwise open on Stage (first available).
   const preferred = entry.preferredSource === 'tabs' || entry.preferredSource === 'chords' ? entry.preferredSource : null
-  const sheetDefault = (['chords', 'tabs'] as const).find((kind) => available.includes(kind))
+  const sheetDefault = (hasCard ? (['cheat'] as const) : (['chords', 'tabs'] as const)).find((kind) => available.includes(kind))
   const active = view && available.includes(view) ? view : preferred && available.includes(preferred) ? preferred : sheetDefault ?? available[0]
   // Fingering surfaces predate the tab rename: 'cheat' governs chips on BOTH progression
   // cards (one toggle per song, same as show mode); 'chords' governs the Lyrics sheet.
@@ -946,18 +946,18 @@ export function SheetPanel({ song, view, onViewChange }: { song: Song, view: She
   return <section className="panel chord-panel" id="song-sheet">
     <div className="section-heading"><div><h2>Song sheets</h2></div>
       {available.length > 1 && <div className="fretboard-toggle" role="tablist" aria-label="Sheet type">
-        {available.includes('ryan') && <button type="button" role="tab" aria-selected={active === 'ryan'} aria-pressed={active === 'ryan' ? ryanMeasure : undefined}
-          className={shapesTabClass(active === 'ryan', ryanMeasure, true)}
-          title={active === 'ryan' ? (ryanMeasure ? 'Measure map on. Tap again for lyric layout' : 'Tap again for measure map') : undefined}
-          onClick={selectRyan}>Ryan</button>}
-        {available.includes('lanes') && <button type="button" role="tab" aria-selected={active === 'lanes'} className={active === 'lanes' ? 'active' : ''} onClick={() => onViewChange('lanes')}>Lanes</button>}
-        {hasCard && cardTab('cheat', 'Cheat')}
+        {hasCard && cardTab('cheat', 'Stage')}
         {hasCard && cardTab('roadmap', 'Chords')}
         {available.includes('chords') && <button type="button" role="tab" aria-selected={active === 'chords'} aria-pressed={active === 'chords' ? chordsShapes : undefined}
           className={shapesTabClass(active === 'chords', chordsShapes, settings.chords.scope !== 'none')}
           title={active === 'chords' && settings.chords.scope !== 'none' ? (chordsShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
           onClick={selectChords}>Lyrics</button>}
         {available.includes('tabs') && <button type="button" role="tab" aria-selected={active === 'tabs'} className={active === 'tabs' ? 'active' : ''} onClick={() => onViewChange('tabs')}>Tabs</button>}
+        {available.includes('lanes') && <button type="button" role="tab" aria-selected={active === 'lanes'} className={active === 'lanes' ? 'active' : ''} onClick={() => onViewChange('lanes')}>Lanes</button>}
+        {available.includes('ryan') && <button type="button" role="tab" aria-selected={active === 'ryan'} aria-pressed={active === 'ryan' ? ryanMeasure : undefined}
+          className={shapesTabClass(active === 'ryan', ryanMeasure, true)}
+          title={active === 'ryan' ? (ryanMeasure ? 'Measure map on. Tap again for lyric layout' : 'Tap again for measure map') : undefined}
+          onClick={selectRyan}>Ryan</button>}
       </div>}
     </div>
     {(active === 'chords' || active === 'tabs' || active === 'ryan' || active === 'lanes') && scroll.scrollable && <AutoScrollBar scroll={scroll}/>}

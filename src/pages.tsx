@@ -21,7 +21,7 @@ const priorityLabel = ['None', 'Low', 'Medium', 'High']
 // like the practice store, so /dev/ and prod don't share a show position.
 const SHOW_KEY_SUFFIX = import.meta.env.BASE_URL.includes('/dev/') ? '-dev' : ''
 const SHOW_INDEX_KEY = `overdrive-show-index${SHOW_KEY_SUFFIX}`
-// Show-mode view ids: 'cheat' (building-blocks card), 'chords' (full roadmap card),
+// Show-mode view ids: 'cheat' (Stage card — building blocks), 'chords' (full roadmap card),
 // 'lyrics' (chord-over-lyric sheet), 'tabs'. The 2026-07 tab rename shifted meanings —
 // 'scale' was the roadmap card and 'chords' was the lyric sheet — so the view/pin keys
 // were bumped to *2 and legacy values are mapped on first read (an un-bumped key would
@@ -318,7 +318,7 @@ export function Show() {
   const sheets = sheetsFor(song.id)
   const { settings, isFingeringOnly, toggleFingeringOnly, isRyanMeasure, toggleRyanMeasure } = useSettings()
   // Fingering surfaces predate the tab rename: 'cheat' governs chips on BOTH progression
-  // cards (Cheat and Chords tabs share one toggle per song); 'chords' governs the Lyrics sheet.
+  // cards (Stage and Chords tabs share one toggle per song); 'chords' governs the Lyrics sheet.
   const cardShapes = isFingeringOnly(song.id, 'cheat')
   const lyricsShapes = isFingeringOnly(song.id, 'chords')
   // Lanes: production measure map from .ryan.txt (no flag). Ryan: same file, flag-gated.
@@ -327,11 +327,11 @@ export function Show() {
   const [pins, setPins] = useState<Record<string, string>>(readPins)
   useEffect(() => { localStorage.setItem(SHOW_PINS_KEY, JSON.stringify(pins)) }, [pins])
   // Open each song on its pinned default view when present; otherwise fall back to the
-  // last view used (carried over across songs) or the roadmap card.
-  const [view, setView] = useState(() => pins[song.id] || readShowView() || 'chords')
+  // last view used (carried over across songs) or the Stage card.
+  const [view, setView] = useState(() => pins[song.id] || readShowView() || 'cheat')
   useEffect(() => { localStorage.setItem(SHOW_VIEW_KEY, view) }, [view])
-  // Sheets need their file to exist; unknown/legacy ids land on the roadmap card.
-  const effective = view === 'lanes' && lanesOn ? 'lanes' : view === 'ryan' && ryanOn ? 'ryan' : view === 'lyrics' && sheets.chords ? 'lyrics' : view === 'tabs' && sheets.tabs ? 'tabs' : view === 'cheat' ? 'cheat' : 'chords'
+  // Sheets need their file to exist; unknown/legacy ids land on the Stage card.
+  const effective = view === 'lanes' && lanesOn ? 'lanes' : view === 'ryan' && ryanOn ? 'ryan' : view === 'lyrics' && sheets.chords ? 'lyrics' : view === 'tabs' && sheets.tabs ? 'tabs' : view === 'chords' ? 'chords' : 'cheat'
   const cardView = effective === 'cheat' || effective === 'chords'
   // On song change, snap to that song's pinned view (a manual mid-song switch is transient
   // — the pin is the default we return to). Done in render, not an effect: an effect paints
@@ -349,7 +349,7 @@ export function Show() {
     if (next[song.id] === effective) delete next[song.id]; else next[song.id] = effective
     return next
   })
-  const views = [...(ryanOn ? ['ryan'] : []), ...(lanesOn ? ['lanes'] : []), 'cheat', 'chords', ...(sheets.chords ? ['lyrics'] : []), ...(sheets.tabs ? ['tabs'] : [])]
+  const views = ['cheat', 'chords', ...(sheets.chords ? ['lyrics'] : []), ...(sheets.tabs ? ['tabs'] : []), ...(lanesOn ? ['lanes'] : []), ...(ryanOn ? ['ryan'] : [])]
   const cycleView = (dir: 1 | -1) => { const idx = views.indexOf(effective); setView(views[(idx + dir + views.length) % views.length]) }
   // Tapping the already-active card tab re-taps into fingering chips (both cards share
   // the 'cheat' surface); same retap on the Lyrics tab flips its own 'chords' surface.
@@ -378,7 +378,7 @@ export function Show() {
   const zoomInitial = measureScroll || effective === 'ryan' ? 0.75 : 1
   const { zoom, setZoom, elRef: zoomElRef, initialZoom } = useZoom(`${song.id}:${effective}`, zoomMin, effective !== 'tabs', zoomInitial)
   const tabsRef = useFitScale([song.id, sheets.tabs, effective], 'width', 0.45)
-  // The Cheat tab flows into the page scroll (no one-screen shrink) — freeze the height
+  // The Stage tab flows into the page scroll (no one-screen shrink) — freeze the height
   // auto-fit there so --sheet-fit stays 1 and chord rows render at natural size. The Chords
   // (roadmap) card still auto-fits to one screen.
   const cheatRef = useFitScale([song.id, sheets.chords, sheets.tabs, effective, get(song.id).notes, cardShapes], 'height', 0.7, zoom !== 1 || effective === 'cheat')
@@ -442,7 +442,7 @@ export function Show() {
   const swipeStart = useRef<{ x: number, y: number } | null>(null)
   const pointers = useRef<Set<number>>(new Set())
   const multi = useRef(false)
-  // Cheat-tab focus mode: double-tap the card to roll up the view tabs + Up next footer
+  // Stage-tab focus mode: double-tap the card to roll up the view tabs + Up next footer
   // (progress nav, title, and stage strip stay). Toggle back with another double-tap —
   // collapsed chrome is pointer-events:none, so the second gesture lands on the card too.
   const [focus, setFocus] = useState(false)
@@ -465,7 +465,7 @@ export function Show() {
     if (!start) return
     const dx = e.clientX - start.x, dy = e.clientY - start.y
     if (Math.abs(dx) >= 60 && Math.abs(dx) >= Math.abs(dy) * 2) { lastTap.current = 0; goTo(dx < 0 ? index + 1 : index - 1); return }
-    // Not a swipe: near-stationary taps on the Cheat card feed double-tap detection.
+    // Not a swipe: near-stationary taps on the Stage card feed double-tap detection.
     // Interactive elements (chord chips, tab buttons) keep their own taps.
     if (effective === 'cheat' && Math.hypot(dx, dy) < 12 && !(e.target as HTMLElement)?.closest('button,a,input,textarea,select,summary,[role=button],[role=dialog]')) {
       if (e.timeStamp - lastTap.current < 350) { lastTap.current = 0; setFocus((f) => !f) }
@@ -536,19 +536,14 @@ export function Show() {
       <div><i style={{ width: `${((index + 1) / setSongs.length) * 100}%` }}/></div>
       <button type="button" className="show-nav-btn" disabled={index === setSongs.length - 1} onClick={() => goTo(index + 1)} aria-label="Next song">›</button>
     </div>
-    <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCardView={effective !== 'chords' ? () => setView('chords') : () => setView('cheat')} cardLabel={effective !== 'chords' ? 'Open the chords card instead' : 'Open the cheat card instead'}>
+    <ShowSongBoundary song={song} key={`${song.id}:${effective}`} onCardView={effective !== 'chords' ? () => setView('chords') : () => setView('cheat')} cardLabel={effective !== 'chords' ? 'Open the chords card instead' : 'Open the stage card instead'}>
     <article ref={zoomElRef as RefObject<HTMLElement>} style={{ ['--zoom' as string]: zoom } as React.CSSProperties} className={`show-song${cardView ? ' cheat-view' : ' sheet-view'}${effective === 'cheat' ? ' cheat-view--flow' : ''}${effective !== 'tabs' ? ' show-zoomable' : ''}`} {...swipeProps}><div className="show-song-head"><span className="eyebrow">{song.artist}</span><h1>{song.title}</h1></div>
     <div className="show-view-bar">
       <div className="fretboard-toggle show-view-toggle" role="tablist" aria-label="Show mode view">
-        {ryanOn && <button type="button" role="tab" aria-selected={effective === 'ryan'} aria-pressed={effective === 'ryan' ? ryanMeasure : undefined}
-          className={shapesTabClass(effective === 'ryan', ryanMeasure, true)}
-          title={effective === 'ryan' ? (ryanMeasure ? 'Measure map on. Tap again for lyric layout' : 'Tap again for measure map') : undefined}
-          onClick={selectRyan}>Ryan</button>}
-        {lanesOn && <button type="button" role="tab" aria-selected={effective === 'lanes'} className={effective === 'lanes' ? 'active' : ''} onClick={() => setView('lanes')}>Lanes</button>}
         <button type="button" role="tab" aria-selected={effective === 'cheat'} aria-pressed={effective === 'cheat' ? cardShapes : undefined}
           className={shapesTabClass(effective === 'cheat', cardShapes, settings.cheat.scope !== 'none')}
           title={effective === 'cheat' && settings.cheat.scope !== 'none' ? (cardShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
-          onClick={() => selectCard('cheat')}>Cheat</button>
+          onClick={() => selectCard('cheat')}>Stage</button>
         <button type="button" role="tab" aria-selected={effective === 'chords'} aria-pressed={effective === 'chords' ? cardShapes : undefined}
           className={shapesTabClass(effective === 'chords', cardShapes, settings.cheat.scope !== 'none')}
           title={effective === 'chords' && settings.cheat.scope !== 'none' ? (cardShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
@@ -558,6 +553,11 @@ export function Show() {
           title={effective === 'lyrics' && settings.chords.scope !== 'none' ? (lyricsShapes ? 'Showing fingering chips. Tap again for Settings layout' : 'Tap again for fingering chips') : undefined}
           onClick={selectLyrics}>Lyrics</button>}
         {sheets.tabs && <button type="button" role="tab" aria-selected={effective === 'tabs'} className={effective === 'tabs' ? 'active' : ''} onClick={() => setView('tabs')}>Tabs</button>}
+        {lanesOn && <button type="button" role="tab" aria-selected={effective === 'lanes'} className={effective === 'lanes' ? 'active' : ''} onClick={() => setView('lanes')}>Lanes</button>}
+        {ryanOn && <button type="button" role="tab" aria-selected={effective === 'ryan'} aria-pressed={effective === 'ryan' ? ryanMeasure : undefined}
+          className={shapesTabClass(effective === 'ryan', ryanMeasure, true)}
+          title={effective === 'ryan' ? (ryanMeasure ? 'Measure map on. Tap again for lyric layout' : 'Tap again for measure map') : undefined}
+          onClick={selectRyan}>Ryan</button>}
       </div>
       <button type="button" className={`show-pin${pins[song.id] === effective ? ' pinned' : ''}`} aria-pressed={pins[song.id] === effective} title={pins[song.id] === effective ? 'This view is the default for this song - tap to unpin' : 'Pin this view as the default for this song'} aria-label={pins[song.id] === effective ? 'Unpin default view for this song' : 'Pin this view as default for this song'} onClick={togglePin}>Pin</button>
     </div>
