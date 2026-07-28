@@ -878,44 +878,45 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "C",
-        "shapes": "-355--",
-        "hint": "Chug; C-G-C then one verse cycle into V1"
+        "chords": "C C G C",
+        "shapes": "-355-- -355-- 355--- -355--",
+        "hint": "Roll volume in; chug; then 1 verse cycle into V1"
       },
       {
         "section": "Verse",
         "chords": "C G Bb F",
         "shapes": "-355-- 355--- -133-- 133---",
-        "hint": "V1/V2 = ×3 (2 lyric + 1 instrumental); V3 = ×2 lyric only"
+        "hint": "\"It could be ten\"; roll volume; V1/V2 end 1 open cycle, V3 none"
       },
       {
         "section": "Pre-Chorus",
-        "chords": "(Em Am) ×2 G",
-        "shapes": "022--- -022-- 355---"
+        "chords": "(E A) ×2 G",
+        "shapes": "022--- -022-- 355---",
+        "hint": "\"Just when you think\""
       },
       {
         "section": "Chorus",
-        "chords": "C G Bb F Am G",
+        "chords": "C G Bb F A G",
         "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
-        "hint": "One 6-chord loop; last pass tags Ab"
+        "hint": "\"Here it goes\" then \"should have known\"; last pass tags Ab"
       },
       {
         "section": "Bridge",
         "chords": "Eb5 Bb5 G5/B C5 Eb5/G Ab5",
-        "hint": "High neck power riff (frets 6-9), not a lead solo",
+        "hint": "High neck powers, frets 6-9; ends \"all right!\"",
         "shapes": "x688xx x133xx x668xx x355xx 365xxx 466xxx"
       },
       {
         "section": "Link",
-        "chords": "C G Bb F Am G",
+        "chords": "C G Bb F A G",
         "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
-        "hint": "Full chorus loop after bridge into V3 (not verse-only)"
+        "hint": "One instrumental chorus loop into V3"
       },
       {
         "section": "Outro",
-        "chords": "C G Bb F Am G",
+        "chords": "C G Bb F A G",
         "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
-        "hint": "Last pass tags Ab Bb Eb to close"
+        "hint": "Improvised vocals; ends A G Ab Bb Eb"
       }
     ],
     "form": [
