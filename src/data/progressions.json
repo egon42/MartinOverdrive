@@ -942,17 +942,17 @@
       },
       {
         "section": "Chorus",
-        "chords": "C G Em7 D G",
-        "hint": "\"Purple rain purple rain\"; hold C and D; last time \"only want to see you\""
+        "chords": "=C G Em7 =D G",
+        "hint": "\"Purple rain purple rain\"; last time \"only want to see you\""
       },
       {
         "section": "Solo",
-        "chords": "C G Em7 D G",
+        "chords": "=C G Em7 =D G",
         "hint": "Sparse lead over the chorus vamp; less is more, slow bends, leave space"
       },
       {
         "section": "Outro",
-        "chords": "(C G Em7 D G) ×10 | (G)",
+        "chords": "(=C G Em7 =D G) ×10 | (G)",
         "hint": "Ride the vamp out, then slow-down tag on the last G"
       },
       {

@@ -106,6 +106,8 @@ Same grammar as `src/progressions.ts` header comments:
 - `|` — force line break before next span
 - `~Chord` — ghost / don't-play chip
 - `+Chord` — **tag** chip (short hit, not a full measure), e.g. `E F +G`
+- `*Chord` — **alternate** chip (hint blue; played instead on the pass the hint names)
+- `=Chord` — **held** chip (stacked-card echo; rings across measures), e.g. `=C G Em7 =D G`
 - `shapes` — 6-char tokens aligned 1:1 with chord **names as written** (one pass per group)
 
 ## Density vs auto-fit

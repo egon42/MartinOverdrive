@@ -127,6 +127,10 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-chip--alt{background:var(--blue);color:#f2f6fa}
 /* Stacked markers: an alternate tag keeps tag sizing but goes blue all over */
 .chord-chip--tag.chord-chip--alt{color:#f2f6fa;border-color:var(--blue)}
+/* Held chip (=C): rings across measures. Two fading card-edge echoes on the right
+   read as copies of the chip tucked behind it ([C]] look). Slivers use the acid fill
+   so they track theme; margin keeps the echoes out of the next chip's lap. */
+.chord-chip--held{margin-right:8px;box-shadow:3px 0 0 -1px color-mix(in srgb,var(--acid) 60%,transparent),6px 0 0 -2px color-mix(in srgb,var(--acid) 32%,transparent)}
 /* Every blue-filled chip gets the same black outline: white text on the mid-tone blue
    washed out at chip size on stage (Ryan 2026-07-27). paint-order draws the stroke behind
    the fill so glyphs keep their weight (browsers without it get a centered stroke, which
