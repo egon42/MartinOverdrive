@@ -442,7 +442,14 @@ export function Show() {
   const swipeStart = useRef<{ x: number, y: number } | null>(null)
   const pointers = useRef<Set<number>>(new Set())
   const multi = useRef(false)
+  // Cheat-tab focus mode: double-tap the card to roll up the view tabs + Up next footer
+  // (progress nav, title, and stage strip stay). Toggle back with another double-tap —
+  // collapsed chrome is pointer-events:none, so the second gesture lands on the card too.
+  const [focus, setFocus] = useState(false)
+  const lastTap = useRef(0)
+  const lastPointerType = useRef('')
   const onSwipeDown = (e: React.PointerEvent) => {
+    lastPointerType.current = e.pointerType
     if (e.pointerType === 'mouse') return
     pointers.current.add(e.pointerId)
     if (pointers.current.size > 1) { multi.current = true; swipeStart.current = null; return }
@@ -452,27 +459,39 @@ export function Show() {
     const wasMulti = multi.current
     pointers.current.delete(e.pointerId)
     if (pointers.current.size === 0) multi.current = false
-    if (!e.isPrimary || wasMulti || !cardView) return // multi-touch gesture (pinch) — not a swipe
+    if (!e.isPrimary || wasMulti || !cardView) { lastTap.current = 0; return } // multi-touch gesture (pinch) — not a swipe
     const start = swipeStart.current
     swipeStart.current = null
     if (!start) return
     const dx = e.clientX - start.x, dy = e.clientY - start.y
-    if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 2) return
-    goTo(dx < 0 ? index + 1 : index - 1)
+    if (Math.abs(dx) >= 60 && Math.abs(dx) >= Math.abs(dy) * 2) { lastTap.current = 0; goTo(dx < 0 ? index + 1 : index - 1); return }
+    // Not a swipe: near-stationary taps on the Cheat card feed double-tap detection.
+    // Interactive elements (chord chips, tab buttons) keep their own taps.
+    if (effective === 'cheat' && Math.hypot(dx, dy) < 12 && !(e.target as HTMLElement)?.closest('button,a,input,textarea,select,summary,[role=button],[role=dialog]')) {
+      if (e.timeStamp - lastTap.current < 350) { lastTap.current = 0; setFocus((f) => !f) }
+      else lastTap.current = e.timeStamp
+    } else lastTap.current = 0
   }
   const onSwipeCancel = (e: React.PointerEvent) => {
     pointers.current.delete(e.pointerId)
     if (pointers.current.size === 0) multi.current = false
     swipeStart.current = null
   }
-  const swipeProps = { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: onSwipeCancel }
+  // Desktop convenience: mouse double-click toggles focus too. Touch double-taps can also
+  // fire dblclick in some browsers — the pointerType guard keeps them from double-toggling.
+  const onDoubleClick = (e: React.MouseEvent) => {
+    if (effective !== 'cheat' || lastPointerType.current !== 'mouse') return
+    if ((e.target as HTMLElement)?.closest('button,a,input,textarea,select,summary,[role=button],[role=dialog]')) return
+    setFocus((f) => !f)
+  }
+  const swipeProps = { onPointerDown: onSwipeDown, onPointerUp: onSwipeUp, onPointerCancel: onSwipeCancel, onDoubleClick }
   // The article that owns these pointers remounts on every song/view change (ShowSongBoundary
   // key). If it remounts while a finger rests on it — a live-sync snap or page-turner pedal
   // mid-touch — that pointer's up lands on the new node and never clears the old id, stranding
   // `pointers` non-empty so every later touch reads as multi-touch and swipe dies for the
   // session. Clear on the same boundary; resetKey never changes mid-pinch, so no live gesture
   // is clobbered.
-  useEffect(() => { pointers.current.clear(); multi.current = false; swipeStart.current = null }, [song.id, effective])
+  useEffect(() => { pointers.current.clear(); multi.current = false; swipeStart.current = null; lastTap.current = 0 }, [song.id, effective])
   // Auto wake lock: request on mount, release on unmount, and silently re-acquire on
   // visibilitychange (the browser drops the lock whenever the tab/screen goes
   // background and never restores it automatically).
@@ -503,7 +522,7 @@ export function Show() {
   // Collapse non-essential chrome while autoscroll is armed (playing or lead-in) so the
   // sheet gets max viewport. Keep × exit, compact title, ‹ n/N ›, Live chip, AutoScrollBar,
   // and home-fret scale chips (parked beside the scroll controls on sheet views).
-  return <div className={`show-mode${scroll.playing ? ' show-mode--crawling' : ''}${!scroll.playing && scroll.chromeSettle ? ' show-mode--chrome-settle' : ''}`}>
+  return <div className={`show-mode${scroll.playing ? ' show-mode--crawling' : ''}${!scroll.playing && scroll.chromeSettle ? ' show-mode--chrome-settle' : ''}${focus && effective === 'cheat' ? ' show-mode--focus' : ''}`}>
     <Link className="show-exit" to="/" aria-label="Exit show mode">×</Link>
     <div className="show-progress">
       <button type="button" className="show-nav-btn" disabled={index === 0} onClick={() => goTo(index - 1)} aria-label="Previous song">‹</button>

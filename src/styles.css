@@ -443,7 +443,9 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
    home-fret chips. Max-height (not display:none) so the collapse can animate.
    Collapse on ▶ and expand on ⏸ are both snappy (.18s). Slow expand (10.8s) only when
    the crawl reaches the end naturally (show-mode--chrome-settle). Keep in sync with
-   CHROME_COLLAPSE_MS / CHROME_EXPAND_MS in autoscroll.tsx. */
+   CHROME_COLLAPSE_MS / CHROME_EXPAND_MS in autoscroll.tsx.
+   show-mode--focus (Cheat-tab double-tap) reuses the same collapse for view tabs + Up next
+   only — progress nav, song head, and stage strip stay put. */
 .show-mode .show-song-head .eyebrow,
 .show-mode .show-view-bar,
 .show-mode .show-stage-strip,
@@ -456,7 +458,9 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 .show-mode--crawling .show-song-head .eyebrow,
 .show-mode--crawling .show-view-bar,
 .show-mode--crawling .show-stage-strip,
-.show-mode--crawling .show-upnext{
+.show-mode--crawling .show-upnext,
+.show-mode--focus .show-view-bar,
+.show-mode--focus .show-upnext{
   opacity:0;
   max-height:0;
   margin-top:0;
