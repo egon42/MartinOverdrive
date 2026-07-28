@@ -73,6 +73,12 @@ export function progressionFor(songId: string): SongProgression | null {
   return entry && entry.sections.length ? entry : null
 }
 
+/** Capo fret count from a song's `capo` label ("Capo 3" → 3); 0 when uncapoed. */
+export function capoFretsFor(songId: string): number {
+  const match = progressions[songId]?.capo?.match(/\d+/)
+  return match ? Number(match[0]) : 0
+}
+
 /** First curated 6-char fingering per chord name from the song's cheat card (section order). */
 const curatedShapeCache = new Map<string, Map<string, string>>()
 

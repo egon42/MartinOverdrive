@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type ReactNode, type RefObject } from 'react'
 import { chordProgression, compactSheet, cueNumber, dyadFrets, isBarlineToken, isCueToken, isFretToken, measureSlots, parseChordSheet, stripSheetFills, type SheetPart } from './chords'
-import { basicRowsFor, cheatRowsFor, curatedShapeForChord, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
+import { basicRowsFor, capoFretsFor, cheatRowsFor, curatedShapeForChord, progressionFor, progressionVersionsFor, type CheatChordSpan } from './progressions'
 import { AutoScrollBar, useAutoScrollControls } from './autoscroll'
 import { chordShape, type ChordShape } from './chordShapes'
 import { playChord } from './chordAudio'
@@ -151,7 +151,9 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   // pointerdown closer already ignores taps inside popRef, so a replay tap can't
   // dismiss the popover). Dismissals that aren't chip taps — tapping elsewhere,
   // Escape, scroll — go through setOpen directly and stay silent.
-  const strum = () => { if (settings.chordAudio && shape) playChord(shape) }
+  // Capoed songs (Purple Rain capo 3, Dream On capo 1): shapes are drawn relative to
+  // the capo, so shift playback up by the capo frets to sound the band's actual pitch.
+  const strum = () => { if (settings.chordAudio && shape) playChord(shape, songId ? capoFretsFor(songId) : 0) }
   const flashChip = () => setFlashCount((count) => count + 1)
   const flashClass = flashCount ? (flashCount % 2 ? ' chord-chip--flash-a' : ' chord-chip--flash-b') : ''
   const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`} onClick={() => { strum(); flashChip() }}>

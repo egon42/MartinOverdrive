@@ -4,6 +4,8 @@ import type { ChordShape } from './chordShapes'
 // "Play chord on tap"). Each string is a Karplus-Strong pluck rendered into an
 // AudioBuffer, strummed low-E to high-e with a short stagger. Standard tuning only:
 // the diagrams themselves assume standard tuning, so the audio matches what's drawn.
+// `capoFret` shifts every sounding string up that many semitones (shapes are drawn
+// relative to the capo, so a capoed song's chips play at the band's sounding pitch).
 
 const OPEN_STRING_MIDI = [40, 45, 50, 55, 59, 64] // E2 A2 D3 G3 B3 E4, low-E to high-e
 const STRUM_GAP_S = 0.045
@@ -57,7 +59,7 @@ function pluckBuffer(audio: AudioContext, midi: number): AudioBuffer {
   return buffer
 }
 
-export function playChord(shape: ChordShape) {
+export function playChord(shape: ChordShape, capoFret = 0) {
   const audio = ctx ?? (ctx = new AudioContext())
   audio.resume().catch(() => {}) // also wakes iOS's non-standard 'interrupted' state
   window.clearTimeout(suspendTimer)
@@ -82,7 +84,7 @@ export function playChord(shape: ChordShape) {
   shape.forEach((fret, stringIndex) => {
     if (fret === 'x') return
     const src = audio.createBufferSource()
-    src.buffer = pluckBuffer(audio, OPEN_STRING_MIDI[stringIndex] + fret)
+    src.buffer = pluckBuffer(audio, OPEN_STRING_MIDI[stringIndex] + fret + capoFret)
     const gain = audio.createGain()
     gain.gain.value = STRING_GAIN
     src.connect(gain).connect(master)
