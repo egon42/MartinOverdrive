@@ -908,9 +908,9 @@
       },
       {
         "section": "Outro",
-        "chords": "C G Bb F A G",
-        "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
-        "hint": "Improvised vocals; ends A G Ab Bb Eb"
+        "chords": "(C G Bb F A G) ×5 | (A G Ab Bb Eb)",
+        "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- 577--- 355--- 466xxx -133-- x688xx",
+        "hint": "Improvised vocals; close on \"oh, here it goes again!\""
       }
     ],
     "form": [
@@ -925,7 +925,7 @@
       "Chorus",
       "Verse ×2",
       "Chorus ×2",
-      "Outro ×5"
+      "Outro"
     ]
   },
   "19-purple-rain": {
