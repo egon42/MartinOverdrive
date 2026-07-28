@@ -903,14 +903,8 @@
       {
         "section": "Bridge",
         "chords": "Eb5 Bb5 G5/B C5 Eb5/G Ab5",
-        "hint": "High neck powers, frets 6-9; ends \"all right!\"",
+        "hint": "High neck powers, frets 6-9; ends \"all right!\"; then 1 chorus loop into V3",
         "shapes": "x688xx x133xx x668xx x355xx 365xxx 466xxx"
-      },
-      {
-        "section": "Link",
-        "chords": "C G Bb F A G",
-        "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
-        "hint": "One instrumental chorus loop into V3"
       },
       {
         "section": "Outro",
@@ -928,7 +922,7 @@
       "Pre-Chorus",
       "Chorus ×3",
       "Bridge ×2",
-      "Link",
+      "Chorus",
       "Verse ×2",
       "Chorus ×2",
       "Outro ×5"
