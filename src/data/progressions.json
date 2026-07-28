@@ -1153,12 +1153,12 @@
       {
         "section": "Verse",
         "chords": "Am G Dsus2 Am",
-        "hint": "Keep it sparse: the Am hammer riff is the song"
+        "hint": "V1 \"She grew up\" V2 \"moved down here\" V3 \"I've been told\" V4 \"There's pigeons\""
       },
       {
         "section": "Chorus",
-        "chords": "(Em7 A) ×2 G",
-        "hint": "Em7 = open Em + B-string 3rd fret; on A lift that finger, add D on B, back to A, end on G"
+        "chords": "(Em7 A) | (Em7 A G)",
+        "hint": "\"Last dance with Mary Jane\"; second pass ends on G, \"tired of this town\""
       },
       {
         "section": "Interlude",
@@ -1186,7 +1186,7 @@
       "Intro ×4",
       "Verse ×2",
       "Interlude ×2",
-      "Verse ×2",
+      "Verse ×4",
       "Chorus",
       "Interlude ×2",
       "Verse ×4",
