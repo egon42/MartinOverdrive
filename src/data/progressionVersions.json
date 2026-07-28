@@ -3765,6 +3765,48 @@
   ],
   "13-save-a-horse-ride-a-cowboy": [
     {
+      "label": "pre stage card hints pass 2026-07-28",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E A"
+        },
+        {
+          "section": "Verse",
+          "chords": "E A"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(E A) ×3 (E G A) ×2"
+        },
+        {
+          "section": "Solo",
+          "chords": "E A",
+          "hint": "Guitar ×2 then fiddle ×2 on the record"
+        },
+        {
+          "section": "Bridge",
+          "chords": "E A"
+        },
+        {
+          "section": "Outro",
+          "chords": "E G A",
+          "hint": "N.C. on the last line"
+        }
+      ],
+      "form": [
+        "Intro ×4",
+        "Verse ×4",
+        "Chorus",
+        "Verse ×4",
+        "Chorus",
+        "Solo ×4",
+        "Bridge ×8",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "Jul 15 hand pass",
       "sections": [
         {

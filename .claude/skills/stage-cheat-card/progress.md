@@ -30,7 +30,7 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 - [x] 10-zombie — Hang Em–C 2026-07-26
 - [x] 11-hunger-strike — odd/even + `(…) | (…)` row groups 2026-07-27
 - [x] 12-s-o-b — stage pass 2026-07-28: Ryan plays chorus + outro only. Intro + Verses 1/2/3 split out as sit-out ghost sections with lyric landmarks (V1 B "hold me down"/"ashes of you", V2 C# "bury me", V3 heart line ×4); chorus stacked into two rows (second pass walk-down "drink my life away"); outro keeps the chorus figure over "Whoa oh" (ryan.txt's sit-out outro overridden by Ryan)
-- [ ] 13-save-a-horse-ride-a-cowboy
+- [x] 13-save-a-horse-ride-a-cowboy — hints-only pass 2026-07-28 (Ryan: card already good, chorus stays one row): stops/chucks identity on Intro/Verse, "And the girls say" hook cue, solo play-along, bridge ends "and we made love", outro "What? What?" extra hook + all-stop last line; chords/form untouched
 - [x] 14-sweet-home-alabama — F C tag 2026-07-26
 - [x] 15-dani-california — Dm hangs 2026-07-26; blue-ghost pass 2026-07-27: hangs inlined as *Dm + *~Am / *~G (new stacked grammar, no variant rows); bridge Bm hang added (was missing)
 - [x] 16-teenage-dirtbag — full-chords cue 2026-07-27: full-chord shapes, quiet-PM verse hint, Walk-up section after each chorus, last-chorus sit-out hint, intro reprise ×2

@@ -652,29 +652,33 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "E A"
+        "chords": "E A",
+        "hint": "Land the stops"
       },
       {
         "section": "Verse",
-        "chords": "E A"
+        "chords": "E A",
+        "hint": "Country-rock chucks; 4 rounds per verse"
       },
       {
         "section": "Chorus",
-        "chords": "(E A) ×3 (E G A) ×2"
+        "chords": "(E A) ×3 (E G A) ×2",
+        "hint": "Stops; \"And the girls say\" kicks the E G A hook"
       },
       {
         "section": "Solo",
         "chords": "E A",
-        "hint": "Guitar ×2 then fiddle ×2 on the record"
+        "hint": "Guitar ×2 then fiddle ×2; play along"
       },
       {
         "section": "Bridge",
-        "chords": "E A"
+        "chords": "E A",
+        "hint": "Palm muted; long, ends \"and we made love\""
       },
       {
         "section": "Outro",
         "chords": "E G A",
-        "hint": "N.C. on the last line"
+        "hint": "\"What? What?\" one more hook, then \"Everybody says\" and the last line is all-stop"
       }
     ],
     "form": [
