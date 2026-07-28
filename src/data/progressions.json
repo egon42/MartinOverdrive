@@ -896,9 +896,9 @@
       },
       {
         "section": "Chorus",
-        "chords": "C G Bb F A G",
-        "shapes": "-355-- 355--- -133-- 133--- 577--- 355---",
-        "hint": "\"Here it goes\" then \"should have known\"; last pass tags Ab"
+        "chords": "C G Bb F A G +Ab",
+        "shapes": "-355-- 355--- -133-- 133--- 577--- 355--- 466xxx",
+        "hint": "\"Here it goes\" then \"should have known\"; Ab last pass only"
       },
       {
         "section": "Bridge",
