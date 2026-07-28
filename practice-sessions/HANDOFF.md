@@ -1,31 +1,30 @@
 # HANDOFF — living bookmark (overwrite on pause)
 
-- Updated: **2026-07-28 ~12:05 AM** (late guitar 30-min — never-skip trio)
+- Updated: **2026-07-28 afternoon** (desk — grammar research pass complete)
 - Show: 2026-08-01 · Phase: **Harden**
 - Week plan: [`final-week-2026-08-01.md`](final-week-2026-08-01.md)
 - Skill: `/continue desk` · `/continue guitar` → `.claude/skills/continue-final-week/`
 
 ## Track
 
-**guitar** (last used — late 30-min Mon night into Tue)
+**desk** (last used — grammar research sweep)
 
 ## Last completed
 
-- Late ~30-min guitar on [`2026-07-27.md`](2026-07-27.md): Body Pre → Darkness (3/10, lost
-  after first riff) → Thunderstruck (5/10, no-glance feel) → Pretender (9/10, fun) →
-  light Body Post. Slice #18–#31 and Lola/Mama Priority skipped.
+- **Grammar research pass done** (2026-07-28 desk): all 31 remaining cards swept with
+  tiered subagents (Haiku extraction, Fable judgment, ≤5 concurrent, no
+  content-filter kills). Proposals documented in
+  [`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md) — 5 high-confidence,
+  9 medium, 8 low/flags, 13 songs no-change. Ryan's decision: **vet at the guitar
+  during the next `/continue guitar` session**, not from the desk.
 
 ## Next desk
 
-**Stage-card queue complete — all 32 songs checked** (2026-07-28 finished with
-Mary Jane + Ain't Goin' Down). Next: run the **grammar research pass** per
-[`grammar-research-handoff.md`](grammar-research-handoff.md) — sweep the other
-31 cards for held/tag/ghost/alt candidates with tiered subagents (cheap
-extraction, Fable judgment; ≤5 concurrent; minimal lyrics), proposals to Ryan
-before the Thu freeze. Then phone-verify the 2026-07-28 batch on `/dev/` Cheat
-(S.O.B., Save a Horse, HIGA, Purple Rain, WICA, Mary Jane, Ain't Goin' Down —
-Mary Jane also Chords tab, form changed). Card freeze still **Thu 7/30
-evening**.
+**Phone-verify the 2026-07-28 batch** on `/dev/` Cheat: S.O.B., Save a Horse, HIGA,
+Purple Rain, WICA, Mary Jane, Ain't Goin' Down (Mary Jane also Chords tab, form
+changed). Then apply whatever grammar proposals survived the guitar vetting
+(snapshot → apply → validate → commit → bare `git push`, one song per commit).
+Card freeze still **Thu 7/30 evening**.
 
 ## Next guitar
 
@@ -34,11 +33,14 @@ riff; check tuning/ear). Then Thunderstruck feel-reps, deferred Lola + Mama from
 Mon Priority, **Purple Rain** (play the rebuilt card: verse split lands G, held
 =C/=D chips, Solo ×6 / Outro ×10 counts — verify it reads right at the guitar),
 then ordered slice leftovers (**#18–#31**; Tue plan also has #1–#16 — prefer the
-half not yet touched). Body Post.
+half not yet touched). **During the session, vet the grammar proposals in
+[`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md)** — play each
+spot, mark ok/veto/tweak (checkbox = ok); high-confidence items first, the
+Thunderstruck Chug contradiction matters most (it's a never-skip song). Body Post.
 
 ## Recommended desk
 
-**Claude Fable 5** (grammar research judgment; subagent extraction can be cheap tier)
+**Cursor** (phone-verify + mechanical apply of vetted proposals)
 
 ## Recommended guitar
 
@@ -51,9 +53,12 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 ## Card / UI TODOs
 
 Kill-zone verified; Dirtbag / FBG / Dani phone-verified; em-dash leftover **done**.
+Grammar proposals awaiting guitar vetting (see Last completed); apply before Thu freeze.
 Optional: Dirtbag bridge 2nd-round E B tag hint only if it trips in practice.
 Dirtbag outro 3-row expansion still tabled for Ryan's ear at the guitar.
-Remaining unchecked stage songs (setlist order): Mary Jane, Ain't Goin' Down.
+Open flags parked in the proposals file: Voodoo hard-stop vs ring (band ear),
+Welcome Home "Em C D Em" cycle drift (refine-cheat-form territory),
+Ain't Goin' Down held final chorus G (already tracked).
 Freeze after **Thu evening**.
 
 ## Standing decisions

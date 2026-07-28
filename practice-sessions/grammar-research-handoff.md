@@ -1,5 +1,9 @@
 # Handoff — cheat-card grammar research pass (alt / held / tag / ghost)
 
+- **DONE 2026-07-28**: sweep complete (31 songs, tiered subagents, no filter kills).
+  Proposals live in [`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md);
+  Ryan vets them at the guitar during the next `/continue guitar` session, then
+  approved songs get applied one commit each before the Thu freeze.
 - Prepared: 2026-07-28 (desk session, all 32 stage cards checked)
 - Deadline: proposals to Ryan **before Thu 7/30 evening card freeze**; Wed is the
   realistic last apply day
