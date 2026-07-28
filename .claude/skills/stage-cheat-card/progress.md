@@ -18,7 +18,7 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 
 ## Queue (setlist order)
 
-- [x] 01-welcome-home — landmarks pass 2026-07-27: quoted lyric anchors on Verse (V1/V2 entries), Chorus, Bridge ("One last kiss"), Outro ("Oh oh oh"); chords/form unchanged
+- [x] 01-welcome-home — landmarks pass 2026-07-27: quoted lyric anchors on Verse (V1/V2 entries), Chorus, Bridge ("One last kiss"), Outro ("Oh oh oh"); chords/form unchanged. Em-cycle fix 2026-07-28 (refine-cheat-form): Verse/Solo/Outro chips Em C D → Em C D Em — tab shows the 4-bar cycle closing on a slide-down Em (adjacent Em bars at cycle boundaries), matching ryan.txt "Em C D Em repeats till end"; form ×N labels unchanged, no held =Em (tab ends on the slide, not a ring)
 - [x] 02-all-the-small-things — stage pass 2026-07-27: Intro fixed to C F G G, Bridge fixed to C G F (both sheets agreed vs card); quoted landmarks. Ryan revision same day: Pre-Chorus rings C only (no C G F C walk despite ryan.txt later passes showing it), Interlude in Dani skip-marker grammar, one row C *~F *~G *~G ×2 on form (plain C, played every pass): pass 1 all strums, pass 2 C only with octave picking entering on the last G slot; muted-octave tab (C C C B) from ryan.txt on the section (first non-Fills section tab)
 - [x] 03-a-little-less-conversation — band A restore 2026-07-26
 - [x] 04-i-believe-in-a-thing-called-love — measure-end / clap 2026-07-27

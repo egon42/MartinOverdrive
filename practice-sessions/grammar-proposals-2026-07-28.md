@@ -83,7 +83,7 @@
 - [ ] 07-tribute · after Scat: ryan.txt ghosts the first chorus-loop pass (~Am ~G ~D ~F); card treats all loops the same. Real on stage?
 - [ ] 02-all-the-small-things · Outro final C shows a ring tie; `C G =F =C`? (Interlude C stays plain per Ryan 7/28)
 - FLAG 26-voodoo-child · ending: tab final chord tied/ringing vs card "hard stop". Band-ear question only
-- FLAG 01-welcome-home · cycle drift: ryan.txt says verse/solo/outro cycle is "Em C D Em" vs card `Em C D`. Form territory (refine-cheat-form), not a marker; not fixing here
+- ~~FLAG 01-welcome-home · cycle drift~~ **RESOLVED 2026-07-28 (desk, refine-cheat-form):** ryan.txt was right — tab shows the 4-bar cycle closing on a slide-down Em (adjacent Em bars at boundaries). Verse/Solo/Outro chips now `Em C D Em`; form ×N unchanged; pushed to dev
 
 ## No changes proposed
 

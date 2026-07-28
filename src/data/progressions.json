@@ -8,7 +8,7 @@
       },
       {
         "section": "Verse",
-        "chords": "Em C D",
+        "chords": "Em C D Em",
         "hint": "V1 \"You could've been\", V2 \"You stormed off\""
       },
       {
@@ -23,12 +23,12 @@
       },
       {
         "section": "Solo",
-        "chords": "Em C D",
+        "chords": "Em C D Em",
         "hint": "Twin-guitar leads over the verse cycle"
       },
       {
         "section": "Outro",
-        "chords": "Em C D",
+        "chords": "Em C D Em",
         "hint": "\"Oh oh oh\" + strings over the verse pattern, ride it out"
       }
     ],

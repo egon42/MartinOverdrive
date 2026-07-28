@@ -1,22 +1,25 @@
 # HANDOFF — living bookmark (overwrite on pause)
 
-- Updated: **2026-07-28 afternoon** (desk — grammar research pass complete)
+- Updated: **2026-07-28 afternoon** (desk — Welcome Home Em-cycle flag resolved)
 - Show: 2026-08-01 · Phase: **Harden**
 - Week plan: [`final-week-2026-08-01.md`](final-week-2026-08-01.md)
 - Skill: `/continue desk` · `/continue guitar` → `.claude/skills/continue-final-week/`
 
 ## Track
 
-**desk** (last used — grammar research sweep)
+**desk** (last used — Welcome Home Em-cycle fix)
 
 ## Last completed
 
-- **Grammar research pass done** (2026-07-28 desk): all 31 remaining cards swept with
-  tiered subagents (Haiku extraction, Fable judgment, ≤5 concurrent, no
-  content-filter kills). Proposals documented in
-  [`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md) — 5 high-confidence,
-  9 medium, 8 low/flags, 13 songs no-change. Ryan's decision: **vet at the guitar
-  during the next `/continue guitar` session**, not from the desk.
+- **Welcome Home Em-cycle flag resolved** (2026-07-28 desk, refine-cheat-form):
+  ryan.txt was right — the tab's 4-bar cycle closes on a slide-down Em (adjacent Em
+  bars at cycle boundaries). Verse/Solo/Outro chips now `Em C D Em`, form ×N labels
+  unchanged, snapshot archived, validated, pushed to dev. Needs a phone glance +
+  guitar play-through like the rest of the 7/28 batch.
+- **Grammar research pass done** (2026-07-28 desk): all 31 remaining cards swept.
+  Proposals in [`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md) —
+  5 high-confidence, 9 medium, 8 low/flags, 13 songs no-change. Ryan's decision:
+  **vet at the guitar during the next `/continue guitar` session**, not from the desk.
 
 ## Next desk
 
@@ -24,9 +27,11 @@
 next `/continue guitar` session marks up
 [`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md)): snapshot →
 apply → validate → commit → bare `git push`, one song per commit. If vetting
-hasn't happened yet, fall back to nice-if-time leftovers (Lola F#m/Em, Dirtbag
-full-chords cue, Fat Bottomed stops, Cheat CSS bugs). 2026-07-28 batch is
-**phone-verified** (Ryan, 7/28). Card freeze still **Thu 7/30 evening**.
+still hasn't happened, the desk queue is effectively empty — the old fallback
+leftovers (Lola F#m/Em, Dirtbag cue, FBG stops) all shipped 7/27 and the
+remaining open flags are guitar/band-ear calls (Voodoo ending, AGD held G,
+Dirtbag outro). Optional filler: `deploy check` or phone-verify the Welcome Home
+Em-cycle fix. Card freeze still **Thu 7/30 evening**.
 
 ## Next guitar
 
@@ -38,7 +43,8 @@ then ordered slice leftovers (**#18–#31**; Tue plan also has #1–#16 — pref
 half not yet touched). **During the session, vet the grammar proposals in
 [`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md)** — play each
 spot, mark ok/veto/tweak (checkbox = ok); high-confidence items first, the
-Thunderstruck Chug contradiction matters most (it's a never-skip song). Body Post.
+Thunderstruck Chug contradiction matters most (it's a never-skip song). Also play
+the Welcome Home verse against the new `Em C D Em` chips (desk fix 7/28). Body Post.
 
 ## Recommended desk
 
@@ -61,8 +67,8 @@ Grammar proposals awaiting guitar vetting (see Last completed); apply before Thu
 Optional: Dirtbag bridge 2nd-round E B tag hint only if it trips in practice.
 Dirtbag outro 3-row expansion still tabled for Ryan's ear at the guitar.
 Open flags parked in the proposals file: Voodoo hard-stop vs ring (band ear),
-Welcome Home "Em C D Em" cycle drift (refine-cheat-form territory),
-Ain't Goin' Down held final chorus G (already tracked).
+Ain't Goin' Down held final chorus G (already tracked). Welcome Home Em-cycle
+flag resolved 2026-07-28 (chips now Em C D Em; phone-glance still pending).
 Freeze after **Thu evening**.
 
 ## Standing decisions
