@@ -20,11 +20,13 @@
 
 ## Next desk
 
-**Phone-verify the 2026-07-28 batch** on `/dev/` Cheat: S.O.B., Save a Horse, HIGA,
-Purple Rain, WICA, Mary Jane, Ain't Goin' Down (Mary Jane also Chords tab, form
-changed). Then apply whatever grammar proposals survived the guitar vetting
-(snapshot → apply → validate → commit → bare `git push`, one song per commit).
-Card freeze still **Thu 7/30 evening**.
+**Apply whatever grammar proposals survive the guitar vetting** (blocked until the
+next `/continue guitar` session marks up
+[`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md)): snapshot →
+apply → validate → commit → bare `git push`, one song per commit. If vetting
+hasn't happened yet, fall back to nice-if-time leftovers (Lola F#m/Em, Dirtbag
+full-chords cue, Fat Bottomed stops, Cheat CSS bugs). 2026-07-28 batch is
+**phone-verified** (Ryan, 7/28). Card freeze still **Thu 7/30 evening**.
 
 ## Next guitar
 
@@ -53,6 +55,8 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 ## Card / UI TODOs
 
 Kill-zone verified; Dirtbag / FBG / Dani phone-verified; em-dash leftover **done**.
+2026-07-28 stage batch (S.O.B., Save a Horse, HIGA, Purple Rain, WICA, Mary Jane,
+Ain't Goin' Down incl. Mary Jane Chords tab) **phone-verified** (Ryan, 7/28).
 Grammar proposals awaiting guitar vetting (see Last completed); apply before Thu freeze.
 Optional: Dirtbag bridge 2nd-round E B tag hint only if it trips in practice.
 Dirtbag outro 3-row expansion still tabled for Ryan's ear at the guitar.

@@ -57,3 +57,4 @@ One song at a time. Status: unchecked · done · skipped · blocked · iterating
 - **Hunger row-split** — bare `A B | C D` only breaks before the next single chord; use `(row1) | (row2)`.
 - Kill-zone complete 2026-07-27 morning. **Verified live on `/dev/` Cheat** same day (browser pass). Freeze still Thu night for any tweaks from evening play.
 - Dirtbag, FBG, Dani (new stacked-marker grammar: `*+` alt tags, `*~` skip-marked chips with offset dashed ring) **phone-verified on `/dev/`** 2026-07-27. Dirtbag outro expansion tabled for the guitar check.
+- 2026-07-28 stage batch (S.O.B., Save a Horse, HIGA, Purple Rain, WICA, Mary Jane, Ain't Goin' Down — incl. Mary Jane Chords tab after the Verse ×4 form change) **phone-verified** by Ryan 2026-07-28.
