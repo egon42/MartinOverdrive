@@ -1415,17 +1415,20 @@
       {
         "section": "Intro",
         "chords": "G",
-        "shapes": "320003"
+        "shapes": "320003",
+        "hint": "Count-in, 8-bar fiddle lick; do not fall behind"
       },
       {
         "section": "Verse",
-        "chords": "G C G D G",
-        "shapes": "320003 -32010 320003 --0232 320003"
+        "chords": "=G C G D =G",
+        "shapes": "320003 -32010 320003 --0232 320003",
+        "hint": "V1 \"Friday evening\" V2 \"Nine o'clock\" V3 \"Ten 'til twelve\" V4 \"Saturday\" skips the C"
       },
       {
         "section": "Chorus",
-        "chords": "C Bb G Bb C G",
-        "shapes": "-32010 -13331 320003 -13331 -32010 320003"
+        "chords": "C +Bb G +Bb =C G",
+        "shapes": "-32010 -13331 320003 -13331 -32010 320003",
+        "hint": "\"Ain't going down 'til the sun comes up\""
       },
       {
         "section": "Solo",
