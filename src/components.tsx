@@ -129,7 +129,10 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const flashClass = flashCount ? (flashCount % 2 ? ' chord-chip--flash-a' : ' chord-chip--flash-b') : ''
   // Grammar modifiers apply to fret chips and name chips alike (stage-card riffs use
   // the same ~ + * = ]] notation), so the shared pieces sit above the early returns.
-  const modClass = `${ghost ? ' chord-chip--ghost' : ''}${tag && !ghost ? ' chord-chip--tag' : ''}${alt ? ' chord-chip--alt' : ''}${held ? ' chord-chip--held' : ''}`
+  // A skip-marked chip (*~, ghost+alt) is played on most passes, so its tag aspect
+  // still renders; only a plain ghost (never played) suppresses the tag look.
+  const tagShown = tag && (!ghost || alt)
+  const modClass = `${ghost ? ' chord-chip--ghost' : ''}${tagShown ? ' chord-chip--tag' : ''}${alt ? ' chord-chip--alt' : ''}${held ? ' chord-chip--held' : ''}`
   // Ride chip (D]]): one solid card-edge echo per extra measure — same box-shadow trick
   // as .chord-chip--held, but full-strength layers and depth = the measure count.
   const rideStyle: CSSProperties | undefined = rides >= 2 ? {
@@ -152,7 +155,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const fretChip = (base: string, play: (() => void) | null) => {
     const label = base + fretSuffix
     const cls = `chord-chip chord-chip--fret${modClass}${flashClass}`
-    const body = tag && !ghost ? <><span className="chord-chip-tag-mark" aria-hidden>+</span>{name}</> : name
+    const body = tagShown ? <><span className="chord-chip-tag-mark" aria-hidden>+</span>{name}</> : name
     return play
       ? <b className={cls} style={rideStyle} role="button" tabIndex={0}
           aria-label={`${label}, tap to hear`} title={label} onClick={play}
@@ -178,7 +181,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   const style: CSSProperties = box
     ? { position: 'fixed', left: box.left, top: box.top, ['--arrow-x' as string]: `${box.arrow}px` }
     : { position: 'fixed', left: 0, top: 0, visibility: 'hidden' }
-  const baseLabel = ghost && alt ? `${name} (skip on the pass the hint names)` : ghost ? `${name} (don't play)` : tag && alt ? `${name} alternate tag (short hit on the pass the hint names)` : tag ? `${name} tag (short hit)` : alt ? `${name} alternate (play instead on the pass the hint names)` : name
+  const baseLabel = ghost && alt && tag ? `${name} tag (short hit; skipped on the pass the hint names)` : ghost && alt ? `${name} (skip on the pass the hint names)` : ghost ? `${name} (don't play)` : tag && alt ? `${name} alternate tag (short hit on the pass the hint names)` : tag ? `${name} tag (short hit)` : alt ? `${name} alternate (play instead on the pass the hint names)` : name
   const label = held ? `${baseLabel} (held, strum once and let ring)` : rides >= 2 ? `${baseLabel} (played across ${rides} measures)` : baseLabel
   // With the "Play chord on tap" setting on, any tap on the chip strums the shape
   // (opening or closing), and tapping the open diagram replays it (the outside-
@@ -207,7 +210,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   // doesn't read as C at distance. Fingering-only chips omit the letter, so skip those.
   const gRoot = /^G/.test(name)
   const chipClass = `chord-chip${modClass}${gRoot ? ' chord-chip--g' : ''}${flashClass}`
-  const chipTitle = ghost && alt ? 'Dashed border: skip this one on the pass the hint names' : ghost ? "Don't play; keep the beat" : tag && alt ? 'Alternate tag: short hit, played on the pass the hint names' : tag ? 'Tag: short hit, not a full measure' : alt ? 'Alternate: play this instead on the pass the hint names' : held ? 'Held: strum once, let it ring' : rides >= 2 ? `Ride: keep playing it for ${rides} measures` : undefined
+  const chipTitle = ghost && alt && tag ? 'Skip-marked tag: short hit, skipped on the pass the hint names' : ghost && alt ? 'Dashed border: skip this one on the pass the hint names' : ghost ? "Don't play; keep the beat" : tag && alt ? 'Alternate tag: short hit, played on the pass the hint names' : tag ? 'Tag: short hit, not a full measure' : alt ? 'Alternate: play this instead on the pass the hint names' : held ? 'Held: strum once, let it ring' : rides >= 2 ? `Ride: keep playing it for ${rides} measures` : undefined
   // Ryan power chips / Shapes retap: replace the chord name with a fingering chip (still tappable).
   if (fingering && (fingeringOnly || powerChip)) {
     const body = powerChip ? formatPowerFingering(fingering) : formatVerticalFingering(fingering)
@@ -222,7 +225,7 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   }
   const chip = <>
     <b className={chipClass} style={rideStyle} role="button" tabIndex={0} aria-expanded={open} aria-label={label}
-      title={chipTitle} {...openHandlers}>{tag && !ghost ? <><span className="chord-chip-tag-mark" aria-hidden>+</span>{name}</> : name}</b>
+      title={chipTitle} {...openHandlers}>{tagShown ? <><span className="chord-chip-tag-mark" aria-hidden>+</span>{name}</> : name}</b>
     {pop}
   </>
   // Ref stays on the chip-only wrap so the popover aims at the name, not the fingering.
