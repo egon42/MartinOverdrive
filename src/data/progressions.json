@@ -1537,8 +1537,8 @@
       },
       {
         "section": "Chorus",
-        "chords": "(E A E B) | (A B E C#m A B E) | (+E +A) ×3 | (A B E C#m A B E)",
-        "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022--- 022--- 577--- 577--- 799--- 022--- -466-- 577--- 799--- 022---",
+        "chords": "(E A E B) | (A B E C#m A B) | (+E +A) ×3 | (A B E C#m A B)",
+        "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022--- 577--- 577--- 799--- 022--- -466-- 577--- 799---",
         "hint": "\"Give your I.D. card\"; A rows land on \"Everybody knows\"; last runs into \"that seems fair\""
       },
       {
@@ -1551,7 +1551,7 @@
         "section": "Fair-Tag",
         "chords": "D A E",
         "shapes": "-577-- 577--- 022---",
-        "hint": "That seems fair; starts on D (not the E D A E vamp)"
+        "hint": "End of last chorus: \"I got the pistol so I'll keep the pesos\", then D lands on \"that seems fair\" (not the E D A E vamp)"
       },
       {
         "section": "Outro",

@@ -50,9 +50,9 @@ hint: Palm-muted E5 chug under the vocal
 
 CHORUS
 (E A E B)
-(A B E C#m A B E)
+(A B E C#m A B)
 (+E +A) ×3
-(A B E C#m A B E)
+(A B E C#m A B)
 hint: "Give your I.D. card"; A rows land on "Everybody knows"; last runs into "that seems fair"
 
 SOLO
@@ -61,7 +61,7 @@ hint: Verse changes under the solo
 
 FAIR-TAG
 D A E
-hint: That seems fair; starts on D (not the E D A E vamp)
+hint: End of last chorus: "I got the pistol so I'll keep the pesos", then D lands on "that seems fair" (not the E D A E vamp)
 
 OUTRO
 E D A E
