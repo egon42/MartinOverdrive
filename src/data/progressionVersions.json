@@ -7903,6 +7903,82 @@
   ],
   "04-i-believe-in-a-thing-called-love": [
     {
+      "label": "pre Marty video alignment",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "F# A B E B A",
+          "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+          "hint": "Same as verse; count in carefully"
+        },
+        {
+          "section": "Verse",
+          "chords": "F# A B E B A",
+          "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+          "hint": "Land the measure ends - last two chords (B A) are the catch-up"
+        },
+        {
+          "section": "Verse (in)",
+          "chords": "F# ~A B E B A",
+          "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+          "hint": "Enter mid first B"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(E F#m) ×3 G A A# B",
+          "shapes": "022--- 244--- 355--- 577--- 688--- 799---"
+        },
+        {
+          "section": "Bridge−B",
+          "chords": "(E F#m) ×3 G A A# ~B",
+          "shapes": "022--- 244--- 355--- 577--- 688--- 799---"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(E A F# B) ×3 C#m]] D",
+          "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
+        },
+        {
+          "section": "Clap",
+          "chords": "(~E ~A ~F# ~B) ×3 C#m D",
+          "shapes": "022--- -022-- 244--- -244-- -466-- -577--",
+          "hint": "Clap section - hands on changes; single-string lead over claps (C#m box @ 9). See Fills."
+        },
+        {
+          "section": "Solo",
+          "chords": "F# A B E B A",
+          "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
+          "hint": "Verse riff under the lead"
+        },
+        {
+          "section": "Outro",
+          "chords": "(E A F# B) ×4 E",
+          "shapes": "022--- -022-- 244--- -244-- 022---"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Clap lead (C#m box @ 9, over claps)\ne|9--12-9--12-9-------|\nB|-------------9--12--|\nG|--------------------|\nD|--------------------|\nA|--------------------|\nE|--------------------|\n\nSame box, short answer lick\ne|12-9----9-----------|\nB|-----12---12-9------|\nG|----------------11--|\nD|--------------------|\nA|--------------------|\nE|--------------------|",
+          "tabMore": "Box shape (C# minor @ 9)\ne|9--12|\nB|9--12|\nG|9--11|\nD|9--11|\nA|9--11|\nE|9--12|"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×2",
+        "Bridge",
+        "Chorus",
+        "Solo",
+        "Verse (in)",
+        "Verse",
+        "Bridge−B",
+        "Chorus",
+        "Solo ×4",
+        "Bridge",
+        "Clap",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre ride-migration",
       "sections": [
         {

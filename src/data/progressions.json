@@ -149,45 +149,55 @@
         "section": "Verse",
         "chords": "F# A B E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
-        "hint": "Land the measure ends - last two chords (B A) are the catch-up"
+        "hint": "\"Can't explain\" / \"You got me in a spin\"; land measure ends - B A is the catch-up"
       },
       {
         "section": "Verse (in)",
         "chords": "F# ~A B E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
-        "hint": "Enter mid first B"
+        "hint": "\"I wanna kiss you\"; starts on bass - enter mid first B"
       },
       {
         "section": "Bridge",
-        "chords": "(E F#m) ×3 G A A# B",
-        "shapes": "022--- 244--- 355--- 577--- 688--- 799---"
+        "chords": "(E F#m) ×3 A A# B",
+        "shapes": "022100 244200 -022-- 113--- 224---",
+        "hint": "\"Touching you / me / you\"; low walk-up under \"God you're touching me\""
       },
       {
         "section": "Bridge−B",
-        "chords": "(E F#m) ×3 G A A# ~B",
-        "shapes": "022--- 244--- 355--- 577--- 688--- 799---"
+        "chords": "(E F#m) ×3 A A# ~B",
+        "shapes": "022100 244200 -022-- 113--- 224---",
+        "hint": "Skip the last B into Chorus 2"
       },
       {
         "section": "Chorus",
-        "chords": "(E A F# B) ×3 C#m]] D",
-        "shapes": "022--- -022-- 244--- -244-- -466-- -577--"
-      },
-      {
-        "section": "Clap",
-        "chords": "(~E ~A ~F# ~B) ×3 C#m D",
-        "shapes": "022--- -022-- 244--- -244-- -466-- -577--",
-        "hint": "Clap section - hands on changes; single-string lead over claps (C#m box @ 9). See Fills."
+        "chords": "(E A F# B) ×2 | (E A F# B) C#m]] D",
+        "shapes": "022--- -022-- 244--- -244-- 022--- -022-- 244--- -244-- 446--- 557---",
+        "hint": "Row 2 quick; C#m \"OoOOOO\", D \"Oh!\"; 2nd time \"Guitar!\" into big solo"
       },
       {
         "section": "Solo",
         "chords": "F# A B E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
-        "hint": "Verse riff under the lead"
+        "hint": "Riff from the top, once; then V2 starts on bass"
+      },
+      {
+        "section": "Solo (big)",
+        "chords": "E A F# B",
+        "shapes": "022--- -022-- 244--- -244--",
+        "hint": "Chords under the lead, not the riff; after Clap it runs once into Outro"
+      },
+      {
+        "section": "Clap",
+        "chords": "(~E ~A ~F# ~B) ×3 ~C#m ~D",
+        "shapes": "022--- -022-- 244--- -244-- 446--- 557---",
+        "hint": "Claps only - double clap on B; lead lick C#m box @ 9 (see Fills)"
       },
       {
         "section": "Outro",
         "chords": "(E A F# B) ×4 E",
-        "shapes": "022--- -022-- 244--- -244-- 022---"
+        "shapes": "022--- -022-- 244--- -244-- 022---",
+        "hint": "End cold on E"
       },
       {
         "section": "Fills",
@@ -206,9 +216,10 @@
       "Verse",
       "Bridge−B",
       "Chorus",
-      "Solo ×4",
+      "Solo (big) ×4",
       "Bridge",
       "Clap",
+      "Solo (big)",
       "Outro"
     ]
   },

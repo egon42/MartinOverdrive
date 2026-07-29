@@ -1,6 +1,6 @@
 # HANDOFF — living bookmark (overwrite on pause)
 
-- Updated: **2026-07-29 afternoon** (desk run-through paused at #18)
+- Updated: **2026-07-29 afternoon** (desk run-through through #19)
 - Show: 2026-08-01 · Phase: **Harden**
 - Week plan: [`final-week-2026-08-01.md`](final-week-2026-08-01.md)
 - Skill: `/continue desk` · `/continue guitar` → `.claude/skills/continue-final-week/`
@@ -28,14 +28,18 @@ Run-through #1–#18 (Ryan drives, corrections applied + pushed per song):
 - #17 Dani: Dm/Bm back to plain, chorus G = `*~+G` (skip-marked tag) — **new marker
   combo**, render fix shipped in `components.tsx` (`tagShown`), Ryan should confirm
   the look on /dev/ after deploy
+- #19 Darkness: **aligned to the Marty Music video** (Ryan's chosen practice source):
+  bridge walk = A A# B (G dropped, low grips 113/224), bridge E/F#m real chords,
+  chorus 2 rows + C#m/D grips 446/557, lyric landmarks added, Clap fully ghosted,
+  new **Solo (big)** = E A F# B chords under the lead (Marty: chords not riff —
+  deliberately overrides both sheets) incl. post-Clap step into Outro
 
 ## Next desk
 
-**Resume the set-order run-through at #19 Darkness (I Believe)** — this is also the
-"Darkness sheet still weak" TODO song, so expect a real pass, not a rubber stamp
-(clap/measure-end landmarks exist from 7/27; Ryan found it rough Mon night even with
-the Marty Music video). Then #20 Dirtbag onward. Lean on the Lyrics sheet as the
-trusted surface. Card freeze **Thu 7/30 evening**.
+**Resume the set-order run-through at #20 Dirtbag** (then #21 onward, minus Ryan's
+skips). Lean on the Lyrics sheet as the trusted surface — but note #19 set a
+precedent: when Ryan names a practice source (Marty video), that wins over the
+sheets. Card freeze **Thu 7/30 evening**.
 
 ## Next guitar
 
@@ -69,8 +73,9 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 
 - **#17 Dani `*~+G` chip**: phone-confirm the new skip-marked-tag rendering on /dev/
 - **#8 Mama**: guitar-verify tonight (list above)
-- #19 Darkness sheet weak — next in run-through, real pass expected
-- Run-through remaining: #19–#32 (minus Ryan's skips)
+- #19 Darkness: phone-check the Marty-aligned card on /dev/ (two-row chorus, ghost
+  Clap row, bridge grips); practice vs the video will confirm Solo (big) chords
+- Run-through remaining: #20–#32 (minus Ryan's skips)
 - Grammar proposals awaiting guitar vetting (`grammar-proposals-2026-07-28.md`)
 - Ride-scan mediums + ambiguous `=` holds awaiting ear (`ride-scan-proposals-2026-07-29.md`)
 - Welcome Home (#28) Em-cycle: desk fixed; guitar confirm pending (comes up late in
