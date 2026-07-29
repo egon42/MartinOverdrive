@@ -123,8 +123,10 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   }, [open])
   // Numeric tokens are A-string fret cues (The Middle verse, etc.) — chip shows the fret,
   // no diagram popover. Cue tokens (`^1`) are numbered triangle chips linking a lyric word
-  // to a matching fill block. Both returns sit below every hook call so a token that flips
-  // between kinds at the same tree position can't change the hook order.
+  // to a matching fill block. All these returns sit below every hook call so a token that
+  // flips between kinds at the same tree position can't change the hook order.
+  const flashChip = () => setFlashCount((count) => count + 1)
+  const flashClass = flashCount ? (flashCount % 2 ? ' chord-chip--flash-a' : ' chord-chip--flash-b') : ''
   const cue = cueNumber(name)
   if (cue != null) {
     return <b className="chord-chip chord-chip--cue" aria-label={`Fill cue ${cue}`} title={`Fill cue ${cue}`}>{cue}</b>
@@ -132,13 +134,28 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   if (isBarlineToken(name)) {
     return <span className="sheet-measure-barline" aria-hidden>|</span>
   }
+  // Fret chips share the "Play chord on tap" setting: a tap plucks the note so the
+  // riff can be checked against the recording without a guitar in hand. No capo shift:
+  // fret tokens are literal fret numbers on the neck, not shapes drawn behind a capo.
+  const playFrets = (shape: ChordShape) => { playChord(shape); flashChip() }
+  const fretChip = (label: string, play: (() => void) | null) => play
+    ? <b className={`chord-chip chord-chip--fret${flashClass}`} role="button" tabIndex={0}
+        aria-label={`${label}, tap to hear`} title={label} onClick={play}
+        onKeyDown={(event: ReactKeyboardEvent) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); play() } }}>{name}</b>
+    : <b className="chord-chip chord-chip--fret" aria-label={label} title={label}>{name}</b>
   if (isFretToken(name)) {
-    return <b className="chord-chip chord-chip--fret" aria-label={`Fret ${name}`} title={`Fret ${name}`}>{name}</b>
+    const play = settings.chordAudio ? () => playFrets(['x', Number(name), 'x', 'x', 'x', 'x']) : null
+    return fretChip(`Fret ${name} on the A string`, play)
   }
   const dyad = dyadFrets(name)
   if (dyad) {
     const label = `B string fret ${dyad.b}, G string fret ${dyad.g}`
-    return <b className="chord-chip chord-chip--fret" aria-label={label} title={label}>{name}</b>
+    // A ranged G part (`2/4-5`, two notes on one string) can't be voiced as one shape —
+    // those chips stay silent rather than play half the figure.
+    const play = settings.chordAudio && !dyad.g.includes('-')
+      ? () => playFrets(['x', 'x', 'x', Number(dyad.g), Number(dyad.b), 'x'])
+      : null
+    return fretChip(label, play)
   }
   // First render (box null) lays the popover out hidden so it can be measured; the effect
   // then pins it to the computed spot.
@@ -162,8 +179,6 @@ export function ChordChip({ name, curatedShape, surface = 'chords', songId, ghos
   // Capoed songs (Purple Rain capo 3, Dream On capo 1): shapes are drawn relative to
   // the capo, so shift playback up by the capo frets to sound the band's actual pitch.
   const strum = () => { if (settings.chordAudio && shape) playChord(shape, songId ? capoFretsFor(songId) : 0) }
-  const flashChip = () => setFlashCount((count) => count + 1)
-  const flashClass = flashCount ? (flashCount % 2 ? ' chord-chip--flash-a' : ' chord-chip--flash-b') : ''
   const pop = open && <span ref={popRef} className={box?.below ? 'chord-pop chord-pop--below' : 'chord-pop'} style={style} role="dialog" aria-label={`${name} chord`} onClick={() => { strum(); flashChip() }}>
     {shape ? <ChordDiagram name={name} shape={shape} /> : <span className="chord-pop-empty">No diagram for {name}</span>}
   </span>

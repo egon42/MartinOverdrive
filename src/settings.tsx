@@ -603,7 +603,7 @@ export function SettingsPage() {
         />
         <span className="theme-stripe-meta">
           <strong>Play chord on tap</strong>
-          <small>Strums the chord out loud when you open a chord diagram. Tap the open diagram to hear it again. Handy for checking shapes without a guitar in hand.</small>
+          <small>Strums the chord out loud when you open a chord diagram. Tap the open diagram to hear it again. Fret number chips play their note when tapped. Handy for checking parts without a guitar in hand.</small>
         </span>
       </label>
       <label className="theme-stripe-toggle">
