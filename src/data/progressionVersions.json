@@ -4084,6 +4084,57 @@
   ],
   "28-mama-i-m-coming-home": [
     {
+      "label": "pre lyrics-sheet alignment",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E"
+        },
+        {
+          "section": "Verse",
+          "chords": "E]] A E"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(C#m]] A E) | (C#m]] A B)",
+          "hint": "Two rows into Face. Second pre / Pre3 add F#5 G#5 after B (\"Selfish love\" lift)"
+        },
+        {
+          "section": "Chorus",
+          "chords": "A E *+C *+D *+B",
+          "hint": "Face - \"Mama I'm coming home\". First: hundred + the C D B tag. Second: thousand into outro, no tag"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(G A E) ×3 +B",
+          "hint": "Bridge not Face; B kicks into the solo"
+        },
+        {
+          "section": "Solo",
+          "chords": "A E A E A B C#m B A B",
+          "hint": "7 bars after Bridge B"
+        },
+        {
+          "section": "Outro",
+          "chords": "(A B E A) | (Asus2 Bsus4 C D E) | (C D E) ×3",
+          "hint": "Line 1 \"don't care about the sunshine\"; line 2 \"mama, mama, I'm coming home\"; then \"I'm coming home\" ×3 to end"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse",
+        "Pre-Chorus",
+        "Verse",
+        "Pre-Chorus",
+        "Chorus",
+        "Bridge",
+        "Solo",
+        "Pre-Chorus",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre outro lyric-anchor rebuild",
       "sections": [
         {

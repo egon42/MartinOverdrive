@@ -1376,7 +1376,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "A E *+C *+D *+B",
+        "chords": "(A E) ×2 *+C *+D *+B",
         "hint": "Face - \"Mama I'm coming home\". First: hundred + the C D B tag. Second: thousand into outro, no tag"
       },
       {
@@ -1386,7 +1386,7 @@
       },
       {
         "section": "Solo",
-        "chords": "A E A E A B C#m B A B",
+        "chords": "A E A E A B C# B A B",
         "hint": "7 bars after Bridge B"
       },
       {
@@ -1397,9 +1397,9 @@
     ],
     "form": [
       "Intro ×2",
-      "Verse",
+      "Verse ×2",
       "Pre-Chorus",
-      "Verse",
+      "Verse ×2",
       "Pre-Chorus",
       "Chorus",
       "Bridge",
