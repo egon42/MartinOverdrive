@@ -9,7 +9,9 @@ import versionsData from './data/progressionVersions.json'
 // ("Em C G D"). `shapes`, when present, is space-separated 6-char fingerings (low-E →
 // high-e; digit = fret, '-' = unplayed) aligned 1:1 with chord names as written — one
 // pass of each group, not the expanded play-through. `hint` is a one-line how-to-play
-// cue. `tab` / `tabMore` are ASCII fills (tabMore behind a "More fills" disclosure).
+// cue. `remind` is a short reminder rendered beside the section name in the alert color
+// ("Goes longer than you'd think"). `tab` / `tabMore` are ASCII fills (tabMore behind a
+// "More fills" disclosure).
 // Empty `chords` is fine when a section is tab-only.
 //
 // `form`, when present, is the linear song roadmap (order + repeats), e.g.
@@ -38,6 +40,8 @@ export interface ProgSection {
   chords: string
   shapes?: string
   hint?: string
+  /** Short reminder shown beside the section name ("Goes longer than you'd think"). */
+  remind?: string
   tab?: string
   tabMore?: string
   /** Omit from Cheat (building-blocks) tab; still available on Chords roadmap via form. */
@@ -66,6 +70,7 @@ export interface CheatRow {
   label: string
   spans: CheatChordSpan[]
   hint?: string
+  remind?: string
   tab?: string
   tabMore?: string
 }
@@ -289,6 +294,7 @@ function sectionToRow(label: string, section: ProgSection | undefined): CheatRow
     label,
     spans,
     hint: section?.hint,
+    remind: section?.remind,
     tab: section?.tab,
     tabMore: section?.tabMore,
   }
@@ -302,6 +308,7 @@ export function cheatRowsFor(prog: SongProgression): CheatRow[] {
 
   if (prog.form?.length) {
     const seenHints = new Set<string>()
+    const seenReminds = new Set<string>()
     return prog.form.map((label) => {
       const base = formStepBase(label)
       const section = byName.get(base) ?? byName.get(label)
@@ -309,6 +316,10 @@ export function cheatRowsFor(prog: SongProgression): CheatRow[] {
       if (row.hint) {
         if (seenHints.has(base)) row.hint = undefined
         else seenHints.add(base)
+      }
+      if (row.remind) {
+        if (seenReminds.has(base)) row.remind = undefined
+        else seenReminds.add(base)
       }
       return row
     })

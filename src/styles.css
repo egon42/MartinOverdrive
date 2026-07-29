@@ -398,6 +398,9 @@ button.autoscroll-speed i{display:block;font-style:normal;font-size:.62em;letter
 html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(even){background:color-mix(in srgb,var(--ink) var(--row-stripe,5.5%),transparent);border-radius:8px;padding:5px 7px;margin:0 -7px}
 html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:5px 7px;margin:0 -7px}
 .cheat-prog-label{font-size:.55em;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800;line-height:1.2}
+/* Reminder beside the section name ("goes longer than you'd think") — plain colored text,
+   third voice: muted italic = how-to hint, blue = quoted lyric, orange = reminder */
+.cheat-prog-remind{text-transform:none;letter-spacing:normal;color:var(--orange);font-weight:700;font-size:1.25em;margin-left:8px}
 .cheat-prog-label-times{color:#fff;font-size:1.25em;letter-spacing:.04em}
 .cheat-prog-body{display:flex;flex-direction:column;gap:2px;min-width:0}
 .cheat-prog-chords{display:flex;gap:6px;flex-wrap:wrap;align-items:flex-start}

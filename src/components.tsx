@@ -781,6 +781,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
         label: row.label,
         spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], tags: [false], alts: [false], holds: [false], shapes: [], times: 1 })),
         hint: undefined as string | undefined,
+        remind: undefined as string | undefined,
         tab: undefined as string | undefined,
         tabMore: undefined as string | undefined,
       }))
@@ -822,7 +823,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
       <div className="cheat-fit" ref={innerRef}>
         {rows && <div className="cheat-progression">
           {rows.map((row, i) => <div className="cheat-prog-row" key={i}>
-            <span className="cheat-prog-label">{renderProgLabel(row.label)}</span>
+            <span className="cheat-prog-label">{renderProgLabel(row.label)}{row.remind && <span className="cheat-prog-remind">{row.remind}</span>}</span>
             <div className="cheat-prog-body">
               <span className="cheat-prog-chords">{row.spans.map((span, s) =>
                 <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
