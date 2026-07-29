@@ -107,8 +107,15 @@ Same grammar as `src/progressions.ts` header comments:
 - `~Chord` — ghost / don't-play chip
 - `+Chord` — **tag** chip (short hit, not a full measure), e.g. `E F +G`
 - `*Chord` — **alternate** chip (hint blue; played instead on the pass the hint names)
-- `=Chord` — **held** chip (stacked-card echo; rings across measures), e.g. `=C G Em7 =D G`
-- `shapes` — 6-char tokens aligned 1:1 with chord **names as written** (one pass per group)
+- `=Chord` — **held** chip (faded echo): strum **once** and let ring. Not for multi-measure
+  strumming — that's a ride (below). E.g. `C G =B` where the B rings out.
+- `Chord]]` — **ride** chip (solid cascade layers): keep strumming it across N measures,
+  one `]` per measure, minimum 2 — `D]]` = 2 measures, `D]]]]` = 4. Combining `=`/`+`
+  with `]]` throws in the parser; `~` and `*` combine fine.
+- `"remind": "text"` on a section — orange reminder text beside the section name
+  (e.g. FBG Intro "Sung chorus first, no guitar"). Plain text, no chips, no em-dashes.
+- `shapes` — 6-char tokens aligned 1:1 with chord **names as written** (one pass per group;
+  trailing `]` markers don't change the token count)
 
 ## Density vs auto-fit
 

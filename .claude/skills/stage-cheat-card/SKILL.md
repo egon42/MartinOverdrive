@@ -90,6 +90,9 @@ Full notation in [reference.md](reference.md). Short version:
 | Cue under a mid-section row | Split into two section names **or** combine into one hint |
 | Don't-play beat chip | `~Am` |
 | Short tag (not a full bar) | `+G` |
+| Strum once, let ring | `=B` |
+| Keep strumming N measures | `D]]]]` (one `]` per measure, min 2) |
+| Orange reminder by section name | `"remind": "Sung chorus first, no guitar"` |
 | Fills | Cheat tab only; never in `form` |
 
 Copy rules:
