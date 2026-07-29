@@ -1,58 +1,51 @@
 # HANDOFF — living bookmark (overwrite on pause)
 
-- Updated: **2026-07-28 afternoon** (desk — Welcome Home Em-cycle flag resolved)
+- Updated: **2026-07-29 midday** (desk run-through in set order, during meetings)
 - Show: 2026-08-01 · Phase: **Harden**
 - Week plan: [`final-week-2026-08-01.md`](final-week-2026-08-01.md)
 - Skill: `/continue desk` · `/continue guitar` → `.claude/skills/continue-final-week/`
+- **Song numbers = NEW set order** (setlist.json `order`), not file-id prefixes.
 
 ## Track
 
-**desk** (last used — Welcome Home Em-cycle fix)
+**desk** (set-order card run-through, Ryan half-listening from meetings)
 
 ## Last completed
 
-- **Welcome Home Em-cycle flag resolved** (2026-07-28 desk, refine-cheat-form):
-  ryan.txt was right — the tab's 4-bar cycle closes on a slide-down Em (adjacent Em
-  bars at cycle boundaries). Verse/Solo/Outro chips now `Em C D Em`, form ×N labels
-  unchanged, snapshot archived, validated, pushed to dev. Needs a phone glance +
-  guitar play-through like the rest of the 7/28 batch.
-- **Grammar research pass done** (2026-07-28 desk): all 31 remaining cards swept.
-  Proposals in [`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md) —
-  5 high-confidence, 9 medium, 8 low/flags, 13 songs no-change. Ryan's decision:
-  **vet at the guitar during the next `/continue guitar` session**, not from the desk.
+- Morning (other tool): FBG chorus rides, Banditos chorus rework + Fair-Tag fold,
+  The Middle A-string riff onto Stage card, tap-to-play fret chips. All pushed.
+- Midday run-through in set order: #1 Middle (fresh from morning), #2 ATS ✓,
+  #3 Conversation skipped (sing-only), #4 Valerie ✓, #5 DSB done (2-row cycles,
+  quick +E +B +E +A pre-chorus tag row, Chorus above Solo), #6 Voodoo + #7 Pride
+  and Joy skipped (basic backing rhythm), **#8 Mama major rework** (rides, chorus
+  absorbs sunshine + mama-walk with blue C D B first-time tag, bridge (G A E) ×3 +B,
+  amp cues, one Pre-Chorus for all 3 pres with blue F#5 G#5 lift pres 2+3, solo
+  +C# +B tags, Outro = (C D E) ×3 only). 13 archived versions on Mama.
 
 ## Next desk
 
-**Apply whatever grammar proposals survive the guitar vetting** (blocked until the
-next `/continue guitar` session marks up
-[`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md)): snapshot →
-apply → validate → commit → bare `git push`, one song per commit. If vetting
-still hasn't happened, the desk queue is effectively empty — the old fallback
-leftovers (Lola F#m/Em, Dirtbag cue, FBG stops) all shipped 7/27 and the
-remaining open flags are guitar/band-ear calls (Voodoo ending, AGD held G,
-Dirtbag outro). Optional filler: `deploy check` or phone-verify the Welcome Home
-Em-cycle fix. Card freeze still **Thu 7/30 evening**.
+**Resume the set-order run-through at #9 Tribute** (Ryan drives song-by-song; apply
+his corrections snapshot → validate → commit → push per song). Lean on the Lyrics
+sheet as the trusted surface when Stage looks wrong. Card freeze **Thu 7/30 evening**.
 
 ## Next guitar
 
-Body Pre → `/coach` — **Darkness first** (biggest hurdle: rejoin after opening
-riff; check tuning/ear). Then Thunderstruck feel-reps, deferred Lola + Mama from
-Mon Priority, **Purple Rain** (play the rebuilt card: verse split lands G, held
-=C/=D chips, Solo ×6 / Outro ×10 counts — verify it reads right at the guitar),
-then ordered slice leftovers (**#18–#31**; Tue plan also has #1–#16 — prefer the
-half not yet touched). **During the session, vet the grammar proposals in
-[`grammar-proposals-2026-07-28.md`](grammar-proposals-2026-07-28.md)** — play each
-spot, mark ok/veto/tweak (checkbox = ok); high-confidence items first, the
-Thunderstruck Chug contradiction matters most (it's a never-skip song). Also play
-the Welcome Home verse against the new `Em C D Em` chips (desk fix 7/28). Body Post.
+**Body Pre → Mama (#8) card-verify FIRST** — Ryan is not convinced the reworked card
+is 100% right. Play it against the new Cheat card and confirm: verse E]] ride,
+pre-chorus E/B cascades + blue F#5 G#5 lift only in pres 2+3, hundred-times chorus
+present (recording says yes), blue C D B tag first chorus only, bridge ×3 then +B
+into solo, solo +C# +B tags, (C D E) ×3 outro. Then the Wed changeover loop
+(3→#19 Darkness, 16→#10 Pretender, 5→#24 Thunderstruck, 24→#4 Valerie(?),
+20→#1 Middle, 26→#13 Fat Bottomed — re-derive pairs from the new order) +
+Darkness maintenance + Pretender catch-up. Coach = one song at a time.
 
 ## Recommended desk
 
-**Cursor** (phone-verify + mechanical apply of vetted proposals)
+**Claude Fable 5** (stage-card judgment; this run-through is live in a Fable session)
 
 ## Recommended guitar
 
-**Either** (chat at the guitar)
+**Either** (chat at the guitar) — song-by-song coach, not plan dump
 
 ## Never skip
 
@@ -60,24 +53,26 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 
 ## Card / UI TODOs
 
-Kill-zone verified; Dirtbag / FBG / Dani phone-verified; em-dash leftover **done**.
-2026-07-28 stage batch (S.O.B., Save a Horse, HIGA, Purple Rain, WICA, Mary Jane,
-Ain't Goin' Down incl. Mary Jane Chords tab) **phone-verified** (Ryan, 7/28).
-Grammar proposals awaiting guitar vetting (see Last completed); apply before Thu freeze.
-Optional: Dirtbag bridge 2nd-round E B tag hint only if it trips in practice.
-Dirtbag outro 3-row expansion still tabled for Ryan's ear at the guitar.
-Open flags parked in the proposals file: Voodoo hard-stop vs ring (band ear),
-Ain't Goin' Down held final chorus G (already tracked). Welcome Home Em-cycle
-flag resolved 2026-07-28 (chips now Em C D Em; phone-glance still pending).
-Freeze after **Thu evening**.
+- **#8 Mama: guitar-verify tonight** (see Next guitar) — desk rework done today
+- Darkness (#19) sheet still weak (practice + card) — not yet reached in run-through
+- Run-through remaining: #9–#32 (minus skips Ryan calls)
+- Grammar proposals awaiting guitar vetting (`grammar-proposals-2026-07-28.md`)
+- Ride-scan mediums + four ambiguous `=` holds awaiting ear (`ride-scan-proposals-2026-07-29.md`);
+  ATS medium items implicitly passed by Ryan's #2 ✓? — confirm if it comes up
+- Welcome Home (#28) Em-cycle: desk fixed; guitar confirm pending
+- Open flags: Voodoo (#6) hard-stop vs ring (skipped today, low stakes); AGD (#29)
+  held final chorus G
+- Freeze after **Thu evening**
 
 ## Standing decisions
 
 - Stage = **Cheat only**
+- **Song numbers = new set order** (memory: new-setlist-order-numbers)
 - Desk continue = app (not fingering coach); fingering = downtime only (`desk board` if wanted)
 - Quoted lyric hints = blue; `+Chord` = tag; `~Chord` = ghost; `*Chord` = blue alternate;
-  `=Chord` = held (stacked-card echo, rings across measures — Purple Rain vamp C/D);
-  distinct markers stack (`*+G` = blue alternate tag, FBG chorus; `*~Am` = skip-marked:
-  normal fill + dashed blue border, skipped only on the cued pass, Dani hangs; NOT
-  ghost-styled, Ryan's call); `cheatHide` = omit from Cheat
+  `=Chord` = strum once and let ring; `Chord]]` = ride, keep strumming N measures
+  (one `]` each, min 2); `=`/`+` don't combine with `]]` (`~`/`*` do); section
+  `remind` = orange text by the section name; `cheatHide` = omit from Cheat
 - Auto commit + bare `git push` on `dev` for app/data (not `fill_page.html`)
+- **Guitar coach = one song at a time** (instruct → play → report → log → next).
+  Worksheet is the log, not the script they read.
