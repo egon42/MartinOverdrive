@@ -3125,6 +3125,41 @@
   ],
   "22-dream-on": [
     {
+      "label": "pre bridge add",
+      "sections": [
+        {
+          "section": "Sit",
+          "chords": "~Em",
+          "hint": "Sit through verses and choruses; only Fill ^1 and the Climax are played. Sit again after Climax"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(~Em ~D) (~C ~D) (~Em ~D) (~Em/C# ~Cmaj7)",
+          "shapes": "022000 --0232 -32010 --0232 022000 --0232 -42200 -32000",
+          "remind": "Fill ^1 on 2nd Sing with me",
+          "hint": "Band plays this; you sit. Fire Fill ^1 on the SECOND \"Sing with me\", then sit again"
+        },
+        {
+          "section": "Climax",
+          "chords": "(Am B5 C) (D Em)",
+          "shapes": "-02210 -24--- -35--- --0232 022000",
+          "hint": "One chord set, then Fill ^1. 3rd pass: Em F#5 G A B7b9"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Walk-up ^1 (first cue: 2nd Sing with me on Chorus; also after Climax sets)\ne|----------------|----------------|----------------|----------------|\nB|5---------------|5---------------|5---------------|5---------------|\nG|--3---3---3-----|--5---5---5-----|--6---6---6-----|--8---8---8-----|\nD|----------------|----------------|----------------|----------------|\nA|----------------|----------------|----------------|----------------|\nE|----------------|----------------|----------------|----------------|\n\nPattern: 5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8"
+        }
+      ],
+      "form": [
+        "Sit",
+        "Chorus",
+        "Climax ×3",
+        "Sit"
+      ],
+      "capo": "Capo 1"
+    },
+    {
       "label": "pre fill-only + climax focus",
       "sections": [
         {

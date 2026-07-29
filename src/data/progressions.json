@@ -1068,7 +1068,12 @@
       {
         "section": "Sit",
         "chords": "~Em",
-        "hint": "Sit through verses and choruses; only Fill ^1 and the Climax are played. Sit again after Climax"
+        "hint": "Sit through verses and choruses; you play Fill ^1, the Climax, and maybe the Bridge. Sit again after Climax"
+      },
+      {
+        "section": "Bridge",
+        "chords": "(Em D C D) | (Em D) (C D Em)",
+        "hint": "\"I know nobody knows\" - optional entry, before Verse 2; skip = keep sitting"
       },
       {
         "section": "Chorus",
@@ -1090,6 +1095,8 @@
       }
     ],
     "form": [
+      "Sit",
+      "Bridge",
       "Sit",
       "Chorus",
       "Climax ×3",
