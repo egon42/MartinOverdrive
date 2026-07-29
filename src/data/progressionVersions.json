@@ -6250,6 +6250,60 @@
   ],
   "17-the-pretender": [
     {
+      "label": "pre chorus D tag + verse remind",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "Am F#m7b5 Fmaj7",
+          "hint": "Quiet: picked Am arpeggio; F#m7b5->Fmaj7 answer",
+          "cheatHide": true
+        },
+        {
+          "section": "Verse",
+          "chords": "Am]] D/F# F",
+          "hint": "Loop; later lines tag G. Count last quiet bar (Intro shapes) then heavy - don't jump early"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "D",
+          "hint": "\"Same old story\" into chorus"
+        },
+        {
+          "section": "Chorus",
+          "chords": "Am D/F# F",
+          "hint": "\"What if I say\"; last pass tags a D"
+        },
+        {
+          "section": "Bridge",
+          "chords": "A5",
+          "hint": "Palm-muted A5 drive: \"I'm the voice inside your head\""
+        },
+        {
+          "section": "Interlude",
+          "chords": "Am F#m7b5 Fmaj7",
+          "cheatHide": true
+        },
+        {
+          "section": "Outro",
+          "chords": "A5",
+          "hint": "Cold ending on \"So who are you?\""
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse",
+        "Pre-Chorus",
+        "Chorus",
+        "Verse",
+        "Pre-Chorus",
+        "Chorus",
+        "Bridge",
+        "Interlude",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre ride-migration",
       "sections": [
         {

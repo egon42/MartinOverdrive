@@ -832,7 +832,8 @@
       {
         "section": "Verse",
         "chords": "Am]] D/F# F",
-        "hint": "Loop; later lines tag G. Count last quiet bar (Intro shapes) then heavy - don't jump early"
+        "remind": "don't jump early 1st pass",
+        "hint": "Loop; later lines tag G. Count last quiet bar (Intro shapes) then heavy"
       },
       {
         "section": "Pre-Chorus",
@@ -841,8 +842,8 @@
       },
       {
         "section": "Chorus",
-        "chords": "Am D/F# F",
-        "hint": "\"What if I say\"; last pass tags a D"
+        "chords": "Am D/F# F *+D",
+        "hint": "\"What if I say\"; blue D = last pass only"
       },
       {
         "section": "Bridge",
