@@ -778,9 +778,9 @@ function renderCheatHint(hint: string): ReactNode {
 // chord rows to one screen; omit it (practice page) and the card renders at natural
 // height. `withMore` gates the Stage variant's below-fold fretboard/role/must-know block
 // — the practice page passes false because it already shows those in its own panels.
-// `printFills` (the /print paper backup) renders the extra fills inline: a closed
-// <details> can't be forced open from print CSS, and paper has no taps.
-export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMore = true, printFills = false }: { song: Song, innerRef?: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean, withMore?: boolean, printFills?: boolean }) {
+// `omitFills` (the /print paper backup) drops the Fills rows and the ASCII tab blocks:
+// the paper card is the song's shape at a glance, and fills cost quadrant space.
+export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMore = true, omitFills = false }: { song: Song, innerRef?: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean, withMore?: boolean, omitFills?: boolean }) {
   const sheets = sheetsFor(song.id)
   const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
   const { settings } = useSettings()
@@ -806,7 +806,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
   const derived = useMemo(() => (!custom && sheets.chords ? chordProgression(sheets.chords) : null), [custom, sheets.chords])
   // Roadmap variant: `form` order when set (labels like "Verse ×4"), fills excluded.
   // Cheat variant: each section once in stored order, fills included.
-  const rows = custom
+  const allRows = custom
     ? (variant === 'chords' ? cheatRowsFor(custom) : basicRowsFor(custom))
     : derived?.map((row) => ({
         label: row.label,
@@ -816,6 +816,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
         tab: undefined as string | undefined,
         tabMore: undefined as string | undefined,
       }))
+  const rows = omitFills ? allRows?.filter((row) => !/^fills$/i.test(row.label)) : allRows
   // Re-run height auto-fit after More fills opens/closes — otherwise the newly
   // revealed tabs overflow (or leave empty space) until the next resize. The
   // secondary "More" details (fretboard/fields) does NOT refit — chips keep size.
@@ -863,8 +864,8 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
                   {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
                 </span>)}</span>
               {row.hint && <span className="cheat-prog-hint">{renderCheatHint(row.hint)}</span>}
-              {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
-              {row.tabMore && (printFills ? <pre className="cheat-prog-tab">{row.tabMore}</pre> : <MoreFills tab={row.tabMore} onToggle={refitCheat} />)}
+              {row.tab && !omitFills && <pre className="cheat-prog-tab">{row.tab}</pre>}
+              {row.tabMore && !omitFills && <MoreFills tab={row.tabMore} onToggle={refitCheat} />}
             </div>
           </div>)}
         </div>}

@@ -261,6 +261,35 @@ function ShowStageStrip({ song, includeHomeFrets = false, forceAmpChips = false 
   </div>
 }
 
+/** One quadrant of a printed stage-card sheet. The card auto-shrinks (the show-mode
+ *  --sheet-fit trick, via --print-fit on .cheat-fit's font) until it fits its fixed
+ *  cell, so a dense song loses point size, never content. Sheets are sized in inches,
+ *  so this on-screen measurement is the exact geometry the printer gets. */
+function PrintSongCell({ song, position, total, notes }: { song: Song, position: number, total: number, notes: string }) {
+  const ref = useRef<HTMLElement>(null)
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return
+    el.style.setProperty('--print-fit', '1')
+    // Header/strip/notes don't scale, so one ratio pass can undershoot; iterate.
+    let fit = 1
+    for (let pass = 0; pass < 4 && el.scrollHeight > el.clientHeight + 1; pass++) {
+      fit = Math.max(0.5, fit * (el.clientHeight / el.scrollHeight) * 0.98)
+      el.style.setProperty('--print-fit', String(fit))
+    }
+  })
+  return <article className="print-song" ref={ref}>
+    <header className="print-song-head">
+      <span className="print-song-num">{String(position).padStart(2, '0')}/{total}</span>
+      <h2>{song.title}</h2>
+      <p className="print-song-artist">{song.artist}</p>
+    </header>
+    <ShowStageStrip song={song} includeHomeFrets forceAmpChips />
+    <CheatCard song={song} variant="cheat" withMore={false} omitFills />
+    {notes && <dl className="print-song-fields"><Field label="My notes" value={notes} /></dl>}
+  </article>
+}
+
 /** Paper backup of the Stage cards (/print): tonight's set in order, one song per
  *  printed sheet, reusing the live CheatCard so paper can never drift from the app.
  *  The .print-set styles carry the white-paper look on screen too (a true preview);
@@ -269,8 +298,9 @@ export function PrintCardsPage() {
   const { get } = usePractice()
   const setSongs = tonightsSongs(get)
   const today = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
-  // Four cards per printed sheet, 2×2. Chunked in JS (not grid fragmentation) so a
-  // page break can never land inside a card quadrant.
+  // Four cards per printed sheet, 2×2. Chunked in JS and sized in real inches (see
+  // .print-sheet) so a sheet can never fragment across pages: every quadrant fits or
+  // its card shrinks, and the count is always four per page.
   const sheets: Song[][] = []
   for (let i = 0; i < setSongs.length; i += 4) sheets.push(setSongs.slice(i, i + 4))
   return <>
@@ -282,19 +312,8 @@ export function PrintCardsPage() {
     <div className="print-set">
       <p className="print-set-meta">Martin Overdrive · tonight&rsquo;s set · printed {today}</p>
       {sheets.map((sheet, sheetIndex) => <div className="print-sheet" key={sheetIndex}>
-        {sheet.map((song, songIndex) => {
-          const notes = get(song.id).notes.trim()
-          return <article className="print-song" key={song.id}>
-            <header className="print-song-head">
-              <span className="print-song-num">{String(sheetIndex * 4 + songIndex + 1).padStart(2, '0')}/{setSongs.length}</span>
-              <h2>{song.title}</h2>
-              <p className="print-song-artist">{song.artist}</p>
-            </header>
-            <ShowStageStrip song={song} includeHomeFrets forceAmpChips />
-            <CheatCard song={song} variant="cheat" withMore={false} printFills />
-            {notes && <dl className="print-song-fields"><Field label="My notes" value={notes} /></dl>}
-          </article>
-        })}
+        {sheet.map((song, songIndex) =>
+          <PrintSongCell song={song} position={sheetIndex * 4 + songIndex + 1} total={setSongs.length} notes={get(song.id).notes.trim()} key={song.id} />)}
       </div>)}
     </div>
   </>

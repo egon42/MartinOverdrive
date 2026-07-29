@@ -645,10 +645,14 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
    same vars. print-color-adjust keeps the fills when the browser strips backgrounds. */
 .print-set{--acid:#111;--on-acid:#fff;--muted:#555;--blue:#111;--orange:#111;--ink:#111;--line:#bbb;background:#fff;color:#111;max-width:860px;margin:0 auto;border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:26px;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 .print-set-meta{margin:0;color:#555;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-.print-sheet{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
-/* min-width:0 lets a wide ASCII fill scroll/clip inside its quadrant instead of
-   blowing the grid column out past the page edge. */
-.print-song{display:flex;flex-direction:column;gap:6px;border:1px solid #ccc;border-radius:8px;padding:10px;min-width:0}
+/* Sheets are sized in real inches so they can NEVER fragment into 2-per-page. Each
+   quadrant is a fixed cell; PrintSongCell shrinks a card's font (--print-fit) until it
+   fits, so the on-screen preview measurement is exactly what prints. 9.3in height is
+   EMPIRICAL (headless-Edge bisected 2026-07-29): Chromium's effective print box under
+   @page margin .4in paginates cleanly at <=9.4in per sheet; larger heights spill a
+   trailing page or split sheets. Don't raise it without re-running a print-to-PDF. */
+.print-sheet{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:.15in;width:7.4in;height:9.3in;flex:0 0 auto;margin:0 auto;break-inside:avoid}
+.print-song{display:flex;flex-direction:column;gap:6px;border:1px solid #ccc;border-radius:8px;padding:10px;min-width:0;min-height:0;overflow:hidden}
 .print-song-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .print-song-num{font-variant-numeric:tabular-nums;font-weight:900;font-size:.7rem;color:#555}
 .print-song-head h2{margin:0;font-size:1.05rem;color:#111;line-height:1.15}
@@ -661,7 +665,7 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
    .chord-panel's overrides). */
 .print-set .cheat-card{flex:none;overflow:visible}
 .print-set .cheat-screen,.print-set .cheat-screen-peek{flex:none;flex-basis:auto}
-.print-set .cheat-fit{flex:none;min-height:auto;overflow:visible;font-size:.8rem}
+.print-set .cheat-fit{flex:none;min-height:auto;overflow:visible;font-size:calc(.8rem*var(--print-fit,1))}
 /* Hardcoded dark-theme colors that the var overrides don't reach. */
 .print-set .cheat-prog-label-times{color:#111}
 .print-set .cheat-prog-tab{color:#111;font-size:.75em}
@@ -687,12 +691,16 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 @media print{
   .print-hide{display:none!important}
   .sw-update-banner{display:none!important}
-  .print-set{max-width:none;border-radius:0;padding:0;gap:10px}
+  .print-set{max-width:none;border-radius:0;padding:0;gap:0}
+  /* Zero flow height (in-flow it pushed sheet 1 to page 2); fixed elements repeat when
+     printing, so this becomes a small footer on every page. */
+  .print-set-meta{position:fixed;bottom:0;left:0;margin:0}
   .print-sheet{break-after:page}
   .print-sheet:last-of-type{break-after:auto}
-  .print-song{break-inside:avoid}
-  .print-set .cheat-fit{font-size:8pt}
 }
+/* Known margins are what makes the fixed-inch sheet math hold (also governs the
+   setlist tape-up print; 0.4in is close to the browser default it had before). */
+@page{margin:.4in}
 
 .song-show-link{align-self:flex-end;flex:0 0 auto;white-space:nowrap}
 @media(max-width:760px){.song-show-link{align-self:flex-start}}
