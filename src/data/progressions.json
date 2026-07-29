@@ -662,7 +662,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "(E A) ×3 (E G A) ×2",
+        "chords": "(E A) ×3 (E +G A) ×2",
         "hint": "Stops; \"And the girls say\" kicks the E G A hook"
       },
       {
@@ -677,7 +677,7 @@
       },
       {
         "section": "Outro",
-        "chords": "E G A",
+        "chords": "E +G A",
         "hint": "\"What? What?\" one more hook, then \"Everybody says\" and the last line is all-stop"
       }
     ],

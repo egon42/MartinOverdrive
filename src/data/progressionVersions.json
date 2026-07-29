@@ -6058,6 +6058,52 @@
   ],
   "13-save-a-horse-ride-a-cowboy": [
     {
+      "label": "pre hook G tag",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E A",
+          "hint": "Land the stops"
+        },
+        {
+          "section": "Verse",
+          "chords": "E A",
+          "hint": "Country-rock chucks; 4 rounds per verse"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(E A) ×3 (E G A) ×2",
+          "hint": "Stops; \"And the girls say\" kicks the E G A hook"
+        },
+        {
+          "section": "Solo",
+          "chords": "E A",
+          "hint": "Guitar ×2 then fiddle ×2; play along"
+        },
+        {
+          "section": "Bridge",
+          "chords": "E A",
+          "hint": "Palm muted; long, ends \"and we made love\""
+        },
+        {
+          "section": "Outro",
+          "chords": "E G A",
+          "hint": "\"What? What?\" one more hook, then \"Everybody says\" and the last line is all-stop"
+        }
+      ],
+      "form": [
+        "Intro ×4",
+        "Verse ×4",
+        "Chorus",
+        "Verse ×4",
+        "Chorus",
+        "Solo ×4",
+        "Bridge ×8",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre stage card hints pass 2026-07-28",
       "sections": [
         {
