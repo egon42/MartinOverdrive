@@ -776,7 +776,9 @@ function renderCheatHint(hint: string): ReactNode {
 // chord rows to one screen; omit it (practice page) and the card renders at natural
 // height. `withMore` gates the Stage variant's below-fold fretboard/role/must-know block
 // — the practice page passes false because it already shows those in its own panels.
-export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMore = true }: { song: Song, innerRef?: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean, withMore?: boolean }) {
+// `printFills` (the /print paper backup) renders the extra fills inline: a closed
+// <details> can't be forced open from print CSS, and paper has no taps.
+export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMore = true, printFills = false }: { song: Song, innerRef?: RefObject<HTMLDivElement | null>, variant: 'cheat' | 'chords', zoomFrozen?: boolean, withMore?: boolean, printFills?: boolean }) {
   const sheets = sheetsFor(song.id)
   const ownNotes = usePractice().get(song.id).notes.trim() // the player's own stage reminders
   const { settings } = useSettings()
@@ -860,7 +862,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
                 </span>)}</span>
               {row.hint && <span className="cheat-prog-hint">{renderCheatHint(row.hint)}</span>}
               {row.tab && <pre className="cheat-prog-tab">{row.tab}</pre>}
-              {row.tabMore && <MoreFills tab={row.tabMore} onToggle={refitCheat} />}
+              {row.tabMore && (printFills ? <pre className="cheat-prog-tab">{row.tabMore}</pre> : <MoreFills tab={row.tabMore} onToggle={refitCheat} />)}
             </div>
           </div>)}
         </div>}

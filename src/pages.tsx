@@ -261,6 +261,42 @@ function ShowStageStrip({ song, includeHomeFrets = false }: { song: Song, includ
   </div>
 }
 
+/** Paper backup of the Stage cards (/print): tonight's set in order, one song per
+ *  printed sheet, reusing the live CheatCard so paper can never drift from the app.
+ *  The .print-set styles carry the white-paper look on screen too (a true preview);
+ *  grayscale re-encoding of the chip colors lives in styles.css under .print-set. */
+export function PrintCardsPage() {
+  const { get } = usePractice()
+  const setSongs = tonightsSongs(get)
+  const today = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+  return <>
+    <header className="page-title compact print-hide"><h1>Stage cards</h1></header>
+    <div className="sort-row print-hide"><span>Paper backup for a dead phone: tonight&rsquo;s {setSongs.length} songs, one per page.</span><div className="actions">
+      <button onClick={() => window.print()}>Print stage cards</button>
+      <Link className="button secondary" to="/set">Tonight&rsquo;s set</Link>
+    </div></div>
+    <div className="print-set">
+      <p className="print-set-meta">Martin Overdrive · tonight&rsquo;s set · printed {today}</p>
+      {setSongs.map((song, index) => {
+        const notes = get(song.id).notes.trim()
+        return <article className="print-song" key={song.id}>
+          <header className="print-song-head">
+            <span className="print-song-num">{String(index + 1).padStart(2, '0')}/{setSongs.length}</span>
+            <h2>{song.title}</h2>
+            <p className="print-song-artist">{song.artist}</p>
+          </header>
+          <ShowStageStrip song={song} includeHomeFrets />
+          <CheatCard song={song} variant="cheat" withMore={false} printFills />
+          {(song.mustKnow || notes) && <dl className="print-song-fields">
+            {song.mustKnow && <Field label="Must know" value={song.mustKnow} />}
+            {notes && <Field label="My notes" value={notes} />}
+          </dl>}
+        </article>
+      })}
+    </div>
+  </>
+}
+
 // Last line of defense on stage: if anything in the song view throws mid-set (e.g. a
 // sheet edited the night before breaks the parser), show the song's name instead of a
 // white screen — the prev/next controls live outside the boundary and keep working.

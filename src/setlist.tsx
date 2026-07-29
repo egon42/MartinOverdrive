@@ -49,6 +49,7 @@ export function SetlistPage() {
     <div className="sort-row"><span>{active.length ? `${active.length} of ${songs.length} songs in the set` : 'Every song is skipped. Show mode will use the full set.'}</span><div className="actions">
       {customized && <button className="secondary" onClick={reset}>Reset to full set order</button>}
       <button className="secondary" onClick={() => window.print()}>Print set list</button>
+      <Link className="button secondary" to="/print">Print stage cards</Link>
       <Link className="button" to="/show">Show mode</Link>
     </div></div>
     <div className="setlist-rows">

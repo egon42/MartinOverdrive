@@ -636,6 +636,57 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
   .setlist-main a{text-decoration:none}
 }
 
+/* Printable stage cards (/print): tonight's set, one song per printed page, rendered by
+   the live CheatCard so paper can never drift from the app. The paper look sits on the
+   class (not inside @media print) so the screen shows a true preview. Chip meanings are
+   re-encoded for grayscale: normal = filled black, alternate = double outline, ghost =
+   dashed gray + strike, skip-marked (ghost+alt) = filled black with a dashed outline
+   (falls out of the var overrides), tag/fret = thin outline. Held/ride echoes ride the
+   same vars. print-color-adjust keeps the fills when the browser strips backgrounds. */
+.print-set{--acid:#111;--on-acid:#fff;--muted:#555;--blue:#111;--orange:#111;--ink:#111;--line:#bbb;background:#fff;color:#111;max-width:860px;margin:0 auto;border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:26px;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.print-set-meta{margin:0;color:#555;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
+.print-song{display:flex;flex-direction:column;gap:8px;border-top:1px solid #ddd;padding-top:18px}
+.print-song:first-of-type{border-top:0;padding-top:0}
+.print-song-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.print-song-num{font-variant-numeric:tabular-nums;font-weight:900;font-size:.9rem;color:#555}
+.print-song-head h2{margin:0;font-size:1.4rem;color:#111;line-height:1.15}
+.print-song-artist{margin:0;color:#555;font-size:.85rem}
+.print-song .show-stage-strip{margin:0}
+.print-song-fields{margin:4px 0 0;display:flex;flex-direction:column;gap:4px}
+.print-song-fields .field dt{color:#555}
+.print-song-fields .field dd{color:#111}
+/* Natural height: undo the show-mode one-screen flex/scroll plumbing (same idea as
+   .chord-panel's overrides). */
+.print-set .cheat-card{flex:none;overflow:visible}
+.print-set .cheat-screen,.print-set .cheat-screen-peek{flex:none;flex-basis:auto}
+.print-set .cheat-fit{flex:none;min-height:auto;overflow:visible}
+/* Hardcoded dark-theme colors that the var overrides don't reach. */
+.print-set .cheat-prog-label-times{color:#111}
+.print-set .cheat-prog-tab{color:#111}
+.print-set .cheat-chip{color:#111;border-color:#999}
+/* Tuning/capo/transpose keep their filled look (they resolve to a black fill via the
+   var overrides), so the text has to flip white or the pill prints featureless black. */
+.print-set .cheat-chip.cheat-tuning,.print-set .cheat-chip.cheat-capo,.print-set .cheat-chip.cheat-transpose{color:#fff;border-color:#111}
+.print-set .chord-fingering{color:#111}
+.print-set .preset-notes{color:#444}
+.print-set .home-fret-chip{color:#111;border-color:#111}
+.print-set .stomp-chip{background:#fff;color:#111;border-color:#111}
+/* Plain ghost = white chip, gray dashed border. Skip-marked ghost+alt keeps the filled
+   look from the base rule (black fill, dashed outline), so exclude it here. */
+.print-set .chord-chip--ghost:not(.chord-chip--alt){background:#fff;color:#666;border-color:#999}
+/* Alternate = white chip with a double border (blue can't carry the meaning on paper). */
+.print-set .chord-chip--alt:not(.chord-chip--ghost){background:#fff;color:#111;border:3px double #111;-webkit-text-stroke-width:0}
+@media print{
+  .print-hide{display:none!important}
+  .sw-update-banner{display:none!important}
+  .print-set{max-width:none;border-radius:0;padding:0;gap:14px}
+  .print-song{break-after:page;border-top:0;padding-top:0}
+  .print-song:last-of-type{break-after:auto}
+  .print-song .cheat-prog-row{break-inside:avoid}
+  /* Bigger on paper than on the preview: readable on the floor at a music stand's length. */
+  .print-set .cheat-fit{font-size:12.5pt}
+}
+
 .song-show-link{align-self:flex-end;flex:0 0 auto;white-space:nowrap}
 @media(max-width:760px){.song-show-link{align-self:flex-start}}
 
