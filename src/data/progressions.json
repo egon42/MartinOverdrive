@@ -1304,20 +1304,15 @@
   "27-fat-bottomed-girls": {
     "sections": [
       {
-        "section": "Chorus",
-        "chords": "(D C G/B D C A) | (D G) | (D A D) | (*+G *D *A *D)",
-        "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232 320003 --0232 -02220 --0232",
-        "hint": "Opening: sit out, single hook. Blue row: mid/final double hook"
-      },
-      {
         "section": "Intro",
         "chords": "(~D) ×7 D",
         "shapes": "--0232 --0232",
+        "remind": "Sung chorus first, no guitar",
         "hint": "Sit out the vamp, join on \"Hey!\" into V1"
       },
       {
         "section": "Verse",
-        "chords": "(D A D) G (D A D)",
+        "chords": "(=D A D) G (D A D)",
         "shapes": "--0232 -02220 --0232 320003 --0232 -02220 --0232",
         "hint": "Big open, space for fills; \"skinny lad\" / \"my band\" / \"mortgages\""
       },
@@ -1332,6 +1327,12 @@
         "chords": "(D) ×10",
         "shapes": "--0232",
         "hint": "Long riff vamp; \"I've been singing\" starts V2"
+      },
+      {
+        "section": "Chorus",
+        "chords": "(D C G/B D C A) | (D G D A D) | (D A D)",
+        "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232 --0232 -02220 --0232",
+        "hint": "Sit out the sung opener; join \"Oh won't you take me home tonight?\"; hook ×2"
       },
       {
         "section": "Interlude",

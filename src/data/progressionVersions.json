@@ -3500,6 +3500,66 @@
   ],
   "27-fat-bottomed-girls": [
     {
+      "label": "pre chrono-reorder 2026-07-29",
+      "sections": [
+        {
+          "section": "Chorus",
+          "chords": "(D C G/B D C A) | (D G) | (D A D) | (*+G *D *A *D)",
+          "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232 320003 --0232 -02220 --0232",
+          "hint": "Opening: sit out, single hook. Blue row: mid/final double hook"
+        },
+        {
+          "section": "Intro",
+          "chords": "(~D) ×7 D",
+          "shapes": "--0232 --0232",
+          "hint": "Sit out the vamp, join on \"Hey!\" into V1"
+        },
+        {
+          "section": "Verse",
+          "chords": "(D A D) G (D A D)",
+          "shapes": "--0232 -02220 --0232 320003 --0232 -02220 --0232",
+          "hint": "Big open, space for fills; \"skinny lad\" / \"my band\" / \"mortgages\""
+        },
+        {
+          "section": "Stops",
+          "chords": "G F D",
+          "shapes": "320003 133211 --0232",
+          "hint": "Stop hits on \"Hey hey!\" after V1 only, into the Break"
+        },
+        {
+          "section": "Break",
+          "chords": "(D) ×10",
+          "shapes": "--0232",
+          "hint": "Long riff vamp; \"I've been singing\" starts V2"
+        },
+        {
+          "section": "Interlude",
+          "chords": "(G G D D A A) ×2 +G",
+          "shapes": "320003 320003 --0232 --0232 -02220 -02220 320003",
+          "hint": "\"Hey listen here\" on the last G, into V3"
+        },
+        {
+          "section": "Outro",
+          "chords": "(D) ×4",
+          "shapes": "--0232",
+          "hint": "After \"BIKES AND RIDE!\"; ad-lib vamp, cold end"
+        }
+      ],
+      "form": [
+        "Chorus",
+        "Intro",
+        "Verse",
+        "Stops",
+        "Break",
+        "Verse",
+        "Chorus",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre alt double hook 2026-07-27",
       "sections": [
         {
