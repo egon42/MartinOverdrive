@@ -141,19 +141,19 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "F# A B E B A",
+        "chords": "F# A B]] E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
         "hint": "Same as verse; count in carefully"
       },
       {
         "section": "Verse",
-        "chords": "F# A B E B A",
+        "chords": "F# A B]] E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
         "hint": "\"Can't explain\" / \"You got me in a spin\"; land measure ends - B A is the catch-up"
       },
       {
         "section": "Verse (in)",
-        "chords": "F# ~A B E B A",
+        "chords": "F# ~A B]] E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
         "hint": "\"I wanna kiss you\"; starts on bass - enter mid first B"
       },
@@ -177,7 +177,7 @@
       },
       {
         "section": "Solo",
-        "chords": "F# A B E B A",
+        "chords": "F# A B]] E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
         "hint": "Riff from the top, once; then V2 starts on bass"
       },
