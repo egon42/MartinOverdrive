@@ -147,15 +147,9 @@
       },
       {
         "section": "Verse",
-        "chords": "F# A B]] E B A",
+        "chords": "*~F# *~A B]] E B A",
         "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
-        "hint": "\"Can't explain\" / \"You got me in a spin\"; land measure ends - B A is the catch-up"
-      },
-      {
-        "section": "Verse (in)",
-        "chords": "F# ~A B]] E B A",
-        "shapes": "244--- -022-- -244-- 022--- -244-- -022--",
-        "hint": "\"I wanna kiss you\"; starts on bass - enter mid first B"
+        "hint": "\"Can't explain\" / \"I wanna kiss you\" / \"You got me in a spin\"; B A is the catch-up; skip F# A on V2 entry - starts on bass, come in mid first B"
       },
       {
         "section": "Bridge",
@@ -206,8 +200,7 @@
       "Bridge",
       "Chorus",
       "Solo",
-      "Verse (in)",
-      "Verse",
+      "Verse ×2",
       "Bridge",
       "Chorus",
       "Solo (big) ×4",
