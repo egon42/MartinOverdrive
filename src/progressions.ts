@@ -28,8 +28,11 @@ import versionsData from './data/progressionVersions.json'
 // Prefix a chord with + for a short tag hit, not a full measure ("E F +G").
 // Prefix a chord with * for an alternate chip ("G A D *F#m"): rendered in the hint blue,
 // meaning play it instead of its neighbor on the pass the section hint names.
-// Prefix a chord with = for a held chip ("=C G Em7 =D G"): stacked-card echo on the
-// right edge, meaning let it ring across measures instead of one per slot.
+// Prefix a chord with = for a held chip ("=C G Em7 =D G"): fading stacked-card echo on
+// the right edge, meaning strum it ONCE and let it ring across measures.
+// Suffix a chord with one ] per measure, minimum 2 ("D]] A" / "D]]]]"), for a ride chip:
+// solid cascade on the right edge, one layer per measure — keep playing it for that many
+// measures. Rides can't combine with = (held) or + (tag); ~ and * are allowed.
 // Distinct markers stack on one chip ("*+G" = blue alternate tag; "*~Am" = skip-marked:
 // normal filled chip with a dashed blue border, played normally but skipped on the pass
 // the section hint names).
@@ -58,8 +61,10 @@ export interface CheatChordSpan {
   tags: boolean[]
   /** Parallel to `chords`: true = alternate (blue) chip, played instead on the pass the hint names. */
   alts: boolean[]
-  /** Parallel to `chords`: true = held chip (stacked look), rings across measures. */
+  /** Parallel to `chords`: true = held chip (stacked look), strum once and let ring. */
   holds: boolean[]
+  /** Parallel to `chords`: 0 = normal; N ≥ 2 = ride chip, played across N measures (cascade depth). */
+  rides: number[]
   shapes: string[]
   times: number
   /** Force this span onto a new row (from `|` in the chord string). */
@@ -110,7 +115,7 @@ export function curatedShapesForSong(songId: string): Map<string, string> {
         const names = section.chords.trim().split(/\s+/).filter(Boolean)
         const shapes = section.shapes.trim().split(/\s+/).filter(Boolean)
         names.forEach((raw, i) => {
-          const name = raw.replace(/^[~+*=]+/u, '')
+          const name = raw.replace(/^[~+*=]+/u, '').replace(/\]+$/u, '')
           if (name && shapes[i] && !map.has(name)) map.set(name, shapes[i])
         })
       }
@@ -154,7 +159,9 @@ export function formStepBase(label: string): string {
  * - "~A" / "(E ~A)" → ghost chip (shown for beat, don't play)
  * - "+G" / "(E F +G)" → tag chip (short hit, not a full measure)
  * - "*F#m" / "(G A D *F#m)" → alternate chip (hint blue; played instead on the pass the hint names)
- * - "=C" / "(=C G Em7 =D G)" → held chip (stacked look; rings across measures)
+ * - "=C" / "(=C G Em7 =D G)" → held chip (stacked look; strum once, let ring)
+ * - "D]]" / "D]]]]" → ride chip (played across 2 / 4 measures; one ] per measure, ≥2;
+ *   throws combined with = or +)
  * - Distinct markers stack on one chip (duplicates throw): "*+G" = blue alternate tag;
  *   "*~Am" = skip-marked chip (normal fill, dashed blue border: played normally,
  *   skipped on the pass the hint names)
@@ -162,7 +169,7 @@ export function formStepBase(label: string): string {
  */
 export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
   const shapeTokens = shapes.trim() ? shapes.trim().split(/\s+/).filter(Boolean) : []
-  const spans: { chords: string[]; ghosts: boolean[]; tags: boolean[]; alts: boolean[]; holds: boolean[]; times: number; breakBefore?: boolean }[] = []
+  const spans: { chords: string[]; ghosts: boolean[]; tags: boolean[]; alts: boolean[]; holds: boolean[]; rides: number[]; times: number; breakBefore?: boolean }[] = []
   const src = chords.trim()
   if (!src) return []
 
@@ -172,6 +179,7 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
     const tagsOut: boolean[] = []
     const altsOut: boolean[] = []
     const holdsOut: boolean[] = []
+    const ridesOut: number[] = []
     const markerNames: Record<string, string> = { '~': 'ghost', '+': 'tag', '*': 'alternate', '=': 'hold' }
     for (const token of raw.trim().split(/\s+/).filter(Boolean)) {
       let name = token
@@ -182,13 +190,24 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
         name = name.slice(1)
       }
       if (seen.length && !name) throw new Error(`empty ${markerNames[seen[0]]} chord in "${chords}"`)
+      let ride = 0
+      const rideMatch = name.match(/\]+$/u)
+      if (rideMatch) {
+        ride = rideMatch[0].length
+        name = name.slice(0, name.length - ride)
+        if (!name) throw new Error(`empty ride chord in "${chords}"`)
+        if (ride < 2) throw new Error(`ride needs one ] per measure, at least 2, in "${token}"`)
+        if (seen.includes('=')) throw new Error(`held chord can't also ride measures in "${token}"`)
+        if (seen.includes('+')) throw new Error(`tag chord can't also ride measures in "${token}"`)
+      }
       chordsOut.push(name)
       ghostsOut.push(seen.includes('~'))
       tagsOut.push(seen.includes('+'))
       altsOut.push(seen.includes('*'))
       holdsOut.push(seen.includes('='))
+      ridesOut.push(ride)
     }
-    return { chords: chordsOut, ghosts: ghostsOut, tags: tagsOut, alts: altsOut, holds: holdsOut }
+    return { chords: chordsOut, ghosts: ghostsOut, tags: tagsOut, alts: altsOut, holds: holdsOut, rides: ridesOut }
   }
 
   // Tokenize: "(...)", "×N"/"xN", "|", or a bare chord-ish token
@@ -242,6 +261,7 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
       tags: span.tags,
       alts: span.alts,
       holds: span.holds,
+      rides: span.rides,
       times: span.times,
       shapes: slice,
       ...(span.breakBefore ? { breakBefore: true } : {}),
@@ -277,13 +297,17 @@ function sectionToRow(label: string, section: ProgSection | undefined): CheatRow
           const tag = !ghost && c.startsWith('+')
           const alt = !ghost && !tag && c.startsWith('*')
           const hold = !ghost && !tag && !alt && c.startsWith('=')
-          const name = ghost || tag || alt || hold ? c.slice(1) : c
+          let name = ghost || tag || alt || hold ? c.slice(1) : c
+          const rideMatch = name.match(/\]+$/u)
+          const ride = rideMatch && rideMatch[0].length >= 2 && rideMatch[0].length < name.length ? rideMatch[0].length : 0
+          if (ride) name = name.slice(0, name.length - ride)
           return {
             chords: [name || c],
             ghosts: [ghost && !!name],
             tags: [tag && !!name],
             alts: [alt && !!name],
             holds: [hold && !!name],
+            rides: [name ? ride : 0],
             times: 1,
             shapes: shapeTokens[i] ? [shapeTokens[i]] : [],
           }
