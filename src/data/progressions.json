@@ -721,12 +721,12 @@
       },
       {
         "section": "Verse",
-        "chords": "Am G *Dm *~Am",
-        "hint": "Funk scratch on barres. Last cycle: hang blue Dm (\"survive\" / \"death\" / \"Gone too fast\"), skip the Am"
+        "chords": "Am G Dm *~Am",
+        "hint": "Funk scratch on barres. Last cycle: hang the Dm (\"survive\" / \"death\" / \"Gone too fast\"), skip the Am"
       },
       {
         "section": "Chorus",
-        "chords": "F C *Dm *~G",
+        "chords": "F C Dm +G",
         "hint": "Slides into barres. Last pass: hang Dm on \"Yeah, yeah\", skip the G"
       },
       {
@@ -735,7 +735,7 @@
       },
       {
         "section": "Bridge",
-        "chords": "*Bm *~G *~D *~F#",
+        "chords": "Bm *~G *~D *~F#",
         "hint": "\"Who knew\"; 4th pass: hang Bm on \"say, say, say\" into V3"
       },
       {
