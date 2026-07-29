@@ -159,15 +159,9 @@
       },
       {
         "section": "Bridge",
-        "chords": "(E F#m) ×3 A A# B",
+        "chords": "(E F#m) ×3 A A# *~B",
         "shapes": "022100 244200 -022-- 113--- 224---",
-        "hint": "\"Touching you / me / you\"; low walk-up under \"God you're touching me\""
-      },
-      {
-        "section": "Bridge−B",
-        "chords": "(E F#m) ×3 A A# ~B",
-        "shapes": "022100 244200 -022-- 113--- 224---",
-        "hint": "Skip the last B into Chorus 2"
+        "hint": "\"Touching you / me / you\"; walk-up under \"God you're touching me\"; skip the last B into Chorus 2 only"
       },
       {
         "section": "Chorus",
@@ -214,7 +208,7 @@
       "Solo",
       "Verse (in)",
       "Verse",
-      "Bridge−B",
+      "Bridge",
       "Chorus",
       "Solo (big) ×4",
       "Bridge",
