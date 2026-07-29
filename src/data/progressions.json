@@ -1023,15 +1023,13 @@
     "sections": [
       {
         "section": "Intro",
-        "chords": "",
-        "tab": "A-string PM (skip low E)\n9 5 9 7 4\n5 4 5 5",
-        "hint": "Palm mute; Drop D without retuning"
+        "chords": "9 5 9 7 4 | 5 4 5 5",
+        "hint": "A-string palm mute, skip low E; Drop D without retuning"
       },
       {
         "section": "Verse",
-        "chords": "",
-        "tab": "A-string PM\n9 5 9 7 4\n5 4 5 5",
-        "hint": "Same riff under vocal"
+        "chords": "9 5 9 7 4 | 5 4 5 5",
+        "hint": "Same riff under vocal, palm muted"
       },
       {
         "section": "Chorus",

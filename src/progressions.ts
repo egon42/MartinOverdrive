@@ -38,6 +38,9 @@ import versionsData from './data/progressionVersions.json'
 // the section hint names).
 // Use `|` to force a line break before the next span ("(C G Bb F Am G C) | (C G Bb F Am G Ab)").
 // Parentheses alone do NOT stack lines — only `|` (or natural wrap) does.
+// Bare fret numbers 0–24 are valid tokens too ("9 5 9 7 4", The Middle's A-string riff):
+// rendered as outlined fret chips that pluck their note on tap (with the "Play chord on
+// tap" setting), and every marker above stacks on them the same way ("+9", "9]]").
 export interface ProgSection {
   section: string
   chords: string

@@ -7109,6 +7109,52 @@
   ],
   "21-the-middle": [
     {
+      "label": "Riff as tab text (pre fret-chip pass)",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "",
+          "tab": "A-string PM (skip low E)\n9 5 9 7 4\n5 4 5 5",
+          "hint": "Palm mute; Drop D without retuning"
+        },
+        {
+          "section": "Verse",
+          "chords": "",
+          "tab": "A-string PM\n9 5 9 7 4\n5 4 5 5",
+          "hint": "Same riff under vocal"
+        },
+        {
+          "section": "Chorus",
+          "chords": "D A G",
+          "shapes": "--0232 -02220 320003",
+          "hint": "Open D A G - \"It just takes some time\""
+        },
+        {
+          "section": "Solo",
+          "chords": "A D A D G D A",
+          "shapes": "-02220 --0232 -02220 --0232 320003 --0232 -02220",
+          "hint": "Open chords under solo; amp 6Green if wanted"
+        },
+        {
+          "section": "Outro",
+          "chords": "D",
+          "shapes": "--0232",
+          "hint": "Cold on D"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse",
+        "Chorus",
+        "Verse",
+        "Chorus ×2",
+        "Solo",
+        "Verse",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre A-string Ryan lift 2026-07-27",
       "sections": [
         {
