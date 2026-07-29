@@ -4084,6 +4084,62 @@
   ],
   "28-mama-i-m-coming-home": [
     {
+      "label": "pre pre-chorus ride flip",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E"
+        },
+        {
+          "section": "Verse",
+          "chords": "E]] A E"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(C#m]] A E) | (C#m]] A B *+F#5 *+G#5)",
+          "hint": "\"You took me in\" - ride the C#m's. Blue F#5 G#5 lift in Pre 3 only, into the thousand Face"
+        },
+        {
+          "section": "Selfish Love",
+          "chords": "(C#m A E]]) | (C#m A B]] +F#5 +G#5)",
+          "hint": "Amp 8Red, distortion power chords. Rides move to E and B; F#5 G#5 climb on \"got to have it all\""
+        },
+        {
+          "section": "Chorus",
+          "chords": "(A E) ×2 | (A B E A) | (Asus2 Bsus4 C D E) | (*+C *+D *+B)",
+          "hint": "Face both times: first hundred, second thousand. \"Don't care about the sunshine\" then \"mama, mama, I'm coming home\". Blue C D B tag first time only, into the Bridge"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(G A E) ×3 +B",
+          "hint": "Bridge not Face; amp 7Red acoustic feel, B kicks into the solo"
+        },
+        {
+          "section": "Solo",
+          "chords": "A E A E A B C# B A B",
+          "hint": "7 bars after Bridge B; amp back to 8Red"
+        },
+        {
+          "section": "Outro",
+          "chords": "(C D E) ×3",
+          "hint": "Chorus 2 rolls straight in; \"I'm coming home\" ×3 to end"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Verse ×2",
+        "Selfish Love",
+        "Chorus",
+        "Bridge",
+        "Solo",
+        "Pre-Chorus",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre selfish-love section split",
       "sections": [
         {
