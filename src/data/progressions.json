@@ -1537,21 +1537,9 @@
       },
       {
         "section": "Chorus",
-        "chords": "(E A E B) (A B E C#m A B E)",
-        "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022---",
-        "hint": "\"Give your I.D. card\"; second A lands on \"Everybody knows\""
-      },
-      {
-        "section": "Shuffle",
-        "chords": "(E A) ×3",
-        "shapes": "022--- 577---",
-        "hint": "Little E A shuffle between passes"
-      },
-      {
-        "section": "Everybody",
-        "chords": "(A B E C#m A B E)",
-        "shapes": "577--- 799--- 022--- -466-- 577--- 799--- 022---",
-        "hint": "Second \"Everybody knows\"; last one runs into \"that seems fair\""
+        "chords": "(E A E B) | (A B E C#m A B E) | (+E +A) ×3 | (A B E C#m A B E)",
+        "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022--- 022--- 577--- 577--- 799--- 022--- -466-- 577--- 799--- 022---",
+        "hint": "\"Give your I.D. card\"; A rows land on \"Everybody knows\"; last runs into \"that seems fair\""
       },
       {
         "section": "Solo",
@@ -1582,16 +1570,10 @@
       "Intro",
       "Verse ×2",
       "Chorus",
-      "Shuffle",
-      "Everybody",
       "Verse",
       "Chorus",
-      "Shuffle",
-      "Everybody",
       "Solo ×2",
       "Chorus",
-      "Shuffle",
-      "Everybody",
       "Fair-Tag",
       "Outro ×2"
     ]
