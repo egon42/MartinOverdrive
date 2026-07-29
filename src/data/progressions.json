@@ -1079,14 +1079,14 @@
         "section": "Chorus",
         "chords": "(~Em ~D) (~C ~D) (~Em ~D) (~Em/C# ~Cmaj7)",
         "shapes": "022000 --0232 -32010 --0232 022000 --0232 -42200 -32000",
-        "remind": "Fill ^1 on 2nd Sing with me",
-        "hint": "Band plays this; you sit. Fire Fill ^1 on the SECOND \"Sing with me\", then sit again"
+        "remind": "Fill ^1: 2nd Sing with me; 4th on the final chorus",
+        "hint": "Band plays this; you sit. First chorus: Fill ^1 on the SECOND \"Sing with me\". Final chorus after the Climax: on the FOURTH"
       },
       {
         "section": "Climax",
-        "chords": "(Am B5 C) (D Em)",
-        "shapes": "-02210 -24--- -35--- --0232 022000",
-        "hint": "One chord set, then Fill ^1. 3rd pass: Em F#5 G A B7b9"
+        "chords": "(Am B5 C) (D Em) | (*F#5 *G *A *B7b9)",
+        "shapes": "-02210 -24--- -35--- --0232 022000 244--- 355--- 577--- -21212",
+        "hint": "One chord set, then Fill ^1. Blue walk = 3rd pass only, off the Em"
       },
       {
         "section": "Fills",
@@ -1100,6 +1100,7 @@
       "Sit",
       "Chorus",
       "Climax ×3",
+      "Chorus",
       "Sit"
     ],
     "capo": "Capo 1"
