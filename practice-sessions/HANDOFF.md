@@ -52,8 +52,16 @@ Body Pre, then in order:
 2. **#14 S.O.B. chord-transition reps** (card fine, hands not)
 3. **#18 Zombie outro solo fill**: learn it E-string only first, work the B string in
    later (Ryan's plan)
-4. Wed changeover loop + #19 Darkness maintenance + #10 Pretender catch-up
-   (never-skip trio) + ordered set slice as time allows
+4. **#19 Darkness Songsterr loop reps** (Ryan asked 7/29): set up loops on the
+   rhythm track and drill each card part for muscle memory —
+   <https://www.songsterr.com/a/wsa/darkness-i-believe-in-a-thing-called-love-tab-s522t1>
+   - verse riff `F# A B]] E B A` (ride the B, land the B A catch-up)
+   - bridge `(E F#m) ×3 A A# B` (low grips x022 / 113 / 224)
+   - chorus `(E A F# B) ×3 C#m]] D` (quick 3rd cycle; 446 / 557 tail)
+   - Clap-section lead lick (C#m box @ 9, card Fills) if time
+   This doubles as the Darkness never-skip maintenance for tonight
+5. Wed changeover loop + #10 Pretender catch-up (never-skip trio) + ordered set
+   slice as time allows
 
 Coach = one song at a time (instruct → play → report → log → next).
 
