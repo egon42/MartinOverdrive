@@ -1303,6 +1303,59 @@
   ],
   "06-don-t-stop-believin": [
     {
+      "label": "pre stage row-split + quick-tag pass",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E B C#m A",
+          "shapes": "022--- -244-- -466-- -022--",
+          "hint": "Piano intro: enter on verse feel"
+        },
+        {
+          "section": "Verse",
+          "chords": "(E B C#m A) (E B G#m A)",
+          "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
+          "hint": "Story verses - not the big ending yet"
+        },
+        {
+          "section": "Interlude",
+          "chords": "E B C#m A",
+          "shapes": "022--- -244-- -466-- -022--",
+          "hint": "Arpeggios on the intro cycle; 2nd time just a short fill"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(A E) ×3 (A B E B E A)",
+          "shapes": "-022-- 022--- -022-- -244-- 022--- -244-- 022--- -022--",
+          "hint": "\"Strangers waiting\" - A-E climb; this is NOT the final chorus"
+        },
+        {
+          "section": "Solo",
+          "chords": "(E B C#m A) (E B G#m A)",
+          "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
+          "hint": "Same cycle as verse under the solo"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(E B C#m A) (E B G#m A)",
+          "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
+          "hint": "\"Don't stop believin'\" - ONLY at the very end; rides to fade"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×2",
+        "Interlude ×2",
+        "Verse",
+        "Pre-Chorus",
+        "Interlude",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Solo",
+        "Chorus ×3"
+      ]
+    },
+    {
       "label": "pre pre-vs-chorus cues 2026-07-27",
       "sections": [
         {

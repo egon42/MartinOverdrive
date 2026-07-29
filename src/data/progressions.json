@@ -343,9 +343,9 @@
       },
       {
         "section": "Verse",
-        "chords": "(E B C#m A) (E B G#m A)",
+        "chords": "(E B C#m A) | (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
-        "hint": "Story verses - not the big ending yet"
+        "hint": "Story verses - not the big ending yet; line 2 goes G#m"
       },
       {
         "section": "Interlude",
@@ -355,19 +355,19 @@
       },
       {
         "section": "Pre-Chorus",
-        "chords": "(A E) ×3 (A B E B E A)",
+        "chords": "(A E) ×3 | (A B) (E B E A)",
         "shapes": "-022-- 022--- -022-- -244-- 022--- -244-- 022--- -022--",
-        "hint": "\"Strangers waiting\" - A-E climb; this is NOT the final chorus"
+        "hint": "\"Strangers waiting\" - A-E climb, NOT the final chorus; \"in the night\" lands B, then quick E B E A turnaround"
       },
       {
         "section": "Solo",
-        "chords": "(E B C#m A) (E B G#m A)",
+        "chords": "(E B C#m A) | (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
         "hint": "Same cycle as verse under the solo"
       },
       {
         "section": "Chorus",
-        "chords": "(E B C#m A) (E B G#m A)",
+        "chords": "(E B C#m A) | (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
         "hint": "\"Don't stop believin'\" - ONLY at the very end; rides to fade"
       }
