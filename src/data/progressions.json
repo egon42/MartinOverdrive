@@ -1421,7 +1421,7 @@
       },
       {
         "section": "Verse",
-        "chords": "=G C G D =G",
+        "chords": "G]]]] C G D =G",
         "shapes": "320003 -32010 320003 --0232 320003",
         "hint": "V1 \"Friday evening\" V2 \"Nine o'clock\" V3 \"Ten 'til twelve\" V4 \"Saturday\" skips the C"
       },
@@ -1433,7 +1433,7 @@
       },
       {
         "section": "Solo",
-        "chords": "=G C G D =G",
+        "chords": "G]]]] C G D =G",
         "shapes": "320003 -32010 320003 --0232 320003",
         "hint": "Verse changes: fiddle/harmonica breaks on the record"
       },
