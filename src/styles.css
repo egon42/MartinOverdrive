@@ -645,30 +645,38 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
    same vars. print-color-adjust keeps the fills when the browser strips backgrounds. */
 .print-set{--acid:#111;--on-acid:#fff;--muted:#555;--blue:#111;--orange:#111;--ink:#111;--line:#bbb;background:#fff;color:#111;max-width:860px;margin:0 auto;border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:26px;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 .print-set-meta{margin:0;color:#555;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-.print-song{display:flex;flex-direction:column;gap:8px;border-top:1px solid #ddd;padding-top:18px}
-.print-song:first-of-type{border-top:0;padding-top:0}
-.print-song-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.print-song-num{font-variant-numeric:tabular-nums;font-weight:900;font-size:.9rem;color:#555}
-.print-song-head h2{margin:0;font-size:1.4rem;color:#111;line-height:1.15}
-.print-song-artist{margin:0;color:#555;font-size:.85rem}
+.print-sheet{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+/* min-width:0 lets a wide ASCII fill scroll/clip inside its quadrant instead of
+   blowing the grid column out past the page edge. */
+.print-song{display:flex;flex-direction:column;gap:6px;border:1px solid #ccc;border-radius:8px;padding:10px;min-width:0}
+.print-song-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.print-song-num{font-variant-numeric:tabular-nums;font-weight:900;font-size:.7rem;color:#555}
+.print-song-head h2{margin:0;font-size:1.05rem;color:#111;line-height:1.15}
+.print-song-artist{margin:0;color:#555;font-size:.75rem}
 .print-song .show-stage-strip{margin:0}
-.print-song-fields{margin:4px 0 0;display:flex;flex-direction:column;gap:4px}
+.print-song-fields{margin:2px 0 0;display:flex;flex-direction:column;gap:4px;font-size:.75rem}
 .print-song-fields .field dt{color:#555}
 .print-song-fields .field dd{color:#111}
 /* Natural height: undo the show-mode one-screen flex/scroll plumbing (same idea as
    .chord-panel's overrides). */
 .print-set .cheat-card{flex:none;overflow:visible}
 .print-set .cheat-screen,.print-set .cheat-screen-peek{flex:none;flex-basis:auto}
-.print-set .cheat-fit{flex:none;min-height:auto;overflow:visible}
+.print-set .cheat-fit{flex:none;min-height:auto;overflow:visible;font-size:.8rem}
 /* Hardcoded dark-theme colors that the var overrides don't reach. */
 .print-set .cheat-prog-label-times{color:#111}
-.print-set .cheat-prog-tab{color:#111}
+.print-set .cheat-prog-tab{color:#111;font-size:.75em}
 .print-set .cheat-chip{color:#111;border-color:#999}
 /* Tuning/capo/transpose keep their filled look (they resolve to a black fill via the
    var overrides), so the text has to flip white or the pill prints featureless black. */
 .print-set .cheat-chip.cheat-tuning,.print-set .cheat-chip.cheat-capo,.print-set .cheat-chip.cheat-transpose{color:#fff;border-color:#111}
 .print-set .chord-fingering{color:#111}
 .print-set .preset-notes{color:#444}
+/* B/W paper loses the amp bank colors (amber/green print as the same gray), so the
+   chips flip to outlined pills that spell the bank: A3 / G5 / R2. */
+.print-set .preset-chip{width:auto;min-width:1.65em;padding:0 .4em;background:#fff;color:#111;border:1.5px solid #111}
+.print-set .preset-chip.bank-amber::before{content:"A"}
+.print-set .preset-chip.bank-green::before{content:"G"}
+.print-set .preset-chip.bank-red::before{content:"R"}
 .print-set .home-fret-chip{color:#111;border-color:#111}
 .print-set .stomp-chip{background:#fff;color:#111;border-color:#111}
 /* Plain ghost = white chip, gray dashed border. Skip-marked ghost+alt keeps the filled
@@ -679,12 +687,11 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 @media print{
   .print-hide{display:none!important}
   .sw-update-banner{display:none!important}
-  .print-set{max-width:none;border-radius:0;padding:0;gap:14px}
-  .print-song{break-after:page;border-top:0;padding-top:0}
-  .print-song:last-of-type{break-after:auto}
-  .print-song .cheat-prog-row{break-inside:avoid}
-  /* Bigger on paper than on the preview: readable on the floor at a music stand's length. */
-  .print-set .cheat-fit{font-size:12.5pt}
+  .print-set{max-width:none;border-radius:0;padding:0;gap:10px}
+  .print-sheet{break-after:page}
+  .print-sheet:last-of-type{break-after:auto}
+  .print-song{break-inside:avoid}
+  .print-set .cheat-fit{font-size:8pt}
 }
 
 .song-show-link{align-self:flex-end;flex:0 0 auto;white-space:nowrap}

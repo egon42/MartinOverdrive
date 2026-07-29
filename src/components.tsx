@@ -264,10 +264,12 @@ export function Field({ label, value }: { label: string, value: string | number 
   return <div className="field"><dt>{label}</dt><dd>{unknown(value)}</dd></div>
 }
 
-export function PresetBadges({ songId, showNotes = false }: { songId: string, showNotes?: boolean }) {
+// `force` (the /print paper backup) shows the chips regardless of the device-local
+// setting: the backup must carry the amp plan even on a device that keeps chips off.
+export function PresetBadges({ songId, showNotes = false, force = false }: { songId: string, showNotes?: boolean, force?: boolean }) {
   const { settings } = useSettings()
   const assignment = ampPresets[songId]
-  if (!settings.showAmpChips || !assignment) return null
+  if ((!settings.showAmpChips && !force) || !assignment) return null
   return <span className="preset-badges" aria-label="Amp preset">
     {assignment.presets.map((slot, index) => <span className="preset-badge-group" key={slot}>
       {index > 0 && (assignment.footswitch

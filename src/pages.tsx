@@ -245,7 +245,7 @@ function useZoom(resetKey: string, minZoom: number, enabled: boolean, initialZoo
 }
 
 /** Shared stage chrome strip: tuning / transpose / capo / amp presets / home frets. */
-function ShowStageStrip({ song, includeHomeFrets = false }: { song: Song, includeHomeFrets?: boolean }) {
+function ShowStageStrip({ song, includeHomeFrets = false, forceAmpChips = false }: { song: Song, includeHomeFrets?: boolean, forceAmpChips?: boolean }) {
   const transpose = transposeFor(song.id)
   // Known limit: always the LIVE entry's capo — the dev version dropdown in CheatCard
   // doesn't reach up here, so an archived version with a different capo would show the
@@ -255,7 +255,7 @@ function ShowStageStrip({ song, includeHomeFrets = false }: { song: Song, includ
     {song.tuning !== 'Standard' && <span className="cheat-chip cheat-tuning">{song.tuning}</span>}
     {transpose && <span className="cheat-chip cheat-transpose" title={transposeHint(transpose)}>T {transposeLabel(transpose.semitones)}</span>}
     {capo && <span className="cheat-chip cheat-capo">{capo}</span>}
-    <PresetBadges songId={song.id} showNotes />
+    <PresetBadges songId={song.id} showNotes force={forceAmpChips} />
     {/* Sheet views park home-fret chips next to AutoScrollBar so they survive chrome collapse. */}
     {includeHomeFrets && <HomeFretBadges song={song} />}
   </div>
@@ -269,30 +269,33 @@ export function PrintCardsPage() {
   const { get } = usePractice()
   const setSongs = tonightsSongs(get)
   const today = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+  // Four cards per printed sheet, 2×2. Chunked in JS (not grid fragmentation) so a
+  // page break can never land inside a card quadrant.
+  const sheets: Song[][] = []
+  for (let i = 0; i < setSongs.length; i += 4) sheets.push(setSongs.slice(i, i + 4))
   return <>
     <header className="page-title compact print-hide"><h1>Stage cards</h1></header>
-    <div className="sort-row print-hide"><span>Paper backup for a dead phone: tonight&rsquo;s {setSongs.length} songs, one per page.</span><div className="actions">
+    <div className="sort-row print-hide"><span>Paper backup for a dead phone: tonight&rsquo;s {setSongs.length} songs, four per page.</span><div className="actions">
       <button onClick={() => window.print()}>Print stage cards</button>
       <Link className="button secondary" to="/set">Tonight&rsquo;s set</Link>
     </div></div>
     <div className="print-set">
       <p className="print-set-meta">Martin Overdrive · tonight&rsquo;s set · printed {today}</p>
-      {setSongs.map((song, index) => {
-        const notes = get(song.id).notes.trim()
-        return <article className="print-song" key={song.id}>
-          <header className="print-song-head">
-            <span className="print-song-num">{String(index + 1).padStart(2, '0')}/{setSongs.length}</span>
-            <h2>{song.title}</h2>
-            <p className="print-song-artist">{song.artist}</p>
-          </header>
-          <ShowStageStrip song={song} includeHomeFrets />
-          <CheatCard song={song} variant="cheat" withMore={false} printFills />
-          {(song.mustKnow || notes) && <dl className="print-song-fields">
-            {song.mustKnow && <Field label="Must know" value={song.mustKnow} />}
-            {notes && <Field label="My notes" value={notes} />}
-          </dl>}
-        </article>
-      })}
+      {sheets.map((sheet, sheetIndex) => <div className="print-sheet" key={sheetIndex}>
+        {sheet.map((song, songIndex) => {
+          const notes = get(song.id).notes.trim()
+          return <article className="print-song" key={song.id}>
+            <header className="print-song-head">
+              <span className="print-song-num">{String(sheetIndex * 4 + songIndex + 1).padStart(2, '0')}/{setSongs.length}</span>
+              <h2>{song.title}</h2>
+              <p className="print-song-artist">{song.artist}</p>
+            </header>
+            <ShowStageStrip song={song} includeHomeFrets forceAmpChips />
+            <CheatCard song={song} variant="cheat" withMore={false} printFills />
+            {notes && <dl className="print-song-fields"><Field label="My notes" value={notes} /></dl>}
+          </article>
+        })}
+      </div>)}
     </div>
   </>
 }
