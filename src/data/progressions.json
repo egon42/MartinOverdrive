@@ -360,16 +360,16 @@
         "hint": "\"Strangers waiting\" - A-E climb, NOT the final chorus; \"in the night\" lands B, then quick E B E A turnaround"
       },
       {
-        "section": "Solo",
-        "chords": "(E B C#m A) | (E B G#m A)",
-        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
-        "hint": "Same cycle as verse under the solo"
-      },
-      {
         "section": "Chorus",
         "chords": "(E B C#m A) | (E B G#m A)",
         "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
         "hint": "\"Don't stop believin'\" - ONLY at the very end; rides to fade"
+      },
+      {
+        "section": "Solo",
+        "chords": "(E B C#m A) | (E B G#m A)",
+        "shapes": "022--- -244-- -466-- -022-- 022--- -244-- 466--- -022--",
+        "hint": "Same cycle as verse under the solo"
       }
     ],
     "form": [
