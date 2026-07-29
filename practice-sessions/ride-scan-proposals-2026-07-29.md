@@ -14,7 +14,10 @@ Grammar reminder: `X]]` = keep strumming across N measures (one `]` each, min 2)
   (high). Chorus stretched C = 4 bars but the tab only notates ONE chorus
   (med-high) — worth an ear check. Outro final `=G` kept as a true ring-out.
 
-## High confidence — ready to apply on your yes
+## High confidence — APPLIED 2026-07-29 (all but The Middle; snapshots "pre ride-migration")
+
+Ryan: The Middle skipped — if all the chords would have it, the marker no longer
+matters there.
 
 | Song | Section | Change | Evidence |
 |---|---|---|---|
