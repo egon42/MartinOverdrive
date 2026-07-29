@@ -1,6 +1,6 @@
 # HANDOFF — living bookmark (overwrite on pause)
 
-- Updated: **2026-07-29 midday** (desk run-through in set order, during meetings)
+- Updated: **2026-07-29 afternoon** (desk run-through paused at #18)
 - Show: 2026-08-01 · Phase: **Harden**
 - Week plan: [`final-week-2026-08-01.md`](final-week-2026-08-01.md)
 - Skill: `/continue desk` · `/continue guitar` → `.claude/skills/continue-final-week/`
@@ -8,40 +8,54 @@
 
 ## Track
 
-**desk** (set-order card run-through, Ryan half-listening from meetings)
+**desk** (set-order card run-through with Ryan half-listening from meetings)
 
 ## Last completed
 
-- Morning (other tool): FBG chorus rides, Banditos chorus rework + Fair-Tag fold,
-  The Middle A-string riff onto Stage card, tap-to-play fret chips. All pushed.
-- Midday run-through in set order: #1 Middle (fresh from morning), #2 ATS ✓,
-  #3 Conversation skipped (sing-only), #4 Valerie ✓, #5 DSB done (2-row cycles,
-  quick +E +B +E +A pre-chorus tag row, Chorus above Solo), #6 Voodoo + #7 Pride
-  and Joy skipped (basic backing rhythm), **#8 Mama major rework** (rides, chorus
-  absorbs sunshine + mama-walk with blue C D B first-time tag, bridge (G A E) ×3 +B,
-  amp cues, one Pre-Chorus for all 3 pres with blue F#5 G#5 lift pres 2+3, solo
-  +C# +B tags, Outro = (C D E) ×3 only). 13 archived versions on Mama.
+Run-through #1–#18 (Ryan drives, corrections applied + pushed per song):
+
+- #1 Middle fresh from morning riff-chip work · #2 ATS ✓ · #3 Conversation skip
+  (sing-only) · #4 Valerie ✓ · #12 SHA ✓ · #13 FBG done this morning · #14 S.O.B.
+  card ✓ · #16 Mary Jane ✓ · #18 Zombie card ✓
+- #5 DSB: 2-row cycles, pre-chorus `(A E) ×3 (A B) | (+E +B +E +A)`, Chorus above Solo
+- #6 Voodoo + #7 Pride and Joy: skipped, basic backing rhythm
+- #8 Mama: MAJOR rework (see Next guitar verify list); 13 archived versions
+- #9 Tribute: Fill ^3 cue "needless to say"; Rock ends `F]]`
+- #10 Pretender: chorus `Am]] D/F# F *+D`; orange verse remind "don't jump early 1st pass"
+- #11 Dream On: fill-only focus (ghost chorus, orange "Fill ^1: 2nd Sing with me; 4th
+  on final chorus"), optional Bridge added, climax blue walk `*F#5 *G *A *B7b9`
+- #15 Save a Horse: hook G tagged in chorus + outro
+- #17 Dani: Dm/Bm back to plain, chorus G = `*~+G` (skip-marked tag) — **new marker
+  combo**, render fix shipped in `components.tsx` (`tagShown`), Ryan should confirm
+  the look on /dev/ after deploy
 
 ## Next desk
 
-**Resume the set-order run-through at #9 Tribute** (Ryan drives song-by-song; apply
-his corrections snapshot → validate → commit → push per song). Lean on the Lyrics
-sheet as the trusted surface when Stage looks wrong. Card freeze **Thu 7/30 evening**.
+**Resume the set-order run-through at #19 Darkness (I Believe)** — this is also the
+"Darkness sheet still weak" TODO song, so expect a real pass, not a rubber stamp
+(clap/measure-end landmarks exist from 7/27; Ryan found it rough Mon night even with
+the Marty Music video). Then #20 Dirtbag onward. Lean on the Lyrics sheet as the
+trusted surface. Card freeze **Thu 7/30 evening**.
 
 ## Next guitar
 
-**Body Pre → Mama (#8) card-verify FIRST** — Ryan is not convinced the reworked card
-is 100% right. Play it against the new Cheat card and confirm: verse E]] ride,
-pre-chorus E/B cascades + blue F#5 G#5 lift only in pres 2+3, hundred-times chorus
-present (recording says yes), blue C D B tag first chorus only, bridge ×3 then +B
-into solo, solo +C# +B tags, (C D E) ×3 outro. Then the Wed changeover loop
-(3→#19 Darkness, 16→#10 Pretender, 5→#24 Thunderstruck, 24→#4 Valerie(?),
-20→#1 Middle, 26→#13 Fat Bottomed — re-derive pairs from the new order) +
-Darkness maintenance + Pretender catch-up. Coach = one song at a time.
+Body Pre, then in order:
+
+1. **#8 Mama card-verify** (Ryan not convinced it's 100%): verse `E]]` ride; pre-chorus
+   cascades on E/B every pass with blue F#5 G#5 lift pres 2+3 only; hundred-times
+   chorus present; blue C D B tag first chorus only; bridge `(G A E) ×3 +B` into solo;
+   solo `+C# +B` tags; Outro = `(C D E) ×3`
+2. **#14 S.O.B. chord-transition reps** (card fine, hands not)
+3. **#18 Zombie outro solo fill**: learn it E-string only first, work the B string in
+   later (Ryan's plan)
+4. Wed changeover loop + #19 Darkness maintenance + #10 Pretender catch-up
+   (never-skip trio) + ordered set slice as time allows
+
+Coach = one song at a time (instruct → play → report → log → next).
 
 ## Recommended desk
 
-**Claude Fable 5** (stage-card judgment; this run-through is live in a Fable session)
+**Claude Fable 5** (stage-card judgment; run-through session is live in Fable)
 
 ## Recommended guitar
 
@@ -53,13 +67,14 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 
 ## Card / UI TODOs
 
-- **#8 Mama: guitar-verify tonight** (see Next guitar) — desk rework done today
-- Darkness (#19) sheet still weak (practice + card) — not yet reached in run-through
-- Run-through remaining: #9–#32 (minus skips Ryan calls)
+- **#17 Dani `*~+G` chip**: phone-confirm the new skip-marked-tag rendering on /dev/
+- **#8 Mama**: guitar-verify tonight (list above)
+- #19 Darkness sheet weak — next in run-through, real pass expected
+- Run-through remaining: #19–#32 (minus Ryan's skips)
 - Grammar proposals awaiting guitar vetting (`grammar-proposals-2026-07-28.md`)
-- Ride-scan mediums + four ambiguous `=` holds awaiting ear (`ride-scan-proposals-2026-07-29.md`);
-  ATS medium items implicitly passed by Ryan's #2 ✓? — confirm if it comes up
-- Welcome Home (#28) Em-cycle: desk fixed; guitar confirm pending
+- Ride-scan mediums + ambiguous `=` holds awaiting ear (`ride-scan-proposals-2026-07-29.md`)
+- Welcome Home (#28) Em-cycle: desk fixed; guitar confirm pending (comes up late in
+  the run-through anyway)
 - Open flags: Voodoo (#6) hard-stop vs ring (skipped today, low stakes); AGD (#29)
   held final chorus G
 - Freeze after **Thu evening**
@@ -71,8 +86,8 @@ Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body
 - Desk continue = app (not fingering coach); fingering = downtime only (`desk board` if wanted)
 - Quoted lyric hints = blue; `+Chord` = tag; `~Chord` = ghost; `*Chord` = blue alternate;
   `=Chord` = strum once and let ring; `Chord]]` = ride, keep strumming N measures
-  (one `]` each, min 2); `=`/`+` don't combine with `]]` (`~`/`*` do); section
-  `remind` = orange text by the section name; `cheatHide` = omit from Cheat
+  (one `]` each, min 2); `=`/`+` don't combine with `]]` (`~`/`*` do); `*~+X` =
+  skip-marked tag (new 2026-07-29, Dani chorus G); section `remind` = orange text by
+  the section name; `cheatHide` = omit from Cheat
 - Auto commit + bare `git push` on `dev` for app/data (not `fill_page.html`)
-- **Guitar coach = one song at a time** (instruct → play → report → log → next).
-  Worksheet is the log, not the script they read.
+- **Guitar coach = one song at a time**; worksheet is the log, not the script
