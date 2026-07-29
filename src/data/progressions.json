@@ -1548,16 +1548,10 @@
         "hint": "Verse changes under the solo"
       },
       {
-        "section": "Fair-Tag",
-        "chords": "D A E",
-        "shapes": "-577-- 577--- 022---",
-        "hint": "End of last chorus: \"I got the pistol so I'll keep the pesos\", then D lands on \"that seems fair\" (not the E D A E vamp)"
-      },
-      {
         "section": "Outro",
         "chords": "E D A E",
         "shapes": "022--- -577-- 577--- 022---",
-        "hint": "Solo riff rides out; cold end"
+        "hint": "Straight in after \"pistol / pesos\": first-pass D lands on \"that seems fair\"; solo riff rides out, cold end"
       },
       {
         "section": "Fills",
@@ -1574,8 +1568,7 @@
       "Chorus",
       "Solo ×2",
       "Chorus",
-      "Fair-Tag",
-      "Outro ×2"
+      "Outro ×3"
     ]
   },
   "32-free-bird": {

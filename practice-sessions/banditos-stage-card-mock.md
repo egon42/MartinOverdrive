@@ -59,13 +59,9 @@ SOLO
 E D A E
 hint: Verse changes under the solo
 
-FAIR-TAG
-D A E
-hint: End of last chorus: "I got the pistol so I'll keep the pesos", then D lands on "that seems fair" (not the E D A E vamp)
-
 OUTRO
 E D A E
-hint: Solo riff rides out; cold end
+hint: Straight in after "pistol / pesos": first-pass D lands on "that seems fair"; solo riff rides out, cold end
 
 FILLS
 (ASCII fills live on Cheat only — ignore unless you want them changed)
@@ -106,8 +102,7 @@ Verse
 Chorus
 Solo ×2
 Chorus
-Fair-Tag
-Outro ×2
+Outro ×3
 ```
 
 If you split Chorus into two named parts (e.g. `Chorus` + `Everybody`), list both here wherever they happen.
@@ -121,6 +116,7 @@ If you split Chorus into two named parts (e.g. `Chorus` + `Everybody`), list bot
 Say "use the mock" when this matches what you want on the phone.
 
 Applied 2026-07-26 (`18f0c18`): three-line Chorus with combined hint.
-Applied 2026-07-29: one Chorus section, four rows: (E A E B) / (A B E C#m A B E) / (+E +A) ×3 shuffle as tag chips / (A B E C#m A B E). Single combined hint (Ryan ditched the section split + per-row hints). Durations pass still pending. Further edits here → say use the mock again.
+Applied 2026-07-29: one Chorus section, four rows: (E A E B) / (A B E C#m A B) / (+E +A) ×3 shuffle as tag chips / (A B E C#m A B); A-rows end on B. Single combined hint (Ryan ditched the section split + per-row hints).
+Applied 2026-07-29 (later): Fair-Tag section deleted. Ryan's insight: chorus-final E + the D A E tag = one E D A E vamp pass, so the last chorus drops straight back into the outro cycle. Outro ×2 → ×3 with the "that seems fair" landmark in its hint. Durations pass still pending. Further edits here → say use the mock again.
 
 Skill for other songs: `.claude/skills/stage-cheat-card/` ("stage pass" / "next stage card").
