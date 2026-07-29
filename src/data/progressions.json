@@ -1376,8 +1376,8 @@
       },
       {
         "section": "Chorus",
-        "chords": "(A E) ×2 *+C *+D *+B",
-        "hint": "Face - \"Mama I'm coming home\". First: hundred + the C D B tag. Second: thousand into outro, no tag"
+        "chords": "(A E) ×2 | (A B E A) | (Asus2 Bsus4 C D E) | (*+C *+D *+B)",
+        "hint": "Face both times: first hundred, second thousand. \"Don't care about the sunshine\" then \"mama, mama, I'm coming home\". Blue C D B tag first time only, into the Bridge"
       },
       {
         "section": "Bridge",
@@ -1391,8 +1391,8 @@
       },
       {
         "section": "Outro",
-        "chords": "(A B E A) | (Asus2 Bsus4 C D E) | (C D E) ×3",
-        "hint": "Line 1 \"don't care about the sunshine\"; line 2 \"mama, mama, I'm coming home\"; then \"I'm coming home\" ×3 to end"
+        "chords": "(C D E) ×3",
+        "hint": "Chorus 2 rolls straight in; \"I'm coming home\" ×3 to end"
       }
     ],
     "form": [
