@@ -1068,13 +1068,14 @@
       {
         "section": "Sit",
         "chords": "~Em",
-        "hint": "Sit until Sing with me; sit again after Climax"
+        "hint": "Sit through verses and choruses; only Fill ^1 and the Climax are played. Sit again after Climax"
       },
       {
         "section": "Chorus",
-        "chords": "(Em D) (C D) (Em D) (Em/C# Cmaj7)",
+        "chords": "(~Em ~D) (~C ~D) (~Em ~D) (~Em/C# ~Cmaj7)",
         "shapes": "022000 --0232 -32010 --0232 022000 --0232 -42200 -32000",
-        "hint": "Sing with me; Fill ^1 on the second Sing with me"
+        "remind": "Fill ^1 on 2nd Sing with me",
+        "hint": "Band plays this; you sit. Fire Fill ^1 on the SECOND \"Sing with me\", then sit again"
       },
       {
         "section": "Climax",
