@@ -4584,6 +4584,64 @@
   ],
   "31-banditos": [
     {
+      "label": "pilot card pre chorus rework",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E D A E",
+          "shapes": "022--- -577-- 577--- 022---",
+          "hint": "Cold open: hook riff over the verse cycle"
+        },
+        {
+          "section": "Verse",
+          "chords": "E D A E",
+          "shapes": "022--- -577-- 577--- 022---",
+          "hint": "Palm-muted E5 chug under the vocal"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(E A E B A B) (E C#m A B E) | (A E A E A E) | (A B E C#m A B E)",
+          "shapes": "022--- 577--- 022--- 799--- 577--- 799--- 022--- -466-- 577--- 799--- 022--- 577--- 022--- 577--- 022--- 577--- 022--- 577--- 799--- 022--- -466-- 577--- 799--- 022---",
+          "hint": "Well give your I.D. card; after vamp: Everybody knows"
+        },
+        {
+          "section": "Solo",
+          "chords": "E D A E",
+          "shapes": "022--- -577-- 577--- 022---",
+          "hint": "Verse changes under the solo"
+        },
+        {
+          "section": "Fair-Tag",
+          "chords": "D A E",
+          "shapes": "-577-- 577--- 022---",
+          "hint": "That seems fair; starts on D (not the E D A E vamp)"
+        },
+        {
+          "section": "Outro",
+          "chords": "E D A E",
+          "shapes": "022--- -577-- 577--- 022---",
+          "hint": "Solo riff rides out; cold end"
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Between vocal lines\ne|--------------|\nB|--------------|\nG|--------------|\nD|------2---2---|\nA|2---2---0---0-|\nE|0---0---------|\n\nIntro hook\ne|--------------|\nB|------3-(3)-3-|\nG|------2-(2)-2-|\nD|5-(5)-0-(0)-0-|\nA|7-(7)---------|\nE|--------------|",
+          "tabMore": "Pre-chorus walk\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|2-7-7-2-2-6-6-7-|\nE|0-5-5-0-0-4-4-5-|\n\nInto chorus (A → B)\ne|----------------|\nB|----------------|\nG|----------------|\nD|----------------|\nA|7-7-7-7-9-9-9-9-|\nE|5-5-5-5-7-7-7-7-|"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse ×2",
+        "Chorus",
+        "Verse",
+        "Chorus",
+        "Solo ×2",
+        "Chorus",
+        "Fair-Tag",
+        "Outro ×2"
+      ]
+    },
+    {
       "label": "double-pass experiment 2026-07-26 (reverted)",
       "sections": [
         {

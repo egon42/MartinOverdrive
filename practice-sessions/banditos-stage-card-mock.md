@@ -49,11 +49,16 @@ E D A E
 hint: Palm-muted E5 chug under the vocal
 
 CHORUS
-(E A E B A B) (E C#m A B E)
-hint: "Well give your I.D. card"
-(A E A E A E)
+(E A E B) (A B E C#m A B E)
+hint: "Give your I.D. card"; second A lands on "Everybody knows"
+
+SHUFFLE
+(E A) ×3
+hint: Little E A shuffle between passes
+
+EVERYBODY
 (A B E C#m A B E)
-hint: "Everybody knows"
+hint: Second "Everybody knows"; last one runs into "that seems fair"
 
 SOLO
 E D A E
@@ -102,10 +107,16 @@ Edit order / repeats if the live map should change. Section names must match the
 Intro
 Verse ×2
 Chorus
+Shuffle
+Everybody
 Verse
 Chorus
+Shuffle
+Everybody
 Solo ×2
 Chorus
+Shuffle
+Everybody
 Fair-Tag
 Outro ×2
 ```
@@ -120,6 +131,7 @@ If you split Chorus into two named parts (e.g. `Chorus` + `Everybody`), list bot
 
 Say "use the mock" when this matches what you want on the phone.
 
-Applied 2026-07-26 (`18f0c18`): three-line Chorus with combined hint. Further edits here → say use the mock again.
+Applied 2026-07-26 (`18f0c18`): three-line Chorus with combined hint.
+Applied 2026-07-29: chorus split into Chorus / Shuffle / Everybody sections (per-row hints; shuffle as (E A) ×3 tag notation). Durations pass still pending. Further edits here → say use the mock again.
 
 Skill for other songs: `.claude/skills/stage-cheat-card/` ("stage pass" / "next stage card").
