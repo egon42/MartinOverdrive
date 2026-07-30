@@ -1340,17 +1340,18 @@
         "section": "Break",
         "chords": "(D) ×10",
         "shapes": "--0232",
-        "hint": "Long riff vamp; \"I've been singing\" starts V2"
+        "hint": "Long riff vamp; \"I've been singing\" starts V2",
+        "remind": "→ Verse next"
       },
       {
         "section": "Chorus",
-        "chords": "(D]] C G/B D]] C A) | (D]] G D]] A D) | (+G D A D)",
+        "chords": "(D]] C G/B D]] C A) | (D]] G]] D A D) | (+G D A D)",
         "shapes": "--0232 -32010 -20033 --0232 -32010 -02220 --0232 320003 --0232 -02220 --0232 320003 --0232 -02220 --0232",
         "hint": "Sit out the sung opener; join \"Oh won't you take me home tonight?\"; hook ×2"
       },
       {
         "section": "Interlude",
-        "chords": "(G G D D A A) ×2 +G",
+        "chords": "(G G D D A A +G) ×2",
         "shapes": "320003 320003 --0232 --0232 -02220 -02220 320003",
         "hint": "\"Hey listen here\" on the last G, into V3"
       },
