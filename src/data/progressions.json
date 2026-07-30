@@ -1610,13 +1610,13 @@
         "section": "Verse",
         "chords": "(G D Em) (F C D)",
         "shapes": "320003 --0232 022000 133211 -32010 --0232",
-        "hint": "Same cycle under the vocal"
+        "hint": "V1 \"If I leave here tomorrow\" V2 \"Bye bye baby\"; same cycle under the vocal"
       },
       {
         "section": "Refrain",
         "chords": "(F C D) ×4",
         "shapes": "133211 -32010 --0232",
-        "hint": "Cannot change / can't change tags"
+        "hint": "Cannot change / can't change tags; 2nd adds \"Lord help me I can't change\""
       },
       {
         "section": "Break",
@@ -1628,6 +1628,7 @@
         "section": "Outro",
         "chords": "G5 Bb5 C5 C5",
         "shapes": "355--- 688--- 8AA--- 8AA---",
+        "remind": "Right after \"Lord help me I can't change\"",
         "hint": "Double time; ride until band cues out. Amp → 2Green"
       }
     ],
