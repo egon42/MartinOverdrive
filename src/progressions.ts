@@ -72,8 +72,6 @@ export interface CheatChordSpan {
   times: number
   /** Force this span onto a new row (from `|` in the chord string). */
   breakBefore?: boolean
-  /** Visible slash divider between groups on the same row (from a bare `/`). No chords. */
-  divider?: boolean
 }
 
 export interface CheatRow {
@@ -160,8 +158,6 @@ export function formStepBase(label: string): string {
  * - "Em C G D" → one span per chord (times 1), or keep as singles
  * - "(E A) ×3 (E G A) ×2" → two grouped spans (same row; wrap only if narrow)
  * - "A B | C D" → line break before the span after `|`
- * - "(A B) / (C D)" → visible slash divider between groups on the same row (bare `/` only;
- *   slashes inside a chord name like Em/C# are untouched)
  * - Bare chords may mix with groups: "Am (E A) ×2 G"
  * - "~A" / "(E ~A)" → ghost chip (shown for beat, don't play)
  * - "+G" / "(E F +G)" → tag chip (short hit, not a full measure)
@@ -176,7 +172,7 @@ export function formStepBase(label: string): string {
  */
 export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
   const shapeTokens = shapes.trim() ? shapes.trim().split(/\s+/).filter(Boolean) : []
-  const spans: { chords: string[]; ghosts: boolean[]; tags: boolean[]; alts: boolean[]; holds: boolean[]; rides: number[]; times: number; breakBefore?: boolean; divider?: boolean }[] = []
+  const spans: { chords: string[]; ghosts: boolean[]; tags: boolean[]; alts: boolean[]; holds: boolean[]; rides: number[]; times: number; breakBefore?: boolean }[] = []
   const src = chords.trim()
   if (!src) return []
 
@@ -250,12 +246,6 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
       lastWasGroup = false
       continue
     }
-    if (match[3] === '/') {
-      if (breakBeforeNext) throw new Error(`"|" before "/" in "${chords}" - put the break after the divider`)
-      spans.push({ chords: [], ghosts: [], tags: [], alts: [], holds: [], rides: [], times: 1, divider: true })
-      lastWasGroup = false
-      continue
-    }
     const one = splitTokens(match[3])
     spans.push({ ...one, times: 1, ...(breakBeforeNext ? { breakBefore: true } : {}) })
     breakBeforeNext = false
@@ -278,7 +268,6 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
       times: span.times,
       shapes: slice,
       ...(span.breakBefore ? { breakBefore: true } : {}),
-      ...(span.divider ? { divider: true } : {}),
     }
   })
 }

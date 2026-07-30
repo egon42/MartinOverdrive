@@ -1075,12 +1075,12 @@
       },
       {
         "section": "Bridge",
-        "chords": "(Em D C D) / (Em D C D Em)",
+        "chords": "(Em D C D) | (Em D) (C D Em)",
         "remind": "\"I know nobody knows\""
       },
       {
         "section": "Chorus",
-        "chords": "(~Em ~D ~C ~D) / (~Em ~D ~Em/C# ~Cmaj7)",
+        "chords": "(~Em ~D) (~C ~D) | (~Em ~D) (~Em/C# ~Cmaj7)",
         "shapes": "022000 --0232 -32010 --0232 022000 --0232 -42200 -32000",
         "remind": "Fill ^1: 2nd Sing with me (final: 4th), rides to end"
       },

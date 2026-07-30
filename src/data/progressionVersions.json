@@ -3175,48 +3175,6 @@
   ],
   "22-dream-on": [
     {
-      "label": "pre slash-divider rows",
-      "sections": [
-        {
-          "section": "Sit",
-          "chords": "~Em",
-          "hint": "Sit through verses and choruses; you play Fill ^1, the Climax, and maybe the Bridge. Sit again after Climax"
-        },
-        {
-          "section": "Bridge",
-          "chords": "(Em D C D) | (Em D) (C D Em)",
-          "remind": "\"I know nobody knows\""
-        },
-        {
-          "section": "Chorus",
-          "chords": "(~Em ~D) (~C ~D) | (~Em ~D) (~Em/C# ~Cmaj7)",
-          "shapes": "022000 --0232 -32010 --0232 022000 --0232 -42200 -32000",
-          "remind": "Fill ^1: 2nd Sing with me (final: 4th), rides to end"
-        },
-        {
-          "section": "Climax",
-          "chords": "(Am B5 C) (D Em) | (*F#5 *G *A *B7b9)",
-          "shapes": "-02210 -24--- -35--- --0232 022000 244--- 355--- 577--- -21212",
-          "hint": "One chord set, then Fill ^1. Blue walk = 3rd pass only, off the Em"
-        },
-        {
-          "section": "Fills",
-          "chords": "",
-          "tab": "Walk-up ^1 (first cue: 2nd Sing with me on Chorus; also after Climax sets)\ne|----------------|----------------|----------------|----------------|\nB|5---------------|5---------------|5---------------|5---------------|\nG|--3---3---3-----|--5---5---5-----|--6---6---6-----|--8---8---8-----|\nD|----------------|----------------|----------------|----------------|\nA|----------------|----------------|----------------|----------------|\nE|----------------|----------------|----------------|----------------|\n\nPattern: 5 3 3 3 / 5 5 5 5 / 5 6 6 6 / 5 8 8 8"
-        }
-      ],
-      "form": [
-        "Sit",
-        "Bridge",
-        "Sit",
-        "Chorus",
-        "Climax ×3",
-        "Chorus",
-        "Sit"
-      ],
-      "capo": "Capo 1"
-    },
-    {
       "label": "pre re-split rows",
       "sections": [
         {

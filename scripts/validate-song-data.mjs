@@ -56,7 +56,7 @@ function parseCheatChordWrittenCount(chords) {
     const gap = src.slice(cursor, match.index).trim()
     if (gap) throw new Error(`unexpected "${gap}"`)
     cursor = match.index + match[0].length
-    if (match[0] === '|' || match[3] === '/') {
+    if (match[0] === '|') {
       lastWasGroup = false
       continue
     }

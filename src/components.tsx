@@ -858,9 +858,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
             <span className="cheat-prog-label">{renderProgLabel(row.label)}{row.remind && <span className="cheat-prog-remind">{row.remind}</span>}</span>
             <div className="cheat-prog-body">
               <span className="cheat-prog-chords">{row.spans.map((span, s) =>
-                span.divider
-                  ? <span className="cheat-prog-divider" aria-hidden key={s}>/</span>
-                  : <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
+                <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
                   {span.chords.map((chord, j) =>
                     <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} tag={span.tags[j]} alt={span.alts[j]} held={span.holds[j]} rides={span.rides[j]} surface="cheat" songId={song.id} key={j} />)}
                   {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
