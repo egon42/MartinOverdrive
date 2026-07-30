@@ -226,7 +226,7 @@ TONES = {
     },
     "FUNK_DRY_CLEAN": {
         "amp": "65_DELUXE_REVERB", "cabinet": "65DLX", "bright": True,
-        "knobs": {"volume": 8, "gain": 3.5, "treble": 6.5, "middle": 4.5,
+        "knobs": {"volume": 7.5, "gain": 3.5, "treble": 6.5, "middle": 4.5,
                   "bass": 4.5},
         "fx": [{"type": "65_SPRING", "knobs": [3, 4, 4, 5, 5.5]}],
     },
@@ -247,7 +247,7 @@ TONES = {
     },
     "COUNTRY_SNAP": {
         "amp": "59_BASSMAN", "cabinet": "BSSMN", "bright": True,
-        "knobs": {"volume": 6.5, "gain": 4, "treble": 6.5, "middle": 5.5,
+        "knobs": {"volume": 6, "gain": 4, "treble": 6.5, "middle": 5.5,
                   "bass": 4.5},
         "fx": [{"type": "COMPRESSOR", "knobs": [5, 4.5, 4, 6, 5]},
                {"type": "65_SPRING", "knobs": [2, 3.5, 4, 5, 5.5]}],
@@ -298,7 +298,7 @@ TONES = {
     },
     "LEAD_SOLO": {
         "amp": "BRITISH_70S", "cabinet": "4x12G",
-        "knobs": {"volume": 5.5, "gain": 7.5, "treble": 5.5, "middle": 7,
+        "knobs": {"volume": 5, "gain": 7.5, "treble": 5.5, "middle": 7,
                   "bass": 5},
         "fx": [{"type": "MONO_DELAY", "knobs": [4, 4.5, 3.5, 5, 5]},
                {"type": "SMALL_HALL", "knobs": [3, 4.5, 4, 6, 5]}],
@@ -365,7 +365,7 @@ PRESETS = [
     tone("CHORUS_CLEAN",    "21 PRETNDR INTRO",   "pair-pretender-intro"),  # slot 20
     tone("MODERN_HI_GAIN",  "22 PRETNDR SLAM",    "pair-pretender-slam"),  # slot 21
     tone("BIG_CLEAN",       "23 BALLAD CLEAN",    "pair-ballad-clean"),     # slot 22
-    tone("LEAD_SOLO",       "24 LEAD BOOST",      "pair-lead-boost", vol=4.5),  # slot 23
+    tone("LEAD_SOLO",       "24 LEAD BOOST",      "pair-lead-boost", vol=4),  # slot 23
 ]
 
 
