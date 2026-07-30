@@ -1384,8 +1384,8 @@
       },
       {
         "section": "Chorus",
-        "chords": "(A E) ×2 | (A B E A) | (Asus2 Bsus4 C D E) | (*+C *+D *+B)",
-        "hint": "Face both times: first hundred, second thousand. \"Don't care about the sunshine\" then \"mama, mama, I'm coming home\". Blue C D B tag first time only, into the Bridge"
+        "chords": "(A E) ×2 | (A B E A) | (Asus2 Bsus4 C D E) | (*~+C *~+D *~+B)",
+        "hint": "Face both times: first hundred, second thousand. \"Don't care about the sunshine\" then \"mama, mama, I'm coming home\". C D B tag first chorus only (skip into Outro)"
       },
       {
         "section": "Bridge",
@@ -1395,7 +1395,8 @@
       {
         "section": "Solo",
         "chords": "A E A E A B +C# +B A B",
-        "hint": "7 bars after Bridge B; amp back to 8Red"
+        "hint": "7 bars after Bridge B; amp back to 8Red",
+        "remind": "→ Pre next (8Red)"
       },
       {
         "section": "Outro",
