@@ -8775,6 +8775,81 @@
   ],
   "10-zombie": [
     {
+      "label": "pre songsterr m85-101 solo tab",
+      "sections": [
+        {
+          "section": "Solo outro",
+          "chords": "Em C G D",
+          "shapes": "022000 -32010 320003 --0232",
+          "hint": "Hang is quiet Em C only; solo rides the full cycle; outro back to Em C, cold on Em",
+          "remind": "Main look",
+          "tab": "Solo hook (low box)\ne|7/-8-(8)-5/-7---|\nB|7/-8-(8)-5/-7---|\nG|----------------|\nD|----------------|\nA|----------------|\nE|----------------|\n\nOutro grow-on (same hook, then climb)\ne|7/-8-(8)-5/-7-|7/-5-(5)-5-(5)-5/-|7/-10-(10)-|10/-12-(12)----10---|\nB|7/-8-(8)-5/-7-|7/-5-(5)-5-(5)-5/-|7/-10-(10)-|10/-12-(12)-10-(10)-|\nG|--------------|------------------|------------|--------------------|\nD|--------------|------------------|------------|--------------------|\nA|--------------|------------------|------------|--------------------|\nE|--------------|------------------|------------|--------------------|\n\nLand / hold\ne|7-|\nB|7-|\nG|--|\nD|--|\nA|--|\nE|--|"
+        },
+        {
+          "section": "Intro",
+          "chords": "Em C G D",
+          "shapes": "022000 -32010 320003 --0232",
+          "hint": "Clean arpeggio, builds"
+        },
+        {
+          "section": "Verse",
+          "chords": "Em C G D",
+          "shapes": "022000 -32010 320003 --0232",
+          "hint": "Quiet/palm-muted; includes the pre-chorus tanks/bombs lines"
+        },
+        {
+          "section": "Chorus",
+          "chords": "Em C G D",
+          "shapes": "022000 -32010 320003 --0232",
+          "hint": "Big open strums, full volume"
+        },
+        {
+          "section": "Interlude",
+          "chords": "Em C G D",
+          "shapes": "022000 -32010 320003 --0232",
+          "hint": "Instrumental verse riff"
+        },
+        {
+          "section": "Hang",
+          "chords": "=Em C",
+          "shapes": "022000 -32010",
+          "hint": "Quiet Em-C only (drop G D); into the solo",
+          "cheatHide": true
+        },
+        {
+          "section": "Solo",
+          "chords": "Em C G D",
+          "shapes": "022000 -32010 320003 --0232",
+          "hint": "Lead over full progression",
+          "cheatHide": true
+        },
+        {
+          "section": "Outro",
+          "chords": "Em C",
+          "shapes": "022000 -32010",
+          "hint": "Em-C only; cold end on Em, no fade",
+          "cheatHide": true
+        },
+        {
+          "section": "Fills",
+          "chords": "",
+          "tab": "Pre-verse riff (easy)\ne|7h-8---5h-7---3h-5-|\nB|-------------------|\nG|-------------------|\nD|-------------------|\nA|-------------------|\nE|-------------------|\n\nTail onto B string\ne|--2h-3h-2------|\nB|----------3-3h-|\nG|---------------|\nD|---------------|\nA|---------------|\nE|---------------|"
+        }
+      ],
+      "form": [
+        "Intro ×4",
+        "Verse ×4",
+        "Chorus ×2",
+        "Interlude ×2",
+        "Verse ×4",
+        "Chorus ×2",
+        "Interlude ×2",
+        "Hang ×4",
+        "Solo ×3",
+        "Outro ×3"
+      ]
+    },
+    {
       "label": "solo/outro fill first on Cheat",
       "sections": [
         {
