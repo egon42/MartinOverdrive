@@ -58,7 +58,8 @@ Songsterr rhythm loops after for muscle memory. Always-play flash: **Lola** + Th
 **Tonight (if continuing):** #10 Pretender catch-up (never-skip; missed Tue) →
 guitar vets before the freeze: **#18 Zombie** new solo tab + **#20 Dirtbag** outro rows
 (G#m stab / held 3rd E / slow walk-down) + **#21 Lola** name the tag chord between
-Break and Bridge (Ryan OK omitting it if unclear) → Thunderstruck feel flash → changeovers /
+Break and Bridge (Ryan OK omitting it if unclear) + **#25 HIGA Bridge reps** (high-neck
+powers frets 6-9, flagged 7/30 desk) → Thunderstruck feel flash → changeovers /
 ordered slice as energy allows. Body Post before sign-off.
 
 Coach = one song at a time (instruct → play → report → log → next).
