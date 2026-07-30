@@ -3563,6 +3563,61 @@
   ],
   "25-valerie": [
     {
+      "label": "remind: start upstroke thumb",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E]]",
+          "shapes": "022100",
+          "hint": "Two-bar vamp, riff enters",
+          "remind": "Start upstroke (thumb)"
+        },
+        {
+          "section": "Verse",
+          "chords": "E F#m",
+          "shapes": "022100 244222",
+          "hint": "2nd verse runs longer - stay on E F#m; do not jump to pre early"
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "(A G#m) ×2 (A G#m =B)",
+          "shapes": "577655 466444 577655 466444 799877",
+          "hint": "Hang the B into the chorus"
+        },
+        {
+          "section": "Chorus",
+          "chords": "E F#m",
+          "shapes": "022100 244222",
+          "hint": "\"Valerie\" - same E F#m as verse; bigger feel"
+        },
+        {
+          "section": "Verse (quiet)",
+          "chords": "E F#m",
+          "shapes": "022100 244222",
+          "hint": "Breakdown: drop the riff, near-silent"
+        },
+        {
+          "section": "Outro",
+          "chords": "E",
+          "shapes": "022100",
+          "hint": "Short tag on E"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Chorus",
+        "Verse ×2",
+        "Pre-Chorus",
+        "Chorus",
+        "Verse (quiet)",
+        "Pre-Chorus",
+        "Chorus ×2",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre ride-migration",
       "sections": [
         {
