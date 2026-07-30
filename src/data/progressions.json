@@ -531,19 +531,22 @@
         "section": "Hang",
         "chords": "=Em C",
         "shapes": "022000 -32010",
-        "hint": "Quiet Em-C only (drop G D); into the solo"
+        "hint": "Quiet Em-C only (drop G D); into the solo",
+        "cheatHide": true
       },
       {
         "section": "Solo",
         "chords": "Em C G D",
         "shapes": "022000 -32010 320003 --0232",
-        "hint": "Lead over full progression"
+        "hint": "Lead over full progression",
+        "cheatHide": true
       },
       {
         "section": "Outro",
         "chords": "Em C",
         "shapes": "022000 -32010",
-        "hint": "Em-C only; cold end on Em, no fade"
+        "hint": "Em-C only; cold end on Em, no fade",
+        "cheatHide": true
       },
       {
         "section": "Fills",
