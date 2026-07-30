@@ -1380,7 +1380,8 @@
       {
         "section": "Pre-Chorus",
         "chords": "(C#m A E]]) | (C#m A B]] *+F#5 *+G#5)",
-        "hint": "Blue F#5 G#5 lift in pres 2+3, not the first. Amp 8Red from \"Selfish love\" (pre 2)"
+        "hint": "Blue F#5 G#5 lift in pres 2+3, not the first. Amp 8Red from \"Selfish love\" (pre 2)",
+        "remind": "V → Pre → V → Pre → Chorus"
       },
       {
         "section": "Chorus",
@@ -1395,8 +1396,7 @@
       {
         "section": "Solo",
         "chords": "A E A E A B +C# +B A B",
-        "hint": "7 bars after Bridge B; amp back to 8Red",
-        "remind": "→ Pre next (8Red)"
+        "hint": "7 bars after Bridge B; amp back to 8Red"
       },
       {
         "section": "Outro",
