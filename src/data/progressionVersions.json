@@ -6416,6 +6416,54 @@
   ],
   "08-while-my-guitar-gently-weeps": [
     {
+      "label": "Pre 7/30 fold: separate Intro/Verse/2nd-ending/Solo/Outro rows",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
+          "hint": "Walk-down then turnaround"
+        },
+        {
+          "section": "Verse",
+          "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
+          "hint": "D ending - \"look at you\""
+        },
+        {
+          "section": "Verse (2nd ending)",
+          "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G C E)",
+          "hint": "C ending - \"Still my guitar\""
+        },
+        {
+          "section": "Bridge",
+          "chords": "A C#m F#m C#m Bm]] E Esus4 E",
+          "hint": "\"I don't know why\"; Bm two full bars - don't jump to E"
+        },
+        {
+          "section": "Solo",
+          "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E) | (Am Am/G F#m7b5 Fmaj7) (Am G C E)",
+          "hint": "Clapton: one full verse pair under the lead"
+        },
+        {
+          "section": "Outro",
+          "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
+          "hint": "Lead + ad-lib vocal over verse changes, fade"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse",
+        "Verse (2nd ending)",
+        "Bridge",
+        "Verse",
+        "Verse (2nd ending)",
+        "Solo",
+        "Bridge",
+        "Verse",
+        "Verse (2nd ending)",
+        "Outro ×4"
+      ]
+    },
+    {
       "label": "pre ride-migration",
       "sections": [
         {

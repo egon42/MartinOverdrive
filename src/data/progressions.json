@@ -434,17 +434,19 @@
       {
         "section": "Intro",
         "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
-        "hint": "Walk-down then turnaround"
+        "hint": "Walk-down then turnaround",
+        "cheatHide": true
       },
       {
         "section": "Verse",
-        "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
-        "hint": "D ending - \"look at you\""
+        "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D*C E)",
+        "hint": "Whole song but the Bridge; ends D \"look at you\", blue C \"Still my guitar\""
       },
       {
         "section": "Verse (2nd ending)",
         "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G C E)",
-        "hint": "C ending - \"Still my guitar\""
+        "hint": "C ending - \"Still my guitar\"",
+        "cheatHide": true
       },
       {
         "section": "Bridge",
@@ -454,12 +456,14 @@
       {
         "section": "Solo",
         "chords": "(Am Am/G F#m7b5 Fmaj7) (Am G D E) | (Am Am/G F#m7b5 Fmaj7) (Am G C E)",
-        "hint": "Clapton: one full verse pair under the lead"
+        "hint": "Clapton: one full verse pair under the lead",
+        "cheatHide": true
       },
       {
         "section": "Outro",
         "chords": "(Am Am/G F#m7b5 Fmaj7) | (Am G D E)",
-        "hint": "Lead + ad-lib vocal over verse changes, fade"
+        "hint": "Lead + ad-lib vocal over verse changes, fade",
+        "cheatHide": true
       }
     ],
     "form": [
