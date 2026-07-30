@@ -94,8 +94,8 @@ Darkness · **Lola Montez** · Thunderstruck (when/where) · ordered set slice �
 - Grammar proposals awaiting guitar vetting (`grammar-proposals-2026-07-28.md`)
 - Ride-scan mediums + ambiguous `=` holds awaiting ear (`ride-scan-proposals-2026-07-29.md`)
 - Welcome Home (#28): Em-cycle + chop-mute/turn cues confirmed guitar 7/29
-- Open flags: Voodoo (#6) hard-stop vs ring (skipped today, low stakes); AGD (#29)
-  held final chorus G
+- Open flags: Voodoo (#6) hard-stop vs ring (skipped today, low stakes). AGD (#29)
+  final chorus G resolved 7/30: stays plain, Ryan's call
 - Freeze after **Thu evening**
 
 ## Standing decisions
