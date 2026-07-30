@@ -413,6 +413,8 @@ html[data-row-stripe] .cheat-progression .cheat-prog-row:nth-child(odd){padding:
 /* Explicit `|` line break in chord strings — not automatic for (…) groups */
 .cheat-prog-span--line{flex:0 0 100%}
 .cheat-prog-times{font-size:.72em;font-weight:800;letter-spacing:.04em;color:var(--acid);align-self:center;padding:0 2px}
+/* Bare `/` in a chord string: visible group divider on one row (Dream On bridge/chorus) */
+.cheat-prog-divider{font-size:1em;font-weight:800;color:var(--muted);align-self:center;padding:0 2px}
 /* Tab-style fingering beside any ChordChip (cheat card, sheets, compact show view) */
 .chord-with-fingering{display:inline-flex;flex-direction:column;align-items:center;gap:2px;vertical-align:baseline}
 .chord-with-fingering--over{flex-direction:column-reverse}
