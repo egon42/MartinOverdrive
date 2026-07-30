@@ -1125,7 +1125,7 @@
       },
       {
         "section": "Chorus",
-        "chords": "(G A D]] +Bm) | (G A +D +A +Bm A) | (G A D]] +Bm) | (G A D *F#m)",
+        "chords": "(G A D]] +Bm) | (G A +D +A +Bm A) | (G A D]] +Bm) | (G A D*F#m)",
         "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577-- 244---",
         "hint": "\"yeah-eah\" ends D; 2nd time play the blue F#m instead, into the Break"
       },
@@ -1139,6 +1139,7 @@
         "section": "Bridge",
         "chords": "(A D G Em) | (A D G A)",
         "shapes": "577--- -577-- 355--- 022--- 577--- -577-- 355--- 577---",
+        "remind": "Starts right after \"Oh Lola\"",
         "hint": "Vocals \"Oh Lola\" on A, land Em on \"pain\"; chorus rejoins at \"spider dance\""
       }
     ],

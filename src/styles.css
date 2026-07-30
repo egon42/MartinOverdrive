@@ -147,6 +147,19 @@ main{padding-top:36px}.song-detail-top{display:flex;align-items:center;justify-c
 .chord-chip--ghost.chord-chip--alt{background:var(--acid);color:var(--on-acid);border:0;outline:2px dashed var(--blue);outline-offset:2px;text-decoration:none;font-weight:850;opacity:1;-webkit-text-stroke-width:0}
 .chord-chip--ghost.chord-chip--alt.chord-chip--g{text-decoration:underline;text-underline-offset:.12em;text-decoration-thickness:.09em}
 .chord-chip-tag-mark{opacity:.75;font-weight:800;margin-right:.12em}
+/* Split-alt pill (D*F#m): two half-chips fused into one pill — left the normal acid
+   fill, right the blue alternate. The acid/blue seam plus a thin ink line (same
+   --on-acid stroke trick as .chord-chip--held) divides the halves; outer corners
+   keep the pill radius, inner corners go square. Selector uses > :first/last-child
+   (not .chord-chip-wrap directly) so a chip wrapped in .chord-with-fingering still
+   squares off. */
+.chord-chip-split{display:inline-flex;align-items:stretch}
+.chord-chip-split>:first-child .chord-chip{border-top-right-radius:0;border-bottom-right-radius:0}
+.chord-chip-split>:last-child .chord-chip{border-top-left-radius:0;border-bottom-left-radius:0;box-shadow:inset 1.5px 0 0 var(--on-acid)}
+/* Fingerings shown under chips (scope "all"): the fingering column is wider than the
+   half-chip, so pull each half toward the seam or the pill shows a gap. */
+.chord-chip-split>.chord-with-fingering:first-child{align-items:flex-end}
+.chord-chip-split>.chord-with-fingering:last-child{align-items:flex-start}
 .chord-chip--fret{background:transparent;color:var(--acid);border:1px solid var(--acid);font-variant-numeric:tabular-nums;min-width:1.4em;text-align:center}
 /* Fret chips carry the stage-card grammar too. --fret sits after the modifier rules,
    so ghost/alt colors need re-asserting for the combos (skip-marked ghost+alt already

@@ -44,6 +44,21 @@ function readJson(file) {
 }
 
 /** Count chord names as written (group contents once). Keep in sync with parseChordSpans in src/progressions.ts. */
+/** A split-alt pill ("D*F#m", interior *) is two written chords — two shape slots.
+ *  Mirrors parseChordSpans' split rules (no other markers, no rides, exactly two
+ *  non-empty halves) so a TS-invalid split can't pass validate and silently drop the
+ *  section to the naive fallback renderer on stage. */
+function writtenNamesInToken(token) {
+  const marked = /^[~+*=]/u.test(token)
+  const rode = /\]$/u.test(token)
+  const name = token.replace(/^[~+*=]+/u, '').replace(/\]+$/u, '')
+  if (!name.includes('*')) return 1
+  const halves = name.split('*')
+  if (marked || rode || halves.length !== 2 || halves.some((half) => !half || half.includes(']'))) {
+    throw new Error(`bad split chip "${token}"`)
+  }
+  return 2
+}
 function parseCheatChordWrittenCount(chords) {
   const src = String(chords).trim()
   if (!src) return 0
@@ -63,7 +78,7 @@ function parseCheatChordWrittenCount(chords) {
     if (match[1] !== undefined) {
       const groupChords = match[1].trim().split(/\s+/).filter(Boolean)
       if (!groupChords.length) throw new Error('empty chord group')
-      count += groupChords.length
+      count += groupChords.reduce((n, token) => n + writtenNamesInToken(token), 0)
       lastWasGroup = true
       continue
     }
@@ -74,7 +89,7 @@ function parseCheatChordWrittenCount(chords) {
       lastWasGroup = false
       continue
     }
-    count += 1
+    count += writtenNamesInToken(match[3])
     lastWasGroup = false
   }
   const trailing = src.slice(cursor).trim()

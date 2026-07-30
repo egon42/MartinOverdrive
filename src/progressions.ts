@@ -28,6 +28,10 @@ import versionsData from './data/progressionVersions.json'
 // Prefix a chord with + for a short tag hit, not a full measure ("E F +G").
 // Prefix a chord with * for an alternate chip ("G A D *F#m"): rendered in the hint blue,
 // meaning play it instead of its neighbor on the pass the section hint names.
+// An interior * fuses two chords into one split-alt pill ("D*F#m"): left half the normal
+// chip, right half the blue alternate — one chip reading "this, or the blue one on the
+// pass the hint names". A split chip consumes TWO shape slots (left then right) and
+// can't take other markers or rides.
 // Prefix a chord with = for a held chip ("=C G Em7 =D G"): fading stacked-card echo on
 // the right edge, meaning strum it ONCE and let it ring across measures.
 // Suffix a chord with one ] per measure, minimum 2 ("D]] A" / "D]]]]"), for a ride chip:
@@ -68,6 +72,8 @@ export interface CheatChordSpan {
   holds: boolean[]
   /** Parallel to `chords`: 0 = normal; N ≥ 2 = ride chip, played across N measures (cascade depth). */
   rides: number[]
+  /** Parallel to `chords`: true = fused to the previous chip (right half of a split-alt pill, "D*F#m"). */
+  fuses: boolean[]
   shapes: string[]
   times: number
   /** Force this span onto a new row (from `|` in the chord string). */
@@ -165,6 +171,8 @@ export function formStepBase(label: string): string {
  * - "=C" / "(=C G Em7 =D G)" → held chip (stacked look; strum once, let ring)
  * - "D]]" / "D]]]]" → ride chip (played across 2 / 4 measures; one ] per measure, ≥2;
  *   throws combined with = or +)
+ * - "D*F#m" (interior *) → split-alt pill: two fused half-chips, left normal, right the
+ *   blue alternate. Consumes two shape slots; throws with any other marker or a ride.
  * - Distinct markers stack on one chip (duplicates throw): "*+G" = blue alternate tag;
  *   "*~Am" = skip-marked chip (normal fill, dashed blue border: played normally,
  *   skipped on the pass the hint names)
@@ -172,7 +180,7 @@ export function formStepBase(label: string): string {
  */
 export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
   const shapeTokens = shapes.trim() ? shapes.trim().split(/\s+/).filter(Boolean) : []
-  const spans: { chords: string[]; ghosts: boolean[]; tags: boolean[]; alts: boolean[]; holds: boolean[]; rides: number[]; times: number; breakBefore?: boolean }[] = []
+  const spans: { chords: string[]; ghosts: boolean[]; tags: boolean[]; alts: boolean[]; holds: boolean[]; rides: number[]; fuses: boolean[]; times: number; breakBefore?: boolean }[] = []
   const src = chords.trim()
   if (!src) return []
 
@@ -183,6 +191,7 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
     const altsOut: boolean[] = []
     const holdsOut: boolean[] = []
     const ridesOut: number[] = []
+    const fusesOut: boolean[] = []
     const markerNames: Record<string, string> = { '~': 'ghost', '+': 'tag', '*': 'alternate', '=': 'hold' }
     for (const token of raw.trim().split(/\s+/).filter(Boolean)) {
       let name = token
@@ -203,14 +212,34 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
         if (seen.includes('=')) throw new Error(`held chord can't also ride measures in "${token}"`)
         if (seen.includes('+')) throw new Error(`tag chord can't also ride measures in "${token}"`)
       }
+      const splitAt = name.indexOf('*')
+      if (splitAt !== -1) {
+        // Split-alt pill: "D*F#m" fuses two half-chips into one pill (left normal,
+        // right the blue alternate). No other markers — the pill IS the marker.
+        if (seen.length) throw new Error(`markers can't stack on a split chip in "${token}"`)
+        if (ride) throw new Error(`split chip can't ride measures in "${token}"`)
+        const left = name.slice(0, splitAt)
+        const right = name.slice(splitAt + 1)
+        if (!left || !right || right.includes('*')) throw new Error(`split chip needs exactly two chords around * in "${token}"`)
+        if (left.includes(']') || right.includes(']')) throw new Error(`split chip can't ride measures in "${token}"`)
+        chordsOut.push(left, right)
+        ghostsOut.push(false, false)
+        tagsOut.push(false, false)
+        altsOut.push(false, true)
+        holdsOut.push(false, false)
+        ridesOut.push(0, 0)
+        fusesOut.push(false, true)
+        continue
+      }
       chordsOut.push(name)
       ghostsOut.push(seen.includes('~'))
       tagsOut.push(seen.includes('+'))
       altsOut.push(seen.includes('*'))
       holdsOut.push(seen.includes('='))
       ridesOut.push(ride)
+      fusesOut.push(false)
     }
-    return { chords: chordsOut, ghosts: ghostsOut, tags: tagsOut, alts: altsOut, holds: holdsOut, rides: ridesOut }
+    return { chords: chordsOut, ghosts: ghostsOut, tags: tagsOut, alts: altsOut, holds: holdsOut, rides: ridesOut, fuses: fusesOut }
   }
 
   // Tokenize: "(...)", "×N"/"xN", "|", or a bare chord-ish token
@@ -265,6 +294,7 @@ export function parseChordSpans(chords: string, shapes = ''): CheatChordSpan[] {
       alts: span.alts,
       holds: span.holds,
       rides: span.rides,
+      fuses: span.fuses,
       times: span.times,
       shapes: slice,
       ...(span.breakBefore ? { breakBefore: true } : {}),
@@ -311,6 +341,7 @@ function sectionToRow(label: string, section: ProgSection | undefined): CheatRow
             alts: [alt && !!name],
             holds: [hold && !!name],
             rides: [name ? ride : 0],
+            fuses: [false],
             times: 1,
             shapes: shapeTokens[i] ? [shapeTokens[i]] : [],
           }

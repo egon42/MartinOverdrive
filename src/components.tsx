@@ -770,6 +770,24 @@ function renderCheatHint(hint: string): ReactNode {
   return out.length ? out : hint
 }
 
+// Chips for one cheat-card span. Split-alt pairs ("D*F#m", parsed as chip + fused
+// alt chip) render inside one .chord-chip-split pill — halves stay individually
+// tappable ChordChips with their own popovers.
+function spanChips(span: CheatChordSpan, songId: string): ReactNode[] {
+  const chip = (j: number) =>
+    <ChordChip name={span.chords[j]} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} tag={span.tags[j]} alt={span.alts[j]} held={span.holds[j]} rides={span.rides[j]} surface="cheat" songId={songId} key={j} />
+  const out: ReactNode[] = []
+  for (let j = 0; j < span.chords.length; j++) {
+    if (span.fuses[j + 1]) {
+      out.push(<span className="chord-chip-split" key={`split-${j}`}>{chip(j)}{chip(j + 1)}</span>)
+      j++
+    } else {
+      out.push(chip(j))
+    }
+  }
+  return out
+}
+
 // The two progression cards, one component — show mode's Stage and Chords tabs, and the
 // same cards on the practice page's sheet panel. `variant` 'chords' is the full roadmap
 // card (form order + repeats — the original "cheat card", now the Chords tab); 'cheat'
@@ -810,7 +828,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
     ? (variant === 'chords' ? cheatRowsFor(custom) : basicRowsFor(custom))
     : derived?.map((row) => ({
         label: row.label,
-        spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], tags: [false], alts: [false], holds: [false], rides: [0], shapes: [], times: 1 })),
+        spans: row.chords.map((chord): CheatChordSpan => ({ chords: [chord], ghosts: [false], tags: [false], alts: [false], holds: [false], rides: [0], fuses: [false], shapes: [], times: 1 })),
         hint: undefined as string | undefined,
         remind: undefined as string | undefined,
         tab: undefined as string | undefined,
@@ -859,8 +877,7 @@ export function CheatCard({ song, innerRef, variant, zoomFrozen = false, withMor
             <div className="cheat-prog-body">
               <span className="cheat-prog-chords">{row.spans.map((span, s) =>
                 <span className={span.breakBefore ? 'cheat-prog-span cheat-prog-span--line' : 'cheat-prog-span'} key={s}>
-                  {span.chords.map((chord, j) =>
-                    <ChordChip name={chord} curatedShape={span.shapes[j]} ghost={span.ghosts[j]} tag={span.tags[j]} alt={span.alts[j]} held={span.holds[j]} rides={span.rides[j]} surface="cheat" songId={song.id} key={j} />)}
+                  {spanChips(span, song.id)}
                   {span.times > 1 && <span className="cheat-prog-times" aria-label={`repeat ${span.times} times`}>×{span.times}</span>}
                 </span>)}</span>
               {row.hint && <span className="cheat-prog-hint">{renderCheatHint(row.hint)}</span>}
