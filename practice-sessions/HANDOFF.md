@@ -101,7 +101,9 @@ Darkness · **Lola Montez** · Thunderstruck (when/where) · ordered set slice �
 - Quoted lyric hints = blue; `+Chord` = tag; `~Chord` = ghost; `*Chord` = blue alternate;
   `=Chord` = strum once and let ring; `Chord]]` = ride, keep strumming N measures
   (one `]` each, min 2); `=`/`+` don't combine with `]]` (`~`/`*` do); `*~+X` =
-  skip-marked tag (new 2026-07-29, Dani chorus G); section `remind` = orange text by
+  skip-marked tag (new 2026-07-29, Dani chorus G); `A*B` = split-alt pill (new
+  2026-07-30, Lola chorus close D*F#m): one chip, left half normal, right half blue
+  alternate, two shape slots, no other markers/rides; section `remind` = orange text by
   the section name; `cheatHide` = omit from Cheat
 - Auto commit + bare `git push` on `dev` for app/data (not `fill_page.html`)
 - **Guitar coach = one song at a time**; worksheet is the log, not the script
