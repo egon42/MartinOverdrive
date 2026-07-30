@@ -617,7 +617,8 @@
       {
         "section": "Chorus",
         "chords": "(F# B F# C#) | (F# B C# B F#)",
-        "hint": "Muted stabs; second pass walks down \"drink my life away\""
+        "hint": "Muted stabs; second pass walks down \"drink my life away\"",
+        "remind": "F# major, not minor"
       },
       {
         "section": "Verse 2",

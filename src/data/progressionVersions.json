@@ -7836,6 +7836,52 @@
   ],
   "12-s-o-b": [
     {
+      "label": "chorus remind: F# major not minor",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "~F#",
+          "hint": "Sit out; stomp-clap and vocals only"
+        },
+        {
+          "section": "Verse 1",
+          "chords": "~F# ~B",
+          "hint": "Sit out; B lands \"hold me down\" then \"ashes of you\""
+        },
+        {
+          "section": "Chorus",
+          "chords": "(F# B F# C#) | (F# B C# B F#)",
+          "hint": "Muted stabs; second pass walks down \"drink my life away\"",
+          "remind": "F# major, not minor"
+        },
+        {
+          "section": "Verse 2",
+          "chords": "~F# ~C# ~B",
+          "hint": "Sit out; \"Whoa oh\" ×2 in, C# on \"bury me\""
+        },
+        {
+          "section": "Verse 3",
+          "chords": "~F#",
+          "hint": "Sit out; \"Mmmm hmm\" in, heart line ×4"
+        },
+        {
+          "section": "Outro",
+          "chords": "(F# B F# C#) | (F# B C# B F#)",
+          "hint": "Chorus figure over \"Whoa oh\" stomp-claps to end"
+        }
+      ],
+      "form": [
+        "Intro",
+        "Verse 1",
+        "Chorus",
+        "Verse 2",
+        "Chorus",
+        "Verse 3",
+        "Chorus",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre stage card sit-out verses 2026-07-28",
       "sections": [
         {
