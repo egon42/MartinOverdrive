@@ -1496,22 +1496,26 @@
       {
         "section": "Verse",
         "chords": "G5 A5 E5 C5",
-        "shapes": "355--- 577--- -22--- -35---"
+        "shapes": "355--- 577--- -22--- -35---",
+        "hint": "Whole song but the Bridge; verse, refrain, pre, chorus, solo all ride this loop"
       },
       {
         "section": "Refrain",
         "chords": "G5 A5 E5 C5",
-        "shapes": "355--- 577--- -22--- -35---"
+        "shapes": "355--- 577--- -22--- -35---",
+        "cheatHide": true
       },
       {
         "section": "Pre-Chorus",
         "chords": "G5 A5 E5 C5",
-        "shapes": "355--- 577--- -22--- -35---"
+        "shapes": "355--- 577--- -22--- -35---",
+        "cheatHide": true
       },
       {
         "section": "Chorus",
         "chords": "G5 A5 E5 C5",
-        "shapes": "355--- 577--- -22--- -35---"
+        "shapes": "355--- 577--- -22--- -35---",
+        "cheatHide": true
       },
       {
         "section": "Bridge",
@@ -1522,7 +1526,8 @@
       {
         "section": "Solo",
         "chords": "G5 A5 E5 C5",
-        "shapes": "355--- 577--- -22--- -35---"
+        "shapes": "355--- 577--- -22--- -35---",
+        "cheatHide": true
       }
     ],
     "form": [
