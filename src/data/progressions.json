@@ -1076,14 +1076,13 @@
       {
         "section": "Bridge",
         "chords": "(Em D C D) | (Em D) (C D Em)",
-        "hint": "\"I know nobody knows\" - optional entry, before Verse 2; skip = keep sitting"
+        "remind": "\"I know nobody knows\" - optional; skip = sit"
       },
       {
         "section": "Chorus",
         "chords": "(~Em ~D) (~C ~D) | (~Em ~D) (~Em/C# ~Cmaj7)",
         "shapes": "022000 --0232 -32010 --0232 022000 --0232 -42200 -32000",
-        "remind": "Fill ^1 rides row 2; no chords after",
-        "hint": "Band plays this; you sit. Fill ^1 rides the whole second row: start at the 2nd \"Sing with me\" (final chorus: the 4th) and climb through \"Maybe tomorrow\". First chorus: the climb lands straight on the Climax Am. Final chorus: back to Sit"
+        "remind": "Fill ^1 rides row 2: 2nd Sing with me (final: 4th)"
       },
       {
         "section": "Climax",
