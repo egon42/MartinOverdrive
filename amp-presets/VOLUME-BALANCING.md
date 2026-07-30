@@ -111,9 +111,9 @@ then against the anchor.
 | Pair | Quiet tone | Loud tone | Status after the 2026-07-30 pass | If it still jumps |
 |---|---|---|---|---|
 | **Zombie / Hunger Strike** | 17 QUIET VERSE (clean, VOL 10) | 18 BIG CHORUS (grunge, VOL 2.5) | **Gig-tuned reference pair** — these exact levels were dialed by ear at stage volume | Shouldn't — if it does, the room changed; re-anchor before touching anything |
-| **Teenage Dirtbag / Pink Pony Club** | 19 MUTED VERSE (clean, VOL 7.5) | 20 PUNK CHORUS (pop-punk, VOL 3.5) | Same correction applied on paper, not yet gig-proven | A/B a few times; nudge **20** first |
+| **Teenage Dirtbag / Pink Pony Club** | 19 MUTED VERSE (clean, VOL 7) | 20 PUNK CHORUS (pop-punk, VOL 3.5) | 19 ear-trimmed −0.5 (07-30); 20 still paper-only | A/B a few times; nudge **20** first |
 | **The Pretender** | 21 PRETNDR INTRO (clean, VOL 10) | 22 PRETNDR SLAM (hi-gain, VOL 2.5) | Mirrors the reference pair (same source tones as 2/13) | Slam should be punchy, not painful — it's played slam-only anyway |
-| **WMGGW / Dream On / Mama** | 23 BALLAD CLEAN (clean, VOL 10) | 24 LEAD BOOST (lead, VOL 4) | Boost trimmed on paper, then another −0.5 by ear (07-30) | Keep **24 ~1–1.5 louder** than 23 by ear; drop it if it's overpowering |
+| **WMGGW / Dream On / Mama** | 23 BALLAD CLEAN (clean, VOL 10) | 24 LEAD BOOST (lead, VOL 3.5) | Boost trimmed on paper, then another −1 by ear (07-30) | Keep **24 ~1–1.5 louder** than 23 by ear; drop it if it's overpowering |
 
 Note **22** and **24** are copies of **13 MODERN HI GAIN** and **14 LEAD SOLO** —
 if you change the source presets' feel, keep the pair copies consistent (or just
@@ -134,10 +134,10 @@ bake into the preset files permanently.
 |---|---|---|---|---|---|
 | 1 | BIG CLEAN | 3 | 10 | Clean (+0.5) — at the ceiling | ___ |
 | 2 | CHORUS CLEAN | 2.8 | 10 | Clean (+0.5) — at the ceiling | ___ |
-| 3 | FUNK DRY CLEAN | 3.5 | 7.5 | Clean (+0.5, then −0.5 by ear 07-30) | ___ |
+| 3 | FUNK DRY CLEAN | 3.5 | 7 | Clean (+0.5, then −1 by ear 07-30) | ___ |
 | 4 | ETHEREAL | 2.8 | 8.5 | Clean (+0.5) — check vs Red8 wetness | ___ |
 | 5 | EDGE BREAKUP | 5 | 7.5 | Breakup (0) | ___ |
-| 6 | COUNTRY SNAP | 4 | 6 | Comp'd snap (−0.5 by ear 07-30) | ___ |
+| 6 | COUNTRY SNAP | 4 | 5.5 | Comp'd snap (−1 by ear 07-30) | ___ |
 | 7 | TEXAS BLUES | 6.5 | 5.5 | Dynamic mid-gain (−0.5) | ___ |
 | 8 | PURPLE RAIN | 3 | 8.5 | Comp'd clean (0 — comp already lifts average) | ___ |
 
@@ -150,7 +150,7 @@ bake into the preset files permanently.
 | 11 | POP PUNK | 7 | 4 | Compressed hi-gain (−1) | ___ |
 | 12 | GRUNGE BIG | 6 | 2.5 | Compressed hi-gain (−1) — gig-proven via Red 2 | ___ |
 | 13 | MODERN HI GAIN | 6.5 | 2.5 | **Anchor** (−1) — set room here | ___ |
-| 14 | LEAD SOLO | 7.5 | 5 | Boost (−1, then −0.5 by ear 07-30) — still sits **above** rhythm | ___ |
+| 14 | LEAD SOLO | 7.5 | 4.5 | Boost (−1, then −1 by ear 07-30) — still sits **above** rhythm | ___ |
 | 15 | VOODOO WAH | 7 | 6.5 | Ungated dynamic hi-gain (−0.5) — judge at the sweep peak | ___ |
 | 16 | GLAM ROCK | 6 | 4 | Crunch (−0.5) | ___ |
 
@@ -160,12 +160,12 @@ bake into the preset files permanently.
 |---|---|---|---|---|---|
 | 17 | QUIET VERSE | 2.8 | 10 | Gig-tuned (= #2 base) | ___ |
 | 18 | BIG CHORUS | 6 | 2.5 | Gig-tuned (= #12 base) | ___ |
-| 19 | MUTED VERSE | 3 | 7.5 | Clean (+0.5) | ___ |
+| 19 | MUTED VERSE | 3 | 7 | Clean (+0.5, then −0.5 by ear 07-30) | ___ |
 | 20 | PUNK CHORUS | 7 | 3.5 | Hi-gain (−1, keeps −0.5 vs #11) | ___ |
 | 21 | PRETNDR INTRO | 2.8 | 10 | Clean (= #2) | ___ |
 | 22 | PRETNDR SLAM | 6.5 | 2.5 | Hi-gain (= #13 anchor) | ___ |
 | 23 | BALLAD CLEAN | 3 | 10 | Clean (= #1) | ___ |
-| 24 | LEAD BOOST | 7.5 | 4 | Boost (ear-trimmed 07-30, keeps −1 vs #14) | ___ |
+| 24 | LEAD BOOST | 7.5 | 3.5 | Boost (ear-trimmed 07-30, keeps −1 vs #14) | ___ |
 
 The "Class" column records which correction each preset already carries — **trust
 the meter and your ears**, they override the table.
