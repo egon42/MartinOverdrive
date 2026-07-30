@@ -36,32 +36,29 @@ Run-through #1–#18 (Ryan drives, corrections applied + pushed per song):
 
 ## Next desk
 
-**Resume the set-order run-through at #20 Dirtbag** (then #21 onward, minus Ryan's
-skips). Lean on the Lyrics sheet as the trusted surface — but note #19 set a
-precedent: when Ryan names a practice source (Marty video), that wins over the
-sheets. Card freeze **Thu 7/30 evening**.
+1. ~~Dream On~~ — DONE 7/30: no extra chords after Fill ^1 (Ryan listened); Bridge/
+   Chorus 2 rows each, reminds carry the cues. Signed off.
+2. ~~Tribute~~ — DONE 7/30: fill tabs off the card, ^1/^2/^3 cues folded into Intro hint.
+3. ~~Zombie~~ — DONE 7/30: Hang/Solo/Outro cheatHidden behind the main-look block;
+   real Songsterr solo m85-101 (e+B two-string, 46-char max lines) replaces the
+   hand-made hook/grow-on tabs. **Ryan vets at the guitar tonight.**
+4. ~~#20 Dirtbag~~ — reviewed 7/30 desk, card stands; outro vet moved to tonight's
+   guitar list. Resume set-order run-through at **#21 Lola Montez** (then #22 onward,
+   minus skips).
+
+Card freeze **Thu 7/30 evening**.
 
 ## Next guitar
 
-Body Pre, then in order:
+**Tomorrow (priority):** dedicated **#19 Darkness** block — Marty Music tutorial × a few
+passes; learn individual note pieces (not always full chords) on the hard spots;
+Songsterr rhythm loops after for muscle memory. Always-play flash: **Lola** + Thunderstruck
+(when/where). Body Pre/Post.
 
-1. **#8 Mama card-verify** (Ryan not convinced it's 100%): verse `E]]` ride; pre-chorus
-   cascades on E/B every pass with blue F#5 G#5 lift pres 2+3 only; hundred-times
-   chorus present; blue C D B tag first chorus only; bridge `(G A E) ×3 +B` into solo;
-   solo `+C# +B` tags; Outro = `(C D E) ×3`
-2. **#14 S.O.B. chord-transition reps** (card fine, hands not)
-3. **#18 Zombie outro solo fill**: learn it E-string only first, work the B string in
-   later (Ryan's plan)
-4. **#19 Darkness Songsterr loop reps** (Ryan asked 7/29): set up loops on the
-   rhythm track and drill each card part for muscle memory —
-   <https://www.songsterr.com/a/wsa/darkness-i-believe-in-a-thing-called-love-tab-s522t1>
-   - verse riff `F# A B]] E B A` (ride the B, land the B A catch-up)
-   - bridge `(E F#m) ×3 A A# B` (low grips x022 / 113 / 224)
-   - chorus `(E A F# B) ×3 C#m]] D` (quick 3rd cycle; 446 / 557 tail)
-   - Clap-section lead lick (C#m box @ 9, card Fills) if time
-   This doubles as the Darkness never-skip maintenance for tonight
-5. Wed changeover loop + #10 Pretender catch-up (never-skip trio) + ordered set
-   slice as time allows
+**Tonight (if continuing):** #10 Pretender catch-up (never-skip; missed Tue) →
+guitar vets before the freeze: **#18 Zombie** new solo tab + **#20 Dirtbag** outro rows
+(G#m stab / held 3rd E / slow walk-down) → Thunderstruck feel flash → changeovers /
+ordered slice as energy allows. Body Post before sign-off.
 
 Coach = one song at a time (instruct → play → report → log → next).
 
@@ -75,19 +72,23 @@ Coach = one song at a time (instruct → play → report → log → next).
 
 ## Never skip
 
-Darkness · Pretender · Thunderstruck (when/where) · ordered set slice · body Pre/Post
+Darkness · **Lola Montez** · Thunderstruck (when/where) · ordered set slice · body Pre/Post  
+(**Pretender off always-play 7/29** — still solid / optional. **Lola on** as of 7/29 — passable, needs the reps.)
 
 ## Card / UI TODOs
 
-- **#17 Dani `*~+G` chip**: phone-confirm the new skip-marked-tag rendering on /dev/
-- **#8 Mama**: guitar-verify tonight (list above)
-- #19 Darkness: phone-check the Marty-aligned card on /dev/ (two-row chorus, ghost
-  Clap row, bridge grips); practice vs the video will confirm Solo (big) chords
+- **#11 Dream On**: desk — chords after first chorus Fill ^1? (flagged 7/29 guitar)
+- **#18 Zombie**: Solo outro fill-first layout — finagle tomorrow desk (started 7/29)
+- **#9 Tribute**: desk — trim/remove fills (flagged 7/29; intro bits strong)
+- **#20 Dirtbag**: outro rows never got their guitar vet (tabled 7/27) — vet tonight
+  before freeze
+- **#17 Dani `*~+G` chip**: phone-confirm skip-marked-tag rendering on /dev/
+- **#8 Mama**: signed off 7/10 tonight (skip-tags + Pre remind)
+- #19 Darkness: Marty/note-piece focus tomorrow guitar; phone-check Marty-aligned card
 - Run-through remaining: #20–#32 (minus Ryan's skips)
 - Grammar proposals awaiting guitar vetting (`grammar-proposals-2026-07-28.md`)
 - Ride-scan mediums + ambiguous `=` holds awaiting ear (`ride-scan-proposals-2026-07-29.md`)
-- Welcome Home (#28) Em-cycle: desk fixed; guitar confirm pending (comes up late in
-  the run-through anyway)
+- Welcome Home (#28): Em-cycle + chop-mute/turn cues confirmed guitar 7/29
 - Open flags: Voodoo (#6) hard-stop vs ring (skipped today, low stakes); AGD (#29)
   held final chorus G
 - Freeze after **Thu evening**

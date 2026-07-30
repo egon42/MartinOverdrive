@@ -7567,6 +7567,53 @@
   ],
   "23-lola-montez": [
     {
+      "label": "Pre 7/30 desk tweak: held/ride verse, tagged chorus row 2",
+      "sections": [
+        {
+          "section": "Verse",
+          "chords": "D5]] G5 A5 =D5",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Hold the D5 the second time through"
+        },
+        {
+          "section": "Interlude",
+          "chords": "D G A D",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Lead solos over this loop"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(G A D +Bm) | (G A D +A +Bm +A) | (G A D +Bm) | (G A D *F#m)",
+          "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577-- 244---",
+          "hint": "\"yeah-eah\" ends D; 2nd time play the blue F#m instead, into the Break"
+        },
+        {
+          "section": "Break",
+          "chords": "(D A Bm G) ×2",
+          "shapes": "-577-- 577--- -244-- 355---",
+          "hint": "Off the F#m ending; lead riffs over it"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(A D G Em) | (A D G A)",
+          "shapes": "577--- -577-- 355--- 022--- 577--- -577-- 355--- 577---",
+          "hint": "Vocals \"Oh Lola\" on A, land Em on \"pain\"; chorus rejoins at \"spider dance\""
+        }
+      ],
+      "form": [
+        "Verse",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Break",
+        "Bridge",
+        "Chorus"
+      ]
+    },
+    {
       "label": "pre ride-migration",
       "sections": [
         {
