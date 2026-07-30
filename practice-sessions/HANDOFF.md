@@ -57,7 +57,8 @@ Songsterr rhythm loops after for muscle memory. Always-play flash: **Lola** + Th
 
 **Tonight (if continuing):** #10 Pretender catch-up (never-skip; missed Tue) →
 guitar vets before the freeze: **#18 Zombie** new solo tab + **#20 Dirtbag** outro rows
-(G#m stab / held 3rd E / slow walk-down) → Thunderstruck feel flash → changeovers /
+(G#m stab / held 3rd E / slow walk-down) + **#21 Lola** name the tag chord between
+Break and Bridge (Ryan OK omitting it if unclear) → Thunderstruck feel flash → changeovers /
 ordered slice as energy allows. Body Post before sign-off.
 
 Coach = one song at a time (instruct → play → report → log → next).
@@ -82,6 +83,9 @@ Darkness · **Lola Montez** · Thunderstruck (when/where) · ordered set slice �
 - **#9 Tribute**: desk — trim/remove fills (flagged 7/29; intro bits strong)
 - **#20 Dirtbag**: outro rows never got their guitar vet (tabled 7/27) — vet tonight
   before freeze
+- **#21 Lola**: tag chord between Break and Bridge unidentified — name at the guitar
+  tonight; Ryan is fine omitting it if it stays unclear. Split pill D*F#m phone-OK'd
+  7/30. Bridge remind carries the "Oh Lola" entry cue
 - **#17 Dani `*~+G` chip**: phone-confirm skip-marked-tag rendering on /dev/
 - **#8 Mama**: signed off 7/10 tonight (skip-tags + Pre remind)
 - #19 Darkness: Marty/note-piece focus tomorrow guitar; phone-check Marty-aligned card
