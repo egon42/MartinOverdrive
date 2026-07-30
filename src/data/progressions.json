@@ -4,17 +4,20 @@
       {
         "section": "Intro",
         "chords": "=Em",
-        "hint": "Sit out the lead riff, ringing Em. Start the muted chug on the vocal."
+        "hint": "Sit out the lead riff, ringing Em. Start the chop mute on the vocal.",
+        "remind": "Chop mute — kill after each hit"
       },
       {
         "section": "Verse",
         "chords": "Em C D Em",
-        "hint": "V1 \"You could've been\", V2 \"You stormed off\""
+        "hint": "V1 \"You could've been\", V2 \"You stormed off\"",
+        "remind": "×4 then Chorus"
       },
       {
         "section": "Chorus",
         "chords": "F Am C",
-        "hint": "\"Hang on to the glory\" then \"With truth on the shores\""
+        "hint": "\"Hang on to the glory\" then \"With truth on the shores\"",
+        "remind": "×2; 2nd block → Bridge"
       },
       {
         "section": "Bridge",
