@@ -42,9 +42,10 @@ Run-through #1–#18 (Ryan drives, corrections applied + pushed per song):
 3. ~~Zombie~~ — DONE 7/30: Hang/Solo/Outro cheatHidden behind the main-look block;
    real Songsterr solo m85-101 (e+B two-string, 46-char max lines) replaces the
    hand-made hook/grow-on tabs. **Ryan vets at the guitar tonight.**
-4. ~~#20 Dirtbag~~ — reviewed 7/30 desk, card stands; outro vet moved to tonight's
-   guitar list. Resume set-order run-through at **#21 Lola Montez** (then #22 onward,
-   minus skips).
+4. ~~Run-through~~ — **COMPLETE 7/30** (#20–#32 finished this session; Lola tweaks +
+   split pill, Gently Weeps + Pink Pony folded, HIGA/PPC/Free Bird reminds, PPC
+   Transpose +1). Remaining desk before freeze: **#17 Dani `*~+G` phone-confirm**;
+   then freeze. Fri morning = `gig preflight`.
 
 Card freeze **Thu 7/30 evening**.
 
@@ -90,7 +91,7 @@ Darkness · **Lola Montez** · Thunderstruck (when/where) · ordered set slice �
 - **#17 Dani `*~+G` chip**: phone-confirm skip-marked-tag rendering on /dev/
 - **#8 Mama**: signed off 7/10 tonight (skip-tags + Pre remind)
 - #19 Darkness: Marty/note-piece focus tomorrow guitar; phone-check Marty-aligned card
-- Run-through remaining: #20–#32 (minus Ryan's skips)
+- Run-through COMPLETE 2026-07-30 (#1–#32; skips #3/#6/#7 deliberate)
 - Grammar proposals awaiting guitar vetting (`grammar-proposals-2026-07-28.md`)
 - Ride-scan mediums + ambiguous `=` holds awaiting ear (`ride-scan-proposals-2026-07-29.md`)
 - Welcome Home (#28): Em-cycle + chop-mute/turn cues confirmed guitar 7/29
