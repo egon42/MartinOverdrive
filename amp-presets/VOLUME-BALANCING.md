@@ -1,5 +1,14 @@
 # Mustang I V2 — Volume-Balancing Runbook
 
+> **Status 2026-07-30:** the stored volumes now include a set-wide second pass.
+> The SPL first pass got everything to ~72–73 dB, but the gig-tested Red 1/2 fix
+> showed it under-corrects at stage volume (compressed tones read hotter than
+> they meter): the clean needed **+0.5** and the hi-gain **−1.0** on top of the
+> SPL values. That correction is applied to every preset, graded by compression
+> (cleans +0.5, breakup/comp'd snap 0, dynamic crunch −0.5, compressed hi-gain
+> −1.0). The next pass through this runbook is a **verification** sweep — expect
+> presets to be close, and log residual nudges rather than big moves.
+
 A 30–40 minute pass to **level-match all 24 presets** so nothing jumps out —
 especially the songs that switch between two tones mid-song (the RED-bank pairs),
 where one tone is currently drastically louder than the other.
@@ -12,20 +21,23 @@ where one tone is currently drastically louder than the other.
 
 ---
 
-## Why the jumps are so big right now
+## Why dirt sits so much lower than cleans
 
-The presets already give dirt a slightly lower VOLUME than cleans, but that isn't
-enough, because **distortion is compressed**: a high-gain tone at VOLUME 6 *sounds*
-much louder than a clean tone at VOLUME 7, even though the number is lower. Meters
-and ears both confirm it — compressed signals have a higher average level for the
-same peak.
+**Distortion is compressed**: a high-gain tone at VOLUME 6 *sounds* much louder
+than a clean tone at VOLUME 7, even though the number is lower. Meters and ears
+both confirm it — compressed signals have a higher average level for the same
+peak. That's why the stored values now spread so wide (compressed dirt at
+2.5–4, cleans at 8–10): two balancing passes' worth of that physics is already
+baked in. Don't "fix" the spread by eye — the numbers being far apart is the
+point.
 
-So as you go through this, expect the pattern to be:
+Going through the sweep, expect:
 
-- **Dirty / high-gain presets → pull VOLUME down** (often to ~4.5–5.5).
-- **Clean presets → leave high or nudge up** (~7–7.5).
+- Most presets **already matched** — log residual nudges, not big moves.
 - **Intentional "boost" presets** (14 LEAD SOLO, 24 LEAD BOOST) → keep them
   deliberately ~1 to 1.5 louder than the rhythm tone they replace, so solos cut.
+  A/B **23 ↔ 24** first — the boost was trimmed on paper and needs an ear check
+  that it still cuts.
 
 ---
 
@@ -96,12 +108,12 @@ These are the mid-song switches where a volume jump is most exposed. Balance eac
 pair against *itself* first — the two tones in a pair should feel equally loud —
 then against the anchor.
 
-| Pair | Quiet tone | Loud tone | What's happening now | Fix direction |
+| Pair | Quiet tone | Loud tone | Status after the 2026-07-30 pass | If it still jumps |
 |---|---|---|---|---|
-| **Zombie / Hunger Strike** | 17 QUIET VERSE (clean, VOL 7) | 18 BIG CHORUS (grunge, VOL 6) | Chorus slams way louder than the verse | Pull **18 down** hard (try ~5), maybe nudge **17 up** to 7.5 |
-| **Teenage Dirtbag / Pink Pony Club** | 19 MUTED VERSE (clean, VOL 6.5) | 20 PUNK CHORUS (pop-punk, VOL 6) | Chorus jumps up | Pull **20 down** (~5), raise **19** to ~7 |
-| **The Pretender** | 21 PRETNDR INTRO (clean, VOL 7) | 22 PRETNDR SLAM (hi-gain, VOL 6) | The slam is *meant* to hit hard — but shouldn't bury the vocal | Pull **22 down** just enough that the entrance is punchy, not painful (~5.5) |
-| **WMGGW / Dream On / Mama** | 23 BALLAD CLEAN (clean, VOL 7) | 24 LEAD BOOST (lead, VOL 7) | Lead should be *louder* on purpose — check it isn't *too* much | Keep **24 ~1–1.5 louder** than 23 by ear; drop it if it's overpowering |
+| **Zombie / Hunger Strike** | 17 QUIET VERSE (clean, VOL 10) | 18 BIG CHORUS (grunge, VOL 2.5) | **Gig-tuned reference pair** — these exact levels were dialed by ear at stage volume | Shouldn't — if it does, the room changed; re-anchor before touching anything |
+| **Teenage Dirtbag / Pink Pony Club** | 19 MUTED VERSE (clean, VOL 7.5) | 20 PUNK CHORUS (pop-punk, VOL 3.5) | Same correction applied on paper, not yet gig-proven | A/B a few times; nudge **20** first |
+| **The Pretender** | 21 PRETNDR INTRO (clean, VOL 10) | 22 PRETNDR SLAM (hi-gain, VOL 2.5) | Mirrors the reference pair (same source tones as 2/13) | Slam should be punchy, not painful — it's played slam-only anyway |
+| **WMGGW / Dream On / Mama** | 23 BALLAD CLEAN (clean, VOL 10) | 24 LEAD BOOST (lead, VOL 4.5) | Boost trimmed to ~+1 perceived over 23 (was the worst offender) | Keep **24 ~1–1.5 louder** than 23 by ear; drop it if it's overpowering |
 
 Note **22** and **24** are copies of **13 MODERN HI GAIN** and **14 LEAD SOLO** —
 if you change the source presets' feel, keep the pair copies consistent (or just
@@ -118,45 +130,45 @@ bake into the preset files permanently.
 
 ### AMBER — cleans & low gain
 
-| # | Name | Gain | Current VOL | Tendency | New VOL |
+| # | Name | Gain | Current VOL | Class (correction applied) | New VOL |
 |---|---|---|---|---|---|
-| 1 | BIG CLEAN | 3 | 7 | Clean — hold high / +0.5 | ___ |
-| 2 | CHORUS CLEAN | 2.8 | 7 | Clean — hold high | ___ |
-| 3 | FUNK DRY CLEAN | 3.5 | 7 | Clean — hold high | ___ |
-| 4 | ETHEREAL | 2.8 | 8 | Twin + delay/hall — check vs Red8 wetness | ___ |
-| 5 | EDGE BREAKUP | 5 | 7 | Mild breakup — slight down | ___ |
-| 6 | COUNTRY SNAP | 4 | 7 | Comp'd clean — flat | ___ |
-| 7 | TEXAS BLUES | 6.5 | 7.5 | Mid-gain, already loud — **down** | ___ |
-| 8 | PURPLE RAIN | 3 | 7 | Clean+comp+chorus — flat | ___ |
+| 1 | BIG CLEAN | 3 | 10 | Clean (+0.5) — at the ceiling | ___ |
+| 2 | CHORUS CLEAN | 2.8 | 10 | Clean (+0.5) — at the ceiling | ___ |
+| 3 | FUNK DRY CLEAN | 3.5 | 8 | Clean (+0.5) | ___ |
+| 4 | ETHEREAL | 2.8 | 8.5 | Clean (+0.5) — check vs Red8 wetness | ___ |
+| 5 | EDGE BREAKUP | 5 | 7.5 | Breakup (0) | ___ |
+| 6 | COUNTRY SNAP | 4 | 6.5 | Comp'd snap (0 — comp already lifts average) | ___ |
+| 7 | TEXAS BLUES | 6.5 | 5.5 | Dynamic mid-gain (−0.5) | ___ |
+| 8 | PURPLE RAIN | 3 | 8.5 | Comp'd clean (0 — comp already lifts average) | ___ |
 
 ### GREEN — dirt palette
 
-| # | Name | Gain | Current VOL | Tendency | New VOL |
+| # | Name | Gain | Current VOL | Class (correction applied) | New VOL |
 |---|---|---|---|---|---|
-| 9 | ACDC CRUNCH | 4.5 | 6.5 | Dirt — down (~5.5) | ___ |
-| 10 | CLASSIC ROCK | 6 | 6.5 | Dirt — down (~5.5) | ___ |
-| 11 | POP PUNK | 7 | 6 | Hi-gain — **down** (~5) | ___ |
-| 12 | GRUNGE BIG | 6 | 6 | Hi-gain — **down** (~5) | ___ |
-| 13 | MODERN HI GAIN | 6.5 | 6 | **Anchor** — set room here | ___ |
-| 14 | LEAD SOLO | 7.5 | 7 | Boost — keep **above** rhythm | ___ |
-| 15 | VOODOO WAH | 7 | 7 | Hi-gain — down (~5.5) | ___ |
-| 16 | GLAM ROCK | 6 | 6.5 | Dirt — down (~5.5) | ___ |
+| 9 | ACDC CRUNCH | 4.5 | 5.5 | Crunch (−0.5) | ___ |
+| 10 | CLASSIC ROCK | 6 | 5 | Crunch (−0.5) | ___ |
+| 11 | POP PUNK | 7 | 4 | Compressed hi-gain (−1) | ___ |
+| 12 | GRUNGE BIG | 6 | 2.5 | Compressed hi-gain (−1) — gig-proven via Red 2 | ___ |
+| 13 | MODERN HI GAIN | 6.5 | 2.5 | **Anchor** (−1) — set room here | ___ |
+| 14 | LEAD SOLO | 7.5 | 5.5 | Boost (−1) — still sits **above** rhythm | ___ |
+| 15 | VOODOO WAH | 7 | 6.5 | Ungated dynamic hi-gain (−0.5) — judge at the sweep peak | ___ |
+| 16 | GLAM ROCK | 6 | 4 | Crunch (−0.5) | ___ |
 
 ### RED — quiet↔loud pairs
 
-| # | Name | Gain | Current VOL | Tendency | New VOL |
+| # | Name | Gain | Current VOL | Class (correction applied) | New VOL |
 |---|---|---|---|---|---|
-| 17 | QUIET VERSE | 2.8 | 7 | Clean — up (~7.5) | ___ |
-| 18 | BIG CHORUS | 6 | 6 | Hi-gain — **down** (~5) | ___ |
-| 19 | MUTED VERSE | 3 | 6.5 | Clean — up (~7) | ___ |
-| 20 | PUNK CHORUS | 7 | 6 | Hi-gain — **down** (~5) | ___ |
-| 21 | PRETNDR INTRO | 2.8 | 7 | Clean — hold | ___ |
-| 22 | PRETNDR SLAM | 6.5 | 6 | Slam — down a touch (~5.5) | ___ |
-| 23 | BALLAD CLEAN | 3 | 7 | Clean — hold | ___ |
-| 24 | LEAD BOOST | 7.5 | 7 | Boost — keep above 23 | ___ |
+| 17 | QUIET VERSE | 2.8 | 10 | Gig-tuned (= #2 base) | ___ |
+| 18 | BIG CHORUS | 6 | 2.5 | Gig-tuned (= #12 base) | ___ |
+| 19 | MUTED VERSE | 3 | 7.5 | Clean (+0.5) | ___ |
+| 20 | PUNK CHORUS | 7 | 3.5 | Hi-gain (−1, keeps −0.5 vs #11) | ___ |
+| 21 | PRETNDR INTRO | 2.8 | 10 | Clean (= #2) | ___ |
+| 22 | PRETNDR SLAM | 6.5 | 2.5 | Hi-gain (= #13 anchor) | ___ |
+| 23 | BALLAD CLEAN | 3 | 10 | Clean (= #1) | ___ |
+| 24 | LEAD BOOST | 7.5 | 4.5 | Boost (−1, keeps −1 vs #14) | ___ |
 
-The specific target numbers in "Tendency" are just starting guesses — **trust the
-meter and your ears**, they override the table.
+The "Class" column records which correction each preset already carries — **trust
+the meter and your ears**, they override the table.
 
 ---
 

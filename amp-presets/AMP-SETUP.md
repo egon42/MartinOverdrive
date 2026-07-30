@@ -50,31 +50,37 @@ points, not gospel — the single most useful tweak is each preset's **VOLUME**
 volume. The physical **MASTER** knob stays your global "how loud is the room"
 control and is not stored.
 
+> **Vol columns updated 2026-07-30** to the set-wide second-pass level match
+> (SPL first pass + the gig-derived correction from the Red 1/2 fix: cleans
+> +0.5, crunch −0.5, compressed hi-gain −1.0). `generate_presets.py` is the
+> source of truth if these ever disagree. Overall level dropped a touch —
+> compensate at MASTER.
+
 ### AMBER bank — cleans & low gain
 
 | # | Name | Amp model | Cab | Gain | Vol | Treb | Mid | Bass | Extras / FX |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | BIG CLEAN | '65 Twin Reverb | 2×12 Twin | 3 | 7 | 6 | 5.5 | 6 | Presence 5.5, Large Hall reverb (lvl 4, decay 5) |
-| 2 | CHORUS CLEAN | '65 Twin Reverb | 2×12 Twin | 2.8 | 7 | 5.5 | 5 | 5.5 | Sine Chorus (lvl 5, rate 3, depth 5) + Small Hall (3.5) |
-| 3 | FUNK DRY CLEAN | '65 Deluxe Reverb | 1×12 Deluxe | 3.5 | 7 | 6.5 | 4.5 | 4.5 | Bright ON, '65 Spring reverb (3) |
-| 4 | ETHEREAL | '65 Twin Reverb | 2×12 Twin | 2.8 | 8 | 5.5 | 5 | 5.5 | Mono Delay (4.5/5/4) + Large Hall (5, decay 6) — Tribute intro fills (Red8 wetness, clean) |
-| 5 | EDGE BREAKUP | '57 Deluxe (tweed) | 1×12 Tweed | 5 | 7 | 5.5 | 6 | 5 | '65 Spring reverb (2.5) |
-| 6 | COUNTRY SNAP | '59 Bassman | 4×10 Bassman | 4 | 7 | 6.5 | 5.5 | 4.5 | Bright ON, Compressor (5) + '65 Spring (2) |
-| 7 | TEXAS BLUES | '59 Bassman | 4×10 Bassman | 6.5 | 7.5 | 6 | 6.5 | 5.5 | '63 Spring reverb (3.5) |
-| 8 | PURPLE RAIN | '65 Twin Reverb | 2×12 Twin | 3 | 7 | 5.5 | 5 | 6 | Compressor (4.5) + deep Sine Chorus (lvl 6, depth 7) + big Large Hall (5.5, decay 6.5) |
+| 1 | BIG CLEAN | '65 Twin Reverb | 2×12 Twin | 3 | 10 | 6 | 5.5 | 6 | Presence 5.5, Large Hall reverb (lvl 4, decay 5) |
+| 2 | CHORUS CLEAN | '65 Twin Reverb | 2×12 Twin | 2.8 | 10 | 5.5 | 5 | 5.5 | Sine Chorus (lvl 5, rate 3, depth 5) + Small Hall (3.5) |
+| 3 | FUNK DRY CLEAN | '65 Deluxe Reverb | 1×12 Deluxe | 3.5 | 8 | 6.5 | 4.5 | 4.5 | Bright ON, '65 Spring reverb (3) |
+| 4 | ETHEREAL | '65 Twin Reverb | 2×12 Twin | 2.8 | 8.5 | 5.5 | 5 | 5.5 | Mono Delay (4.5/5/4) + Large Hall (5, decay 6) — Tribute intro fills (Red8 wetness, clean) |
+| 5 | EDGE BREAKUP | '57 Deluxe (tweed) | 1×12 Tweed | 5 | 7.5 | 5.5 | 6 | 5 | '65 Spring reverb (2.5) |
+| 6 | COUNTRY SNAP | '59 Bassman | 4×10 Bassman | 4 | 6.5 | 6.5 | 5.5 | 4.5 | Bright ON, Compressor (5) + '65 Spring (2) |
+| 7 | TEXAS BLUES | '59 Bassman | 4×10 Bassman | 6.5 | 5.5 | 6 | 6.5 | 5.5 | '63 Spring reverb (3.5) |
+| 8 | PURPLE RAIN | '65 Twin Reverb | 2×12 Twin | 3 | 8.5 | 5.5 | 5 | 6 | Compressor (4.5) + deep Sine Chorus (lvl 6, depth 7) + big Large Hall (5.5, decay 6.5) |
 
 ### GREEN bank — dirt palette
 
 | # | Name | Amp model | Cab | Gain | Vol | Treb | Mid | Bass | Extras / FX |
 |---|---|---|---|---|---|---|---|---|---|
-| 9 | ACDC CRUNCH | British '80s (JCM800-ish) | 4×12 M | 4.5 | 6.5 | 6 | 6 | 5 | Presence 6, no FX — dry AC/DC crunch |
-| 10 | CLASSIC ROCK | British '70s (Plexi-ish) | 4×12 G | 6 | 6.5 | 6 | 6.5 | 5.5 | Presence 6, Small Room reverb (2) |
-| 11 | POP PUNK | British '80s | 4×12 M | 7 | 6 | 5.5 | 5.5 | 6.5 | Presence 5.5, noise gate low |
-| 12 | GRUNGE BIG | American '90s | 4×12 V | 6 | 6 | 5.5 | 4.5 | 6.5 | Noise gate low, mids slightly scooped |
-| 13 | MODERN HI GAIN | Metal 2000 | 4×12 M | 6.5 | 6 | 6 | 5 | 6 | Presence 6, noise gate medium |
-| 14 | LEAD SOLO | British '70s | 4×12 G | 7.5 | 7 | 5.5 | **7** | 5 | Mono Delay (lvl 4, time 4.5, fdbk 3.5) + Small Hall (3) — mid-pushed so solos cut |
-| 15 | VOODOO WAH | '59 Bassman | 4×10 Bassman | 7 | 7 | 6 | 6 | 5.5 | **Touch Wah** (mix 8, sens 6, heel 3, toe 7) + '63 Spring (3) |
-| 16 | GLAM ROCK | British '80s | 4×12 M | 6 | 6.5 | 6.5 | 6 | 5 | Presence 6.5, Small Room (2) — bright Darkness-style crunch |
+| 9 | ACDC CRUNCH | British '80s (JCM800-ish) | 4×12 M | 4.5 | 5.5 | 6 | 6 | 5 | Presence 6, no FX — dry AC/DC crunch |
+| 10 | CLASSIC ROCK | British '70s (Plexi-ish) | 4×12 G | 6 | 5 | 6 | 6.5 | 5.5 | Presence 6, Small Room reverb (2) |
+| 11 | POP PUNK | British '80s | 4×12 M | 7 | 4 | 5.5 | 5.5 | 6.5 | Presence 5.5, noise gate low |
+| 12 | GRUNGE BIG | American '90s | 4×12 V | 6 | 2.5 | 5.5 | 4.5 | 6.5 | Noise gate low, mids slightly scooped |
+| 13 | MODERN HI GAIN | Metal 2000 | 4×12 M | 6.5 | 2.5 | 6 | 5 | 6 | Presence 6, noise gate medium |
+| 14 | LEAD SOLO | British '70s | 4×12 G | 7.5 | 5.5 | 5.5 | **7** | 5 | Mono Delay (lvl 4, time 4.5, fdbk 3.5) + Small Hall (3) — mid-pushed so solos cut |
+| 15 | VOODOO WAH | '59 Bassman | 4×10 Bassman | 7 | 6.5 | 6 | 6 | 5.5 | **Touch Wah** (mix 8, sens 6, heel 3, toe 7) + '63 Spring (3) |
+| 16 | GLAM ROCK | British '80s | 4×12 M | 6 | 4 | 6.5 | 6 | 5 | Presence 6.5, Small Room (2) — bright Darkness-style crunch |
 
 ### RED bank — quiet↔loud pairs (one knob-click apart)
 
@@ -354,14 +360,14 @@ limits first (all from the Mustang v.2 owner's manual):
 
 | Amp-type row | GREEN slot | RED slot |
 |---|---|---|
-| '57 Deluxe | #5 EDGE BREAKUP (g5 v7 t5.5 b5, DLY/REV C1, level low) | — spare |
-| '59 Bassman | #6 COUNTRY SNAP (g4 v7 t6.5 b4.5, C1 low) | #7 TEXAS BLUES (g6.5 v7.5 t6 b5.5, C2) |
-| '65 Twin Reverb | #1/#2 BIG/CHORUS CLEAN (g3 v7 t6 b6, B3 low; add MOD A1 low for chorus) | #8 PURPLE RAIN (g3 v7 t5.5 b6, MOD A2, B3 generous) |
-| British '60s | #10 CLASSIC ROCK stand-in (g6 v6.5 t6 b5.5) | #14 LEAD stand-in (g7.5 v7 t5.5 b5, DLY/REV **D1** = tape delay + large hall in one) |
-| British '80s | #9 ACDC CRUNCH (g4.5 v6.5 t6 b5, no FX) | #11 POP PUNK (g7 v6 t5.5 b6.5) |
-| American '90s | #12 GRUNGE BIG (g6 v6 t5.5 b6.5) | — spare |
-| Metal 2000 | #13 MODERN HI GAIN (g6.5 v6 t6 b6) | — spare |
-| Super-Sonic | #15 VOODOO stand-in (g7 v7 t6 b5.5, MOD **B1** Touch Wah, C2) | — spare |
+| '57 Deluxe | #5 EDGE BREAKUP (g5 v7.5 t5.5 b5, DLY/REV C1, level low) | — spare |
+| '59 Bassman | #6 COUNTRY SNAP (g4 v6.5 t6.5 b4.5, C1 low) | #7 TEXAS BLUES (g6.5 v5.5 t6 b5.5, C2) |
+| '65 Twin Reverb | #1/#2 BIG/CHORUS CLEAN (g3 v10 t6 b6, B3 low; add MOD A1 low for chorus) | #8 PURPLE RAIN (g3 v8.5 t5.5 b6, MOD A2, B3 generous) |
+| British '60s | #10 CLASSIC ROCK stand-in (g6 v5 t6 b5.5) | #14 LEAD stand-in (g7.5 v5.5 t5.5 b5, DLY/REV **D1** = tape delay + large hall in one) |
+| British '80s | #9 ACDC CRUNCH (g4.5 v5.5 t6 b5, no FX) | #11 POP PUNK (g7 v4 t5.5 b6.5) |
+| American '90s | #12 GRUNGE BIG (g6 v2.5 t5.5 b6.5) | — spare |
+| Metal 2000 | #13 MODERN HI GAIN (g6.5 v2.5 t6 b6) | — spare |
+| Super-Sonic | #15 VOODOO stand-in (g7 v6.5 t6 b5.5, MOD **B1** Touch Wah, C2) | — spare |
 
 Compromises vs. the file-based layout: British '70s tones (#10, #14) run on
 British '60s instead; the '65 Deluxe cleans (#3, #19) and the acoustic sim
