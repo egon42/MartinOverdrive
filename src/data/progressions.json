@@ -1121,25 +1121,26 @@
       {
         "section": "Verse",
         "chords": "D5 G5 A5 D5",
-        "shapes": "-577-- 355--- 577--- -577--"
+        "shapes": "-577-- 355--- 577--- -577--",
+        "remind": "mostly palm mute"
       },
       {
         "section": "Interlude",
-        "chords": "D G A D",
+        "chords": "D5 G5 A5 D5",
         "shapes": "-577-- 355--- 577--- -577--",
         "hint": "Lead solos over this loop"
       },
       {
         "section": "Chorus",
-        "chords": "(G A D]] +Bm) | (G A +D +A +Bm A) | (G A D]] +Bm) | (G A D*F#m)",
+        "chords": "(G5 A5 D5]] +B5) | (G5 A5 +D5 +A5 +B5 A5) | (G5 A5 D5]] +B5) | (G5 A5 D5*F#5)",
         "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577-- 244---",
-        "hint": "\"yeah-eah\" ends D; 2nd time play the blue F#m instead, into the Break"
+        "hint": "Powers; \"yeah-eah\" ends D5; 2nd time play the blue F#5 instead, into the Break"
       },
       {
         "section": "Break",
-        "chords": "(D A Bm G) ×2",
+        "chords": "(D5 A5 B5 G5) ×2",
         "shapes": "-577-- 577--- -244-- 355---",
-        "hint": "Off the F#m ending; lead riffs over it"
+        "hint": "Off the F#5 ending; lead riffs over it"
       },
       {
         "section": "Bridge",
