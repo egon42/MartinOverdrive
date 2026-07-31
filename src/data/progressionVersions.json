@@ -1944,6 +1944,71 @@
   ],
   "16-teenage-dirtbag": [
     {
+      "label": "before outro scroll remind",
+      "sections": [
+        {
+          "section": "Intro",
+          "chords": "E B E A",
+          "shapes": "022100 -24442 022100 -02220"
+        },
+        {
+          "section": "Verse",
+          "chords": "E B E A",
+          "shapes": "022100 -24442 022100 -02220",
+          "hint": "Quiet palm mute, full chords; \"Noelle\" / \"boyfriend\" / \"mold\""
+        },
+        {
+          "section": "Pre-Chorus",
+          "chords": "C#m A B",
+          "shapes": "-46654 -02220 -24442",
+          "hint": "\"know who I am\""
+        },
+        {
+          "section": "Chorus",
+          "chords": "E A B +C#m +G#m",
+          "shapes": "022100 -02220 -24442 -46654 466444",
+          "hint": "Big open. Sit out muted at \"two tickets\""
+        },
+        {
+          "section": "Walk-up",
+          "chords": "E A B +C#m +G#m +A +B",
+          "shapes": "022100 -02220 -24442 -46654 466444 -02220 -24442",
+          "hint": "Chorus line again off \"with me\", A B on the end"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(E Asus2) ×3 +C#m +G#m +A +B",
+          "shapes": "022100 -02200 -46654 466444 -02220 -24442",
+          "hint": "\"Oh yeah, Dirtbag\" vamp; C#m at \"what she's missing\""
+        },
+        {
+          "section": "Outro",
+          "chords": "(E B E A +G#m) | (E B =E) | (A G#m F#m E)",
+          "shapes": "022100 -24442 022100 -02220 466444 022100 -24442 022100 -02220 466444 244222 022100",
+          "hint": "G#m stab after the A; hold the 3rd E, then slow the walk-down to a big E"
+        }
+      ],
+      "form": [
+        "Intro ×2",
+        "Verse ×3",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Walk-up",
+        "Intro ×2",
+        "Verse ×3",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Walk-up",
+        "Bridge ×2",
+        "Verse ×4",
+        "Pre-Chorus ×2",
+        "Chorus ×3",
+        "Walk-up",
+        "Bridge ×2",
+        "Outro"
+      ]
+    },
+    {
       "label": "pre held-chip marks 2026-07-28",
       "sections": [
         {
