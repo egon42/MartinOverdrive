@@ -7680,6 +7680,55 @@
   ],
   "23-lola-montez": [
     {
+      "label": "before remove mistaken scroll remind",
+      "sections": [
+        {
+          "section": "Verse",
+          "chords": "D5 G5 A5 D5",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "remind": "mostly palm mute"
+        },
+        {
+          "section": "Interlude",
+          "chords": "D5 G5 A5 D5",
+          "shapes": "-577-- 355--- 577--- -577--",
+          "hint": "Lead solos over this loop"
+        },
+        {
+          "section": "Chorus",
+          "chords": "(G5 A5 D5]] +B5) | (G5 A5 +D5 +A5 +B5 A5) | (G5 A5 D5]] +B5) | (G5 A5 D5*F#5)",
+          "shapes": "355--- 577--- -577-- -244-- 355--- 577--- -577-- 577--- -244-- 577--- 355--- 577--- -577-- -244-- 355--- 577--- -577-- 244---",
+          "remind": "scroll down for Break / Bridge",
+          "hint": "Powers; \"yeah-eah\" ends D5; 2nd time play the blue F#5 instead, into the Break"
+        },
+        {
+          "section": "Break",
+          "chords": "(D5 A5 B5 G5) ×2",
+          "shapes": "-577-- 577--- -244-- 355---",
+          "hint": "Off the F#5 ending; lead riffs over it"
+        },
+        {
+          "section": "Bridge",
+          "chords": "(A D G Em) | (A D G A)",
+          "shapes": "577--- -577-- 355--- 022--- 577--- -577-- 355--- 577---",
+          "remind": "Starts right after \"Oh Lola\"",
+          "hint": "Land Em on \"pain\"; chorus rejoins at \"spider dance\""
+        }
+      ],
+      "form": [
+        "Verse",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Interlude",
+        "Verse",
+        "Chorus",
+        "Break",
+        "Bridge",
+        "Chorus"
+      ]
+    },
+    {
       "label": "before chorus scroll remind",
       "sections": [
         {
