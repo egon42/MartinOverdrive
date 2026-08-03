@@ -12,6 +12,7 @@ import path from 'node:path'
 import process from 'node:process'
 
 const SETLIST = 'src/data/setlist.json'
+const SETLISTS = 'src/data/setlists.json'
 const SHEETS_DIR = 'src/data/sheets'
 const PROGRESSIONS = 'src/data/progressions.json'
 const PROG_VERSIONS = 'src/data/progressionVersions.json'
@@ -139,6 +140,7 @@ if (chordLiteralTs && chordLiteralUg && chordLiteralTs !== chordLiteralUg) {
 
 // --- Load data ------------------------------------------------------------------
 const setlist = readJson(SETLIST)
+const setlists = readJson(SETLISTS)
 const progressions = readJson(PROGRESSIONS)
 const progressionVersions = readJson(PROG_VERSIONS)
 const tabLinks = readJson(TAB_LINKS)
@@ -328,6 +330,47 @@ if (ampPresets && typeof ampPresets === 'object') {
   }
 }
 
+// --- Check 8: setlists.json (hand-curated premade practice setlists) --------------
+// The app drops a songId that isn't in the catalog so show mode keeps walking, which
+// means a typo (or a song staged here before it lands in setlist.json) is invisible at
+// runtime. This is the only place it gets caught.
+// `null` / a scalar parses fine but would throw at module init in src/setlists.ts
+// (raw.setlists.map), so an unusable-but-parseable file has to fail here too.
+let premadeSetlistCount = 0
+if (!setlists || typeof setlists !== 'object') {
+  // Unreadable/unparseable already pushed a blocker; don't double-report it.
+  if (!blockers.some((blocker) => blocker.includes(SETLISTS))) fail(SETLISTS, `Must be an object with a "setlists" array.`)
+} else {
+  const lists = Array.isArray(setlists.setlists) ? setlists.setlists : null
+  if (!lists) fail(SETLISTS, `Top-level "setlists" must be an array.`)
+  else {
+    const seenIds = new Set()
+    lists.forEach((list, index) => {
+      const id = list && typeof list.id === 'string' ? list.id.trim() : ''
+      const scope = `${SETLISTS} ${id ? `"${id}"` : `#${index + 1}`}`
+      if (!id) { fail(scope, `Setlist #${index + 1}: empty "id".`); return }
+      if (seenIds.has(id)) fail(scope, `Duplicate setlist id "${id}".`)
+      seenIds.add(id)
+      premadeSetlistCount += 1
+      // 'full' is FULL_SET_ID in src/setlists.ts — keep this literal in sync with it.
+      if (id === 'full') fail(scope, `Setlist id "full" is reserved for the Full set.`)
+      if (typeof list.name !== 'string' || !list.name.trim()) fail(scope, `Empty "name".`)
+      if (typeof list.description !== 'string' || !list.description.trim()) fail(scope, `Empty "description".`)
+      if (!Array.isArray(list.songIds) || !list.songIds.length) {
+        fail(scope, `"songIds" must be a non-empty array.`)
+        return
+      }
+      const seenSongs = new Set()
+      for (const songId of list.songIds) {
+        if (typeof songId !== 'string' || !songId.trim()) { fail(scope, `songIds contains a non-string entry: ${JSON.stringify(songId)}.`); continue }
+        if (seenSongs.has(songId)) fail(scope, `Duplicate songId "${songId}" within the setlist.`)
+        seenSongs.add(songId)
+        if (!songIds.has(songId)) fail(scope, `songId "${songId}" is not in the setlist (it will be dropped silently in the app).`)
+      }
+    })
+  }
+}
+
 // --- Report ---------------------------------------------------------------------
 for (const blocker of blockers) console.error(`BLOCKER: ${blocker}`)
 
@@ -356,5 +399,5 @@ if (blockers.length || findings.size) {
 console.log(`Song-data validation passed: ${songs.length} songs, ${sheetEntries.length} sheet files, ` +
   `${Object.keys(progressions).length} cheat cards (+${archivedVersionCount} archived versions), ` +
   `${Object.keys(tabLinks).length} tab-link entries, ${scrollSpeedCount} scroll-speed seeds, ` +
-  `${ampPresetCount} amp-preset entries. ` +
+  `${ampPresetCount} amp-preset entries, ${premadeSetlistCount} premade setlists. ` +
   `CHORD_RE in sync across ${CHORDS_TS} and ${UG_SCRIPT}.`)

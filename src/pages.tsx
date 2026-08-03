@@ -9,7 +9,8 @@ import { transposeFor, transposeLabel, transposeHint } from './transpose'
 import { sheetsFor } from './sheets'
 import { SyncPanel } from './sync'
 import { LiveOverlay, useLive } from './live'
-import { setOrdered, tonightsSongs } from './setlist'
+import { setOrdered } from './setlist'
+import { activeWalkSongs, premadeSetlistById, useActiveSetlist } from './setlists'
 import { shapesTabClass, useSettings } from './settings'
 import { statuses, type PracticeEntry, type Song } from './types'
 
@@ -290,13 +291,16 @@ function PrintSongCell({ song, position, total, notes }: { song: Song, position:
   </article>
 }
 
-/** Paper backup of the Stage cards (/print): tonight's set in order, one song per
+/** Paper backup of the Stage cards (/print): the active setlist in order, one song per
  *  printed sheet, reusing the live CheatCard so paper can never drift from the app.
  *  The .print-set styles carry the white-paper look on screen too (a true preview);
  *  grayscale re-encoding of the chip colors lives in styles.css under .print-set. */
 export function PrintCardsPage() {
   const { get } = usePractice()
-  const setSongs = tonightsSongs(get)
+  const [activeSetlistId] = useActiveSetlist()
+  const premade = premadeSetlistById(activeSetlistId)
+  const setSongs = activeWalkSongs(get, activeSetlistId)
+  const setLabel = premade ? premade.name : 'tonight’s set'
   const today = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
   // Four cards per printed sheet, 2×2. Chunked in JS and sized in real inches (see
   // .print-sheet) so a sheet can never fragment across pages: every quadrant fits or
@@ -305,12 +309,12 @@ export function PrintCardsPage() {
   for (let i = 0; i < setSongs.length; i += 4) sheets.push(setSongs.slice(i, i + 4))
   return <>
     <header className="page-title compact print-hide"><h1>Stage cards</h1></header>
-    <div className="sort-row print-hide"><span>Paper backup for a dead phone: tonight&rsquo;s {setSongs.length} songs, four per page.</span><div className="actions">
+    <div className="sort-row print-hide"><span>Paper backup for a dead phone: {premade ? `${premade.name}, ` : 'tonight’s '}{setSongs.length} songs, four per page.</span><div className="actions">
       <button onClick={() => window.print()}>Print stage cards</button>
       <Link className="button secondary" to="/set">Tonight&rsquo;s set</Link>
     </div></div>
     <div className="print-set">
-      <p className="print-set-meta">Martin Overdrive · tonight&rsquo;s set · printed {today}</p>
+      <p className="print-set-meta">Martin Overdrive · {setLabel} · printed {today}</p>
       {sheets.map((sheet, sheetIndex) => <div className="print-sheet" key={sheetIndex}>
         {sheet.map((song, songIndex) =>
           <PrintSongCell song={song} position={sheetIndex * 4 + songIndex + 1} total={setSongs.length} notes={get(song.id).notes.trim()} key={song.id} />)}
@@ -347,16 +351,26 @@ export function Show() {
   const { get } = usePractice()
   const live = useLive()
   const following = live.config?.role === 'follow'
-  // Tonight's set (skips + order from the Set page) — falls back to the full setlist
-  // when nothing is configured. `get` is stable per practice-state change. While
-  // following a live leader the walk list is the FULL ordered set (skips ignored):
-  // navigation belongs to the leader, whose song must stay findable here even if
-  // this device skipped it at soundcheck.
-  const setSongs = useMemo(() => following ? setOrdered(get) : tonightsSongs(get), [get, following])
+  const [activeSetlistId] = useActiveSetlist()
+  // The active setlist (see setlists.ts): the Full set means tonight's skips + order
+  // from the Set page, a premade list means its curated order. `get` is stable per
+  // practice-state change. While following a live leader the walk list is the FULL
+  // ordered set (skips and the picker ignored): navigation belongs to the leader, whose
+  // song must stay findable here even if this device skipped it at soundcheck.
+  const premade = following ? undefined : premadeSetlistById(activeSetlistId)
+  // An explicit /show/:songId link to a song OUTSIDE the active premade list (the Stage
+  // view button on any song page) must open that song, not get captured by the playlist:
+  // walk the full set for that navigation. The picker itself is left untouched.
+  const outsideLink = !!premade && !!urlSongId && !premade.songs.some((item) => item.id === urlSongId)
+  const setSongs = useMemo(() => (following || outsideLink) ? setOrdered(get) : activeWalkSongs(get, activeSetlistId), [get, following, outsideLink, activeSetlistId])
   // Song id lives in the URL (`/show/:songId`) so the browser back/forward buttons
   // step through songs instead of leaving show mode. Bare `/show` (nav links) falls
   // back to the persisted id; skipped/missing ids resume at the next active slot.
-  const index = resolveShowIndex(urlSongId || localStorage.getItem(SHOW_INDEX_KEY) || '', setSongs, get)
+  const saved = urlSongId || localStorage.getItem(SHOW_INDEX_KEY) || ''
+  // Premade lists are short practice playlists: a persisted song that isn't in one has
+  // no meaningful "next active slot" there, so open at the top instead of letting the
+  // full-set-position fallback land on an arbitrary (often last) slot.
+  const index = premade && !outsideLink ? Math.max(0, setSongs.findIndex((item) => item.id === saved)) : resolveShowIndex(saved, setSongs, get)
   const wakeLock = useRef<any>(null); const song = setSongs[Math.min(index, setSongs.length - 1)]
   // Canonicalize the URL onto the resolved song (bare `/show`, skipped id, set-list
   // edits that drop the current song). replace — don't invent a history entry for a

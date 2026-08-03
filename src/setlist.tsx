@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { songs } from './data'
+import { FULL_SET_ID, premadeSetlistById, premadeSetlists, useActiveSetlist } from './setlists'
 import { usePractice } from './storage'
 import type { PracticeEntry, Song } from './types'
 
@@ -24,6 +25,32 @@ export function tonightsSongs(get: (id: string) => PracticeEntry): Song[] {
 
 export function SetlistPage() {
   const { get, patch } = usePractice()
+  const [activeId, setActiveId] = useActiveSetlist()
+  const premade = premadeSetlistById(activeId)
+  // Device-local pick (see setlists.ts) — changing it never writes practice state, so
+  // tonight's skips and order survive a detour through a premade practice list.
+  // print-hide: the printed set list is a paper backup, and today's paper output has no
+  // control widgets on it. Keep it that way.
+  const picker = <label className="print-hide">Setlist <select value={premade ? premade.id : FULL_SET_ID} onChange={(e) => setActiveId(e.target.value)}>
+    <option value={FULL_SET_ID}>Full set</option>
+    {premadeSetlists.map((setlist) => <option key={setlist.id} value={setlist.id}>{setlist.name}</option>)}
+  </select></label>
+  // Premade lists are read-only: fixed order, no skips, no reorder. Print and Show mode
+  // still work because they walk the same active list (activeWalkSongs).
+  if (premade) return <>
+    <header className="page-title compact"><h1>{premade.name}</h1><p>{premade.description}</p></header>
+    <div className="sort-row">{picker}<span>{premade.songs.length} songs in a fixed order. Tonight’s set tools apply to the Full set.</span><div className="actions">
+      <button className="secondary" onClick={() => window.print()}>Print set list</button>
+      <Link className="button secondary" to="/print">Print stage cards</Link>
+      <Link className="button" to="/show">Show mode</Link>
+    </div></div>
+    <div className="setlist-rows">
+      {premade.songs.map((song, index) => <div className="setlist-row" key={song.id}>
+        <span className="setlist-seat">{String(index + 1).padStart(2, '0')}</span>
+        <div className="setlist-main"><Link to={`/song/${song.id}`}><h3>{song.title}</h3></Link><p>{song.artist}{song.tuning !== 'Standard' ? ` · ${song.tuning}` : ''}</p></div>
+      </div>)}
+    </div>
+  </>
   const ordered = setOrdered(get)
   const active = ordered.filter((song) => !get(song.id).skipTonight)
   const customized = ordered.some((song) => { const entry = get(song.id); return entry.setPosition !== 0 || entry.skipTonight })
@@ -46,7 +73,7 @@ export function SetlistPage() {
   let liveIndex = 0
   return <>
     <header className="page-title compact"><h1>Tonight’s set</h1></header>
-    <div className="sort-row"><span>{active.length ? `${active.length} of ${songs.length} songs in the set` : 'Every song is skipped. Show mode will use the full set.'}</span><div className="actions">
+    <div className="sort-row">{picker}<span>{active.length ? `${active.length} of ${songs.length} songs in the set` : 'Every song is skipped. Show mode will use the full set.'}</span><div className="actions">
       {customized && <button className="secondary" onClick={reset}>Reset to full set order</button>}
       <button className="secondary" onClick={() => window.print()}>Print set list</button>
       <Link className="button secondary" to="/print">Print stage cards</Link>

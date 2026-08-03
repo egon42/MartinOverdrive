@@ -1,0 +1,32 @@
+{
+  "setlists": [
+    {
+      "id": "noodling",
+      "name": "Noodling",
+      "description": "Slow burners with room to stretch out and improvise.",
+      "songIds": [
+        "33-wicked-game",
+        "19-purple-rain",
+        "08-while-my-guitar-gently-weeps",
+        "24-mary-jane-s-last-dance",
+        "26-voodoo-child-slight-return",
+        "34-comfortably-numb"
+      ]
+    },
+    {
+      "id": "woodshed",
+      "name": "Woodshed",
+      "description": "Technique circuit: stamina, shuffle, arpeggios, funk, solos.",
+      "songIds": [
+        "20-when-i-come-around",
+        "09-pride-and-joy",
+        "22-dream-on",
+        "15-dani-california",
+        "05-thunderstruck",
+        "10-zombie",
+        "26-voodoo-child-slight-return",
+        "32-free-bird"
+      ]
+    }
+  ]
+}
