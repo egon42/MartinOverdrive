@@ -18,7 +18,7 @@ per-song presets for the 31-song Martin Overdrive set list.
 ## 1. The plan (read this first)
 
 Your amp stores **24 presets** (PRESET knob, three color banks: AMBER 1–8,
-GREEN 1–8, RED 1–8). The set has **31 songs**, and several need two tones
+GREEN 1–8, RED 1–8). The set has **34 songs**, and several need two tones
 (quiet verse → big chorus), so a strict "preset 1 = song 1" mapping physically
 can't fit. Working cover guitarists solve this with a small bank of shared core
 tones — audiences don't notice per-song tone differences unless they're very
@@ -63,7 +63,7 @@ control and is not stored.
 | 1 | BIG CLEAN | '65 Twin Reverb | 2×12 Twin | 3 | 10 | 6 | 5.5 | 6 | Presence 5.5, Large Hall reverb (lvl 4, decay 5) |
 | 2 | CHORUS CLEAN | '65 Twin Reverb | 2×12 Twin | 2.8 | 10 | 5.5 | 5 | 5.5 | Sine Chorus (lvl 5, rate 3, depth 5) + Small Hall (3.5) |
 | 3 | FUNK DRY CLEAN | '65 Deluxe Reverb | 1×12 Deluxe | 3.5 | 7 | 6.5 | 4.5 | 4.5 | Bright ON, '65 Spring reverb (3) |
-| 4 | ETHEREAL | '65 Twin Reverb | 2×12 Twin | 2.8 | 8.5 | 5.5 | 5 | 5.5 | Mono Delay (4.5/5/4) + Large Hall (5, decay 6) — Tribute intro fills (Red8 wetness, clean) |
+| 4 | ETHEREAL | '65 Twin Reverb | 2×12 Twin | 2.8 | 8.5 | 5.5 | 5 | 5.5 | Mono Delay (4.5/5/4) + Large Hall (5, decay 6) — Tribute intro fills (Red8 wetness, clean) / Wicked Game lead |
 | 5 | EDGE BREAKUP | '57 Deluxe (tweed) | 1×12 Tweed | 5 | 7.5 | 5.5 | 6 | 5 | '65 Spring reverb (2.5) |
 | 6 | COUNTRY SNAP | '59 Bassman | 4×10 Bassman | 4 | 5.5 | 6.5 | 5.5 | 4.5 | Bright ON, Compressor (5) + '65 Spring (2) |
 | 7 | TEXAS BLUES | '59 Bassman | 4×10 Bassman | 6.5 | 5.5 | 6 | 6.5 | 5.5 | '63 Spring reverb (3.5) |
@@ -92,7 +92,7 @@ control and is not stored.
 | 20 | PUNK CHORUS | #11 Pop Punk | Teenage Dirtbag / Pink Pony Club choruses |
 | 21 | PRETNDR INTRO | #2 Chorus Clean | The Pretender intro |
 | 22 | PRETNDR SLAM | #13 Modern Hi Gain | The Pretender heavy entrance |
-| 23 | BALLAD CLEAN | #1 Big Clean | Dream On / WMGGW / Mama verses |
+| 23 | BALLAD CLEAN | #1 Big Clean | Dream On / WMGGW / Mama verses / Comfortably Numb |
 | 24 | LEAD BOOST | #14 Lead Solo | The solo one click up from 23 |
 
 ---
@@ -133,6 +133,8 @@ control and is not stored.
 | 30 | Pink Pony Club | **19 ↔ 20** | Verse 19, chorus 20 |
 | 31 | Banditos | **5** | Or 6 for more twang |
 | 32 | Free Bird | **1 → 10** | Encore/request; ballad clean → outro classic rock |
+| 33 | Wicked Game | **3 ↔ 4** | Noodling extra; arpeggio rhythm on 3, wet lead on 4 |
+| 34 | Comfortably Numb | **23 ↔ 24** | Noodling extra; clean rhythm 23, both solos + outro on 24 |
 
 Turning the PRESET knob steps one preset at a time (…8 → 9 crosses AMBER→GREEN,
 16 → 17 crosses GREEN→RED), so every ↔ pair above is a single click. Fender's

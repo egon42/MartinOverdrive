@@ -1643,5 +1643,143 @@
       "Refrain",
       "Outro"
     ]
+  },
+  "33-wicked-game": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "(Bm A E E) ×4",
+        "shapes": "-24432 -02220 022100 022100",
+        "hint": "16 bars. Arpeggiate the loop, let it ring. Bm 1 bar, A 1 bar, E 2 bars."
+      },
+      {
+        "section": "Verse",
+        "chords": "(Bm A E E) ×4",
+        "shapes": "-24432 -02220 022100 022100",
+        "hint": "16 bars, same loop under the vocal. V1 \"The world was on fire\"."
+      },
+      {
+        "section": "Chorus",
+        "chords": "(Bm A E E) ×2",
+        "shapes": "-24432 -02220 022100 022100",
+        "hint": "8 bars. Same loop, no lift. \"No, I don't want...\""
+      },
+      {
+        "section": "Bridge",
+        "chords": "(Bm A E E) ×2",
+        "shapes": "-24432 -02220 022100 022100",
+        "hint": "8 bars, still the loop. \"What a wicked game...\""
+      },
+      {
+        "section": "Interlude",
+        "chords": "(Bm A E E) ×4",
+        "shapes": "-24432 -02220 022100 022100",
+        "remind": "Amp → 4Amber for the lead",
+        "hint": "16 bars of solo. Noodle B Dorian, long bends, leave space."
+      },
+      {
+        "section": "Verse (after solo)",
+        "chords": "(Bm A E E) ×4",
+        "shapes": "-24432 -02220 022100 022100",
+        "cheatHide": true,
+        "remind": "Amp back to 3Amber",
+        "hint": "16 bars, clean arpeggios again for the last verse."
+      },
+      {
+        "section": "Outro",
+        "chords": "(Bm A E E) ×5",
+        "shapes": "-24432 -02220 022100 022100",
+        "hint": "About 22 bars on the record, slowing to a held E at the end. Live, ride the vamp until the band cues out."
+      }
+    ],
+    "form": [
+      "Intro",
+      "Verse",
+      "Chorus",
+      "Bridge",
+      "Verse",
+      "Chorus",
+      "Interlude",
+      "Verse (after solo)",
+      "Chorus",
+      "Outro"
+    ]
+  },
+  "34-comfortably-numb": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "Bm]]",
+        "shapes": "-24432",
+        "hint": "2 bars of Bm before the vocal."
+      },
+      {
+        "section": "Verse",
+        "chords": "Bm A G Em Bm",
+        "shapes": "-24432 -02220 320003 022000 -24432",
+        "hint": "4 bars a pass: Bm, A, G to Em inside one bar, back to Bm. V1 enters on Hello? Is there anybody..."
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "D A D A C G C G",
+        "shapes": "--0232 -02220 --0232 -02220 -32010 320003 -32010 320003",
+        "hint": "The D major lift, one chord per bar, 8 bars a pass. Enters on There is no pain..."
+      },
+      {
+        "section": "Chorus",
+        "chords": "A C G D",
+        "shapes": "-02220 -32010 320003 --0232",
+        "hint": "3 bars: A, then C to G inside one bar, D. This is the comfortably numb tag."
+      },
+      {
+        "section": "Guitar Solo 1",
+        "chords": "D A D A C G C G",
+        "shapes": "--0232 -02220 --0232 -02220 -32010 320003 -32010 320003",
+        "remind": "Amp → 8Red",
+        "hint": "8 bars over the Pre-Chorus cycle. D major over D and A, C natural over the C and G bars."
+      },
+      {
+        "section": "Chorus (after solo)",
+        "chords": "A C G D",
+        "shapes": "-02220 -32010 320003 --0232",
+        "remind": "Amp back to 7Red",
+        "hint": "Same 3 bars, straight out of the solo.",
+        "cheatHide": true
+      },
+      {
+        "section": "Chorus (into solo)",
+        "chords": "A C G D D G",
+        "shapes": "-02220 -32010 320003 --0232 --0232 320003",
+        "hint": "4 bars this time: the extra D to G bar pushes straight into the outro solo.",
+        "cheatHide": true
+      },
+      {
+        "section": "Guitar Solo 2",
+        "chords": "Bm A G Em Bm",
+        "shapes": "-24432 -02220 320003 022000 -24432",
+        "remind": "Amp → 8Red",
+        "hint": "The verse cycle again, 6 passes on the record. Noodle B minor pentatonic and leave space."
+      },
+      {
+        "section": "Fade Out",
+        "chords": "Bm A G Em Bm",
+        "shapes": "-24432 -02220 320003 022000 -24432",
+        "hint": "One more pass plus a half bar of Bm as the record fades. Live, ride the vamp until the band cues out.",
+        "cheatHide": true
+      }
+    ],
+    "form": [
+      "Intro",
+      "Verse ×3",
+      "Pre-Chorus ×2",
+      "Chorus",
+      "Guitar Solo 1",
+      "Chorus (after solo)",
+      "Verse ×2",
+      "Pre-Chorus ×2",
+      "Chorus (into solo)",
+      "Guitar Solo 2 ×6",
+      "Fade Out"
+    ]
   }
 }

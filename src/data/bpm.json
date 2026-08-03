@@ -121,7 +121,17 @@
   },
   "32-free-bird": {
     "bpm": 74,
-    "note": "Ballad pulse ~74; outro roughly doubles — click the outro at ~148 if practicing that section alone",
+    "note": "Ballad pulse ~74; outro roughly doubles, click the outro at ~148 if practicing that section alone",
     "confidence": "medium"
+  },
+  "33-wicked-game": {
+    "bpm": 112,
+    "note": "Songsterr transcription is marked 112; other sources read 110-115. Feels half-time: click 56 if 112 rushes the arpeggio.",
+    "confidence": "high"
+  },
+  "34-comfortably-numb": {
+    "bpm": 63,
+    "note": "Songsterr transcription is marked 63 and the bar count lines up with the 6:23 album cut. Slow 4/4, let the pre-chorus breathe.",
+    "confidence": "high"
   }
 }

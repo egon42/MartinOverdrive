@@ -1,0 +1,78 @@
+Standard (EADGBE)
+Key: B minor (the pre-chorus lifts to D major)
+
+(form sheet: section cues only, not a full lyric sheet)
+(a full lyric sheet can be added later from a source you hand over)
+
+(verse cycle, 4 bars: Bm 1 bar, A 1 bar, G to Em inside 1 bar, Bm 1 bar)
+(pre-chorus cycle, 8 bars: D A D A C G C G, one bar each)
+
+[Amp: 7Red]
+[Intro - 2 bars]
+Bm Bm
+
+[Verse 1 - 12 bars, 3 passes of the verse cycle]
+enters on Hello? Is there anybody...
+
+Bm A G Em Bm
+Bm A G Em Bm
+Bm A G Em Bm
+
+[Pre-Chorus - 16 bars, 2 passes of the pre-chorus cycle]
+enters on There is no pain...
+
+D A D A
+C G C G
+
+D A D A
+C G C G
+
+[Chorus - 3 bars]
+the comfortably numb tag
+
+A
+C G
+D
+
+[Amp: 8Red]
+[Guitar Solo 1 - 8 bars over the pre-chorus cycle]
+D A D A
+C G C G
+
+[Amp: 7Red]
+[Chorus - 3 bars]
+A
+C G
+D
+
+[Verse 2 - 8 bars, 2 passes]
+Bm A G Em Bm
+Bm A G Em Bm
+
+[Pre-Chorus - 16 bars, 2 passes]
+D A D A
+C G C G
+
+D A D A
+C G C G
+
+[Chorus - 4 bars, one extra bar of D to G pushing into the solo]
+A
+C G
+D
+D G
+
+[Amp: 8Red]
+[Guitar Solo 2 - 24 bars, 6 passes of the verse cycle]
+Bm A G Em Bm
+Bm A G Em Bm
+Bm A G Em Bm
+
+Bm A G Em Bm
+Bm A G Em Bm
+Bm A G Em Bm
+
+[Fade Out - one more pass plus a half bar of Bm as it fades]
+Bm A G Em Bm
+
+(live, ride the Bm A G Em vamp and noodle until the band cues the end)

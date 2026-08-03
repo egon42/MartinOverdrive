@@ -1,0 +1,77 @@
+Standard (EADGBE)
+Key: B minor
+
+(form sheet: section cues only, not a full lyric sheet)
+
+(one 4-bar loop the whole song: Bm 1 bar, A 1 bar, E 2 bars)
+
+[Amp: 3Amber]
+[Intro - 16 bars]
+Bm A E E
+Bm A E E
+
+Bm A E E
+Bm A E E
+
+[Verse 1 - 16 bars]
+enters on The world was on fire...
+
+Bm A E E
+Bm A E E
+
+Bm A E E
+Bm A E E
+
+[Chorus - 8 bars]
+enters on No, I don't want...
+
+Bm A E E
+Bm A E E
+
+[Bridge - 8 bars]
+enters on What a wicked game...
+
+Bm A E E
+Bm A E E
+
+[Verse 2 - 16 bars]
+Bm A E E
+Bm A E E
+
+Bm A E E
+Bm A E E
+
+[Chorus - 8 bars]
+Bm A E E
+Bm A E E
+
+[Amp: 4Amber]
+[Interlude - 16 bars, lead over the same loop]
+Bm A E E
+Bm A E E
+
+Bm A E E
+Bm A E E
+
+[Amp: 3Amber]
+[Verse 3 - 16 bars]
+Bm A E E
+Bm A E E
+
+Bm A E E
+Bm A E E
+
+[Chorus - 8 bars]
+Bm A E E
+Bm A E E
+
+[Outro - about 22 bars, record slows to a held E]
+Bm A E E
+Bm A E E
+
+Bm A E E
+Bm A E E
+
+Bm A E E
+
+(ride the Bm A E vamp until the band cues the end)

@@ -233,5 +233,21 @@
     ],
     "joiner": "→",
     "notes": "Ballad 1Amber clean → outro 2Green classic rock"
+  },
+  "33-wicked-game": {
+    "presets": [
+      3,
+      4
+    ],
+    "joiner": "↔",
+    "notes": "Arpeggio rhythm 3Amber, wet lead noodling 4Amber (one click)"
+  },
+  "34-comfortably-numb": {
+    "presets": [
+      23,
+      24
+    ],
+    "joiner": "↔",
+    "notes": "Clean rhythm 7Red, solos and outro noodling 8Red (one click)"
   }
 }
