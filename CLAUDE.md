@@ -174,6 +174,13 @@ the amp's front panel (bulk-write with the loader tools instead).
   both surfaces share the per-song synced `scrollSpeed`). Show mode auto-shrinks
   (lyrics fit by height, tabs by width); the practice sheets scroll in a capped
   `.practice-sheet` viewport instead.
+- **Songsterr importer gotchas** (cost real corrections in the 2026-08-03 Campfire batch):
+  `scripts/import-songsterr-tab.mjs` keeps only the FIRST voice per measure, so
+  fingerstyle bass voices vanish (mis-read Hi Ren's harmony until review caught it) —
+  check the raw data for second voices and hand-restore what matters. And check
+  `https://www.songsterr.com/api/meta/<songId>` before importing: `aiGenerated: true`
+  transcriptions are junk (three hit in one batch); refuse them and hand-write a lean
+  tab instead.
 - `scripts/ug-chords-to-sheet.mjs` carries a **duplicated copy of `CHORD_RE`** from
   `src/chords.ts` ("keep in sync" comment) — if you edit the regex in either file,
   update both. `npm run validate` checks this drift plus cheat-card/sheet/setlist
