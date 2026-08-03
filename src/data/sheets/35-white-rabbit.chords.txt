@@ -1,0 +1,51 @@
+Standard (EADGBE)
+Key: F# (flamenco color, F# up a fret to G)
+
+(form sheet: section cues only, not a full lyric sheet)
+
+(bolero cell drives the whole song: F# 2 bars, G 2 bars. One long crescendo, 66 bars, about 2:31 at 105.)
+
+[Amp: 4Amber]
+[Intro - 12 bars, near silence]
+F# F# G G
+F# F# G G
+
+F# F# G G
+
+[Verse 1 - 8 bars]
+enters on One pill makes...
+
+F# F# G G
+F# F# G G
+
+[Chorus 1 - 4 bars: A / C D / A / A]
+lands on Go ask Alice...
+
+A C D A A
+
+[Verse 2 - 8 bars, a shade louder]
+F# F# G G
+F# F# G G
+
+[Chorus 2 - 4 bars]
+A C D A A
+
+[Amp: 5Amber]
+[Bridge - 8 bars, first real lift]
+E E A A
+E E A A
+
+[Link - 4 bars of F#, reset the pulse]
+F# F# F# F#
+
+[Verse 3 - 8 bars, full strum now]
+F# F# G G
+F# F# G G
+
+[Outro chorus - 10 bars, loudest point]
+A C D A A
+
+A A A A
+A A
+
+(hold the last A and stop. No fade, no vamp.)

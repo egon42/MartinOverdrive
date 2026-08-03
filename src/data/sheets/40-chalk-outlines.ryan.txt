@@ -1,0 +1,96 @@
+Standard (EADGBE)
+
+[Amp: 1Amber]
+
+[Intro - 4 bars; ghost the first pass to set the pulse, then play it]
+~C#m ~A ~E ~E
+
+C#m A E E
+
+[The engine - one figure covers the whole picked half of the song]
+Rows below are one four-bar pass each. Two notes at a time: bass note on the low E string, chord third on the G string. The work here is dynamics, not fingering.
+
+Low E 9 with G string 9 is the C#m bar. Low E 5 with G string 6 is the A bar. Low E 0 with G string 1 is the E bar, and it gets two.
+
+[Verse 1 - four passes; Ren takes this one, stay quiet]
+V1: Ren
+
+C#m A E E
+
+C#m A E E
+
+C#m A E E
+
+C#m A E E
+
+[Pre-Chorus - same figure, new chords; the first real lift]
+F#m A E E
+
+F#m A B B
+
+[Amp: 2Amber]
+[Chorus - stop picking and strum: bass note, muted chop, two strums, two chops]
+A E B C#m
+
+A E B C#m
+
+A E B C#m
+
+[Chorus landing - one bar of A, then let the space sit there]
+A
+
+[Amp: 1Amber]
+[Verse 2 - back to the figure and back to quiet; Chinchilla takes this one]
+V2: Chinchilla
+
+C#m A E E
+
+C#m A E E
+
+C#m A E E
+
+C#m A E E
+
+[Octave move - the third pass takes the E up]
+7
+A string 7 with B string 9, same E chord an octave up
+
+[Pre-Chorus - same eight bars as the first]
+F#m A E E
+
+F#m A B B
+
+[Amp: 2Amber]
+[Chorus - four passes now; the fourth holds the B where the C#m was]
+A E B C#m
+
+A E B C#m
+
+A E B C#m
+
+A E B B
+
+[Lift - three passes; the C#m gives way to A and both voices are on it]
+A E B A
+
+A E B A
+
+A E B A
+
+[Break - one more pass into a ringing Bsus2, then let go]
+A E Bsus2
+
+[Eight bars with no guitar at all; hands off, the voices carry it]
+~A ~E ~B ~C#m
+
+~A ~E ~B ~C#m
+
+[Ending - the chorus once more and out]
+A E B C#m
+
+A
+
+[Hold - let it ring]
+E
+
+(natural end, no fade. 3:53 on the single.)

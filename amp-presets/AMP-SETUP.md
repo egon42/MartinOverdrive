@@ -1,7 +1,7 @@
 # Mustang I V2 — Set-List Preset Setup
 
 Everything you need to program your **Fender Mustang I V2** (20 W, 1×8", USB) with
-per-song presets for the 31-song Martin Overdrive set list.
+per-song presets for the 40-song Martin Overdrive catalog.
 
 **What's in this folder**
 
@@ -18,7 +18,7 @@ per-song presets for the 31-song Martin Overdrive set list.
 ## 1. The plan (read this first)
 
 Your amp stores **24 presets** (PRESET knob, three color banks: AMBER 1–8,
-GREEN 1–8, RED 1–8). The set has **34 songs**, and several need two tones
+GREEN 1–8, RED 1–8). The catalog has **40 songs**, and several need two tones
 (quiet verse → big chorus), so a strict "preset 1 = song 1" mapping physically
 can't fit. Working cover guitarists solve this with a small bank of shared core
 tones — audiences don't notice per-song tone differences unless they're very
@@ -63,7 +63,7 @@ control and is not stored.
 | 1 | BIG CLEAN | '65 Twin Reverb | 2×12 Twin | 3 | 10 | 6 | 5.5 | 6 | Presence 5.5, Large Hall reverb (lvl 4, decay 5) |
 | 2 | CHORUS CLEAN | '65 Twin Reverb | 2×12 Twin | 2.8 | 10 | 5.5 | 5 | 5.5 | Sine Chorus (lvl 5, rate 3, depth 5) + Small Hall (3.5) |
 | 3 | FUNK DRY CLEAN | '65 Deluxe Reverb | 1×12 Deluxe | 3.5 | 7 | 6.5 | 4.5 | 4.5 | Bright ON, '65 Spring reverb (3) |
-| 4 | ETHEREAL | '65 Twin Reverb | 2×12 Twin | 2.8 | 8.5 | 5.5 | 5 | 5.5 | Mono Delay (4.5/5/4) + Large Hall (5, decay 6) — Tribute intro fills (Red8 wetness, clean) / Wicked Game lead |
+| 4 | ETHEREAL | '65 Twin Reverb | 2×12 Twin | 2.8 | 8.5 | 5.5 | 5 | 5.5 | Mono Delay (4.5/5/4) + Large Hall (5, decay 6) — Tribute intro fills (Red8 wetness, clean) / Wicked Game lead / White Rabbit build |
 | 5 | EDGE BREAKUP | '57 Deluxe (tweed) | 1×12 Tweed | 5 | 7.5 | 5.5 | 6 | 5 | '65 Spring reverb (2.5) |
 | 6 | COUNTRY SNAP | '59 Bassman | 4×10 Bassman | 4 | 5.5 | 6.5 | 5.5 | 4.5 | Bright ON, Compressor (5) + '65 Spring (2) |
 | 7 | TEXAS BLUES | '59 Bassman | 4×10 Bassman | 6.5 | 5.5 | 6 | 6.5 | 5.5 | '63 Spring reverb (3.5) |
@@ -135,6 +135,12 @@ control and is not stored.
 | 32 | Free Bird | **1 → 10** | Encore/request; ballad clean → outro classic rock |
 | 33 | Wicked Game | **3 ↔ 4** | Noodling extra; arpeggio rhythm on 3, wet lead on 4 |
 | 34 | Comfortably Numb | **23 ↔ 24** | Noodling extra; clean rhythm 23, both solos + outro on 24 |
+| 35 | White Rabbit | **4 → 5** | Campfire extra; ethereal clean build on 4, one click to 5 at the bridge lift |
+| 36 | Sixteen Tons | **6** | Campfire extra; bright compressed Bassman clean for the swing comping |
+| 37 | Rusty Cage | **6 → 7** | Campfire extra; 6Amber snap for the driving acoustic A5 half, one click to 7Amber when it turns electric on E5 |
+| 38 | Hi Ren | **1** | Campfire extra; most neutral clean on the amp for the nylon-style fingerpicking, one slot the whole way, dynamics from the hand |
+| 39 | The Tale of Jenny & Screech | **1 → 5** | Campfire extra; 1Amber big clean for Jenny's picked A minor half, four clicks up to 5Amber at the turn into Screech's E minor half so the strummed end leans |
+| 40 | Chalk Outlines | **1 ↔ 2** | Campfire extra; 1Amber big clean for the picked verses, 2Amber chorus clean for the strummed choruses, back and forth. Same Twin both sides |
 
 Turning the PRESET knob steps one preset at a time (…8 → 9 crosses AMBER→GREEN,
 16 → 17 crosses GREEN→RED), so every ↔ pair above is a single click. Fender's

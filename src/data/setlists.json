@@ -14,6 +14,19 @@
       ]
     },
     {
+      "id": "campfire",
+      "name": "Campfire",
+      "description": "Personal covers and story songs, learned for fun.",
+      "songIds": [
+        "35-white-rabbit",
+        "36-sixteen-tons",
+        "37-rusty-cage",
+        "38-hi-ren",
+        "39-the-tale-of-jenny-screech",
+        "40-chalk-outlines"
+      ]
+    },
+    {
       "id": "woodshed",
       "name": "Woodshed",
       "description": "Technique circuit: stamina, shuffle, arpeggios, funk, solos.",

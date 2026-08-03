@@ -222,5 +222,47 @@
     "note": "Estimate 2026-07-26 lean encore draft. Sheet covers ballad + outro vamp start (~4:40), not full 9:08 dual-lead; pause/hold when band rides the vamp. Lyric 37 rows→6 leadIn 12. Dial on device.",
     "measureSpeed": 6,
     "measureLeadInSec": 12
+  },
+  "35-white-rabbit": {
+    "speed": 6,
+    "leadInSec": 12,
+    "note": "Estimate 2026-08-03 lean campfire draft. Studio 2:31; 0.35x Tribute rows (23) so H is only ~1033px against a 600px viewport. Raw math wants ~3, clamped to the floor of 6, so the crawl reaches the bottom near 1:12 and then sits. Dial on device; if it runs out too early the fix is more rows, not a slower seed. Measure map 25 rows, same 6/12.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 12
+  },
+  "36-sixteen-tons": {
+    "speed": 13,
+    "leadInSec": 12,
+    "note": "Estimate 2026-08-03 lean campfire draft. Studio 2:35; 0.82x Tribute rows (54) so H is about 2425px. Raw math wants 13, which is above the usual 6-11 band for a chord-while-singing sheet, but the song is short and the density is dead flat from top to bottom so the end-align math holds. leadInSec 12 because the ghost cell starts with the track. Dial on device; the usual first correction is about half. Measure map 58 rows, clamped back to the lyric seed.",
+    "measureSpeed": 13,
+    "measureLeadInSec": 12
+  },
+  "37-rusty-cage": {
+    "speed": 6,
+    "leadInSec": 12,
+    "note": "Estimate 2026-08-03 lean campfire draft. Studio 2:49; 0.42x Tribute rows (28) so H is only about 1257px against a 600px viewport. Raw math wants 4.2, clamped to the floor of 6, so the crawl bottoms out near 2:01 and then sits for the coda. leadInSec 12 because the ghost cell starts with the track. Dial on device; if it runs out too early the fix is more rows, not a slower seed. Measure map 28 rows, same 6/12.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 12
+  },
+  "38-hi-ren": {
+    "speed": 6,
+    "leadInSec": 12,
+    "note": "Estimate 2026-08-03 lean campfire draft. Studio 8:35; 1.27x Tribute rows (84) so H is about 3772px. Raw math wants 6.3 and 6 is the floor, so take the slower one: the crawl reaches the bottom near 9:00, a little past the 8:35 cut, which is the right way to miss on a piece this long. Rows are two bars each on purpose, so the position tracks where you are in the loop, and the spoken blocks are written generously for the same reason. leadInSec 12 because the picked intro starts with the track. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 12
+  },
+  "39-the-tale-of-jenny-screech": {
+    "speed": 6,
+    "leadInSec": 12,
+    "note": "Estimate 2026-08-03 lean campfire draft. Studio 7:20 for the combined tale; 1x Tribute rows (66) so H is about 2964px. Raw math wants 5.5 and 6 is the floor, so the crawl reaches the bottom right about where the piece ends, which is the right way to miss on something this long. Rows are two bars each on purpose so the position tracks where you are in the loop, and the silent spoken block is written out for the same reason. leadInSec 12 because the picked intro starts with the track, and it is free time anyway. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 12
+  },
+  "40-chalk-outlines": {
+    "speed": 6,
+    "leadInSec": 12,
+    "note": "Estimate 2026-08-03 lean campfire draft. Studio 3:53; 0.59x Tribute rows (39) so H is about 1751px. Raw math wants 5.2 and 6 is the floor, so the crawl bottoms out near 3:24, about half a minute before the end. That is the right way to miss on a short cue-only sheet: the last rows are the break and the ending, which you are not reading anyway. leadInSec 12 because the picked figure starts with the track. Dial on device.",
+    "measureSpeed": 6,
+    "measureLeadInSec": 12
   }
 }

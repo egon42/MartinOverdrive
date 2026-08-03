@@ -249,5 +249,51 @@
     ],
     "joiner": "↔",
     "notes": "Clean rhythm 7Red, solos and outro noodling 8Red (one click)"
+  },
+  "35-white-rabbit": {
+    "presets": [
+      4,
+      5
+    ],
+    "joiner": "→",
+    "notes": "Ethereal clean 4Amber for the quiet build, one click to 5Amber at the Bridge lift"
+  },
+  "36-sixteen-tons": {
+    "presets": [
+      6
+    ],
+    "joiner": "",
+    "notes": "6Amber country snap: bright compressed Bassman clean for the swing comping. Back the pick attack off under the vocal."
+  },
+  "37-rusty-cage": {
+    "presets": [
+      6,
+      7
+    ],
+    "joiner": "→",
+    "notes": "6Amber country snap for the driving acoustic half, one click to 7Amber Texas blues when the record turns electric and drops to E5. Same Bassman both sides, so only gain and level move."
+  },
+  "38-hi-ren": {
+    "presets": [
+      1
+    ],
+    "joiner": "",
+    "notes": "1Amber big clean is the most neutral slot on the amp, which is what a nylon-string style fingerpicked part wants. One slot for the whole piece: the dynamics are all in the picking hand, so leave the amp alone and let the strummed last third get loud on its own."
+  },
+  "39-the-tale-of-jenny-screech": {
+    "presets": [
+      1,
+      5
+    ],
+    "joiner": "→",
+    "notes": "1Amber big clean for Jenny's picked half, the most neutral slot on the amp and what a nylon-string style fingerpicked part wants. Step the PRESET knob up four clicks to 5Amber edge breakup at the turn into Screech's half so the strummed E minor material leans when you dig in. These two are not neighbours, so give yourself the whole hinge to get there. Same shape as Rusty Cage: the song never gets dirty, the second half just gets more push. Staying on 1Amber the whole way is fine if you would rather do all of it with the picking hand."
+  },
+  "40-chalk-outlines": {
+    "presets": [
+      1,
+      2
+    ],
+    "joiner": "↔",
+    "notes": "1Amber big clean for the picked verses, the most neutral slot on the amp and what a two-note fingerpicked figure wants. One click to 2Amber chorus clean for the strummed choruses so they widen rather than just get louder. Same '65 Twin both sides, so only the modulation and a hair of level move. It alternates rather than arcs: back to 1Amber for verse 2. Staying on 1Amber the whole way is fine if you would rather do all of it with the picking hand."
   }
 }

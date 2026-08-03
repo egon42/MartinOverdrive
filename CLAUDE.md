@@ -214,15 +214,15 @@ the amp's front panel (bulk-write with the loader tools instead).
   (`PracticeEntry.bpm`). It also has a **Drums sound** (added same day): synthesized
   kick/snare/hat on a subdivision grid (straight 8ths / shuffle triplets / 6/8), with
   optional per-song `timeSig`/`feel` seeds in `bpm.json` (absent = 4/4 straight; only
-  high-confidence research values get written — currently just Pride and Joy's Texas
-  shuffle).
+  values the research is confident about get written — currently Pride and Joy's Texas
+  shuffle and Sixteen Tons' swung eighths).
 - **Jam page removed** (2026-07, user request) — it grouped songs by pentatonic key.
   Don't re-propose it.
 
 ## Premade setlists (dev-branch feature, added 2026-08-03)
 
 - `src/data/setlists.json` (hand-curated, NOT importer output) defines named practice
-  setlists (`noodling`, `woodshed`) as ordered songId lists. `src/setlists.ts` resolves
+  setlists (`noodling`, `woodshed`, `campfire`) as ordered songId lists. `src/setlists.ts` resolves
   them against the catalog (unknown ids dropped silently; empty or reserved-`full` lists
   dropped whole) and owns the device-local pick (`overdrive-setlist[-dev]`, localStorage,
   deliberately never in the synced practice blob).
@@ -233,9 +233,9 @@ the amp's front panel (bulk-write with the loader tools instead).
 - Adding a song for a premade list = normal add-song pipeline (append to catalog end,
   "skip for shows unless called" in rehearsalNotes) + its id in setlists.json.
   `npm run validate` checks setlists.json referential integrity.
-- **XLSX gap:** `martin_overdrive_setlist_prep.xlsx` only has rows 1-32. Add rows for
-  33-wicked-game / 34-comfortably-numb (and any later hand-added songs) before running
-  `npm run import-setlist`, or the re-import wipes them and validate hard-fails.
+- **XLSX gap:** `martin_overdrive_setlist_prep.xlsx` only has rows 1-32. Songs 33-40
+  (noodling extras + the whole Campfire list) are hand-appended; add their rows before
+  running `npm run import-setlist`, or the re-import wipes them and validate hard-fails.
 
 ## Cross-device sync (dev-branch feature)
 

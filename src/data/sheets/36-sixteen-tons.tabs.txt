@@ -1,0 +1,85 @@
+Sixteen Tons — Tennessee Ernie Ford (1955 Capitol single)
+Track: hand written rhythm adaptation, charted in A minor
+Tuning (high→low): E B G D A E — 4/4, swing the eighths, about 140 bpm
+Legend: x muted strum . palm mute h hammer-on
+
+Why hand written: the record is clarinet, bass clarinet and finger snaps with no
+guitar part to copy, and the only Songsterr transcription of the Ford single is AI
+generated and pedals E all the way through. So this is a swing comping part built
+on the song's changes, not a transcription.
+
+Capo 2 if you want to play along with the record (puts these shapes in B minor).
+
+
+THE CELL - one bar, and it is the whole song
+Am for 2 beats, F for 1 beat, E for 1 beat. Repeat it and you have the song.
+
+      1  &  2  &  3  &  4  &
+e|----0--0--0--0--1--1--0--0--|
+B|----1--1--1--1--1--1--0--0--|
+G|----2--2--2--2--2--2--1--1--|
+D|----2--2--2--2--3--3--2--2--|
+A|----0--0--0--0--3--3--2--2--|
+E|----------------1--1--0--0--|
+      Am          F     E
+
+
+SWING COMP - bass note on 1 and 3, chord snap on 2 and 4
+This is the version that sits under a vocal without fighting it.
+
+      1     2     3     4
+e|----------0-----------0-----|
+B|----------1-----------0-----|
+G|----------2-----------1-----|
+D|----------2-----3-----2-----|
+A|----0-----0-----3-----2-----|
+E|----------------1-----------|
+      A     Am    F     E
+
+
+PALM-MUTED VERSION - for the quiet verses
+Same shapes, edge of the palm on the bridge, let the E ring out.
+
+      1  &  2  &  3  &  4  &
+e|----------------------------|
+B|----------------------------|
+G|----2--2--2--2--2--2--1--1--|
+D|----2--2--2--2--3--3--2--2--|
+A|----0--0--0--0--3--3--2--2--|
+E|----------------1--1--0--0--|
+      .  .  .  .  .  .
+      Am          F     E
+
+
+INTRO WALK - optional, under the last 2 bars of the intro
+Walks up to the E, then falls back to the Am. Not on the record, just a way in.
+
+e|----------------------------|
+B|----------------------------|
+G|----------------------------|
+D|-------------0--2-----------|
+A|----0--3--------------3--2--|
+E|----------------------------|
+      A  C     D  E     C  B    -> land on open A
+
+
+SECTION MAP
+Intro         8 bars of the cell
+Verse         8 bars (4 lyric lines, 2 bars each)
+Chorus        8 bars, last line resolves: | Am E | Am |
+Instrumental  16 bars, clarinet on the record
+Outro         2 bars: | Am E | Am | and stop
+
+Full form: Intro, V1, Chorus, V2, Chorus, Instrumental, V3, Chorus, V4, Chorus, Outro.
+90 bars at 140 bpm is about 2:34, which matches the single.
+
+
+CHORUS RESOLVE - the last 2 bars of every chorus
+      1  &  2  &  3  &  4  &        1  &  2  &  3  &  4  &
+e|----0--0--0--0--0--0--0--0--|-----0--0--0--0--0--0--0--0--|
+B|----1--1--1--1--0--0--0--0--|-----1--1--1--1--1--1--1--1--|
+G|----2--2--2--2--1--1--1--1--|-----2--2--2--2--2--2--2--2--|
+D|----2--2--2--2--2--2--2--2--|-----2--2--2--2--2--2--2--2--|
+A|----0--0--0--0--2--2--2--2--|-----0--0--0--0--0--0--0--0--|
+E|----------------0--0--0--0--|-----------------------------|
+      Am          E                 Am (hold)

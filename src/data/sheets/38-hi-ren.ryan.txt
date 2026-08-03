@@ -1,0 +1,192 @@
+Drop D (DADGBE)
+
+[Amp: 1Amber]
+
+[Intro - picked melody, free time; nobody is counting, play it how it sits]
+Dm Gm Dm A
+
+Dm Gm Dm A
+
+Dm Gm Dm A
+
+[The two figures - between them they cover the whole middle of the song]
+Rows below are two bars each, and the block lengths are deliberately generous so the crawl has material for the full 8:35. Follow the voice, not the row count.
+
+[Figure A - one pitch a bar on the G string, struck on every beat]
+G string only, one pitch a bar: fret 10 is the F over the Dm bar, fret 6 is the C# over the A bar, fret 7 is the D over the Bb bar, fret 2 is the A over the F bar.
+
+[Figure B - a bass root with two notes on top, muted strums between]
+Low D open with D string 3 and G string 2 above it is the Dm bar. Low D at the 5th fret with D string open and G string 3 above it is the Gm bar.
+
+[Main line 1 - two bars of Dm drone first, then about 110; the voice comes in over this]
+Dm A
+
+Bb F
+
+Dm A
+
+Bb F
+
+[Dyad groove 1 - Figure B; ride it and let the voice do the work]
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+[Main line 2]
+Dm A
+
+Bb F
+
+[Dyad groove 2]
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+[Main line 3]
+Dm A
+
+Bb F
+
+[Dyad groove 3]
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+[Main line 4]
+Dm A
+
+Bb F
+
+[Dyad groove 4 - longest block; the trade speeds up, you do not]
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+[Main line 5]
+Dm A
+
+Bb F
+
+[Dyad groove 5]
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+[Main line 6]
+Dm A
+
+Bb F
+
+[Dyad groove 6 - loudest of the spoken blocks; dig into the mutes]
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+Dm Gm
+
+[Main line 7 - last one, then it comes apart]
+Dm A
+
+Bb F
+
+[Build - fifths on the low two strings, up a fret at a time]
+Low two strings together, the dropped D and the A: start on the open pair and climb a fret at a time.
+
+Eight bars later you are up at the 7th fret.
+
+[Build 2 - keep going, this is the top of the piece]
+Up to the 8th fret.
+
+Then on to the 11th before it drops back.
+
+[Build 3 - the descending answer, then sliding shapes climbing again]
+Dm Dm
+
+Dm Dm
+
+Dm Dm
+
+Dm Dm
+
+[Reset - the intro melody again, 90 then 80; breathe here]
+Dm Gm Dm A
+
+[Drone - back to 110 on a Dm; this launches the last third]
+Dm Dm
+
+[Outro loop - picked, about 100; roots on the low string at 0 7 8 3]
+Dm A
+
+Bb F
+
+Dm A
+
+Bb F
+
+Dm A
+
+Bb F
+
+Dm A
+
+Bb F
+
+Dm A
+
+Bb F
+
+Dm A
+
+Bb F
+
+[Outro strummed - full barres now, this is the loud one; the last bar of every pass climbs F Gm Am]
+Dm A
+
+Bb F Gm Am
+
+Dm A
+
+Bb F Gm Am
+
+Dm A
+
+Bb F Gm Am
+
+Dm A
+
+Bb F Gm Am
+
+[Ending - the fourth climb leaves this ringing; hold it]
+Am
+
+(natural end, no fade. Hold a Dm instead if you want it to land at home.)

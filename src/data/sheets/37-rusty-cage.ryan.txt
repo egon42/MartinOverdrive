@@ -1,0 +1,68 @@
+Standard (EADGBE)
+
+[Amp: 6Amber]
+
+[Intro - 8 bars at about 112; ghost the first 4, join on the 5th]
+~A5 ~A5 ~A5 ~A5
+
+A5 A5 A5 A5
+
+[The riff cell - hold A5, low string does the walk]
+Low E string, not the A string: open E up to the 3rd fret G, then back, all of it under a held A5.
+
+[Verse 1 - 8 bars; two long lines, nothing changes under you]
+V1: the broken nails verse
+
+A5 A5 A5 A5
+
+A5 A5 A5 A5
+
+[Chorus 1 - 4 bar cell twice; G is the only change in the fast half]
+the rusty cage hook
+
+A5 A5 G A5
+
+A5 A5 G A5
+
+[Verse 2 - 8 bars; same cell, lean on the walk a little harder]
+V2: the burning diesel verse
+
+A5 A5 A5 A5
+
+A5 A5 A5 A5
+
+[Chorus 2 - 4 bar cell twice]
+A5 A5 G A5
+
+A5 A5 G A5
+
+[Amp: 7Amber]
+[Electric turn - 4 bars; about 1:26, drop a fourth to E5 and ease back to around 97]
+E5 E5 E5 E5
+
+[Same low-string walk, the chord moved down a string]
+Low E string again: open E up to the 3rd fret G and back, now under the E5.
+
+[Slow verse - 12 bars; the forest burns verse, four lines, heavy and a touch behind]
+V3: the forest burns verse
+
+E5 E5 E5 E5
+
+E5 E5 E5 E5
+
+E5 E5 E5 E5
+
+[Slow chorus - 4 bar cell twice; D does what the G did]
+E5 E5 D E5
+
+E5 E5 D E5
+
+[Coda - 8 bars; loudest point, save the D for the last line]
+E5 E5 E5 E5
+
+E5 E5 D E5
+
+[Ending - 2 bars]
+G Em
+
+(hold the last chord and stop. Natural end, no fade. Solo, you can just hold the E5.)

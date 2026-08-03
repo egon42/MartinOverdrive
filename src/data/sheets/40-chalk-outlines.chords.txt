@@ -1,0 +1,88 @@
+Standard (EADGBE)
+Key: E major, with the picked loop parked on its relative C# minor
+
+(form sheet: figures and section cues only, not a lyric sheet)
+
+(one two-note figure runs the picked half of the song: a bass note with the chord third above it, C#m for a bar, A for a bar, E for two. The choruses are the same four chords strummed, one a bar, A E B C#m. It is a duet, so the verses trade voices. 118 bars at 122 lands at 3:52, which is the 3:53 single, so these counts are reliable.)
+
+[Amp: 1Amber]
+[Intro - 4 bars, the picked figure once through]
+C#m A E E
+
+[Verse 1 - 16 bars, four passes; Ren takes this one]
+V1: Ren
+
+C#m A E E
+
+C#m A E E
+
+C#m A E E
+
+C#m A E E
+
+[Pre-Chorus - 8 bars, two passes with different landings]
+F#m A E E
+
+F#m A B B
+
+[Amp: 2Amber]
+[Chorus - strummed and percussive now, one chord a bar, three passes]
+A E B C#m
+
+A E B C#m
+
+A E B C#m
+
+[Chorus landing - one bar of A, then about three bars of space]
+A
+
+[Amp: 1Amber]
+[Verse 2 - 16 bars, four passes; Chinchilla takes this one]
+V2: Chinchilla
+
+C#m A E E
+
+C#m A E E
+
+C#m A E E
+
+C#m A E E
+
+(the third pass moves the E up an octave, A string 7 and B string 9)
+
+[Pre-Chorus - 8 bars, same as the first]
+F#m A E E
+
+F#m A B B
+
+[Amp: 2Amber]
+[Chorus - four passes; the fourth holds the B where the C#m was]
+A E B C#m
+
+A E B C#m
+
+A E B C#m
+
+A E B B
+
+[Lift - 12 bars, three passes; the C#m gives way to A and both voices are on it]
+A E B A
+
+A E B A
+
+A E B A
+
+[Break - one more pass into a ringing Bsus2, then eight bars with no guitar]
+A E Bsus2
+
+(hands down here, the voices carry it on their own)
+
+[Ending - 6 bars, the chorus once more and out]
+A E B C#m
+
+A
+
+[Hold]
+E
+
+(natural end, no fade. Let the last E ring out.)

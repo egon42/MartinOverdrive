@@ -1,0 +1,156 @@
+Standard (EADGBE)
+
+[Amp: 1Amber]
+
+[Intro - picked melody, free time; nobody is counting, play it how it sits]
+Dm Am Em
+
+Dm Am Em
+
+[The two engines - between them they cover the whole piece]
+Rows below are two bars each, and the blocks are deliberately generous so the crawl has material for the full 7:20. Follow the voice, not the row count. Jenny is A minor, Screech is E minor, and the amp clicks up between them.
+
+[Engine 1 - Jenny: one bar of Am, one bar of Dm, thumb on the root]
+5
+A string 5 is the Dm root, and low E 5 is the Am root, if you want the skeleton only
+
+[Engine 2 - Screech: bass walk on the low string, one note a bar]
+Low E string, one note a bar: open E for the Em bar, fret 2 F# for the passing bar, fret 3 G for the third bar, then the open A string for the Am bar.
+
+[Jenny loop 1 - thin, roots and a dyad; the story starts over this]
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Em
+
+[Jenny loop 2 - root pulse, then the full picked shapes arrive]
+Am Dm
+
+Am Dm
+
+Am Dm
+
+[Jenny lift - barres at the 5th; the only loud pass in this half]
+Am Dm
+
+Am Dm
+
+Am Dm
+
+[Jenny loop 3 - back to open shapes; the long run to the end of the half]
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+[Jenny fade - one held chord a bar, slowing and quieting; land it, do not count it]
+Dm Am
+
+Dm Am
+
+Dm Am
+
+[Amp: 5Amber]
+[Turn to Screech - the hinge; learn these six bars on their own]
+Em7 Fmaj7 D9
+
+[Screech verse - 3/4 now, about 130; walk the bass and let the line ride on top]
+Em F#dim G Am
+
+Em F#dim G Am
+
+Em F#dim G Am
+
+B
+
+[Screech drive - same walk in 4/4, hammered pairs; slow this one down to build it]
+Em F#dim G Am
+
+Em F#dim G Am
+
+Em F#dim G Am
+
+[Screech chorus - 3/4 at 110, two bars a chord; the A brings a C sharp, the B a D sharp]
+Em A C B
+
+Em A C B
+
+[Chorus tail - the B sits on its own]
+B
+
+[Screech riff - low string only, open E then a G to F sharp move]
+Em Em
+
+Em Em
+
+[Screech figure 1 - Em on the top three, then the Bm answer; chops between]
+Em Bm
+
+Em Bm
+
+Em Bm
+
+Emmaj7 Em
+
+[Spoken - no guitar at all here; hands down, listen for the pair to come back]
+~Em ~Bm
+
+~Em ~Bm
+
+~Em ~Bm
+
+[Screech figure 2 - the same pair, three more passes]
+Em Bm
+
+Em Bm
+
+Em Bm
+
+[Line climb - E minor with one inner voice walking down; open position is fine]
+Em Emmaj7 Em7
+
+Em Emmaj7 Em7
+
+[Screech strum - open chords hit hard; loudest point of the piece]
+Em G F#
+
+Em G F#
+
+Em G F#
+
+Em G F#
+
+Em G F#
+
+[Ring - one open chord left hanging, then hands down for the last of the story]
+Em
+
+[Ending - one chord a bar, strummed; this is the last thing you play]
+C Am C
+
+Em A C B
+
+B
+
+B
+
+[Hold - let it ring]
+Em
+
+(natural end, no fade. The record holds an E minor with a D sharp still in it. Hold a plain Em if you want it to land clean.)

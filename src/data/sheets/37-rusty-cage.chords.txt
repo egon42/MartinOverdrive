@@ -1,0 +1,66 @@
+Standard (EADGBE)
+Key: A for the fast half, dropping a fourth to E when the record turns electric
+
+(form sheet: section cues only, not a full lyric sheet)
+
+(one cell runs the fast half: hold A5 and walk the low string open E up to the 3rd fret G and back. When it turns electric the same idea moves to E5. 40 bars at 112 plus 34 bars at about 97 lands near 2:50, which is the 2:49 album cut. The two halves are well anchored; the bar split inside each half is a best fit, so trust your ears over the counts.)
+
+[Amp: 6Amber]
+[Intro - 8 bars of the riff, about 112]
+A5 A5 A5 A5
+
+A5 A5 A5 A5
+
+[Verse 1 - 8 bars, two long lines]
+V1: the broken nails verse
+
+A5 A5 A5 A5
+
+A5 A5 A5 A5
+
+[Chorus 1 - 4 bar cell twice, G ends each phrase]
+C1: the rusty cage hook
+
+A5 A5 G A5
+
+A5 A5 G A5
+
+[Verse 2 - 8 bars, same cell]
+V2: the burning diesel verse
+
+A5 A5 A5 A5
+
+A5 A5 A5 A5
+
+[Chorus 2 - 4 bar cell twice]
+A5 A5 G A5
+
+A5 A5 G A5
+
+[Amp: 7Amber]
+[Electric turn - 4 bars, about 1:26; drops a fourth to E5 and eases to around 97]
+E5 E5 E5 E5
+
+[Slow verse - 12 bars, the forest burns verse, four lines]
+V3: the forest burns verse
+
+E5 E5 E5 E5
+
+E5 E5 E5 E5
+
+E5 E5 E5 E5
+
+[Slow chorus - 4 bar cell twice, D takes the G's job]
+E5 E5 D E5
+
+E5 E5 D E5
+
+[Coda - 8 bars, the loud rusty cage finish]
+E5 E5 E5 E5
+
+E5 E5 D E5
+
+[Ending - 2 bars]
+G Em
+
+(hold the last chord and stop. Natural end, no fade. If the G into Em feels fussy on your own, just hold the last E5.)

@@ -133,5 +133,36 @@
     "bpm": 63,
     "note": "Songsterr transcription is marked 63 and the bar count lines up with the 6:23 album cut. Slow 4/4, let the pre-chorus breathe.",
     "confidence": "high"
+  },
+  "35-white-rabbit": {
+    "bpm": 105,
+    "note": "Songsterr marks the transcription 100, but its 66 bars land at 2:38 there; 105 puts them at 2:31, which matches the album cut. Tempo sources read 105-106. The record creeps up as the bolero builds, so treat the click as a floor.",
+    "confidence": "medium"
+  },
+  "36-sixteen-tons": {
+    "bpm": 140,
+    "feel": "shuffle",
+    "note": "Sources spread wide: Karaoke Version reads about 139 and calls it variable, Spotify data reads 144, ChordU reads 151. 140 is the value that makes the arithmetic work: 90 bars of the Am F E cell land at 2:34, which is the 1955 single. Swing the eighths hard (12/8 feel), and expect a 78-era record to drift.",
+    "confidence": "medium"
+  },
+  "37-rusty-cage": {
+    "bpm": 112,
+    "note": "112 is the fast A5 half. The Songsterr Cash transcription (39852 track 0) carries exactly two tempo marks in its data, 112 at bar 1 and 97 at bar 21, and bar 21 is where it turns electric and drops to E5 around 1:26, so click the slow half separately. Two things back the drop up: at a flat 112 the whole form runs about 10 seconds short of the 2:49 cut, and Karaoke Version calls the track variable around 105, roughly the average of 112 and 97. Spotify derived sites report a flat 112, so treat it as a feel shift rather than a hard halftime. 40 bars at 112 plus 34 at 97 is about 2:50 against the 2:49 cut.",
+    "confidence": "medium"
+  },
+  "38-hi-ren": {
+    "bpm": 110,
+    "note": "110 is the main loop, not the song. The Songsterr transcription (673470 track 0) marks 98 for the picked intro, 90 then 80 as it slows, 110 for the long middle, and 100 for the last third, and the spoken passages float on top of all of it. Chord sites report a flat 112, which is close enough to the same thing. Click 110 for the middle and 100 for the strummed ending, and expect to pull the time around on purpose. The transcription's 162 sounding bars come out near 6:10 at its own tempo marks against the 8:35 cut, and the two and a half minutes of difference is rubato, free-time speech and the long held ending, none of which a click can give you.",
+    "confidence": "medium"
+  },
+  "39-the-tale-of-jenny-screech": {
+    "bpm": 85,
+    "note": "85 is Jenny's loop, not the song. The Songsterr combined transcription (2221267 track 0) carries its own tempo marks and they move a lot: the picked intro is free time and drifts between 65 and 80 with a fermata in it, Jenny's Am to Dm loop settles at 85, the turn into Screech jumps to 130, and Screech's chorus eases back to 110. ChordU reads Jenny's Tale near 90 and Screech's Tale at 145, which is the same picture read loosely. Click 85 to build Jenny's loop and 130 for Screech's half, and do not click the intro at all. Meter is 4/4 apart from two stretches the transcription writes in 3/4, the first Screech figure and the chorus, so no time signature is seeded here. The 200 bars come to about 7:20 at the marked tempos against roughly 7:04 of released music without the spoken Prologue, and the difference is rubato and the held ending.",
+    "confidence": "medium"
+  },
+  "40-chalk-outlines": {
+    "bpm": 122,
+    "note": "Unlike the other Ren songs on this list, this one actually takes a click. 122 is the real grid and it holds the whole way through with no rubato. Tempo detection sites converge on 121 to 122 for the single. Read the Songsterr transcription (620375 track 0) knowing it writes the strummed chorus blocks in half time at 60 and 61 and the picked second verse at 122, so a written bar in those blocks is two bars of the click. One outlier source reads the song near 108, but it also lists chords that are not in the key, so ignore it. Meter is 4/4 straight all the way, so nothing is seeded for time signature or feel.",
+    "confidence": "high"
   }
 }

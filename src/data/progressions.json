@@ -1781,5 +1781,426 @@
       "Guitar Solo 2 ×6",
       "Fade Out"
     ]
+  },
+  "35-white-rabbit": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "F# F# G G",
+        "shapes": "244322 244322 355433 355433",
+        "hint": "12 bars of the bolero cell. Ghost the first pass to set the pulse, then start near silence and let the last G walk you into the vocal."
+      },
+      {
+        "section": "Verse",
+        "chords": "F# F# G G",
+        "shapes": "244322 244322 355433 355433",
+        "hint": "8 bars, two passes of the cell. V1 enters on \"One pill makes...\". Same cell for V2 and V3, louder each time."
+      },
+      {
+        "section": "Chorus",
+        "chords": "A | C D | A A",
+        "shapes": "-02220 -32010 --0232 -02220 -02220",
+        "hint": "4 bars. A for a bar, C and D split the next bar, then A for 2. Lands on \"Go ask Alice...\"."
+      },
+      {
+        "section": "Bridge",
+        "chords": "E E A A",
+        "shapes": "022100 022100 -02220 -02220",
+        "remind": "Amp → 5Amber",
+        "hint": "8 bars, two passes. First real lift: open up the strum and stop holding back."
+      },
+      {
+        "section": "Link",
+        "chords": "F# F# F# F#",
+        "shapes": "244322 244322 244322 244322",
+        "hint": "4 bars of F# alone, resetting the cell before the last verse. Keep climbing."
+      },
+      {
+        "section": "Outro",
+        "chords": "A | C D | (A) ×8",
+        "shapes": "-02220 -32010 --0232 -02220",
+        "hint": "Chorus shape once, then 8 bars of A to the top of the crescendo. Hard stop on the last A, no fade."
+      }
+    ],
+    "form": [
+      "Intro ×3",
+      "Verse ×2",
+      "Chorus",
+      "Verse ×2",
+      "Chorus",
+      "Bridge ×2",
+      "Link",
+      "Verse ×2",
+      "Outro"
+    ]
+  },
+  "36-sixteen-tons": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "(Am F E) ×8",
+        "shapes": "-02210 133211 022100",
+        "remind": "Amp 6Amber",
+        "hint": "8 bars of the cell before you sing. One bar is Am for 2 beats, F for 1, E for 1. Snaps and clarinet on the record, so ghost the first 4 bars if you want the beat before the guitar.",
+        "tab": "Optional walk under the last 2 bars (own adaptation, not the record)\nD|-------0-2---------|\nA|---0-3-------3-2-0-|"
+      },
+      {
+        "section": "Verse",
+        "chords": "(Am F E) ×8",
+        "shapes": "-02210 133211 022100",
+        "hint": "8 bars, 4 lyric lines, 2 bars each. Am carries the line and the F to E is the turn at the end of every bar. Same cell for all four verses."
+      },
+      {
+        "section": "Chorus",
+        "chords": "(Am F E) ×6 | Am E | Am",
+        "shapes": "-02210 133211 022100 -02210 022100 -02210",
+        "hint": "8 bars. Six bars of the cell, then the last line resolves Am to E and lands on a held Am. This is the sixteen tons hook, so dig in a little."
+      },
+      {
+        "section": "Instrumental",
+        "chords": "(Am F E) ×16",
+        "shapes": "-02210 133211 022100",
+        "hint": "16 bars after the second chorus, clarinet on the record. Solo it out of A minor pentatonic at the 5th, or keep comping and let it breathe. Cut it short when you are playing solo."
+      },
+      {
+        "section": "Outro",
+        "chords": "Am E | Am",
+        "shapes": "-02210 022100 -02210",
+        "hint": "Two bars. Am to E, then hold the last Am and stop. Natural end, no fade."
+      }
+    ],
+    "form": [
+      "Intro",
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Instrumental",
+      "Verse",
+      "Chorus",
+      "Verse",
+      "Chorus",
+      "Outro"
+    ]
+  },
+  "37-rusty-cage": {
+    "sections": [
+      {
+        "section": "Intro riff",
+        "chords": "(A5) ×8",
+        "shapes": "-022--",
+        "remind": "Amp 6Amber",
+        "hint": "8 bars at about 112. Hold A5 and let the low E string walk open to the 3rd fret G and back.",
+        "tab": "The riff cell, one bar (Songsterr s39852t0)\nG|2-2-2-----2-2-2-----|\nD|2-2-2-----2-2-2-----|\nA|0-0-0-----0-0-0-----|\nE|------0-3-------0-3-|"
+      },
+      {
+        "section": "Verse",
+        "chords": "(A5) ×8",
+        "shapes": "-022--",
+        "hint": "Same cell for 8 bars, nothing changes under the vocal. The only job is keeping the walk even."
+      },
+      {
+        "section": "Chorus",
+        "chords": "(A5) ×2 G A5",
+        "shapes": "-022-- 320033 -022--",
+        "hint": "4 bar cell, twice each time round. The G is the only change in the fast half."
+      },
+      {
+        "section": "Electric turn",
+        "chords": "(E5) ×4",
+        "shapes": "022---",
+        "remind": "Amp → 7Amber",
+        "hint": "About 1:26 it drops a fourth to E5 and eases back to 97. Same walk, now under the E5."
+      },
+      {
+        "section": "Slow verse",
+        "chords": "(E5) ×12",
+        "shapes": "022---",
+        "hint": "12 bars, four lyric lines, so it runs long. Heavier and a touch behind. Dig in, do not go quiet."
+      },
+      {
+        "section": "Slow chorus",
+        "chords": "(E5) ×2 D E5",
+        "shapes": "022--- --0232 022---",
+        "hint": "Same 4 bar cell moved down a fourth, twice. D does exactly what the G did."
+      },
+      {
+        "section": "Coda",
+        "chords": "(E5) ×6 D E5",
+        "shapes": "022--- --0232 022---",
+        "hint": "8 bars, the loud finish. Ride the E5 and save the D for the last line."
+      },
+      {
+        "section": "Ending",
+        "chords": "G Em",
+        "shapes": "320033 022000",
+        "hint": "Big G into a held Em. Solo, just hold the last E5. Natural end, no fade."
+      }
+    ],
+    "form": [
+      "Intro riff",
+      "Verse",
+      "Chorus ×2",
+      "Verse",
+      "Chorus ×2",
+      "Electric turn",
+      "Slow verse",
+      "Slow chorus ×2",
+      "Coda",
+      "Ending"
+    ]
+  },
+  "38-hi-ren": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "Dm Gm Dm A",
+        "shapes": "--0231 -55333 --0231 -02220",
+        "remind": "Amp 1Amber",
+        "hint": "Picked melody, free time, about 15 bars. Play it as a line off the Tabs tab, not as held shapes."
+      },
+      {
+        "section": "Main line",
+        "chords": "Dm A Bb F",
+        "shapes": "--0231 -02220 -13331 -33211",
+        "hint": "One pitch a bar on the G string at 10, 6, 7 and 2, struck on every beat, over the root on the low D."
+      },
+      {
+        "section": "Dyad groove",
+        "chords": "(Dm Gm) ×2",
+        "shapes": "0-32-- 5-03--",
+        "hint": "Under the spoken blocks: low D with D string 3 and G 2, then low D at 5 with D open and G 3."
+      },
+      {
+        "section": "Build",
+        "chords": "Dm",
+        "shapes": "--0231",
+        "hint": "Low two strings climb together a fret at a time from the open D. Loudest thing before the turn."
+      },
+      {
+        "section": "Reset",
+        "chords": "Dm Gm Dm A",
+        "shapes": "--0231 -55333 --0231 -02220",
+        "hint": "The intro melody again at 90 then 80, then two bars of Dm drone at 110. Let it breathe."
+      },
+      {
+        "section": "Outro loop",
+        "chords": "Dm A Bb F",
+        "shapes": "--0231 -02220 -13331 -33211",
+        "hint": "Same loop picked at 100, roots on the low string at 0, 7, 8 and 3, melody on top. Six times round."
+      },
+      {
+        "section": "Outro strummed",
+        "chords": "Dm A Bb (F Gm Am)",
+        "shapes": "--0231 -02220 -13331 -33211 -55333 -02210",
+        "hint": "Full barres, loudest point. The last bar is never a plain F: every pass climbs F to Gm to Am."
+      },
+      {
+        "section": "Ending",
+        "chords": "Am",
+        "shapes": "-02210",
+        "hint": "The fourth climb leaves the Am ringing and it is held from there. Natural end, no fade."
+      }
+    ],
+    "form": [
+      "Intro",
+      "Main line ×2",
+      "Dyad groove",
+      "Main line",
+      "Dyad groove",
+      "Main line",
+      "Dyad groove",
+      "Main line",
+      "Dyad groove ×2",
+      "Main line",
+      "Dyad groove",
+      "Main line",
+      "Dyad groove",
+      "Main line",
+      "Build",
+      "Reset",
+      "Outro loop ×6",
+      "Outro strummed ×4",
+      "Ending"
+    ]
+  },
+  "39-the-tale-of-jenny-screech": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "Dm Am Em",
+        "shapes": "--0231 -02210 022000",
+        "remind": "Amp 1Amber",
+        "hint": "Picked melody in free time, about 13 bars. Read the line off the Tabs tab."
+      },
+      {
+        "section": "Jenny loop",
+        "chords": "Am Dm",
+        "shapes": "-02210 --0231",
+        "hint": "Two bars, Am then Dm, about 85. Thumb on the root, fingers rolling on top.",
+        "tab": "Two bars, Am then Dm (Songsterr s2221267t0)\ne|--0---0---0---0-|--1---1---1---1-|\nB|--1---1---1---1-|--3---3---3---3-|\nG|--------2-------|----2---2---2---|\nD|----2-------2---|0---------------|\nA|0---------------|----------------|"
+      },
+      {
+        "section": "Jenny lift",
+        "chords": "Am Dm",
+        "shapes": "577555 -57765",
+        "hint": "Same two bars as 5th fret barres, strummed. The only loud pass in Jenny half."
+      },
+      {
+        "section": "Jenny fade",
+        "chords": "Dm Am",
+        "shapes": "--0231 -02210",
+        "hint": "One held chord a bar, Dm and Am, slowing and quieting. Land it, do not count it."
+      },
+      {
+        "section": "Turn to Screech",
+        "chords": "Em7 Fmaj7 D9",
+        "shapes": "020000 --3555 -5455-",
+        "remind": "Amp → 5Amber",
+        "hint": "Six bars that hand A minor to E minor and jump 85 to 130. Learn it on its own."
+      },
+      {
+        "section": "Screech verse",
+        "chords": "Em F#dim G Am",
+        "hint": "3/4 at 130. Bass walk of E, F#, G and A on the low string, picked line above it.",
+        "tab": "Bass walk under the picked line, one bar each, in 3/4\nB|----------|----------|--8---7---|1-0---|\nG|0-4-2-0---|2-7---5---|4---------|----2-|\nD|--------4-|----------|----------|------|\nA|----------|----------|----------|0-----|\nE|0---------|2---------|3---------|------|"
+      },
+      {
+        "section": "Screech drive",
+        "chords": "Em F#dim G Am",
+        "hint": "Same walk in 4/4, hammered pairs down the top strings. Build it slow."
+      },
+      {
+        "section": "Screech chorus",
+        "chords": "Em A C B",
+        "shapes": "022000 -02220 -32010 -24442",
+        "hint": "3/4 at 110, two bars a chord. The A brings a C sharp, the B a D sharp."
+      },
+      {
+        "section": "Screech riff",
+        "chords": "Em",
+        "shapes": "022000",
+        "hint": "Low string only, back in 4/4: open E, a G to F sharp move, then open E."
+      },
+      {
+        "section": "Screech figure",
+        "chords": "Em Bm",
+        "shapes": "---987 ---432",
+        "hint": "Top three strings: Em at the 7th, then a Bm answer. Chops between the hits."
+      },
+      {
+        "section": "Line climb",
+        "chords": "Em Emmaj7 Em7",
+        "shapes": "022000 021000 020000",
+        "hint": "E minor with one inner voice walking down, open position."
+      },
+      {
+        "section": "Screech strum",
+        "chords": "Em G F#",
+        "shapes": "022000 320003 244322",
+        "hint": "Open chords hit hard: Em for a bar, then G into F sharp. Loudest point."
+      },
+      {
+        "section": "Ending",
+        "chords": "C Am C Em A C B",
+        "shapes": "-32010 -02210 -32010 022000 -02220 -32010 -24442",
+        "hint": "One chord a bar, strummed. The B sits a while before it resolves. No fade."
+      }
+    ],
+    "form": [
+      "Intro",
+      "Jenny loop ×7",
+      "Jenny lift ×3",
+      "Jenny loop ×9",
+      "Jenny fade",
+      "Turn to Screech",
+      "Screech verse ×3",
+      "Screech drive ×2",
+      "Screech chorus ×2",
+      "Screech riff",
+      "Screech figure ×6",
+      "Line climb",
+      "Screech strum ×5",
+      "Ending"
+    ]
+  },
+  "40-chalk-outlines": {
+    "sections": [
+      {
+        "section": "Intro",
+        "chords": "C#m A E E",
+        "shapes": "-46654 -02220 022100 022100",
+        "remind": "Amp 1Amber",
+        "hint": "Four bars of the picked figure, alone. Bass note on the low string, the third on the G string.",
+        "tab": "The figure, one pass (bass note plus the third)\nB|--5---5---5---5-|----------------|----------------|----------------|\nG|----------------|--6---6---6---6-|--1---1---1---1-|--1---1---1---1-|\nA|4---4---4---4---|----------------|----------------|----------------|\nE|----------------|5---5---5---5---|0---0---0---0---|0---0---0---0---|"
+      },
+      {
+        "section": "Verse",
+        "chords": "C#m A E E",
+        "shapes": "-46654 -02220 022100 022100",
+        "remind": "Amp 1Amber",
+        "hint": "Same four bars, four passes. Nothing changes under you, so hold the figure steady and stay quiet."
+      },
+      {
+        "section": "Pre-Chorus",
+        "chords": "F#m A E E F#m A B B",
+        "shapes": "244222 -02220 022100 022100 244222 -02220 -24442 -24442",
+        "hint": "Same figure moved: F#m is low E 2 with G 2, A is low E 5 with G 6, B is low E 7 with G 8."
+      },
+      {
+        "section": "Chorus",
+        "chords": "A E B C#m",
+        "shapes": "-02220 022100 -24442 -46654",
+        "remind": "Amp → 2Amber",
+        "hint": "Stop picking and strum: bass note, a muted chop, two strums, two chops. Ends on a bar of A and some space.",
+        "tab": "One bar of A then one bar of E\ne|--x-0-0-x-x-|--x-0-0-x-x-|\nB|----2-2-----|----0-0-----|\nG|--x-2-2-x-x-|--x-1-1-x-x-|\nD|----2-2-----|----2-2-----|\nA|0---0-0-----|--x-2-2-x-x-|\nE|------------|0---0-0-----|"
+      },
+      {
+        "section": "Verse (after chorus)",
+        "chords": "C#m A E E",
+        "shapes": "-46654 -02220 022100 022100",
+        "remind": "Amp back to 1Amber",
+        "hint": "Back to the picked figure and back to quiet. Third pass lifts the E an octave: A string 7 with B 9.",
+        "cheatHide": true
+      },
+      {
+        "section": "Chorus (2nd)",
+        "chords": "A E B C#m",
+        "shapes": "-02220 022100 -24442 -46654",
+        "remind": "Amp → 2Amber",
+        "hint": "Four passes this time, and the fourth holds the B where the C sharp minor would be.",
+        "cheatHide": true
+      },
+      {
+        "section": "Lift",
+        "chords": "A E B A",
+        "shapes": "-02220 022100 -24442 -02220",
+        "hint": "Same four bars with A in place of the C sharp minor. Loudest point, so dig into the same pattern."
+      },
+      {
+        "section": "Break",
+        "chords": "A E Bsus2",
+        "shapes": "-02220 022100 -24422",
+        "hint": "One more pass stopping on a ringing B, then eight bars with no guitar. Do not fill it or come back early."
+      },
+      {
+        "section": "Ending",
+        "chords": "A E B C#m A E",
+        "shapes": "-02220 022100 -24442 -46654 -02220 022100",
+        "hint": "The chorus once more, then a held E. Natural end, no fade."
+      }
+    ],
+    "form": [
+      "Intro",
+      "Verse ×4",
+      "Pre-Chorus",
+      "Chorus ×3",
+      "Verse (after chorus) ×4",
+      "Pre-Chorus",
+      "Chorus (2nd) ×4",
+      "Lift ×3",
+      "Break",
+      "Ending"
+    ]
   }
 }

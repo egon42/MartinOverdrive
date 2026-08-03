@@ -1,0 +1,98 @@
+Drop D (DADGBE)
+Key: D minor
+
+(form sheet: figures and section cues only, not a lyric sheet)
+
+(Dm A Bb F is the four-bar loop, one bar each, and it turns up in three costumes. It is not the only harmony: the spoken blocks drop to a two-bar Dm to Gm vamp and the intro and reset run Dm Gm Dm A. Picked melody in the intro, a single-note line on the G string through the middle, full barre chords at the end. The middle is spoken dialogue between two voices and the guitar just trades its two figures underneath, so the counts below are approximate and the vocal is the real cue. Roughly 8:35 end to end.)
+
+[Amp: 1Amber]
+[Intro - picked melody, free time, about 15 bars, marked 98 easing to 90 then 80]
+Dm Gm Dm A
+
+Dm Gm Dm A
+
+[Main line 1 - two bars of Dm drone first, then about 110; one pitch a bar on the G string, frets 10 6 7 2]
+Dm A Bb F
+
+Dm A Bb F
+
+[Dyad groove 1 - two notes on the D and G strings over a bass note, open strings as the release]
+Dm Gm Dm Gm
+
+[Main line 2]
+Dm A Bb F
+
+[Dyad groove 2]
+Dm Gm Dm Gm
+
+[Main line 3]
+Dm A Bb F
+
+[Dyad groove 3]
+Dm Gm Dm Gm
+
+[Main line 4]
+Dm A Bb F
+
+[Dyad groove 4 - longest of the seven, the dialogue gets fast here]
+Dm Gm Dm Gm
+
+Dm Gm Dm Gm
+
+[Main line 5]
+Dm A Bb F
+
+[Dyad groove 5]
+Dm Gm Dm Gm
+
+[Main line 6]
+Dm A Bb F
+
+[Dyad groove 6 - loudest of the spoken blocks]
+Dm Gm Dm Gm
+
+[Main line 7 - last one before the build]
+Dm A Bb F
+
+[Build - chromatic climb in fifths on the low two strings, no chord changes to read]
+Dm Dm Dm Dm
+
+Dm Dm Dm Dm
+
+[Reset - the intro melody again, slowed to 90 then 80, then a Dm drone at 110]
+Dm Gm Dm A
+
+[Outro loop - picked, marked 100; low string roots at 0 7 8 3]
+Dm A Bb F
+
+Dm A Bb F
+
+Dm A Bb F
+
+Dm A Bb F
+
+Dm A Bb F
+
+Dm A Bb F
+
+[Outro strummed - same loop in full barres, dig in; the last bar of every pass climbs F Gm Am]
+Dm A Bb
+
+F Gm Am
+
+Dm A Bb
+
+F Gm Am
+
+Dm A Bb
+
+F Gm Am
+
+Dm A Bb
+
+F Gm Am
+
+[Ending - hold and let it ring]
+Am
+
+(natural end, no fade. The transcription holds an Am, the top of the walk-up. Hold a Dm instead if you want it to land at home.)

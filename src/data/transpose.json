@@ -4,5 +4,6 @@
   "25-valerie": { "semitones": 1, "recordingTuning": "Eb (Winehouse)" },
   "26-voodoo-child-slight-return": { "semitones": 1, "recordingTuning": "Eb standard" },
   "28-mama-i-m-coming-home": { "semitones": 1, "recordingTuning": "Eb standard" },
-  "30-pink-pony-club": { "semitones": 1, "recordingTuning": "standard, half step below the band" }
+  "30-pink-pony-club": { "semitones": 1, "recordingTuning": "standard, half step below the band" },
+  "36-sixteen-tons": { "semitones": -2, "recordingTuning": "standard, a whole step above the A minor chart (the record sits in B minor)" }
 }

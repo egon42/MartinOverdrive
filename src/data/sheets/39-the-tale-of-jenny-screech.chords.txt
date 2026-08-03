@@ -1,0 +1,125 @@
+Standard (EADGBE)
+Key: A minor for Jenny, E minor for Screech
+
+(form sheet: figures and section cues only, not a lyric sheet)
+
+(This is the combined tale, both halves back to back, about 7:20 of guitar. Jenny's half is one two-bar loop, Am then Dm, at about 85, in three costumes: thin roots, full picked shapes, and one loud pass on barres at the 5th. Three chords turn the corner and the tempo jumps to 130. Screech's half is E minor: a bass walk of E, F sharp, G and A in 3/4, the same walk driven in 4/4, a chorus of Em A C B, then a low riff, a picked Em to Bm pair, a line climb and open chords strummed hard. Long spoken stretches sit on top of all of it, so the counts below are approximate and the voice is the real cue.)
+
+[Amp: 1Amber]
+[Intro - picked melody, free time, about 13 bars; 75 drifting to 65, 70 and 80]
+Dm Am Em
+
+[Jenny loop 1 - thin: roots and a dyad, about 85; one bar each]
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Em
+
+[Jenny loop 2 - root pulse only, then the full picked shapes come in]
+Am Dm
+
+Am Dm
+
+Am Dm
+
+[Jenny lift - same two bars as barres at the 5th; the loud pass]
+Am Dm
+
+Am Dm
+
+Am Dm
+
+[Jenny loop 3 - back to open shapes, the long run to the end of the half]
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+Am Dm
+
+[Jenny fade - one held chord a bar, slowing and quieting]
+Dm Am
+
+Dm Am
+
+Dm Am
+
+[Amp: 5Amber]
+[Turn to Screech - the hinge, six bars; tempo jumps to 130 on the far side]
+Em7 Fmaj7 D9
+
+[Screech verse - 3/4 at 130; bass walk E F# G A under the picked line]
+Em F#dim G Am
+
+Em F#dim G Am
+
+Em F#dim G Am
+
+[Screech drive - same walk in 4/4, hammered pairs on the top strings]
+Em F#dim G Am
+
+Em F#dim G Am
+
+[Screech chorus - 3/4 at 110, two bars a chord, twice round; B held after]
+Em A C B
+
+Em A C B
+
+[Screech riff - low string only, open E then a G to F# move]
+Em Em
+
+[Screech figure 1 - Em on the top three, then the Bm answer; muted chops between]
+Em Bm
+
+Em Bm
+
+Em Bm
+
+(long spoken stretch here, no guitar at all)
+
+[Screech figure 2 - the same pair, three more passes]
+Em Bm
+
+Em Bm
+
+Em Bm
+
+[Line climb - E minor with one inner voice walking down]
+Em Emmaj7 Em7
+
+[Screech strum - open chords hit hard; loudest point of the piece]
+Em G F#
+
+Em G F#
+
+Em G F#
+
+Em G F#
+
+Em G F#
+
+(one ringing open chord, then the guitar drops out for the last of the story)
+
+[Ending - one chord a bar, strummed]
+C Am C
+
+Em A C B
+
+[Hold]
+Em
+
+(natural end, no fade. The record holds an E minor with a D sharp still in it. Hold a plain Em if you want it to land clean.)
