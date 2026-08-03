@@ -219,6 +219,24 @@ the amp's front panel (bulk-write with the loader tools instead).
 - **Jam page removed** (2026-07, user request) — it grouped songs by pentatonic key.
   Don't re-propose it.
 
+## Premade setlists (dev-branch feature, added 2026-08-03)
+
+- `src/data/setlists.json` (hand-curated, NOT importer output) defines named practice
+  setlists (`noodling`, `woodshed`) as ordered songId lists. `src/setlists.ts` resolves
+  them against the catalog (unknown ids dropped silently; empty or reserved-`full` lists
+  dropped whole) and owns the device-local pick (`overdrive-setlist[-dev]`, localStorage,
+  deliberately never in the synced practice blob).
+- The picker lives on the /set page. Premade lists are fixed-order practice playlists:
+  show mode and print walk them; `skipTonight`/`setPosition` (Tonight's-set tools) apply
+  ONLY to the Full set; live follow ignores the picker; a /show/:songId deep link to a
+  song outside the active list walks the full set for that visit.
+- Adding a song for a premade list = normal add-song pipeline (append to catalog end,
+  "skip for shows unless called" in rehearsalNotes) + its id in setlists.json.
+  `npm run validate` checks setlists.json referential integrity.
+- **XLSX gap:** `martin_overdrive_setlist_prep.xlsx` only has rows 1-32. Add rows for
+  33-wicked-game / 34-comfortably-numb (and any later hand-added songs) before running
+  `npm run import-setlist`, or the re-import wipes them and validate hard-fails.
+
 ## Cross-device sync (dev-branch feature)
 
 - `src/sync.tsx` syncs the practice blob across devices via a **Supabase** table, keyed by a
