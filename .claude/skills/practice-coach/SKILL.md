@@ -62,6 +62,8 @@ When they ask for desk / fake fretboard / meeting practice:
 
 ## One-step loop (strict)
 
+**User preference (Harden / final week):** open with the **current song only** — short instruct, wait for how it went / what needs work, write it, then the next song. The worksheet is the log for future decisions. Do not open a guitar session by dumping the full timed plan or abandoning them to freeform shuffle without a next song.
+
 For **each** step, in order:
 
 1. **Instruct** — what to play/practice, time budget, shape fretting or drill from

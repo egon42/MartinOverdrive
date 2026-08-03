@@ -14,7 +14,8 @@
 - Card edits: mock → snapshot → apply → `npm run validate` → commit → bare `git push` on `dev`.
 - **Thu 7/30 after evening:** freeze card edits unless broken for Friday.
 - Drop first when time slips: Free Bird, fills, non-kill-zone stage passes.
-- **Never skip:** Darkness + Pretender + **Thunderstruck** (when/where) + ordered set slice + **body protocol**.
+- **Never skip** Darkness + **Lola Montez** + **Thunderstruck** (when/where) + ordered set slice + **body protocol**.  
+  (**Pretender off always-play 7/29** — still solid/optional. **Lola on 7/29** — passable, needs reps.)
 - Soreness climbing day-over-day → shorten Priority, keep never-skip trio + stretch, drop fills first.
 
 ## Resume — `/continue`

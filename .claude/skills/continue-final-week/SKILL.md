@@ -75,7 +75,7 @@ If they’re in the wrong place (e.g. Cursor but Fable is recommended): tell the
 | Track | Do |
 |---|---|
 | **desk** | One app slice: stage-cheat-card / named leftover / UI fix / phone-verify / deploy check — whatever **Next desk** says. Snapshot when rewriting cards → apply → `npm run validate` → commit → bare `git push`. Update stage progress + both HANDOFF next lines as needed. Remind once that fingering is optional downtime; do not coach Isolate/Neighbor unless they asked. |
-| **guitar** | Hand off to **practice-coach** on today’s sheet (or offer **practice-session** if missing). Body Pre before Priority if not done. Body Post after cool-down. |
+| **guitar** | Hand off to **practice-coach**: **one song at a time** (instruct → play → report → log → next). Sheet is the log for future decisions, not a wall of plan to dump at them. If today’s worksheet is missing, create a lean dated log (or run practice-session lightly) then start the first song — don’t open with the full table. Body Pre before first song if not done; Body Post after cool-down. |
 
 Legacy HANDOFF track names (`day-app`, `eve-guitar`, `desk`, `body`): map `day-app` → **desk**, `eve-guitar` → **guitar**, old `desk`/`body` alone → ask which track unless the Next line is clearly app vs practice.
 

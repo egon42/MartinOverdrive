@@ -1,6 +1,6 @@
 # HANDOFF — living bookmark (overwrite on pause)
 
-- Updated: **2026-07-30 afternoon** (desk paused; run-through finished, split pill shipped)
+- Updated: **2026-07-31 ~12:25a** (last solo guitar before Fri band rehearsal; cards frozen)
 - Show: 2026-08-01 · Phase: **Harden**
 - Week plan: [`final-week-2026-08-01.md`](final-week-2026-08-01.md)
 - Skill: `/continue desk` · `/continue guitar` → `.claude/skills/continue-final-week/`
@@ -8,66 +8,45 @@
 
 ## Track
 
-**desk** (paused 2026-07-30 afternoon; next block is guitar tonight)
+**guitar** (paused end of 2026-07-30 night / into 7/31)
 
 ## Last completed
 
-**Set-order run-through COMPLETE #1–#32** (7/29–7/30, Ryan driving; skips #3/#6/#7
-deliberate). Today's session (#20–#32):
+Last solo guitar night (`practice-sessions/2026-07-30.md`):
 
-- **New `A*B` split-alt pill grammar** shipped (one chip, left normal / right blue
-  alternate, two shape slots, no other markers/rides). Council-reviewed by two
-  verifiers; validator mirrors the parser. Phone-OK'd by Ryan.
-- #20 Dirtbag stands (outro → tonight's vet) · #21 Lola: plain verse, chorus D]] rides,
-  row-2 retags, D*F#m pill, Bridge remind "Starts right after \"Oh Lola\"" · #22 Hunger,
-  #26 WICA, #27 Purple Rain, #31 Banditos stand (Banditos deliberately unfolded, hints
-  worth the rows) · #23 Gently Weeps folded to Verse (D*C pill) + Bridge · #25 HIGA
-  chorus remind ×2/×3/3rd-is-Outro, bridge reps → vet · #29 AGD final-chorus G resolved
-  plain · #30 Pink Pony folded + Bridge remind + **Transpose +1 chip** · #32 Free Bird
-  lyric landmarks (V1/V2, 2nd-refrain extra line, outro entry remind) · #24/#28 skipped
-  (settled/guitar-confirmed).
-- **#17 Dani `*~+G` chip phone-checked and accepted 7/30**: shows the + and dashed blue
-  ring, fill unchanged — good enough, no further render work.
+- **Darkness** Marty pass — single-string second part OK, muscle memory starting; still weakest
+- Card vets: **Zombie** solo cold · **Dirtbag** + scroll-Outro remind shipped · **Lola** powers/PM shipped · **HIGA** Bridge lose-able (sit quiet OK) · Purple Rain OK
+- Thunderstruck **best ever** · Dream On / Mama / DSB / Tribute / SHA bonus
+- Cards **FROZEN** (broken-only until show)
 
 ## Next desk
 
-**`gig preflight` Friday morning** (Cursor shell). Cards are **FROZEN** after tonight —
-broken-only fixes from here.
+**`gig preflight` Friday morning** (Cursor shell). Cards frozen — broken-only fixes.
 
 ## Next guitar
 
-**Tonight:** Body Pre → **#19 Darkness priority block** (Marty Music tutorial passes,
-note-piece work on the hard spots, Songsterr rhythm loops) → **card vets before the
-freeze**: #18 Zombie solo tab · #20 Dirtbag outro rows (G#m stab / held 3rd E / slow
-walk-down) · #21 Lola break→bridge tag chord (omit-OK if unclear) · #25 HIGA bridge
-reps (high-neck powers 6-9) → #10 Pretender catch-up → abbreviated full set slice
-(Thu plan) → **Lola** + Thunderstruck (when/where) flash → Body Post.
-
-Coach = one song at a time (instruct → play → report → log → next).
+**Fri band rehearsal:** Body Pre → watch Darkness / Lola / Thunderstruck · Mama chorus join · HIGA Bridge sit-or-drill · **2-min resets between sets** → Body Post after load-out. Optional short night pass on Darkness if energy. Sat show day = warm-up only (~25 min).
 
 ## Recommended desk
 
-**Cursor** (preflight is checklist + `gh`); Fable only if a card is actually broken.
+**Cursor** (preflight = checklist + `gh`)
 
 ## Recommended guitar
 
-**Either** (chat at the guitar) — song-by-song coach, not plan dump.
+**Either** (band rehearsal / coach at the room)
 
 ## Never skip
 
-Darkness · **Lola Montez** · Thunderstruck (when/where) · ordered set slice · body Pre/Post
-(**Pretender off always-play 7/29** — still solid / optional. **Lola on** as of 7/29 —
-passable, needs the reps.)
+Darkness · **Lola Montez** · Thunderstruck (when/where) · ordered set slice · body Pre/Post  
+(**Pretender off always-play** — solid/optional. **Lola on** — needs the reps.)
 
 ## Card / UI TODOs
 
-- **Cards FROZEN after 2026-07-30 evening** — broken-only fixes until the show.
-- Tonight's vet outcomes to log on the worksheet: Zombie solo · Dirtbag outro · Lola
-  tag (omit-OK) · HIGA bridge.
-- Grammar proposals (`grammar-proposals-2026-07-28.md`) + ride-scan mediums
-  (`ride-scan-proposals-2026-07-29.md`) still awaiting ear — post-show unless trivial.
-- Open flag: Voodoo (#6) hard-stop vs ring (low stakes, skipped in run-through).
-- Fingering board = opportunistic downtime only; not a HANDOFF blocker.
+- **Cards FROZEN** after 2026-07-30 evening — broken-only until the show.
+- Shipped tonight: Dirtbag Bridge "scroll down for Outro"; Lola chorus/break powers + Verse "mostly palm mute".
+- Grammar / ride-scan proposals parked post-show unless trivial.
+- Open flag: Voodoo (#6) hard-stop vs ring (low stakes).
+- Fingering board = opportunistic only; not a HANDOFF blocker.
 
 ## Standing decisions
 
