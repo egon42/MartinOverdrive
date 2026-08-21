@@ -6,6 +6,9 @@ changes your ear expects you to hit, style jams just loop a mood.
 
 Anchor track: [Comfortably Numb Jam — Pink Floyd Style (B minor)](https://www.youtube.com/watch?v=8lsxsFAd9ew) (Now YOU Shred)
 
+Amp: load the Floydian preset set (`amp-presets/FLOYDIAN-SET.md`) — quiet↔loud
+jam pairs live on RED 17-24; 23↔24 is the Amber4/Red8 habit, one click apart.
+
 ## Floydian (Now YOU Shred, same producer as the anchor)
 
 - [FLOYDIAN TRIP — full Pink Floyd jam playlist](https://www.youtube.com/playlist?list=PL-pZTNa1BzZZ1hw1cxqF3_MiQfHDK7JHX) — shuffle-worthy on its own

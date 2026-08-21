@@ -35,7 +35,14 @@ FX = gp.FX
 CABINETS = gp.CABINETS
 AMP_MAGIC = gp.AMP_MAGIC
 PRESETS = gp.PRESETS
+FUSE_DIR = "fuse"
 dial = gp.dial
+
+
+def select_set(name):
+    """Switch the active preset set ('gig' or 'floydian', see gp.PRESET_SETS)."""
+    global PRESETS, FUSE_DIR
+    FUSE_DIR, PRESETS = gp.PRESET_SETS[name]
 
 VID = 0x1ed8
 PID = 0x0014
@@ -236,7 +243,7 @@ def parse_selection(text):
 # --- self-test: rebuild packets and diff against the committed .fuse files ----
 
 def _fuse_path(slot, spec):
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "fuse",
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), FUSE_DIR,
                         "%02d-%s.fuse" % (slot, spec["file"]))
 
 
@@ -426,8 +433,12 @@ def main():
                     help="init packet 2 type byte (default c1 = plug; 03 = original)")
     ap.add_argument("--ack-timeout", type=int, default=1000,
                     help="ms to wait for each ACK read (default 1000)")
+    ap.add_argument("--set", choices=sorted(gp.PRESET_SETS), default="gig",
+                    dest="preset_set",
+                    help="which preset set to use (default gig)")
     args = ap.parse_args()
 
+    select_set(args.preset_set)
     init1_type = 0xc1 if args.init1_type == "c1" else 0x03
     slots = parse_selection(args.only) if args.only else list(range(len(PRESETS)))
 

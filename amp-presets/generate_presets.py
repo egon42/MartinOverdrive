@@ -322,6 +322,158 @@ TONES = {
                   "bass": 5},
         "fx": [{"type": "65_SPRING", "knobs": [1.5, 3, 3, 5, 5]}],
     },
+
+    # --- Floydian set (night-noodling jams; see FLOYDIAN-SET.md) -----------
+    # Effect knob orders verified against plug src/ui/effect.cpp:
+    #   FUZZ [level,gain,octave,low,high]  OVERDRIVE [level,gain,low,mid,high]
+    #   SINE_FLANGER/VIBRATONE/PHASER [level,rate|rotor,depth,feedback,phase|shape]
+    #   MONO_DELAY [level,time,feedback,bright,atten]  BIG_FUZZ [level,tone,sustain]
+    # PHASER shape must stay 0 (loader clamps the wire byte to 0/1).
+    "F_BREATHE": {
+        "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
+        "knobs": {"volume": 8.5, "gain": 3, "treble": 5.5, "middle": 5.5,
+                  "bass": 6, "presence": 5},
+        "fx": [{"type": "COMPRESSOR", "knobs": [4.5, 4, 3.5, 5, 5]},
+               {"type": "LARGE_HALL", "knobs": [4.5, 5.5, 4, 6, 5]}],
+    },
+    "F_SHINE_VIB": {
+        "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
+        "knobs": {"volume": 9, "gain": 3, "treble": 5.5, "middle": 5,
+                  "bass": 5.5},
+        "fx": [{"type": "VIBRATONE", "knobs": [6, 3.5, 6, 4, 5]},
+               {"type": "63_SPRING", "knobs": [3, 4, 4.5, 5, 5]}],
+    },
+    # 65DLX volumes graded against the gig SPL match (65DLX at 7 ~ Twin at 10),
+    # not the raw true-clean 8.5-10 band.
+    "F_US_AND_THEM": {
+        "amp": "65_DELUXE_REVERB", "cabinet": "65DLX",
+        "knobs": {"volume": 7.5, "gain": 3, "treble": 5, "middle": 5,
+                  "bass": 5.5},
+        "fx": [{"type": "LARGE_HALL", "knobs": [5.5, 6.5, 4, 6, 4.5]}],
+    },
+    # The go-to 4Amber (ETHEREAL) with more delay level/time/feedback and a
+    # bigger hall. Same amp, same gain.
+    "F_ETHEREAL_DEEP": {
+        "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
+        "knobs": {"volume": 8.5, "gain": 2.8, "treble": 5.5, "middle": 5,
+                  "bass": 5.5, "presence": 5},
+        "fx": [{"type": "MONO_DELAY", "knobs": [5, 5.5, 4.5, 5, 5]},
+               {"type": "LARGE_HALL", "knobs": [5.5, 6.5, 4, 6, 5]}],
+    },
+    "F_ECHOES": {
+        "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
+        "knobs": {"volume": 9, "gain": 3, "treble": 6, "middle": 5,
+                  "bass": 5},
+        "fx": [{"type": "MONO_DELAY", "knobs": [6, 6, 5.5, 6, 5]},
+               {"type": "SMALL_HALL", "knobs": [3.5, 4.5, 4, 6, 5]}],
+    },
+    "F_ANY_COLOUR": {
+        "amp": "65_DELUXE_REVERB", "cabinet": "65DLX",
+        "knobs": {"volume": 7, "gain": 3.5, "treble": 5.5, "middle": 5,
+                  "bass": 5},
+        "fx": [{"type": "PHASER", "knobs": [6, 3, 6.5, 4.5, 0]},
+               {"type": "MONO_DELAY", "knobs": [4, 4.5, 3.5, 5, 5]}],
+    },
+    "F_WISH_BREAKUP": {
+        "amp": "57_DELUXE", "cabinet": "57DLX",
+        "knobs": {"volume": 7.5, "gain": 4.5, "treble": 5.5, "middle": 6,
+                  "bass": 5},
+        "fx": [{"type": "65_SPRING", "knobs": [3, 4, 4, 5, 5]}],
+    },
+    "F_MISTRESS": {
+        "amp": "65_TWIN_REVERB", "cabinet": "65TWN",
+        "knobs": {"volume": 9, "gain": 3, "treble": 5.5, "middle": 5,
+                  "bass": 5.5},
+        "fx": [{"type": "SINE_FLANGER", "knobs": [5.5, 2.5, 6, 4, 5]},
+               {"type": "SMALL_HALL", "knobs": [3.5, 4.5, 4, 6, 5]}],
+    },
+    "F_TIME_SOLO": {
+        "amp": "BRITISH_70S", "cabinet": "4x12G",
+        "knobs": {"volume": 4.5, "gain": 4, "treble": 5.5, "middle": 6.5,
+                  "bass": 5},
+        "fx": [{"type": "FUZZ", "knobs": [6.5, 6.5, 0, 5, 5.5]},
+               {"type": "MONO_DELAY", "knobs": [4, 4.5, 3.5, 5, 5]},
+               {"type": "SMALL_HALL", "knobs": [3, 4.5, 4, 6, 5]}],
+    },
+    "F_MONEY": {
+        "amp": "BRITISH_70S", "cabinet": "4x12G",
+        "knobs": {"volume": 5, "gain": 5.5, "treble": 6, "middle": 6.5,
+                  "bass": 5.5, "presence": 6},
+        "fx": [{"type": "SMALL_ROOM", "knobs": [2, 4, 4, 5, 5]}],
+    },
+    "F_DOGS": {
+        "amp": "BRITISH_70S", "cabinet": "4x12G",
+        "knobs": {"volume": 5, "gain": 6, "treble": 5.5, "middle": 6,
+                  "bass": 5.5, "presence": 6},
+        "fx": [{"type": "SINE_FLANGER", "knobs": [5, 2.5, 5.5, 4, 5]},
+               {"type": "SMALL_ROOM", "knobs": [2, 4, 4, 5, 5]}],
+    },
+    "F_NUMB_STUDIO": {
+        "amp": "BRITISH_70S", "cabinet": "4x12G",
+        "knobs": {"volume": 4.5, "gain": 4.5, "treble": 5.5, "middle": 6.5,
+                  "bass": 5.5},
+        "fx": [{"type": "FUZZ", "knobs": [7, 7.5, 0, 5.5, 5]},
+               {"type": "MONO_DELAY", "knobs": [4.5, 5, 4, 5, 5]},
+               {"type": "LARGE_HALL", "knobs": [4, 5, 4, 6, 5]}],
+    },
+    "F_SORROW": {
+        "amp": "AMERICAN_90S", "cabinet": "4x12V", "noise_gate": 1,
+        "knobs": {"volume": 3, "gain": 6, "treble": 5.5, "middle": 4.5,
+                  "bass": 6.5},
+        "fx": [{"type": "FUZZ", "knobs": [6, 8, 0, 6, 4.5]},
+               {"type": "LARGE_HALL", "knobs": [5, 6, 4, 6, 5]}],
+    },
+    "F_RUN_LIKE_HELL": {
+        "amp": "65_TWIN_REVERB", "cabinet": "65TWN", "bright": True,
+        "knobs": {"volume": 8.5, "gain": 3, "treble": 6.5, "middle": 4.5,
+                  "bass": 5},
+        "fx": [{"type": "COMPRESSOR", "knobs": [5.5, 5, 4.5, 6, 5]},
+               {"type": "MONO_DELAY", "knobs": [6.5, 4.7, 4.5, 6, 5]},
+               {"type": "SMALL_HALL", "knobs": [2.5, 4, 4, 6, 5]}],
+    },
+    # EXPERIMENT: BIG_FUZZ (Big Muff) is a V2 extended-firmware effect the amp
+    # may not have. If this slot lands garbled, the firmware lacks it -- rewrite
+    # the slot and stick to FUZZ-based leads.
+    "F_BIG_MUFF": {
+        "amp": "BRITISH_70S", "cabinet": "4x12G",
+        "knobs": {"volume": 4.5, "gain": 4, "treble": 5.5, "middle": 6.5,
+                  "bass": 5.5},
+        "fx": [{"type": "BIG_FUZZ", "knobs": [6.5, 5.5, 7.5]},
+               {"type": "MONO_DELAY", "knobs": [4.5, 5, 4, 5, 5]},
+               {"type": "LARGE_HALL", "knobs": [4, 5.5, 4, 6, 5]}],
+    },
+    # EXPERIMENT: BRITISH_WATTS (Hiwatt) is a V2 extended-firmware amp model --
+    # same deal as F_BIG_MUFF (one experiment variable per slot).
+    "F_HIWATT": {
+        "amp": "BRITISH_WATTS", "cabinet": "4x12G",
+        "knobs": {"volume": 6, "gain": 4.5, "treble": 6, "middle": 6,
+                  "bass": 5.5, "presence": 6},
+        "fx": [{"type": "63_SPRING", "knobs": [2.5, 4, 4.5, 5, 5]}],
+    },
+    "F_NUMB_PULSE": {
+        "amp": "BRITISH_70S", "cabinet": "4x12G",
+        "knobs": {"volume": 4, "gain": 5, "treble": 5.5, "middle": 6.5,
+                  "bass": 5.5},
+        "fx": [{"type": "FUZZ", "knobs": [7, 8, 0, 5.5, 5]},
+               {"type": "MONO_DELAY", "knobs": [5, 5.5, 4.5, 5, 5]},
+               {"type": "LARGE_HALL", "knobs": [5, 6, 4, 6, 5]}],
+    },
+    "F_SHINE_LEAD": {
+        "amp": "59_BASSMAN", "cabinet": "BSSMN",
+        "knobs": {"volume": 5, "gain": 5.5, "treble": 6, "middle": 6,
+                  "bass": 5.5},
+        "fx": [{"type": "OVERDRIVE", "knobs": [5.5, 4.5, 5, 5.5, 5]},
+               {"type": "MONO_DELAY", "knobs": [4, 5, 4, 5, 5]},
+               {"type": "LARGE_HALL", "knobs": [4, 5.5, 4, 6, 5]}],
+    },
+    # The go-to 24Red (LEAD BOOST) with the small hall swapped for a big one.
+    "F_JAM_LEAD": {
+        "amp": "BRITISH_70S", "cabinet": "4x12G",
+        "knobs": {"volume": 3.5, "gain": 7, "treble": 5.5, "middle": 7,
+                  "bass": 5},
+        "fx": [{"type": "MONO_DELAY", "knobs": [4.5, 5, 4, 5, 5]},
+               {"type": "LARGE_HALL", "knobs": [4.5, 5.5, 4, 6, 5]}],
+    },
 }
 
 
@@ -368,15 +520,53 @@ PRESETS = [
     tone("LEAD_SOLO",       "24 LEAD BOOST",      "pair-lead-boost", vol=3.5),  # slot 23
 ]
 
+# Floydian night-noodling set (FLOYDIAN-SET.md). Same bank logic: AMBER cleans/
+# atmospheres, GREEN dirt/leads, RED quiet<->loud jam pairs.
+PRESETS_FLOYDIAN = [
+    tone("F_BREATHE",       "01 BREATHE",         "breathe"),          # slot 0
+    tone("F_SHINE_VIB",     "02 SHINE ON VIB",    "shine-on-vib"),     # slot 1
+    tone("F_US_AND_THEM",   "03 US AND THEM",     "us-and-them"),      # slot 2
+    tone("F_ETHEREAL_DEEP", "04 ETHEREAL DEEP",   "ethereal-deep"),    # slot 3
+    tone("F_ECHOES",        "05 ECHOES",          "echoes"),           # slot 4
+    tone("F_ANY_COLOUR",    "06 ANY COLOUR",      "any-colour"),       # slot 5
+    tone("F_WISH_BREAKUP",  "07 WISH BREAKUP",    "wish-breakup"),     # slot 6
+    tone("F_MISTRESS",      "08 MISTRESS",        "mistress"),         # slot 7
+    tone("F_TIME_SOLO",     "09 TIME SOLO",       "time-solo"),        # slot 8
+    tone("F_MONEY",         "10 MONEY",           "money"),            # slot 9
+    tone("F_DOGS",          "11 DOGS FLANGE",     "dogs-flange"),      # slot 10
+    tone("F_NUMB_STUDIO",   "12 NUMB STUDIO",     "numb-studio"),      # slot 11
+    tone("F_SORROW",        "13 SORROW",          "sorrow"),           # slot 12
+    tone("F_RUN_LIKE_HELL", "14 RUN LIKE HELL",   "run-like-hell"),    # slot 13
+    tone("F_BIG_MUFF",      "15 BIG MUFF TRY",    "big-muff-try"),     # slot 14
+    tone("F_HIWATT",        "16 HIWATT TRY",      "hiwatt-try"),       # slot 15
+    tone("F_BREATHE",       "17 NUMB VERSE",      "pair-numb-verse"),  # slot 16
+    tone("F_NUMB_PULSE",    "18 NUMB PULSE",      "pair-numb-pulse"),  # slot 17
+    tone("F_SHINE_VIB",     "19 SHINE VERSE",     "pair-shine-verse"),  # slot 18
+    tone("F_SHINE_LEAD",    "20 SHINE LEAD",      "pair-shine-lead"),   # slot 19
+    tone("F_ANY_COLOUR",    "21 DARK VERSE",      "pair-dark-verse"),   # slot 20
+    tone("F_TIME_SOLO",     "22 TIME LEAD",       "pair-time-lead"),    # slot 21
+    tone("F_ETHEREAL_DEEP", "23 JAM CLEAN",       "pair-jam-clean"),    # slot 22
+    tone("F_JAM_LEAD",      "24 JAM LEAD",        "pair-jam-lead"),     # slot 23
+]
+
+# set name -> (fuse subdir, preset list). The loader's --set flag keys off this.
+PRESET_SETS = {
+    "gig": ("fuse", PRESETS),
+    "floydian": ("fuse-floydian", PRESETS_FLOYDIAN),
+}
+
 
 def main():
-    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fuse")
-    os.makedirs(out, exist_ok=True)
-    for slot, spec in enumerate(PRESETS):
-        fname = f"{slot:02d}-{spec['file']}.fuse"
-        with open(os.path.join(out, fname), "w", encoding="utf-8") as f:
-            f.write(preset_xml(spec))
-        print(f"slot {slot:2d}: {fname}  ({spec['name']})")
+    base = os.path.dirname(os.path.abspath(__file__))
+    for set_name, (subdir, presets) in PRESET_SETS.items():
+        out = os.path.join(base, subdir)
+        os.makedirs(out, exist_ok=True)
+        print(f"[{set_name}] -> {subdir}/")
+        for slot, spec in enumerate(presets):
+            fname = f"{slot:02d}-{spec['file']}.fuse"
+            with open(os.path.join(out, fname), "w", encoding="utf-8") as f:
+                f.write(preset_xml(spec))
+            print(f"  slot {slot:2d}: {fname}  ({spec['name']})")
 
 
 if __name__ == "__main__":

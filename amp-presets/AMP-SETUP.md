@@ -9,6 +9,7 @@ per-song presets for the 40-song Martin Overdrive catalog.
 |---|---|
 | `AMP-SETUP.md` | This document |
 | `fuse/*.fuse` (24 files) | Premade presets, one per amp memory slot, ready to load |
+| `fuse-floydian/*.fuse` + `FLOYDIAN-SET.md` | Alternate 24-slot Floydian set for night noodling (load with `--set floydian` or the GUI's set picker) |
 | `generate_presets.py` | Regenerates the `.fuse` files if you tweak the tone table |
 | `load_presets.py` | Native Windows USB loader (Path A) — bulk-writes presets to the amp |
 | `load_presets_gui.py` + `mustang-loader.bat` | Dead-simple click-to-run window for the loader |

@@ -66,6 +66,16 @@ class App(tk.Tk):
             foreground="#555",
         ).pack(anchor="w", pady=(0, 8))
 
+        # preset-set row
+        sets = ttk.Frame(root)
+        sets.pack(fill="x")
+        ttk.Label(sets, text="Preset set:").pack(side="left")
+        self.set_var = tk.StringVar(value="gig")
+        ttk.Radiobutton(sets, text="Gig (band)", value="gig",
+                        variable=self.set_var).pack(side="left", padx=6)
+        ttk.Radiobutton(sets, text="Floydian (night noodling)", value="floydian",
+                        variable=self.set_var).pack(side="left")
+
         # check row
         checks = ttk.Frame(root)
         checks.pack(fill="x")
@@ -139,9 +149,10 @@ class App(tk.Tk):
             return
         if confirm and not messagebox.askyesno("Confirm", confirm):
             return
+        lp.select_set(self.set_var.get())
         self._set_busy(True)
         if banner:
-            self._append("\n=== %s ===\n" % banner)
+            self._append("\n=== %s [%s set] ===\n" % (banner, self.set_var.get()))
 
         def worker():
             try:
@@ -191,8 +202,9 @@ class App(tk.Tk):
     def act_load_all(self):
         self._run(
             lambda: lp.write_presets(ALL_SLOTS, self._init1(), 1000),
-            confirm="This overwrites ALL 24 preset slots on the amp.\n\n"
-                    "Your .fuse files are the backup. Continue?",
+            confirm="This overwrites ALL 24 preset slots on the amp with the "
+                    "'%s' set.\n\n"
+                    "Your .fuse files are the backup. Continue?" % self.set_var.get(),
             banner="Write ALL 24 presets",
         )
 
