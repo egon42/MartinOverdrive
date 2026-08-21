@@ -51,7 +51,7 @@ click of the PRESET knob.
 | 23 | JAM CLEAN | = 4 ETHEREAL DEEP | Pair with 24 |
 | 24 | JAM LEAD | Your 24Red go-to with a big hall swapped in | Familiar fallback lead |
 
-(9–16 are GREEN, 17–24 are RED; the table runs straight through.)
+(1–8 are AMBER, 9–16 are GREEN, 17–24 are RED; the table runs straight through.)
 
 ## Jam pairing (night-noodling.md)
 
