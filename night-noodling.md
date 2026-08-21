@@ -53,29 +53,23 @@ Anchor track: [Comfortably Numb Jam — Pink Floyd Style (B minor)](https://www.
 - [Santana Latin Rock Groove (Am)](https://www.youtube.com/watch?v=N4oLaPnAjf8) — upbeat nights
 - [Samba Pa Ti style (G major)](https://www.youtube.com/watch?v=9hCGON1pDC0) — breaks the minor-pentatonic autopilot
 
-## Same style, no named band (new finds)
+## More famous songs, same lane (not previously called out)
 
-- [Epic Atmospheric Guitar Jam (Am) — Quist](https://www.youtube.com/watch?v=6mza4DK-Fww) — Quist's whole channel is built for this
-- [Quist channel](https://www.youtube.com/channel/UCEXDaXzYhqYdLCQ3Ce7U2Og)
-- [Atmospheric Ambient Chill (Am, 68 BPM)](https://www.youtube.com/watch?v=hrj4DUuboM4)
-- [Ambient Atmospheric Groove (Bm)](https://www.youtube.com/watch?v=oyxEzMcsqPc)
-- [Atmospheric Rock (Em, 72 BPM)](https://www.youtube.com/watch?v=Pnkz_67USSs)
-- [Smooth Melodic Ambient Rock (Em, 80 BPM)](https://www.youtube.com/watch?v=NG8dEO8rGbQ)
-- [80's Atmospheric Rock (Em, 116 BPM)](https://www.youtube.com/watch?v=Ju1xImCeqmY) — spacious 80s cinema vibe
-- [Cinematic Ambient (Gm, 60 BPM) — MegaBackingTracks](https://www.youtube.com/watch?v=lo7YJni4mE4)
-- [Dreamy Deep Epic Jam (Am)](https://www.youtube.com/watch?v=s6iB7Nm1qnU)
-- [Dreamy Ethereal Ballad (C)](https://www.youtube.com/watch?v=3l_KEk2b708) — Elevated Jam Tracks, major-key change of scenery
-- [Slow Rock Emotional Ballad (Em)](https://www.youtube.com/watch?v=bSmph1RAjzs)
-- [Emotional Sad Guitar Ballad (Gm, 90 BPM)](https://www.youtube.com/watch?v=XgJFV5K3NLc)
-- [Sad Emotional Rock Ballad (Cm)](https://www.youtube.com/watch?v=Rk8QbDrPKds)
-- [Sad Emotional Guitar (Bm)](https://www.youtube.com/watch?v=TO0veLlVO4g)
-- [Sad Soft Rock Ballad (Bm)](https://www.youtube.com/watch?v=qNVj_h7tq5Y)
-- [Epic Guitar Ballad (Am, Am-F-C-G)](https://www.youtube.com/watch?v=wkrwDXiiVMM)
-- [Ambient Backing Tracks channel](https://www.youtube.com/c/AmbientBackingTracks) — 25-minute ambient loops, the most meditative format here
+- The Thrill Is Gone (B.B. King, Bm): [backing track, 91 BPM](https://www.youtube.com/watch?v=Tw-a0W6jwsw) · [style jam with chords, 88 BPM](https://www.youtube.com/watch?v=XS4wIkiv3mM) — the definitive minor-blues meditation, same key as Comfortably Numb
+- Little Wing (Hendrix, Em): [Slow Little Wing Jam, 45 BPM](https://www.youtube.com/watch?v=MfSXCND_d3g) · [14-minute long-form](https://www.youtube.com/watch?v=kM1L94WAqhE) · [Chords Jam](https://www.youtube.com/watch?v=tpYznx2RC7U)
+- Hotel California solo (Eagles, Bm): [77 BPM practice track](https://www.youtube.com/watch?v=C1jb9sI8IqM) · [extended solo-section loop](https://www.youtube.com/watch?v=bck5v_1eKBc)
+- Nothing Else Matters (Metallica, Em): [solo backing track](https://www.youtube.com/watch?v=rDmK9g31H88) · [full song, no lead](https://www.youtube.com/watch?v=CbEv31tyVJY)
+- Since I've Been Loving You (Led Zeppelin, Cm): [Zeppelin-style slow blues jam](https://www.youtube.com/watch?v=PuzJ90oZlNo) · [40 BPM jam track](https://www.youtube.com/watch?v=YrxuGg-Ncz8)
+- Stairway to Heaven solo (Am): [solo jam, 83 BPM](https://www.youtube.com/watch?v=ETRxOqjHXPY) · [extended solo loop](https://www.youtube.com/watch?v=9A77WiMo2Is)
+- Brothers in Arms (Dire Straits, G#m): [with scale map](https://www.youtube.com/watch?v=oGS1HaqF9fg) · [plain backing track](https://www.youtube.com/watch?v=AAxqaCaieOw) — the most Gilmour-adjacent thing outside Floyd
+- November Rain (GNR): [1st and 2nd solo](https://www.youtube.com/watch?v=mnHU7ko-8Qs) · [outro solo](https://www.youtube.com/watch?v=jPtrZJ4NJ1k) — the outro loop is the epic one
+- Riders on the Storm (Doors, Em): [Doors-style jam, 104 BPM](https://www.youtube.com/watch?v=1sPSBc2TNt4)
+- Albatross (Peter Green / Fleetwood Mac, E): [backing track](https://www.youtube.com/watch?v=sIL4ImR0ViY) · [no-lead play-along](https://www.youtube.com/watch?v=w_-zG0psK4s) — already a meditation record
+- Purple Rain solo (Prince): [minus solo guitar](https://www.youtube.com/watch?v=5Gr3taNJOIc) · [extended](https://www.youtube.com/watch?v=yA04p_TkGd4)
+- Sleep Walk (Santo & Johnny, C): [backing track](https://www.youtube.com/watch?v=xE0mCvVDffM) · [no lead](https://www.youtube.com/watch?v=4amgt21EbDQ) — 1959 instrumental, pure late-night
 
 ## Channels to mine
 
 - Now YOU Shred (the anchor's producer)
 - Elevated Jam Tracks
-- Quist
-- Ambient Backing Tracks
+- Quist (atmospheric no-song jams, if ever wanted)
