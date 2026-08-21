@@ -24,34 +24,32 @@ Same bank logic as the gig set: AMBER cleans/atmospheres, GREEN dirt and
 leads, RED adjacent quiet↔loud pairs so a jam goes comping → lead with one
 click of the PRESET knob.
 
-| # | Name | Recipe | For |
-|---|---|---|---|
-| 1 | BREATHE | Twin + light comp + large hall | DSOTM rhythm; lush compressed clean |
-| 2 | SHINE ON VIB | Twin + slow Vibratone (rotary) + '63 spring | Shine On comping |
-| 3 | US AND THEM | Deluxe Reverb, dark, big soft hall | Slow ballad comping |
-| 4 | ETHEREAL DEEP | Your 4Amber go-to with more delay + bigger hall | The default noodling clean |
-| 5 | ECHOES | Twin + long bright repeats | Echoes; delay-forward clean |
-| 6 | ANY COLOUR | Deluxe + slow deep phaser + delay | Any Colour You Like; Uni-Vibe-ish jam clean |
-| 7 | WISH BREAKUP | Tweed light breakup + spring | Strummed comping (WYWH/Fearless energy) |
-| 8 | MISTRESS | Twin + slow flanger (Electric Mistress) + hall | Animals/Wall clean arpeggios |
-| 9 | TIME SOLO | Fuzz Face into low-gain Brit stack + delay | Time solo; dynamic fuzz lead |
-| 10 | MONEY | Brit '70s crunch, dry-ish | Money/Have a Cigar riffing |
-| 11 | DOGS FLANGE | Flanged Brit crunch | Dogs/Pigs dirt |
-| 12 | NUMB STUDIO | Bigger fuzz + delay + hall, mids up | Comfortably Numb studio solo |
-| 13 | SORROW | Heavy fuzz into scooped '90s stack + hall, gated | Sorrow intro roar |
-| 14 | RUN LIKE HELL | Bright comp'd Twin + loud ~dotted-8th repeats | Run Like Hell rhythm |
-| 15 | BIG MUFF TRY | **Experiment** — Big Fuzz (Big Muff model) lead | See below |
-| 16 | HIWATT TRY | **Experiment** — British Watts (Hiwatt model) edge | See below |
-| 17 | NUMB VERSE | = 1 BREATHE | Pair with 18 |
-| 18 | NUMB PULSE | Cranked fuzz + delay + big hall | The PULSE Comfortably Numb lead — the anchor-track pair |
-| 19 | SHINE VERSE | = 2 SHINE ON VIB | Pair with 20 |
-| 20 | SHINE LEAD | Bassman + low overdrive + delay + hall | Smooth bluesy Shine On solo |
-| 21 | DARK VERSE | = 6 ANY COLOUR | Pair with 22 |
-| 22 | TIME LEAD | = 9 TIME SOLO | DSOTM-style jam pair |
-| 23 | JAM CLEAN | = 4 ETHEREAL DEEP | Pair with 24 |
-| 24 | JAM LEAD | Your 24Red go-to with a big hall swapped in | Familiar fallback lead |
-
-(1–8 are AMBER, 9–16 are GREEN, 17–24 are RED; the table runs straight through.)
+| # | Bank | Name | Recipe | For |
+|---|---|---|---|---|
+| 1 | Amber 1 | BREATHE | Twin + light comp + large hall | DSOTM rhythm; lush compressed clean |
+| 2 | Amber 2 | SHINE ON VIB | Twin + slow Vibratone (rotary) + '63 spring | Shine On comping |
+| 3 | Amber 3 | US AND THEM | Deluxe Reverb, dark, big soft hall | Slow ballad comping |
+| 4 | Amber 4 | ETHEREAL DEEP | Your 4Amber go-to with more delay + bigger hall | The default noodling clean |
+| 5 | Amber 5 | ECHOES | Twin + long bright repeats | Echoes; delay-forward clean |
+| 6 | Amber 6 | ANY COLOUR | Deluxe + slow deep phaser + delay | Any Colour You Like; Uni-Vibe-ish jam clean |
+| 7 | Amber 7 | WISH BREAKUP | Tweed light breakup + spring | Strummed comping (WYWH/Fearless energy) |
+| 8 | Amber 8 | MISTRESS | Twin + slow flanger (Electric Mistress) + hall | Animals/Wall clean arpeggios |
+| 9 | Green 1 | TIME SOLO | Fuzz Face into low-gain Brit stack + delay | Time solo; dynamic fuzz lead |
+| 10 | Green 2 | MONEY | Brit '70s crunch, dry-ish | Money/Have a Cigar riffing |
+| 11 | Green 3 | DOGS FLANGE | Flanged Brit crunch | Dogs/Pigs dirt |
+| 12 | Green 4 | NUMB STUDIO | Bigger fuzz + delay + hall, mids up | Comfortably Numb studio solo |
+| 13 | Green 5 | SORROW | Heavy fuzz into scooped '90s stack + hall, gated | Sorrow intro roar |
+| 14 | Green 6 | RUN LIKE HELL | Bright comp'd Twin + loud ~dotted-8th repeats | Run Like Hell rhythm |
+| 15 | Green 7 | BIG MUFF TRY | **Experiment** — Big Fuzz (Big Muff model) lead | See below |
+| 16 | Green 8 | HIWATT TRY | **Experiment** — British Watts (Hiwatt model) edge | See below |
+| 17 | Red 1 | NUMB VERSE | = 1 BREATHE | Pair with 18 |
+| 18 | Red 2 | NUMB PULSE | Cranked fuzz + delay + big hall | The PULSE Comfortably Numb lead — the anchor-track pair |
+| 19 | Red 3 | SHINE VERSE | = 2 SHINE ON VIB | Pair with 20 |
+| 20 | Red 4 | SHINE LEAD | Bassman + low overdrive + delay + hall | Smooth bluesy Shine On solo |
+| 21 | Red 5 | DARK VERSE | = 6 ANY COLOUR | Pair with 22 |
+| 22 | Red 6 | TIME LEAD | = 9 TIME SOLO | DSOTM-style jam pair |
+| 23 | Red 7 | JAM CLEAN | = 4 ETHEREAL DEEP | Pair with 24 |
+| 24 | Red 8 | JAM LEAD | Your 24Red go-to with a big hall swapped in | Familiar fallback lead |
 
 ## Jam pairing (night-noodling.md)
 
