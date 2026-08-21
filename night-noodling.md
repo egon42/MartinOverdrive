@@ -68,6 +68,41 @@ Anchor track: [Comfortably Numb Jam — Pink Floyd Style (B minor)](https://www.
 - Purple Rain solo (Prince): [minus solo guitar](https://www.youtube.com/watch?v=5Gr3taNJOIc) · [extended](https://www.youtube.com/watch?v=yA04p_TkGd4)
 - Sleep Walk (Santo & Johnny, C): [backing track](https://www.youtube.com/watch?v=xE0mCvVDffM) · [no lead](https://www.youtube.com/watch?v=4amgt21EbDQ) — 1959 instrumental, pure late-night
 
+## Now YOU Shred: more named-song jams (same producer as the anchor)
+
+Playlists worth mining whole:
+[ALL the Jimi Hendrix Inspired Backing Tracks](https://www.youtube.com/playlist?list=PL-pZTNa1BzZbYfdTlRdhIsk8AG1tWqbsR) (126 videos) ·
+[GUITAR BALLADS | Slow Jams for Sentimental Shreds](https://www.youtube.com/playlist?list=PL-pZTNa1BzZYxYMjhew961_YrgTmSrGgK) (101) ·
+[Grateful Dead and Company Jam Rock](https://www.youtube.com/playlist?list=PL-pZTNa1BzZZseLzPHRkVLXXN2xYVo3Wn) (16) ·
+[CLAPTON IS GOD](https://www.youtube.com/playlist?list=PL-pZTNa1BzZb6dk3f3oQLQtTgsrPi9uoc) (17)
+
+Hendrix (the deepest vault):
+- [Villanova Junction Jam (Gm)](https://www.youtube.com/watch?v=CZ-EHSD7AmI) — the Woodstock come-down instrumental, peak meditation
+- [Machine Gun Jam (Em, 66 BPM)](https://www.youtube.com/watch?v=a1H7tEhp0DQ) — one chord, ten minutes, Band of Gypsys space
+- [Pali Gap Jam (Bm)](https://www.youtube.com/watch?v=Ll4dOQYKikA) · [Am version](https://www.youtube.com/watch?v=QJ5Ka8YfpDI) — gorgeous lesser-known instrumental
+- [Hear My Train A Comin' (Em)](https://www.youtube.com/watch?v=zqfKXg7ZSJc)
+- [Red House Blues Jam (Bb)](https://www.youtube.com/watch?v=BwTsTijDkGg)
+- [The Wind Cries Mary Solo Jam (F)](https://www.youtube.com/watch?v=EElESR3fJ1U)
+- [Slow Hey Joe Jam (Em)](https://www.youtube.com/watch?v=dVfLdMOAQlI)
+
+Psychedelic instrumentals (the Comfortably Numb energy, other bands):
+- [Maggot Brain Style Ballad (Em)](https://www.youtube.com/watch?v=zzJCRA4xJEU) — Funkadelic; Eddie Hazel's "play like your mama just died"
+- [Watermelon In Easter Hay Jam (E)](https://www.youtube.com/watch?v=WTPGBC08t5A) — Zappa's most emotional solo vehicle
+- [Tear For Eddie Ween Style (Dm)](https://www.youtube.com/watch?v=4LD-fx2SXbw) — Ween's tribute to Eddie Hazel
+- [Could Have Lied RHCP Style (Bm)](https://www.youtube.com/watch?v=oNdpNBL2p2w) — Frusciante ballad lane
+- [Great Gig in The Sky Chords Jam (Gm, 65 BPM)](https://www.youtube.com/watch?v=77TT754cGxg)
+- [Lenny-inspired Dreamy Blues in E, SRV + Floyd vibes](https://www.youtube.com/watch?v=dywS8Iv2CyI)
+
+Clapton / Neil Young:
+- [Old Love Jam (Am, 71 BPM)](https://www.youtube.com/watch?v=eic1POkG27Y) — maybe the best pure noodling groove Clapton ever left behind
+- [Knocking on Heaven's Door Clapton Style (G)](https://www.youtube.com/watch?v=33yYs3ngtuI)
+- [Cortez the Killer Jam (Em)](https://www.youtube.com/watch?v=USK5nXP5tG8) — Neil Young; the ultimate slow two-chord trance
+
+Jam band / Southern:
+- [Althea Groove (B Dorian)](https://www.youtube.com/watch?v=sP3MaQZB7OA) — Grateful Dead
+- [Elizabeth Reed Jam (Am)](https://www.youtube.com/watch?v=atQe402cb_c) — Allman Brothers
+- More in the Dead playlist: Whipping Post, Melissa, Blue Sky, Sample in a Jar (Phish)
+
 ## Channels to mine
 
 - Now YOU Shred (the anchor's producer)
